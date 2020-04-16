@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/pareceristas/create','PareceristaController@create');
+Route::post('/pareceristas','PareceristaController@store');
