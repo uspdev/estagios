@@ -11,8 +11,13 @@ class PareceristaController extends Controller
     }
 
     public function store(Request $request){
-        echo $request->numero_usp . "<br>";
-        echo $request->nome;
+        echo $request->titulo . "<br>";
+        echo $request->descricao . "<br>";
+        echo $request->expediente . "<br>";
+        echo $request->salario . "<br>";
+        echo $request->horario . "<br>";
+        echo $request->beneficios . "<br>";
+
         dd("Parece que deu certo");
     }
 }
