@@ -21,4 +21,3 @@ Route::post('/avisos','AvisoController@store');
 
 Route::get('/convenios/create','ConvenioController@create');
 Route::post('/convenios','ConvenioController@store');
-

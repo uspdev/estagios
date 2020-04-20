@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Uspdev\Replicado\Pessoa;
 
+
 class IndexController extends Controller
 {
     public function index(){
@@ -22,4 +23,5 @@ class IndexController extends Controller
         */
         dd("index, nada para ver aqui");
     }
+
 }
