@@ -1,5 +1,29 @@
 <?php
 
+
+$pdfs =  [
+    [
+        'text' => 'Renovação (Arthur)',
+        'url'  => '/pdfs/renovacao',
+    ],
+    [
+        'text' => 'Termo de compromisso (Arthur)',
+        'url'  => '/pdfs/termo',
+    ],
+    [
+        'text' => 'Convênio (Gabriela)',
+        'url'  => '/pdfs/convenio',
+    ],
+    [
+        'text' => 'Rescisão (Gabriela)',
+        'url'  => '/pdfs/rescisao',
+    ],
+    [
+        'text' => 'Aditivo (Gabriela)',
+        'url'  => '/pdfs/aditivo',
+    ]
+];
+
 $estagios =  [
     [
         'text' => 'Listar',
@@ -55,6 +79,18 @@ $avisos =  [
     ],
 ];
 
+$pareceristas =  [
+    [
+        'text' => 'Listar',
+        'url'  => '/pareceristas',
+    ],
+    [
+        'text' => 'Cadastrar',
+        'url'  => '/pareceristas/create',
+    ],
+];
+
+
 return [
     'title'=> 'Estágios FFLCH',
     'dashboard_url' => '/',
@@ -82,5 +118,13 @@ return [
             'text'    => 'Convênios',
             'submenu' => $convenios,
         ],
+        [
+            'text'    => 'Pareceristas',
+            'submenu' => $pareceristas,
+        ],
+        [
+            'text'    => 'PDFs',
+            'submenu' => $pdfs,
+        ]
     ]
 ];
