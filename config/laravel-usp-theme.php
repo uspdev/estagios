@@ -1,62 +1,86 @@
 <?php
 
-$submenu1 =  [
+$estagios =  [
     [
-        'text' => 'SubItem 1',
-        'url'  => '/subitem1'
+        'text' => 'Listar',
+        'url'  => '/estagios',
     ],
     [
-        'text' => 'SubItem 2',
-        'url'  => '/subitem2',
-        'can'  => 'admin',
-    ],
-    [
-        'text' => 'SubItem 3',
-        'url'  => '/subitem3',
+        'text' => 'Cadastrar',
+        'url'  => '/estagios/create'
     ],
 ];
 
-$submenu2 =  [
+$vagas =  [
     [
-        'text' => 'SubItem 1',
-        'url'  => '/subitem1'
+        'text' => 'Listar',
+        'url'  => '/vagas',
     ],
     [
-        'text' => 'SubItem 2',
-        'url'  => '/subitem2',
-        'can'  => 'admin',
+        'text' => 'Cadastrar',
+        'url'  => '/vagas/create'
+    ],
+];
+
+$empresas =  [
+    [
+        'text' => 'Listar',
+        'url'  => '/empresas',
+    ],
+    [
+        'text' => 'Cadastrar',
+        'url'  => '/empresas/create'
+    ],
+];
+
+$convenios =  [
+    [
+        'text' => 'Listar',
+        'url'  => '/convenios',
+    ],
+    [
+        'text' => 'Cadastrar',
+        'url'  => '/convenios/create'
+    ],
+];
+
+$avisos =  [
+    [
+        'text' => 'Listar',
+        'url'  => '/avisos',
+    ],
+    [
+        'text' => 'Cadastrar',
+        'url'  => '/avisos/create'
     ],
 ];
 
 return [
-    'title'=> 'USPdev',
+    'title'=> 'Estágios FFLCH',
     'dashboard_url' => '/',
     'logout_method' => 'GET',
-    'logout_url' => 'logout',
-    'login_url' => 'login',
+    'logout_url' => '/logout',
+    'login_url' => '/login',
     'menu' => [
         [
-            'text' => 'Item 1',
-            'url'  => '/item1'
+            'text'    => 'Vagas',
+            'submenu' => $vagas,
         ],
         [
-            'text' => 'Item 2',
-            'url'  => '/item2',
-            'can'  => '',
+            'text'    => 'Estágios',
+            'submenu' => $estagios,
         ],
         [
-            'text' => 'Item 3',
-            'url'  => '/item3',
-            'can'  => 'admin',
+            'text'    => 'Empresas',
+            'submenu' => $empresas,
         ],
         [
-            'text'    => 'SubMenu1',
-            'submenu' => $submenu1,
+            'text'    => 'Avisos',
+            'submenu' => $avisos,
         ],
         [
-            'text'    => 'SubMenu2',
-            'submenu' => $submenu2,
-            'can'  => 'admin',
-        ]
+            'text'    => 'Convênios',
+            'submenu' => $convenios,
+        ],
     ]
 ];
