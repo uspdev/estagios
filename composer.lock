@@ -3676,16 +3676,16 @@
         },
         {
             "name": "uspdev/laravel-usp-theme",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/uspdev/laravel-usp-theme.git",
-                "reference": "67fedd7e13b5b98670843e4e465cc126e9a9569e"
+                "reference": "9635858e932446b8c024cae4bbe2f59b84760043"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/uspdev/laravel-usp-theme/zipball/67fedd7e13b5b98670843e4e465cc126e9a9569e",
-                "reference": "67fedd7e13b5b98670843e4e465cc126e9a9569e",
+                "url": "https://api.github.com/repos/uspdev/laravel-usp-theme/zipball/9635858e932446b8c024cae4bbe2f59b84760043",
+                "reference": "9635858e932446b8c024cae4bbe2f59b84760043",
                 "shasum": ""
             },
             "type": "library",
@@ -3712,7 +3712,7 @@
                 }
             ],
             "description": "usp theme for laravel",
-            "time": "2019-06-12T00:29:52+00:00"
+            "time": "2020-04-21T02:54:01+00:00"
         },
         {
             "name": "uspdev/replicado",
