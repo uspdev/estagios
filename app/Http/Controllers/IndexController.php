@@ -13,7 +13,7 @@ class IndexController extends Controller
         Pessoa::verificaCoordCursosGrad($codpes);
         exemplo que deve retorna true : 3053989
         */
-
+        
         /*
         Gabriela: https://github.com/uspdev/replicado/issues/213
         Criar método que verifica se pessoa tem estágio USP ou não, 
