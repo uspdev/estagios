@@ -15,8 +15,11 @@ Route::post('/vagas','VagaController@store');
 Route::get('/estagios/create','EstagioController@create');
 Route::post('/estagios','EstagioController@store');
 
+Route::get('/empresas', 'EmpresaController@index');
 Route::get('/empresas/create', 'EmpresaController@create');
 Route::post('/empresas', 'EmpresaController@store');
+Route::get('/empresas/{empresa}', 'EmpresaController@show');
+
 
 Route::get('/avisos/create','AvisoController@create');
 Route::post('/avisos','AvisoController@store');
