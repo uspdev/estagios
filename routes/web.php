@@ -18,8 +18,10 @@ Route::post('/estagios','EstagioController@store');
 Route::get('/empresas/create', 'EmpresaController@create');
 Route::post('/empresas', 'EmpresaController@store');
 
+Route::get('/avisos','AvisoController@index');
 Route::get('/avisos/create','AvisoController@create');
 Route::post('/avisos','AvisoController@store');
+Route::get('/avisos/{aviso}','AvisoController@show');
 
 Route::get('/convenios/create','ConvenioController@create');
 Route::post('/convenios','ConvenioController@store');
