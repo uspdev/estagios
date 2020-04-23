@@ -23,3 +23,12 @@ Route::post('/avisos','AvisoController@store');
 
 Route::get('/convenios/create','ConvenioController@create');
 Route::post('/convenios','ConvenioController@store');
+
+#PDF's - Convênio
+Route::get('/pdfs/convenio', 'PDFsController@convenio');
+
+#Rescisão
+Route::get('/pdfs/rescisao', 'PDFsController@rescisao');
+
+#Aditivo
+Route::get('/pdfs/aditivo', 'PDFsController@aditivo');
