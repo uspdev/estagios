@@ -23,3 +23,9 @@ Route::post('/avisos','AvisoController@store');
 
 Route::get('/convenios/create','ConvenioController@create');
 Route::post('/convenios','ConvenioController@store');
+
+# Renovação
+Route::get('/pdfs/renovacao', 'PDFsController@renovacao');
+
+# Termo
+Route::get('/pdfs/termo', 'PDFsController@termo');
