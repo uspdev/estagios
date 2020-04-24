@@ -21,5 +21,7 @@ Route::post('/empresas', 'EmpresaController@store');
 Route::get('/avisos/create','AvisoController@create');
 Route::post('/avisos','AvisoController@store');
 
+Route::get('/convenios','ConvenioController@index');
 Route::get('/convenios/create','ConvenioController@create');
 Route::post('/convenios','ConvenioController@store');
+Route::get('/convenios/{convenio}','ConvenioController@show');
