@@ -29,4 +29,12 @@ Route::get('/avisos/{aviso}','AvisoController@show');
 Route::get('/convenios','ConvenioController@index');
 Route::get('/convenios/create','ConvenioController@create');
 Route::post('/convenios','ConvenioController@store');
+
+# Renovação
+Route::get('/pdfs/renovacao', 'PDFsController@renovacao');
+
+# Termo
+Route::get('/pdfs/termo', 'PDFsController@termo');
+
 Route::get('/convenios/{convenio}','ConvenioController@show');
+
