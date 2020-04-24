@@ -12,8 +12,11 @@ Route::get('/pareceristas/{parecerista}','PareceristaController@show');
 Route::get('/vagas/create','VagaController@create');
 Route::post('/vagas','VagaController@store');
 
+
+Route::get('/estagios','EstagioController@index');
 Route::get('/estagios/create','EstagioController@create');
 Route::post('/estagios','EstagioController@store');
+Route::get('/estagios/{estagio}','EstagioController@show');
 
 Route::get('/empresas', 'EmpresaController@index');
 Route::get('/empresas/create', 'EmpresaController@create');
