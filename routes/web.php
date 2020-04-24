@@ -9,8 +9,10 @@ Route::get('/pareceristas/create','PareceristaController@create');
 Route::post('/pareceristas','PareceristaController@store');
 Route::get('/pareceristas/{parecerista}','PareceristaController@show');
 
+Route::get('/vagas','VagaController@index');
 Route::get('/vagas/create','VagaController@create');
 Route::post('/vagas','VagaController@store');
+Route::get('/vagas/{vaga}','VagaController@show');
 
 
 Route::get('/estagios','EstagioController@index');
