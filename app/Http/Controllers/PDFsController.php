@@ -21,6 +21,7 @@ class PDFsController extends Controller
     public function aditivo(){
         $pdf = PDF::loadView('pdfs.aditivo');
         return $pdf->download('aditivo.pdf');
+    }
 
     public function renovacao(){
         $pdf = PDF::loadView('pdfs.renovacao');
