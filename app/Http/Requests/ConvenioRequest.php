@@ -26,14 +26,14 @@ class ConvenioRequest extends FormRequest
         return [
             'nome_rep' => 'required',
             'cargo_rep' => 'required',
-            'email_rep' => 'required',
+            'email_rep' => 'required:email',
             'rg_rep' => 'required',
-            'cpf_rep' => 'required:integer',
+            'cpf_rep' => 'required:integer:cpf',
             'desc' => 'required',
             'ativ' => 'required',
             'nome_cont' => 'required',
-            'tel_cont' => 'required:integer',
-            'email_cont' => 'required',
+            'tel_cont' => 'required:integer:telefone_com_ddd',
+            'email_cont' => 'required:email',
 
         ];
     }

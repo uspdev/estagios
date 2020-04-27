@@ -28,9 +28,7 @@ Route::get('/avisos/create','AvisoController@create');
 Route::post('/avisos','AvisoController@store');
 Route::get('/avisos/{aviso}','AvisoController@show');
 
-Route::get('/convenios','ConvenioController@index');
-Route::get('/convenios/create','ConvenioController@create');
-Route::post('/convenios','ConvenioController@store');
+Route::resource('/convenios','ConvenioController');
 
 
 #PDF's - Convênio
