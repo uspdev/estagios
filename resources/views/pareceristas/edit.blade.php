@@ -11,9 +11,10 @@
 @section('content')
 @include('flash')
 
-<form method="POST" action="/pareceristas">
+<form method="POST" action="/pareceristas/{{$parecerista->id}}">
 @csrf
-  @include('pareceristas.form')
+@method('patch')
+@include('pareceristas.form')
 </form>
 
 @endsection('content')
