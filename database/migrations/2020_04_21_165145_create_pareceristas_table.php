@@ -18,6 +18,7 @@ class CreatePareceristasTable extends Migration
             $table->timestamps();
             $table->text('numero_usp');
             $table->text('nome');
+            $table->date('acesso_ate');
         });
     }
 

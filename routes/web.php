@@ -4,10 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','IndexController@index');
 
-Route::get('/pareceristas','PareceristaController@index');
-Route::get('/pareceristas/create','PareceristaController@create');
-Route::post('/pareceristas','PareceristaController@store');
-Route::get('/pareceristas/{parecerista}','PareceristaController@show');
+Route::resource('/pareceristas','PareceristaController');
 
 Route::get('/vagas','VagaController@index');
 Route::get('/vagas/create','VagaController@create');

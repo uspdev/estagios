@@ -25,7 +25,8 @@ class PareceristaRequest extends FormRequest
     {
         return [
             'numero_usp' => 'required|integer',
-            'nome'       => 'required'
+            'nome'       => 'required',
+            'acesso_ate'       => 'required|data'
         ];
     }
 }

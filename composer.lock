@@ -4015,16 +4015,16 @@
         },
         {
             "name": "uspdev/laravel-usp-theme",
-            "version": "1.0.7",
+            "version": "1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/uspdev/laravel-usp-theme.git",
-                "reference": "7775e9c5761e478df1f4ae2967bdc1a42e8a9976"
+                "reference": "0ebd2e6f561132b822e43f1d9c6177f968385e6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/uspdev/laravel-usp-theme/zipball/7775e9c5761e478df1f4ae2967bdc1a42e8a9976",
-                "reference": "7775e9c5761e478df1f4ae2967bdc1a42e8a9976",
+                "url": "https://api.github.com/repos/uspdev/laravel-usp-theme/zipball/0ebd2e6f561132b822e43f1d9c6177f968385e6f",
+                "reference": "0ebd2e6f561132b822e43f1d9c6177f968385e6f",
                 "shasum": ""
             },
             "type": "library",
@@ -4051,7 +4051,7 @@
                 }
             ],
             "description": "usp theme for laravel",
-            "time": "2020-04-25T02:56:45+00:00"
+            "time": "2020-04-26T01:24:33+00:00"
         },
         {
             "name": "uspdev/replicado",
@@ -4877,23 +4877,20 @@
         },
         {
             "name": "phpdocumentor/reflection-common",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionCommon.git",
-                "reference": "63a995caa1ca9e5590304cd845c15ad6d482a62a"
+                "reference": "6568f4687e5b41b054365f9ae03fcb1ed5f2069b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/63a995caa1ca9e5590304cd845c15ad6d482a62a",
-                "reference": "63a995caa1ca9e5590304cd845c15ad6d482a62a",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/6568f4687e5b41b054365f9ae03fcb1ed5f2069b",
+                "reference": "6568f4687e5b41b054365f9ae03fcb1ed5f2069b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~6"
             },
             "type": "library",
             "extra": {
@@ -4925,7 +4922,7 @@
                 "reflection",
                 "static analysis"
             ],
-            "time": "2018-08-07T13:53:10+00:00"
+            "time": "2020-04-27T09:25:28+00:00"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
