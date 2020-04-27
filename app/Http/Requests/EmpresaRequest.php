@@ -25,15 +25,21 @@ class EmpresaRequest extends FormRequest
     {
         return [
             'nome_da_empresa' => 'required',
-            'cnpj_da_empresa' => 'required',
+            'cnpj_da_empresa' => [
+                'required',
+                'unique:empresas,cnpj_da_empresa,'. $this->id,
+            ],
             'area_de_atuacao_da_empresa' => 'required',
             'endereco_da_empresa' => 'required',
+            'nome_de_contato_da_empresa' => 'required',
+            'email_de_contato_da_empresa' => 'required|email',
+            'telefone_de_contato_da_empresa' => 'required|telefone_com_ddd',
             'nome_do_representante_da_empresa' => 'required',
             'cargo_do_representante_da_empresa' => 'required',
             'nome_do_supervisor_do_estagio' => 'required',
             'cargo_do_supervisor_do_estagio' => 'required',
-            'telefone_do_supervisor_do_estagio' => 'required',
-            'email_do_supervisor_do_estagio' => 'required'
+            'telefone_do_supervisor_do_estagio' => 'required|telefone_com_ddd',
+            'email_do_supervisor_do_estagio' => 'required|email'
         ];
     }
 }
