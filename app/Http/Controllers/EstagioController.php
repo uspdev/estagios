@@ -15,37 +15,34 @@ class EstagioController extends Controller
 
     public function show(Estagio $estagio)
     {
-        return view('estagios.show', compact('estagio'));
+        return view('estagios.show')->with('estagio',$estagio);
     }    
 
     public function create(){
-        return view('estagios.create');
+        return view('estagios.create')->with('estagio',new Estagio);
     }
 
     public function store(EstagioRequest $request)
     {
-        $estagio = new Estagio;
+        $validated = $request->validated();
+        $validated['data_inicial'] = implode('-',array_reverse(explode('/',$validated['data_inicial'])));
+        $validated['data_final'] = implode('-',array_reverse(explode('/',$validated['data_final'])));                    
+        Estagio::create($validated);        
+        return redirect('estagios/');
+    }
 
-        $estagio->numero_usp = $request->numero_usp;
-        $estagio->valorbolsa = $request->valorbolsa;
-        $estagio->tipobolsa = $request->tipobolsa;
-        $estagio->justificativa = $request->justificativa;
-        $estagio->data_inicial = implode('-',array_reverse(explode('/',$request->data_inicial)));
-        $estagio->data_final = implode('-',array_reverse(explode('/',$request->data_final)));
-        $estagio->cargahoras = $request->cargahoras;
-        $estagio->cargaminutos = $request->cargaminutos;
-        $estagio->horario = $request->horario;
-        $estagio->auxiliotransporte = $request->auxiliotransporte;
-        $estagio->especifiquevt = $request->especifiquevt;
-        $estagio->cnpj = $request->cnpj;       
-        $estagio->atividades = $request->atividades;
-        $estagio->seguradora  = $request->seguradora;
-        $estagio->numseguro  = $request->numseguro;
-        $estagio->controlehorario  = $request->controlehorario;
-        $estagio->supervisao  = $request->supervisao;     
-        $estagio->interacao  = $request->interacao;
-        $estagio->enderecoedias  = $request->enderecoedias;                     
-        $estagio->save();
-        return redirect('/');
+    public function edit(Estagio $estagio) {
+        $estagio->data_inicial = date('d/m/Y', strtotime($estagio->data_inicial));
+        $estagio->data_final = date('d/m/Y', strtotime($estagio->data_final));        
+        return view ('estagios.edit')->with('estagio',$estagio);
+    }
+
+    public function update(EstagioRequest $request, Estagio $estagio)
+    {
+        $validated = $request->validated();
+        $validated['data_inicial'] = implode('-',array_reverse(explode('/',$validated['data_inicial'])));
+        $validated['data_final'] = implode('-',array_reverse(explode('/',$validated['data_final'])));                    
+        $estagio->update($validated); 
+        return redirect("estagios/{$estagio->id}");
     }
 }

@@ -24,21 +24,26 @@ class EstagioRequest extends FormRequest
     public function rules()
     {
         return [
-            'numero_usp' => 'required|integer',            
+            'numero_usp' => 'required|numeric',            
             'valorbolsa' => 'required|integer',
             'tipobolsa' => 'required',
             'justificativa' => 'required',
+            'duracao' => 'required',            
             'data_inicial' => 'required|data',
             'data_final' => 'required|data',
-            'cargahoras' => 'required|integer',
-            'cargaminutos' => 'required|integer',            
+            'cargahoras' => 'required|numeric',
+            'cargaminutos' => 'required|numeric',            
             'horario' => 'required',  
             'auxiliotransporte' => 'required',
             'especifiquevt' => 'required',
             'cnpj' => 'required|cnpj',            
             'atividades' => 'required',
             'seguradora' => 'required', 
-            'numseguro' => 'required|integer'                                                               
+            'numseguro' => 'required|numeric',
+            'controlehorario' => 'nullable',  
+            'supervisao' => 'nullable',  
+            'interacao' => 'nullable',  
+            'enderecoedias' => 'nullable'                                                                                                   
         ];
     }
 }

@@ -19,6 +19,7 @@ class CreateEstagiosTable extends Migration
             $table->text('numero_usp');           
             $table->text('valorbolsa');
             $table->text('tipobolsa');
+            $table->text('duracao');            
             $table->text('justificativa');    
             $table->date('data_inicial');
             $table->date('data_final');
@@ -31,10 +32,10 @@ class CreateEstagiosTable extends Migration
             $table->text('atividades');
             $table->text('seguradora');
             $table->text('numseguro');  
-            $table->text('controlehorario');            
-            $table->text('supervisao');
-            $table->text('interacao');
-            $table->text('enderecoedias');                                                                  
+            $table->text('controlehorario')->nullable();       
+            $table->text('supervisao')->nullable();
+            $table->text('interacao')->nullable();
+            $table->text('enderecoedias')->nullable();                                                             
         });
     }
 
