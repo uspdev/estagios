@@ -23,10 +23,7 @@ Route::post('/empresas', 'EmpresaController@store');
 Route::get('/empresas/{empresa}', 'EmpresaController@show');
 
 
-Route::get('/avisos','AvisoController@index');
-Route::get('/avisos/create','AvisoController@create');
-Route::post('/avisos','AvisoController@store');
-Route::get('/avisos/{aviso}','AvisoController@show');
+Route::resource('/avisos','AvisoController');
 
 
 Route::get('/convenios','ConvenioController@index');

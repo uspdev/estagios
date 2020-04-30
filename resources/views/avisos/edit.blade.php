@@ -12,12 +12,13 @@
 @include('flash')
 
 
-<form method="POST" action="/avisos"> 
+<form method="POST" action="/avisos/{{$aviso->id}}"> 
 @csrf
+@method('patch')
 <div class="card">
-<div class="card-header">Cadastro de Avisos</div>
+<div class="card-header">Edição de Aviso</div> 
   @include('avisos.form')
-</div>
+</div>    
 </form>
 
 @endsection('content')
