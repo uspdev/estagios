@@ -14,6 +14,7 @@ class AvisoController extends Controller
     }
 
     public function show(Aviso $aviso){
+        $aviso->divulgacao_home_ate = implode('/',array_reverse(explode('-',$aviso->divulgacao_home_ate)));
         return view('avisos.show',compact('aviso'));
     }
 
@@ -26,6 +27,7 @@ class AvisoController extends Controller
         $aviso = new Aviso;
 
         $aviso->titulo = $request->titulo;
+        $aviso->divulgacao_home_ate = implode('-',array_reverse(explode('/',$request->divulgacao_home_ate)));
         $aviso->corpo = $request->corpo;
         $aviso->save();
         return redirect('/');

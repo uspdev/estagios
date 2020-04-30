@@ -24,8 +24,9 @@ class AvisoRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo' => 'required',
-            'corpo'  => 'required'
+            'titulo' => 'required|alpha_dash',
+            'corpo'  => 'required|alpha_dash',
+            'divulgacao_home_ate' => 'required|data'
         ];
     }
 }

@@ -18,6 +18,7 @@ class CreateAvisosTable extends Migration
             $table->timestamps();
             $table->text('titulo');
             $table->text('corpo');
+            $table->date('divulgacao_home_ate');
         });
     }
 
