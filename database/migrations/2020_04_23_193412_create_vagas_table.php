@@ -22,6 +22,7 @@ class CreateVagasTable extends Migration
             $table->text('salario');
             $table->text('horario');
             $table->text('beneficios');
+            $table->date('divulgar_ate');
         });
     }
 
