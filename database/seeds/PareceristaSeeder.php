@@ -11,13 +11,17 @@ class PareceristaSeeder extends Seeder
      */
     public function run()
     {
-        $entrada = [
+        $entrada1 = [
             'numero_usp' => 5385361,
-            'nome' => 'Thiago Gomes Veríssimo',
-            'acesso_ate' => '2020-10-10' 
         ];
-        App\Parecerista::create($entrada);
+        $entrada2 = [
+            'numero_usp' => 2989060,
+            'presidente' => 1
+        ];
+        
+        App\Parecerista::create($entrada1);
+        App\Parecerista::create($entrada2);
 
-        factory(App\Parecerista::class, 100)->create();
+        factory(App\Parecerista::class, 12)->create();
     }
 }
