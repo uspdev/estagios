@@ -11,9 +11,9 @@
 @section('content')
 @include('flash')
 
-<form method="POST" action="/estagios">
+<form method="POST" action="/estagios/{{$estagio->id}}">
 @csrf
+@method('patch')
 @include ('estagios.form')
 </form>
-
 @endsection('content')

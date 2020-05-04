@@ -16,6 +16,8 @@ Route::get('/estagios','EstagioController@index');
 Route::get('/estagios/create','EstagioController@create');
 Route::post('/estagios','EstagioController@store');
 Route::get('/estagios/{estagio}','EstagioController@show');
+Route::get('/estagios/{estagio}/edit','EstagioController@edit');
+Route::patch('/estagios/{estagio}','EstagioController@update');
 
 Route::resource('/empresas', 'EmpresaController');
 

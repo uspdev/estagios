@@ -3,8 +3,24 @@
 @section('content')
 @include('flash')
 
-@foreach($estagios as $estagio)
-    <div><a href ="/estagios/{{$estagio->id}}">{{$estagio->valorbolsa}}</a></div>
-@endforeach
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Número USP</th>
+      <th>Valor da Bolsa</th>
+      <th>Ações</th>      
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($estagios as $estagio)
+    <tr>
+      <td><a href ="/estagios/{{$estagio->id}}">{{$estagio->numero_usp}}</a></td>
+      <td>{{$estagio->valorbolsa}}</td>
+      <td><a href="/estagios/{{$estagio->id}}/edit"><i class="fas fa-edit"></a></i></td>          
+    </tr>
+    <div></div>
+    @endforeach
+  </tbody>
+</table>
 
 @endsection('content')
