@@ -6,11 +6,7 @@ Route::get('/','IndexController@index');
 
 Route::resource('/pareceristas','PareceristaController');
 
-Route::get('/vagas','VagaController@index');
-Route::get('/vagas/create','VagaController@create');
-Route::post('/vagas','VagaController@store');
-Route::get('/vagas/{vaga}','VagaController@show');
-
+Route::resource('/vagas','VagaController');
 
 Route::get('/estagios','EstagioController@index');
 Route::get('/estagios/create','EstagioController@create');

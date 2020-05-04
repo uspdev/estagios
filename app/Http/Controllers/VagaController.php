@@ -14,24 +14,35 @@ class VagaController extends Controller
     }
 
     public function show(Vaga $vaga){
-        return view('vagas.show', compact('vaga'));
+        $vaga->divulgar_ate = implode('/',array_reverse(explode('-',$vaga->divulgar_ate)));
+        return view('vagas.show')->with('vaga', $vaga);
     }
 
     public function create(){
-        return view('vagas.create');
+        return view('vagas.create')->with('vaga',new Vaga);
     }
 
     public function store(VagaRequest $request){
+        
+        $validated=$request->validated();    
 
-        $vaga = new Vaga;
+        $validated['divulgar_ate'] = implode('-',array_reverse(explode('/',$validated['divulgar_ate'])));    
 
-        $vaga->titulo = $request->titulo;
-        $vaga->descricao = $request->descricao;
-        $vaga->expediente = $request->expediente;
-        $vaga->salario = $request->salario;
-        $vaga->horario = $request->horario;
-        $vaga->beneficios = $request->beneficios;
-        $vaga->save();
-        return redirect('/');
+        Vaga::create($validated);
+
+        return redirect ('vagas/');
+    }
+    
+    public function edit(Vaga $vaga) {
+        $vaga->divulgar_ate = implode('/',array_reverse(explode('-',$vaga->divulgar_ate)));
+        return view('/vagas.edit')-> with('vaga', $vaga);
+    }
+
+    public function update(VagaRequest $request,Vaga $vaga ){
+        $validated=$request->validated();       
+        $validated['divulgar_ate'] = implode('-',array_reverse(explode('/',$validated['divulgar_ate'])));    
+        $vaga->update($validated);
+
+        return redirect("/vagas/{$vaga->id}");
     }
 }
