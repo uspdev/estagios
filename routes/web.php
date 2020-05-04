@@ -21,10 +21,8 @@ Route::patch('/estagios/{estagio}','EstagioController@update');
 
 Route::resource('/empresas', 'EmpresaController');
 
-Route::get('/avisos','AvisoController@index');
-Route::get('/avisos/create','AvisoController@create');
-Route::post('/avisos','AvisoController@store');
-Route::get('/avisos/{aviso}','AvisoController@show');
+Route::resource('/avisos','AvisoController');
+
 
 Route::resource('/convenios','ConvenioController');
 
