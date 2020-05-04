@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 use PDF;
+use App\Estagio;
+use App\Empresa;
+use Carbon\Carbon;
+
 
 use Illuminate\Http\Request;
 
@@ -23,13 +27,13 @@ class PDFsController extends Controller
         return $pdf->download('aditivo.pdf');
     }
 
-    public function renovacao(){
-        $pdf = PDF::loadView('pdfs.renovacao');
+    public function renovacao(Estagio $estagio){
+        $pdf = PDF::loadView('pdfs.renovacao', compact('estagio'));
         return $pdf->download('renovacao.pdf');
     }
 
-    public function termo(){
-        $pdf = PDF::loadView('pdfs.termo');
+    public function termo(Estagio $estagio){
+        $pdf = PDF::loadView('pdfs.termo', compact('estagio'));
         return $pdf->download('termo.pdf');
 
     }

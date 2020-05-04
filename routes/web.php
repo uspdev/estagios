@@ -40,11 +40,11 @@ Route::get('/pdfs/rescisao', 'PDFsController@rescisao');
 #Aditivo
 Route::get('/pdfs/aditivo', 'PDFsController@aditivo');
 
-# Renovação
-Route::get('/pdfs/renovacao', 'PDFsController@renovacao');
+#Renovação
+Route::get('/pdfs/renovacao/{estagio}', 'PDFsController@renovacao');
 
-# Termo
-Route::get('/pdfs/termo', 'PDFsController@termo');
+#Termo
+Route::get('/pdfs/termo/{estagio}', 'PDFsController@termo');
 
 Route::get('/convenios/{convenio}','ConvenioController@show');
 
