@@ -30,13 +30,13 @@ Route::resource('/convenios','ConvenioController');
 
 
 #PDF's - Convênio
-Route::get('/pdfs/convenio', 'PDFsController@convenio');
+Route::get('/pdfs/convenio/{convenio}/{empresa}', 'PDFsController@convenio');
 
 #Rescisão
-Route::get('/pdfs/rescisao', 'PDFsController@rescisao');
+Route::get('/pdfs/rescisao/{estagio}/{empresa}', 'PDFsController@rescisao');
 
 #Aditivo
-Route::get('/pdfs/aditivo', 'PDFsController@aditivo');
+Route::get('/pdfs/aditivo/{empresa}', 'PDFsController@aditivo');
 
 #Renovação
 Route::get('/pdfs/renovacao/{estagio}', 'PDFsController@renovacao');

@@ -10,41 +10,38 @@
 </table>
 <hr height="1" width="100%"></hr>
 <br>
-<div style="text-align: justify"><p style="text-indent : 6em;"><b>BIONEXO DO BRASIL PROCESSAMENTO DE DADOS EIRELI,CNPJ
-04.069.709/0001-02,</b> representada por seu(a) <b>Analista de Recursos Humanos
-Pleno, Bruna Martins do Nascimento</b> adiante designada CONCEDENTE e o
-ESTAGIÁRIO(A) <b>Flávia Couto e Silva</b>, no USP <b>11250424</b>, curso <b>Ciências
-Sociais</b> e como INTERVENIENTE a Faculdade de Filosofia, Letras e Ciências
+<div style="text-align: justify"><p style="text-indent : 6em;"><b>{{ $empresa->nome_da_empresa }},CNPJ {{ $empresa->cnpj_da_empresa }},</b> representada por seu(a) <b>{{ $empresa->cargo_do_representante_da_empresa }}, {{ $empresa->nome_do_representante_da_empresa }}</b> adiante designada CONCEDENTE e o
+ESTAGIÁRIO(A) <b>%estagiarioa</b>, no USP <b>%usp</b>, curso <b>%curso</b> e como INTERVENIENTE a Faculdade de Filosofia, Letras e Ciências
 Humanas da Universidade de São Paulo, representada pela Presidente da Comissão de Graduação 
 <b>Profa. Dra. Mona Mohamad Hawi</b>, firmam o presente TERMO DE ADITAMENTO DE COMPROMISSO DE ESTÁGIO, nos termos da Lei
 11.788/08 e da Resolução USP no 5.528/09, conforme as condições a seguir:</p></div>
-<p>1. Alterações a serem feitas a partir de <b>04/05/2020:</b></p>
-<p><b>Alteração na Razão Social da Empresa para: BIONEXO DO BRASIL SOLUCOES DIGITAIS EIRELI </b></p>
+<p>1. Alterações a serem feitas a partir de <b>%alteracoes_a_serem_feitas</b></p>
+<p><b>%alteracoes</b></p>
 <div style="text-align: justify">2. Permanecem inalteradas as demais cláusulas do Termo de Compromisso de
 Estágio, inclusive o Plano de Estágios, do qual passa a fazer parte integrante o
 presente Termo Aditivo, ficando sem efeito as disposições em contrário.<br>
 <p style="text-indent : 6em;">E por estarem de comum acordo, as partes acima identificadas assinam o
 presente Termo Aditivo em 03(três) vias de igual teor, em papel timbrado ou com
 carimbo contendo o CNPJ da empresa, para que produza seus jurídicos efeitos.</p><br>
-São Paulo, 15/05/2020
+São Paulo, {{ $now->format('d/m/Y') }}
 </div>
 <br>
 <br>
 <div>
 ________________________________________<br>
-<b>BIONEXO DO BRASIL PROCESSAMENTO DE DADOS EIRELI</b>
+<b>{{ $empresa->nome_da_empresa }}</b>
 <br>
 <br>
 ________________________________________<br>
-<b>Flávia Couto e Silva</b>
+<b>%estagiarioa</b>
 <br>
 <br>
 ________________________________________<br>
 <b>Profa. Dra. Mona Mohamad Hawi</b><br>
 <b>Presidente da Comissão de Graduação da FFLCH</b>
 <br><br>
-Tel. do estagiário: 11 42272083, e-mail: flaviacoutoesilva@gmail.com<br>
-Contato: Miguel Neto, tel.: 11 3809-9406, e-mail: miguel.neto@viadeacesso.org
+Tel. do estagiário: %telefone_do_estagiario, e-mail: %e_mail_do_estagiario<br>
+Contato: %nome_da_pessoa_para_contato, tel.: %telefones_para_contato, e-mail: %e_mail_para_contato
 <br><br>
 <hr height="1" width="100%"></hr>
 <b>O PRAZO PARA DEVOLUÇÃO DO DOCUMENTO É DE 15 DIAS ÚTEIS.
