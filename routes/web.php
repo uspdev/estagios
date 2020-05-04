@@ -16,21 +16,17 @@ Route::get('/estagios','EstagioController@index');
 Route::get('/estagios/create','EstagioController@create');
 Route::post('/estagios','EstagioController@store');
 Route::get('/estagios/{estagio}','EstagioController@show');
+Route::get('/estagios/{estagio}/edit','EstagioController@edit');
+Route::patch('/estagios/{estagio}','EstagioController@update');
 
-Route::get('/empresas', 'EmpresaController@index');
-Route::get('/empresas/create', 'EmpresaController@create');
-Route::post('/empresas', 'EmpresaController@store');
-Route::get('/empresas/{empresa}', 'EmpresaController@show');
-
+Route::resource('/empresas', 'EmpresaController');
 
 Route::get('/avisos','AvisoController@index');
 Route::get('/avisos/create','AvisoController@create');
 Route::post('/avisos','AvisoController@store');
 Route::get('/avisos/{aviso}','AvisoController@show');
 
-Route::get('/convenios','ConvenioController@index');
-Route::get('/convenios/create','ConvenioController@create');
-Route::post('/convenios','ConvenioController@store');
+Route::resource('/convenios','ConvenioController');
 
 
 #PDF's - Convênio
@@ -42,11 +38,11 @@ Route::get('/pdfs/rescisao/{estagio}/{empresa}', 'PDFsController@rescisao');
 #Aditivo
 Route::get('/pdfs/aditivo/{empresa}', 'PDFsController@aditivo');
 
-# Renovação
-Route::get('/pdfs/renovacao', 'PDFsController@renovacao');
+#Renovação
+Route::get('/pdfs/renovacao/{estagio}', 'PDFsController@renovacao');
 
-# Termo
-Route::get('/pdfs/termo', 'PDFsController@termo');
+#Termo
+Route::get('/pdfs/termo/{estagio}', 'PDFsController@termo');
 
 Route::get('/convenios/{convenio}','ConvenioController@show');
 

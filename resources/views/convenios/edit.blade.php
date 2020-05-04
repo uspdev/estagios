@@ -10,9 +10,10 @@
 
 @section('content')
 @include('flash')
-<form method="POST" action="/convenios">
+<form method="POST" action="/convenios/{{$convenio->id}}">
 
 @csrf
+@method('patch')
 @include('convenios.form')
 </form>	
 
