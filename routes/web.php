@@ -17,11 +17,7 @@ Route::get('/estagios/create','EstagioController@create');
 Route::post('/estagios','EstagioController@store');
 Route::get('/estagios/{estagio}','EstagioController@show');
 
-Route::get('/empresas', 'EmpresaController@index');
-Route::get('/empresas/create', 'EmpresaController@create');
-Route::post('/empresas', 'EmpresaController@store');
-Route::get('/empresas/{empresa}', 'EmpresaController@show');
-
+Route::resource('/empresas', 'EmpresaController');
 
 Route::get('/avisos','AvisoController@index');
 Route::get('/avisos/create','AvisoController@create');

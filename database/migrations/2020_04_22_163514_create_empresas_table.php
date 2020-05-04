@@ -20,6 +20,9 @@ class CreateEmpresasTable extends Migration
             $table->text('cnpj_da_empresa');
             $table->text('area_de_atuacao_da_empresa');
             $table->text('endereco_da_empresa');
+            $table->text('nome_de_contato_da_empresa');
+            $table->text('email_de_contato_da_empresa');
+            $table->text('telefone_de_contato_da_empresa');
             $table->text('nome_do_representante_da_empresa');
             $table->text('cargo_do_representante_da_empresa');
             $table->text('nome_do_supervisor_do_estagio');
