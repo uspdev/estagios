@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Estagio::class, function (Faker $faker) {
     
     return [
-        'numero_usp' => $faker->unique()->numberBetween(10000, 99999999),           
+        'numero_usp' => $faker->unique()->graduacao(),           
         'valorbolsa' => $faker->numberBetween(300, 4000),
         'tipobolsa' => 'Mensal',
         'justificativa' => 'Desenvolvimento PHP e outros',

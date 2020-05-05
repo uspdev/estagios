@@ -31,6 +31,6 @@ class EstagioSeeder extends Seeder
         ];
         App\Estagio::create($entrada); 
         
-        factory(App\Estagio::class, 100)->create();
+        factory(App\Estagio::class, 20)->create();
     }
 }
