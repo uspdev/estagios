@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c9edde504b08b723939fc6a773f900b0",
+    "content-hash": "c65d01d6b92bb751303117072a151017",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -872,61 +872,6 @@
                 "url"
             ],
             "time": "2019-07-01T23:21:34+00:00"
-        },
-        {
-            "name": "jansenfelipe/faker-br",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jansenfelipe/faker-br.git",
-                "reference": "219eb281e3d8f76c2463f4e38e0ee0c0c96be2d4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jansenfelipe/faker-br/zipball/219eb281e3d8f76c2463f4e38e0ee0c0c96be2d4",
-                "reference": "219eb281e3d8f76c2463f4e38e0ee0c0c96be2d4",
-                "shasum": ""
-            },
-            "require": {
-                "fzaninotto/faker": "^1.5"
-            },
-            "require-dev": {
-                "jansenfelipe/utils": "^2.0",
-                "phpunit/phpunit": "~4.0"
-            },
-            "suggest": {
-                "jansenfelipe/cep-gratis": "Permite consulta de CEP no site dos Correios",
-                "jansenfelipe/cnpj-gratis": "Permite consulta de CNPJ no site dos Correios",
-                "jansenfelipe/cpf-gratis": "Permite consulta de CPF no site da receita"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "JansenFelipe\\FakerBR\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jansen Felipe",
-                    "email": "jansen.felipe@gmail.com"
-                }
-            ],
-            "description": "Provider do Faker para gerar dados brasileiros falsos com o intuito de testar softwares",
-            "keywords": [
-                "cnpj",
-                "cpf",
-                "gerador"
-            ],
-            "time": "2015-12-02T18:14:35+00:00"
         },
         {
             "name": "laravel/framework",
@@ -4016,6 +3961,54 @@
             "time": "2019-10-24T08:53:34+00:00"
         },
         {
+            "name": "uspdev/laravel-usp-faker",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/uspdev/laravel-usp-faker.git",
+                "reference": "7ad6ad7cf4c239d55a4edce667180dd0c4b02baa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/uspdev/laravel-usp-faker/zipball/7ad6ad7cf4c239d55a4edce667180dd0c4b02baa",
+                "reference": "7ad6ad7cf4c239d55a4edce667180dd0c4b02baa",
+                "shasum": ""
+            },
+            "require": {
+                "fzaninotto/faker": "^1.5",
+                "uspdev/replicado": "^1.5"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0 || ^5.0",
+                "phpunit/phpunit": "^8.3 || ^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Uspdev\\FakerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Uspdev\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thiago Gomes Veríssimo",
+                    "email": "verissimotgv@gmail.com"
+                }
+            ],
+            "description": "Uma biblioteca para geração de faker no contexto USP",
+            "time": "2020-05-05T03:46:09+00:00"
+        },
+        {
             "name": "uspdev/laravel-usp-theme",
             "version": "1.0.9",
             "source": {
@@ -4057,20 +4050,21 @@
         },
         {
             "name": "uspdev/laravel-usp-validators",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/uspdev/laravel-usp-validators.git",
-                "reference": "368d0e0eead67af45b29c53647a8cc86a0da4fc1"
+                "reference": "160be5e18a5c96e84d208b0aee28816bb526ffd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/uspdev/laravel-usp-validators/zipball/368d0e0eead67af45b29c53647a8cc86a0da4fc1",
-                "reference": "368d0e0eead67af45b29c53647a8cc86a0da4fc1",
+                "url": "https://api.github.com/repos/uspdev/laravel-usp-validators/zipball/160be5e18a5c96e84d208b0aee28816bb526ffd9",
+                "reference": "160be5e18a5c96e84d208b0aee28816bb526ffd9",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "^6.0 || ^7.0"
+                "illuminate/support": "^6.0 || ^7.0",
+                "uspdev/replicado": "^1.5"
             },
             "require-dev": {
                 "orchestra/testbench": "^4.0 || ^5.0",
@@ -4100,7 +4094,7 @@
                 }
             ],
             "description": "Uma biblioteca contendo validações USPdev",
-            "time": "2020-05-04T23:43:21+00:00"
+            "time": "2020-05-05T03:47:38+00:00"
         },
         {
             "name": "uspdev/replicado",
@@ -6261,9 +6255,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "uspdev/laravel-usp-validators": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

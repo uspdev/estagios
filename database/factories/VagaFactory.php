@@ -6,7 +6,7 @@ use App\Vaga;
 use Faker\Generator as Faker;
 
 $factory->define(Vaga::class, function (Faker $faker) {
-    $faker->addProvider(new \JansenFelipe\FakerBR\FakerBR($faker));
+
     return [
         'titulo' => $faker->sentence($nbWords = 6, $variableNbWords = true),
         'descricao' => $faker->text,

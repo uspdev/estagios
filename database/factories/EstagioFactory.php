@@ -6,7 +6,6 @@ use App\Estagio;
 use Faker\Generator as Faker;
 
 $factory->define(Estagio::class, function (Faker $faker) {
-    $faker->addProvider(new \JansenFelipe\FakerBR\FakerBR($faker));
     
     return [
         'numero_usp' => $faker->unique()->numberBetween(10000, 99999999),           

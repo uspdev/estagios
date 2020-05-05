@@ -6,7 +6,6 @@ use App\Empresa;
 use Faker\Generator as Faker;
 
 $factory->define(Empresa::class, function (Faker $faker) {
-    $faker->addProvider(new \JansenFelipe\FakerBR\FakerBR($faker));
     return [
         'nome_da_empresa' => $faker->company,
         'cnpj_da_empresa' => $faker->cnpj,
