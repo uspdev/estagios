@@ -24,12 +24,13 @@ $workflow_estagio =
         ],
         'analise_indeferida' => [
             'metadata' => [
-                'label' => "Indeferida \n devolver para elaboração",
+                'label' => "Indeferida",
             ],
         ],
         'parecer_deferido'  => [
             'metadata' => [
                 'label' => "Deferido",
+                'bg_color' => '#add8e6'
             ],
         ],
         'parecer_indeferido' => [
