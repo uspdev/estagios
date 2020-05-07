@@ -25,3 +25,7 @@ aditivo_alteracoes: elaboracao - analise
 - Em Elaboração Renovação
 - Análise renovação
 - parecer renovação
+-
+-
+
+![workflow](https://raw.githubusercontent.com/fflch/estagios/master/workflow_estagio.png)
