@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c65d01d6b92bb751303117072a151017",
+    "content-hash": "93d0b22fdbb1e00240f6e2554786d438",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2280,6 +2280,73 @@
             "time": "2019-02-22T07:42:52+00:00"
         },
         {
+            "name": "spatie/laravel-model-status",
+            "version": "1.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-model-status.git",
+                "reference": "ddce7aa93ba09fe4c7ec3bdbc6d86d7f037f3299"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-model-status/zipball/ddce7aa93ba09fe4c7ec3bdbc6d86d7f037f3299",
+                "reference": "ddce7aa93ba09fe4c7ec3bdbc6d86d7f037f3299",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.8.0|^6.0|^7.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.8.0|^4.0|^5.0",
+                "phpunit/phpunit": "^8.0|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\ModelStatus\\ModelStatusServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\ModelStatus\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Verhelst",
+                    "email": "tvke91@gmail.com",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A package to enable assigning statuses to Eloquent Models",
+            "homepage": "https://github.com/spatie/laravel-model-status",
+            "keywords": [
+                "laravel-status",
+                "spatie"
+            ],
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "time": "2020-03-03T15:20:25+00:00"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v6.2.3",
             "source": {
@@ -3912,6 +3979,89 @@
             "time": "2020-04-12T16:45:47+00:00"
         },
         {
+            "name": "symfony/workflow",
+            "version": "v5.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/workflow.git",
+                "reference": "a18961c6a6c24eaa19b100940f7fc31a94fc6afb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/workflow/zipball/a18961c6a6c24eaa19b100940f7fc31a94fc6afb",
+                "reference": "a18961c6a6c24eaa19b100940f7fc31a94fc6afb",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2.5"
+            },
+            "conflict": {
+                "symfony/event-dispatcher": "<4.4"
+            },
+            "require-dev": {
+                "psr/log": "~1.0",
+                "symfony/dependency-injection": "^4.4|^5.0",
+                "symfony/event-dispatcher": "^4.4|^5.0",
+                "symfony/expression-language": "^4.4|^5.0",
+                "symfony/security-core": "^4.4|^5.0",
+                "symfony/validator": "^4.4|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Workflow\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Grégoire Pineau",
+                    "email": "lyrixx@lyrixx.info"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Workflow Component",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "petrinet",
+                "place",
+                "state",
+                "statemachine",
+                "transition",
+                "workflow"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-04-10T21:22:25+00:00"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "2.2.2",
             "source": {
@@ -4276,6 +4426,67 @@
                 }
             ],
             "time": "2020-03-13T01:23:26+00:00"
+        },
+        {
+            "name": "zerodahero/laravel-workflow",
+            "version": "v3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zerodahero/laravel-workflow.git",
+                "reference": "fc5b1888f177d1c093afcdd87d03e5fa207d345e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zerodahero/laravel-workflow/zipball/fc5b1888f177d1c093afcdd87d03e5fa207d345e",
+                "reference": "fc5b1888f177d1c093afcdd87d03e5fa207d345e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^7.0",
+                "illuminate/contracts": "^7.0",
+                "illuminate/support": "^7.0",
+                "php": ">=7.2",
+                "symfony/event-dispatcher": "^5.0",
+                "symfony/process": "^5.0",
+                "symfony/workflow": "^5.0"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "^1.9",
+                "mockery/mockery": "^1.2",
+                "phpunit/phpunit": "^8.0",
+                "symfony/var-dumper": "^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "ZeroDaHero\\LaravelWorkflow\\WorkflowServiceProvider"
+                    ],
+                    "aliases": {
+                        "Workflow": "ZeroDaHero\\LaravelWorkflow\\Facades\\WorkflowFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ZeroDaHero\\LaravelWorkflow\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Integerate Symfony Workflow component into Laravel.",
+            "keywords": [
+                "laravel",
+                "laravel7",
+                "symfony",
+                "workflow"
+            ],
+            "time": "2020-03-31T15:57:45+00:00"
         }
     ],
     "packages-dev": [

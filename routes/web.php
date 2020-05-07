@@ -40,3 +40,5 @@ Route::get('/pdfs/termo/{estagio}', 'PDFsController@termo');
 
 Route::get('/convenios/{convenio}','ConvenioController@show');
 
+Route::get('/teste','TesteController@teste');
+

@@ -16,10 +16,11 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravellegends/pt-br-validator": "^7.0",
+        "uspdev/laravel-usp-faker": "^1.0",
         "uspdev/laravel-usp-theme": "^1.0",
         "uspdev/laravel-usp-validators": "^1.0",
-        "uspdev/laravel-usp-faker": "^1.0",
-        "uspdev/replicado": "^1.5"
+        "uspdev/replicado": "^1.5",
+        "zerodahero/laravel-workflow": "^3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
