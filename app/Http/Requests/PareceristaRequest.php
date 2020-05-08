@@ -24,7 +24,7 @@ class PareceristaRequest extends FormRequest
     public function rules()
     {
         return [
-            'numero_usp' => ['required','integer','codpes'],
+            'numero_usp' => 'required|integer|codpes',
             'presidente' => 'integer'
         ];
     }

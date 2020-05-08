@@ -23,8 +23,9 @@ Route::resource('/avisos','AvisoController');
 Route::resource('/convenios','ConvenioController');
 
 
-#PDF's - Convênio
-Route::get('/pdfs/convenio/{convenio}/{empresa}', 'PDFsController@convenio');
+#PDF's 
+Route::get('/pdfs/convenio/{convenio}', 'PDFsController@convenio');
+Route::get('/pdfs/termo/{estagio}', 'PDFsController@termo');
 
 #Rescisão
 Route::get('/pdfs/rescisao/{estagio}/{empresa}', 'PDFsController@rescisao');
@@ -34,10 +35,4 @@ Route::get('/pdfs/aditivo/{empresa}', 'PDFsController@aditivo');
 
 #Renovação
 Route::get('/pdfs/renovacao/{estagio}', 'PDFsController@renovacao');
-
-#Termo
-Route::get('/pdfs/termo/{estagio}', 'PDFsController@termo');
-
-# Convênio
-Route::get('/convenios/{convenio}','ConvenioController@show');
 
