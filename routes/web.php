@@ -38,5 +38,6 @@ Route::get('/pdfs/renovacao/{estagio}', 'PDFsController@renovacao');
 #Termo
 Route::get('/pdfs/termo/{estagio}', 'PDFsController@termo');
 
+# Convênio
 Route::get('/convenios/{convenio}','ConvenioController@show');
 

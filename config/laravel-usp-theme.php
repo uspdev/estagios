@@ -1,29 +1,5 @@
 <?php
 
-
-$pdfs =  [
-    [
-        'text' => 'Renovação (Arthur)',
-        'url'  => '/pdfs/renovacao',
-    ],
-    [
-        'text' => 'Termo de compromisso (Arthur)',
-        'url'  => '/pdfs/termo',
-    ],
-    [
-        'text' => 'Convênio (Gabriela)',
-        'url'  => '/pdfs/convenio',
-    ],
-    [
-        'text' => 'Rescisão (Gabriela)',
-        'url'  => '/pdfs/rescisao',
-    ],
-    [
-        'text' => 'Aditivo (Gabriela)',
-        'url'  => '/pdfs/aditivo',
-    ]
-];
-
 $estagios =  [
     [
         'text' => 'Listar',
@@ -122,9 +98,5 @@ return [
             'text'    => 'Pareceristas',
             'submenu' => $pareceristas,
         ],
-        [
-            'text'    => 'PDFs',
-            'submenu' => $pdfs,
-        ]
     ]
 ];

@@ -15,8 +15,11 @@
 		<tr>
 		  <td><div><a href="/convenios/{{$convenio->id}}">{{$convenio->nome_rep}}</a></div></td>
 			
-		  <td><a href="/convenios/{{$convenio->id}}/edit"><i class="fas fa-edit"></i></a></td>
-		</tr>
+		  <td>
+        <a href="/convenios/{{$convenio->id}}/edit"><i class="fas fa-edit"></i></a>
+        <a href="/convenios/{{$convenio->id}}/edit"><i class="fas fa-file-pdf"></i></a>
+      </td>
+    </tr>
 
 
 	@endforeach
