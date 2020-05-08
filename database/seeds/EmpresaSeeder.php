@@ -13,7 +13,7 @@ class EmpresaSeeder extends Seeder
     {
         $entrada = [
             'nome_da_empresa' => 'Pluriaqua',
-            'cnpj_da_empresa' => '11111111111111',
+            'cnpj_da_empresa' => '29541003000114',
             'area_de_atuacao_da_empresa' => 'Indústria',
             'endereco_da_empresa' => 'Rua dos Bobos',
             'nome_de_contato_da_empresa' => 'Joãozinho',

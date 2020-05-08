@@ -3,8 +3,6 @@
 @section('content')
 @include('flash')
 
-@include('estagios.etapas')
-
 <h5><b>Dados sobre o estágio:</b></h5><br>
 
 <b>Número USP:</b> {{$estagio->numero_usp}}<br>

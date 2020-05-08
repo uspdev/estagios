@@ -29,7 +29,7 @@ aditivo por até 12 meses.
 
 
         <div class="form-group">
-            <label for="tipobolsa" class="required"><b>Especifique: </b></label>
+            <label for="tipobolsa" class="required"><b>Especifique o tipo de bolsa: </b></label>
             <select name="tipobolsa" class="form-control" id="tipobolsa" value="{{old('tipobolsa',$estagio->tipobolsa)}}">
                 <option value="" selected="selected">- Selecione -</option>
                 <option value="Mensal">mensais</option>
@@ -132,10 +132,25 @@ aditivo por até 12 meses.
             <div class="col-sm form-group">
                 <div class="form-group">
                     <label for="especifiquevt" class="required"><b>Especifique: </b></label>
-                    <select name="especifiquevt" class="form-control" id="especifiquevt" value="{{old('especifiquevt',$estagio->especifiquevt)}}">
-                        <option value="" selected="selected">- Selecione -</option>
-                        <option value="Mensal">Mensal</option>
-                        <option value="Diário">Diário</option>
+                    <select name="especifiquevt" class="form-control" id="especifiquevt">
+                    {{old('especifiquevt',$estagio->especifiquevt)}}
+
+                        <option value="" selected="">- Selecione -</option>
+                        @foreach ($estagio->especifiquevtOptions() as $option)
+
+                          {{-- 1. Situação em que não houve tentativa de submissão e é uma edição --}}
+                          @if (old('especifiquevt') == '' and !isset($estagio->especifiquevt))
+                            <option value="{{$option}}" {{ ( $estagio->especifiquevt == $option) ? 'selected' : ''}}>
+                                {{$option}}
+                            </option>
+                          {{-- 2. Situação em que houve tentativa de submissão, o valor de old prevalece --}}
+                          @else
+                            <option value="{{$option}}" {{ ( old('especifiquevt') == $option) ? 'selected' : ''}}>
+                                {{$option}}
+                            </option>
+                          @endif
+                          
+                        @endforeach
                     </select> 
                 </div></div>
         </div>

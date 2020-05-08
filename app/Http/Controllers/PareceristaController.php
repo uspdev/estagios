@@ -8,8 +8,8 @@ use App\Parecerista;
 
 class PareceristaController extends Controller
 {
-    public function index(){
-        $pareceristas = Parecerista::all();
+    public function index(Request $request){
+        $pareceristas = Parecerista::get();
         return view('pareceristas.index',compact('pareceristas'));
     }
 

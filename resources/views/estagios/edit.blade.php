@@ -12,8 +12,6 @@
 @section('content')
 @include('flash')
 
-@include('estagios.etapas')
-
 <form method="POST" action="/estagios/{{$estagio->id}}">
 @csrf
 @method('patch')

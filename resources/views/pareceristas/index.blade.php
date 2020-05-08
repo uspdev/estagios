@@ -4,6 +4,7 @@
 @include('flash')
 
 @inject('pessoa','Uspdev\Replicado\Pessoa')
+
 <table class="table table-striped">
   <thead>
     <tr>

@@ -9,7 +9,7 @@ $factory->define(Empresa::class, function (Faker $faker) {
     
     return [
         'nome_da_empresa' => $faker->company,
-        'cnpj_da_empresa' => $faker->cpf,
+        'cnpj_da_empresa' => $faker->cpf(false),
         'area_de_atuacao_da_empresa' => $faker->sentence,
         'endereco_da_empresa' => $faker->streetAddress,
         'nome_de_contato_da_empresa' => $faker->name,
