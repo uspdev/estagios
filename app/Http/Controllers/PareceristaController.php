@@ -9,8 +9,13 @@ use App\Parecerista;
 class PareceristaController extends Controller
 {
     public function index(Request $request){
-        $pareceristas = Parecerista::get();
-        return view('pareceristas.index',compact('pareceristas'));
+        if(isset($request->busca)){
+            $pareceristas = Parecerista::where('numero_usp','LIKE',"%{$request->busca}%")->paginate(5);
+        } else {
+            $pareceristas = Parecerista::paginate(5);
+        }
+
+        return view('pareceristas.index')->with('pareceristas',$pareceristas);
     }
 
     public function show(Parecerista $parecerista){

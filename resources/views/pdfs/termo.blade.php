@@ -1,4 +1,9 @@
 @extends('pdfs.fflch')
+
+
+@inject('pessoa','Uspdev\Replicado\Pessoa')
+@inject('graduacao','Uspdev\Replicado\Graduacao')
+
 @section('content')
 
 <div style="border-width: 1px; border-style: solid; border-color: #000; text-align: center; padding: 0px;">
@@ -17,15 +22,15 @@
     <p style="text-indent : 3em; font-weight: bold">Uma via deste termo de Ciência deve ser entregue com o Termo de
         Compromisso e Plano de Estágio.</p>
     <br>
-    <p>Ciência do(a) aluno(a) Isis Leocadio Ruiz:</p>
+    <p>Ciência do(a) aluno(a) {{ $pessoa::dump($estagio->numero_usp)['nompes'] }}:</p>
 </div>
 
 <br><br>
 
 <div>
     _______________________________<br>
-    <b>Isis Leocadio Ruiz</b><br>
-    Número USP: <b>9824221</b><br>
+    <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b><br>
+    Número USP: <b>{{ $estagio->numero_usp }}</b><br>
     <b>Letras-Português</b>
 </div>
 
@@ -36,8 +41,8 @@
 </div>
 
 <div style="text-align: justify;">
-    <p style="text-indent : 1em;"><b>Ursa Mãe Primeira Infância Ltda. - EPP, R. Tatuí, 129, Bairro: Jd. Paulista,
-    Cidade: São Paulo - SP - CEP: 01409-010, CNPJ 45.882.982/0001-20</b> , representada por seu(sua)
+    <p style="text-indent : 1em;"><b>{{ $empresa->nome_da_empresa }}. - EPP, R. Tatuí, 129, Bairro: Jd. Paulista,
+    Cidade: São Paulo - SP - CEP: 01409-010, CNPJ {{ $empresa->cnpj_da_empresa }}</b> , representada por seu(sua)
         <b>Coordenadora Geral</b>, Sr(a) <b>Rosinha Cantor Cuperman</b>, adiante designada CONCEDENTE e o(a) ESTAGIÁRIO
         <b>Isis Leocadio Ruiz</b>, estudante, residente a <b>Avenida Professor Mello de Morais, 1235, Bairro: Butantã -
             CEP: 05508-030</b> , na cidade de <b>São Paulo</b>, Estado de <b>SP</b>, portador da cédula de identidade
