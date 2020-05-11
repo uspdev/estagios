@@ -22,7 +22,7 @@
     <p style="text-indent : 3em; font-weight: bold">Uma via deste termo de Ciência deve ser entregue com o Termo de
         Compromisso e Plano de Estágio.</p>
     <br>
-    <p>Ciência do(a) aluno(a) {{ $pessoa::dump($estagio->numero_usp)['nompes'] }}:</p>
+    <p>Ciência d{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }} alun{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }} {{ $pessoa::dump($estagio->numero_usp)['nompes'] }}:</p>
 </div>
 
 <br><br>
@@ -31,7 +31,7 @@
     _______________________________<br>
     <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b><br>
     Número USP: <b>{{ $estagio->numero_usp }}</b><br>
-    <b>Letras-Português</b>
+    <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomcur'] }}-Português</b>
 </div>
 
 <p style="page-break-after: always;"></p>
@@ -41,13 +41,19 @@
 </div>
 
 <div style="text-align: justify;">
-    <p style="text-indent : 1em;"><b>{{ $empresa->nome_da_empresa }}. - EPP, R. Tatuí, 129, Bairro: Jd. Paulista,
-    Cidade: São Paulo - SP - CEP: 01409-010, CNPJ {{ $empresa->cnpj_da_empresa }}</b> , representada por seu(sua)
-        <b>Coordenadora Geral</b>, Sr(a) <b>Rosinha Cantor Cuperman</b>, adiante designada CONCEDENTE e o(a) ESTAGIÁRIO
-        <b>Isis Leocadio Ruiz</b>, estudante, residente a <b>Avenida Professor Mello de Morais, 1235, Bairro: Butantã -
+    <p style="text-indent : 1em;"><b>{{ $empresa->nome_da_empresa }}, {{ $empresa->endereco_da_empresa }}, CNPJ
+            {{ $empresa->cnpj_da_empresa }}</b> , representada por seu(sua)
+        <b>{{ $empresa->cargo_do_representante_da_empresa }}</b>, Sr(a)
+        <b>{{ $empresa->nome_do_representante_da_empresa }} </b>, adiante designada CONCEDENTE e o(a) ESTAGIÁRIO
+        <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b>, estudante, residente a <b>Avenida Professor Mello de
+            Morais, 1235, Bairro: Butantã -
             CEP: 05508-030</b> , na cidade de <b>São Paulo</b>, Estado de <b>SP</b>, portador da cédula de identidade
-        RG. n° <b>55091013-X</b> e CPF no <b>468.982.028-71</b>, aluno do Curso de <b>Letras-Português</b>, no USP
-        <b>9824221</b>, e como INTERVENIENTE a UNIVERSIDADE DE SÃO PAULO, autarquia estadual de regime especial, regida
+        {{ $pessoa::dump($estagio->numero_usp)['tipdocidf'] }} n°
+        <b>{{ $pessoa::dump($estagio->numero_usp)['numdocidf'] }}</b> e CPF no
+        <b>{{ $pessoa::dump($estagio->numero_usp)['numcpf'] }}</b>, aluno do Curso de
+        <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomcur'] }} -Português</b>, no USP
+        <b>{{ $estagio->numero_usp }}</b>, e como INTERVENIENTE a UNIVERSIDADE DE SÃO PAULO, autarquia estadual de
+        regime especial, regida
         por seu Estatuto, aprovado pela Resolução no 3.461, de 07 de outubro de 1988, e pelo Regimento Geral, aprovado
         pela Resolução no 3.745, de 19 de outubro de 1990, com sede em São Paulo (Capital), inscrita no CNPJ-MF sob no
         63.025.530/0001-04, adiante denominada USP, no interesse da Faculdade de Filosofia, Letras e Ciências Humanas,
@@ -68,13 +74,16 @@
         e as limitações dos meios de transportes.</p>
     <p>2.1. Nos períodos de avaliação do rendimento escolar, conforme informado pelo estágiário, a jornada de atividade
         em estágio será reduzida à metade, sem desconto no valor da bolsa.</p>
-    <p>3. A CONCEDENTE designa o Sr(a). <b>Rosinha Cantor Cuperman</b>, que ocupa o cargo de <b>Coordenadora Geral</b>,
+    <p>3. A CONCEDENTE designa o Sr(a). <b>{{ $empresa->nome_do_representante_da_empresa }}</b>, que ocupa o cargo de
+        <b>{{ $empresa->cargo_do_representante_da_empresa }}</b>,
         para ser o(a) SUPERVISOR(a) INTERNO(a) do Estágio que será por ele programado.</p>
     <p>4. O ESTAGIÁRIO se obriga a cumprir fielmente a programação do estágio, salvo impossibilidade da qual a
         CONCEDENTE será previamente informada.</p>
-    <p>5. O ESTAGIÁRIO receberá BOLSA DE COMPLEMENTAÇÃO EDUCACIONAL DE <b>R$ {{ $estagio->valorbolsa }}</b> {{ $estagio->tipobolsa}} e
+    <p>5. O ESTAGIÁRIO receberá BOLSA DE COMPLEMENTAÇÃO EDUCACIONAL DE <b>R$ {{ $estagio->valorbolsa }}</b>
+        {{ $estagio->tipobolsa}} e
         auxílio-transporte no
-        valor de R$ <b>{{ $estagio->auxtrans }} {{ $estagio->especifiquevt }}</b>. A importância referente à bolsa, por não ter natureza
+        valor de R$ <b>{{ $estagio->auxtrans }} {{ $estagio->especifiquevt }}</b>. A importância referente à bolsa, por
+        não ter natureza
         salarial, não se enquadra
         no regime do FGTS (Fundo de Garantia por Tempo de Serviço) e não sofrerá qualquer desconto, inclusive
         previdenciário, exceção feita à retenção do imposto de renda na fonte, quando devido.</p>
@@ -110,10 +119,10 @@
 
 <div style="font-style: italic; font-weight: bold">
     ________________________________________________<br>
-    Ursa Mãe Primeira Infância Ltda. - EPP
+    {{ $empresa->nome_da_empresa }}
     <br><br><br>
     _______________________________________________<br>
-    Isis Leocadio Ruiz<br><br><br>
+    {{ $pessoa::dump($estagio->numero_usp)['nompes'] }}<br><br><br>
     ________________________________________________<br>
     Profa. Dra. Mona Mohamad Hawi<br>
     Presidente da Comissão de Graduação da FFLCH-USP
@@ -137,14 +146,14 @@
 
 <div style="text-align: justify">
     Solicitação: <b>ESTÁGIO NOVO</b><br>
-    Nome do Estagiário(a): <b>Isis Leocadio Ruiz</b><br>
-    Número USP: <b>9824221</b><br>
-    Curso: <b>Letras-Português</b><br>
+    Nome do Estagiário(a): <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b><br>
+    Número USP: <b>{{ $estagio->numero_usp }}</b><br>
+    Curso: <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomcur'] }} - Português</b><br>
     Semestre: <b>9o</b><br>
     Turno: <b>Noturno</b><br>
-    Telefone: <b>(11) 96307-1952</b>, E-mail: <b>isis.ruiz@usp.br</b><br>
-    Nome da Empresa: <b>Ursa Mãe Primeira Infância Ltda. - EPP</b><br>
-    Área de atuação da Empresa: <b>Instituição de ensino</b><br>
+    Telefone: <b>(11) 96307-1952</b>, E-mail: <b>{{ $pessoa::email($estagio->numero_usp) }}</b><br>
+    Nome da Empresa: <b>{{ $empresa->nome_da_empresa }}</b><br>
+    Área de atuação da Empresa: <b>{{ $empresa->area_de_atuacao_da_empresa }}</b><br>
     Nome do supervisor(a) interno(a) do Estágio na Empresa: <b>Rosinha Cantor Cuperman</b><br>
     Telefone: <b>(11) 991025800</b> / <b>(11) 30827800</b>, E-mail: <b>ursamae@uol.com.br</b><br>
     Data de início do estágio: <b>{{ \Carbon\Carbon::parse($estagio->dataini)->format('d/m/Y')}}</b><br>
@@ -153,17 +162,16 @@
     Carga horária semanal: <b>30h00 horas semanais</b><br>
     Duração em meses (em casos excepcionais inferiores a 6 meses, a empresa deverá incluir justificativa circunstanciada
     que será avaliada pelo Supervisor Geral de Estágios): <b>12 meses</b><br>
-    Justificativa:<b><i>{{ $estagio->justificativa }}</i></b><br>
+    Justificativa: <b><i>{{ $estagio->justificativa }}</i></b><br>
     Número de horas por semana: <b>30h00 horas semanais</b><br>
     Valor da Bolsa: R$ <b>{{ $estagio->valorbolsa }} {{ $estagio->tipobolsa }}</b><br>
     Valor do auxílio transporte: R$ <b>{{ $estagio->auxtrans }} {{ $estagio->especifiquevt }}</b><br>
     Descrição detalhada das atividades a serem desenvolvidas pelo estagiário, com a finalidade de permitir a avaliação
     da Comissão de Estágios: <b><i>{{ $estagio->atividades }}</i></b><br>
     <p><b>NO CASO DE ESTÁGIO DOMICILIAR</b></p>
-    <p>Como se dará o controle diário dos horários de início e encerramento das atividades?</p><br>
-    <p>Como se dará a supervisão interna (por parte da empresa) do estagiário?</p><br>
-    <p>Como se dará a interação do estagiário com o ambiente e com os demais colaboradores da empresa? Haverá
-        deslocamento para a empresa? Se sim, quais dias?</p>
+    <p>Como se dará o controle diário dos horários de início e encerramento das atividades? {{ $estagio->controlehorario}}</p><br>
+    <p>Como se dará a supervisão interna (por parte da empresa) do estagiário? {{ $estagio->supervisao}}</p><br>
+    <p>Como se dará a interação do estagiário com o ambiente e com os demais colaboradores da empresa? Haverá deslocamento para a empresa? Se sim, quais dias? {{ $estagio->interacao }}</p>
 </div>
 
 <br>
@@ -174,16 +182,16 @@
 
 <div style="font-style: italic; font-weight: bold">
     _____________________________________<br>
-    Rosinha Cantor Cuperman<br><br>
+    {{ $empresa->nome_do_representante_da_empresa }}<br><br>
     _____________________________________<br>
-    Isis Leocadio Ruiz<br><br>
+    {{ $pessoa::dump($estagio->numero_usp)['nompes'] }}<br><br>
     _____________________________________<br>
     Profa. Dra. Mona Mohamad Hawi <br>
     Presidente da Comissão de Graduação da FFLCH/USP
 </div>
 
 <div>
-    <p>Contato: Rosinha Cantor Cuperman , Telefone: (11) 991025800 / (11) 30827800 , E-mail: leticia.moraes@nube.com.br
+    <p>Contato: {{ $empresa->nome_de_contato_da_empresa }}, Telefone: {{ $empresa->telefone_de_contato_da_empresa }}, E-mail: {{ $empresa->email_de_contato_da_empresa }}
     </p>
 </div>
 

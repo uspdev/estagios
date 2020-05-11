@@ -6,6 +6,7 @@ use PDF;
 use App\Estagio;
 use App\Empresa;
 use App\Convenio;
+use App\Parecerista;
 use Carbon\Carbon;
 
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ class PDFsController extends Controller
         $cnpj = '29541003000114'; //$estagio->cnpj;
         $empresa = Empresa::where('cnpj_da_empresa',$cnpj)->first();
         //$presidente = Parecerista::where...
+        //$parecerista = Parecerista::where('numero_usp', '=', '5385361', 'and', 'presidente', '=', 0);        
 
         $pdf = PDF::loadView('pdfs.termo', compact('estagio','empresa'));
         return $pdf->download('termo.pdf');
