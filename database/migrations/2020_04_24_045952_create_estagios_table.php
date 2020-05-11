@@ -16,10 +16,9 @@ class CreateEstagiosTable extends Migration
         Schema::create('estagios', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            
             $table->integer('numero_usp');
             $table->integer('cnpj');
-
+     
             $table->text('valorbolsa');
             $table->text('tipobolsa');
             $table->text('duracao');            

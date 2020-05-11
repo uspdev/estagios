@@ -14,7 +14,17 @@ use Symfony\Component\Console\Input\Input;
 class PDFsController extends Controller
 {
 
-    public function convenio(Convenio $convenio, Empresa $empresa){
+    public function termo(Estagio $estagio){
+        $cnpj = '29541003000114'; //$estagio->cnpj;
+        $empresa = Empresa::where('cnpj_da_empresa',$cnpj)->first();
+        //$presidente = Parecerista::where...
+
+        $pdf = PDF::loadView('pdfs.termo', compact('estagio','empresa'));
+        return $pdf->download('termo.pdf');
+
+    }
+
+    public function convenio(Convenio $convenio){
         $now = Carbon::now();
         $pdf = PDF::loadView('pdfs.convenio', compact('convenio', 'empresa', 'now'));
         return $pdf->download('convenio.pdf');
@@ -35,11 +45,5 @@ class PDFsController extends Controller
     public function renovacao(Estagio $estagio){
         $pdf = PDF::loadView('pdfs.renovacao', compact('estagio'));
         return $pdf->download('renovacao.pdf');
-    }
-
-    public function termo(Estagio $estagio){
-        $pdf = PDF::loadView('pdfs.termo', compact('estagio'));
-        return $pdf->download('termo.pdf');
-
     }
 }

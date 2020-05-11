@@ -132,14 +132,14 @@ aditivo por até 12 meses.
             <div class="col-sm form-group">
                 <div class="form-group">
                     <label for="especifiquevt" class="required"><b>Especifique: </b></label>
+                  
                     <select name="especifiquevt" class="form-control" id="especifiquevt">
-                    {{old('especifiquevt',$estagio->especifiquevt)}}
-
+ 
                         <option value="" selected="">- Selecione -</option>
                         @foreach ($estagio->especifiquevtOptions() as $option)
 
                           {{-- 1. Situação em que não houve tentativa de submissão e é uma edição --}}
-                          @if (old('especifiquevt') == '' and !isset($estagio->especifiquevt))
+                          @if (old('especifiquevt') == '' and isset($estagio->especifiquevt) )
                             <option value="{{$option}}" {{ ( $estagio->especifiquevt == $option) ? 'selected' : ''}}>
                                 {{$option}}
                             </option>
