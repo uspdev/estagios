@@ -8,8 +8,12 @@ use App\Empresa;
 
 class EmpresaController extends Controller
 {
-    public function index(){
-        $empresas = Empresa::all();
+    public function index(Request $request){
+        if(isset($request->busca)) {
+            $empresas = Empresa::where('nome','LIKE',"%{$request->busca}%")->paginate(20);
+        } else {
+            $empresas = Empresa::paginate(20);
+        }        
         return view('empresas.index', compact('empresas'));
     }
 
