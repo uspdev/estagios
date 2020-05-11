@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Convenio extends Model
 {
- 	protected $fillable = ['nome_rep', 'cargo_rep','email_rep', 'rg_rep','cpf_rep','nome_rep2','cargo_rep2','email_rep2','rg_rep2','cpf_rep2','desc','ativ','nome_cont','tel_cont','email_cont'];
+ 	protected $fillable = ['nome_representante', 'cargo_representante','email_representante', 'rg_representante','cpf_representante','nome_representante2','cargo_representante2','email_representante2','rg_representante2','cpf_representante2','descricao','atividade','nome_contato','tel_contato','email_contato'];
 
 }
