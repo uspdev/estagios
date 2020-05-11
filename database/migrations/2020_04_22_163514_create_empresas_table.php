@@ -18,7 +18,7 @@ class CreateEmpresasTable extends Migration
             $table->timestamps();
             $table->string('nome');
             $table->string('razao_social');
-            $table->integer('cnpj')->unique();
+            $table->string('cnpj')->unique();
             $table->string('area_de_atuacao');
             $table->string('endereco');
             $table->string('cep');

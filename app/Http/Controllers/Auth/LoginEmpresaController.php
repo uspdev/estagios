@@ -43,13 +43,24 @@ class LoginEmpresaController extends Controller
         if($validator->fails()){
             return redirect('/login/empresa')->withErrors($validator)->withInput();
         }
-        dd($request->cnpj);
-        dd(Empresa::where('cnpj',$request->cnpj));
-        $cnpj = 123456;
 
-        $url = URL::temporarySignedRoute('login_empresa', now()->addMinutes(4), ['cnpj' => $cnpj]);
-        Mail::send(new LoginEmpresaMail($url));
-        dd($url);
+        $cnpj = preg_replace("/[^0-9]/", "", $request->cnpj);
+        $url = URL::temporarySignedRoute('login_empresa', now()->addMinutes(120), [
+            'cnpj' => $cnpj,
+            'email' => $request->email,
+        ]);
+
+        $empresa = Empresa::where('cnpj',$cnpj)->first();
+        if (!is_null($empresa)) {
+            if($empresa->email_de_contato != $request->email){
+                $request->session()->flash('alert-danger','Email informando não corresponde ao cadastrado');
+                return redirect('/login/empresa');
+            }
+        }
+        
+        Mail::send(new LoginEmpresaMail($url,$request->email, $empresa));
+        $request->session()->flash('alert-info','Informações de login enviadas para o email: ' . $request->email);
+        return redirect('/');
     }
 
     public function empresa(Request $request)

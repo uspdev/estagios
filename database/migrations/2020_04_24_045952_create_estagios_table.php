@@ -16,24 +16,24 @@ class CreateEstagiosTable extends Migration
         Schema::create('estagios', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('numero_usp');
-            $table->integer('cnpj');
-     
+            $table->string('numero_usp');
+            $table->string('cnpj');
+
             $table->text('valorbolsa');
             $table->text('tipobolsa');
-            $table->text('duracao');            
-            $table->text('justificativa');    
+            $table->text('duracao');
+            $table->text('justificativa');
             $table->date('data_inicial');
             $table->date('data_final');
-            $table->text('cargahoras'); 
-            $table->text('cargaminutos');             
+            $table->text('cargahoras');
+            $table->text('cargaminutos');
             $table->text('horario');
             $table->text('auxiliotransporte');
-            $table->text('especifiquevt');          
+            $table->text('especifiquevt');
             $table->text('atividades');
             $table->text('seguradora');
-            $table->text('numseguro');  
-            $table->text('controlehorario')->nullable();       
+            $table->text('numseguro');
+            $table->text('controlehorario')->nullable();
             $table->text('supervisao')->nullable();
             $table->text('interacao')->nullable();
             $table->text('enderecoedias')->nullable();
