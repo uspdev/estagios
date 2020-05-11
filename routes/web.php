@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/','IndexController@index');
+Route::get('/','IndexController@index')->name('home');
 
 Route::resource('/pareceristas','PareceristaController');
 
@@ -40,4 +40,13 @@ Route::get('/pdfs/termo/{estagio}', 'PDFsController@termo');
 
 # Convênio
 Route::get('/convenios/{convenio}','ConvenioController@show');
+
+# Login comunidade USP
+Route::get('login/usp', 'Auth\LoginUspController@redirectToProvider');
+Route::get('callback', 'Auth\LoginUspController@handleProviderCallback');
+Route::get('/logout', 'Auth\LogoutController@logout');
+
+# Login empresa
+Route::get('gera', 'Auth\LoginEmpresaController@gera');
+Route::get('login/empresa', 'Auth\LoginEmpresaController@empresa')->name('login_empresa');
 
