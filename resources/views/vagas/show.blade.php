@@ -3,10 +3,11 @@
 @section('content')
 @include('flash')
 
+<div class="card">
 <table class="table table-striped">
     <thead>
       <tr> 
-        <th><h3>Dados da Vaga:</h3></th>
+        <th><h3>Dados da Vaga</h3></th>
       </tr>
     </thead>
     <tbody>
@@ -33,5 +34,6 @@
       </tr>
     </tbody>
 </table>
+</div>
 
 @endsection('content')
