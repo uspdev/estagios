@@ -12,6 +12,9 @@ use App\User;
 use Auth;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\LoginEmpresaMail;
+
 class LoginEmpresaController extends Controller
 {
 
@@ -25,7 +28,10 @@ class LoginEmpresaController extends Controller
 
     public function gera()
     {
-        $url = URL::temporarySignedRoute('login_empresa', now()->addMinutes(1), ['cnpj' => '123456']);
+        $cnpj = 123456;
+
+        $url = URL::temporarySignedRoute('login_empresa', now()->addMinutes(4), ['cnpj' => $cnpj]);
+        Mail::send(new LoginEmpresaMail($url));
         dd($url);
     }
 
