@@ -17,11 +17,28 @@
             margin-top:160px;
         }
         **/
+        footer { 
+            text-align: initial;
+            position: fixed;
+            bottom: -50px;
+            left: 0px;
+            right: 0px;
+            height: 110px;
+            padding: 0px ;
+        }
+        .page-break {
+            page-break-after: always;
+            margin-top:160px;
+        }
+        p:last-child { page-break-after: never; }
+        .content {
+            margin-top:0px;
+        }
     </style>
-
-
 </head>
+
 <body>
+    
 <header>
     <table style='width:100%'>
         <tr>
@@ -38,10 +55,13 @@
 <hr>
 </header>
 
-<footer></footer>
+<footer><div class="footer">
+    <hr>
+</div></footer>
 
 <div class="content"> @yield('content') </div>
 
+<div class="footer"> @yield('footer') </div>
 
 <script type="text/php">
   if ( isset($pdf) ) {

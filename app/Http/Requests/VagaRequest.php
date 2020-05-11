@@ -29,7 +29,8 @@ class VagaRequest extends FormRequest
             'expediente' => 'required|integer',
             'salario' => 'required',
             'horario' => 'required',
-            'beneficios' => 'required'
+            'beneficios' => 'required',
+            'divulgar_ate' => 'required|data'
         ];
     }
 }

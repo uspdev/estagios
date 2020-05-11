@@ -6,45 +6,33 @@ Route::get('/','IndexController@index');
 
 Route::resource('/pareceristas','PareceristaController');
 
-Route::get('/vagas','VagaController@index');
-Route::get('/vagas/create','VagaController@create');
-Route::post('/vagas','VagaController@store');
-Route::get('/vagas/{vaga}','VagaController@show');
-
+Route::resource('/vagas','VagaController');
 
 Route::get('/estagios','EstagioController@index');
 Route::get('/estagios/create','EstagioController@create');
 Route::post('/estagios','EstagioController@store');
 Route::get('/estagios/{estagio}','EstagioController@show');
+Route::get('/estagios/{estagio}/edit','EstagioController@edit');
+Route::patch('/estagios/{estagio}','EstagioController@update');
 
-Route::get('/empresas', 'EmpresaController@index');
-Route::get('/empresas/create', 'EmpresaController@create');
-Route::post('/empresas', 'EmpresaController@store');
-Route::get('/empresas/{empresa}', 'EmpresaController@show');
+Route::resource('/empresas', 'EmpresaController');
 
+Route::resource('/avisos','AvisoController');
 
-Route::get('/avisos','AvisoController@index');
-Route::get('/avisos/create','AvisoController@create');
-Route::post('/avisos','AvisoController@store');
-Route::get('/avisos/{aviso}','AvisoController@show');
 
 Route::resource('/convenios','ConvenioController');
 
 
-#PDF's - Convênio
-Route::get('/pdfs/convenio', 'PDFsController@convenio');
+#PDF's 
+Route::get('/pdfs/convenio/{convenio}', 'PDFsController@convenio');
+Route::get('/pdfs/termo/{estagio}', 'PDFsController@termo');
 
 #Rescisão
-Route::get('/pdfs/rescisao', 'PDFsController@rescisao');
+Route::get('/pdfs/rescisao/{estagio}/{empresa}', 'PDFsController@rescisao');
 
 #Aditivo
-Route::get('/pdfs/aditivo', 'PDFsController@aditivo');
+Route::get('/pdfs/aditivo/{empresa}', 'PDFsController@aditivo');
 
-# Renovação
-Route::get('/pdfs/renovacao', 'PDFsController@renovacao');
-
-# Termo
-Route::get('/pdfs/termo', 'PDFsController@termo');
-
-Route::get('/convenios/{convenio}','ConvenioController@show');
+#Renovação
+Route::get('/pdfs/renovacao/{estagio}', 'PDFsController@renovacao');
 
