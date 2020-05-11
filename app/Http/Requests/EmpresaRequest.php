@@ -24,28 +24,30 @@ class EmpresaRequest extends FormRequest
     public function rules()
     { 
         $rules = [
-                    'nome_da_empresa' => 'required',
-                    'cnpj_da_empresa' => [
+                    'nome' => 'required',
+                    'razao_social' => 'required',
+                    'cnpj' => [
                         'required',
                         'cnpj',
                     ],
-                    'area_de_atuacao_da_empresa' => 'required',
-                    'endereco_da_empresa' => 'required',
-                    'nome_de_contato_da_empresa' => 'required',
-                    'email_de_contato_da_empresa' => 'required|email',
-                    'telefone_de_contato_da_empresa' => 'required|telefone_com_ddd',
-                    'nome_do_representante_da_empresa' => 'required',
-                    'cargo_do_representante_da_empresa' => 'required',
-                    'nome_do_supervisor_do_estagio' => 'required',
-                    'cargo_do_supervisor_do_estagio' => 'required',
-                    'telefone_do_supervisor_do_estagio' => 'required|telefone_com_ddd',
-                    'email_do_supervisor_do_estagio' => 'required|email'
+                    'area_de_atuacao' => 'required',
+                    'endereco' => 'required',
+                    'cep' => 'required|formato_cep',
+                    'nome_de_contato' => 'required',
+                    'email_de_contato' => 'required|email',
+                    'telefone_de_contato' => 'required|telefone_com_ddd',
+                    'nome_do_representante' => 'required',
+                    'cargo_do_representante' => 'required',
+                    'nome_do_supervisor_estagio' => 'required',
+                    'cargo_do_supervisor_estagio' => 'required',
+                    'telefone_do_supervisor_estagio' => 'required|telefone_com_ddd',
+                    'email_do_supervisor_estagio' => 'required|email'
                 ];
         if ($this->method() == 'PATCH' || $this->method() == 'PUT'){
-            array_push($rules['cnpj_da_empresa'], 'unique:empresas,cnpj_da_empresa,'.$this->empresa->id);
+            array_push($rules['cnpj'], 'unique:empresas,cnpj,'.$this->empresa->id);
         }
         else{
-            array_push($rules['cnpj_da_empresa'], 'unique:empresas');
+            array_push($rules['cnpj'], 'unique:empresas');
         }
         return $rules;
     }
@@ -53,7 +55,7 @@ class EmpresaRequest extends FormRequest
     public function validationData()
     {
         $data = $this->all();
-        $data['cnpj_da_empresa'] = preg_replace('/[^0-9]/', '', $data['cnpj_da_empresa']);
+        $data['cnpj'] = preg_replace('/[^0-9]/', '', $data['cnpj']);
         return $data;
     }
 }
