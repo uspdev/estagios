@@ -6,6 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Convenio extends Model
 {
- 	protected $fillable = ['nome_representante', 'cargo_representante','email_representante', 'rg_representante','cpf_representante','nome_representante2','cargo_representante2','email_representante2','rg_representante2','cpf_representante2','descricao','atividade','nome_contato','tel_contato','email_contato'];
+ 	protected $guarded = ["id"];
 
+ 	public function setCpfRepresentanteAttribute($value){
+
+      $this->attributes['cpf_representante'] = preg_replace("/[^0-9]/", "", $value);
+        
+        }
+
+   public function setCpfRepresentante2Attribute($value){
+
+      $this->attributes['cpf_representante2'] = preg_replace("/[^0-9]/", "", $value);
+        
+        }
 }
