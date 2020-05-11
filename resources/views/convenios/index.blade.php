@@ -12,9 +12,14 @@
   </thead>
   <tbody>
 	@foreach($convenios as $convenio)
+
 		<tr>
-		  <td><div><a href="/convenios/{{$convenio->id}}">{{$convenio->nome_rep}}</a></div></td>
+		  <td><div><a href="/convenios/{{$convenio->id}}">{{$convenio->nome_representante}}</a></div></td>
 			
+		  <td><a href="/convenios/{{$convenio->id}}/edit"><i class="fas fa-edit"></i></a></td>
+		</tr>
+	
+
 		  <td>
         <a href="/convenios/{{$convenio->id}}/edit"><i class="fas fa-edit"></i></a>
         <a href="/pdfs/convenio/{{$convenio->id}}"><i class="fas fa-file-pdf"></i></a>
