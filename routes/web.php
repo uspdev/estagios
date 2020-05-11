@@ -48,6 +48,7 @@ Route::get('callback', 'Auth\LoginUspController@handleProviderCallback');
 Route::get('/logout', 'Auth\LogoutController@logout');
 
 # Login empresa
-Route::get('gera', 'Auth\LoginEmpresaController@gera');
-Route::get('login/empresa', 'Auth\LoginEmpresaController@empresa')->name('login_empresa');
+Route::get('login/empresa', 'Auth\LoginEmpresaController@create');
+Route::post('login/empresa', 'Auth\LoginEmpresaController@store');
+Route::get('login/empresa/check', 'Auth\LoginEmpresaController@empresa')->name('login_empresa');
 

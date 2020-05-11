@@ -72,7 +72,7 @@ return [
     'dashboard_url' => '/',
     'logout_method' => 'GET',
     'logout_url' => '/logout',
-    'login_url' => '/login',
+    'login_url' => '/',
     'menu' => [
         [
             'text'    => 'Vagas',
