@@ -8,9 +8,15 @@ use App\Vaga;
 
 class VagaController extends Controller
 {
-    public function index(){
-        $vagas = Vaga::all();
-        return view('vagas.index', compact('vagas'));
+    public function index(Request $request){
+        if(isset($request->busca)){
+            $vagas = Vaga::where('titulo','LIKE',"%{$request->busca}%")->paginate(10);
+        } 
+        else {
+            $vagas = Vaga::paginate(10);
+        }
+
+        return view('vagas.index')->with('vagas',$vagas);
     }
 
     public function show(Vaga $vaga){

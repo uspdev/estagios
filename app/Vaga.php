@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vaga extends Model
 {
-    protected $fillable = ['titulo','descricao','expediente','salario','horario','beneficios','divulgar_ate'];
+    protected $guarded = ['id'];
 
     public function getDivulgarAteAttribute($value) {
         /* No banco está YYYY-MM-DD, mas vamos retornar DD/MM/YYYY */
