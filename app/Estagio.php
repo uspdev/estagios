@@ -8,7 +8,8 @@ use ZeroDaHero\LaravelWorkflow\Traits\WorkflowTrait;
 class Estagio extends Model
 {
     use WorkflowTrait;
-    protected $fillable = ['numero_usp','valorbolsa','tipobolsa','duracao','justificativa','data_inicial','data_final','cargahoras','cargaminutos','horario','auxiliotransporte','especifiquevt','cnpj','atividades','seguradora','numseguro','controlehorario','supervisao','interacao','enderecoedias'];
+
+    protected $guarded = ['id'];
 
     public function especifiquevtOptions(){
         return [
@@ -16,4 +17,28 @@ class Estagio extends Model
             'Diário'
         ];
     }
+
+    public function tipobolsaOptions(){
+        return [
+            'Mensal',
+            'Por Hora'
+        ];
+    }
+    
+    public function getDataInicialAttribute($value) {
+        return implode('/',array_reverse(explode('-',$value)));
+    }
+
+    public function setDataInicialAttribute($value) {
+       $this->attributes['data_inicial'] = implode('-',array_reverse(explode('/',$value)));
+    }
+
+    public function getDataFinalAttribute($value) {
+        return implode('/',array_reverse(explode('-',$value)));
+    }
+
+    public function setDataFinalAttribute($value) {
+       $this->attributes['data_final'] = implode('-',array_reverse(explode('/',$value)));
+    }
+
 }
