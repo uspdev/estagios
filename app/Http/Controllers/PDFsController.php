@@ -17,13 +17,16 @@ class PDFsController extends Controller
 
     public function termo(Estagio $estagio){
         $cnpj = '29541003000114'; //$estagio->cnpj;
-        $empresa = Empresa::where('cnpj_da_empresa',$cnpj)->first();
-        //$presidente = Parecerista::where...
-        //$parecerista = Parecerista::where('numero_usp', '=', '5385361', 'and', 'presidente', '=', 0);        
+        $empresa = Empresa::where('cnpj',$cnpj)->first();
 
-        $pdf = PDF::loadView('pdfs.termo', compact('estagio','empresa'));
+        // Formata CNPJ
+        $empresa->cnpj =  substr($cnpj, 0, 2) . '.' . substr($cnpj, 2, 3) . '.' . substr($cnpj, 5, 3) . '/' . substr($cnpj, 8, 4) . '-' . substr($cnpj, 12, 2);
+
+        // Busca presidente
+        $presidente = Parecerista::where('presidente', true)->first();
+
+        $pdf = PDF::loadView('pdfs.termo', compact('estagio','empresa','presidente'));
         return $pdf->download('termo.pdf');
-
     }
 
     public function convenio(Convenio $convenio){
