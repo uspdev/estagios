@@ -7,10 +7,13 @@ use App\Estagio;
 
 class EstagioController extends Controller
 {
-    public function index()
-    {
-        $estagios = Estagio::all();
-        return view('estagios.index', compact('estagios'));
+    public function index(Request $request){
+        if(isset($request->busca)) {
+            $estagios = Estagio::where('numero_usp','LIKE',"%{$request->busca}%")->paginate(10);
+        } else {
+            $estagios = Estagio::paginate(10);
+        }
+        return view('estagios.index')->with('estagios',$estagios);
     }
 
     public function show(Estagio $estagio)
@@ -24,24 +27,18 @@ class EstagioController extends Controller
 
     public function store(EstagioRequest $request)
     {
-        $validated = $request->validated();
-        $validated['data_inicial'] = implode('-',array_reverse(explode('/',$validated['data_inicial'])));
-        $validated['data_final'] = implode('-',array_reverse(explode('/',$validated['data_final'])));                    
+        $validated = $request->validated();                 
         Estagio::create($validated);        
         return redirect('estagios/');
     }
 
-    public function edit(Estagio $estagio) {
-        $estagio->data_inicial = date('d/m/Y', strtotime($estagio->data_inicial));
-        $estagio->data_final = date('d/m/Y', strtotime($estagio->data_final));        
+    public function edit(Estagio $estagio) {      
         return view ('estagios.edit')->with('estagio',$estagio);
     }
 
     public function update(EstagioRequest $request, Estagio $estagio)
     {
-        $validated = $request->validated();
-        $validated['data_inicial'] = implode('-',array_reverse(explode('/',$validated['data_inicial'])));
-        $validated['data_final'] = implode('-',array_reverse(explode('/',$validated['data_final'])));                    
+        $validated = $request->validated();                  
         $estagio->update($validated); 
         return redirect("estagios/{$estagio->id}");
     }

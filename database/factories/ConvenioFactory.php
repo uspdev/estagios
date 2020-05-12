@@ -22,7 +22,7 @@ $factory->define(Convenio::class, function (Faker $faker) {
          'descricao' => $faker->text,
          'atividade' => $faker->text,
          'nome_contato' => $faker->name,
-         'tel_contato' => $faker->unique()->numberBetween(1111111111, 9999999999),
+         'tel_contato' => $faker->cellphoneNumber,
          'email_contato' => $faker->email
     ];
 });
