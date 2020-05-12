@@ -8,10 +8,14 @@ use App\Convenio;
 
 class ConvenioController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
 
-        $convenios = Convenio::all();
-        return view('convenios.index', compact('convenios'));
+        if(isset($request->busca)) {
+    $convenio = Convenio::where('nome_representante','LIKE',"%{$request->busca}%")->paginate(10);
+} else {
+    $convenio = Convenio::paginate(10);
+}
+        return view('convenios.index')->with('convenios',$convenio);
     }
     public function show(Convenio $convenio){
 
@@ -26,20 +30,16 @@ class ConvenioController extends Controller
     }
 
       public function store(ConvenioRequest $request){
-
-  
-
         $validated = $request->validated();
-        $limpar = array(".", "-", "(", ")");
-        $validated['cpf_representante'] = str_replace($limpar, "", $request->cpf_representante);
-        $validated['cpf_representante2'] = str_replace($limpar, "", $request->cpf_representante2);
-          if($validated['nome_representante2'] == NULL){
+          
+        if($validated['nome_representante2'] == NULL){
             $validated['nome_representante2'] = "";
             $validated['cargo_representante2'] = "";
             $validated['email_representante2'] = "";
             $validated['rg_representante2'] = "";
             $validated['cpf_representante2'] = "";
-           }
+            }
+
        Convenio::create($validated);
 
        
@@ -51,11 +51,7 @@ class ConvenioController extends Controller
       
        
         $validated = $request->validated();
-        $limpar = array(".", "-", "(", ")");
-        $validated['cpf_representante'] = str_replace($limpar, "", $request->cpf_representante);
-        $validated['cpf_representante2'] = str_replace($limpar, "", $request->cpf_representante2);
-     
-       
+               
        $convenio->update($validated);
        return redirect("/convenios/$convenio->id");
       

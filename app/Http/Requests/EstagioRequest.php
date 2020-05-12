@@ -24,7 +24,7 @@ class EstagioRequest extends FormRequest
     public function rules()
     {
         return [
-            'numero_usp' => 'required|numeric',            
+            'numero_usp' => 'required|numeric|codpes|graduacao',            
             'valorbolsa' => 'required|integer',
             'tipobolsa' => 'required',
             'justificativa' => 'required',

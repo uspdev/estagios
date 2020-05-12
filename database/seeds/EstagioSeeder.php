@@ -27,7 +27,11 @@ class EstagioSeeder extends Seeder
             'cnpj' => '10533509000153',         
             'atividades' => 'Desenvolvimento e manutenção dos sistemas da FFLCH',
             'seguradora' => 'Porto Seguro', 
-            'numseguro' => '120043'            
+            'numseguro' => '120043',
+            'controlehorario' => 'teste',
+            'supervisao' => 'teste',
+            'interacao' => 'teste',
+            'enderecoedias' => 'teste'                        
         ];
         App\Estagio::create($entrada); 
         
