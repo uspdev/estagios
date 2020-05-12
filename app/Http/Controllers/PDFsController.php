@@ -26,6 +26,8 @@ class PDFsController extends Controller
 
     public function convenio(Convenio $convenio){
         $now = Carbon::now();
+        $cnpj = '29541003000114'; //$empresa->cnpj;
+        $empresa = Empresa::where('cnpj',$cnpj)->first();
         $pdf = PDF::loadView('pdfs.convenio', compact('convenio', 'empresa', 'now'));
         return $pdf->download('convenio.pdf');
     }
