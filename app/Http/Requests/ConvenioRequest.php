@@ -26,7 +26,7 @@ class ConvenioRequest extends FormRequest
         return [
             'nome_representante' => 'required',
             'cargo_representante' => 'required',
-            'email_representante' => 'required:email',
+            'email_representante' => 'required|email',
             'rg_representante' => 'required',
             'cpf_representante' => 'required',
             'nome_representante2' => '',
@@ -37,9 +37,11 @@ class ConvenioRequest extends FormRequest
             'descricao' => 'required',
             'atividade' => 'required',
             'nome_contato' => 'required',
-            'tel_contato' => 'required:integer:telefone_com_ddd',
-            'email_contato' => 'required:email',
+            'tel_contato' => 'required:integer|telefone_com_ddd',
+            'email_contato' => 'required|email',
 
         ];
+
+       
     }
 }

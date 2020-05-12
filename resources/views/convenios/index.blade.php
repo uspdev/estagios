@@ -3,6 +3,20 @@
 @section('content')
 @include('flash')
 
+<form method="get" action="/convenios">
+<div class="row">
+    <div class=" col-sm input-group">
+    <input type="text" class="form-control" name="busca" value="{{ Request()->busca }}">
+
+    <span class="input-group-btn">
+        <button type="submit" class="btn btn-success"> Buscar </button>
+    </span>
+
+    </div>
+</div>
+</form>
+</br>
+{{ $convenios->appends(request()->query())->links() }}
 <table class="table table-striped">
   <thead>
     <tr>
@@ -15,9 +29,7 @@
 
 		<tr>
 		  <td><div><a href="/convenios/{{$convenio->id}}">{{$convenio->nome_representante}}</a></div></td>
-			
-		  <td><a href="/convenios/{{$convenio->id}}/edit"><i class="fas fa-edit"></i></a></td>
-		</tr>
+	
 	
 
 		  <td>
