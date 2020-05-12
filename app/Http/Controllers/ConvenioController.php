@@ -31,16 +31,15 @@ class ConvenioController extends Controller
 
         $validated = $request->validated();
         $limpar = array(".", "-", "(", ")");
-     $validated['cpf_rep'] = str_replace($limpar, "", $request->cpf_rep);
-     $validated['cpf_rep2'] = str_replace($limpar, "", $request->cpf_rep2);
-       $validated['tel_cont'] = str_replace($limpar, "", $request->tel_cont);
-       if($validated['nome_rep2'] == NULL){
-          $validated['nome_rep2'] = "";
-        $validated['cargo_rep2'] = "";
-        $validated['email_rep2'] = "";
-        $validated['rg_rep2'] = "";
-        $validated['cpf_rep2'] = "";
-       }
+        $validated['cpf_representante'] = str_replace($limpar, "", $request->cpf_representante);
+        $validated['cpf_representante2'] = str_replace($limpar, "", $request->cpf_representante2);
+          if($validated['nome_representante2'] == NULL){
+            $validated['nome_representante2'] = "";
+            $validated['cargo_representante2'] = "";
+            $validated['email_representante2'] = "";
+            $validated['rg_representante2'] = "";
+            $validated['cpf_representante2'] = "";
+           }
        Convenio::create($validated);
 
        
@@ -50,11 +49,11 @@ class ConvenioController extends Controller
 
      public function update(ConvenioRequest $request, Convenio $convenio){
       
-       $validated = $request->validated();
+       
+        $validated = $request->validated();
         $limpar = array(".", "-", "(", ")");
-     $validated['cpf_rep'] = str_replace($limpar, "", $request->cpf_rep);
-     $validated['cpf_rep2'] = str_replace($limpar, "", $request->cpf_rep2);
-       $validated['tel_cont'] = str_replace($limpar, "", $request->tel_cont);
+        $validated['cpf_representante'] = str_replace($limpar, "", $request->cpf_representante);
+        $validated['cpf_representante2'] = str_replace($limpar, "", $request->cpf_representante2);
      
        
        $convenio->update($validated);
