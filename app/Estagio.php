@@ -33,11 +33,12 @@ class Estagio extends Model
        $this->attributes['data_inicial'] = implode('-',array_reverse(explode('/',$value)));
     }
 
-    public function getDataFnicialAttribute($value) {
+    public function getDataFinalAttribute($value) {
         return implode('/',array_reverse(explode('-',$value)));
     }
 
-    public function setDataFnicialAttribute($value) {
+    public function setDataFinalAttribute($value) {
        $this->attributes['data_final'] = implode('-',array_reverse(explode('/',$value)));
     }
+
 }

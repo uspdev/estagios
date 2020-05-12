@@ -15,7 +15,7 @@ aditivo por até 12 meses.
 
 <div class="card">
   <div class="card-header"><b>Informações Gerais</b></div>
-  <div class="card-body">
+    <div class="card-body">
 
         <div class="row">
                     <div class="col-sm form-group">
@@ -87,7 +87,7 @@ aditivo por até 12 meses.
 
 <div class="card">
   <div class="card-header"><b>Período do Estágio</b></div>
-  <div class="card-body">
+    <div class="card-body">
 
         <div class="row">
             <div class="col-sm form-group">
@@ -102,7 +102,7 @@ aditivo por até 12 meses.
                     <input type="text" class="form-control datepicker" id="data_final" name="data_final" value="{{old('data_final',$estagio->data_final)}}">
                 </div>
         </div>
-        </div>
+    </div>
 </div>
 </div>
 <hr>
@@ -110,7 +110,7 @@ aditivo por até 12 meses.
 
 <div class="card">
   <div class="card-header"><b>Carga Horária Semanal (máximo 30 horas)</b></div>
-  <div class="card-body">
+    <div class="card-body">
 
         <div class="row">
             <div class="col-sm form-group">
@@ -139,7 +139,7 @@ aditivo por até 12 meses.
 
 <div class="card">
   <div class="card-header"><b>Auxílio Transporte</b></div>
-  <div class="card-body">
+    <div class="card-body">
 
         <div class="row">
             <div class="col-sm form-group">
@@ -170,14 +170,14 @@ aditivo por até 12 meses.
                         @endforeach
                     </select> 
                 </div></div>
-        </div>
+            </div>
 </div></div>
 
 <hr>
 
 <div class="card">
   <div class="card-header"><b>Informações sobre seguro</b></div>
-  <div class="card-body">
+    <div class="card-body">
 
         <div class="row">
             <div class="col-sm form-group">
@@ -190,14 +190,14 @@ aditivo por até 12 meses.
                 <label for="numseguro" class="required"><b>Número da apólice de seguro: </b></label>
                     <input type="text" class="form-control" id="numseguro" name="numseguro" value="{{old('numseguro',$estagio->numseguro)}}">
                 </div></div>
-                </div>
-</div>
+            </div>
+    </div>
 </div>
 <hr>
 
 <div class="card">
-  <div class="card-header"><b>Os campos abaixo só devem ser preenchidos em caso de estágio domiciliar</b></div>
-  <div class="card-body">
+    <div class="card-header"><b>Os campos abaixo só devem ser preenchidos em caso de estágio domiciliar</b></div>
+        <div class="card-body">
 
 <br>
 
@@ -218,11 +218,11 @@ empresa? Haverá deslocamento para a empresa? Se sim, quais dias?: <br></label>
 </div>
 
 <div class="form-group">
-<label for="enderecoedias">Qual o endereço e quais serão os dias de estágio?: <br></label>
+<label for="enderecoedias">Qual o endereço do local e quais serão os dias de realização do estágio?: <br></label>
     <textarea name="enderecoedias" rows="5" cols="60" value="{{old('enderecoedias',$estagio->enderecoedias)}}"></textarea>
 
-</div>
-</div>
+        </div>
+    </div>
 </div>
 
 <hr>

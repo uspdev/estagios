@@ -6,21 +6,19 @@
 @inject('pessoa','Uspdev\Replicado\Pessoa')
 
 <form method="get" action="/estagios">
-<div class="row">
+  <div class="row">
     <div class=" col-sm input-group">
-    <input type="text" class="form-control" name="busca" value="{{ Request()->busca}}">
-
-    <span class="input-group-btn">
+      <input type="text" class="form-control" name="busca" value="{{ Request()->busca}}">
+      <span class="input-group-btn">
         <button type="submit" class="btn btn-success"> Buscar </button>
-    </span>
-
+      </span>
     </div>
-</div>
+  </div>
 </form>
 
 <br>
 
-{{$estagios->links()}}
+{{$estagios->appends(request()->query())->links()}}
 <table class="table table-striped">
   <thead>
     <tr>
