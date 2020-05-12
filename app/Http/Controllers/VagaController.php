@@ -14,24 +14,30 @@ class VagaController extends Controller
     }
 
     public function show(Vaga $vaga){
-        return view('vagas.show', compact('vaga'));
+        return view('vagas.show')->with('vaga', $vaga);
     }
 
     public function create(){
-        return view('vagas.create');
+        return view('vagas.create')->with('vaga',new Vaga);
     }
 
     public function store(VagaRequest $request){
+        
+        $validated=$request->validated();    
+        Vaga::create($validated);
 
-        $vaga = new Vaga;
+        return redirect ('vagas/');
+    }
+    
+    public function edit(Vaga $vaga) {
+        return view('/vagas.edit')-> with('vaga', $vaga);
+    }
 
-        $vaga->titulo = $request->titulo;
-        $vaga->descricao = $request->descricao;
-        $vaga->expediente = $request->expediente;
-        $vaga->salario = $request->salario;
-        $vaga->horario = $request->horario;
-        $vaga->beneficios = $request->beneficios;
-        $vaga->save();
-        return redirect('/');
+    public function update(VagaRequest $request, Vaga $vaga){
+        
+        $validated = $request->validated(); 
+        $vaga->update($validated);
+
+        return redirect("/vagas/{$vaga->id}");
     }
 }

@@ -5,6 +5,7 @@
 @endsection('javascript_head')
 
 @section('styles')
+   @parent
   <link rel="stylesheet" type="text/css" href="{{asset('/css/estagios.css')}}">
 @endsection('styles')
 

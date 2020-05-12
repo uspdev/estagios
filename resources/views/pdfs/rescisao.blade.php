@@ -23,15 +23,14 @@ estágio.
 </table>
 <br><br><br><br>
 <div style="width: 100%">
-Comunicamos que em <b>01/04/2020</b> foi/será rescindido o Termo de Compromisso de
-Estágio firmado em <b>01/04/2019</b> entre <b>Redação Nota 1000</b>, CNPJ
-<b>19.640.845/0001-70</b> e o(a) estagiário(a) <b>Danilo Cavalcante Brambila de
-Barros</b>, nº USP <b>10759603</b>, regularmente matriculado no curso de <b>Letras-
-Linguística</b> com interveniência da Universidade de São Paulo.
+Comunicamos que em <b>%data_da_rescisao</b> foi/será rescindido o Termo de Compromisso de
+Estágio firmado em <b>{{ $estagio->dataini }}</b> entre <b>{{ $empresa->nome_da_empresa }}</b>, CNPJ
+<b>{{ $empresa->cnpj_da_empresa}}</b> e o(a) estagiário(a) <b>%nome_do_estagiario</b>, nº USP <b>%usp</b>, regularmente matriculado no curso de 
+<b>%curso</b> com interveniência da Universidade de São Paulo.
 <br>
 <br>
 Informamos que o referido estágio foi rescindido na data supracitada pelo seguinte
-motivo: <b>término do período de estágio</b>
+motivo: <b>%motivo %outro_descreva </b>
 <br>
 <br>
 E por estarem de inteiro e comum acordo assinam-na em três vias de igual teor,
@@ -39,20 +38,20 @@ cabendo a 1a à Unidade Concedente, a 2a ao Estagiário e a 3a à Instituição 
 Ensino.
 <br>
 <br>
-São Paulo, 20/04/2020<br><br>
+São Paulo, {{ $now->format('d/m/Y') }}<br><br>
 ______________________________________<br>
-<b>Clayton Quandt Dick</b>
+<b>%responsavel_pelo_estagio</b>
 <br>
 <br>
 _____________________________________<br>
-<b>Danilo Cavalcante Brambila de Barros</b>
+<b>%nome_do_estagiario</b>
 <br>
 <br>
 ______________________________________<br>
 <b>Profa. Dra. Mona Mohamad Hawi
 Presidente da Comissão de Graduação da FFLCH/USP</b>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-Telefone do Estagiário(a): 11 9 9334 0207
+Telefone do Estagiário(a): ----
 <hr height="1" width="100%"></hr>
 <b>É OBRIGATORIO ANEXAR RELATÓRIO PESSOAL DO ALUNO(DIGITADO E ASSINADO).<b>
 </div>

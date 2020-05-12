@@ -16,17 +16,21 @@ class CreateEmpresasTable extends Migration
         Schema::create('empresas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->text('nome_da_empresa');
-            $table->text('cnpj_da_empresa');
-            $table->text('area_de_atuacao_da_empresa');
-            $table->text('endereco_da_empresa');
-            $table->text('nome_do_representante_da_empresa');
-            $table->text('cargo_do_representante_da_empresa');
-            $table->text('nome_do_supervisor_do_estagio');
-            $table->text('cargo_do_supervisor_do_estagio');
-            $table->text('telefone_do_supervisor_do_estagio');
-            $table->text('email_do_supervisor_do_estagio');
-
+            $table->string('nome');
+            $table->string('razao_social');
+            $table->string('cnpj');
+            $table->string('area_de_atuacao');
+            $table->string('endereco');
+            $table->string('cep');
+            $table->string('nome_de_contato');
+            $table->string('email_de_contato');
+            $table->string('telefone_de_contato');
+            $table->string('nome_do_representante');
+            $table->string('cargo_do_representante');
+            $table->string('nome_do_supervisor_estagio');
+            $table->string('cargo_do_supervisor_estagio');
+            $table->string('telefone_do_supervisor_estagio');
+            $table->string('email_do_supervisor_estagio');
         });
     }
 

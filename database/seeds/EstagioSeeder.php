@@ -24,13 +24,13 @@ class EstagioSeeder extends Seeder
             'horario' => '07:00-13:00',  
             'auxiliotransporte' => '72',
             'especifiquevt' => 'Mensal',
-            'cnpj' => '10.533.509/0001-53',            
+            'cnpj' => '10533509000153',         
             'atividades' => 'Desenvolvimento e manutenção dos sistemas da FFLCH',
             'seguradora' => 'Porto Seguro', 
             'numseguro' => '120043'            
         ];
         App\Estagio::create($entrada); 
         
-        factory(App\Estagio::class, 100)->create();
+        factory(App\Estagio::class, 20)->create();
     }
 }

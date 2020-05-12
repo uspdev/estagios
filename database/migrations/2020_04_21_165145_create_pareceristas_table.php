@@ -16,9 +16,11 @@ class CreatePareceristasTable extends Migration
         Schema::create('pareceristas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->text('numero_usp');
-            $table->text('nome');
-            $table->date('acesso_ate');
+            $table->string('numero_usp',10);
+
+            /* 1:  checkbox is ticked (true)
+             * 0:  is not ticked (false)*/
+            $table->boolean('presidente')->default(0);
         });
     }
 

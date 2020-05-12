@@ -16,21 +16,21 @@ class CreateConveniosTable extends Migration
         Schema::create('convenios', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->text('nome_rep');
-            $table->text('cargo_rep');
-            $table->text('email_rep');
-            $table->text('rg_rep');
-            $table->text('cpf_rep');
-            $table->text('nome_rep2');
-            $table->text('cargo_rep2');
-            $table->text('email_rep2');
-            $table->text('rg_rep2');
-            $table->text('cpf_rep2');
-            $table->text('desc');
-            $table->text('ativ');
-            $table->text('nome_cont');
-            $table->text('tel_cont');
-            $table->text('email_cont');
+            $table->text('nome_representante');
+            $table->string('cargo_representante');
+            $table->text('email_representante');
+            $table->string('rg_representante');
+            $table->string('cpf_representante');
+            $table->text('nome_representante2');
+            $table->string('cargo_representante2');
+            $table->text('email_representante2');
+            $table->string('rg_representante2');
+            $table->string('cpf_representante2');
+            $table->text('descricao');
+            $table->text('atividade');
+            $table->text('nome_contato');
+            $table->string('tel_contato');
+            $table->text('email_contato');
 
             
         });

@@ -16,8 +16,7 @@
     <tr>
       <td><a href ="/estagios/{{$estagio->id}}">{{$estagio->numero_usp}}</a></td>
       <td>{{$estagio->valorbolsa}}</td>
-      <td><a href="/estagios/{{$estagio->id}}/edit"><i class="far fa-edit"></i></a></i><i class="fab fa-android"></i><i class="fab fa-android"></i>
-<i class="fab fa-atlassian"></i></td>          
+      <td><a href="/estagios/{{$estagio->id}}/edit"><i class="fas fa-edit"></a></i></td>    
     </tr>
     <div></div>
     @endforeach

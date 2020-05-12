@@ -25,7 +25,8 @@ class AvisoRequest extends FormRequest
     {
         return [
             'titulo' => 'required',
-            'corpo'  => 'required'
+            'corpo'  => 'required',
+            'divulgacao_home_ate' => 'required|data'
         ];
     }
 }

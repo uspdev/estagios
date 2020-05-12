@@ -22,18 +22,40 @@ class EmpresaRequest extends FormRequest
      * @return array
      */
     public function rules()
+    { 
+        $rules = [
+                    'nome' => 'required',
+                    'razao_social' => 'required',
+                    'cnpj' => [
+                        'required',
+                        'cnpj',
+                    ],
+                    'area_de_atuacao' => 'required',
+                    'endereco' => 'required',
+                    'cep' => 'required|formato_cep',
+                    'nome_de_contato' => 'required',
+                    'email_de_contato' => 'required|email',
+                    'telefone_de_contato' => 'required|telefone_com_ddd',
+                    'nome_do_representante' => 'required',
+                    'cargo_do_representante' => 'required',
+                    'nome_do_supervisor_estagio' => 'required',
+                    'cargo_do_supervisor_estagio' => 'required',
+                    'telefone_do_supervisor_estagio' => 'required|telefone_com_ddd',
+                    'email_do_supervisor_estagio' => 'required|email'
+                ];
+        if ($this->method() == 'PATCH' || $this->method() == 'PUT'){
+            array_push($rules['cnpj'], 'unique:empresas,cnpj,'.$this->empresa->id);
+        }
+        else{
+            array_push($rules['cnpj'], 'unique:empresas');
+        }
+        return $rules;
+    }
+
+    public function validationData()
     {
-        return [
-            'nome_da_empresa' => 'required',
-            'cnpj_da_empresa' => 'required',
-            'area_de_atuacao_da_empresa' => 'required',
-            'endereco_da_empresa' => 'required',
-            'nome_do_representante_da_empresa' => 'required',
-            'cargo_do_representante_da_empresa' => 'required',
-            'nome_do_supervisor_do_estagio' => 'required',
-            'cargo_do_supervisor_do_estagio' => 'required',
-            'telefone_do_supervisor_do_estagio' => 'required',
-            'email_do_supervisor_do_estagio' => 'required'
-        ];
+        $data = $this->all();
+        $data['cnpj'] = preg_replace('/[^0-9]/', '', $data['cnpj']);
+        return $data;
     }
 }

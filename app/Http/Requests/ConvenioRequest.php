@@ -24,16 +24,21 @@ class ConvenioRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome_rep' => 'required',
-            'cargo_rep' => 'required',
-            'email_rep' => 'required',
-            'rg_rep' => 'required',
-            'cpf_rep' => 'required:integer',
-            'desc' => 'required',
-            'ativ' => 'required',
-            'nome_cont' => 'required',
-            'tel_cont' => 'required:integer',
-            'email_cont' => 'required',
+            'nome_representante' => 'required',
+            'cargo_representante' => 'required',
+            'email_representante' => 'required:email',
+            'rg_representante' => 'required',
+            'cpf_representante' => 'required',
+            'nome_representante2' => '',
+            'cargo_representante2' => '',
+            'email_representante2' => '',
+            'rg_representante2' => '',
+            'cpf_representante2' => '',
+            'descricao' => 'required',
+            'atividade' => 'required',
+            'nome_contato' => 'required',
+            'tel_contato' => 'required:integer:telefone_com_ddd',
+            'email_contato' => 'required:email',
 
         ];
     }
