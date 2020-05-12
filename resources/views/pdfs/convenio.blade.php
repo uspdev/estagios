@@ -11,7 +11,7 @@
 </tr>
 <tr><td scope="row"><b>EMPRESA</b></td></tr>
 <tr><td scope="row">Razão social:<b> {{ $empresa->razao_social }} </b></td></tr>
-<tr><td scope="row">CNPJ:<b> {{ $empresa->cnpj_da_empresa }}</b></td></tr>
+<tr><td scope="row">CNPJ:<b> {{ $empresa->cnpj}}</b></td></tr>
 <tr><td scope="row">Área de atuação (missão da Empresa): <b>{{ $empresa->area_de_atuacao }}</b></td></tr>
 <tr><td scope="row">Endereço:<b> {{ $empresa->endereco }}</b></td></tr>
 <tr><td scope="row">CEP:<b> {{ $empresa->cep }}</b></td></tr>
@@ -42,7 +42,7 @@ oferecidas para estágio e a natureza dos cursos de nossa Faculdade: <b>{{ $conv
 <p>Atividades previstas para os estagiários: <b>{{ $convenio->atividade }}</b></p>
 <br>
 
-<table style='width:100%; border: 1px solid #000;'>
+<table style='border: 1px solid #000;'>
 <tr><td scope="row"><b>Funcionário para contato</b></td></tr>
 <tr><td scope="row">Nome: <b>{{ $convenio->nome_contato }}</b></td></tr>
 <tr><td scope="row">Telefone: <b>{{ $convenio->tel_contato }}</b></td></tr>

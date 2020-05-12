@@ -10,9 +10,10 @@
 </table>
 <hr height="1" width="100%"></hr>
 <br>
-<div style="text-align: justify"><p style="text-indent : 6em;"><b>{{ $empresa->nome_da_empresa }},CNPJ {{ $empresa->cnpj_da_empresa }},</b> representada por seu(a) <b>{{ $empresa->cargo_do_representante_da_empresa }}, {{ $empresa->nome_do_representante_da_empresa }}</b> adiante designada CONCEDENTE e o
-ESTAGIÁRIO(A) <b>%estagiarioa</b>, no USP <b>%usp</b>, curso <b>%curso</b> e como INTERVENIENTE a Faculdade de Filosofia, Letras e Ciências
-Humanas da Universidade de São Paulo, representada pela Presidente da Comissão de Graduação 
+<div style="text-align: justify"><p style="text-indent : 6em;"><b>{{ $empresa->nome }},CNPJ {{ $empresa->cnpj }},
+</b> representada por seu(a) <b>{{ $empresa->cargo_do_representante }}, {{ $empresa->nome_do_representante }}</b> 
+adiante designada CONCEDENTE e o ESTAGIÁRIO(A) <b>%estagiarioa</b>, no USP <b>%usp</b>, curso <b>%curso</b> e como INTERVENIENTE 
+a Faculdade de Filosofia, Letras e Ciências Humanas da Universidade de São Paulo, representada pela Presidente da Comissão de Graduação 
 <b>Profa. Dra. Mona Mohamad Hawi</b>, firmam o presente TERMO DE ADITAMENTO DE COMPROMISSO DE ESTÁGIO, nos termos da Lei
 11.788/08 e da Resolução USP no 5.528/09, conforme as condições a seguir:</p></div>
 <p>1. Alterações a serem feitas a partir de <b>%alteracoes_a_serem_feitas</b></p>
