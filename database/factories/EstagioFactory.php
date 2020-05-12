@@ -20,7 +20,7 @@ $factory->define(Estagio::class, function (Faker $faker) {
         'horario' => $faker->time($format = 'H:i', $max = 'now'), 
         'auxiliotransporte' => $faker->numberBetween(10, 300),
         'especifiquevt' => 'Mensal',
-        'cnpj' => $faker->cnpj,            
+        'cnpj' => $faker->cnpj(false),            
         'atividades' => 'Desenvolvimento e manutenção dos sistemas da FFLCH',
         'seguradora' => $faker->company, 
         'numseguro' => $faker->unique()->numberBetween(1000, 100000), 

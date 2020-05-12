@@ -1,3 +1,11 @@
+@section('javascripts_head')
+  <script src="{{asset('/js/estagios.js')}}"></script>
+@endsection('javascript_head')
+
+@section('styles')
+  <link rel="stylesheet" type="text/css" href="{{asset('/css/estagios.css')}}">
+@endsection('styles')
+
 <br>
 <h4><b>Estágio</b></h4>
 <br>
@@ -29,11 +37,22 @@ aditivo por até 12 meses.
 
 
         <div class="form-group">
-            <label for="tipobolsa" class="required"><b>Especifique o tipo de bolsa: </b></label>
-            <select name="tipobolsa" class="form-control" id="tipobolsa" value="{{old('tipobolsa',$estagio->tipobolsa)}}">
-                <option value="" selected="selected">- Selecione -</option>
-                <option value="Mensal">mensais</option>
-                <option value="Por Hora">por hora</option>
+            <label for="tipobolsa" class="required"><b>Especifique a natureza do pagamento da bolsa: </b></label>
+            <select name="tipobolsa" class="form-control" id="tipobolsa">
+               <option value="" selected="">- Selecione -</option>
+                    @foreach ($estagio->tipobolsaOptions() as $option)
+                        @if (old('tipobolsa') == '' and isset($estagio->tipobolsa) )
+                            <option value="{{$option}}" {{ ( $estagio->tipobolsa == $option) ? 'selected' : ''}}>
+                                {{$option}}
+                            </option>
+                        @else
+                            <option value="{{$option}}" {{ ( old('tipobolsa') == $option) ? 'selected' : ''}}>
+                                {{$option}}
+                            </option>
+                        @endif
+                          
+                    @endforeach    
+
             </select> 
         </div>
 
@@ -45,8 +64,8 @@ aditivo por até 12 meses.
         </div>
 
         <div class="form-group">
-        <label for="justificativa" class="required"><b>Justificativa:</b></label>
-            <input type="textarea" cols="60" rows="5" class="form-control" id="justificativa" name="justificativa" value="{{old('justificativa',$estagio->justificativa)}}">
+        <label for="justificativa" class="required"><b>Justificativa: </b><br></label>
+            <textarea name="justificativa" rows="5" cols="60" value="{{old('justificativa',$estagio->justificativa)}}"></textarea>
         </div>
 
         <div class="form-group">
@@ -57,8 +76,8 @@ aditivo por até 12 meses.
         <div class="form-group">
         <label for="atividades" class="required"><b>Descrição detalhada das atividades a serem desenvolvidas pelo 
         estagiário para que o parecerista analise e constate a relação destas com a formação 
-        acadêmica do aluno.: </b></label>
-            <input type="textarea" cols="60" rows="5" class="form-control" id="atividades" name="atividades" value="{{old('atividades',$estagio->atividades)}}">
+        acadêmica do aluno.: </b><br></label>
+            <textarea name="atividades" rows="5" cols="60" value="{{old('atividades',$estagio->atividades)}}"></textarea>
         </div>
 
 </div>
@@ -125,25 +144,23 @@ aditivo por até 12 meses.
         <div class="row">
             <div class="col-sm form-group">
                 <div class="form-group">
-                <label for="auxiliotransporte" class="required"><b>Valor do Auxílio transporte: </b></label>
+                <label for="auxiliotransporte" class="required"><b>Valor do Auxílio transporte (R$): </b></label>
                     <input type="text" class="form-control" id="auxiliotransporte" name="auxiliotransporte" value="{{old('auxiliotransporte',$estagio->auxiliotransporte)}}"> 
                 </div></div>
 
             <div class="col-sm form-group">
                 <div class="form-group">
-                    <label for="especifiquevt" class="required"><b>Especifique: </b></label>
+                    <label for="especifiquevt" class="required"><b>Especifique o tipo de vale transporte: </b></label>
                   
                     <select name="especifiquevt" class="form-control" id="especifiquevt">
  
                         <option value="" selected="">- Selecione -</option>
                         @foreach ($estagio->especifiquevtOptions() as $option)
-
-                          {{-- 1. Situação em que não houve tentativa de submissão e é uma edição --}}
                           @if (old('especifiquevt') == '' and isset($estagio->especifiquevt) )
                             <option value="{{$option}}" {{ ( $estagio->especifiquevt == $option) ? 'selected' : ''}}>
                                 {{$option}}
                             </option>
-                          {{-- 2. Situação em que houve tentativa de submissão, o valor de old prevalece --}}
+
                           @else
                             <option value="{{$option}}" {{ ( old('especifiquevt') == $option) ? 'selected' : ''}}>
                                 {{$option}}
@@ -185,24 +202,24 @@ aditivo por até 12 meses.
 <br>
 
 <div class="form-group">
-<label for="controlehorario">Como se dará o controle diário dos horários de início e encerramento das atividades?: </label>
-    <input type="textarea" cols="60" rows="5" class="form-control" id="controlehorario" name="controlehorario" value="{{old('controlehorario',$estagio->controlehorario)}}">
+<label for="controlehorario">Como se dará o controle diário dos horários de início e encerramento das atividades?: <br></label>
+    <textarea name="controlehorario" rows="5" cols="60" value="{{old('controlehorario',$estagio->controlehorario)}}"></textarea>
 </div>
 
 <div class="form-group">
-<label for="supervisao">Como se dará a supervisão interna (por parte da empresa)?: </label>
-    <input type="textarea" cols="60" rows="5" class="form-control" id="supervisao" name="supervisao" value="{{old('supervisao',$estagio->supervisao)}}">
+<label for="supervisao">Como se dará a supervisão interna (por parte da empresa)?: <br></label>
+    <textarea name="supervisao" rows="5" cols="60" value="{{old('supervisao',$estagio->supervisao)}}"></textarea>
 </div>
 
 <div class="form-group">
 <label for="interacao">Como se dará a interação do estagiário com o ambiente e com os demais colaboradores da 
-empresa? Haverá deslocamento para a empresa? Se sim, quais dias?: </label>
-    <input type="textarea" cols="60" rows="5" class="form-control" id="interacao" name="interacao" value="{{old('interacao',$estagio->interacao)}}">
+empresa? Haverá deslocamento para a empresa? Se sim, quais dias?: <br></label>
+    <textarea name="interacao" rows="5" cols="60" value="{{old('interacao',$estagio->interacao)}}"></textarea>
 </div>
 
 <div class="form-group">
-<label for="enderecoedias">Qual o endereço e quais serão os dias de estágio?: </label>
-    <input type="textarea" class="form-control" id="enderecoedias" name="enderecoedias" value="{{old('enderecoedias',$estagio->enderecoedias)}}">
+<label for="enderecoedias">Qual o endereço e quais serão os dias de estágio?: <br></label>
+    <textarea name="enderecoedias" rows="5" cols="60" value="{{old('enderecoedias',$estagio->enderecoedias)}}"></textarea>
 
 </div>
 </div>
