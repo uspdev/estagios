@@ -157,7 +157,7 @@
     {{ $pessoa::dump($estagio->numero_usp)['nompes'] }}: <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b><br>
     Nº USP: <b>{{ $estagio->numero_usp }}</b><br>
     Curso: <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomhab'] }}</b><br>
-    Semestre: <b>9o</b><br>
+    Semestre: <b>{{ $replicado_utils->semestreAtual($estagio->numero_usp) }}º</b><br>
     Turno: <b>Noturno</b><br>
     Telefone: <b>(11) 96307-1952</b>, E-mail: <b>{{ $pessoa::email($estagio->numero_usp) }}</b><br>
     Nome da Empresa: <b>{{ $empresa->nome }}</b><br>

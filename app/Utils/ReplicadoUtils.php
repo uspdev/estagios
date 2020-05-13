@@ -9,17 +9,15 @@ class ReplicadoUtils {
     /* Este método retorna o endereço... */
     /* Ele é transitório, pois foi enviaod um issue... */
     /* https://github.com/uspdev/replicado/issues/226  */
-
     public static function endereco($codpes) {
         $data = DBreplicado::fetch('SELECT codpes, nompes from PESSOA where codpes=5385361');
         return $data['codpes'] . " - " . $data['nompes'];
     }
 
-
     /**
      * Retorna o endereço completo, com rua/avenida etc., número/complemento, 
      * bairro, cidade e UF a partir do codpes.
-     * Ele é transitório, pois ainda não foi criado issue...
+     * Método transitório, pois ainda não foi criado issue...
      * @param type $codpes
      * @return String
      */
@@ -39,6 +37,26 @@ class ReplicadoUtils {
             $result = Uteis::utf8_converter($result);
             $query = $result['nomtiplgr'] . ": " . $result['epflgr'] . ", " . $result['numlgr'] . " " . $result['cpllgr'] . " - " . $result['nombro'] . " - "  . $result['cidloc'] . " - " . $result['sglest'] . " - CEP: " . $result['codendptl']; 
             return $query;
+        }
+        return false;
+    }
+
+     /**
+     * Retorna o semestre atual que o aluno está cursando
+     * Método transitório, pois ainda não foi criado issue...
+     * @param type $codpes
+     * @return int
+     */
+    public static function semestreAtual($codpes) {
+        $query = "SELECT COUNT(s.anosem) FROM SITALUNOATIVOGR s 
+                    WHERE codpes = convert(int,:codpes)";
+        $param = [
+            'codpes' => $codpes,
+        ];
+        $result = DBreplicado::fetch($query, $param);
+        foreach ($result as $row)
+        {
+            print_r($row);
         }
         return false;
     }
