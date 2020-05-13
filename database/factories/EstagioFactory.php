@@ -30,7 +30,7 @@ $factory->define(Estagio::class, function (Faker $faker) {
         'horario' => $faker->time($format = 'H:i', $max = 'now'), 
         'auxiliotransporte' => $faker->numberBetween(10, 300),
         'especifiquevt' => $vt[array_rand($vt)],
-        'cnpj' => $faker->cnpj(false),            
+        'cnpj' => factory(App\Empresa::class)->create()->cnpj,        
         'atividades' => $faker->text($maxNbChars = 200),
         'seguradora' => $faker->company, 
         'numseguro' => $faker->unique()->numberBetween(1000, 100000), 

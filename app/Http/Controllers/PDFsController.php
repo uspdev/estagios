@@ -16,11 +16,11 @@ class PDFsController extends Controller
 {
 
     public function termo(Estagio $estagio){
-        $cnpj = '29541003000114'; //$estagio->cnpj;
-        $empresa = Empresa::where('cnpj',$cnpj)->first();
+
+        $empresa = Empresa::where('cnpj',$estagio->cnpj)->first();
 
         // Formata CNPJ
-        $empresa->cnpj =  substr($cnpj, 0, 2) . '.' . substr($cnpj, 2, 3) . '.' . substr($cnpj, 5, 3) . '/' . substr($cnpj, 8, 4) . '-' . substr($cnpj, 12, 2);
+        $empresa->cnpj =  substr($empresa->cnpj, 0, 2) . '.' . substr($empresa->cnpj, 2, 3) . '.' . substr($empresa->cnpj, 5, 3) . '/' . substr($empresa->cnpj, 8, 4) . '-' . substr($empresa->cnpj, 12, 2);
 
         // Busca presidente
         $presidente = Parecerista::where('presidente', true)->first();
@@ -31,8 +31,7 @@ class PDFsController extends Controller
 
     public function convenio(Convenio $convenio){
         $now = Carbon::now();
-        $cnpj = '29541003000114'; //$empresa->cnpj;
-        $empresa = Empresa::where('cnpj',$cnpj)->first();
+        $empresa = Empresa::where('cnpj',$convenio->cnpj)->first();
         $pdf = PDF::loadView('pdfs.convenio', compact('convenio', 'empresa', 'now'));
         return $pdf->download('convenio.pdf');
     }

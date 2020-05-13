@@ -24,7 +24,7 @@ class EstagioSeeder extends Seeder
             'horario' => '07:00-13:00',  
             'auxiliotransporte' => '72',
             'especifiquevt' => 'Mensal',
-            'cnpj' => '10533509000153',         
+            'cnpj' => '29541003000114',        
             'atividades' => 'Desenvolvimento e manutenção dos sistemas da FFLCH',
             'seguradora' => 'Porto Seguro', 
             'numseguro' => '120043',

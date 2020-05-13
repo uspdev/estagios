@@ -41,4 +41,7 @@ class Estagio extends Model
        $this->attributes['data_final'] = implode('-',array_reverse(explode('/',$value)));
     }
 
+    public function setCnpjAttribute($value){
+        $this->attributes['cnpj'] = preg_replace("/[^0-9]/", "", $value);  
+    }
 }

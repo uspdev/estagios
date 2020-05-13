@@ -39,7 +39,7 @@ class ConvenioRequest extends FormRequest
             'nome_contato' => 'required',
             'tel_contato' => 'required:integer|telefone_com_ddd',
             'email_contato' => 'required|email',
-
+            'cnpj' => 'required|cnpj',
         ];
 
        
