@@ -65,7 +65,7 @@ aditivo por até 12 meses.
 
         <div class="form-group">
         <label for="justificativa" class="required"><b>Justificativa: </b><br></label>
-            <textarea name="justificativa" rows="5" cols="60" value="{{old('justificativa',$estagio->justificativa)}}"></textarea>
+            <textarea name="justificativa" rows="5" cols="60">{{old('justificativa',$estagio->justificativa)}}</textarea>
         </div>
 
         <div class="form-group">
@@ -77,7 +77,7 @@ aditivo por até 12 meses.
         <label for="atividades" class="required"><b>Descrição detalhada das atividades a serem desenvolvidas pelo 
         estagiário para que o parecerista analise e constate a relação destas com a formação 
         acadêmica do aluno.: </b><br></label>
-            <textarea name="atividades" rows="5" cols="60" value="{{old('atividades',$estagio->atividades)}}"></textarea>
+            <textarea name="atividades" rows="5" cols="60">{{old('atividades',$estagio->atividades)}}</textarea>
         </div>
 
 </div>
@@ -203,23 +203,23 @@ aditivo por até 12 meses.
 
 <div class="form-group">
 <label for="controlehorario">Como se dará o controle diário dos horários de início e encerramento das atividades?: <br></label>
-    <textarea name="controlehorario" rows="5" cols="60" value="{{old('controlehorario',$estagio->controlehorario)}}"></textarea>
+    <textarea name="controlehorario" rows="5" cols="60">{{old('controlehorario',$estagio->controlehorario)}}</textarea>
 </div>
 
 <div class="form-group">
 <label for="supervisao">Como se dará a supervisão interna (por parte da empresa)?: <br></label>
-    <textarea name="supervisao" rows="5" cols="60" value="{{old('supervisao',$estagio->supervisao)}}"></textarea>
+    <textarea name="supervisao" rows="5" cols="60">{{old('supervisao',$estagio->supervisao)}}</textarea>
 </div>
 
 <div class="form-group">
 <label for="interacao">Como se dará a interação do estagiário com o ambiente e com os demais colaboradores da 
 empresa? Haverá deslocamento para a empresa? Se sim, quais dias?: <br></label>
-    <textarea name="interacao" rows="5" cols="60" value="{{old('interacao',$estagio->interacao)}}"></textarea>
+    <textarea name="interacao" rows="5" cols="60">{{old('interacao',$estagio->interacao)}}</textarea>
 </div>
 
 <div class="form-group">
 <label for="enderecoedias">Qual o endereço do local e quais serão os dias de realização do estágio?: <br></label>
-    <textarea name="enderecoedias" rows="5" cols="60" value="{{old('enderecoedias',$estagio->enderecoedias)}}"></textarea>
+    <textarea name="enderecoedias" rows="5" cols="60">{{old('enderecoedias',$estagio->enderecoedias)}}</textarea>
 
         </div>
     </div>

@@ -26,8 +26,8 @@
   <div class="card-header"><b>Período do Estágio</b></div>
     <div class="card-body">
         <b>Duração do estágio:</b> {{$estagio->duracao}}<br>
-        <b>Data de início:</b> {{date('d/m/Y', strtotime($estagio->data_inicial))}}<br>
-        <b>Data de término:</b> {{date('d/m/Y', strtotime($estagio->data_final))}}<br>
+        <b>Data de início:</b> {{ $estagio->data_inicial }}<br>
+        <b>Data de término:</b> {{ $estagio->data_final }}<br>
     </div>    
 </div>    
 

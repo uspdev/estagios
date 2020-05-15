@@ -6,25 +6,23 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Empresa;
 
 class LoginEmpresaMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $url;
+    public $url_login;
     public $to;
-    public $empresa;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($url, $to, Empresa $empresa)
+    public function __construct($url_login, $to)
     {
-        $this->url = $url;
+        $this->url_login = $url_login;
         $this->to = $to;
-        $this->empresa = $empresa;
     }
 
     /**
@@ -37,9 +35,10 @@ class LoginEmpresaMail extends Mailable
         $subject = 'Dados para login no sistema de estágio FFLCH';
 
         return $this->view('emails.login_empresa')
-            ->from(config('mail.from.address'))
-            ->to('abc@gmail.com')
+         #    ->from(config('mail.from.address'))
+             ->from('abbb@usp.br')
+             ->to(['abc@gmail.com'])
          #   ->subject($subject)
-            ->with('url',$this->url);
+            ->with('url_login',$this->url_login);
     }
 }

@@ -50,6 +50,7 @@
       <a href="/estagios/{{$estagio->id}}/edit">
         <i class="fas fa-edit">
       </a></i>
+      <a href="/pdfs/termo/{{$estagio->id}}"><i class="fas fa-file-pdf"></i></a>
     </td>   
 
     </tr>
