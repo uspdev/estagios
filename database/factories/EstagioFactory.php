@@ -18,6 +18,7 @@ $factory->define(Estagio::class, function (Faker $faker) {
     );    
 
     return [
+        'cnpj' => factory(App\Empresa::class)->create()->cnpj, 
         'numero_usp' => $faker->unique()->graduacao(),           
         'valorbolsa' => $faker->numberBetween(300, 4000),
         'tipobolsa' => $bolsa[array_rand($bolsa)],
@@ -29,8 +30,7 @@ $factory->define(Estagio::class, function (Faker $faker) {
         'cargaminutos' => $faker->numberBetween(00, 59),            
         'horario' => $faker->time($format = 'H:i', $max = 'now'), 
         'auxiliotransporte' => $faker->numberBetween(10, 300),
-        'especifiquevt' => $vt[array_rand($vt)],
-        'cnpj' => factory(App\Empresa::class)->create()->cnpj,        
+        'especifiquevt' => $vt[array_rand($vt)],       
         'atividades' => $faker->text($maxNbChars = 200),
         'seguradora' => $faker->company, 
         'numseguro' => $faker->unique()->numberBetween(1000, 100000), 

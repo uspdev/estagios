@@ -24,6 +24,7 @@ class VagaRequest extends FormRequest
     public function rules()
     {
         return [
+            'cnpj' => 'required|cnpj',
             'titulo' => 'required',
             'descricao' => 'required',
             'expediente' => 'required|integer',

@@ -1,6 +1,14 @@
 <div class="card">
   <div class="card-header"><h3>Cadastro de Vaga</h3></div>
   <div class="card-body">
+
+    <div class="form-group">
+    <div class="col-sm form-group">
+        <label for="cnpj" class="required"><b>CNPJ da empresa: </b></label>
+        <input type="text" class="form-control cnpj" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" value="{{old('cnpj',$vaga->cnpj)}}">
+    </div>
+    </div>
+
     <div class="row">
     <div class="col-sm form-group">
       <label for="titulo" class="required"><strong>Título da Vaga:</strong></label>

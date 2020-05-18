@@ -12,6 +12,7 @@ class VagaSeeder extends Seeder
     public function run()
     {
         $entrada = [
+            'cnpj' => '29541003000114',
             'titulo' => 'Vaga',
             'descricao' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             'expediente' => 30,

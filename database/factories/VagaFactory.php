@@ -8,6 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Vaga::class, function (Faker $faker) {
 
     return [
+        'cnpj' => factory(App\Empresa::class)->create()->cnpj, 
         'titulo' => $faker->sentence($nbWords = 6, $variableNbWords = true),
         'descricao' => $faker->text,
         'expediente' => $faker->buildingNumber,

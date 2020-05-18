@@ -27,6 +27,7 @@ class EstagioController extends Controller
 
     public function store(EstagioRequest $request)
     {
+        /* TODO: Cada empresa só pode ter um cadastro */
         $validated = $request->validated();                 
         $estagio = Estagio::create($validated);        
         return redirect("estagios/{$estagio->id}");
