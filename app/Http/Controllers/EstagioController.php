@@ -28,8 +28,8 @@ class EstagioController extends Controller
     public function store(EstagioRequest $request)
     {
         $validated = $request->validated();                 
-        Estagio::create($validated);        
-        return redirect('estagios/');
+        $estagio = Estagio::create($validated);        
+        return redirect("estagios/{$estagio->id}");
     }
 
     public function edit(Estagio $estagio) {      

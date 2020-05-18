@@ -12,7 +12,9 @@ class EmpresaController extends Controller
 {
     public function index(Request $request){
         if(isset($request->busca)) {
-            $empresas = Empresa::where('nome','LIKE',"%{$request->busca}%")->paginate(20);
+            $empresas = Empresa::where('nome','LIKE',"%{$request->busca}%")
+                                ->orWhere('cnpj','LIKE',"%{$request->busca}%")
+                ->paginate(20);
         } else {
             $empresas = Empresa::paginate(20);
         }        

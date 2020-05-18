@@ -34,7 +34,7 @@ class EmpresaRequest extends FormRequest
                     'endereco' => 'required',
                     'cep' => 'required|formato_cep',
                     'nome_de_contato' => 'required',
-                    'email_de_contato' => 'required|email',
+                    'email' => 'required|email',
                     'telefone_de_contato' => 'required|telefone_com_ddd',
                     'nome_do_representante' => 'required',
                     'cargo_do_representante' => 'required',

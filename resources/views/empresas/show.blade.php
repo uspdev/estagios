@@ -13,7 +13,7 @@
         <b>Endereço da Empresa:</b> {{$empresa->endereco}}<br>
         <b>CEP:</b> {{$empresa->cep}}<br>
         <b>Nome de Contato da Empresa:</b> {{$empresa->nome_de_contato}}<br>
-        <b>E-mail de Contato da Empresa:</b> {{$empresa->email_de_contato}}<br>
+        <b>E-mail de Contato da Empresa:</b> {{$empresa->email}}<br>
         <b>Telefone de Contato da Empresa:</b> {{$empresa->telefone_de_contato}}<br>
         <b>Nome do Representante da Empresa:</b> {{$empresa->nome_do_representante}}<br>
         <b>Cargo do Representante da Empresa:</b> {{$empresa->cargo_do_representante}}<br>
@@ -24,12 +24,14 @@
     </div>
 </div>
 
-@foreach($estagios as $estagio)
-    {{ $estagio->numero_usp }}
-@endforeach
+<br>
+@include('estagios.partials.index')
+<br>
+@include('convenios.partials.index')
+<br>
 
-@foreach($convenios as $convenio)
-    {{ $convenio->id }} 
-@endforeach
+
+<br>
+
 
 @endsection('content')

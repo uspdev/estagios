@@ -1,23 +1,28 @@
 <div class="card">
   <div class="card-header"><h4>Representante legal da Empresa que irá assinar o Termo de Convênio</h4></div>
     <div class="card-body">  
+
       <div class="form-group row">
-      <div class="form-group">
-        <label for="cnpj" class="required"><b>CNPJ da empresa: </b></label>
-            <input type="text" class="form-control cnpj" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" value="{{old('cnpj',$estagio->cnpj)}}">
+        <label for="cnpj" class="required col-sm-2 col-form-label"><b>CNPJ </b></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control cnpj" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" value="{{old('cnpj',$convenio->cnpj)}}">
         </div>
+      </div>
         
+      <div class="form-group row">
         <label for="nome_representante" class="required col-sm-2 col-form-label">Nome:</label>
         <div class="col-sm-10">
           <input type="text" name="nome_representante" class="form-control" id="nome_representante" placeholder="Insira seu nome completo" value="{{old('nome_representante',$convenio->nome_representante)}}">
         </div>
       </div>
+
       <div class="form-group row">
         <label for="cargo_representante" class="required col-sm-2 col-form-label">Cargo:</label>
         <div class="col-sm-10">
           <input type="text" name="cargo_representante" class="form-control" id="cargo_representante" placeholder="Insira seu cargo" value="{{old('cargo_representante',$convenio->cargo_representante)}}">
         </div>
       </div>
+
       <div class="form-group row">
         <label for="email_representante" class="required col-sm-2 col-form-label">Email:</label>
         <div class="col-sm-10">

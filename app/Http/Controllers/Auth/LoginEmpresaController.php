@@ -45,8 +45,8 @@ class LoginEmpresaController extends Controller
         $cnpj = preg_replace("/[^0-9]/", "", $request->cnpj);
         $empresa = Empresa::where('cnpj',$cnpj)->first();
         if (!is_null($empresa)) {
-            if($empresa->email_de_contato != $request->email){
-                $email_limpo = Utils::partially_email($empresa->email_de_contato);
+            if($empresa->email != $request->email){
+                $email_limpo = Utils::partially_email($empresa->email);
 
                 $request->session()->flash('alert-danger',
                     "Email informando {$request->email} não corresponde ao cnpj 
@@ -94,7 +94,7 @@ class LoginEmpresaController extends Controller
             if (is_null($empresa)) {
                 $empresa = new Empresa;
                 $empresa->cnpj = $request->cnpj;
-                $empresa->email_de_contato = $request->email;
+                $empresa->email = $request->email;
                 return view('empresas.create')->with('empresa',$empresa);
             } else {
                 return view('empresas.edit')->with('empresa', $empresa);

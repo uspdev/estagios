@@ -10,12 +10,12 @@ $factory->define(Empresa::class, function (Faker $faker) {
     return [
         'nome' => $faker->company,
         'cnpj' => $faker->cnpj(false),
+        'email' => $faker->email,
         'razao_social' => $faker->sentence,
         'area_de_atuacao' => $faker->sentence,
         'endereco' => $faker->streetAddress,
         'cep' => $faker->numberBetween(10000000, 99999999),
         'nome_de_contato' => $faker->name,
-        'email_de_contato' => $faker->email,
         'telefone_de_contato' => $faker->cellphoneNumber,
         'nome_do_representante' => $faker->name,
         'cargo_do_representante' => $faker->jobTitle,

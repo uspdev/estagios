@@ -203,7 +203,7 @@
 
 <div>
     <p>Contato: {{ $empresa->nome_de_contato }}, Telefone: {{ $empresa->telefone_de_contato }}, E-mail:
-        {{ $empresa->email_de_contato }}
+        {{ $empresa->email }}
     </p>
 </div>
 

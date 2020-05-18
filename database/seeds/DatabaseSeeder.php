@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             AvisoSeeder::class,
             VagaSeeder::class,
             PareceristaSeeder::class,
+            EmpresaSeeder::class,
             EstagioSeeder::class,
             ConvenioSeeder::class,
         ]);

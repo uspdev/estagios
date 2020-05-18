@@ -35,8 +35,8 @@
                 <input type="text" maxlength="128" class="form-control" name="nome_de_contato" value="{{old('nome_de_contato', $empresa->nome_de_contato)}}">
             </div>    
             <div class="col-4 form-group">
-                <label for="email_de_contato" class="required">E-mail de Contato da Empresa:</label>
-                <input type="email" maxlength="128" class="form-control" name="email_de_contato" value="{{old('email_de_contato', $empresa->email_de_contato)}}">
+                <label for="email" class="required">E-mail de Contato da Empresa:</label>
+                <input type="email" maxlength="128" class="form-control" name="email" value="{{old('email', $empresa->email)}}">
             </div>
             <div class="col-4 form-group">
                 <label for="telefone_de_contato" class="required">Telefone de Contato da Empresa:</label>

@@ -13,13 +13,13 @@ class EmpresaSeeder extends Seeder
     {
         $entrada = [
             'nome' => 'Pluriaqua',
+            'email' => 'contato@empresa.com',
             'razao_social' => 'Pluri Água',
             'cnpj' => '29541003000114',
             'area_de_atuacao' => 'Indústria',
             'endereco' => 'Rua dos Bobos',
             'cep' => '06318872',
             'nome_de_contato' => 'Joãozinho',
-            'email_de_contato' => 'joao@gmail.com',
             'telefone_de_contato' => '1199999999',
             'nome_do_representante' => 'Mariazinha',
             'cargo_do_representante' => 'Gestor',
