@@ -12,17 +12,17 @@ class LoginEmpresaMail extends Mailable
     use Queueable, SerializesModels;
 
     public $url_login;
-    public $to;
+    public $destino;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($url_login, $to)
+    public function __construct($url_login, $destino)
     {
         $this->url_login = $url_login;
-        $this->to = $to;
+        $this->destino = $destino;
     }
 
     /**
@@ -35,10 +35,10 @@ class LoginEmpresaMail extends Mailable
         $subject = 'Dados para login no sistema de estágio FFLCH';
 
         return $this->view('emails.login_empresa')
-         #    ->from(config('mail.from.address'))
-             ->from('abbb@usp.br')
-             ->to(['abc@gmail.com'])
-         #   ->subject($subject)
-            ->with('url_login',$this->url_login);
+                    ->to($this->destino)
+                    ->subject($subject)
+                    ->with([
+                        'url_login' => $this->url_login,
+                    ]);
     }
 }

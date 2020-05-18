@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/','IndexController@index')->name('home');
+Route::get('/','IndexController@index')->name('login');
+Route::get('/home','IndexController@index')->name('home');
 
 Route::resource('/pareceristas','PareceristaController');
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\EmpresaRequest;
 use App\Empresa;
+use App\Estagio;
+use App\Convenio;
 
 class EmpresaController extends Controller
 {
@@ -18,7 +20,13 @@ class EmpresaController extends Controller
     }
 
     public function show(Empresa $empresa){
-        return view('empresas.show', compact('empresa'));
+        $estagios = Estagio::where('cnpj',$empresa->cnpj)->get();
+        $convenios = Convenio::where('cnpj',$empresa->cnpj)->get();
+        return view('empresas.show')->with([
+            'empresa'  => $empresa,
+            'estagios' => $estagios,
+            'convenios' => $convenios,
+        ]);
     }
     
     public function create(){

@@ -23,4 +23,13 @@
         <b>Email do Supervisor do Estágio:</b> {{$empresa->email_do_supervisor_estagio}}<br>
     </div>
 </div>
+
+@foreach($estagios as $estagio)
+    {{ $estagio->numero_usp }}
+@endforeach
+
+@foreach($convenios as $convenio)
+    {{ $convenio->id }} 
+@endforeach
+
 @endsection('content')
