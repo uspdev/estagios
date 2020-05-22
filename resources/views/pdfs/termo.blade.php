@@ -51,7 +51,8 @@
         <b>{{ $empresa->cargo_do_representante }}</b>, Sr(a)
         <b>{{ $empresa->nome_do_representante }}</b>, adiante designada CONCEDENTE e
         {{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }} ESTAGIÁRIO
-        <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b>, estudante, residente a <b>{{ $replicado_utils->enderecoCompleto($estagio->numero_usp) }}</b>, portador da cédula de identidade
+        <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b>, estudante, residente a <b>@foreach ($endereco as
+            $campos) {{ $campos }}@endforeach</b>, portador da cédula de identidade
         {{ $pessoa::dump($estagio->numero_usp)['tipdocidf'] }} n°
         <b>{{ $pessoa::dump($estagio->numero_usp)['numdocidf'] }}</b> e CPF nº
         <b>{{ $pessoa::dump($estagio->numero_usp)['numcpf'] }}</b>, aluno do Curso de
@@ -88,7 +89,8 @@
     <p>5. O ESTAGIÁRIO receberá BOLSA DE COMPLEMENTAÇÃO EDUCACIONAL DE <b>R$ {{ $estagio->valorbolsa }}</b>
         {{ $estagio->tipobolsa}} e
         auxílio-transporte no
-        valor de R$ <b>{{ $estagio->auxiliotransporte }} {{ $estagio->especifiquevt }}</b>. A importância referente à bolsa, por
+        valor de R$ <b>{{ $estagio->auxiliotransporte }} {{ $estagio->especifiquevt }}</b>. A importância referente à
+        bolsa, por
         não ter natureza
         salarial, não se enquadra no regime do FGTS (Fundo de Garantia por Tempo de Serviço) e não sofrerá qualquer
         desconto, inclusive
