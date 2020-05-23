@@ -9,6 +9,8 @@ use App\Convenio;
 use App\Parecerista;
 use Carbon\Carbon;
 
+use Uspdev\Replicado\Pessoa;
+
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
 
@@ -25,7 +27,20 @@ class PDFsController extends Controller
         // Busca presidente
         $presidente = Parecerista::where('presidente', true)->first();
 
-        $pdf = PDF::loadView('pdfs.termo', compact('estagio','empresa','presidente'));
+        $endereco = Pessoa::obterEndereco($estagio->numero_usp);
+        // Formata endereço
+        $endereco = [
+            $endereco['nomtiplgr'],
+            $endereco['epflgr'] . ",",
+            $endereco['numlgr'] . " ",
+            $endereco['cpllgr'] . " - ",
+            $endereco['nombro'] . " - ",
+            $endereco['cidloc'] . " - ",
+            $endereco['sglest'] . " - ",
+            "CEP: " . $endereco['codendptl'],
+        ];
+
+        $pdf = PDF::loadView('pdfs.termo', compact('estagio','empresa','presidente','endereco'));
         return $pdf->download('termo.pdf');
     }
 
