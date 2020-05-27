@@ -38,6 +38,13 @@
       </td>
       <td>{{$parecerista->numero_usp}}</td>
       <td><a href="/pareceristas/{{$parecerista->id}}/edit"><i class="fas fa-edit"></a></i></td>
+      <td>
+        <form method="POST" action="/pareceristas/{{$parecerista->id}}">
+          @csrf
+          @method('delete')
+          <button type="submit"><i class="fas fa-trash-alt"></i></button>
+        </form>
+      </td>
     </tr>
     <div></div>
     @endforeach
