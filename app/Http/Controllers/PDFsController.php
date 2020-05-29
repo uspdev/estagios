@@ -18,9 +18,9 @@ class PDFsController extends Controller
 {
 
     public function termo(Estagio $estagio){
+        $this->authorize('admin');
 
         $empresa = Empresa::where('cnpj',$estagio->cnpj)->first();
-
         // Formata CNPJ
         $empresa->cnpj =  substr($empresa->cnpj, 0, 2) . '.' . substr($empresa->cnpj, 2, 3) . '.' . substr($empresa->cnpj, 5, 3) . '/' . substr($empresa->cnpj, 8, 4) . '-' . substr($empresa->cnpj, 12, 2);
 
@@ -64,6 +64,7 @@ class PDFsController extends Controller
     }
 
     public function renovacao(Estagio $estagio){
+        $this->authorize('admin');
         $pdf = PDF::loadView('pdfs.renovacao', compact('estagio'));
         return $pdf->download('renovacao.pdf');
     }
