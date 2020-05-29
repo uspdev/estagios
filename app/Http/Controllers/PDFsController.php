@@ -45,6 +45,7 @@ class PDFsController extends Controller
     }
 
     public function convenio(Convenio $convenio){
+        $this->authorize('admin');
         $now = Carbon::now();
         $empresa = Empresa::where('cnpj',$convenio->cnpj)->first();
         $pdf = PDF::loadView('pdfs.convenio', compact('convenio', 'empresa', 'now'));
@@ -52,12 +53,14 @@ class PDFsController extends Controller
     }
     
     public function rescisao(Estagio $estagio, Empresa $empresa){
+        $this->authorize('admin');
         $now = Carbon::now();
         $pdf = PDF::loadView('pdfs.rescisao', compact('estagio', 'empresa', 'now'));
         return $pdf->download('rescisao.pdf');
     }
 
     public function aditivo(Empresa $empresa){
+        $this->authorize('admin');
         $now = Carbon::now();
         $pdf = PDF::loadView('pdfs.aditivo', compact('empresa', 'now'));
         return $pdf->download('aditivo.pdf');
