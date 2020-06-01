@@ -30,9 +30,16 @@
       @foreach($avisos as $aviso)
         <tr>
           <td>{{$aviso->titulo}}</a></td>
-          <td>
-            <a href="/avisos/{{$aviso->id}}/edit"><i class="far fa-edit"></i></a>
-            <a href="/avisos/{{$aviso->id}}"><i class="fas fa-external-link-alt"></i></a>
+          <td >
+            <a class="row-sm" href="/avisos/{{$aviso->id}}/edit"><i class="far fa-edit"></i></a>
+            <a class="row-sm" href="/avisos/{{$aviso->id}}"><i class="fas fa-external-link-alt"></i></a>
+           
+          
+            <form class="row-sm" method="POST" action="/avisos/{{$aviso->id}}">
+              @csrf
+              @method('delete')
+              <button type="submit" class=" btn btn-outline-primary btn-sm"><i class="fas fa-trash-alt"></i></button>
+            </form> 
           </td>
         </tr>
       @endforeach
