@@ -3,9 +3,38 @@
 @section('content')
 @include('flash')
 
+
+<div class="row">
+  <div class="col-sm">
+    <button type="submit" class="btn btn-success">
+    <a href="{{ route('convenios.edit',$convenio->id) }}">Editar</a>
+    </button>
+
+  </div>
+</div>
+</br>    
+
+<div class="row">
+  <div class="col-sm">
+    <form method="POST" action="/convenios/{{$convenio->id}}">
+      @csrf
+      @method('delete')
+      <button type="submit"><i class="fas fa-trash-alt"></i></button>
+            
+    </form> 
+
+  </div>
+</div>
+</br>     
+
 <div class="card">
   <div class="card-header"><h4>Representante legal da Empresa que irá assinar o Termo de Convênio</h4></div>
-    <div class="card-body">  
+    <div class="card-body">
+      <div class="form-group row">
+        <div class="col-sm-10">
+         CNPJ: {{$convenio->cnpj}}
+        </div>
+      </div>  
       <div class="form-group row">
         <div class="col-sm-10">
          Nome: {{$convenio->nome_representante}}
@@ -106,10 +135,11 @@
        Email: {{$convenio->email_contato}}
         </div>
       </div>
-
+      </div>
   </div>  
 </div>
 </br>
+
 
 
 
