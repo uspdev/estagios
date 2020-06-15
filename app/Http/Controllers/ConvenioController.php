@@ -8,9 +8,10 @@ use App\Convenio;
 
 class ConvenioController extends Controller
 {
+
     public function index(Request $request){
 
-        $this->authorize('empresa');
+        $this->authorize('admin');
 
 
         if(isset($request->busca)) {
@@ -21,22 +22,22 @@ class ConvenioController extends Controller
         return view('convenios.index')->with('convenios',$convenio);
     }
     public function show(Convenio $convenio){
-        $this->authorize('empresa');
+        $this->authorize('admin');
         return view('convenios.show')->with('convenio',$convenio);
     }
     
     public function create(){
-      $this->authorize('empresa');
+      $this->authorize('admin');
     	return view('convenios.create')->with('convenio', new Convenio);
     }
      public function edit(Convenio $convenio){
-        $this->authorize('empresa');
+        $this->authorize('admin');
 
          return view('convenios.edit')->with('convenio',$convenio);
     }
 
       public function store(ConvenioRequest $request){
-        $this->authorize('empresa');
+        $this->authorize('admin');
 
         $validated = $request->validated();
           
@@ -57,7 +58,7 @@ class ConvenioController extends Controller
 
      public function update(ConvenioRequest $request, Convenio $convenio){
       
-        $this->authorize('empresa');
+        $this->authorize('admin');
 
         $validated = $request->validated();
 
@@ -76,7 +77,7 @@ class ConvenioController extends Controller
         
     }
     public function destroy(Convenio $convenio){
-
+      dd("Delete não habilitado na produção");
       $this->authorize('admin');
 
       $convenio->delete();

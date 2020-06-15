@@ -8,7 +8,7 @@
 <form method="get" action="/pareceristas">
 <div class="row">
     <div class=" col-sm input-group">
-    <input type="text" class="form-control" name="busca" value="{{ Request()->busca }}">
+    <input type="text" class="form-control" name="busca" value="{{ Request()->busca }}" placeholder="Busca somente por número USP">
 
     <span class="input-group-btn">
         <button type="submit" class="btn btn-success"> Buscar </button>
@@ -29,12 +29,13 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($pareceristas as $parecerista)
+    @foreach($pareceristas->sortBy('numero_usp') as $parecerista)
     <tr>
       <td>
         <a href="/pareceristas/{{$parecerista->id}}">
           {{ $pessoa::dump($parecerista->numero_usp)['nompes'] }}
         </a>
+        @if($parecerista->presidente == 1) Presidente da Comissão @endif
       </td>
       <td>{{$parecerista->numero_usp}}</td>
       <td><a href="/pareceristas/{{$parecerista->id}}/edit"><i class="fas fa-edit"></a></i></td>

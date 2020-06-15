@@ -7,14 +7,17 @@
 <div class="card">
   <div class="card-header"><h3>Dados da Vaga:<h3></div>
 
+
   <div class="card-body">
+
+    @can('admin')
     <table class="table table-striped">
     <tbody>
     <tr>
+      
         <button type="submit" style="background-color: transparent;border: none;" >
           <a href="{{ route('vagas.edit',$vaga->id) }}"><i class="far fa-edit"></a></i>
         </button>
-
 
         <form method="POST" action="/vagas/{{$vaga->id}}">
           @csrf
@@ -29,12 +32,15 @@
     </tr>
     </tbody>
     </table>
+    @endcan('admin')
   
 
     <div class="row">
 
       <div class="col-sm">
+        @can('admin')
         <b>CNPJ da empresa:</b> {{ $vaga->cnpj }}
+        @endcan('admin')
         <br></br>
         <b>Título da Vaga:</b> {{ $vaga->titulo }}
         <br></br>

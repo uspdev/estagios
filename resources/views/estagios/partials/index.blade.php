@@ -15,8 +15,11 @@ button {
   <div class="card-header"><b>Estagiários/as</b></div>
   <div class="card-body">
 
-    <a href="/estagios/create" class="btn btn-success"> Novo/a estagiário/a </a>
-    <br><br>
+    @can('empresa')
+        <a href="/estagios/create" class="btn btn-success"> Novo/a estagiário/a </a>
+        <br>
+    @endcan('empresa')
+    <br>
 
     <table class="table table-striped">
     <thead>

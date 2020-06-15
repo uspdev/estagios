@@ -4,10 +4,12 @@ $estagios =  [
     [
         'text' => 'Listar',
         'url'  => '/estagios',
+        'can'  => 'admin_ou_empresa'
     ],
     [
         'text' => 'Cadastrar',
-        'url'  => '/estagios/create'
+        'url'  => '/estagios/create',
+        'can'  => 'empresa'
     ],
 ];
 
@@ -18,7 +20,7 @@ $vagas =  [
     ],
     [
         'text' => 'Cadastrar',
-        'url'  => '/vagas/create'
+        'url'  => '/vagas/create',
     ],
 ];
 
@@ -29,7 +31,7 @@ $empresas =  [
     ],
     [
         'text' => 'Cadastrar',
-        'url'  => '/empresas/create'
+        'url'  => '/empresas/create',
     ],
 ];
 
@@ -37,10 +39,12 @@ $convenios =  [
     [
         'text' => 'Listar',
         'url'  => '/convenios',
+        'can'     => 'admin',
     ],
     [
         'text' => 'Cadastrar',
-        'url'  => '/convenios/create'
+        'url'  => '/convenios/create',
+        'can'     => 'admin',
     ],
 ];
 
@@ -51,7 +55,8 @@ $avisos =  [
     ],
     [
         'text' => 'Cadastrar',
-        'url'  => '/avisos/create'
+        'url'  => '/avisos/create',
+        'can'     => 'admin',
     ],
 ];
 
@@ -59,10 +64,12 @@ $pareceristas =  [
     [
         'text' => 'Listar',
         'url'  => '/pareceristas',
+        'can'     => 'admin',
     ],
     [
         'text' => 'Cadastrar',
         'url'  => '/pareceristas/create',
+        'can'     => 'admin',
     ],
 ];
 
@@ -75,28 +82,39 @@ return [
     'login_url' => '/',
     'menu' => [
         [
-            'text'    => 'Vagas',
+            'text'    => 'Mural de Vagas',
             'submenu' => $vagas,
+            'can'     => 'empresa',
         ],
         [
             'text'    => 'Estágios',
             'submenu' => $estagios,
+            'can'     => 'admin_ou_empresa',
         ],
         [
             'text'    => 'Empresas',
             'submenu' => $empresas,
+            'can'     => 'admin',
         ],
         [
             'text'    => 'Avisos',
             'submenu' => $avisos,
+            'can'     => 'admin',
         ],
         [
             'text'    => 'Convênios',
             'submenu' => $convenios,
+            'can'     => 'nao_habilitado_ainda',
         ],
         [
             'text'    => 'Pareceristas',
             'submenu' => $pareceristas,
+            'can'     => 'admin',
+        ],
+        [
+            'text'    => 'Atualização do Cadastro  da Empresa',
+            'url'     => '/empresa_update',
+            'can'     => 'empresa',
         ],
     ]
 ];

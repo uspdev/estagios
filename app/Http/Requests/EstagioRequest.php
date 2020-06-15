@@ -36,7 +36,7 @@ class EstagioRequest extends FormRequest
             'horario' => 'required',  
             'auxiliotransporte' => 'required',
             'especifiquevt' => 'required',
-            'cnpj' => 'required|cnpj',            
+            'cnpj' => '',            
             'atividades' => 'required',
             'seguradora' => 'required', 
             'numseguro' => 'required|numeric',

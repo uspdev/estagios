@@ -11,7 +11,6 @@ class AvisoController extends Controller
     public function index(Request $request){
 
         $this->authorize('admin');
-
         if(isset($request->busca)) {
             $avisos = Aviso::where('titulo','LIKE',"%{$request->busca}%")->paginate(10);
         } else {

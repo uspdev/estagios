@@ -22,6 +22,6 @@ class VagaSeeder extends Seeder
             'divulgar_ate' => '2020-12-20'
         ];
         App\Vaga::create($entrada);
-        factory(App\Vaga::class, 100)->create();
+        factory(App\Vaga::class, 20)->create();
     }
 }

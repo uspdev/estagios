@@ -14,7 +14,7 @@ class PareceristaController extends Controller
         if(isset($request->busca)){
             $pareceristas = Parecerista::where('numero_usp','LIKE',"%{$request->busca}%")->paginate(5);
         } else {
-            $pareceristas = Parecerista::paginate(5);
+            $pareceristas = Parecerista::paginate(30);
         }
 
         return view('pareceristas.index')->with('pareceristas',$pareceristas);
@@ -33,6 +33,13 @@ class PareceristaController extends Controller
     public function store(PareceristaRequest $request){
         $this->authorize('admin');
         $validated = $request->validated();
+        if($validated['presidente'] == 1) {
+            $pareceristas = Parecerista::all();
+            foreach($pareceristas as $parecerista){
+                $parecerista->presidente = 0;
+                $parecerista->save();
+            }
+        }
         Parecerista::create($validated);
         return redirect('/pareceristas/');
     }
@@ -45,11 +52,19 @@ class PareceristaController extends Controller
     public function update(PareceristaRequest $request, Parecerista $parecerista){
         $this->authorize('admin');
         $validated = $request->validated();
+        if($validated['presidente'] == 1) {
+            $pareceristas = Parecerista::all();
+            foreach($pareceristas as $parecerista){
+                $parecerista->presidente = 0;
+                $parecerista->save();
+            }
+        }
         $parecerista->update($validated);
         return redirect("pareceristas/$parecerista->id");
     }
 
     public function destroy( Parecerista $parecerista){
+
         $this->authorize('admin');
         $parecerista->delete();
         return redirect('/pareceristas');

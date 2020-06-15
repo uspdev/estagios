@@ -69,11 +69,6 @@ aditivo por até 12 meses.
         </div>
 
         <div class="form-group">
-        <label for="cnpj" class="required"><b>CNPJ da empresa: </b></label>
-            <input type="text" class="form-control cnpj" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" value="{{old('cnpj',$estagio->cnpj)}}">
-        </div>
-
-        <div class="form-group">
         <label for="atividades" class="required"><b>Descrição detalhada das atividades a serem desenvolvidas pelo 
         estagiário para que o parecerista analise e constate a relação destas com a formação 
         acadêmica do aluno.: </b><br></label>

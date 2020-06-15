@@ -15,7 +15,7 @@ $factory->define(Vaga::class, function (Faker $faker) {
         'salario' => $faker->buildingNumber,
         'horario' => $faker->time($format = 'H:i:s', $max = 'now'),
         'beneficios' => $faker->text,
-        'divulgar_ate' =>$faker->date,   
+        'divulgar_ate' =>$faker->dateTimeBetween($startDate = '-2 years',$endDate = '+ 2 years')->format('Y-m-d'),
     ];
 });
 

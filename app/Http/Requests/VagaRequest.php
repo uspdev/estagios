@@ -24,10 +24,10 @@ class VagaRequest extends FormRequest
     public function rules()
     {
         return [
-            'cnpj' => 'required|cnpj',
+            'cnpj' => '',
             'titulo' => 'required',
             'descricao' => 'required',
-            'expediente' => 'required|integer',
+            'expediente' => 'required',
             'salario' => 'required',
             'horario' => 'required',
             'beneficios' => 'required',

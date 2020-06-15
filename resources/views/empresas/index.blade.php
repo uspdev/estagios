@@ -6,7 +6,7 @@
 <form method="get" action="/empresas">
     <div class="row">
         <div class="col-sm input-group">
-        <input type="text" class="form-control" name="busca" value="{{ Request()->busca }}">
+        <input type="text" class="form-control" name="busca" value="{{ Request()->busca }}" placeholder="Busca somente por CNPJ">
             <span class="input-group-btn">
                 <button type="submit" class="btn btn-success"> Buscar </button>
             </span>
