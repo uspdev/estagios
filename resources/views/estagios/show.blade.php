@@ -5,11 +5,7 @@
 
 @inject('pessoa','Uspdev\Replicado\Pessoa')
 
-<h5><b>Dados sobre o estágio:</b></h5><br>
-
-
-<a href="/estagios/{{$estagio->id}}/edit" class="btn btn-success"> Editar </a>
-<br><br>
+@include('estagios.etapas')
 
 <div class="card">
   <div class="card-header"><b>Informações Gerais</b></div>

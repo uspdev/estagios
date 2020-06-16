@@ -45,6 +45,9 @@ class CreateEstagiosTable extends Migration
             $table->string('tipo')->default('novo'); // ou renovacao
             $table->text('renovacao_justificativa')->nullable();
             $table->bigInteger('renovacao_estagio_id')->nullable();
+
+            /* Campo para controlar workflow */
+            $table->string('status');
         });
     }
 

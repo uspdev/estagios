@@ -1,66 +1,126 @@
 <?php
 
-$workflow_estagio =
-[
-    'type' => 'workflow', // or 'state_machine'
-    'metadata' => [
-        'title' => 'Workflow Estágio',
-    ],
+$workflow_estagio = [
+    'type' => 'workflow',
     'marking_store' => [
-        'type' => 'multiple_state',
-        'property' => 'currentPlace', // this is the property on the model
+        'type'     => 'single_state',
+        'property' => 'status'
     ],
     'supports' => [\App\Estagio::class],
     'places' => [
-        'elaboracao' => [
+        'em_elaboracao' => [
             'metadata' => [
-                'label' => "Em elaboração \n (Empresa)",
-            ],
+                'label' => "Em elaboração \n (Empresa)"
+            ]
         ],
-        'analise_deferida' => [
+        'em_analise_tecnica' => [
             'metadata' => [
-                'label' => "Deferida",
-            ],
+                'label' => "Em análise Técnica \n (Setor de Graduação)"
+            ]
         ],
-        'analise_indeferida' => [
+        'em_analise_academica' => [
             'metadata' => [
-                'label' => "Indeferida",
-            ],
+                'label' => "Em análise Acadêmica \n (Docente)"
+            ]
         ],
-        'parecer_deferido'  => [
+        'concluido' => [
             'metadata' => [
-                'label' => "Deferido",
+                'label' => "Concluído",
                 'bg_color' => '#add8e6'
-            ],
+            ]
         ],
-        'parecer_indeferido' => [
+        'em_alteracao' => [
             'metadata' => [
-                'label' => "Indeferido",
-            ],
+                'label' => "Em elaboração das\n alterações (Empresa)"
+            ]
+        ],
+        'em_analise_tecnica_alteracao' => [
+            'metadata' => [
+                'label' => "Em análise das alterações \n (Setor de Graduação)"
+            ]
         ],
     ],
     'transitions' => [
-        'analise' => [
+        'enviar_para_analise_tecnica' => [
             'metadata' => [
-                'label' => "Análise \n (Comissão de Graduação)",
+                'label' => "Enviar para análise\n técnica"
             ],
-            'from' => 'elaboracao',
-            'to' => ['analise_deferida','analise_indeferida']
+            'from' => 'em_elaboracao',
+            'to' => 'em_analise_tecnica'
         ],
-        'elaboracao' => [
+
+        'deferimento_analise_tecnica' => [
             'metadata' => [
-                'label' => "Devolver para elaboração",
+                'label' => "Deferido"
             ],
-            'from' => ['analise_indeferida','parecer_indeferido'],
-            'to' => ['elaboracao']
+            'from' => 'em_analise_tecnica',
+            'to' => 'em_analise_academica'
         ],
-        'parecer' => [
+
+        'indeferimento_analise_tecnica' => [
             'metadata' => [
-                'label' => "Parecer \n (Coordenador(a))",
+                'label' => "Indeferido"
             ],
-            'from' => 'analise_deferida',
-            'to' => ['parecer_deferido','parecer_indeferido']
-        ]
+            'from' => 'em_analise_tecnica',
+            'to' => 'em_elaboracao'
+        ],
+
+        'deferimento_analise_academica' => [
+            'metadata' => [
+                'label' => "Deferido"
+            ],
+            'from' => 'em_analise_academica',
+            'to' => 'concluido'
+        ],
+
+        'indeferimento_analise_academica' => [
+            'metadata' => [
+                'label' => "Indeferido"
+            ],
+            'from' => 'em_analise_academica',
+            'to' => 'em_analise_tecnica'
+        ],
+
+        'iniciar_alteracao' => [
+            'metadata' => [
+                'label' => "Iniciar alterações\n (Empresa)"
+            ],
+            'from' => 'concluido',
+            'to' => 'em_alteracao'
+        ],
+
+        'enviar_analise_tecnica_alteracao' => [
+            'metadata' => [
+                'label' => "Enviar para análise"
+            ],
+            'from' => 'em_alteracao',
+            'to' => 'em_analise_tecnica_alteracao'
+        ],
+
+        'deferimento_analise_tecnica_alteracao' => [
+            'metadata' => [
+                'label' => "Deferido"
+            ],
+            'from' => 'em_analise_tecnica_alteracao',
+            'to' => 'concluido'
+        ],
+
+        'indeferimento_analise_tecnica_alteracao' => [
+            'metadata' => [
+                'label' => "Indeferido"
+            ],
+            'from' => 'em_analise_tecnica_alteracao',
+            'to' => 'em_alteracao'
+        ],
+
+        'renovacao' => [
+            'metadata' => [
+                'label' => "Renovação \n(Empresa)"
+            ],
+            'from' => 'concluido',
+            'to' => 'em_elaboracao'
+        ],
+
     ],
 ];
 

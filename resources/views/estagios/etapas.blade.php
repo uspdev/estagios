@@ -3,6 +3,9 @@
   <link rel="stylesheet" type="text/css" href="{{asset('/css/stepper.css')}}">
 @endsection('styles')
 
+{{$estagio->tipo}}
+{{$estagio->tipo}}
+
 <div class="md-stepper-horizontal orange">
 
     <div class="md-step done">
