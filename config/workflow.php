@@ -7,6 +7,7 @@ $workflow_estagio = [
         'property' => 'status'
     ],
     'supports' => [\App\Estagio::class],
+    'initial_places' => 'em_elaboracao',
     'places' => [
         'em_elaboracao' => [
             'metadata' => [

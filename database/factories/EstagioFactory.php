@@ -7,15 +7,16 @@ use Faker\Generator as Faker;
 
 $factory->define(Estagio::class, function (Faker $faker) {
   
-    $bolsa = array(
-        'Mensal',
-        'Por Hora',
-    );
-
-    $vt = array(
-        'Mensal',
-        'Diário',
-    );    
+    $bolsa = ['Mensal', 'Por Hora'];
+    $vt = ['Mensal','Diário'];
+    $status = [
+        'em_elaboracao',
+        'em_analise_tecnica',
+        'em_analise_academica',
+        'concluido',
+        'em_alteracao',
+        'em_analise_tecnica_alteracao'
+    ];
 
     return [
         'cnpj' => factory(App\Empresa::class)->create()->cnpj, 
@@ -37,6 +38,7 @@ $factory->define(Estagio::class, function (Faker $faker) {
         'controlehorario' => $faker->text($maxNbChars = 200),
         'supervisao' => $faker->text($maxNbChars = 200),
         'interacao' => $faker->text($maxNbChars = 200),
-        'enderecoedias' => $faker->text($maxNbChars = 200)
+        'enderecoedias' => $faker->text($maxNbChars = 200),
+        'status' => $status[array_rand($status)],
     ];
 });

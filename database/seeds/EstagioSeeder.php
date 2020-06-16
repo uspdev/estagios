@@ -31,7 +31,8 @@ class EstagioSeeder extends Seeder
             'controlehorario' => 'teste',
             'supervisao' => 'teste',
             'interacao' => 'teste',
-            'enderecoedias' => 'teste'                        
+            'enderecoedias' => 'teste',
+            'status' => 'em_elaboracao'                     
         ];
         App\Estagio::create($entrada); 
         
