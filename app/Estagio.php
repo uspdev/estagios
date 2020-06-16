@@ -44,4 +44,34 @@ class Estagio extends Model
     public function setCnpjAttribute($value){
         $this->attributes['cnpj'] = preg_replace("/[^0-9]/", "", $value);  
     }
+
+    public function getStatus(){
+        $status = [
+            'em_elaboracao' => [
+                'name' => "Em Elaboração",
+                'optional' => 'Empresa'
+            ],
+            'em_analise_tecnica' => [
+                'name' => "Análise Técnica",
+                'optional' => 'Setor de Graduação'
+            ],
+            'em_analise_academica' => [
+                'name' => "Parecer de Mérito",
+                'optional' => 'Docente'
+            ],
+            'concluido' => [
+                'name' => "Concluído",
+                'optional' => 'Docente'
+            ],
+            'em_alteracao' => [
+                'name' => "Aditivo de Alterações",
+                'optional' => 'Empresa'
+            ],
+            'em_analise_tecnica_alteracao' => [
+                'name' => "Análise das Alterações",
+                'optional' => 'Setor de Graduação'
+            ],
+        ];
+        return $status;
+    }
 }

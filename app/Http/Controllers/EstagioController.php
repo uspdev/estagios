@@ -42,11 +42,11 @@ class EstagioController extends Controller
 
     public function store(EstagioRequest $request)
     {
-
         $this->authorize('empresa');
 
         $validated = $request->validated();
-        $validated['cnpj'] = Auth::user()->cnpj;              
+        $validated['cnpj'] = Auth::user()->cnpj;
+        $validated['status'] = 'em_elaboracao';           
         $estagio = Estagio::create($validated);        
         return redirect("estagios/{$estagio->id}");
     }
@@ -73,5 +73,28 @@ class EstagioController extends Controller
 
         $estagio->delete();
         return redirect('/estagios');
+    }
+
+    /* Métodos para workflow */
+    
+    public function enviar_para_analise_tecnica(Estagio $estagio){
+        $workflow = $estagio->workflow_get();
+        $workflow->apply($estagio,'enviar_para_analise_tecnica');
+        $estagio->save();
+        return redirect("estagios/{$estagio->id}");
+    }
+
+    public function deferimento_analise_tecnica(Estagio $estagio) {
+        $workflow = $estagio->workflow_get();
+        $workflow->apply($estagio,'deferimento_analise_tecnica');
+        $estagio->save();
+        return redirect("estagios/{$estagio->id}");       
+    }
+
+    public function indeferimento_analise_tecnica(Estagio $estagio) {
+        $workflow = $estagio->workflow_get();
+        $workflow->apply($estagio,'indeferimento_analise_tecnica');
+        $estagio->save();
+        return redirect("estagios/{$estagio->id}");       
     }
 }

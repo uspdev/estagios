@@ -46,4 +46,8 @@ Route::get('login/empresa/check', 'Auth\LoginEmpresaController@empresa')->name('
 # Rotas para empresa
 Route::get('/empresa_update', 'EmpresaController@empresa_update');
 
+# rotas para workflow do estágio
+Route::get('/enviar_para_analise_tecnica/{estagio}', 'EstagioController@enviar_para_analise_tecnica');
+Route::get('/deferimento_analise_tecnica/{estagio}', 'EstagioController@deferimento_analise_tecnica');
+Route::get('/indeferimento_analise_tecnica/{estagio}', 'EstagioController@indeferimento_analise_tecnica');
 

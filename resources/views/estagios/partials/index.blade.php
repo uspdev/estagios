@@ -7,7 +7,7 @@ button {
     border: none;
     cursor:pointer;
     overflow: hidden;
-    outline:none;
+    outline: none;
 }
 </style>
 

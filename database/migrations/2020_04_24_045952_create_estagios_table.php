@@ -46,6 +46,12 @@ class CreateEstagiosTable extends Migration
             $table->text('renovacao_justificativa')->nullable();
             $table->bigInteger('renovacao_estagio_id')->nullable();
 
+            /* Análises */
+            $table->text('analise_tecnica')->nullable();
+            $table->string('analise_tecnica_codpes')->nullable();
+            $table->text('analise_academica')->nullable();
+            $table->string('analise_academica_codpes')->nullable();
+
             /* Campo para controlar workflow */
             $table->string('status');
         });
