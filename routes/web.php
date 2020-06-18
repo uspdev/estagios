@@ -51,3 +51,13 @@ Route::get('/enviar_para_analise_tecnica/{estagio}', 'EstagioController@enviar_p
 Route::get('/deferimento_analise_tecnica/{estagio}', 'EstagioController@deferimento_analise_tecnica');
 Route::get('/indeferimento_analise_tecnica/{estagio}', 'EstagioController@indeferimento_analise_tecnica');
 
+Route::get('/deferimento_analise_academica/{estagio}', 'EstagioController@deferimento_analise_academica');
+Route::get('/indeferimento_analise_academica/{estagio}', 'EstagioController@indeferimento_analise_academica');
+
+Route::get('/renovacao/{estagio}', 'EstagioController@renovacao');
+Route::get('/iniciar_alteracao/{estagio}', 'EstagioController@iniciar_alteracao');
+
+Route::get('/enviar_analise_tecnica_alteracao/{estagio}', 'EstagioController@enviar_analise_tecnica_alteracao');
+
+Route::get('/deferimento_analise_tecnica_alteracao/{estagio}', 'EstagioController@deferimento_analise_tecnica_alteracao');
+Route::get('/indeferimento_analise_tecnica_alteracao/{estagio}', 'EstagioController@indeferimento_analise_tecnica_alteracao');
