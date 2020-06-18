@@ -7,4 +7,17 @@ form label.required:after
 textarea {
     width:100%;
     resize: none;
- }
+}
+
+.botao {
+    color: DodgerBlue;
+    background-color: Transparent;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none; 
+}
+
+.botao:hover {
+    color: RoyalBlue;
+}

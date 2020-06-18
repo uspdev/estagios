@@ -38,6 +38,35 @@
         </div>
         @break
 
+    @case('em_analise_academica')
+        <div>
+            <a href="/indeferimento_analise_academica/{{$estagio->id}}" class="btn btn-success"> Indeferir</a>
+            <a href="/deferimento_analise_academica/{{$estagio->id}}" class="btn btn-info"> deferir</a>
+        </div>
+        @break        
+
+    @case('concluido')
+        <div>
+            <a href="/renovacao/{{$estagio->id}}" class="btn btn-info"> Renovação</a>
+            <a href="/iniciar_alteracao/{{$estagio->id}}" class="btn btn-info"> Iniciar Alterações</a>
+        </div>
+        @break 
+
+    @case('em_alteracao')
+        <div>
+            <a href="/enviar_analise_tecnica_alteracao/{{$estagio->id}}" class="btn btn-info"> Enviar Alterações</a>
+        </div>
+        @break 
+
+    @case('em_analise_tecnica_alteracao')
+        <div>
+            <a href="/indeferimento_analise_tecnica_alteracao/{{$estagio->id}}" class="btn btn-success"> Indeferir</a>
+            <a href="/deferimento_analise_tecnica_alteracao/{{$estagio->id}}" class="btn btn-info"> deferir</a>
+        </div>
+        @break 
+
+                        
+
     @default
         <span>Something went wrong, please try again</span>
 @endswitch
