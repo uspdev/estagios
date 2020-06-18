@@ -11,9 +11,7 @@
 
     <div class="row">
       <div class="col-sm">
-        <button type="submit" class="btn btn-success">
-          <a href="{{ route('pareceristas.edit',$parecerista->id) }}">Editar</a>
-        </button>
+        <a href="{{ route('pareceristas.edit',$parecerista->id) }}" class="btn btn-success">Editar</a>
       </div>
     </div>
 

@@ -5,7 +5,7 @@
 
 @inject('pessoa','Uspdev\Replicado\Pessoa')
 
-<h5><b>Dados sobre o estágio:</b></h5><br>
+@include('estagios.etapas')
 
 <div class="card">
   <div class="card-header"><b>Informações Gerais</b></div>

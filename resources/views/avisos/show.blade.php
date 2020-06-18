@@ -5,6 +5,7 @@
 <div class="card">
   <div class="card-header">
     <strong>Exibição </strong>
+    <a class="btn btn-outline-success btn-sm" href="/avisos/{{$aviso->id}}/edit" role="button">Editar</a>
   </div>
     <div class="row">
       <div class="col-sm-8">

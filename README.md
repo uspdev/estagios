@@ -8,24 +8,9 @@ Procedimentos de deploy básico para desenvolvimento:
     php artisan migrate:fresh --seed
 
 
-Etapas do estágio:
+Vizualizar etapas do estágio:
 
-novo_estagio: elaboracao - analise - parecer - aprovado - finalizado
-renovacao: elaboracao - analise - parecer - aprovado - finalizado
-aditivo_alteracoes: elaboracao - analise
-
-- Elaboração (Empresa) - Somente aqui pode ser deletado
-- Análise (Comissão de Graduação)-> campo para comentários
-- Parecer (Docente) -> campos do parecer
-  - Negado (volta para comissão de graduação)
-  - Aprovado
-- Em Elaboração Aditivo de Alterações
-- Aditivo de Alterações (Empresa)
-- Análise (Comissão de Graduação)-> campo para comentários
-- Em Elaboração Renovação
-- Análise renovação
-- parecer renovação
--
--
+    sudo apt-get install graphviz
+    php artisan workflow:dump -v workflow_estagio --class=App\\Estagio
 
 ![workflow](https://raw.githubusercontent.com/fflch/estagios/master/workflow_estagio.png)

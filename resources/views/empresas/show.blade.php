@@ -6,6 +6,19 @@
 <div class="card">
     <div class="card-header">Dados da Empresa</div>
     <div class="card-body">
+        <div class="row">
+            <div class="col-1">
+                <a class="btn btn-primary btn-success" href="/empresas/{{$empresa->id}}/edit">Editar</a>
+            </div>
+            <div class="col-1">
+                <form method="POST" action="/empresas/{{$empresa->id}}">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn btn-secondary btn-danger">Apagar</button>
+                </form>
+            </div>
+        </div>
+        <br>
         <b>Nome da Empresa:</b> {{$empresa->nome}}<br>
         <b>Razão Social:</b> {{$empresa->razao_social}}<br>
         <b>CNPJ:</b> {{$empresa->cnpj}}<br>

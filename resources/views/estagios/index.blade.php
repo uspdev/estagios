@@ -7,17 +7,18 @@
 @section('content')
 @include('flash')
 
+@can('admin')
 <form method="get" action="/estagios">
   <div class="row">
     <div class=" col-sm input-group">
-      <input type="text" class="form-control" name="busca" value="{{ Request()->busca}}">
+      <input type="text" class="form-control" name="busca" value="{{ Request()->busca}}" placeholder="Busca somente por número USP do/a aluno/a">
       <span class="input-group-btn">
         <button type="submit" class="btn btn-success"> Buscar </button>
       </span>
     </div>
   </div>
 </form>
-
+@endcan('admin')
 <br>
 
 {{$estagios->appends(request()->query())->links()}}

@@ -5,23 +5,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','IndexController@index')->name('login');
 Route::get('/home','IndexController@index')->name('home');
 
+# Models
 Route::resource('/pareceristas','PareceristaController');
-
+Route::resource('/estagios','EstagioController');
 Route::resource('/vagas','VagaController');
-
-Route::get('/estagios','EstagioController@index');
-Route::get('/estagios/create','EstagioController@create');
-Route::post('/estagios','EstagioController@store');
-Route::get('/estagios/{estagio}','EstagioController@show');
-Route::get('/estagios/{estagio}/edit','EstagioController@edit');
-Route::patch('/estagios/{estagio}','EstagioController@update');
-Route::delete('/estagios/{estagio}','EstagioController@destroy');
-
 Route::resource('/empresas', 'EmpresaController');
-
 Route::resource('/avisos','AvisoController');
-
-
 Route::resource('/convenios','ConvenioController');
 
 
@@ -53,4 +42,12 @@ Route::get('/logout', 'Auth\LogoutController@logout');
 Route::get('login/empresa', 'Auth\LoginEmpresaController@create');
 Route::post('login/empresa', 'Auth\LoginEmpresaController@store');
 Route::get('login/empresa/check', 'Auth\LoginEmpresaController@empresa')->name('login_empresa');
+
+# Rotas para empresa
+Route::get('/empresa_update', 'EmpresaController@empresa_update');
+
+# rotas para workflow do estágio
+Route::get('/enviar_para_analise_tecnica/{estagio}', 'EstagioController@enviar_para_analise_tecnica');
+Route::get('/deferimento_analise_tecnica/{estagio}', 'EstagioController@deferimento_analise_tecnica');
+Route::get('/indeferimento_analise_tecnica/{estagio}', 'EstagioController@indeferimento_analise_tecnica');
 

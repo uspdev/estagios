@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Uspdev\Replicado\Pessoa;
-
+use App\Vaga;
+use App\Aviso;
 
 class IndexController extends Controller
 {
@@ -18,7 +19,13 @@ class IndexController extends Controller
         /* Se for empresa logada, mas sem cadastro, ir create.blade.php */
 
         /* Usuário deslogado ir para tela de login */
-        return view('index');
+
+        $avisos = Aviso::whereDate('divulgacao_home_ate','>=',date('Y-m-d'))->get();
+        $vagas = Vaga::whereDate('divulgar_ate','>=',date('Y-m-d'))->get();
+
+        return view('index')
+            ->with('avisos',$avisos)
+            ->with('vagas',$vagas);
     }
 
 }

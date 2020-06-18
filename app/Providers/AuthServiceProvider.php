@@ -26,16 +26,25 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('admin', function ($user) {
-            return True;
+            $admins = explode(',', trim(config('estagios.admins')));
+            return in_array($user->codpes, $admins);
         });
 
         Gate::define('parecerista', function ($user) {
             return True;
         });
 
-        Gate::define('empresa', function ($user) {
-            return True;
+        Gate::define('empresa', function ($user, $cnpj = null) {
+            if(!empty($user->cnpj)){
+                if(is_null($cnpj)) return True;
+                if($user->cnpj == $cnpj) return True;
+            }
+            return False;
         });
 
+        Gate::define('admin_ou_empresa', function ($user, $cnpj = null) {
+            if(Gate::allows('admin')) return True;
+            return Gate::allows('empresa',$cnpj);
+        });
     }
 }
