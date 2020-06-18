@@ -1,16 +1,5 @@
 @inject('pessoa','Uspdev\Replicado\Pessoa')
 
-<style>
-button {
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor:pointer;
-    overflow: hidden;
-    outline:none;
-}
-</style>
-
 <div class="card">
   <div class="card-header"><b>Estagiários/as</b></div>
   <div class="card-body">
@@ -46,18 +35,22 @@ button {
         </td>
 
         <td>
+            <div>
             <a href="/estagios/{{$estagio->id}}/edit">
             <i class="fas fa-edit">
             </a></i>
-            <a href="/pdfs/termo/{{$estagio->id}}"><i class="fas fa-file-pdf"></i></a>
-        </td>   
 
+            <a href="/pdfs/termo/{{$estagio->id}}">
+            <i class="fas fa-file-pdf">
+            </i></a>
+        </td>    
         <td>
-            <form method="POST" action="/estagios/{{$estagio->id}}">         
+            <form  method="POST" action="/estagios/{{$estagio->id}}">         
                 @csrf
                 @method('delete')
-                <button type="submit">teste</button>
+                <button class="botao" type="submit"><i class="fas fa-trash-alt"></i></button>
             </form>
+            <div>
         </td>
 
         </tr>
