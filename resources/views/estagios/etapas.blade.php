@@ -29,13 +29,12 @@
     @case('em_elaboracao')
         <div><a href="/enviar_para_analise_tecnica/{{$estagio->id}}" class="btn btn-info"> Enviar para Análise Técnica do <b>Setor de Graduação</b></a></div> <br>
         <div><a href="/estagios/{{$estagio->id}}/edit" class="btn btn-success"> Continuar elaboração</a></div>
+        {{$estagio->analise_tecnica}} <br>
+        starus: {{$estagio->status}}
         @break
 
     @case('em_analise_tecnica')
-        <div>
-            <a href="/indeferimento_analise_tecnica/{{$estagio->id}}" class="btn btn-success"> Indeferir</a>
-            <a href="/deferimento_analise_tecnica/{{$estagio->id}}" class="btn btn-info"> deferir</a>
-        </div>
+        @include('estagios.partials.em_analise_tecnica')
         @break
 
     @case('em_analise_academica')

@@ -48,9 +48,14 @@ class CreateEstagiosTable extends Migration
 
             /* Análises */
             $table->text('analise_tecnica')->nullable();
-            $table->string('analise_tecnica_codpes')->nullable();
+            $table->string('analise_tecnica_user_id')->nullable();
+
             $table->text('analise_academica')->nullable();
-            $table->string('analise_academica_codpes')->nullable();
+            $table->string('analise_academica_user_id')->nullable();
+
+            /* Análises */
+            $table->text('analise_alteracao')->nullable();
+            $table->string('analise_alteracao_user_id')->nullable();
 
             /* Campo para controlar workflow */
             $table->string('status');
