@@ -17,6 +17,10 @@
         <b>Justificativa:</b> {{$estagio->justificativa}}<br>
         <b>CNPJ da empresa:</b> {{$estagio->cnpj}}<br>
         <b>Atividades a serem desenvolvidas:</b> {{$estagio->atividades}}<br>
+        <b>As ativídades são pertinentes ao curso?:</b> {{$estagio->atividadespertinentes}}<br>
+        <b>Média Ponderada:</b> {{$estagio->mediaponderada}}<br>
+        <b>O horário é compatível com o curso?:</b> {{$estagio->horariocompativel}}<br>
+        <b>Desempenho Acadêmico:</b> {{$estagio->desempenhoacademico}}<br>
     </div>
 </div>
 

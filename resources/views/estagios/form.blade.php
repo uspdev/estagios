@@ -64,18 +64,52 @@ aditivo por até 12 meses.
         </div>
 
         <div class="form-group">
-        <label for="justificativa" class="required"><b>Justificativa: </b><br></label>
+        <label for="justificativa" class="required"><b>Justificativa: </b></label>
             <textarea name="justificativa" rows="5" cols="60">{{old('justificativa',$estagio->justificativa)}}</textarea>
         </div>
 
         <div class="form-group">
         <label for="atividades" class="required"><b>Descrição detalhada das atividades a serem desenvolvidas pelo 
         estagiário para que o parecerista analise e constate a relação destas com a formação 
-        acadêmica do aluno.: </b><br></label>
+        acadêmica do aluno.: </b></label>
             <textarea name="atividades" rows="5" cols="60">{{old('atividades',$estagio->atividades)}}</textarea>
         </div>
 
-</div>
+        <label for="atividadespertinentes" class="required"><b>As atividades propostas no plano de estágio são pertinentes ao curso do aluno?: </b></label>               
+        <select name="atividadespertinentes" class="form-control" id="atividadespertinentes">
+            <option value="" selected="">- Selecione -</option>
+                @foreach ($estagio->atividadespertinentesOptions() as $option)
+                @if (old('atividadespertinentes') == '' and isset($estagio->atividadespertinentes) )
+            <option value="{{$option}}" {{ ( $estagio->atividadespertinentes == $option) ? 'selected' : ''}}>
+                {{$option}}
+            </option>
+                @else
+            <option value="{{$option}}" {{ ( old('atvidadespertinentes') == $option) ? 'selected' : ''}}>
+                {{$option}}
+            </option>
+            @endif
+            @endforeach
+        </select>
+        <br>
+
+        <div class="form-group">
+        <label for="mediaponderada" class="required"><b>Média Ponderada.</b></label>
+            <input type="text" class="form-control" id="mediaponderada" name="mediaponderada" value="{{old('mediaponderada',$estagio->mediaponderada)}}">
+        </div>
+
+        <div class="form-group">
+        <label for="horariocompativel" class="required"><b>O Horário é compatível com os horários disponíveis na grade horária do aluno?:</b></label>
+            <input type="text" class="form-control" id="horariocompativel" name="horariocompativel" value="{{old('horariocompativel',$estagio->horariocompativel)}}">
+        </div>
+
+        <div class="form-group">
+        <label for="desempenhoacademico" class="required"><b>Avalie o desempenho acadêmico do aluno.: </b></label>
+            <textarea name="desempenhoacademico" rows="5" cols="60">{{old('desempenhoacademico',$estagio->desempenhoacademico)}}</textarea>
+        </div>
+
+
+
+    </div>
 </div>
 
 <hr>
@@ -145,25 +179,21 @@ aditivo por até 12 meses.
 
             <div class="col-sm form-group">
                 <div class="form-group">
-                    <label for="especifiquevt" class="required"><b>Especifique o tipo de vale transporte: </b></label>
-                  
+                    <label for="especifiquevt" class="required"><b>Especifique o tipo de vale transporte: </b></label>               
                     <select name="especifiquevt" class="form-control" id="especifiquevt">
- 
                         <option value="" selected="">- Selecione -</option>
-                        @foreach ($estagio->especifiquevtOptions() as $option)
-                          @if (old('especifiquevt') == '' and isset($estagio->especifiquevt) )
-                            <option value="{{$option}}" {{ ( $estagio->especifiquevt == $option) ? 'selected' : ''}}>
-                                {{$option}}
-                            </option>
-
-                          @else
-                            <option value="{{$option}}" {{ ( old('especifiquevt') == $option) ? 'selected' : ''}}>
-                                {{$option}}
-                            </option>
-                          @endif
-                          
+                            @foreach ($estagio->especifiquevtOptions() as $option)
+                            @if (old('especifiquevt') == '' and isset($estagio->especifiquevt) )
+                        <option value="{{$option}}" {{ ( $estagio->especifiquevt == $option) ? 'selected' : ''}}>
+                            {{$option}}
+                        </option>
+                        @else
+                        <option value="{{$option}}" {{ ( old('especifiquevt') == $option) ? 'selected' : ''}}>
+                            {{$option}}
+                        </option>
+                        @endif
                         @endforeach
-                    </select> 
+                    </select>
                 </div></div>
             </div>
 </div></div>

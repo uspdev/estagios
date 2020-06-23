@@ -24,6 +24,14 @@ class Estagio extends Model
             'Por Hora'
         ];
     }
+
+    public function atividadespertinentesOptions(){
+        return [
+            'Sim',
+            'Não',
+            'Parcialmente'
+        ];
+    }    
     
     public function getDataInicialAttribute($value) {
         return implode('/',array_reverse(explode('-',$value)));

@@ -9,6 +9,7 @@ $factory->define(Estagio::class, function (Faker $faker) {
   
     $bolsa = ['Mensal', 'Por Hora'];
     $vt = ['Mensal','Diário'];
+    $atvpertinentes = ['Sim','Não','Parcialmente'];
     $status = [
         'em_elaboracao',
         'em_analise_tecnica',
@@ -24,7 +25,13 @@ $factory->define(Estagio::class, function (Faker $faker) {
         'valorbolsa' => $faker->numberBetween(300, 4000),
         'tipobolsa' => $bolsa[array_rand($bolsa)],
         'justificativa' => $faker->text($maxNbChars = 200),
-        'duracao' => $faker->numberBetween(12, 24),           
+        'duracao' => $faker->numberBetween(12, 24), 
+        //
+        'atividadespertinentes' => $atvpertinentes[array_rand($atvpertinentes)],
+        'mediaponderada' => $faker->numberBetween(0, 10),
+        'horariocompativel' => $faker->text($maxNbChars = 200), 
+        'desempenhoacademico' => $faker->text($maxNbChars = 200),   
+        //               
         'data_inicial' => $faker->date,
         'data_final' => $faker->date,
         'cargahoras' => $faker->numberBetween(00, 23),

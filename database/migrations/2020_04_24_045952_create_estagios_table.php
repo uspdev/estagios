@@ -20,7 +20,11 @@ class CreateEstagiosTable extends Migration
             $table->string('valorbolsa');
             $table->string('tipobolsa');
             $table->string('duracao');            
-            $table->text('justificativa');    
+            $table->text('justificativa');                
+            $table->string('atividadespertinentes'); 
+            $table->string('mediaponderada'); 
+            $table->string('horariocompativel'); 
+            $table->text('desempenhoacademico'); 
             $table->date('data_inicial');
             $table->date('data_final');
             $table->string('cargahoras'); 
