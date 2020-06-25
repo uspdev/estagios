@@ -41,6 +41,12 @@ $workflow_estagio = [
                 'label' => "Em análise das alterações \n (Setor de Graduação)"
             ]
         ],
+        'rescisao' => [
+            'metadata' => [
+                'label' => "Rescisão",
+                'bg_color' => '#add8e6'
+            ]
+        ]
     ],
     'transitions' => [
         'enviar_para_analise_tecnica' => [
@@ -122,6 +128,14 @@ $workflow_estagio = [
             'from' => 'concluido',
             'to' => 'em_elaboracao'
         ],
+
+        'rescisao_do_estagio' => [
+            'metadata' => [
+                'label' => "Estágio rescindido"
+            ],
+            'from' => 'concluido',
+            'to' => 'em_elaboracao'            
+        ],        
 
     ],
 ];

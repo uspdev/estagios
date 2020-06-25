@@ -1,3 +1,7 @@
+@section('javascripts_head')
+  <script src="{{asset('/js/estagios.js')}}"></script>
+@endsection('javascript_head')
+
 @extends('laravel-usp-theme::master')
 
 @section('content')
@@ -5,18 +9,30 @@
 
 @inject('pessoa','Uspdev\Replicado\Pessoa')
 
-@include('estagios.etapas')
+<div class="card">
+    <div class="card-header"><b>Status do Estágio</b></div>
+      <div class="card-body">
+        @include('estagios.etapas')
+      </div>  
+    </div>
+
+<br>
 
 <div class="card">
   <div class="card-header"><b>Informações Gerais</b></div>
     <div class="card-body">
         <b>Número USP:</b> {{$estagio->numero_usp}}<br>
         <b>Nome do Aluno:</b> {{$pessoa::dump($estagio->numero_usp)['nompes'] }}<br>
+        <b>Média Ponderada:</b> {{$estagio->mediaponderada}}<br>     
+        <b>Desempenho Acadêmico:</b> {{$estagio->desempenhoacademico}}<br>           
         <b>Valor da bolsa:</b> {{$estagio->valorbolsa}}<br>
         <b>Tipo de bolsa:</b> {{$estagio->tipobolsa}}<br>
         <b>Justificativa:</b> {{$estagio->justificativa}}<br>
         <b>CNPJ da empresa:</b> {{$estagio->cnpj}}<br>
         <b>Atividades a serem desenvolvidas:</b> {{$estagio->atividades}}<br>
+        <b>O horário é compatível com o curso?:</b> {{$estagio->horariocompativel}}<br>
+        <b>As ativídades são pertinentes ao curso?:</b> {{$estagio->atividadespertinentes}}<br>        
+        <b>Desempenho Acadêmico:</b> {{$estagio->desempenhoacademico}}<br>
     </div>
 </div>
 
