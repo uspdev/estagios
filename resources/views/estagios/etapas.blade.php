@@ -26,45 +26,41 @@
   </div>
 
 @switch($estagio->status)
+
+
     @case('em_elaboracao')
-        <div><a href="/enviar_para_analise_tecnica/{{$estagio->id}}" class="btn btn-info"> Enviar para Análise Técnica do <b>Setor de Graduação</b></a></div> <br>
-        <div><a href="/estagios/{{$estagio->id}}/edit" class="btn btn-success"> Continuar elaboração</a></div>
-        {{$estagio->analise_tecnica}} <br>
-        starus: {{$estagio->status}}
-        @break
+      <div>
+        <a href="/enviar_para_analise_tecnica/{{$estagio->id}}" class="btn btn-success">Enviar para Análise Técnica do <b>Setor de Graduação</b></a>
+        <a href="/estagios/{{$estagio->id}}/edit" class="btn btn-info">Continuar Elaboração</a>
+      </div>   
+      @break
 
     @case('em_analise_tecnica')
-        @include('estagios.partials.em_analise_tecnica')
-        @break
+      @include('estagios.partials.em_analise_tecnica')
+      @break
 
     @case('em_analise_academica')
-        <div>
-            <a href="/indeferimento_analise_academica/{{$estagio->id}}" class="btn btn-success"> Indeferir</a>
-            <a href="/deferimento_analise_academica/{{$estagio->id}}" class="btn btn-info"> deferir</a>
-        </div>
-        @break        
+      @include('estagios.partials.em_analise_academica')
+      @break              
 
     @case('concluido')
-        <div>
-            <a href="/renovacao/{{$estagio->id}}" class="btn btn-info"> Renovação</a>
-            <a href="/iniciar_alteracao/{{$estagio->id}}" class="btn btn-info"> Iniciar Alterações</a>
-        </div>
-        @break 
+      <div>
+        <a href="/renovacao/{{$estagio->id}}" class="btn btn-info">Renovar</a>
+        <a href="/iniciar_alteracao/{{$estagio->id}}" class="btn btn-info">Iniciar Alterações</a>
+      </div>
+      @break 
 
     @case('em_alteracao')
-        <div>
-            <a href="/enviar_analise_tecnica_alteracao/{{$estagio->id}}" class="btn btn-info"> Enviar Alterações</a>
-        </div>
-        @break 
+      @include('estagios.partials.em_analise_alteracao')
+      @break  
 
     @case('em_analise_tecnica_alteracao')
-        <div>
-            <a href="/indeferimento_analise_tecnica_alteracao/{{$estagio->id}}" class="btn btn-success"> Indeferir</a>
-            <a href="/deferimento_analise_tecnica_alteracao/{{$estagio->id}}" class="btn btn-info"> deferir</a>
-        </div>
-        @break 
-
-                        
+      <div>
+        <a href="/indeferimento_analise_tecnica_alteracao/{{$estagio->id}}" class="btn btn-info">Indeferir</a>
+        <a href="/deferimento_analise_tecnica_alteracao/{{$estagio->id}}" class="btn btn-success">Deferir</a>
+      </div>
+      @break 
+                   
 
     @default
         <span>Something went wrong, please try again</span>

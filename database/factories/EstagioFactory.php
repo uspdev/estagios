@@ -26,12 +26,10 @@ $factory->define(Estagio::class, function (Faker $faker) {
         'tipobolsa' => $bolsa[array_rand($bolsa)],
         'justificativa' => $faker->text($maxNbChars = 200),
         'duracao' => $faker->numberBetween(12, 24), 
-        //
         'atividadespertinentes' => $atvpertinentes[array_rand($atvpertinentes)],
         'mediaponderada' => $faker->numberBetween(0, 10),
         'horariocompativel' => $faker->text($maxNbChars = 200), 
-        'desempenhoacademico' => $faker->text($maxNbChars = 200),   
-        //               
+        'desempenhoacademico' => $faker->text($maxNbChars = 200),              
         'data_inicial' => $faker->date,
         'data_final' => $faker->date,
         'cargahoras' => $faker->numberBetween(00, 23),
