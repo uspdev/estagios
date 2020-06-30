@@ -46,9 +46,8 @@ class CreateEstagiosTable extends Migration
             $table->date('rescicao_data')->nullable();
 
             /* Campos da renovação */
-            $table->string('tipo')->default('novo'); // ou renovacao
             $table->text('renovacao_justificativa')->nullable();
-            $table->bigInteger('renovacao_estagio_id')->nullable();
+            $table->bigInteger('renovacao_parent_id')->nullable();
 
             /* Análises */
             $table->text('analise_tecnica')->nullable();

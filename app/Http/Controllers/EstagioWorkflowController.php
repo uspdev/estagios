@@ -20,6 +20,14 @@ class EstagioWorkflowController extends Controller
     }
 
     public function analise_tecnica(Request $request, Estagio $estagio){
+
+        /* Quando indeferir, tornar obrigatório o campo analise_tecnica */
+        if($request->analise_tecnica_action == 'indeferimento_analise_tecnica'){
+            $request->validate([
+                'analise_tecnica' => 'required',
+            ]);
+        }
+
         $estagio->analise_tecnica = $request->analise_tecnica;
         $estagio->analise_tecnica_user_id = Auth::user()->id;
         $estagio->save();
@@ -30,6 +38,11 @@ class EstagioWorkflowController extends Controller
     }
 
     public function analise_academica(Request $request, Estagio $estagio){
+
+        $request->validate([
+            'analise_academica' => 'required',
+        ]);
+
         $estagio->analise_academica = $request->analise_academica;
         $estagio->analise_academica_user_id = Auth::user()->id;
         $estagio->save();
@@ -40,10 +53,18 @@ class EstagioWorkflowController extends Controller
     }
 
     public function renovacao(Estagio $estagio) {
-        $workflow = $estagio->workflow_get();
-        $workflow->apply($estagio,'renovacao');
-        $estagio->save();
-        return redirect("estagios/{$estagio->id}");       
+        
+        $renovacao = $estagio->replicate();
+        $renovacao->push();
+
+        if(empty($estagio->renovacao_parent_id)){
+            $renovacao->renovacao_parent_id = $estagio->id;
+        }
+
+        $workflow = $renovacao->workflow_get();
+        $workflow->apply($renovacao,'renovacao');
+        $renovacao->save();
+        return redirect("estagios/{$renovacao->id}");     
     }   
 
     public function iniciar_alteracao(Estagio $estagio) {

@@ -22,6 +22,6 @@ class PareceristaSeeder extends Seeder
         App\Parecerista::create($entrada1);
         App\Parecerista::create($entrada2);
 
-        factory(App\Parecerista::class, 12)->create();
+        factory(App\Parecerista::class, 15)->create();
     }
 }

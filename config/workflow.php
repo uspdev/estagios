@@ -134,7 +134,7 @@ $workflow_estagio = [
                 'label' => "Estágio rescindido"
             ],
             'from' => 'concluido',
-            'to' => 'em_elaboracao'            
+            'to' => 'rescisao'            
         ],        
 
     ],

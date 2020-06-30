@@ -79,6 +79,10 @@ class Estagio extends Model
                 'name' => "Análise das Alterações",
                 'optional' => 'Setor de Graduação'
             ],
+            'rescisao' => [
+                'name' => "Rescisão",
+                'optional' => 'Empresa'
+            ],
         ];
         return $status;
     }

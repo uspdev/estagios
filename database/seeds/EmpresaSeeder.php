@@ -30,6 +30,6 @@ class EmpresaSeeder extends Seeder
         ];
         App\Empresa::create($entrada);
 
-        factory(App\Empresa::class, 100)->create();
+        factory(App\Empresa::class, 10)->create();
     }
 }

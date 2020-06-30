@@ -3,6 +3,12 @@
 <div class="card-header"><b>Justificativa da análise acadêmica</b></div>
 <div class="card-body">
 
+<ul>
+  <li>As atividades propostas no plano de estágio são pertinentes ao curso do(a) aluno(a)?</li>
+  <li>Horário é compatível com os horários disponíveis na grade horária do(a) aluno(a? </li>
+  <li>Comente sobre o desempenho acadêmico do(a) aluno(a) (coloque a média ponderada) </li>
+</ul>
+
 <form method="POST" action="/analise_academica/{{$estagio->id}}">
     @csrf
     <div class="row">

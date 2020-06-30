@@ -31,6 +31,6 @@ class ConvenioSeeder extends Seeder
     ];
     App\Convenio::create($entrada);
 
-    factory(App\Convenio::class, 100)->create();
+    factory(App\Convenio::class, 10)->create();
     }
 }
