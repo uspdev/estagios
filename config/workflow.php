@@ -129,6 +129,14 @@ $workflow_estagio = [
             'to' => 'em_elaboracao'
         ],
 
+        'reiniciar_estagio' => [
+            'metadata' => [
+                'label' => "Reiniciar \n(Empresa)"
+            ],
+            'from' => 'rescisao',
+            'to' => 'em_elaboracao'
+        ],
+
         'rescisao_do_estagio' => [
             'metadata' => [
                 'label' => "Estágio rescindido"

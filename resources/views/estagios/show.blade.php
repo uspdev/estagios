@@ -23,8 +23,7 @@
     <div class="card-body">
         <b>Número USP:</b> {{$estagio->numero_usp}}<br>
         <b>Nome do Aluno:</b> {{$pessoa::dump($estagio->numero_usp)['nompes'] }}<br>
-        <b>Média Ponderada:</b> {{$estagio->mediaponderada}}<br>     
-        <b>Desempenho Acadêmico:</b> {{$estagio->desempenhoacademico}}<br>           
+        <b>Média Ponderada:</b> {{$estagio->mediaponderada}}<br>            
         <b>Valor da bolsa:</b> {{$estagio->valorbolsa}}<br>
         <b>Tipo de bolsa:</b> {{$estagio->tipobolsa}}<br>
         <b>Justificativa:</b> {{$estagio->justificativa}}<br>

@@ -51,9 +51,12 @@ Route::get('/empresa_update', 'EmpresaController@empresa_update');
 Route::post('/analise_tecnica/{estagio}', 'EstagioWorkflowController@analise_tecnica');
 Route::post('/analise_academica/{estagio}', 'EstagioWorkflowController@analise_academica');
 Route::post('/analise_alteracao/{estagio}', 'EstagioWorkflowController@analise_alteracao');
+Route::post('/analise_alteracao_tecnica/{estagio}', 'EstagioWorkflowController@analise_alteracao_tecnica');
+Route::post('/rescisao/{estagio}', 'EstagioWorkflowController@rescisao');
+Route::post('/enviar_alteracao/{estagio}', 'EstagioWorkflowController@analise_alteracao');
 
 Route::get('/enviar_para_analise_tecnica/{estagio}', 'EstagioWorkflowController@enviar_para_analise_tecnica');
 Route::get('/renovacao/{estagio}', 'EstagioWorkflowController@renovacao');
-Route::get('/iniciar_alteracao/{estagio}', 'EstagioWorkflowController@iniciar_alteracao');
 Route::get('/indeferimento_analise_tecnica_alteracao/{estagio}', 'EstagioWorkflowController@indeferimento_analise_tecnica_alteracao');
 Route::get('/deferimento_analise_tecnica_alteracao/{estagio}', 'EstagioWorkflowController@deferimento_analise_tecnica_alteracao');
+Route::get('/reiniciar_estagio/{estagio}', 'EstagioWorkflowController@reiniciar_estagio');

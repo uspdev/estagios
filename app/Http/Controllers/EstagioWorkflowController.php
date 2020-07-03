@@ -73,8 +73,18 @@ class EstagioWorkflowController extends Controller
         $estagio->save();
         return redirect("estagios/{$estagio->id}");           
 
+    }
+    
+    public function rescisao(Request $request, Estagio $estagio){
+        $estagio->rescisao_motivo = $request->rescisao_motivo; 
+   
+        $estagio->save();
+        $workflow = $estagio->workflow_get();
+        $workflow->apply($estagio,'rescisao_do_estagio');
+        $estagio->save();
+        return redirect("/estagios/{$estagio->id}"); 
     } 
-
+    
     public function analise_alteracao(Request $request, Estagio $estagio){
         $estagio->analise_alteracao = $request->analise_alteracao;
         $estagio->analise_alteracao_user_id = Auth::user()->id;        
@@ -82,8 +92,18 @@ class EstagioWorkflowController extends Controller
         $workflow = $estagio->workflow_get();
         $workflow->apply($estagio,'enviar_analise_tecnica_alteracao');
         $estagio->save();
-        return redirect("/estagios/{$estagio->id}");         
+        return redirect("/estagios/{$estagio->id}"); 
     } 
+
+    public function analise_alteracao_tecnica(Request $request, Estagio $estagio){
+        $estagio->analise_alteracao = $request->analise_alteracao;
+        $estagio->analise_alteracao_user_id = Auth::user()->id;        
+        $estagio->save();
+        $workflow = $estagio->workflow_get();
+        $workflow->apply($estagio,'enviar_analise_tecnica_alteracao');
+        $estagio->save();
+        return redirect("/estagios/{$estagio->id}");         
+    }
 
     public function deferimento_analise_tecnica_alteracao(Estagio $estagio) {
         $workflow = $estagio->workflow_get();
@@ -92,11 +112,25 @@ class EstagioWorkflowController extends Controller
         return redirect("estagios/{$estagio->id}");       
     }   
 
+
     public function indeferimento_analise_tecnica_alteracao(Estagio $estagio) {
         $workflow = $estagio->workflow_get();
+        $request->validate([
+            'analise_academica' => 'required',
+        ]);
         $workflow->apply($estagio,'indeferimento_analise_tecnica_alteracao');
         $estagio->save();
         return redirect("estagios/{$estagio->id}");           
 
     } 
+
+    public function reiniciar_estagio(Estagio $estagio) {
+        $reiniciar_estagio = $estagio->replicate();
+        $reiniciar_estagio->push();
+        $workflow = $reiniciar_estagio->workflow_get();
+        $workflow->apply($reiniciar_estagio,'reiniciar_estagio');
+        $reiniciar_estagio->save();
+        return redirect("estagios/{$reiniciar_estagio->id}");     
+    } 
+
 }
