@@ -48,12 +48,23 @@ Route::get('/empresa_update', 'EmpresaController@empresa_update');
 
 # rotas para workflow do estágio
 
+# Rotas Análise Técnica
 Route::post('/analise_tecnica/{estagio}', 'EstagioWorkflowController@analise_tecnica');
-Route::post('/analise_academica/{estagio}', 'EstagioWorkflowController@analise_academica');
-Route::post('/analise_alteracao/{estagio}', 'EstagioWorkflowController@analise_alteracao');
-
 Route::get('/enviar_para_analise_tecnica/{estagio}', 'EstagioWorkflowController@enviar_para_analise_tecnica');
-Route::get('/renovacao/{estagio}', 'EstagioWorkflowController@renovacao');
+
+# Rotas Análise Acadêmica
+Route::post('/analise_academica/{estagio}', 'EstagioWorkflowController@analise_academica');
+
+# Rotas Concluido
+Route::post('/rescisao/{estagio}', 'EstagioWorkflowController@rescisao');
+Route::post('/renovacao/{estagio}', 'EstagioWorkflowController@renovacao');
 Route::get('/iniciar_alteracao/{estagio}', 'EstagioWorkflowController@iniciar_alteracao');
-Route::get('/indeferimento_analise_tecnica_alteracao/{estagio}', 'EstagioWorkflowController@indeferimento_analise_tecnica_alteracao');
-Route::get('/deferimento_analise_tecnica_alteracao/{estagio}', 'EstagioWorkflowController@deferimento_analise_tecnica_alteracao');
+
+# Rotas Rescisão
+Route::get('/reiniciar_estagio/{estagio}', 'EstagioWorkflowController@reiniciar_estagio');
+
+# Rotas Alteração
+Route::post('/enviar_alteracao/{estagio}', 'EstagioWorkflowController@enviar_alteracao');
+
+# Rotas Análise da Alteração
+Route::post('/analise_tecnica_alteracao/{estagio}', 'EstagioWorkflowController@analise_tecnica_alteracao');

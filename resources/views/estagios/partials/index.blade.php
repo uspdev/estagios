@@ -27,7 +27,6 @@ button {
         <th>Número USP</th>
         <th>Nome</th>
         <th>Período</th>
-        <th>Ações</th> 
         <th>Deletar</th>     
         </tr>
     </thead>
@@ -58,17 +57,7 @@ button {
         @endforeach
 
         </td>
-
-        <td>
-            <div>
-            <a href="/estagios/{{$estagio->id}}/edit">
-            <i class="fas fa-edit">
-            </a></i>
-
-            <a href="/pdfs/termo/{{$estagio->id}}">
-            <i class="fas fa-file-pdf">
-            </i></a>
-        </td>    
+  
         <td>
             <form  method="POST" action="/estagios/{{$estagio->id}}">         
                 @csrf

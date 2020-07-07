@@ -41,10 +41,7 @@
       @break              
 
     @case('concluido')
-      <div>
-        <a href="/renovacao/{{$estagio->id}}" class="btn btn-info">Renovar</a>
-        <a href="/iniciar_alteracao/{{$estagio->id}}" class="btn btn-info">Iniciar Alterações</a>
-      </div>
+    @include('estagios.partials.concluido')
       @break 
 
     @case('em_alteracao')
@@ -52,12 +49,12 @@
       @break  
 
     @case('em_analise_tecnica_alteracao')
-      <div>
-        <a href="/indeferimento_analise_tecnica_alteracao/{{$estagio->id}}" class="btn btn-info">Indeferir</a>
-        <a href="/deferimento_analise_tecnica_alteracao/{{$estagio->id}}" class="btn btn-success">Deferir</a>
-      </div>
+      @include('estagios.partials.em_analise_tecnica_alteracao')
       @break 
-                   
+
+    @case('rescisao')
+      @include('estagios.partials.rescisao')
+      @break                    
 
     @default
         <span>Something went wrong, please try again</span>

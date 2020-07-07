@@ -42,12 +42,16 @@ class CreateEstagiosTable extends Migration
             $table->text('enderecoedias')->nullable();
 
             /* Campos da rescição */
-            $table->text('rescicao_motivo')->nullable();
-            $table->date('rescicao_data')->nullable();
+            $table->text('rescisao_motivo')->nullable();
+            $table->date('rescisao_data')->nullable();
 
             /* Campos da renovação */
             $table->text('renovacao_justificativa')->nullable();
             $table->bigInteger('renovacao_parent_id')->nullable();
+
+            /* Campos da alteração */
+            $table->text('alteracao')->nullable();
+            $table->string('alteracao_user_id')->nullable();
 
             /* Análises */
             $table->text('analise_tecnica')->nullable();
@@ -56,12 +60,12 @@ class CreateEstagiosTable extends Migration
             $table->text('analise_academica')->nullable();
             $table->string('analise_academica_user_id')->nullable();
 
-            /* Análises */
             $table->text('analise_alteracao')->nullable();
             $table->string('analise_alteracao_user_id')->nullable();
 
             /* Campo para controlar workflow */
             $table->string('status');
+
         });
     }
 
