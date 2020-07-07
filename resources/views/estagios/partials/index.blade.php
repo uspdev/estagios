@@ -27,7 +27,6 @@ button {
         <th>Número USP</th>
         <th>Nome</th>
         <th>Período</th>
-        <th>Ações</th> 
         <th>Deletar</th>     
         </tr>
     </thead>
