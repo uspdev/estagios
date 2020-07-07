@@ -3,9 +3,16 @@
         Enviar para Análise Técnica do <b>Setor de Graduação</b>
     </a>
 
+    <a href="/pdfs/termo/{{$estagio->id}}" class="btn btn-success" target="_blank" >
+        Termo de Ciência
+    </a>
+
+    <br><br>
+
     <a href="/estagios/{{$estagio->id}}/edit" class="btn btn-info">Continuar Elaboração</a>
     @if(!empty($estagio->analise_tecnica))
         <br><br>
         <b>Análise técnica:</b> {{$estagio->analise_tecnica}}
     @endif
 </div>   
+

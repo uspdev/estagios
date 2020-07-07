@@ -18,6 +18,9 @@
             onClick="return confirm('Tem certeza que quer enviar para Parecer?')" >
             Deferir
         </button>
+        <a href="/pdfs/termo/{{$estagio->id}}" class="btn btn-success" target="_blank" >
+        Termo de Ciência
+        </a>
     </div>
 </form>
 

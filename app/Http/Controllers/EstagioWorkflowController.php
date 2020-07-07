@@ -58,8 +58,10 @@ class EstagioWorkflowController extends Controller
 
     #Funções Concluido
 
-    public function renovacao(Estagio $estagio) {
-        
+    public function renovacao(Request $request, Estagio $estagio) {
+        $request->validate([
+            'renovacao_justificativa' => 'required',
+        ]);      
         $renovacao = $estagio->replicate();
         $renovacao->push();
 
@@ -123,7 +125,7 @@ class EstagioWorkflowController extends Controller
         return redirect("/estagios/{$estagio->id}");  
     }
 
-    #Funções Rescisão
+    #FUNÇÕES TEMPORÁRIAS
 
     public function reiniciar_estagio(Estagio $estagio) {
         $reiniciar_estagio = $estagio->replicate();
