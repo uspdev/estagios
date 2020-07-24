@@ -31,7 +31,15 @@ class Estagio extends Model
             'Não',
             'Parcialmente'
         ];
-    }    
+    }
+    
+    public function buscastatusOptions(){
+        return [
+            'Sim',
+            'Não',
+            'Parcialmente'
+        ];
+    }  
     
     public function getDataInicialAttribute($value) {
         return implode('/',array_reverse(explode('-',$value)));
