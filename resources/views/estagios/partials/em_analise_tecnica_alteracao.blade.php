@@ -5,7 +5,6 @@
 @if(!empty($estagio->alteracao))
     <br>
     <b>Motivo da alteração:</b> {{$estagio->alteracao}}<br>
-    <b>Parecerista:</b> {{App\User::find($estagio->alteracao_user_id)->name}} <br> 
     <br>
 @endif
 

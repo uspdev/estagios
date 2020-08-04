@@ -1,18 +1,28 @@
 <div>
-    <a href="/enviar_para_analise_tecnica/{{$estagio->id}}" class="btn btn-success" onClick="return confirm('Tem certeza que quer enviar para o Setor de Graduação?')">
-        Enviar para Análise Técnica do <b>Setor de Graduação</b>
-    </a>
-
-    <a href="/pdfs/termo/{{$estagio->id}}" class="btn btn-success" target="_blank" >
-        Termo de Ciência
-    </a>
+    
+    @if(!empty($estagio->analise_tecnica))
+        <b>Últina análise técnica so setor de graduação:</b> {{$estagio->analise_tecnica}}
+    @endif
 
     <br><br>
+    <form method="POST" action="/enviar_para_analise_tecnica/{{$estagio->id}}">
+    @csrf
 
-    <a href="/estagios/{{$estagio->id}}/edit" class="btn btn-info">Continuar Elaboração</a>
-    @if(!empty($estagio->analise_tecnica))
-        <br><br>
-        <b>Análise técnica:</b> {{$estagio->analise_tecnica}}
-    @endif
+    <div class="form-group">
+        <button type="submit" class="btn btn-success" name="enviar_para_analise_tecnica" value="enviar_para_analise_tecnica"
+            onClick="return confirm('Tem certeza que quer enviar para o Setor de Graduação?')">
+                Salvar e enviar para Análise Técnica do <b>Setor de Graduação
+        </button>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-info" name="enviar_para_analise_tecnica" value="apenas_salvar">
+            Apenas salvar alterações
+        </button>
+    </div>
+    
+    @include ('estagios.form')
+    </form>
+
 </div>   
 

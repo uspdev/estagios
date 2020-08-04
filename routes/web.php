@@ -50,7 +50,7 @@ Route::get('/empresa_update', 'EmpresaController@empresa_update');
 
 # Rotas Análise Técnica
 Route::post('/analise_tecnica/{estagio}', 'EstagioWorkflowController@analise_tecnica');
-Route::get('/enviar_para_analise_tecnica/{estagio}', 'EstagioWorkflowController@enviar_para_analise_tecnica');
+Route::post('/enviar_para_analise_tecnica/{estagio}', 'EstagioWorkflowController@enviar_para_analise_tecnica');
 
 # Rotas Análise Acadêmica
 Route::post('/analise_academica/{estagio}', 'EstagioWorkflowController@analise_academica');

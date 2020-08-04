@@ -24,5 +24,11 @@
 
 </form>
 
+<h4>Último parecer:</h4> 
+@if(!empty($estagio->analise_academica))
+    <b>Parecerista:</b> {{App\User::find($estagio->analise_academica_user_id)->name}} <br>
+    <b>Parecer de Mérito:</b> {{$estagio->analise_academica}}<br>
+@endif
+
 </div>
 </div>

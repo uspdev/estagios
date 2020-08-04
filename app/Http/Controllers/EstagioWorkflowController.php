@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\EstagioRequest;
 
 use App\Estagio;
 use Illuminate\Support\Facades\Gate;
@@ -13,10 +14,18 @@ class EstagioWorkflowController extends Controller
 
     #Funções Análise Técnica
     
-    public function enviar_para_analise_tecnica(Estagio $estagio){
-        $workflow = $estagio->workflow_get();
-        $workflow->apply($estagio,'enviar_para_analise_tecnica');
-        $estagio->save();
+    public function enviar_para_analise_tecnica(EstagioRequest $request, Estagio $estagio){
+
+        // Salvar
+        $validated = $request->validated();                  
+        $estagio->update($validated); 
+       
+        if($request->enviar_para_analise_tecnica=="enviar_para_analise_tecnica"){
+            $workflow = $estagio->workflow_get();
+            $workflow->apply($estagio,'enviar_para_analise_tecnica');
+            $estagio->save();
+        }
+
         return redirect("estagios/{$estagio->id}");
     }
 

@@ -13,15 +13,17 @@
     <div class=" col-sm input-group">
       <input type="text" class="form-control" name="busca" value="{{Request()->busca}}" placeholder="Busca somente por número USP do/a aluno/a">  
 
+      @inject('estagio','App\Estagio')
+
       <select name="buscastatus" class="form-control">
         <option value="" selected="">- Status do Estágio -</option>
-        <option value="em_elaboracao" >Em Elaboração</option>
-        <option value="em_analise_tecnica" >Em Análise Técnica</option>
-        <option value="em_analise_academica" >Sob Parecer de Mérito</option>
-        <option value="'em_alteracao" >Sob Aditivo de Alterações</option>
-        <option value="em_analise_tecnica_alteracao" >Em Análise das Alterações</option>
-        <option value="concluido" >Processo Concluído</option>
-        <option value="rescisao">Estágio Rescindido</option>
+        @foreach($estagio->getStatus() as $key=>$status)
+          
+            <option value="{{$key}}" name="buscastatus" 
+              @if($key == Request()->buscastatus) selected @endif
+            >{{$status['name']}}</option>
+          
+        @endforeach
       </select>
 
       <span class="input-group-btn">

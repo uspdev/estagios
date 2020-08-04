@@ -6,7 +6,6 @@
     <hr>
     <b>INDEFERIMENTO DO PEDIDO DE ALTERAÇÃO</b> <br>
     <b>Motivo:</b> {{$estagio->analise_alteracao}}<br>
-    <b>Parecerista:</b> {{App\User::find($estagio->analise_alteracao_user_id)->name}} <br> 
     <hr>
 @endif
 
@@ -20,12 +19,20 @@
 
     <div class="form-group">
         <button type="submit" class="btn btn-success" name="enviar_analise_tecnica_alteracao" value="deferimento_analise_academica" 
-        onClick="return confirm('Tem certeza que deseja enviar a alteração?')">Enviar</button>
+        onClick="return confirm('Tem certeza que deseja enviar a alteração?')">Salvar e Enviar aditivo de alteração para análise</button>
     </div>
     
 </form>
 <hr>
-<div><a href="/estagios/{{$estagio->id}}/edit" class="btn btn-success">Fazer Alteração</a></div>
+
+<form method="POST" action="/estagios/{{$estagio->id}}">
+    @csrf
+    @method('patch')
+    <div class="form-group">
+        <button type="submit" class="btn btn-info">Apenas salvar alterações</button>
+    </div>
+    @include ('estagios.form')
+    </form>
 
 </div>
 </div>

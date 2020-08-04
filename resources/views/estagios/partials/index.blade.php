@@ -62,7 +62,7 @@ button {
             <form  method="POST" action="/estagios/{{$estagio->id}}">         
                 @csrf
                 @method('delete')
-                <button class="botao" type="submit"><i class="fas fa-trash-alt"></i></button>
+                <button class="botao" type="submit" onclick="return confirm('Tem certeza que deseja deletar?');"><i class="fas fa-trash-alt"></i></button>
             </form>
             <div>
         </td>

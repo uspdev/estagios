@@ -45,7 +45,7 @@
       @break 
 
     @case('em_alteracao')
-      @include('estagios.partials.em_analise_alteracao')
+      @include('estagios.partials.em_alteracao')
       @break  
 
     @case('em_analise_tecnica_alteracao')
