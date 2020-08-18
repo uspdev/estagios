@@ -1,7 +1,7 @@
 <div>
     
     @if(!empty($estagio->analise_tecnica))
-        <b>Últina análise técnica so setor de graduação:</b> {{$estagio->analise_tecnica}}
+        <b>Última análise técnica do setor de graduação:</b> {{$estagio->analise_tecnica}}
     @endif
 
     <br><br>

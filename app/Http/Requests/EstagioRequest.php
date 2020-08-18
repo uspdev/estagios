@@ -49,7 +49,9 @@ class EstagioRequest extends FormRequest
             'controlehorario' => 'nullable',  
             'supervisao' => 'nullable',  
             'interacao' => 'nullable',  
-            'enderecoedias' => 'nullable'                                                                                                   
+            'enderecoedias' => 'nullable'        
+            //
+                                                                                                       
         ];
     }
 }
