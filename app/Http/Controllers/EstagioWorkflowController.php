@@ -76,8 +76,8 @@ class EstagioWorkflowController extends Controller
             $renovacao->renovacao_parent_id = $estagio->id;
         }
         $estagio->analise_tecnica = null;
-        $estagio->$analise_academica = null;
-        $estagio->$analise_alteracao = null;
+        $estagio->analise_academica = null;
+        $estagio->analise_alteracao = null;
         $estagio->save();        
         $workflow = $renovacao->workflow_get();
         $workflow->apply($renovacao,'renovacao');       
