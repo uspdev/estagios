@@ -40,6 +40,13 @@ class Estagio extends Model
             'Parcialmente'
         ];
     }  
+
+    public function pandemiahomeofficeOptions(){
+        return [
+            'Sim',
+            'Não'
+        ];
+    }
     
     public function getDataInicialAttribute($value) {
         return implode('/',array_reverse(explode('-',$value)));

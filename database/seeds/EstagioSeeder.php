@@ -36,7 +36,12 @@ class EstagioSeeder extends Seeder
             'supervisao' => 'teste',
             'interacao' => 'teste',
             'enderecoedias' => 'teste',
-            'status' => 'em_elaboracao'                     
+            'status' => 'em_elaboracao',
+            'pandemiahomeoffice' => 'Sim',
+            'pandemiamedidas' => 'Alcool gel e cafezinho liberado'
+
+            
+            
         ];
         App\Estagio::create($entrada); 
         

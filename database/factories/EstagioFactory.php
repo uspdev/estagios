@@ -10,6 +10,7 @@ $factory->define(Estagio::class, function (Faker $faker) {
     $bolsa = ['Mensal', 'Por Hora'];
     $vt = ['Mensal','Diário'];
     $atvpertinentes = ['Sim','Não','Parcialmente'];
+    $homeoffice = ['Sim','Não'];
     $status = [
         'em_elaboracao',
         'em_analise_tecnica',
@@ -45,5 +46,7 @@ $factory->define(Estagio::class, function (Faker $faker) {
         'interacao' => $faker->text($maxNbChars = 200),
         'enderecoedias' => $faker->text($maxNbChars = 200),
         'status' => $status[array_rand($status)],
+        'pandemiahomeoffice' => $homeoffice[array_rand($homeoffice)], 
+        'pandemiamedidas' => $faker->text($maxNbChars = 200)
     ];
 });

@@ -49,9 +49,10 @@ class EstagioRequest extends FormRequest
             'controlehorario' => 'nullable',  
             'supervisao' => 'nullable',  
             'interacao' => 'nullable',  
-            'enderecoedias' => 'nullable'        
+            'enderecoedias' => 'nullable',        
             //
-                                                                                                       
+            'pandemiahomeoffice' => 'required',  
+            'pandemiamedidas' => 'required_if:pandemiahomeoffice,==,Não'                                                                                                        
         ];
     }
 }
