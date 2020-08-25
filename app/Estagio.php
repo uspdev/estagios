@@ -109,4 +109,24 @@ class Estagio extends Model
         ];
         return $status;
     }
+
+    public function analise_academica_user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function alteracao_user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function analise_tecnica_user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function analise_alteracao_user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

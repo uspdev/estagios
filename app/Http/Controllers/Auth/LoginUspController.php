@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use Socialite;
 use App\User;
+use App\Parecerista;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -30,8 +31,16 @@ class LoginUspController extends Controller
     public function handleProviderCallback()
     {
         $userSenhaUnica = Socialite::driver('senhaunica')->user();
-        $user = User::where('codpes',$userSenhaUnica->codpes)->first();
 
+        /* Vamos deixar logar em dois casos: se estiver em pareceristas ou estiver no .env */
+        $parecerista = Parecerista::where('numero_usp',$userSenhaUnica->codpes)->first();
+        $admins = explode(',', trim(config('estagios.admins')));
+        if(is_null($parecerista) & !in_array($userSenhaUnica->codpes, $admins)){
+            request()->session()->flash('alert-danger', 'Você não tem permissão de login');
+            return redirect('/');
+        } 
+
+        $user = User::where('codpes',$userSenhaUnica->codpes)->first();
         if (is_null($user)) $user = new User;
 
         // bind do dados retornados

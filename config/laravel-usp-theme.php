@@ -116,5 +116,11 @@ return [
             'url'     => '/empresa_update',
             'can'     => 'empresa',
         ],
+
+        [
+            'text'    => 'Parecer de Mérito',
+            'url'     => '/parecer_merito',
+            'can'     => 'parecerista',
+        ],
     ]
 ];

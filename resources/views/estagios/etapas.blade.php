@@ -25,8 +25,17 @@
 
   </div>
 
-@switch($estagio->status)
+Última alteração realizada em: <b>{{ Carbon\Carbon::parse($estagio->updated_at)->format('d/m/Y H:i') }}</b>
+<br>
+Enviado para: <b>{{ $estagio->getStatus()[$estagio->status]['name'] }} - 
+{{ $estagio->getStatus()[$estagio->status]['optional'] }}
+</b>
+<br>
+{{ $estagio->analise_academica_user->name }}
 
+<br><br>
+
+@switch($estagio->status)
 
     @case('em_elaboracao')
       @include('estagios.partials.em_elaboracao')
@@ -61,3 +70,4 @@
 @endswitch
 
 <br>
+</b>

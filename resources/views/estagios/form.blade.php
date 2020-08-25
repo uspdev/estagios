@@ -7,20 +7,20 @@
 @endsection('styles')
 
 <br>
-<h4><b>Estágio</b></h4>
+<h4>Estágio</h4>
 <br>
 O período máximo do estágio inicial deve ser de 12 meses, prorrogável através de termo
 aditivo por até 12 meses.
 <br><br>
 
 <div class="card">
-  <div class="card-header"><b>Informações Gerais</b></div>
+  <div class="card-header">Informações Gerais</div>
     <div class="card-body">
 
         <div class="row">
                     <div class="col-sm form-group">
                 <div class="form-group">
-                    <label for="numero_usp" class="required"><b>Número USP: </b></label>
+                    <label for="numero_usp" class="required">Número USP: </label>
                     <input type="text" class="form-control" id="numero_usp" name="numero_usp" value="{{old('numero_usp',$estagio->numero_usp)}}">
                 </div>
 
@@ -28,7 +28,7 @@ aditivo por até 12 meses.
                 <div class="col-sm form-group">
 
                 <div class="form-group">
-                    <label for="valorbolsa" class="required"><b>Valor da Bolsa (R$): </b></label>
+                    <label for="valorbolsa" class="required">Valor da Bolsa (R$): </label>
                     <input type="text" class="form-control" id="valorbolsa" name="valorbolsa" value="{{old('valorbolsa',$estagio->valorbolsa)}}">
                 </div>
 
@@ -37,7 +37,7 @@ aditivo por até 12 meses.
 
 
         <div class="form-group">
-            <label for="tipobolsa" class="required"><b>Especifique a natureza do pagamento da bolsa: </b></label>
+            <label for="tipobolsa" class="required">Especifique a natureza do pagamento da bolsa: </label>
             <select name="tipobolsa" class="form-control" id="tipobolsa">
                <option value="" selected="">- Selecione -</option>
                     @foreach ($estagio->tipobolsaOptions() as $option)
@@ -57,25 +57,25 @@ aditivo por até 12 meses.
         </div>
 
         <div class="form-group">
-        <label for="duracao" class="required"><b>Descreva a duração [(ex.: 12 meses, 6 meses e 19 dias, 27 dias, etc) Em casos 
+        <label for="duracao" class="required">Descreva a duração [(ex.: 12 meses, 6 meses e 19 dias, 27 dias, etc) Em casos 
         excepcionais inferiores a 6 meses, a empresa deverá incluir justificativa circunstanciada 
-        que será avaliada pelo Supervisor Geral de Estágios.</b></label>
+        que será avaliada pelo Supervisor Geral de Estágios.</label>
             <input type="text" class="form-control" id="duracao" name="duracao" value="{{old('duracao',$estagio->duracao)}}">
         </div>
 
         <div class="form-group">
-        <label for="justificativa" class="required"><b>Justificativa: </b></label>
+        <label for="justificativa" class="required">Justificativa: </label>
             <textarea name="justificativa" rows="5" cols="60">{{old('justificativa',$estagio->justificativa)}}</textarea>
         </div>
 
         <div class="form-group">
-        <label for="atividades" class="required"><b>Descrição detalhada das atividades a serem desenvolvidas pelo 
+        <label for="atividades" class="required">Descrição detalhada das atividades a serem desenvolvidas pelo 
         estagiário para que o parecerista analise e constate a relação destas com a formação 
-        acadêmica do aluno.: </b></label>
+        acadêmica do aluno.: </label>
             <textarea name="atividades" rows="5" cols="60">{{old('atividades',$estagio->atividades)}}</textarea>
         </div>
 
-        <label for="atividadespertinentes" class="required"><b>As atividades propostas no plano de estágio são pertinentes ao curso do aluno?: </b></label>               
+        <label for="atividadespertinentes" class="required">As atividades propostas no plano de estágio são pertinentes ao curso do aluno?: </label>               
         <select name="atividadespertinentes" class="form-control" id="atividadespertinentes">
             <option value="" selected="">- Selecione -</option>
                 @foreach ($estagio->atividadespertinentesOptions() as $option)
@@ -93,17 +93,17 @@ aditivo por até 12 meses.
         <br>
 
         <div class="form-group">
-        <label for="mediaponderada" class="required"><b>Média Ponderada.</b></label>
+        <label for="mediaponderada" class="required">Média Ponderada.</label>
             <input type="text" class="form-control" id="mediaponderada" name="mediaponderada" value="{{old('mediaponderada',$estagio->mediaponderada)}}">
         </div>
 
         <div class="form-group">
-        <label for="horariocompativel" class="required"><b>O Horário é compatível com os horários disponíveis na grade horária do aluno?:</b></label>
+        <label for="horariocompativel" class="required">O Horário é compatível com os horários disponíveis na grade horária do aluno?:</label>
             <input type="text" class="form-control" id="horariocompativel" name="horariocompativel" value="{{old('horariocompativel',$estagio->horariocompativel)}}">
         </div>
 
         <div class="form-group">
-        <label for="desempenhoacademico" class="required"><b>Avalie o desempenho acadêmico do aluno.: </b></label>
+        <label for="desempenhoacademico" class="required">Avalie o desempenho acadêmico do aluno.: </label>
             <textarea name="desempenhoacademico" rows="5" cols="60">{{old('desempenhoacademico',$estagio->desempenhoacademico)}}</textarea>
         </div>
 
@@ -115,19 +115,19 @@ aditivo por até 12 meses.
 <hr>
 
 <div class="card">
-  <div class="card-header"><b>Período do Estágio</b></div>
+  <div class="card-header">Período do Estágio</div>
     <div class="card-body">
 
         <div class="row">
             <div class="col-sm form-group">
                 <div class="form-group">
-                <label for="data_inicial" class="required"><b>Data de início do Estágio: </b></label>
+                <label for="data_inicial" class="required">Data de início do Estágio: </label>
                     <input type="text" class="form-control datepicker" id="data_inicial" name="data_inicial" value="{{old('data_inicial',$estagio->data_inicial)}}">
                 </div>
             </div>    
             <div class="col-sm form-group">
                 <div class="form-group">
-                <label for="data_final" class="required"><b>Data de término do Estágio: </b></label>
+                <label for="data_final" class="required">Data de término do Estágio: </label>
                     <input type="text" class="form-control datepicker" id="data_final" name="data_final" value="{{old('data_final',$estagio->data_final)}}">
                 </div>
         </div>
@@ -138,27 +138,27 @@ aditivo por até 12 meses.
 
 
 <div class="card">
-  <div class="card-header"><b>Carga Horária Semanal (máximo 30 horas)</b></div>
+  <div class="card-header">Carga Horária Semanal (máximo 30 horas)</div>
     <div class="card-body">
 
         <div class="row">
             <div class="col-sm form-group">
                 
                 <div class="form-group">
-                <label for="cargahoras" class="required"><b>Horas: </b></label>
+                <label for="cargahoras" class="required">Horas: </label>
                     <input type="text" class="form-control" id="cargahoras" name="cargahoras" value="{{old('cargahoras',$estagio->cargahoras)}}">
                 </div>
                 </div>
             <div class="col-sm form-group">
                 <div class="form-group">
-                <label for="cargaminutos" class="required"><b>Minutos: </b></label>
+                <label for="cargaminutos" class="required">Minutos: </label>
                     <input type="text" class="form-control" id="cargaminutos" name="cargaminutos" value="{{old('cargaminutos',$estagio->cargaminutos)}}">
                 </div>
                 </div></div>
 
                 <div class="form-group">
-                <label for="horario" class="required"><b>Horário do Estágio (início e término, formato 00:00). 
-                Caso os horários sejam em períodos diferentes especificar: </b></label>
+                <label for="horario" class="required">Horário do Estágio (início e término, formato 00:00). 
+                Caso os horários sejam em períodos diferentes especificar: </label>
                     <input type="text" class="form-control horario" placeholder="00:00-00:00" id="horario" name="horario" value="{{old('horario',$estagio->horario)}}">
                 </div>
 
@@ -167,19 +167,19 @@ aditivo por até 12 meses.
 <hr>
 
 <div class="card">
-  <div class="card-header"><b>Auxílio Transporte</b></div>
+  <div class="card-header">Auxílio Transporte</div>
     <div class="card-body">
 
         <div class="row">
             <div class="col-sm form-group">
                 <div class="form-group">
-                <label for="auxiliotransporte" class="required"><b>Valor do Auxílio transporte (R$): </b></label>
+                <label for="auxiliotransporte" class="required">Valor do Auxílio transporte (R$): </label>
                     <input type="text" class="form-control" id="auxiliotransporte" name="auxiliotransporte" value="{{old('auxiliotransporte',$estagio->auxiliotransporte)}}"> 
                 </div></div>
 
             <div class="col-sm form-group">
                 <div class="form-group">
-                    <label for="especifiquevt" class="required"><b>Especifique o tipo de vale transporte: </b></label>               
+                    <label for="especifiquevt" class="required">Especifique o tipo de vale transporte: </label>               
                     <select name="especifiquevt" class="form-control" id="especifiquevt">
                         <option value="" selected="">- Selecione -</option>
                             @foreach ($estagio->especifiquevtOptions() as $option)
@@ -201,18 +201,18 @@ aditivo por até 12 meses.
 <hr>
 
 <div class="card">
-  <div class="card-header"><b>Informações sobre seguro</b></div>
+  <div class="card-header">Informações sobre seguro</div>
     <div class="card-body">
 
         <div class="row">
             <div class="col-sm form-group">
                 <div class="form-group">
-                <label for="seguradora" class="required"><b>Nome da seguradora: </b></label>
+                <label for="seguradora" class="required">Nome da seguradora: </label>
                     <input type="text" class="form-control" id="seguradora" name="seguradora" value="{{old('seguradora',$estagio->seguradora)}}">
                 </div></div>
             <div class="col-sm form-group">
                 <div class="form-group">
-                <label for="numseguro" class="required"><b>Número da apólice de seguro: </b></label>
+                <label for="numseguro" class="required">Número da apólice de seguro: </label>
                     <input type="text" class="form-control" id="numseguro" name="numseguro" value="{{old('numseguro',$estagio->numseguro)}}">
                 </div></div>
             </div>
@@ -221,7 +221,7 @@ aditivo por até 12 meses.
 <hr>
 
 <div class="card">
-    <div class="card-header"><b>Os campos abaixo só devem ser preenchidos em caso de estágio domiciliar</b></div>
+    <div class="card-header">Os campos abaixo só devem ser preenchidos em caso de estágio domiciliar</div>
         <div class="card-body">
 
 <br>
@@ -253,14 +253,14 @@ empresa? Haverá deslocamento para a empresa? Se sim, quais dias?: <br></label>
 <hr>
 
 <div class="card">
-    <div class="card-header"><b>Questões relativas a estágio durante a pandemia de COVID-19</b></div>
+    <div class="card-header">Questões relativas a estágio durante a pandemia de COVID-19</div>
         <div class="card-body">
 
 <br>
 
 <div class="col-sm form-group">
                 <div class="form-group">
-                    <label for="pandemiahomeoffice" class="required"><b>Durante o período da pandemia, o estágio será realizado em home office?: </b></label>               
+                    <label for="pandemiahomeoffice" class="required">Durante o período da pandemia, o estágio será realizado em home office?: </label>               
                     <select name="pandemiahomeoffice" class="form-control" id="pandemiahomeoffice" onchange="checagem(this);">
                         <option value="" selected="">- Selecione -</option>
                             @foreach ($estagio->pandemiahomeofficeOptions() as $option)
@@ -288,7 +288,3 @@ empresa? Haverá deslocamento para a empresa? Se sim, quais dias?: <br></label>
 
 
 <hr>
-
-<div class="form-group">
-    <button type="submit" class="btn btn-success">Enviar</button>
-</div>

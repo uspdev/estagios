@@ -49,12 +49,13 @@ class EstagioController extends Controller
 
     public function show(Estagio $estagio)
     {
-        $this->authorize('admin_ou_empresa', $estagio->cnpj);
-        return view('estagios.show')->with('estagio',$estagio);
+        if (Gate::allows('admin') | Gate::allows('parecerista')) {
+            return view('estagios.show')->with('estagio',$estagio);
+        }
+        abort(403, 'Access denied');
     }    
 
     public function create(){
-
         $this->authorize('empresa');
         return view('estagios.create')->with('estagio',new Estagio);
     }
@@ -62,7 +63,6 @@ class EstagioController extends Controller
     public function store(EstagioRequest $request)
     {
         $this->authorize('empresa');
-
         $validated = $request->validated();
         $validated['cnpj'] = Auth::user()->cnpj;
         $validated['status'] = 'em_elaboracao';           
@@ -70,28 +70,31 @@ class EstagioController extends Controller
         return redirect("estagios/{$estagio->id}");
     }
 
-    public function edit(Estagio $estagio) {   
-
+    public function edit(Estagio $estagio) {
         $this->authorize('admin_ou_empresa', $estagio->cnpj);
-        return view ('estagios.edit')->with('estagio',$estagio);
+        return view('estagios.edit')->with('estagio',$estagio);
     }
 
     public function update(EstagioRequest $request, Estagio $estagio)
     {
-
         $this->authorize('admin_ou_empresa', $estagio->cnpj);
-
         $validated = $request->validated();                  
         $estagio->update($validated); 
         return redirect("estagios/{$estagio->id}");
     }
 
     public function destroy(Estagio $estagio){
-
         $this->authorize('admin_ou_empresa', $estagio->cnpj);
-
         $estagio->delete();
         return redirect('/estagios');
     } 
+
+    public function parecerMerito(Estagio $estagio){
+        $this->authorize('parecerista', $estagio->cnpj);
+        $estagios = Estagio::where('status', "em_analise_academica")->get();
+        return view('estagios.parecer_merito')->with([
+            'estagios' => $estagios,
+        ]);
+    }
 
 }

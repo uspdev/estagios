@@ -27,7 +27,7 @@ button {
         <th>Número USP</th>
         <th>Nome</th>
         <th>Período</th>
-        <th>Deletar</th>     
+        @can('admin')<th>Deletar</th>@endcan 
         </tr>
     </thead>
     <tbody>
@@ -58,6 +58,7 @@ button {
 
         </td>
   
+        @can('admin')
         <td>
             <form  method="POST" action="/estagios/{{$estagio->id}}">         
                 @csrf
@@ -66,6 +67,7 @@ button {
             </form>
             <div>
         </td>
+        @endcan('admin')
 
         </tr>
         <div></div>

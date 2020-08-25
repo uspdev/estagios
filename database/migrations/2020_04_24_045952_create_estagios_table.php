@@ -54,17 +54,22 @@ class CreateEstagiosTable extends Migration
 
             /* Campos da alteração */
             $table->text('alteracao')->nullable();
-            $table->string('alteracao_user_id')->nullable();
+            $table->unsignedBigInteger('alteracao_user_id')->nullable();
+            $table->foreign('alteracao_user_id')->references('id')->on('users')->onDelete('cascade');
 
             /* Análises */
             $table->text('analise_tecnica')->nullable();
-            $table->string('analise_tecnica_user_id')->nullable();
+            $table->unsignedBigInteger('analise_tecnica_user_id')->nullable();
+            $table->foreign('analise_tecnica_user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->text('analise_academica')->nullable();
-            $table->string('analise_academica_user_id')->nullable();
+            $table->unsignedBigInteger('analise_academica_user_id')->nullable();
+            $table->foreign('analise_academica_user_id')->references('id')->on('users')->onDelete('cascade');
+            
 
             $table->text('analise_alteracao')->nullable();
-            $table->string('analise_alteracao_user_id')->nullable();
+            $table->unsignedBigInteger('analise_alteracao_user_id')->nullable();
+            $table->foreign('analise_alteracao_user_id')->references('id')->on('users')->onDelete('cascade');
 
             /* Campo para controlar workflow */
             $table->string('status');

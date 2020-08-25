@@ -22,6 +22,13 @@
     </div>
     
     @include ('estagios.form')
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-info" name="enviar_para_analise_tecnica" value="apenas_salvar">
+            Apenas salvar alterações
+        </button>
+    </div>
+
     </form>
 
 </div>   

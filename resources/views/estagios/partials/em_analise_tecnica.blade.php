@@ -3,6 +3,7 @@
 <div class="card-header"><b>Justificativa da análise técnica</b></div>
 <div class="card-body">
 
+@can('admin')
 <form method="POST" action="/analise_tecnica/{{$estagio->id}}">
     @csrf
     <div class="row">
@@ -20,6 +21,7 @@
         </button>
     </div>
 </form>
+@endcan('admin')
 
 @if(is_null($estagio->renovacao_parent_id))
     <a href="/pdfs/termo/{{$estagio->id}}" class="btn btn-success" target="_blank" >

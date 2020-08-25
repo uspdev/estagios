@@ -16,7 +16,7 @@ class CreatePareceristasTable extends Migration
         Schema::create('pareceristas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('numero_usp',10);
+            $table->string('numero_usp',20);
 
             /* 1:  checkbox is ticked (true)
              * 0:  is not ticked (false)*/
