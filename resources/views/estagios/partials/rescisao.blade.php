@@ -12,6 +12,11 @@
     <a href="/reiniciar_estagio/{{$estagio->id}}" class="btn btn-success" onClick="return confirm('Tem certeza que deseja iniciar um novo processo de estágio?')">
         Iniciar novo processo de estágio
     </a>
+    <!---->
+
+    <a href="/pdfs/rescisao/{estagio}/{empresa}" class="btn btn-success" target="_blank" >
+    Gerar PDF do Termo de Rescisão
+    </a>
     
 </div>  
 </div>

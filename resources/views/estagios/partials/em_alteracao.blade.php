@@ -18,18 +18,12 @@
     </div>
 
     <div class="form-group">
-        <button type="submit" class="btn btn-success" name="enviar_analise_tecnica_alteracao" value="deferimento_analise_academica" 
+        <button type="submit" class="btn btn-success" name="enviar_analise_tecnica_alteracao" value="enviar_analise_tecnica_alteracao" 
         onClick="return confirm('Tem certeza que deseja enviar a alteração?')">Salvar e Enviar aditivo de alteração para análise</button>
     </div>
     
-</form>
-<hr>
-
-<form method="POST" action="/estagios/{{$estagio->id}}">
-    @csrf
-    @method('patch')
     <div class="form-group">
-        <button type="submit" class="btn btn-info">Apenas salvar alterações</button>
+        <button type="submit" class="btn btn-info" name="enviar_analise_tecnica_alteracao" value="apenas_salvar">Apenas salvar alterações</button>
     </div>
     @include ('estagios.form')
     </form>

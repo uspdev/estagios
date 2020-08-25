@@ -40,6 +40,9 @@ class CreateEstagiosTable extends Migration
             $table->text('supervisao')->nullable();
             $table->text('interacao')->nullable();
             $table->text('enderecoedias')->nullable();
+            //
+            $table->string('pandemiahomeoffice');
+            $table->string('pandemiamedidas')->nullable();                     
 
             /* Campos da rescição */
             $table->text('rescisao_motivo')->nullable();

@@ -86,6 +86,17 @@
             <b>Interação com ambiente e colaboradores e dias onde ocorrerá Deslocamento para a empresa:</b> {{$estagio->interacao}}<br>
             <b>Endereço e dias do estágio:</b> {{$estagio->enderecoedias}}<br>
     </div>    
-</div>                
+</div>    
+
+<br>
+
+<div class="card">
+    <div class="card-header"><b>Informações relatívas a pandemia de COVID-19</b></div>
+        <div class="card-body">
+            <b>O estágio será realizado em home-office?:</b> {{$estagio->pandemiahomeoffice}}<br>
+            <b>Caso o estágio não seja home-office, quais as medidas sanitárias adotadas pela empresa:</b> {{$estagio->pandemiamedidas}}<br>
+    </div>    
+</div>  
 
 @endsection('content')
+

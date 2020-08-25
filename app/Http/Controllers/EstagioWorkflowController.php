@@ -50,12 +50,10 @@ class EstagioWorkflowController extends Controller
     #Funções Análise Acadêmica
 
     public function analise_academica(Request $request, Estagio $estagio){
-        if($request->analise_academica_action == 'indeferimento_analise_academica'){
+
         $request->validate([
             'analise_academica' => 'required',
         ]);
-        }
-
         $estagio->analise_academica = $request->analise_academica;
         $estagio->analise_academica_user_id = Auth::user()->id;
         $estagio->save();
@@ -77,16 +75,24 @@ class EstagioWorkflowController extends Controller
         if(empty($estagio->renovacao_parent_id)){
             $renovacao->renovacao_parent_id = $estagio->id;
         }
-
+        $estagio->analise_tecnica = null;
+        $estagio->analise_academica = null;
+        $estagio->analise_alteracao = null;
+        $estagio->save();        
         $workflow = $renovacao->workflow_get();
-        $workflow->apply($renovacao,'renovacao');
+        $workflow->apply($renovacao,'renovacao');       
         $renovacao->save();
+        $estagio->save();
         return redirect("estagios/{$renovacao->id}");     
     }   
      
     public function rescisao(Request $request, Estagio $estagio){
-        $estagio->rescisao_motivo = $request->rescisao_motivo; 
-        /*$estagio->rescisao_data = implode('-',array_reverse(explode('/',$request->$rescisao_data)));*/
+        $request->validate([
+            'rescisao_motivo' => 'required',
+            'rescisao_data' => 'required',
+        ]);
+        
+        $estagio->rescisao_motivo = $request->rescisao_motivo;       
         $estagio->save();
         $workflow = $estagio->workflow_get();
         $workflow->apply($estagio,'rescisao_do_estagio');
@@ -104,16 +110,24 @@ class EstagioWorkflowController extends Controller
 
     #Funções Alteração
 
-    public function enviar_alteracao(Request $request, Estagio $estagio){
-        $request->validate([
-            'alteracao' => 'required',
-        ]);
+    public function enviar_alteracao(EstagioRequest $request, Estagio $estagio){    
+                 
+        $validated = $request->validated();                  
+        $estagio->update($validated); 
         $estagio->alteracao = $request->alteracao;
-        $estagio->alteracao_user_id = Auth::user()->id;        
         $estagio->save();
-        $workflow = $estagio->workflow_get();
-        $workflow->apply($estagio,'enviar_analise_tecnica_alteracao');
-        $estagio->save();
+
+        if($request->enviar_analise_tecnica_alteracao == 'enviar_analise_tecnica_alteracao'){
+            $request->validate([
+                'alteracao' => 'required'
+            ]);
+            $estagio->alteracao = $request->alteracao;
+            $estagio->alteracao_user_id = Auth::user()->id;        
+            $estagio->save();
+            $workflow = $estagio->workflow_get();
+            $workflow->apply($estagio,'enviar_analise_tecnica_alteracao');
+            $estagio->save();
+        }    
         return redirect("/estagios/{$estagio->id}"); 
     } 
 

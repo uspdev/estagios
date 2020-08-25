@@ -252,7 +252,43 @@ empresa? Haverá deslocamento para a empresa? Se sim, quais dias?: <br></label>
 
 <hr>
 
+<div class="card">
+    <div class="card-header"><b>Questões relativas a estágio durante a pandemia de COVID-19</b></div>
+        <div class="card-body">
+
+<br>
+
+<div class="col-sm form-group">
+                <div class="form-group">
+                    <label for="pandemiahomeoffice" class="required"><b>Durante o período da pandemia, o estágio será realizado em home office?: </b></label>               
+                    <select name="pandemiahomeoffice" class="form-control" id="pandemiahomeoffice" onchange="checagem(this);">
+                        <option value="" selected="">- Selecione -</option>
+                            @foreach ($estagio->pandemiahomeofficeOptions() as $option)
+                            @if (old('pandemiahomeoffice') == '' and isset($estagio->pandemiahomeoffice) )
+                        <option value="{{$option}}" {{ ( $estagio->pandemiahomeoffice == $option) ? 'selected' : ''}}>
+                            {{$option}}
+                        </option>
+                        @else
+                        <option value="{{$option}}" {{ ( old('pandemiahomeoffice') == $option) ? 'selected' : ''}}>
+                            {{$option}}
+                        </option>
+                        @endif
+                        @endforeach
+                    </select>
+                </div></div>
+
+
+<div class="form-group" id="medidas">
+<label for="pandemiamedidas" class="required" required>Descreva quais são as medidas sanitárias adotadas pela empresa: </label>
+    <textarea name="pandemiamedidas" rows="5" cols="60">{{old('pandemiamedidas',$estagio->pandemiamedidas)}}</textarea>
+
+        </div>
+    </div>
+</div>
+
+
+<hr>
+
 <div class="form-group">
     <button type="submit" class="btn btn-success">Enviar</button>
-</div>
 </div>
