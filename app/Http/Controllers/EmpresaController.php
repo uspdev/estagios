@@ -90,7 +90,14 @@ class EmpresaController extends Controller
         $this->authorize('empresa', $cnpj);
 
         $empresa = Empresa::where('cnpj',$cnpj)->first();
-        return redirect("/empresas/{$empresa->id}/edit");
+        if($empresa)
+            return redirect("/empresas/{$empresa->id}/edit");
+        else {
+            $empresa = new Empresa;
+            $empresa->cnpj = Auth::user()->cnpj;
+            $empresa->email = Auth::user()->email;
+            return view('empresas.create')->with('empresa',$empresa);
+        }
 
     }
 }
