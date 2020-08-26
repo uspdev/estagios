@@ -15,20 +15,22 @@ Vizualizar etapas do estágio:
 
 ![workflow](https://raw.githubusercontent.com/fflch/estagios/master/workflow_estagio.png)
 
-## Features
+## Tutoriais
 
-Empresa:
+Empresa 1:
 
 - Login por email apenas
 - Cadastrar vagas para divulgação
 - Cadastrar novos estagiários
+- Verdo Termo
 
+Setor de graduação:
 
-admin pode:
+- Cadastrar e editar empresas - em especial qual essa muda de email
+- Cadastrar Avisos 
+- Cadastrar/Excluir novos parecerista e definir qual é o presidente
+- Listar estágios e dar parecer técnico
 
-- Cadastrar e editar empresas
-- Cadastrar Aviso
-- Cadastrar novos parecerista e definir qual é o presidente
+Pareceristas:
 
-
-pareceristas
+- Dar pareceres de méritos
