@@ -15,19 +15,20 @@ Vizualizar etapas do estágio:
 
 ![workflow](https://raw.githubusercontent.com/fflch/estagios/master/workflow_estagio.png)
 
-Features:
+## Features
 
-admin pode:
-
-- Cadastrar e editar empresas: 21931186000172 tcolaco@r7.com
-- Cadastrar Aviso
-- Cadastrar novos parecerista e definir qual é o presidente
-
-
-Empresa pode:
+Empresa:
 
 - Login por email apenas
 - Cadastrar vagas para divulgação
 - Cadastrar novos estagiários
+
+
+admin pode:
+
+- Cadastrar e editar empresas
+- Cadastrar Aviso
+- Cadastrar novos parecerista e definir qual é o presidente
+
 
 pareceristas

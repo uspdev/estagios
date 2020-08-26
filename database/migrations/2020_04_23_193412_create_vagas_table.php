@@ -24,6 +24,7 @@ class CreateVagasTable extends Migration
             $table->string('horario');
             $table->text('beneficios');
             $table->date('divulgar_ate');
+            $table->string('divulgacao_autorizada',10)->default('sim');
         });
     }
 
