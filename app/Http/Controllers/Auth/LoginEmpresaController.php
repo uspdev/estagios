@@ -102,7 +102,7 @@ class LoginEmpresaController extends Controller
             
         } else {
             $request->session()->flash('alert-danger',
-            "Url de login inválida, crie uma url nova!");
+            "Url de login expirada, crie uma url nova!");
             return redirect('/login/empresa');
         }
     }
