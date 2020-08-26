@@ -16,7 +16,7 @@ class EstagioWorkflowController extends Controller
     
     public function enviar_para_analise_tecnica(EstagioRequest $request, Estagio $estagio){
 
-        if (Gate::allows('empresa') | Gate::allows('admin')) {
+        if ( Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin') ) {
             $validated = $request->validated();                  
             $estagio->update($validated); 
            
@@ -79,7 +79,7 @@ class EstagioWorkflowController extends Controller
 
     public function renovacao(Request $request, Estagio $estagio) {
 
-        if (Gate::allows('empresa') | Gate::allows('admin')) {
+        if ( Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
 
             $request->validate([
                 'renovacao_justificativa' => 'required',
@@ -106,7 +106,7 @@ class EstagioWorkflowController extends Controller
      
     public function rescisao(Request $request, Estagio $estagio){
             
-        if (Gate::allows('empresa') | Gate::allows('admin')) {
+        if ( Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
             $request->validate([
                 'rescisao_motivo' => 'required',
                 'rescisao_data' => 'required',
@@ -125,7 +125,7 @@ class EstagioWorkflowController extends Controller
 
     public function iniciar_alteracao(Estagio $estagio) {
 
-        if (Gate::allows('empresa')) {
+        if (Gate::allows('empresa',$estagio->cnpj)) {
             $workflow = $estagio->workflow_get();
             $workflow->apply($estagio,'iniciar_alteracao');
             $estagio->save();
@@ -140,7 +140,7 @@ class EstagioWorkflowController extends Controller
 
     public function enviar_alteracao(EstagioRequest $request, Estagio $estagio){    
             
-        if (Gate::allows('empresa')) {
+        if (Gate::allows('empresa',$estagio->cnpj)) {
             $validated = $request->validated();                  
             $estagio->update($validated); 
             $estagio->alteracao = $request->alteracao;
@@ -151,7 +151,6 @@ class EstagioWorkflowController extends Controller
                     'alteracao' => 'required'
                 ]);
                 $estagio->alteracao = $request->alteracao;
-                $estagio->alteracao_user_id = Auth::user()->id;        
                 $estagio->save();
                 $workflow = $estagio->workflow_get();
                 $workflow->apply($estagio,'enviar_analise_tecnica_alteracao');
@@ -188,7 +187,7 @@ class EstagioWorkflowController extends Controller
     #FUNÇÕES TEMPORÁRIAS
 
     public function reiniciar_estagio(Estagio $estagio) {
-        if (Gate::allows('empresa') | Gate::allows('admin')) {
+        if (Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
             $reiniciar_estagio = $estagio->replicate();
             $reiniciar_estagio->push();
             $workflow = $reiniciar_estagio->workflow_get();

@@ -25,13 +25,36 @@
 
   </div>
 
-Última alteração realizada em: <b>{{ Carbon\Carbon::parse($estagio->updated_at)->format('d/m/Y H:i') }}</b>
-<br>
 Enviado para: <b>{{ $estagio->getStatus()[$estagio->status]['name'] }} - 
 {{ $estagio->getStatus()[$estagio->status]['optional'] }}
 </b>
 <br>
-{{ $estagio->analise_academica_user->name }}
+
+Última alteração realizada em: <b>{{ Carbon\Carbon::parse($estagio->updated_at)->format('d/m/Y H:i') }}</b>
+<br>
+
+@if($estagio->analise_tecnica_user)
+Análise técnica do setor de Graduação realizada por: {{ $estagio->analise_tecnica_user->name  }} <br>
+@endif
+
+@if($estagio->analise_academica_user)
+Parecer de mérito realizado por: {{ $estagio->analise_academica_user->name }} <br>
+@endif
+
+@if($estagio->analise_alteracao_user)
+Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise_alteracao_user->name  }}<br>
+@endif
+
+<br>
+@if(is_null($estagio->renovacao_parent_id))
+    <a href="/pdfs/termo/{{$estagio->id}}"target="_blank" >
+    <i class="fas fa-file-pdf"></i> </a>
+     Visualizar PDF do Termo de Ciência
+@else
+    <a href="/pdfs/renovacao/{{$estagio->id}}" class="btn btn-success" target="_blank" >
+    <i class="fas fa-file-pdf"></i> </a>
+    Visualizar PDF do Termo de Ciência para Renovação
+@endif
 
 <br><br>
 

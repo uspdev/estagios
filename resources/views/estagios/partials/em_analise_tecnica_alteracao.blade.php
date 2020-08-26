@@ -9,7 +9,7 @@
 @endif
 
 <hr>
-
+@can('admin')
 <form method="POST" action="/analise_tecnica_alteracao/{{$estagio->id}}">
     @csrf
     <div class="row">
@@ -24,4 +24,5 @@
         <button type="submit" class="btn btn-success" name="analise_tecnica_alteracao_action" value="deferimento_analise_tecnica_alteracao">Deferir</button>
     </div>
 
-</form>           
+</form>
+@endcan('admin')         

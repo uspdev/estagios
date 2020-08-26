@@ -50,26 +50,21 @@ class CreateEstagiosTable extends Migration
 
             /* Campos da renovação */
             $table->text('renovacao_justificativa')->nullable();
-            $table->bigInteger('renovacao_parent_id')->nullable();
-
-            /* Campos da alteração */
-            $table->text('alteracao')->nullable();
-            $table->unsignedBigInteger('alteracao_user_id')->nullable();
-            $table->foreign('alteracao_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('renovacao_parent_id')->nullable();           
 
             /* Análises */
             $table->text('analise_tecnica')->nullable();
             $table->unsignedBigInteger('analise_tecnica_user_id')->nullable();
-            $table->foreign('analise_tecnica_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('analise_tecnica_user_id')->references('id')->on('users')->onDelete('set null');
 
             $table->text('analise_academica')->nullable();
             $table->unsignedBigInteger('analise_academica_user_id')->nullable();
-            $table->foreign('analise_academica_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('analise_academica_user_id')->references('id')->on('users')->onDelete('set null');
             
 
             $table->text('analise_alteracao')->nullable();
             $table->unsignedBigInteger('analise_alteracao_user_id')->nullable();
-            $table->foreign('analise_alteracao_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('analise_alteracao_user_id')->references('id')->on('users')->onDelete('set null');
 
             /* Campo para controlar workflow */
             $table->string('status');

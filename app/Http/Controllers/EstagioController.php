@@ -49,7 +49,7 @@ class EstagioController extends Controller
 
     public function show(Estagio $estagio)
     {
-        if (Gate::allows('admin') | Gate::allows('parecerista')) {
+        if (Gate::allows('admin') | Gate::allows('parecerista') | Gate::allows('empresa',$estagio->cnpj)) {
             return view('estagios.show')->with('estagio',$estagio);
         }
         abort(403, 'Access denied');
@@ -70,9 +70,12 @@ class EstagioController extends Controller
         return redirect("estagios/{$estagio->id}");
     }
 
+    /* Será feito via workflow
     public function edit(Estagio $estagio) {
-        $this->authorize('admin_ou_empresa', $estagio->cnpj);
-        return view('estagios.edit')->with('estagio',$estagio);
+        if (Gate::allows('admin') | Gate::allows('empresa',$estagio->cnpj)) {
+            return view('estagios.edit')->with('estagio',$estagio);
+        }
+        abort(403, 'Access denied');
     }
 
     public function update(EstagioRequest $request, Estagio $estagio)
@@ -82,11 +85,14 @@ class EstagioController extends Controller
         $estagio->update($validated); 
         return redirect("estagios/{$estagio->id}");
     }
+    */
 
     public function destroy(Estagio $estagio){
-        $this->authorize('admin_ou_empresa', $estagio->cnpj);
-        $estagio->delete();
-        return redirect('/estagios');
+        if (Gate::allows('admin') | Gate::allows('empresa',$estagio->cnpj)) {
+            $estagio->delete();
+            return redirect('/estagios');
+        }
+        abort(403, 'Access denied');
     } 
 
     public function parecerMerito(Estagio $estagio){

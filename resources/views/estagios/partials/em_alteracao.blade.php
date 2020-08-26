@@ -9,6 +9,7 @@
     <hr>
 @endif
 
+@can('empresa',$estagio->cnpj)
 <form method="POST" action="/enviar_alteracao/{{$estagio->id}}">
     @csrf
     <div class="row">
@@ -26,7 +27,8 @@
         <button type="submit" class="btn btn-info" name="enviar_analise_tecnica_alteracao" value="apenas_salvar">Apenas salvar alterações</button>
     </div>
     @include ('estagios.form')
-    </form>
+</form>
+@endcan
 
 </div>
 </div>

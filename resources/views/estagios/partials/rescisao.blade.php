@@ -2,7 +2,6 @@
 <div class="card">
 <div class="card-header"><b>Estágio Rescindido</b></div>
 <div class="card-body">
-
     
     <b>Motivo da Rescisão:</b> {{$estagio->rescisao_motivo}} <br>
     <b>Data de Rescisão:</b> {{$estagio->rescisao_data}}<br><br>

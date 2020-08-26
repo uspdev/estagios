@@ -1,4 +1,6 @@
 
+@can('parecerista')
+
 <div class="card">
 <div class="card-header"><b>Justificativa da análise acadêmica</b></div>
 <div class="card-body">
@@ -24,11 +26,12 @@
 
 </form>
 
-<h4>Último parecer:</h4> 
-@if(!empty($estagio->analise_academica))
-    <b>Parecerista:</b> {{App\User::find($estagio->analise_academica_user_id)->name}} <br>
-    <b>Parecer de Mérito:</b> {{$estagio->analise_academica}}<br>
+@if($estagio->analise_academica)
+    <b>último parecer de mérito:</b> {{$estagio->analise_academica}}<br>
+    Parecer de mérito realizado por: {{ $estagio->analise_academica_user->name }} <br>
 @endif
 
 </div>
 </div>
+
+@endcan('parecerista')

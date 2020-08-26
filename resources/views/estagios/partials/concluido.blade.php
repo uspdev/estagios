@@ -1,11 +1,14 @@
+@can('empresa',$estagio->cnpj)
 <div>
     <a href="/iniciar_alteracao/{{$estagio->id}}" class="btn btn-info" onClick="return confirm('Tem certeza que deseja iniciar o processo de alterações?')">Solicitar Aditivo de Alterações</a>
     <hr>
 
+    
     <div class="card">
     <div class="card-header"><b>EM CASO DE RENOVAÇÃO</b></div>
     <div class="card-body">
 
+    
     <form method="POST" action="/renovacao/{{$estagio->id}}">
     @csrf
         <div class="form-group">
@@ -17,7 +20,7 @@
             Enviar Pedido de Renovação
     </button>   
     </form>
-
+    
     </div></div> <br>
 
     <div class="card">
@@ -39,7 +42,7 @@
             Enviar Pedido de Rescisão
     </button>   
     </form>
-    
 </div>
+@endcan
 
 

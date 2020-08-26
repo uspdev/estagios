@@ -1,3 +1,4 @@
+
 <div>
     
     @if(!empty($estagio->analise_tecnica))
@@ -5,6 +6,8 @@
     @endif
 
     <br><br>
+    @can('admin_ou_empresa',$estagio->cnpj)
+
     <form method="POST" action="/enviar_para_analise_tecnica/{{$estagio->id}}">
     @csrf
 
@@ -30,6 +33,7 @@
     </div>
 
     </form>
+    @endcan
 
 </div>   
 
