@@ -26,7 +26,7 @@ Empresa 1:
 
 Setor de graduação:
 
-- Cadastrar e editar empresas - em especial qual essa muda de email
+- Cadastrar e editar empresas - em especial quando essa muda de email
 - Cadastrar Avisos 
 - Cadastrar/Excluir novos parecerista e definir qual é o presidente
 - Listar estágios e dar parecer técnico
