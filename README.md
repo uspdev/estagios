@@ -22,7 +22,7 @@ Empresa 1:
 - Login por email apenas
 - Cadastrar vagas para divulgação
 - Cadastrar novos estagiários
-- Verdo Termo
+- Ver Termo
 
 Setor de graduação:
 
