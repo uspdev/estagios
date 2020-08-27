@@ -40,11 +40,5 @@
 <br>
 @include('estagios.partials.index')
 <br>
-@include('convenios.partials.index')
-<br>
-
-
-<br>
-
 
 @endsection('content')
