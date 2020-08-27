@@ -60,6 +60,16 @@ class LoginEmpresaController extends Controller
                 return redirect('/login/empresa');
             }
         }
+
+        /* Verificação se esse email já não está alocado para outra empresa */
+        $user = User::where('email',$request->email)->first();
+        if (!is_null($user)) {
+            if($user->cnpj != $request->cnpj) {
+                $request->session()->flash('alert-danger',
+                    "O email {$request->email} está cadastrado para outro CNPJ");
+                    return redirect('/login/empresa');
+            }
+        }
         
         /* Se a empresa não tem cadastro ou o cnpj coincide com o cadastro, enviamos a url de login */
         $url_login = URL::temporarySignedRoute('login_empresa', now()->addMinutes(120), [

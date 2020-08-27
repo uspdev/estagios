@@ -8,6 +8,7 @@ use App\Empresa;
 use App\Estagio;
 use App\Convenio;
 use Auth;
+use App\User;
 use Illuminate\Support\Facades\Gate;
 
 class EmpresaController extends Controller
@@ -26,7 +27,7 @@ class EmpresaController extends Controller
 
     public function show(Request $request, Empresa $empresa){
 
-        if (Gate::allows('empresa', $empresa->cnpj) or Gate::allows('admin')) {
+        if (Gate::allows('empresa', $empresa->cnpj) | Gate::allows('admin')) {
             $estagios = Estagio::where('cnpj',$empresa->cnpj)->get();
             $convenios = Convenio::where('cnpj',$empresa->cnpj)->get();
             return view('empresas.show')->with([
@@ -46,9 +47,9 @@ class EmpresaController extends Controller
     }
 
     public function store(EmpresaRequest $request){
-        if (Gate::allows('empresa') or Gate::allows('admin')) {
+        if (Gate::allows('empresa') | Gate::allows('admin')) {
             $validated = $request->validated();
-            Empresa::create($validated);
+            $empresa = Empresa::create($validated);
             return redirect("/empresas/$empresa->id");
         } else {
             $request->session()->flash('alert-danger','Usuário sem permissão');
@@ -58,7 +59,7 @@ class EmpresaController extends Controller
 
     public function edit(Empresa $empresa){
 
-        if (Gate::allows('empresa', $empresa->cnpj) or Gate::allows('admin')) {
+        if (Gate::allows('empresa', $empresa->cnpj) | Gate::allows('admin')) {
             return view('empresas.edit')->with('empresa', $empresa);
         } else {
             $request->session()->flash('alert-danger','Usuário sem permissão');
@@ -67,8 +68,9 @@ class EmpresaController extends Controller
     }
 
     public function update(EmpresaRequest $request, Empresa $empresa){
-        if (Gate::allows('empresa', $empresa->cnpj) or Gate::allows('admin')) {
+        if (Gate::allows('empresa', $empresa->cnpj) | Gate::allows('admin')) {
             $validated = $request->validated();
+            
             $empresa->update($validated);
             return redirect("/empresas/$empresa->id");
         } else {
@@ -101,6 +103,21 @@ class EmpresaController extends Controller
             $empresa->email = Auth::user()->email;
             return view('empresas.create')->with('empresa',$empresa);
         }
+    }
 
+    public function adminLogandoComoEmpresa($cnpj){
+        $this->authorize('admin');
+
+        $cnpj = preg_replace("/[^0-9]/", "", $cnpj);
+        $empresa = Empresa::where('cnpj',$cnpj)->first();
+
+        $user = User::where('cnpj',$cnpj)->first();
+        if (is_null($user)) $user = new User;
+        $user->cnpj  = $empresa->cnpj;
+        $user->name  = $empresa->cnpj;
+        $user->email = $empresa->email;
+        $user->save();
+        Auth::login($user, true);
+        return redirect('/');
     }
 }

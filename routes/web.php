@@ -45,6 +45,7 @@ Route::get('login/empresa/check', 'Auth\LoginEmpresaController@empresa')->name('
 
 # Rotas para empresa
 Route::get('/empresa_update', 'EmpresaController@empresa_update');
+Route::post('/adminLogandoComoEmpresa/{cnpj}', 'EmpresaController@adminLogandoComoEmpresa');
 
 # rotas para workflow do estágio
 

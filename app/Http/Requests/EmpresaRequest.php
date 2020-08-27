@@ -28,13 +28,13 @@ class EmpresaRequest extends FormRequest
                     'razao_social' => 'required',
                     'cnpj' => [
                         'required',
-                        'cnpj',
+                        'cnpj'
                     ],
+                    'email' => 'required|email',
                     'area_de_atuacao' => 'required',
                     'endereco' => 'required',
                     'cep' => 'required|formato_cep',
                     'nome_de_contato' => 'required',
-                    'email' => 'required|email',
                     'telefone_de_contato' => 'required|telefone_com_ddd',
                     'nome_do_representante' => 'required',
                     'cargo_do_representante' => 'required',
@@ -43,19 +43,18 @@ class EmpresaRequest extends FormRequest
                     'telefone_do_supervisor_estagio' => 'required|telefone_com_ddd',
                     'email_do_supervisor_estagio' => 'required|email'
                 ];
+
+        /* Email e Cnpj devem ser únicos, porém isso não está ocorrendo */
+        /*
+        dd($this->empresa->email);
         if ($this->method() == 'PATCH' || $this->method() == 'PUT'){
-            array_push($rules['cnpj'], 'unique:empresas,cnpj,'.$this->empresa->id);
+            #array_push($rules['cnpj'], 'unique:empresas,cnpj,'.$this->empresa->id);
+            $rules['email'] =  'required|email|unique:empresas,email,'.$this->empresa->email;
         }
         else{
             array_push($rules['cnpj'], 'unique:empresas');
         }
+        */
         return $rules;
-    }
-
-    public function validationData()
-    {
-        $data = $this->all();
-        $data['cnpj'] = preg_replace('/[^0-9]/', '', $data['cnpj']);
-        return $data;
     }
 }
