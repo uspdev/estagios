@@ -46,11 +46,14 @@ class EmpresaController extends Controller
     }
 
     public function store(EmpresaRequest $request){
-
-        $this->authorize('admin');
-        $validated = $request->validated();
-        Empresa::create($validated);
-        return redirect('/empresas');
+        if (Gate::allows('empresa') or Gate::allows('admin')) {
+            $validated = $request->validated();
+            Empresa::create($validated);
+            return redirect("/empresas/$empresa->id");
+        } else {
+            $request->session()->flash('alert-danger','Usuário sem permissão');
+            return redirect('/');
+        }
     }
 
     public function edit(Empresa $empresa){
