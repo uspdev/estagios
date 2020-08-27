@@ -66,7 +66,7 @@
         <div class="row">
             <div class="col-6 form-group">
                 <label for="telefone_do_supervisor_estagio" class="required">Telefone do Supervisor de Estágios:</label>
-                <input type="text" maxlength="128" class="form-control telefone-com-ddd" name="telefone_do_supervisor_estagio" value="{{old('telefone_do_supervisor_estagio', $empresa->telefone_do_supervisor_estagio)}}">
+                <input type="text" maxlength="128" class="form-control telefone-com-ddd" placeholder="(00)0000-0000 ou (00)00000-0000" name="telefone_do_supervisor_estagio" value="{{old('telefone_do_supervisor_estagio', $empresa->telefone_do_supervisor_estagio)}}">
             </div>    
             <div class="col-6 form-group">
                 <label for="email_do_supervisor_estagio" class="required">E-mail do Supervisor de Estágios:</label>
