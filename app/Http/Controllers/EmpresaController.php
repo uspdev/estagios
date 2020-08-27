@@ -80,7 +80,6 @@ class EmpresaController extends Controller
     }
 
     public function destroy(Request $request, Empresa $empresa){
-        dd("Delete não habilitado na produção");
         $this->authorize('admin');
         $empresa->delete();
         return redirect('/empresas');

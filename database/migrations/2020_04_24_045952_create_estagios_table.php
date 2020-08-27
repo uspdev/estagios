@@ -61,7 +61,6 @@ class CreateEstagiosTable extends Migration
             $table->unsignedBigInteger('analise_academica_user_id')->nullable();
             $table->foreign('analise_academica_user_id')->references('id')->on('users')->onDelete('set null');
             
-
             $table->text('analise_alteracao')->nullable();
             $table->unsignedBigInteger('analise_alteracao_user_id')->nullable();
             $table->foreign('analise_alteracao_user_id')->references('id')->on('users')->onDelete('set null');

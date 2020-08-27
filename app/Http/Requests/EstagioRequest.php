@@ -28,13 +28,7 @@ class EstagioRequest extends FormRequest
             'valorbolsa' => 'required',
             'tipobolsa' => 'required',
             'justificativa' => 'required',
-            'duracao' => 'required', 
-            //
-            'atividadespertinentes' => 'required',
-            'mediaponderada' => 'required',
-            'horariocompativel' => 'required', 
-            'desempenhoacademico' => 'required',
-            //          
+            'duracao' => 'required',         
             'data_inicial' => 'required|data',
             'data_final' => 'required|data',
             'cargahoras' => 'required',

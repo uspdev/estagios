@@ -75,39 +75,7 @@ aditivo por até 12 meses.
             <textarea name="atividades" rows="5" cols="60">{{old('atividades',$estagio->atividades)}}</textarea>
         </div>
 
-        <label for="atividadespertinentes" class="required">As atividades propostas no plano de estágio são pertinentes ao curso do aluno?: </label>               
-        <select name="atividadespertinentes" class="form-control" id="atividadespertinentes">
-            <option value="" selected="">- Selecione -</option>
-                @foreach ($estagio->atividadespertinentesOptions() as $option)
-                @if (old('atividadespertinentes') == '' and isset($estagio->atividadespertinentes) )
-            <option value="{{$option}}" {{ ( $estagio->atividadespertinentes == $option) ? 'selected' : ''}}>
-                {{$option}}
-            </option>
-                @else
-            <option value="{{$option}}" {{ ( old('atvidadespertinentes') == $option) ? 'selected' : ''}}>
-                {{$option}}
-            </option>
-            @endif
-            @endforeach
-        </select>
         <br>
-
-        <div class="form-group">
-        <label for="mediaponderada" class="required">Média Ponderada.</label>
-            <input type="text" class="form-control" id="mediaponderada" name="mediaponderada" value="{{old('mediaponderada',$estagio->mediaponderada)}}">
-        </div>
-
-        <div class="form-group">
-        <label for="horariocompativel" class="required">O Horário é compatível com os horários disponíveis na grade horária do aluno?:</label>
-            <input type="text" class="form-control" id="horariocompativel" name="horariocompativel" value="{{old('horariocompativel',$estagio->horariocompativel)}}">
-        </div>
-
-        <div class="form-group">
-        <label for="desempenhoacademico" class="required">Avalie o desempenho acadêmico do aluno.: </label>
-            <textarea name="desempenhoacademico" rows="5" cols="60">{{old('desempenhoacademico',$estagio->desempenhoacademico)}}</textarea>
-        </div>
-
-
 
     </div>
 </div>
