@@ -22,8 +22,8 @@
   <div class="card-header"><b>Informações Gerais</b></div>
     <div class="card-body">
         <b>Número USP:</b> {{$estagio->numero_usp}}<br>
-        <b>Nome do Aluno:</b> {{$pessoa::dump($estagio->numero_usp)['nompes'] }}<br>
-        <b>Média Ponderada:</b> {{$estagio->mediaponderada}}<br>            
+        <b>Nome do aluno:</b> {{$pessoa::dump($estagio->numero_usp)['nompes'] }}<br>
+        <b>Média ponderada:</b> {{$estagio->mediaponderada}}<br>            
         <b>Valor da bolsa:</b> {{$estagio->valorbolsa}}<br>
         <b>Tipo de bolsa:</b> {{$estagio->tipobolsa}}<br>
         <b>Justificativa:</b> {{$estagio->justificativa}}<br>
@@ -31,7 +31,8 @@
         <b>Atividades a serem desenvolvidas:</b> {{$estagio->atividades}}<br>
         <b>O horário é compatível com o curso?:</b> {{$estagio->horariocompativel}}<br>
         <b>As ativídades são pertinentes ao curso?:</b> {{$estagio->atividadespertinentes}}<br>        
-        <b>Desempenho Acadêmico:</b> {{$estagio->desempenhoacademico}}<br>
+        <b>Desempenho acadêmico:</b> {{$estagio->desempenhoacademico}}<br>
+        <b>Comentários adicionais do parecer de mérito:</b> {{$estagio->analise_academica}}<br>
     </div>
 </div>
 
@@ -83,7 +84,7 @@
         <div class="card-body">
             <b>Método de controle de horário:</b> {{$estagio->controlehorario}}<br>
             <b>Método de supervisão interna:</b> {{$estagio->supervisao}}<br>
-            <b>Interação com ambiente e colaboradores e dias onde ocorrerá Deslocamento para a empresa:</b> {{$estagio->interacao}}<br>
+            <b>Interação com ambiente, colaboradores e dias onde ocorrerá o deslocamento para a empresa:</b> {{$estagio->interacao}}<br>
             <b>Endereço e dias do estágio:</b> {{$estagio->enderecoedias}}<br>
     </div>    
 </div>    
@@ -94,7 +95,7 @@
     <div class="card-header"><b>Informações relatívas a pandemia de COVID-19</b></div>
         <div class="card-body">
             <b>O estágio será realizado em home-office?:</b> {{$estagio->pandemiahomeoffice}}<br>
-            <b>Caso o estágio não seja home-office, quais as medidas sanitárias adotadas pela empresa:</b> {{$estagio->pandemiamedidas}}<br>
+            <b>Em caso do estágio não ser home-office, quais as medidas sanitárias adotadas pela empresa são:</b> {{$estagio->pandemiamedidas}}<br>
     </div>    
 </div>  
 

@@ -5,19 +5,41 @@
 <div class="card-header"><b>Justificativa da análise acadêmica</b></div>
 <div class="card-body">
 
-<ul>
-  <li>As atividades propostas no plano de estágio são pertinentes ao curso do(a) aluno(a)?</li>
-  <li>Horário é compatível com os horários disponíveis na grade horária do(a) aluno(a? </li>
-  <li>Comente sobre o desempenho acadêmico do(a) aluno(a) (coloque a média ponderada) </li>
-</ul>
 
 <form method="POST" action="/analise_academica/{{$estagio->id}}">
     @csrf
-    <div class="row">
-        <div class="form-group">
+
+    <label for="mediaponderada">Média Ponderada.</label>
+        <input type="text" class="form-control" id="mediaponderada" name="mediaponderada" value="{{old('mediaponderada',$estagio->mediaponderada)}}">
+
+
+    <label for="horariocompativel">O Horário é compatível com os horários disponíveis na grade horária do aluno?:</label>
+        <input type="text" class="form-control" id="horariocompativel" name="horariocompativel" value="{{old('horariocompativel',$estagio->horariocompativel)}}">
+
+
+    <label for="desempenhoacademico">Avalie o desempenho acadêmico do aluno.: </label><br>
+        <textarea name="desempenhoacademico" rows="5" cols="60">{{old('desempenhoacademico',$estagio->desempenhoacademico)}}</textarea>
+
+
+
+    <label for="atividadespertinentes">As atividades propostas no plano de estágio são pertinentes ao curso do aluno?: </label>               
+    <select name="atividadespertinentes" class="form-control" id="atividadespertinentes">
+        <option value="" selected="">- Selecione -</option>
+                @foreach ($estagio->atividadespertinentesOptions() as $option)
+                @if (old('atividadespertinentes') == '' and isset($estagio->atividadespertinentes) )
+        <option value="{{$option}}" {{ ( $estagio->atividadespertinentes == $option) ? 'selected' : ''}}>
+                {{$option}}
+        </option>
+                @else
+        <option value="{{$option}}" {{ ( old('atividadespertinentes') == $option) ? 'selected' : ''}}>
+                {{$option}}
+        </option>
+            @endif
+            @endforeach
+    </select>
+
+        <label for="analise_academica">(Opcional) Comentários Adicionais: </label> <br>
             <textarea name="analise_academica" rows="5" cols="60">{{old('analise_academica',$estagio->analise_academica)}}</textarea>
-        </div>
-    </div>
 
     <div class="form-group">
         <button type="submit" class="btn btn-info" name="analise_academica_action" value="indeferimento_analise_academica">Indeferir</button>

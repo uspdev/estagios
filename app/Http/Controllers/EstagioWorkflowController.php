@@ -61,9 +61,16 @@ class EstagioWorkflowController extends Controller
         if (Gate::allows('parecerista')) {
 
             $request->validate([
-                'analise_academica' => 'required',
+                'atividadespertinentes' => 'required',
+                'desempenhoacademico' => 'required',
+                'horariocompativel' => 'required',
+                'mediaponderada' => 'required',
             ]);
             $estagio->analise_academica = $request->analise_academica;
+            $estagio->mediaponderada = $request->mediaponderada;
+            $estagio->horariocompativel = $request->horariocompativel;
+            $estagio->desempenhoacademico = $request->desempenhoacademico;
+            $estagio->atividadespertinentes = $request->atividadespertinentes;
             $estagio->analise_academica_user_id = Auth::user()->id;
             $estagio->save();
             $workflow = $estagio->workflow_get();

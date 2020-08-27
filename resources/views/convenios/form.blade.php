@@ -107,7 +107,7 @@
       <div class="form-group row">
         <label for="tel_contato" class="required col-sm-2 col-form-label">Telefone:</label>
         <div class="col-sm-10">
-          <input type="text" name="tel_contato" class="telefone_com_ddd form-control" id="tel_contato" placeholder="Insira seu telefone" value="{{old('tel_contato',$convenio->tel_contato)}}">
+          <input type="text" name="tel_contato" class="telefone_com_ddd form-control" id="tel_contato" placeholder="(00)0000-0000 ou (00)00000-0000" value="{{old('tel_contato',$convenio->tel_contato)}}">
         </div>
       </div>
       <div class="form-group row">

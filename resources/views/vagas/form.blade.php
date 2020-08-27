@@ -31,7 +31,7 @@
     </div>
     <div class="col-sm form-group">
       <label for="horario" class="required"><strong>Horário do Estágio:</strong></label>
-      <input type="text" class="form-control" id="horario" name="horario" width="190" value="{{old('horario',$vaga->horario)}}">
+      <input type="text" class="form-control" placeholder="00:00-00:00" id="horario" name="horario" width="190" value="{{old('horario',$vaga->horario)}}">
     </div>
   </div>
 
