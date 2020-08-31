@@ -88,9 +88,9 @@ class EstagioWorkflowController extends Controller
 
         if ( Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
 
-            $request->validate([
+            /* $request->validate([
                 'renovacao_justificativa' => 'required',
-            ]);      
+            ]); */  
             $renovacao = $estagio->replicate();
             $renovacao->push();
 
@@ -114,10 +114,10 @@ class EstagioWorkflowController extends Controller
     public function rescisao(Request $request, Estagio $estagio){
             
         if ( Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
-            $request->validate([
+            /* $request->validate([
                 'rescisao_motivo' => 'required',
                 'rescisao_data' => 'required',
-            ]);
+            ]); */ 
             
             $estagio->rescisao_motivo = $request->rescisao_motivo;       
             $estagio->save();
@@ -154,9 +154,9 @@ class EstagioWorkflowController extends Controller
             $estagio->save();
 
             if($request->enviar_analise_tecnica_alteracao == 'enviar_analise_tecnica_alteracao'){
-                $request->validate([
+                /* $request->validate([
                     'alteracao' => 'required'
-                ]);
+                ]); */
                 $estagio->alteracao = $request->alteracao;
                 $estagio->save();
                 $workflow = $estagio->workflow_get();
