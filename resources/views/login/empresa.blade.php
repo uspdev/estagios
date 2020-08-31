@@ -23,7 +23,7 @@
     <div class="row">
       <div class="col-sm form-group">
         <label class="col-sm required" for="cnpj">CNPJ</label>
-          <input type="text" class="form-control cnpj" id="cnpj" name="cnpj" value="{{old('cnpj')}}">
+          <input type="text" class="form-control" id="cnpj" name="cnpj" value="{{old('cnpj')}}">
       </div>
 
       <div class="col-sm form-group">

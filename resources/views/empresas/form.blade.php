@@ -30,20 +30,6 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-4 form-group">
-                <label for="nome_de_contato" class="required">Nome de Contato da Empresa:</label>
-                <input type="text" maxlength="128" class="form-control" name="nome_de_contato" value="{{old('nome_de_contato', $empresa->nome_de_contato)}}">
-            </div>    
-            <div class="col-4 form-group">
-                <label for="email" class="required">E-mail de Contato da Empresa:</label>
-                <input type="email" maxlength="128" class="form-control" name="email" value="{{old('email', $empresa->email)}}">
-            </div>
-            <div class="col-4 form-group">
-                <label for="telefone_de_contato" class="required">Telefone de Contato da Empresa:</label>
-                <input type="text" maxlength="11" id="telefone-com-ddd" placeholder="Insira o telefone com DDD" class="form-control" name="telefone_de_contato" value="{{old('telefone_de_contato', $empresa->telefone_de_contato)}}">
-            </div>    
-        </div>
-        <div class="row">
             <div class="col-8 form-group">
                 <label for="nome_do_representante" class="required">Nome do Representante da Empresa que irá assinar o Termo de Compromisso:</label>
                 <input type="text" maxlength="128" class="form-control" name="nome_do_representante" value="{{old('nome_do_representante', $empresa->nome_do_representante)}}">
@@ -72,6 +58,21 @@
                 <label for="email_do_supervisor_estagio" class="required">E-mail do Supervisor de Estágios:</label>
                 <input type="email" maxlength="128" class="form-control" name="email_do_supervisor_estagio" value="{{old('email_do_supervisor_estagio', $empresa->email_do_supervisor_estagio)}}">
             </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-4 form-group">
+                <label for="nome_de_contato" class="required">Nome de Contato da Empresa:</label>
+                <input type="text" maxlength="128" class="form-control" name="nome_de_contato" value="{{old('nome_de_contato', $empresa->nome_de_contato)}}">
+            </div>    
+            <div class="col-4 form-group">
+                <label for="email" class="required">E-mail de Contato da Empresa:</label>
+                <input type="email" maxlength="128" class="form-control" name="email" value="{{old('email', $empresa->email)}}">
+            </div>
+            <div class="col-4 form-group">
+                <label for="telefone_de_contato" class="required">Telefone de Contato da Empresa:</label>
+                <input type="text" maxlength="11" id="telefone-com-ddd" placeholder="Insira o telefone com DDD" class="form-control" name="telefone_de_contato" value="{{old('telefone_de_contato', $empresa->telefone_de_contato)}}">
+            </div>    
         </div>
         <div class="row">
             <div class="col-sm form-group">

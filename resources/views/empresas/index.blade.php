@@ -1,5 +1,9 @@
 @extends('laravel-usp-theme::master')
 
+@section('javascripts_head')
+  <script src="{{asset('/js/empresas.js')}}"></script>
+@endsection('javascript_head')
+
 @section('content')
 @include('flash')
 
@@ -15,7 +19,7 @@
 </form>
 <br>
 {{ $empresas->appends(request()->query())->links() }}
-<table class="table table-striped ">
+<table class="table table-striped" id="index">
     <thead>
         <tr>
             <th>Nome da Empresa</th>

@@ -64,14 +64,14 @@ aditivo por até 12 meses.
         </div>
 
         <div class="form-group">
-        <label for="justificativa" class="required">Justificativa: </label>
+        <label for="justificativa">Justificativa (Não é necessário preencher em caso de estágio inferior a 6 meses): </label>
             <textarea name="justificativa" rows="5" cols="60">{{old('justificativa',$estagio->justificativa)}}</textarea>
         </div>
 
         <div class="form-group">
-        <label for="atividades" class="required">Descrição detalhada das atividades a serem desenvolvidas pelo 
+        <label for="atividades">Descrição detalhada das atividades a serem desenvolvidas pelo 
         estagiário para que o parecerista analise e constate a relação destas com a formação 
-        acadêmica do aluno.: </label>
+        acadêmica do aluno (Não é necessário preencher em caso de estágio inferior a 6 meses): </label>
             <textarea name="atividades" rows="5" cols="60">{{old('atividades',$estagio->atividades)}}</textarea>
         </div>
 
@@ -125,9 +125,8 @@ aditivo por até 12 meses.
                 </div></div>
 
                 <div class="form-group">
-                <label for="horario" class="required">Horário do Estágio (início e término, formato 00:00). 
-                Caso os horários sejam em períodos diferentes especificar: </label>
-                    <input type="text" class="form-control horario" placeholder="00:00-00:00" id="horario" name="horario" value="{{old('horario',$estagio->horario)}}">
+                <label for="horario" class="required">Horário do Estágio (Caso os horários sejam em períodos diferentes, favor especificar): </label>
+                    <input type="text" class="form-control horario" id="horario" name="horario" value="{{old('horario',$estagio->horario)}}">
                 </div>
 
     </div>
