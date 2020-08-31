@@ -18,6 +18,8 @@ class ChangesEstagiosFieldsToNullable extends Migration
             $table->string('mediaponderada')->nullable()->change();
             $table->string('horariocompativel')->nullable()->change(); 
             $table->text('desempenhoacademico')->nullable()->change(); 
+            $table->text('atividades')->nullable()->change();
+            $table->text('justificativa')->nullable()->change(); 
         });
     }
 

@@ -13,13 +13,13 @@ class EstagioWorkflowController extends Controller
 {
 
     #Funções Análise Técnica
-    
+
     public function enviar_para_analise_tecnica(EstagioRequest $request, Estagio $estagio){
 
         if ( Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin') ) {
-            $validated = $request->validated();                  
-            $estagio->update($validated); 
-           
+            $validated = $request->validated();
+            $estagio->update($validated);
+
             if($request->enviar_para_analise_tecnica=="enviar_para_analise_tecnica"){
                 $workflow = $estagio->workflow_get();
                 $workflow->apply($estagio,'enviar_para_analise_tecnica');
@@ -51,7 +51,7 @@ class EstagioWorkflowController extends Controller
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
-        return redirect("/estagios/{$estagio->id}");  
+        return redirect("/estagios/{$estagio->id}");
     }
 
     #Funções Análise Acadêmica
@@ -79,7 +79,7 @@ class EstagioWorkflowController extends Controller
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
-        return redirect("/estagios/{$estagio->id}");  
+        return redirect("/estagios/{$estagio->id}");
     }
 
     #Funções Concluido
@@ -88,9 +88,6 @@ class EstagioWorkflowController extends Controller
 
         if ( Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
 
-            $request->validate([
-                'renovacao_justificativa' => 'required',
-            ]);      
             $renovacao = $estagio->replicate();
             $renovacao->push();
 
@@ -100,26 +97,22 @@ class EstagioWorkflowController extends Controller
             $estagio->analise_tecnica = null;
             $estagio->analise_academica = null;
             $estagio->analise_alteracao = null;
-            $estagio->save();        
+            $estagio->save();
             $workflow = $renovacao->workflow_get();
-            $workflow->apply($renovacao,'renovacao');       
+            $workflow->apply($renovacao,'renovacao');
             $renovacao->save();
             $estagio->save();
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
-        }            
-        return redirect("estagios/{$renovacao->id}");     
-    }   
-     
+        }
+        return redirect("estagios/{$renovacao->id}");
+    }
+
     public function rescisao(Request $request, Estagio $estagio){
-            
+
         if ( Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
-            $request->validate([
-                'rescisao_motivo' => 'required',
-                'rescisao_data' => 'required',
-            ]);
-            
-            $estagio->rescisao_motivo = $request->rescisao_motivo;       
+
+            $estagio->rescisao_motivo = $request->rescisao_motivo;
             $estagio->save();
             $workflow = $estagio->workflow_get();
             $workflow->apply($estagio,'rescisao_do_estagio');
@@ -127,8 +120,8 @@ class EstagioWorkflowController extends Controller
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
-        return redirect("/estagios/{$estagio->id}"); 
-    } 
+        return redirect("/estagios/{$estagio->id}");
+    }
 
     public function iniciar_alteracao(Estagio $estagio) {
 
@@ -139,38 +132,35 @@ class EstagioWorkflowController extends Controller
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
-        return redirect("estagios/{$estagio->id}");           
+        return redirect("estagios/{$estagio->id}");
 
     }
 
     #Funções Alteração
 
-    public function enviar_alteracao(EstagioRequest $request, Estagio $estagio){    
-            
+    public function enviar_alteracao(EstagioRequest $request, Estagio $estagio){
+
         if (Gate::allows('empresa',$estagio->cnpj)) {
-            $validated = $request->validated();                  
-            $estagio->update($validated); 
+            $validated = $request->validated();
+            $estagio->update($validated);
             $estagio->alteracao = $request->alteracao;
             $estagio->save();
 
             if($request->enviar_analise_tecnica_alteracao == 'enviar_analise_tecnica_alteracao'){
-                $request->validate([
-                    'alteracao' => 'required'
-                ]);
                 $estagio->alteracao = $request->alteracao;
                 $estagio->save();
                 $workflow = $estagio->workflow_get();
                 $workflow->apply($estagio,'enviar_analise_tecnica_alteracao');
                 $estagio->save();
-            }    
+            }
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
-        return redirect("/estagios/{$estagio->id}"); 
-    } 
+        return redirect("/estagios/{$estagio->id}");
+    }
 
     #Funções Análise da Alteração
- 
+
     public function analise_tecnica_alteracao(Request $request, Estagio $estagio){
 
         if (Gate::allows('admin')) {
@@ -188,7 +178,7 @@ class EstagioWorkflowController extends Controller
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
-        return redirect("/estagios/{$estagio->id}");  
+        return redirect("/estagios/{$estagio->id}");
     }
 
     #FUNÇÕES TEMPORÁRIAS
@@ -200,11 +190,11 @@ class EstagioWorkflowController extends Controller
             $workflow = $reiniciar_estagio->workflow_get();
             $workflow->apply($reiniciar_estagio,'reiniciar_estagio');
             $reiniciar_estagio->save();
-            return redirect("estagios/{$reiniciar_estagio->id}");  
+            return redirect("estagios/{$reiniciar_estagio->id}");
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
-        return redirect("estagios/{$estagio->id}");  
-    } 
+        return redirect("estagios/{$estagio->id}");
+    }
 
 }
