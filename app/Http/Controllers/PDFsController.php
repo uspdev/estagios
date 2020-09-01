@@ -110,12 +110,12 @@ class PDFsController extends Controller
             $empresa = Empresa::where('cnpj',$estagio->cnpj)->first();
 
             // Busca parecerista
-            $parecerista = Pessoa::nomeCompleto($estagio->analise_tecnica_user_id);
-            $parecerista = [
-                "Prof. " . $parecerista['nompesttd'],
-            ];
+            //$parecerista = Pessoa::nomeCompleto($estagio->analise_tecnica_user_id);
+            //$parecerista = [
+            //    "Prof. " . $parecerista['nompesttd'],
+            //];
 
-            $pdf = PDF::loadView('pdfs.parecer', compact('estagio','empresa','parecerista'));
+            $pdf = PDF::loadView('pdfs.parecer', compact('estagio','empresa'));
             return $pdf->download('parecer.pdf');
         }
         abort(403, 'Access denied');
