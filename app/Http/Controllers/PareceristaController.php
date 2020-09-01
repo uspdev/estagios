@@ -63,12 +63,12 @@ class PareceristaController extends Controller
         return redirect("pareceristas/$parecerista->id");
     }
 
-    public function destroy( Parecerista $pazrecerista){
+    public function destroy( Parecerista $parecerista){
 
         $this->authorize('admin');
         $parecerista->delete();
         return redirect('/pareceristas');
     }
 
-}    
+}
 

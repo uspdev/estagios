@@ -24,33 +24,36 @@ class EstagioRequest extends FormRequest
     public function rules()
     {
         return [
-            'numero_usp' => 'required|numeric|codpes|graduacao',            
+            'numero_usp' => 'required|numeric|codpes|graduacao',
             'valorbolsa' => 'required',
-            'tipobolsa' => 'required',         
-            'duracao' => 'required',         
+            'tipobolsa' => 'required',
+            'duracao' => 'required',
             'data_inicial' => 'required|data',
             'data_final' => 'required|data',
             'cargahoras' => 'required',
-            'cargaminutos' => 'required',            
-            'horario' => 'required',  
+            'cargaminutos' => 'required',
+            'horario' => 'required',
             'auxiliotransporte' => 'required',
             'especifiquevt' => 'required',
-            'cnpj' => '',            
-            'seguradora' => 'required', 
+            'cnpj' => '',
+            'seguradora' => 'required',
             'numseguro' => 'required',
+            'controlehorario' => 'nullable',
+            'supervisao' => 'nullable',
+            'interacao' => 'nullable',
+            'enderecoedias' => 'nullable',
 
             //campos opcionais
-            'controlehorario' => 'nullable',  
-            'supervisao' => 'nullable',  
-            'interacao' => 'nullable',  
+            'controlehorario' => 'nullable',
+            'supervisao' => 'nullable',
+            'interacao' => 'nullable',
             'enderecoedias' => 'nullable',
             'justificativa' => 'nullable',
-            'atividades' => 'nullable',   
-
+            'atividades' => 'nullable',
 
             //pandemia
-            'pandemiahomeoffice' => 'required',  
-            'pandemiamedidas' => 'required_if:pandemiahomeoffice,==,Não'                                                                                                        
+            'pandemiahomeoffice' => 'required',
+            'pandemiamedidas' => 'required_if:pandemiahomeoffice,==,Não'
         ];
     }
 }
