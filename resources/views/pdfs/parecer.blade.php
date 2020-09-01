@@ -48,7 +48,7 @@
 <br>
 
 <div style="text-align: center">
-    <b> {{ $parecerista }} </b>
+    <b> {{ $estagio->parecerista }} </b>
 <div>
 
 <p style="page-break-after: always;"></p>
@@ -56,7 +56,7 @@
 @endsection('content')
 
 @section('footer')
-<div style="text-align: initial; font-weight: bold;">
+<div style="text-align: initial; font-weight: bold; ">
 <hr>
 Serviço de Estágios da Faculdade de Filosofia, Letras e Ciências Humanas da USP.
 </div>

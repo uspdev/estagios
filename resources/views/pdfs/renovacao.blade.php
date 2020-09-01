@@ -93,7 +93,6 @@
 </div>
 
 <hr>
-<br><br>
 
 <div
     style="border-width: 1px; border-style: solid; border-color: #000; text-align: center; padding: 0px; font-weight: bold">
@@ -141,14 +140,16 @@
 
 <br>
 
-<div style="font-style: italic">
-    <p>________________________________________<br>
-        <b>{{ $empresa->nome_do_representante }}</b></p>
-    <p>________________________________________<br>
-        <b>{{ $empresa->nome }}</b></p>
-    <p>________________________________________<br>
-        <b>{{ $pessoa::dump($presidente->numero_usp)['nompes'] }}</b><br>
-        <b>Presidente da Comissão de Graduação da FFLCH/USP</b></p>
+<div style="font-style: italic; font-weight: bold;">
+    _______________________________________________<br>
+    {{ $empresa->nome_do_representante }}<br>
+    Representante da {{ $empresa->nome }}<br><br>
+
+    _______________________________________________<br>
+    <b>{{ $empresa->nome }}</b><br><br>
+    _______________________________________________<br>
+    <b>{{ $pessoa::dump($presidente->numero_usp)['nompes'] }}</b><br>
+    <b>Presidente da Comissão de Graduação da FFLCH/USP</b><br>
 </div>
 
 <p style="page-break-after: never;"></p>

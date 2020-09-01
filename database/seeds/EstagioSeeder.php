@@ -39,10 +39,7 @@ class EstagioSeeder extends Seeder
             'status' => 'em_elaboracao',
             'pandemiahomeoffice' => 'Sim',
             'pandemiamedidas' => 'Alcool gel e cafezinho liberado',
-            'atividadesjustificativa' => 'Atuação no meio profissional de universidade e lidar com professores'
-
-            
-            
+            'atividadesjustificativa' => 'Atuação no meio profissional de universidade e lidar com professores'  
         ];
         App\Estagio::create($entrada); 
         
