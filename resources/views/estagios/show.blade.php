@@ -30,9 +30,10 @@
         <b>CNPJ da empresa:</b> {{$estagio->cnpj}}<br>
         <b>Atividades a serem desenvolvidas:</b> {{$estagio->atividades}}<br>
         <b>O horário é compatível com o curso?:</b> {{$estagio->horariocompativel}}<br>
-        <b>As ativídades são pertinentes ao curso?:</b> {{$estagio->atividadespertinentes}}<br>        
+        <b>As ativídades são pertinentes ao curso?:</b> {{$estagio->atividadespertinentes}}<br> 
+        <b>Justificativa da pertinencia:</b> {{$estagio->atividadesjustificativa}}<br>         
         <b>Desempenho acadêmico:</b> {{$estagio->desempenhoacademico}}<br>
-        <b>Comentários adicionais do parecer de mérito:</b> {{$estagio->analise_academica}}<br>
+        <b>Análise Acadêmica:</b> {{$estagio->analise_academica}}<br>
     </div>
 </div>
 

@@ -69,4 +69,6 @@ class PareceristaController extends Controller
         $parecerista->delete();
         return redirect('/pareceristas');
     }
+
 }
+
