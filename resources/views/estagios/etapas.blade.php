@@ -46,15 +46,19 @@ Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise
 @endif
 
 <br>
-@if(is_null($estagio->renovacao_parent_id))
+
+<!--<a href="/pdfs/parecer/{{$estagio->id}}"target="_blank" >
+    <i class="fas fa-file-pdf"></i> </a>
+     Visualizar PDF do Parecer de Mérito <br>-->
+
     <a href="/pdfs/termo/{{$estagio->id}}"target="_blank" >
     <i class="fas fa-file-pdf"></i> </a>
      Visualizar PDF do Termo de Ciência
-@else
-    <a href="/pdfs/renovacao/{{$estagio->id}}" class="btn btn-success" target="_blank" >
+<br>
+    <a href="/pdfs/renovacao/{{$estagio->id}}" target="_blank" >
     <i class="fas fa-file-pdf"></i> </a>
     Visualizar PDF do Termo de Ciência para Renovação
-@endif
+
 
 <br><br>
 

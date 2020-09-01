@@ -20,6 +20,8 @@ class ChangesEstagiosFieldsToNullable extends Migration
             $table->text('desempenhoacademico')->nullable()->change(); 
             $table->text('atividades')->nullable()->change();
             $table->text('justificativa')->nullable()->change(); 
+            $table->text('atividadesjustificativa');
+
         });
     }
 

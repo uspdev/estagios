@@ -9,18 +9,20 @@
 <form method="POST" action="/analise_academica/{{$estagio->id}}">
     @csrf
 
-    <label for="mediaponderada">Média Ponderada.</label>
+    <label for="mediaponderada">Média ponderada com reprovações: </label>
         <input type="text" class="form-control" id="mediaponderada" name="mediaponderada" value="{{old('mediaponderada',$estagio->mediaponderada)}}">
 
+    <br> 
 
-    <label for="horariocompativel">O Horário é compatível com os horários disponíveis na grade horária do aluno?:</label>
+    <label for="horariocompativel">O Horário é compatível com os horários disponíveis na grade horária do aluno?: </label>
         <input type="text" class="form-control" id="horariocompativel" name="horariocompativel" value="{{old('horariocompativel',$estagio->horariocompativel)}}">
 
+    <br> 
 
-    <label for="desempenhoacademico">Avalie o desempenho acadêmico do aluno.: </label><br>
-        <textarea name="desempenhoacademico" rows="5" cols="60">{{old('desempenhoacademico',$estagio->desempenhoacademico)}}</textarea>
+    <label for="desempenhoacademico">Avalie o desempenho acadêmico do aluno: </label><br>
+        <textarea name="desempenhoacademico" rows="5" cols="60">{{old('desempenhoacademico',$estagio->desempenhoacademico)}}</textarea>   
 
-
+    <br> 
 
     <label for="atividadespertinentes">As atividades propostas no plano de estágio são pertinentes ao curso do aluno?: </label>               
     <select name="atividadespertinentes" class="form-control" id="atividadespertinentes">
@@ -38,11 +40,19 @@
             @endforeach
     </select>
 
-        <label for="analise_academica">(Opcional) Comentários Adicionais: </label> <br>
-            <textarea name="analise_academica" rows="5" cols="60">{{old('analise_academica',$estagio->analise_academica)}}</textarea>
+    <br>
+
+    <label for="atividadesjustificativa">Justifique a pertinencia das atividades: </label><br>
+        <textarea name="atividadesjustificativa" rows="5" cols="60" value="{{old('atividadesjustificativa',$estagio->atividadesjustificativa)}}"></textarea>  
+
+    <br>     
+
+    <label for="analise_academica">Parecer final: </label> <br>
+        <textarea name="analise_academica" rows="5" cols="60" value="{{old('analise_academica',$estagio->analise_academica)}}"></textarea>    
 
     <div class="form-group">
         <button type="submit" class="btn btn-info" name="analise_academica_action" value="indeferimento_analise_academica">Indeferir</button>
+       <!-- <button type="submit" class="btn btn-success" name="analise_academica_action" value="deferimento_analise_academica">Deferir Parcialmente</button> -->
         <button type="submit" class="btn btn-success" name="analise_academica_action" value="deferimento_analise_academica">Deferir</button>
     </div>
 
