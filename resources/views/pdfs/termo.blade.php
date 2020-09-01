@@ -68,7 +68,7 @@
         Faculdade, celebram o presente TERMO DE COMPROMISSO DE ESTÁGIO, que se vincula ao convênio para Realização de
         Estágio firmado entre a CONCEDENTE e a INSTITUIÇÃO DE ENSINO nos termos da Lei no 9.394/96 e da Lei nº
         11.788/08, conforme as condições a seguir:</p>
-    <p>1. O estágio terá duração de <b>12 meses</b>, a começar em
+    <p>1. O estágio terá duração de <b>{{ $estagio->duracao }}</b>, a começar em
         <b>{{ \Carbon\Carbon::parse($estagio->dataini)->format('d/m/Y')}}</b> terminando em
         <b>{{ \Carbon\Carbon::parse($estagio->datafin)->format('d/m/Y')}}</b> que poderá
         ser eventualmente prorrogado ou modificado por documento complementar <b>(TERMO ADITIVO)</b>.</p>
@@ -155,13 +155,11 @@
 
 <div style="text-align: justify">
     Solicitação: <b>ESTÁGIO NOVO</b><br>
-    Nome do Estagiári{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }}
-    {{ $pessoa::dump($estagio->numero_usp)['nompes'] }}: <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b><br>
+    Nome d{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }} Estagiári{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }}: <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b><br>
     Nº USP: <b>{{ $estagio->numero_usp }}</b><br>
     Curso: <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomhab'] }}</b><br>
     Semestre: <b>{{ $replicado_utils->semestreAtual($estagio->numero_usp) }}º</b><br>
-    Turno: <b>Noturno</b><br>
-    Telefone: <b>(11) 96307-1952</b>, E-mail: <b>{{ $pessoa::email($estagio->numero_usp) }}</b><br>
+    E-mail: <b>{{ $pessoa::email($estagio->numero_usp) }}</b><br>
     Nome da Empresa: <b>{{ $empresa->nome }}</b><br>
     Área de atuação da Empresa: <b>{{ $empresa->area_de_atuacao }}</b><br>
     Nome do supervisor(a) interno(a) do Estágio na Empresa: <b>{{ $empresa->nome_do_supervisor_estagio }}</b><br>
@@ -181,10 +179,14 @@
     da Comissão de Estágios: <b><i>{{ $estagio->atividades }}</i></b><br>
     <p><b>NO CASO DE ESTÁGIO DOMICILIAR</b></p>
     <p>Como se dará o controle diário dos horários de início e encerramento das atividades?
-        {{ $estagio->controlehorario }}</p><br>
-    <p>Como se dará a supervisão interna (por parte da empresa) do estagiário? {{ $estagio->supervisao}}</p><br>
+        <b>{{ $estagio->controlehorario }}</b><br>
+    <p>Como se dará a supervisão interna (por parte da empresa) do estagiário? <b>{{ $estagio->supervisao}}</b></p>
     <p>Como se dará a interação do estagiário com o ambiente e com os demais colaboradores da empresa? Haverá
-        deslocamento para a empresa? Se sim, quais dias? {{ $estagio->interacao }}</p>
+        deslocamento para a empresa? Se sim, quais dias? <b>{{ $estagio->interacao }}</b></p>
+    <p>Qual o endereço e em quais dias será realizado o estágio?<b>{{$estagio->enderecoedias}}</b></p>    
+    <p><b>INFORMAÇÕES RELATIVAS A ESTÁGIO NO PERÍODO DE PANDEMIA</b></p>
+    <p>O estágio será realizado em home-office?:</b> <b>{{$estagio->pandemiahomeoffice}}</b></p>
+    <p>Em caso do estágio não ser home-office, quais as medidas sanitárias adotadas pela empresa são:</b> <b>{{$estagio->pandemiamedidas}}</b></p>
 </div>
 
 <br>

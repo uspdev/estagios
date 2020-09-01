@@ -47,6 +47,7 @@ $factory->define(Estagio::class, function (Faker $faker) {
         'enderecoedias' => $faker->text($maxNbChars = 200),
         'status' => $status[array_rand($status)],
         'pandemiahomeoffice' => $homeoffice[array_rand($homeoffice)], 
-        'pandemiamedidas' => $faker->text($maxNbChars = 200)
+        'pandemiamedidas' => $faker->text($maxNbChars = 200),
+        'atividadesjustificativa' => $faker->text($maxNbChars = 200)
     ];
 });

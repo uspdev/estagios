@@ -1,6 +1,13 @@
 @extends('pdfs.fflch')
 
+
+@inject('pessoa','Uspdev\Replicado\Pessoa')
+@inject('graduacao','Uspdev\Replicado\Graduacao')
+
+@inject('replicado_utils','App\Utils\ReplicadoUtils')
+
 @section('content')
+
 
 <div style="border-width: 1px; border-style: solid; border-color: #000; text-align: center; padding: 0px;">
     <b>ADITIVO DE RENOVAÇÃO DO TERMO DE COMPROMISSO</b>
@@ -16,11 +23,13 @@
     <p>É obrigatória a entrega de um relatório pessoal (digitado, datado e assinado) na renovação e no término do
         estágio, relatando sua experiência no período do estágio.</p>
     <br><br>
-    <p>Ciência do(a) aluno(a) LEONARDO CARRASCO ARINELLI:</p>
+    <p>Ciência d{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }} 
+    alun{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }} 
+    {{ $pessoa::dump($estagio->numero_usp)['nompes'] }}:</p>
     <br><br><br><br>
     <p>________________________________________<br>
-        <b>LEONARDO CARRASCO ARINELLI</b><br>
-        Número USP: <b>9826380</b></p>
+        <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b><br>
+        Número USP: <b>{{ $estagio->numero_usp }}</b></p>
 </div>
 
 <p style="page-break-after: always;"></p>
@@ -33,11 +42,12 @@
 <br><br>
 
 <div style="text-align: justify;">
-    <p style="text-indent : 6em;"><b>FUNDACAO ORQUESTRA SINFONICA DO EST DE SP, CNPJ 07.495.643/0001-00</b>,
-        representada por seu(a) <b>COORDENADOR DE DEPTO DE ED. E MONITORIA, ROGERIO ZAGHI</b> adiante designada
-        CONCEDENTE e o ESTAGIÁRIO(A) <b>LEONARDO CARRASCO ARINELLI</b>, no USP <b>9826380</b>, curso História e como
+    <p style="text-indent : 6em;"><b>{{ $empresa->nome }}, CNPJ {{ $empresa->cnpj }}</b>,
+        representada por seu(a) <b>{{ $empresa->cargo_do_representante }}, {{ $empresa->nome_do_representante }}</b> adiante designada
+        CONCEDENTE e o ESTAGIÁRIO(A) <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b>, no USP <b>{{ $estagio->numero_usp }}</b>, 
+        curso {{ $graduacao::curso($estagio->numero_usp, 8)['nomcur'] }} e como
         INTERVENIENTE a Faculdade de Filosofia, Letras e Ciências Humanas da Universidade de São Paulo, representada
-        pela Presidente da Comissão de Graduação <b> Profa. Dra. Mona Mohamad Hawi </b>, firmam o presente TERMO DE
+        pela Presidente da Comissão de Graduação <b> {{ $pessoa::dump($presidente->numero_usp)['nompes'] }} </b>, firmam o presente TERMO DE
         ADITAMENTO DE COMPROMISSO DE ESTÁGIO, nos termos da Lei 11.788/08 e da Resolução USP no 5.528/09, conforme as
         condições a seguir:
     </p>
@@ -61,11 +71,11 @@
 
 <div>
     <p>________________________________________<br>
-        <b> FUNDACAO ORQUESTRA SINFONICA DO EST DE SP</b></p>
+        <b> {{ $empresa->nome }}</b></p>
     <p>________________________________________<br>
-        <b> LEONARDO CARRASCO ARINELLI </b></p>
+        <b> {{ $pessoa::dump($estagio->numero_usp)['nompes'] }} </b></p>
     <p>________________________________________<br>
-        <b>Profa. Dra. Mona Mohamad Hawi</b><br>
+        <b>{{ $pessoa::dump($presidente->numero_usp)['nompes'] }}</b><br>
         <b>Presidente da Comissão de Graduação da FFLCH</b></p>
 </div>
 
@@ -93,27 +103,36 @@
 <br>
 
 <div style="text-align: justify">
-    Nome do Estagiário(a): <b>LEONARDO CARRASCO ARINELLI</b><br>
-    Número USP: <b>9826380</b><br>
-    Curso: <b>História</b><br>
-    Turno: <b>Noturno</b><br>
-    Telefone: <b>11999735249</b> , E-mail: <b>leonardo.arinelli@usp.br</b><br>
-    Nome da Empresa: <b>FUNDACAO ORQUESTRA SINFONICA DO EST DE SP</b><br>
-    Área de atuação da Empresa: <b>SERVICOS COMUNITARIOS E SOCIAIS</b><br>
-    Nome do supervisor(a) interno(a) do Estágio na Empresa: <b>ROGERIO ZAGHI</b><br>
-    Telefone: <b>11 33679536</b> , E-mail: <b>BrunaLopes@osesp.art.br</b><br>
+    Nome d{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }} Estagiári{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }}: <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b><br>
+    Nº USP: <b>{{ $estagio->numero_usp }}</b><br>
+    Curso: <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomhab'] }}</b><br>
+    E-mail: <b>{{ $pessoa::email($estagio->numero_usp) }}</b><br>
+    Nome da Empresa: <b>{{ $empresa->nome }}</b><br>
+    Área de atuação da Empresa: <b>{{ $empresa->area_de_atuacao }}</b><br>
+    Nome do supervisor(a) interno(a) do Estágio na Empresa: <b>{{ $empresa->nome_do_supervisor_estagio }}</b><br>
+    Telefone: <b>{{ $empresa->telefone_do_supervisor_estagio }}</b> , E-mail: <b>{{ $empresa->email_do_supervisor_estagio }}</b><br>
     Data de início do estágio: <b>{{ \Carbon\Carbon::parse($estagio->dataini)->format('d/m/Y')}}</b><br>
     Data do término do estágio: <b>{{ \Carbon\Carbon::parse($estagio->datafin)->format('d/m/Y')}}</b><br>
-    Horário do Estágio: <b>{{ $estagio->horario }}</b> Carga horária semanal:
-    <b>{{ $estagio->cargahoras }}:{{ $estagio->cargaminutos }} horas semanais</b><br>
+    Horário do Estágio: <b>{{ $estagio->horario }}</b> Carga horária semanal: <b>{{ $estagio->cargahoras }}
+    h{{ $estagio->cargaminutos }} semanais</b><br>
     Duração em meses (em casos excepcionais inferiores a 6 meses, a empresa deverá incluir justificativa circunstanciada
-    que será avaliada pelo Supervisor Geral de Estágios): <b>12 meses</b><br>
-    Justificativa: <b><i>{{ $estagio->justificativa }}</i></b><br>
+    que será avaliada pelo Supervisor Geral de Estágios): <b>{{ $estagio->duracao }}</b><br>
+    Justificativa: <b><i>{{ $estagio->justificativa }}</i></b><br>{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }}
     Valor da Bolsa: R$ <b>{{ $estagio->valorbolsa }} {{ $estagio->tipobolsa }}</b><br>
-    Valor do auxílio transporte: R$ <b>{{ $estagio->auxtrans }} {{ $estagio->especifiquevt }}</b><br>
+    Valor do auxílio transporte: R$ <b>{{ $estagio->auxiliotransporte }} {{ $estagio->especifiquevt }}</b><br>
     Descrição detalhada das atividades a serem desenvolvidas pelo estagiário, com a finalidade de permitir a avaliação
-    da Comissão de Estágios: <br>
-    <b><i>{{ $estagio->atividades }}</i></b>
+    da Comissão de Estágios: <b><i>{{ $estagio->atividades }}</i></b><br>
+    <p><b>NO CASO DE ESTÁGIO DOMICILIAR</b></p>
+    <p>Como se dará o controle diário dos horários de início e encerramento das atividades?
+        <b>{{ $estagio->controlehorario }}</b><br>
+    <p>Como se dará a supervisão interna (por parte da empresa) do estagiário? <b>{{ $estagio->supervisao}}</b></p>
+    <p>Como se dará a interação do estagiário com o ambiente e com os demais colaboradores da empresa? Haverá
+        deslocamento para a empresa? Se sim, quais dias? <b>{{ $estagio->interacao }}</b></p>
+    <p>Qual o endereço e em quais dias será realizado o estágio?<b>{{$estagio->enderecoedias}}</b></p>    
+    <p><b>INFORMAÇÕES RELATIVAS A ESTÁGIO NO PERÍODO DE PANDEMIA</b></p>
+    <p>O estágio será realizado em home-office?:</b> <b>{{$estagio->pandemiahomeoffice}}</b></p>
+    <p>Em caso do estágio não ser home-office, quais as medidas sanitárias adotadas pela empresa são:</b> <b>{{$estagio->pandemiamedidas}}</b></p>
+
 </div>
 
 <br>
@@ -124,11 +143,11 @@
 
 <div style="font-style: italic">
     <p>________________________________________<br>
-        <b>ROGERIO ZAGHI</b></p>
+        <b>{{ $empresa->nome_do_representante }}</b></p>
     <p>________________________________________<br>
-        <b>LEONARDO CARRASCO ARINELLI</b></p>
+        <b>{{ $empresa->nome }}</b></p>
     <p>________________________________________<br>
-        <b>Profa. Dra. Mona Mohamad Hawi</b><br>
+        <b>{{ $pessoa::dump($presidente->numero_usp)['nompes'] }}</b><br>
         <b>Presidente da Comissão de Graduação da FFLCH/USP</b></p>
 </div>
 

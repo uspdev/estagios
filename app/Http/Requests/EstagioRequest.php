@@ -26,9 +26,7 @@ class EstagioRequest extends FormRequest
         return [
             'numero_usp' => 'required|numeric|codpes|graduacao',            
             'valorbolsa' => 'required',
-            'tipobolsa' => 'required',
-            'justificativa' => 'nullable',
-            'atividades' => 'nullable',            
+            'tipobolsa' => 'required',         
             'duracao' => 'required',         
             'data_inicial' => 'required|data',
             'data_final' => 'required|data',
@@ -40,11 +38,17 @@ class EstagioRequest extends FormRequest
             'cnpj' => '',            
             'seguradora' => 'required', 
             'numseguro' => 'required',
+
+            //campos opcionais
             'controlehorario' => 'nullable',  
             'supervisao' => 'nullable',  
             'interacao' => 'nullable',  
-            'enderecoedias' => 'nullable',        
-            //
+            'enderecoedias' => 'nullable',
+            'justificativa' => 'nullable',
+            'atividades' => 'nullable',   
+
+
+            //pandemia
             'pandemiahomeoffice' => 'required',  
             'pandemiamedidas' => 'required_if:pandemiahomeoffice,==,Não'                                                                                                        
         ];

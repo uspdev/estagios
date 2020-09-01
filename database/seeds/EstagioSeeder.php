@@ -38,7 +38,8 @@ class EstagioSeeder extends Seeder
             'enderecoedias' => 'teste',
             'status' => 'em_elaboracao',
             'pandemiahomeoffice' => 'Sim',
-            'pandemiamedidas' => 'Alcool gel e cafezinho liberado'
+            'pandemiamedidas' => 'Alcool gel e cafezinho liberado',
+            'atividadesjustificativa' => 'Atuação no meio profissional de universidade e lidar com professores'
 
             
             
