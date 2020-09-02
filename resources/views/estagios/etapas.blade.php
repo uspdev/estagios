@@ -45,21 +45,20 @@ Parecer de mérito realizado por: {{ $estagio->analise_academica_user->name }} <
 Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise_alteracao_user->name  }}<br>
 @endif
 
+@if(($estagio->analise_academica)!=null)
 <br>
-
-<!--<a href="/pdfs/parecer/{{$estagio->id}}"target="_blank" >
+    <a href="/pdfs/parecer/{{$estagio->id}}"target="_blank" >
     <i class="fas fa-file-pdf"></i> </a>
-     Visualizar PDF do Parecer de Mérito <br>-->
-
+    Visualizar PDF do Parecer de Mérito 
+@endif
+<br>
     <a href="/pdfs/termo/{{$estagio->id}}"target="_blank" >
     <i class="fas fa-file-pdf"></i> </a>
      Visualizar PDF do Termo de Ciência
 <br>
     <a href="/pdfs/renovacao/{{$estagio->id}}" target="_blank" >
     <i class="fas fa-file-pdf"></i> </a>
-    Visualizar PDF do Termo de Ciência para Renovação
-
-
+    Visualizar PDF do Termo de Ciência para Renovação   
 <br><br>
 
 @switch($estagio->status)

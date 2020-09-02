@@ -15,7 +15,7 @@
   <div class="card-body">
     <div class="row">
       <div class="col-sm">
-        Será enviado um link para o email da empresa para a realização do login.
+        Será enviado um link para o email do representante da empresa para a realização do login.
       </div>
     </div>
     <br>
@@ -27,7 +27,7 @@
       </div>
 
       <div class="col-sm form-group">
-        <label class="col-sm required" for="titulo">Email: </label>
+        <label class="col-sm required" for="titulo">Email do Representante da Empresa: </label>
           <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}">
       </div>
 

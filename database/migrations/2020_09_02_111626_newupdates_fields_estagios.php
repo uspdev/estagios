@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangesEstagiosFieldsToNullable extends Migration
+class NewupdatesFieldsEstagios extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,9 @@ class ChangesEstagiosFieldsToNullable extends Migration
     public function up()
     {
         Schema::table('estagios', function (Blueprint $table) {
-            $table->string('atividadespertinentes')->nullable()->change();
-            $table->string('mediaponderada')->nullable()->change();
-            $table->string('horariocompativel')->nullable()->change(); 
-            $table->text('desempenhoacademico')->nullable()->change(); 
-
+            $table->text('atividades')->nullable()->change();
+            $table->text('justificativa')->nullable()->change();
+            $table->text('atividadesjustificativa')->nullable();
         });
     }
 
@@ -30,7 +28,9 @@ class ChangesEstagiosFieldsToNullable extends Migration
     public function down()
     {
         Schema::table('estagios', function (Blueprint $table) {
-            //
+            $table->text('atividades')->nullable(false)->change();
+            $table->text('justificativa')->nullable(false)->change();
+            $table->dropColumn('atividadesjustificativa');
         });
     }
 }

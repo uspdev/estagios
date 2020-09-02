@@ -8,7 +8,7 @@
 
 @section('content')
 
-<div style="border-width: 1px; border-style: solid; border-color: #000; text-align: center; padding: 0px;">
+<div style="width:100%; border-width: 1px; border-style: solid; border-color: #000; text-align: center; padding: 0px;">
     <b>TERMO DE CIÊNCIA</b>
 </div>
 
@@ -32,7 +32,7 @@
 <br><br>
 
 <div>
-    _______________________________<br>
+    _______________________________________________<br>
     <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b><br>
     Nº USP: <b>{{ $estagio->numero_usp }}</b><br>
     <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomhab'] }}</b>
@@ -137,12 +137,10 @@
     Presidente da Comissão de Graduação da FFLCH-USP
 </div>
 
-<br>
-
-<div>
-    &nbsp;&nbsp;TESTEMUNHAS:<br><br>
-    ______________________________________<br><br>
-    ______________________________________
+<div><br><br>
+    <b>TESTEMUNHAS:</b><br><br>
+    _______________________________________________<br><br>
+    _______________________________________________
 </div>
 
 <p style="page-break-after: always;"></p>
@@ -163,8 +161,8 @@
     Nome da Empresa: <b>{{ $empresa->nome }}</b><br>
     Área de atuação da Empresa: <b>{{ $empresa->area_de_atuacao }}</b><br>
     Nome do supervisor(a) interno(a) do Estágio na Empresa: <b>{{ $empresa->nome_do_supervisor_estagio }}</b><br>
-    Telefone: <b>{{ $empresa->telefone_do_supervisor_estagio }}</b> / <b>{{ $empresa->telefone_de_contato }}</b>,
-    E-mail: <b>{{ $empresa->email_do_supervisor_estagio }}</b><br>
+    Telefone do Supervisor: <b>{{ $empresa->telefone_do_supervisor_estagio }}</b> / <b>{{ $empresa->telefone_de_contato }}</b>,
+    E-mail do Supervisor: <b>{{ $empresa->email_do_supervisor_estagio }}</b><br>
     Data de início do estágio: <b>{{ \Carbon\Carbon::parse($estagio->dataini)->format('d/m/Y')}}</b><br>
     Data do término do estágio: <b>{{ \Carbon\Carbon::parse($estagio->datafin)->format('d/m/Y')}}</b><br>
     Horário do Estágio: <b>{{ $estagio->horario }}</b><br>
@@ -189,24 +187,25 @@
     <p>Em caso do estágio não ser home-office, quais as medidas sanitárias adotadas pela empresa são:</b> <b>{{$estagio->pandemiamedidas}}</b></p>
 </div>
 
-<br>
-
-<div>São Paulo, {{ Carbon\Carbon::now()->formatLocalized('%d/%m/%Y') }}</div>
-
-<br>
-
 <div style="font-style: italic; font-weight: bold">
-    _____________________________________<br>
-    {{ $empresa->nome_do_representante }}<br><br>
-    _____________________________________<br>
+
+    <br><br>
+
+    São Paulo, {{ Carbon\Carbon::now()->formatLocalized('%d/%m/%Y') }}
+
+    <br>
+    _______________________________________________<br>
+    {{ $empresa->nome_do_representante }}<br>
+    Representante da {{ $empresa->nome }}<br><br>
+    _______________________________________________<br>
     {{ $pessoa::dump($estagio->numero_usp)['nompes'] }}<br><br>
-    _____________________________________<br>
+    _______________________________________________<br>
     {{ $pessoa::dump($presidente->numero_usp)['nompes'] }} <br>
     Presidente da Comissão de Graduação da FFLCH/USP
 </div>
-
+<br><br>
 <div>
-    <p>Contato: {{ $empresa->nome_de_contato }}, Telefone: {{ $empresa->telefone_de_contato }}, E-mail:
+    <p><b>CONTATO:</b> {{ $empresa->nome_de_contato }}, Telefone: {{ $empresa->telefone_de_contato }}, E-mail:
         {{ $empresa->email }}
     </p>
 </div>

@@ -17,6 +17,7 @@
             margin-top:160px;
         }
         **/
+
         footer { 
             text-align: initial;
             position: fixed;
@@ -25,6 +26,7 @@
             right: 0px;
             height: 110px;
             padding: 0px ;
+            font-size: 8;
         }
         .page-break {
             page-break-after: always;
@@ -57,11 +59,10 @@
 
 <footer><div class="footer">
     <hr>
+    @yield('footer')
 </div></footer>
 
-<div class="content"> @yield('content') </div>
-
-<div class="footer"> @yield('footer') </div>
+<div class="content" style="margin-bottom: 52px; margin-right: 15px; overflow-wrap: break-word; page-break-inside: avoid;"> @yield('content') </div>
 
 <script type="text/php">
   if ( isset($pdf) ) {
@@ -70,7 +71,7 @@
             $font = $fontMetrics->get_font("Arial, Helvetica, sans-serif", "normal");
             $size = 10;
             $pageText = "Pagina ".$PAGE_NUM . " / " . $PAGE_COUNT;
-            $y = $pdf->get_height() - 20;
+            $y = $pdf->get_height() - 10;
             $x = $pdf->get_width() - 15 - $fontMetrics->get_text_width($pageText, $font, $size);
             $pdf->text($x, $y, $pageText, $font, $size);
         }

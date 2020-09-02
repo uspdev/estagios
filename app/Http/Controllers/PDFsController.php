@@ -8,6 +8,7 @@ use App\Empresa;
 use App\Convenio;
 use App\Parecerista;
 use Carbon\Carbon;
+use App\User;
 
 use Uspdev\Replicado\Pessoa;
 
@@ -109,13 +110,10 @@ class PDFsController extends Controller
 
             $empresa = Empresa::where('cnpj',$estagio->cnpj)->first();
 
-            // Busca parecerista
-            $parecerista = Pessoa::nomeCompleto($estagio->analise_tecnica_user_id);
-            $parecerista = [
-                "Prof. " . $parecerista['nompesttd'],
-            ];
+            $parecerista = User::find($estagio->analise_academica_user_id)->name;
+            $pareceristanum = User::find($estagio->analise_academica_user_id)->codpes;
 
-            $pdf = PDF::loadView('pdfs.parecer', compact('estagio','empresa','parecerista'));
+            $pdf = PDF::loadView('pdfs.parecer', compact('estagio','empresa','parecerista','pareceristanum'));
             return $pdf->download('parecer.pdf');
         }
         abort(403, 'Access denied');

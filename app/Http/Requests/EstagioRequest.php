@@ -38,10 +38,6 @@ class EstagioRequest extends FormRequest
             'cnpj' => '',
             'seguradora' => 'required',
             'numseguro' => 'required',
-            'controlehorario' => 'nullable',
-            'supervisao' => 'nullable',
-            'interacao' => 'nullable',
-            'enderecoedias' => 'nullable',
 
             //campos opcionais
             'controlehorario' => 'nullable',
