@@ -45,10 +45,10 @@
 <br><br>
 <div style="text-align: right">São Paulo, {{ Carbon\Carbon::now()->formatLocalized('%d/%m/%Y') }}</div>
 
-<br>
+<br><br>
 
 <div style="text-align: center">
-    <b> PROFESSOR - Nº USP DO PROFESSOR </b>
+    PARECERISTA:<b> {{ $parecerista }} - {{ $pareceristanum }}</b>
 <div>
 
 <p style="page-break-after: always;"></p>
@@ -86,10 +86,10 @@
 <br><br>
 <div style="text-align: right">São Paulo, {{ Carbon\Carbon::now()->formatLocalized('%d/%m/%Y') }}</div>
 
-<br>
+<br><br>
 
 <div style="text-align: center">
-    <b> PROFESSOR - Nº USP DO PROFESSOR </b>
+    PARECERISTA:<b> {{ $parecerista }} - {{ $pareceristanum }}</b>
 <div>
 
 @endsection('content')
