@@ -16,7 +16,7 @@ class NewupdatesFieldsEstagios extends Migration
         Schema::table('estagios', function (Blueprint $table) {
             $table->text('atividades')->nullable()->change();
             $table->text('justificativa')->nullable()->change(); 
-            $table->text('atividadesjustificativa')->nullable()->change();
+            $table->text('atividadesjustificativa')->nullable();
         });
     }
 
