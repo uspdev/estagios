@@ -17,6 +17,7 @@ $factory->define(Empresa::class, function (Faker $faker) {
         'cep' => $faker->numberBetween(10000000, 99999999),
         'nome_de_contato' => $faker->name,
         'telefone_de_contato' => $faker->cellphoneNumber,
+        'email_de_contato' => $faker->email,
         'nome_do_representante' => $faker->name,
         'cargo_do_representante' => $faker->jobTitle,
         'nome_do_supervisor_estagio' => $faker->name,

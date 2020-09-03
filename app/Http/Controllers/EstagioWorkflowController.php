@@ -66,7 +66,10 @@ class EstagioWorkflowController extends Controller
                 'horariocompativel' => 'required',
                 'mediaponderada' => 'required',
                 'atividadesjustificativa'=> 'required',
-                'analise_academica'=> 'required'
+                'analise_academica'=> 'required',
+                'tipodeferimento'=> 'required',
+                'condicaodeferimento'=> 'required_if:tipodeferimento,==,Deferido com Restrição'
+
             ]);
             $estagio->analise_academica = $request->analise_academica;
             $estagio->mediaponderada = $request->mediaponderada;
@@ -74,6 +77,8 @@ class EstagioWorkflowController extends Controller
             $estagio->desempenhoacademico = $request->desempenhoacademico;
             $estagio->atividadespertinentes = $request->atividadespertinentes;
             $estagio->atividadesjustificativa = $request->atividadesjustificativa;
+            $estagio->tipodeferimento = $request->tipodeferimento;
+            $estagio->condicaodeferimento = $request->condicaodeferimento;
             $estagio->analise_academica_user_id = Auth::user()->id;
             $estagio->save();
             $workflow = $estagio->workflow_get();
@@ -182,22 +187,6 @@ class EstagioWorkflowController extends Controller
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
         return redirect("/estagios/{$estagio->id}");
-    }
-
-    #FUNÇÕES TEMPORÁRIAS
-
-    public function reiniciar_estagio(Estagio $estagio) {
-        if (Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
-            $reiniciar_estagio = $estagio->replicate();
-            $reiniciar_estagio->push();
-            $workflow = $reiniciar_estagio->workflow_get();
-            $workflow->apply($reiniciar_estagio,'reiniciar_estagio');
-            $reiniciar_estagio->save();
-            return redirect("estagios/{$reiniciar_estagio->id}");
-        } else {
-            request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
-        }
-        return redirect("estagios/{$estagio->id}");
     }
 
 }

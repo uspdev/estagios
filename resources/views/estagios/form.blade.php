@@ -228,7 +228,7 @@ empresa? Haverá deslocamento para a empresa? Se sim, quais dias?: <br></label>
 <div class="col-sm form-group">
                 <div class="form-group">
                     <label for="pandemiahomeoffice" class="required">Durante o período da pandemia, o estágio será realizado em home office?: </label>               
-                    <select name="pandemiahomeoffice" class="form-control" id="pandemiahomeoffice" onchange="checagem(this);">
+                    <select name="pandemiahomeoffice" class="form-control" id="pandemiahomeoffice" onchange="checagemmmedidas(this);">
                         <option value="" selected="">- Selecione -</option>
                             @foreach ($estagio->pandemiahomeofficeOptions() as $option)
                             @if (old('pandemiahomeoffice') == '' and isset($estagio->pandemiahomeoffice) )

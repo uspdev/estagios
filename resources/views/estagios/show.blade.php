@@ -27,12 +27,16 @@
         <b>Valor da bolsa:</b> {{$estagio->valorbolsa}}<br>
         <b>Tipo de bolsa:</b> {{$estagio->tipobolsa}}<br>
         <b>Justificativa:</b> {{$estagio->justificativa}}<br>
-        <b>CNPJ da empresa:</b> {{$estagio->cnpj}}<br>
+        <b>CNPJ da empresa:</b> {{$estagio->cnpj}}<br>z
         <b>Atividades a serem desenvolvidas:</b> {{$estagio->atividades}}<br>
         <b>O horário é compatível com o curso?:</b> {{$estagio->horariocompativel}}<br>
         <b>As ativídades são pertinentes ao curso?:</b> {{$estagio->atividadespertinentes}}<br> 
         <b>Justificativa da pertinencia:</b> {{$estagio->atividadesjustificativa}}<br>         
         <b>Desempenho acadêmico:</b> {{$estagio->desempenhoacademico}}<br>
+        <b>Situação do deferimento do parecer de mérito:</b> {{$estagio->tipodeferimento}}<br>
+        @if(($estagio->condicaodeferimento)!=null)
+            <b>O estágio foi reduzido para seis meses?:</b> {{$estagio->condicaodeferimento}}<br>
+        @endif
         <b>Análise Acadêmica:</b> {{$estagio->analise_academica}}<br>
     </div>
 </div>
@@ -96,7 +100,9 @@
     <div class="card-header"><b>Informações relatívas a pandemia de COVID-19</b></div>
         <div class="card-body">
             <b>O estágio será realizado em home-office?:</b> {{$estagio->pandemiahomeoffice}}<br>
+            @if(($estagio->pandemiamedidas)!=null)
             <b>Em caso do estágio não ser home-office, quais as medidas sanitárias adotadas pela empresa são:</b> {{$estagio->pandemiamedidas}}<br>
+            @endif
     </div>    
 </div>  
 

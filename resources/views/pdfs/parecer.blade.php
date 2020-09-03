@@ -28,17 +28,23 @@
 </div>
 
 <div style="text-align: justify;">
-    <p>As Atividades propostas no plano de estágio são pertinentes ao curso de origem do aluno?: <b>{{ $estagio->atividadespertinentes }}</b></p>
+<p>As Atividades propostas no plano de estágio são pertinentes ao curso de origem do aluno?: <b>{{ $estagio->atividadespertinentes }}</b></p>
 
-    <p>Justifique: <b>{{ $estagio->atividadesjustificativa }}</b></p>
+<p>Justifique: <b>{{ $estagio->atividadesjustificativa }}</b></p>
 
-    <p>Avalie o desempenho acadêmico do aluno: <b>{{ $estagio->desempenhoacademico }}</b></p>
+<p>Avalie o desempenho acadêmico do aluno: <b>{{ $estagio->desempenhoacademico }}</b></p>
 
-    <p>Média ponderada com reprovação: <b>{{ $estagio->mediaponderada }}</b></p>
+<p>Média ponderada com reprovação: <b>{{ $estagio->mediaponderada }}</b></p>
 
-    <p>O horário do estágio é compatível com os horários disponíveis na grade horária do aluno?: <b>{{ $estagio->atividadesjustificativa }}</b></p>
+<p>O horário do estágio é compatível com os horários disponíveis na grade horária do aluno?: <b>{{ $estagio->atividadesjustificativa }}</b></p>
 
-    <p>PARECER: <b>{{ $estagio->analise_academica }}</b></p>
+<p>Situação do deferimento do parecer de mérito: <b>{{$estagio->tipodeferimento}}</b><p>
+
+@if(($estagio->condicaodeferimento)!=null)
+    <p>O estágio foi reduzido para seis meses?: <b>{{$estagio->condicaodeferimento}}</b><p>
+@endif
+
+<p>PARECER: <b>{{ $estagio->analise_academica }}</b></p>
 
 </div>
 
@@ -78,6 +84,12 @@
     <p>Média ponderada com reprovação: <b>{{ $estagio->mediaponderada }}</b></p>
 
     <p>O horário do estágio é compatível com os horários disponíveis na grade horária do aluno?: <b>{{ $estagio->atividadesjustificativa }}</b></p>
+
+    <p>Situação do deferimento do parecer de mérito: <b>{{$estagio->tipodeferimento}}</b><p>
+
+    @if(($estagio->condicaodeferimento)!=null)
+        <p>O estágio foi reduzido para seis meses?: <b>{{$estagio->condicaodeferimento}}</b><p>
+    @endif
 
     <p>PARECER: <b>{{ $estagio->analise_academica }}</b></p>
 
