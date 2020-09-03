@@ -38,10 +38,11 @@
     <div class="row">
 
       <div class="col-sm">
-        @can('admin')
-        <b>CNPJ da empresa:</b> {{ $vaga->cnpj }}
-        @endcan('admin')
-        <br></br>
+
+        <b>Nome da empresa:</b> {{ App\Empresa::where('cnpj',$vaga->cnpj)->first()->nome }}
+        <br><br>
+        <b>Email empresa:</b> {{ App\Empresa::where('cnpj',$vaga->cnpj)->first()->email }}
+        </br><br>
         <b>Título da Vaga:</b> {{ $vaga->titulo }}
         <br></br>
         <b>Descrição da Vaga:</b> {{ $vaga->descricao }}

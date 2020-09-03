@@ -27,13 +27,16 @@
         <b>Valor da bolsa:</b> {{$estagio->valorbolsa}}<br>
         <b>Tipo de bolsa:</b> {{$estagio->tipobolsa}}<br>
         <b>Justificativa:</b> {{$estagio->justificativa}}<br>
-        <b>CNPJ da empresa:</b> {{$estagio->cnpj}}<br>
         <b>Atividades a serem desenvolvidas:</b> {{$estagio->atividades}}<br>
         <b>O horário é compatível com o curso?:</b> {{$estagio->horariocompativel}}<br>
         <b>As ativídades são pertinentes ao curso?:</b> {{$estagio->atividadespertinentes}}<br> 
         <b>Justificativa da pertinencia:</b> {{$estagio->atividadesjustificativa}}<br>         
         <b>Desempenho acadêmico:</b> {{$estagio->desempenhoacademico}}<br>
         <b>Análise Acadêmica:</b> {{$estagio->analise_academica}}<br>
+        
+        <b>CNPJ da empresa:</b> {{$estagio->cnpj}}<br>
+        <b>Nome da empresa:</b>{{ App\Empresa::where('cnpj',$estagio->cnpj)->first()->nome }}
+
     </div>
 </div>
 

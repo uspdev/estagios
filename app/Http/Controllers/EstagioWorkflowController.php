@@ -8,6 +8,8 @@ use App\Http\Requests\EstagioRequest;
 use App\Estagio;
 use Illuminate\Support\Facades\Gate;
 use Auth;
+use App\Mail\enviar_para_analise_tecnica_mail;
+use Illuminate\Support\Facades\Mail;
 
 class EstagioWorkflowController extends Controller
 {
@@ -24,6 +26,9 @@ class EstagioWorkflowController extends Controller
                 $workflow = $estagio->workflow_get();
                 $workflow->apply($estagio,'enviar_para_analise_tecnica');
                 $estagio->save();
+
+                // Envio de email
+                Mail::send(new enviar_para_analise_tecnica_mail($estagio));
             }
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
