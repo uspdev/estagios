@@ -62,7 +62,7 @@
     @yield('footer')
 </div></footer>
 
-<div class="content" style="margin-bottom: 52px; margin-right: 15px; overflow-wrap: break-word; page-break-inside: avoid;"> @yield('content') </div>
+<div class="content" style="margin-bottom: 52px; margin-right: 15px; overflow-wrap: break-word"> @yield('content') </div>
 
 <script type="text/php">
   if ( isset($pdf) ) {

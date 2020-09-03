@@ -1,15 +1,19 @@
 <?php
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests\EstagioRequest;
 use App\Estagio;
-use Illuminate\Support\Facades\Gate;
+use App\User;
 use Auth;
+
+use Uspdev\Replicado\Pessoa;
+
+use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Facades\Gate;
 
 class EstagioController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request,Estagio $estagio){
 
         if (Gate::allows('admin')) {
 
@@ -36,6 +40,12 @@ class EstagioController extends Controller
         } else if (Gate::allows('empresa')){
             $cnpj = Auth::user()->cnpj;
             $estagios = Estagio::where('cnpj',$cnpj)->paginate(10);
+
+        } else if (Gate::allows('parecerista')){
+
+            $identificacao = Auth::user()->id;           
+            $estagios = Estagio::where('analise_academica_user_id','LIKE',$identificacao)->paginate(10);
+     
         } else {
             $request->session()->flash('alert-danger','Usuário sem permissão');
             return redirect('/');

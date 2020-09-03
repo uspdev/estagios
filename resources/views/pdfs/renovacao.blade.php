@@ -65,9 +65,11 @@
     </p>
 </div>
 
-<div style="text-align: center">São Paulo, {{ Carbon\Carbon::now()->formatLocalized('%d/%m/%Y') }}</div>
+<div style="page-break-inside: avoid;">
 
-<br><br><br>
+<div style="text-align: center;">São Paulo, {{ Carbon\Carbon::now()->formatLocalized('%d/%m/%Y') }}</div>
+
+<br><br>
 
 <div>
     <p>________________________________________<br>
@@ -79,11 +81,13 @@
         <b>Presidente da Comissão de Graduação da FFLCH</b></p>
 </div>
 
-<br><br><br>
+<br><br>
 
 <div>
     <p>Contato: Gabriela Castro, tel.: 1130032433 <br>
         e-mail: gabriela.castro@ciee.ong.br</p>
+</div>
+
 </div>
 
 <p style="page-break-after: always;"></p>
@@ -121,24 +125,23 @@
     Valor do auxílio transporte: R$ <b>{{ $estagio->auxiliotransporte }} {{ $estagio->especifiquevt }}</b><br>
     Descrição detalhada das atividades a serem desenvolvidas pelo estagiário, com a finalidade de permitir a avaliação
     da Comissão de Estágios: <b><i>{{ $estagio->atividades }}</i></b><br>
-    <p><b>NO CASO DE ESTÁGIO DOMICILIAR</b></p>
-    <p>Como se dará o controle diário dos horários de início e encerramento das atividades?
-        <b>{{ $estagio->controlehorario }}</b><br>
-    <p>Como se dará a supervisão interna (por parte da empresa) do estagiário? <b>{{ $estagio->supervisao}}</b></p>
-    <p>Como se dará a interação do estagiário com o ambiente e com os demais colaboradores da empresa? Haverá
-        deslocamento para a empresa? Se sim, quais dias? <b>{{ $estagio->interacao }}</b></p>
-    <p>Qual o endereço e em quais dias será realizado o estágio?<b>{{$estagio->enderecoedias}}</b></p>    
-    <p><b>INFORMAÇÕES RELATIVAS A ESTÁGIO NO PERÍODO DE PANDEMIA</b></p>
-    <p>O estágio será realizado em home-office?:</b> <b>{{$estagio->pandemiahomeoffice}}</b></p>
-    <p>Em caso do estágio não ser home-office, quais as medidas sanitárias adotadas pela empresa são:</b> <b>{{$estagio->pandemiamedidas}}</b></p>
-
+    <b>NO CASO DE ESTÁGIO DOMICILIAR</b><br>
+    Como se dará o controle diário dos horários de início e encerramento das atividades? <b>{{ $estagio->controlehorario }}</b><br>
+    Como se dará a supervisão interna (por parte da empresa) do estagiário? <b>{{ $estagio->supervisao}}</b><br>
+    Como se dará a interação do estagiário com o ambiente e com os demais colaboradores da empresa? Haverá
+    deslocamento para a empresa? Se sim, quais dias? <b>{{ $estagio->interacao }}</b><br>
+    Qual o endereço e em quais dias será realizado o estágio?<b>{{$estagio->enderecoedias}}</b><br>
+    <b>INFORMAÇÕES RELATIVAS A ESTÁGIO NO PERÍODO DE PANDEMIA</b><br>
+    O estágio será realizado em home-office?:</b> <b>{{$estagio->pandemiahomeoffice}}</b><br>
+    Em caso do estágio não ser home-office, quais as medidas sanitárias adotadas pela empresa são:</b> <b>{{$estagio->pandemiamedidas}}</b><br>
 </div>
 
 <br>
+<div style="page-break-inside: avoid;">
 
-<div>São Paulo, {{ Carbon\Carbon::now()->formatLocalized('%d/%m/%Y') }}</div>
+<div style="text-align: center;">São Paulo, {{ Carbon\Carbon::now()->formatLocalized('%d/%m/%Y') }}</div>
 
-<br>
+<br><br>
 
 <div style="font-style: italic; font-weight: bold;">
     _______________________________________________<br>
@@ -151,6 +154,7 @@
     <b>{{ $pessoa::dump($presidente->numero_usp)['nompes'] }}</b><br>
     <b>Presidente da Comissão de Graduação da FFLCH/USP</b><br>
 </div>
+<div>
 
 <p style="page-break-after: never;"></p>
 
