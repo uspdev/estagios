@@ -1,61 +1,73 @@
 @extends('pdfs.fflch')
 
+
 @inject('pessoa','Uspdev\Replicado\Pessoa')
 @inject('graduacao','Uspdev\Replicado\Graduacao')
 
+@inject('replicado_utils','App\Utils\ReplicadoUtils')
+
 @section('content')
-<div style="width: 100%"><b>INFORMAÇÃO IMPORTANTE</b>
-<br><br><br>
+
+<div style="border-width: 1px; border-style: solid; border-color: #000; text-align: justify; padding: 0px;"><b>INFORMAÇÃO IMPORTANTE</b>
+<br>
 Rescisão do Estágio
-<br><br><br><br><br><br>
+<br>
 Os documentos de rescisão devem estar acompanhados de um relatório pessoal do
 aluno(digitado, datado e assinado), relatando sua experiência no período do
 estágio.
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br>
-<hr height="10" width="100%"></hr>
-<b>É OBRIGATORIO ANEXAR RELATÓRIO PESSOAL DO ALUNO(DIGITADO E ASSINADO).</b>
+<br>
+<hr>
+<b style="text-align: center;">É OBRIGATORIO ANEXAR RELATÓRIO PESSOAL DO ALUNO (DIGITADO E ASSINADO).</b>
 </div>
-<br><br><br><br>
-<table style="width: 100%">
-<tr>
-<td style="border: 1px solid #000;">
-    <center><b>RESCISÃO DE TERMO DE COMPROMISSO DE ESTÁGIO</b></center>
-</td>
-</tr>
-</table>
-<br><br><br><br>
-<div style="width: 100%">
-Comunicamos que em <b>%data_da_rescisao</b> foi/será rescindido o Termo de Compromisso de
-Estágio firmado em <b>{{ $estagio->data_inicial }}</b> entre <b>{{ $empresa->nome_da_empresa }}</b>, CNPJ
-<b>{{ $empresa->cnpj}}</b> e o(a) estagiário(a) <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b>, nº USP <b>{{ $estagio->numero_usp }}</b>, 
-regularmente matriculado no curso de <b>{{ $graduacao::curso($estagio->numero_usp)['nomcur'] }}</b> com interveniência da Universidade de São Paulo.
+
+<br>
+<div style="border-width: 1px; border-style: solid; border-color: #000; text-align: center; padding: 0px;">
+    <b>RESCISÃO DE TERMO DE COMPROMISSO DE ESTÁGIO</b>
+</div></div>
+<br>
+
+<div style="text-align: justify;">
+Comunicamos que em <b>{{ $estagio->rescisao_data }}</b> foi/será rescindido o Termo de Compromisso de Estágio firmado em <b>{{ $estagio->data_inicial }}</b> 
+entre <b>{{ $empresa->nome_da_empresa }}</b>, CNPJ <b>{{ $empresa->cnpj}}</b> e o(a) estagiário(a) <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b>, 
+nº USP <b>{{ $estagio->numero_usp }}</b>, regularmente matriculado no curso de <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomcur'] }}</b> com 
+interveniência da Universidade de São Paulo.
 <br>
 <br>
-Informamos que o referido estágio foi rescindido na data supracitada pelo seguinte
-motivo: <b>%motivo %outro_descreva </b>
+Informamos que o referido estágio foi rescindido na data supracitada pelo seguinte motivo: <b>{{ $estagio->rescisao_motivo }}</b>
 <br>
 <br>
-E por estarem de inteiro e comum acordo assinam-na em três vias de igual teor,
-cabendo a 1a à Unidade Concedente, a 2a ao Estagiário e a 3a à Instituição de
+E por estarem de inteiro e comum acordo assinam-na em três vias de igual teor, cabendo a 1ª à Unidade Concedente, a 2ª ao Estagiário e a 3a ª Instituição de
 Ensino.
 <br>
 <br>
-São Paulo, {{ $now->format('d/m/Y') }}<br><br>
-______________________________________<br>
-<b>%responsavel_pelo_estagio</b>
+</div>
+
 <br>
 <br>
-_____________________________________<br>
+<div style="text-align: center">São Paulo, {{ Carbon\Carbon::now()->formatLocalized('%d/%m/%Y') }}</div>
+<br>
+<br>
+
+________________________________________<br>
+<b>{{ $empresa->nome_do_representante }}<br>
+Representante da {{ $empresa->nome }}</b>
+<br>
+<br>
+________________________________________<br>
 <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b>
 <br>
 <br>
-______________________________________<br>
-<b>Profa. Dra. Mona Mohamad Hawi
+________________________________________<br>
+<b>{{ $pessoa::dump($presidente->numero_usp)['nompes'] }}<br>
 Presidente da Comissão de Graduação da FFLCH/USP</b>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-Telefone do Estagiário(a): ----
-<hr height="1" width="100%"></hr>
-<b>É OBRIGATORIO ANEXAR RELATÓRIO PESSOAL DO ALUNO(DIGITADO E ASSINADO).<b>
-</div>
+
+
+<p style="page-break-after: never;"></p>
+
 @endsection('content')
+
+@section('footer')
+<div style="text-align: initial; font-weight: bold;">
+É OBRIGATORIO ANEXAR RELATÓRIO PESSOAL DO ALUNO(DIGITADO E ASSINADO).
+</div>
+@endsection

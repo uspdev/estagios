@@ -122,5 +122,11 @@ return [
             'url'     => '/parecer_merito',
             'can'     => 'parecerista',
         ],
+
+        [
+            'text'    => 'Estágios',
+            'url'     => '/estagios',
+            'can'     => 'parecerista',
+        ],
     ]
 ];

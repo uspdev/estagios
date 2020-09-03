@@ -36,7 +36,7 @@ button {
 
         <td>
         <a href ="/estagios/{{$estagio->id}}">
-            {{$estagio->numero_usp}}             
+        {{$estagio->numero_usp}}             
         </a>
 
         </td>
@@ -52,7 +52,7 @@ button {
         @foreach( App\Estagio::where('renovacao_parent_id',$estagio->id)->get() as $renovacao)
             <br>
             <a href ="/estagios/{{$renovacao->id}}">
-                {{$renovacao->data_inicial}} - {{$renovacao->data_final}}
+            {{$renovacao->data_inicial}} - {{$renovacao->data_final}}
             </a>
         @endforeach
 

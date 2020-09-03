@@ -145,7 +145,9 @@ $endereco = [
         presença de duas testemunhas para todos os fins e efeitos de direito.</p>
 </div>
 
-<div>São Paulo, {{ Carbon\Carbon::now()->formatLocalized('%d/%m/%Y') }}</div>
+<div style="page-break-inside: avoid;">
+
+<div style="text-align: center;">São Paulo, {{ Carbon\Carbon::now()->formatLocalized('%d/%m/%Y') }}</div>
 
 <br><br>
 
@@ -164,6 +166,8 @@ $endereco = [
     <b>TESTEMUNHAS:</b><br><br>
     _______________________________________________<br><br>
     _______________________________________________
+</div>
+
 </div>
 
 <p style="page-break-after: always;"></p>
@@ -198,23 +202,22 @@ $endereco = [
     Valor do auxílio transporte: R$ <b>{{ $estagio->auxiliotransporte }} {{ $estagio->especifiquevt }}</b><br>
     Descrição detalhada das atividades a serem desenvolvidas pelo estagiário, com a finalidade de permitir a avaliação
     da Comissão de Estágios: <b><i>{{ $estagio->atividades }}</i></b><br>
-    <p><b>NO CASO DE ESTÁGIO DOMICILIAR</b></p>
-    <p>Como se dará o controle diário dos horários de início e encerramento das atividades?
-        <b>{{ $estagio->controlehorario }}</b><br>
-    <p>Como se dará a supervisão interna (por parte da empresa) do estagiário? <b>{{ $estagio->supervisao}}</b></p>
-    <p>Como se dará a interação do estagiário com o ambiente e com os demais colaboradores da empresa? Haverá
-        deslocamento para a empresa? Se sim, quais dias? <b>{{ $estagio->interacao }}</b></p>
-    <p>Qual o endereço e em quais dias será realizado o estágio?<b>{{$estagio->enderecoedias}}</b></p>    
-    <p><b>INFORMAÇÕES RELATIVAS A ESTÁGIO NO PERÍODO DE PANDEMIA</b></p>
-    <p>O estágio será realizado em home-office?:</b> <b>{{$estagio->pandemiahomeoffice}}</b></p>
-    <p>Em caso do estágio não ser home-office, quais as medidas sanitárias adotadas pela empresa são:</b> <b>{{$estagio->pandemiamedidas}}</b></p>
+    <b>NO CASO DE ESTÁGIO DOMICILIAR</b><br>
+    Como se dará o controle diário dos horários de início e encerramento das atividades? <b>{{ $estagio->controlehorario }}</b><br>
+    Como se dará a supervisão interna (por parte da empresa) do estagiário? <b>{{ $estagio->supervisao}}</b><br>
+    Como se dará a interação do estagiário com o ambiente e com os demais colaboradores da empresa? Haverá
+    deslocamento para a empresa? Se sim, quais dias? <b>{{ $estagio->interacao }}</b><br>
+    Qual o endereço e em quais dias será realizado o estágio?<b>{{$estagio->enderecoedias}}</b><br>
+    <b>INFORMAÇÕES RELATIVAS A ESTÁGIO NO PERÍODO DE PANDEMIA</b><br>
+    O estágio será realizado em home-office?:</b> <b>{{$estagio->pandemiahomeoffice}}</b><br>
+    Em caso do estágio não ser home-office, quais as medidas sanitárias adotadas pela empresa são:</b> <b>{{$estagio->pandemiamedidas}}</b><br>
 </div>
 
-<div style="font-style: italic; font-weight: bold">
+<div style="page-break-inside: avoid;">
 
-    <br><br>
+<div style="text-align: center;">São Paulo, {{ Carbon\Carbon::now()->formatLocalized('%d/%m/%Y') }}</div>
 
-    São Paulo, {{ Carbon\Carbon::now()->formatLocalized('%d/%m/%Y') }}
+<br><br>
 
     <br>
     _______________________________________________<br>
@@ -225,12 +228,15 @@ $endereco = [
     _______________________________________________<br>
     {{ $pessoa::dump($presidente->numero_usp)['nompes'] }} <br>
     Presidente da Comissão de Graduação da FFLCH/USP
-</div>
-<br><br>
+
+    <br><br><br>
+
 <div>
     <p><b>CONTATO:</b> {{ $empresa->nome_de_contato }}, Telefone: {{ $empresa->telefone_de_contato }}, E-mail:
         {{ $empresa->email }}
     </p>
+</div>
+
 </div>
 
 <p style="page-break-after: never;"></p>
