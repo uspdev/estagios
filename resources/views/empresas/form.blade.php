@@ -30,14 +30,18 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-8 form-group">
+            <div class="col-4 form-group">
                 <label for="nome_de_contato" class="required">Nome de Contato da Empresa:</label>
                 <input type="text" maxlength="128" class="form-control" name="nome_de_contato" value="{{old('nome_de_contato', $empresa->nome_de_contato)}}">
             </div>    
             <div class="col-4 form-group">
                 <label for="telefone_de_contato" class="required">Telefone de Contato da Empresa:</label>
                 <input type="text" maxlength="11" id="telefone-com-ddd" placeholder="Insira o telefone com DDD" class="form-control" name="telefone_de_contato" value="{{old('telefone_de_contato', $empresa->telefone_de_contato)}}">
-            </div>  
+            </div> 
+            <div class="col-4 form-group">
+                <label for="email_de_contato" class="required">E-mail de Contato da Empresa:</label>
+                <input type="email" maxlength="128" id="email_de_contato" class="form-control" name="email_de_contato" value="{{old('email_de_contato', $empresa->email_de_contato)}}">
+            </div>   
         </div>
         <div class="row">
             <div class="col-8 form-group">

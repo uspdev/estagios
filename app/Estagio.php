@@ -47,6 +47,15 @@ class Estagio extends Model
             'Não'
         ];
     }
+
+
+    public function tipodeferimentoOptions(){
+        return [
+            'Deferido',
+            'Deferido com Restrição',
+            'Indeferido'
+        ];
+    }
     
     public function getDataInicialAttribute($value) {
         return implode('/',array_reverse(explode('-',$value)));

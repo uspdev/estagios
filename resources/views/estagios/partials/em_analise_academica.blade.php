@@ -1,6 +1,10 @@
 
 @can('parecerista')
 
+@section('javascripts_head')
+  <script src="{{asset('/js/estagios.js')}}"></script>
+@endsection('javascript_head')
+
 <div class="card">
 <div class="card-header"><b>Justificativa da análise acadêmica</b></div>
 <div class="card-body">
@@ -47,13 +51,36 @@
 
     <br>     
 
+    <label for="tipodeferimento">Situação de deferimento: </label>               
+    <select name="tipodeferimento" class="form-control" id="tipodeferimento" onchange="checagemdeferimento(this);">
+        <option value="" selected="">- Selecione -</option>
+                @foreach ($estagio->tipodeferimentoOptions() as $option)
+                @if (old('tipodeferimento') == '' and isset($estagio->tipodeferimento) )
+        <option value="{{$option}}" {{ ( $estagio->tipodeferimento == $option) ? 'selected' : ''}}>
+                {{$option}}
+        </option>
+                @else
+        <option value="{{$option}}" {{ ( old('tipodeferimento') == $option) ? 'selected' : ''}}>
+                {{$option}}
+        </option>
+            @endif
+            @endforeach
+    </select>  
+
+    <div class="form-group" id="deferimentoparcial">
+    <br>
+        <label for="condicaodeferimento">Em caso de deferimento com restrição, o estágio será reduzido para seis meses?: </label><br>
+        <textarea name="condicaodeferimento" rows="5" cols="60" value="{{old('condicaodeferimento',$estagio->condicaodeferimento)}} "></textarea>  
+    </div>  
+
+    <br>    
+
     <label for="analise_academica">Parecer final: </label> <br>
         <textarea name="analise_academica" rows="5" cols="60" value="{{old('analise_academica',$estagio->analise_academica)}}"></textarea>    
 
     <div class="form-group">
         <button type="submit" class="btn btn-info" name="analise_academica_action" value="indeferimento_analise_academica">Indeferir</button>
-       <!-- <button type="submit" class="btn btn-success" name="analise_academica_action" value="deferimento_analise_academica">Deferir Parcialmente</button> -->
-        <button type="submit" class="btn btn-success" name="analise_academica_action" value="deferimento_analise_academica">Deferir</button>
+        <button type="submit" class="btn btn-success" name="analise_academica_action" value="deferimento_analise_academica">Enviar</button>
     </div>
 
 </form>

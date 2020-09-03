@@ -1,5 +1,11 @@
 @extends('pdfs.fflch')
 
+
+@inject('pessoa','Uspdev\Replicado\Pessoa')
+@inject('graduacao','Uspdev\Replicado\Graduacao')
+
+@inject('replicado_utils','App\Utils\ReplicadoUtils')
+
 @section('content')
 <p><center>FORMULÁRIO PARA ABERTURA DE CONVÊNIO</center></p>
 <br>

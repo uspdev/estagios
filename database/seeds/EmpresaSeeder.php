@@ -21,6 +21,7 @@ class EmpresaSeeder extends Seeder
             'cep' => '06318872',
             'nome_de_contato' => 'Joãozinho',
             'telefone_de_contato' => '1199999999',
+            'email_de_contato' => 'contatointerno@empresa.com',
             'nome_do_representante' => 'Mariazinha',
             'cargo_do_representante' => 'Gestor',
             'nome_do_supervisor_estagio' => 'Genivaldo',
