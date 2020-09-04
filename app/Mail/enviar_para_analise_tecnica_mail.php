@@ -39,6 +39,7 @@ class enviar_para_analise_tecnica_mail extends Mailable
               ];
 
         $pdf = PDF::loadView('pdfs.termo', ['estagio'=>$this->estagio]);
+        $pdf = PDF::loadView('pdfs.renovacao', ['estagio'=>$this->estagio]);        
 
         return $this->view('emails.enviar_para_analise_tecnica')
                     ->to($to)
