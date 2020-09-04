@@ -45,7 +45,7 @@ Parecer de mérito realizado por: {{ $estagio->analise_academica_user->name }} <
 Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise_alteracao_user->name  }}<br>
 @endif
 
-@if(($estagio->analise_academica)!=null)
+@if(($estagio->desempenhoacademico)!=null)
 <br>
     <a href="/pdfs/parecer/{{$estagio->id}}"target="_blank" >
     <i class="fas fa-file-pdf"></i> </a>

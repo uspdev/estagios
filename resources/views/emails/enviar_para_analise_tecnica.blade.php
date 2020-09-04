@@ -1,4 +1,4 @@
-Um estágio foi enviado pela empresa {{ $estagio->cnpj }} para parecer técnico.
+Um estágio foi enviado pela empresa {{ App\Empresa::where('cnpj',$estagio->cnpj)->first()->nome }} para parecer técnico.
 
 
 
