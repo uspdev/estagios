@@ -39,13 +39,13 @@ class enviar_para_analise_tecnica_mail extends Mailable
               ];
 
         $pdf = PDF::loadView('pdfs.termo', ['estagio'=>$this->estagio]);
-        $pdf = PDF::loadView('pdfs.renovacao', ['estagio'=>$this->estagio]);        
+        $pdf2 = PDF::loadView('pdfs.renovacao', ['estagio'=>$this->estagio]);        
 
         return $this->view('emails.enviar_para_analise_tecnica')
                     ->to($to)
                     ->subject($subject)
                     ->attachData($pdf->output(), 'termo.pdf')
-                    ->attachData($pdf->output(), 'renovacao.pdf')
+                    ->attachData($pdf2->output(), 'renovacao.pdf')
                     ->with([
                         'estagio' => $this->estagio,
                     ]);
