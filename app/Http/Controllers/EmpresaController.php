@@ -18,9 +18,9 @@ class EmpresaController extends Controller
         if(isset($request->busca)) {
             $empresas = Empresa::where('nome','LIKE',"%{$request->busca}%")
                                 ->orWhere('cnpj','LIKE',"%{$request->busca}%")
-                ->paginate(20);
+                ->get();
         } else {
-            $empresas = Empresa::paginate(20);
+            $empresas = Empresa::get();
         }        
         return view('empresas.index', compact('empresas'));
     }
