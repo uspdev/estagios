@@ -32,9 +32,9 @@ class enviar_para_analise_tecnica_mail extends Mailable
      */
     public function build()
     {
-        $subject = 'Estágio enviado para parecer técnico';
+        $subject = 'Documentos Relatívos a Estágio - FFLCH-USP';
 
-        $to = [Empresa::where('cnpj',$this->estagio->cnpj)->first()->email,
+        $to = [Empresa::where('cnpj',$this->estagio->cnpj)->first()->email_de_contato,
                config('mail.reply_to.address')
               ];
 
@@ -44,6 +44,7 @@ class enviar_para_analise_tecnica_mail extends Mailable
                     ->to($to)
                     ->subject($subject)
                     ->attachData($pdf->output(), 'termo.pdf')
+                    ->attachData($pdf->output(), 'renovacao.pdf')
                     ->with([
                         'estagio' => $this->estagio,
                     ]);

@@ -124,7 +124,7 @@ return [
         ],
 
         [
-            'text'    => 'Estágios',
+            'text'    => 'Ver Todos os Estágios',
             'url'     => '/estagios',
             'can'     => 'parecerista',
         ],

@@ -10,6 +10,7 @@
 <br>
 
 <table class="table table-striped datatable" id="index">
+
     <thead>
         <tr>
             <th>Nome da Empresa</th>

@@ -18,6 +18,9 @@ Route::resource('/convenios','ConvenioController');
 Route::get('/pdfs/convenio/{convenio}', 'PDFsController@convenio');
 Route::get('/pdfs/termo/{estagio}', 'PDFsController@termo');
 
+#E-mails
+Route::get('/emails/enviar_para_analise_tecnica/{estagio}', 'EmailController@enviar_para_analise_tecnica');
+
 #Rescisão
 Route::get('/pdfs/rescisao/{estagio}', 'PDFsController@rescisao');
 
