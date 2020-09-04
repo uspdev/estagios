@@ -4,10 +4,32 @@
 @inject('pessoa','Uspdev\Replicado\Pessoa')
 @inject('graduacao','Uspdev\Replicado\Graduacao')
 
+@php
+$presidente = App\Parecerista::where('presidente', true)->first();
+
+$empresa = App\Empresa::where('cnpj',$estagio->cnpj)->first();
+
+$empresa->cnpj =  substr($empresa->cnpj, 0, 2) . '.' . substr($empresa->cnpj, 2, 3) . '.' . substr($empresa->cnpj, 5, 3) . '/' . substr($empresa->cnpj, 8, 4) . '-' . substr($empresa->cnpj, 12, 2);
+
+$endereco = Uspdev\Replicado\Pessoa::obterEndereco($estagio->numero_usp);
+// Formata endereço
+$endereco = [
+    $endereco['nomtiplgr'],
+    $endereco['epflgr'] . ",",
+    $endereco['numlgr'] . " ",
+    $endereco['cpllgr'] . " - ",
+    $endereco['nombro'] . " - ",
+    $endereco['cidloc'] . " - ",
+    $endereco['sglest'] . " - ",
+    "CEP: " . $endereco['codendptl'],
+];
+
+@endphp
+
+
 @inject('replicado_utils','App\Utils\ReplicadoUtils')
 
 @section('content')
-
 
 <div style="border-width: 1px; border-style: solid; border-color: #000; text-align: center; padding: 0px;">
     <b>ADITIVO DE RENOVAÇÃO DO TERMO DE COMPROMISSO</b>

@@ -3,6 +3,14 @@
   <link rel="stylesheet" type="text/css" href="{{asset('/css/stepper.css')}}">
 @endsection('styles')
 
+@if (\Session::has('success'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('success') !!}</li>
+        </ul>
+    </div>
+@endif
+
 <div class="md-stepper-horizontal orange">
 
     @foreach ($estagio->getStatus() as $key => $status)
@@ -60,6 +68,11 @@ Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise
     <i class="fas fa-file-pdf"></i> </a>
     Visualizar PDF do Termo de Ciência para Renovação   
 <br><br>
+    <a onClick="return confirm('Tem certeza que deseja um email para a empresa?')" href="/emails/enviar_para_analise_tecnica/{{$estagio->id}}">
+    <i class="fas fa-envelope-open-text"></i> </a>
+    Enviar E-mail contendo Termo de Ciência e Termo de Ciência para Renovação para a empresa   
+<br><br>    
+
 
 @switch($estagio->status)
 

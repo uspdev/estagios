@@ -6,4 +6,4 @@ Ou copie e cole a url no seu navegador:
 {!! $url_login !!}
 
 <br><br>
-Mensagem automática - Sistema estágios FFLCH
+Mensagem automática - Sistema de Estágios - FFLCH-USP
