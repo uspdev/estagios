@@ -22,7 +22,7 @@
 
     <div class="row">
       <div class="col-sm form-group">
-        <label class="col-sm required" for="cnpj">CNPJ</label>
+        <label class="col-sm required" for="cnpj">CNPJ: </label>
           <input type="text" class="form-control" id="cnpj" name="cnpj" value="{{old('cnpj')}}">
       </div>
 
@@ -33,7 +33,8 @@
 
     </div>   
   
-    </br>
+    <br>
+    Insira APENAS o número do CNPJ, sem os pontos e barra.<hr>
     <div class="row">
       <div class="col-sm form-group">
         <button type="submit" class="btn btn-success">Enviar</button>
