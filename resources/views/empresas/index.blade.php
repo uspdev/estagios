@@ -31,16 +31,19 @@
                 <td>{{$empresa->nome_do_supervisor_estagio}}</td>
                 <td style="text-align:center">
                     <a href="/empresas/{{$empresa->id}}/edit"><i class="fas fa-edit"></i></a>
+
+                @can('admin')
                     <form method="POST" action="/empresas/{{$empresa->id}}" class="form-inline">
                         @csrf
                         @method('delete')
-                        <button type="submit" class="btn btn-link"><i class="fas fa-trash-alt"></i></button>
+                        <button type="submit" class="btn btn-link" onclick="return confirm('Tem certeza que deseja deletar esta empresa?');"><i class="fas fa-trash-alt"></i></button>
                     </form>
 
                     <form method="POST" action="/adminLogandoComoEmpresa/{{$empresa->cnpj}}" class="form-inline">
                         @csrf
                         <button type="submit" class="btn btn-link"><i class="fas fa-user-secret"></i></button>
                     </form>
+                @endcan('admin')    
                 </td>
                 
             </tr>
