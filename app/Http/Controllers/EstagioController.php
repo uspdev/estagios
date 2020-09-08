@@ -6,7 +6,7 @@ use App\User;
 use Auth;
 
 use Uspdev\Replicado\Pessoa;
-
+use App\Http\Requests\EstagioRequest;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Gate;
