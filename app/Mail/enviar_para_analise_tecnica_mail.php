@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Uspdev\Replicado\Pessoa;
 use App\Empresa;
 use App\Estagio;
 use PDF;
@@ -32,7 +33,7 @@ class enviar_para_analise_tecnica_mail extends Mailable
      */
     public function build()
     {
-        $subject = 'Documentos Relatívos a Estágio - FFLCH-USP';
+        $subject = Pessoa::dump($this->estagio->numero_usp)['nompes'] . ' - Documentos Relatívos a Estágio - FFLCH-USP';
 
         $to = [Empresa::where('cnpj',$this->estagio->cnpj)->first()->email_de_contato,
                config('mail.reply_to.address')

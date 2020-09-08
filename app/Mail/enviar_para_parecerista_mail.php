@@ -33,7 +33,7 @@ class enviar_para_parecerista_mail extends Mailable
      */
     public function build()
     {
-        $subject = 'Parecer de Mérito - FFLCH-USP';
+        $subject = Pessoa::dump($this->estagio->numero_usp)['nompes'] . ' - Parecer de Mérito - FFLCH-USP';
 
         $to = [Pessoa::email($this->estagio->numparecerista),
                config('mail.reply_to.address')
