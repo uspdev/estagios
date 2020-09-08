@@ -76,8 +76,8 @@
     Empresa: <b>{{ $empresa->nome }}</b><br><br>
     Área de atuação da Empresa: <b>S{{ $empresa->area_de_atuacao }}</b><br><br>
     Período do Estágio<br>
-    Início: <b>{{ \Carbon\Carbon::parse($estagio->dataini)->format('d/m/Y')}}</b><br>
-    Término: <b>{{ \Carbon\Carbon::parse($estagio->datafin)->format('d/m/Y')}}</b>
+    Início: <b>{{$estagio->data_inicial}}</b><br>
+    Término: <b>{{$estagio->data_final}}</b>
 </div>
 
 <div style="text-align: justify;">
