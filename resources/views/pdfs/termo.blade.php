@@ -92,8 +92,8 @@ $endereco = [
         Estágio firmado entre a CONCEDENTE e a INSTITUIÇÃO DE ENSINO nos termos da Lei no 9.394/96 e da Lei nº
         11.788/08, conforme as condições a seguir:</p>
     <p>1. O estágio terá duração de <b>{{ $estagio->duracao }}</b>, a começar em
-        <b>{{ \Carbon\Carbon::parse($estagio->dataini)->format('d/m/Y')}}</b> terminando em
-        <b>{{ \Carbon\Carbon::parse($estagio->datafin)->format('d/m/Y')}}</b> que poderá
+        <b>{{$estagio->data_inicial}}</b> terminando em
+        <b>{{$estagio->data_final}}</b> que poderá
         ser eventualmente prorrogado ou modificado por documento complementar <b>(TERMO ADITIVO)</b>.</p>
     <p>1.1. Qualquer das partes poderá pedir rescisão, com 05 (cinco) dias de antecedência.</p>
     <p>1.2. O estagiário não terá vínculo empregatício de qualquer natureza com a CONCEDENTE em razão deste TERMO DE
@@ -190,8 +190,8 @@ $endereco = [
     Nome do supervisor(a) interno(a) do Estágio na Empresa: <b>{{ $empresa->nome_do_supervisor_estagio }}</b><br>
     Telefone do Supervisor: <b>{{ $empresa->telefone_do_supervisor_estagio }}</b> / <b>{{ $empresa->telefone_de_contato }}</b>,
     E-mail do Supervisor: <b>{{ $empresa->email_do_supervisor_estagio }}</b><br>
-    Data de início do estágio: <b>{{ \Carbon\Carbon::parse($estagio->dataini)->format('d/m/Y')}}</b><br>
-    Data do término do estágio: <b>{{ \Carbon\Carbon::parse($estagio->datafin)->format('d/m/Y')}}</b><br>
+    Data de início do estágio: <b>{{$estagio->data_inicial}}</b><br>
+    Data do término do estágio: <b>{{$estagio->data_final}}</b><br>
     Horário do Estágio: <b>{{ $estagio->horario }}</b><br>
     Carga horária semanal: <b>{{ $estagio->cargahoras }}h{{ $estagio->cargaminutos }} semanais</b><br>
     Duração em meses (em casos excepcionais inferiores a 6 meses, a empresa deverá incluir justificativa circunstanciada

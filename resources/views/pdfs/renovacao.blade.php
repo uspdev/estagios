@@ -74,8 +74,8 @@ $endereco = [
         condições a seguir:
     </p>
 
-    <p>1. Alterações a serem feitas: <b> PRORROGAÇÃO de {{ \Carbon\Carbon::parse($estagio->dataini)->format('d/m/Y')}} a
-            {{ \Carbon\Carbon::parse($estagio->datafin)->format('d/m/Y')}}. </b></p>
+    <p>1. Alterações a serem feitas: <b> PRORROGAÇÃO de {{$estagio->data_inicial}} a
+            {{$estagio->data_final}}. </b></p>
 
     <p>2. Permanecem inalteradas as demais cláusulas do Termo de Compromisso de Estágio, do qual passa a fazer parte
         integrante o presente Termo Aditivo, ficando sem efeito as disposições em contrário.
@@ -136,8 +136,8 @@ $endereco = [
     Área de atuação da Empresa: <b>{{ $empresa->area_de_atuacao }}</b><br>
     Nome do supervisor(a) interno(a) do Estágio na Empresa: <b>{{ $empresa->nome_do_supervisor_estagio }}</b><br>
     Telefone: <b>{{ $empresa->telefone_do_supervisor_estagio }}</b> , E-mail: <b>{{ $empresa->email_do_supervisor_estagio }}</b><br>
-    Data de início do estágio: <b>{{ \Carbon\Carbon::parse($estagio->dataini)->format('d/m/Y')}}</b><br>
-    Data do término do estágio: <b>{{ \Carbon\Carbon::parse($estagio->datafin)->format('d/m/Y')}}</b><br>
+    Data de início do estágio: <b>{{$estagio->data_inicial}}</b><br>
+    Data do término do estágio: <b>{{{$estagio->data_final}}</b><br>
     Horário do Estágio: <b>{{ $estagio->horario }}</b> Carga horária semanal: <b>{{ $estagio->cargahoras }}
     h{{ $estagio->cargaminutos }} semanais</b><br>
     Duração em meses (em casos excepcionais inferiores a 6 meses, a empresa deverá incluir justificativa circunstanciada
