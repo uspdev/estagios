@@ -20,6 +20,7 @@ Route::get('/pdfs/termo/{estagio}', 'PDFsController@termo');
 
 #E-mails
 Route::get('/emails/enviar_para_analise_tecnica/{estagio}', 'EmailController@enviar_para_analise_tecnica');
+Route::get('/emails/enviar_para_parecerista/{estagio}', 'EmailController@enviar_para_parecerista');
 
 #Rescisão
 Route::get('/pdfs/rescisao/{estagio}', 'PDFsController@rescisao');
@@ -67,9 +68,6 @@ Route::post('/rescisao/{estagio}', 'EstagioWorkflowController@rescisao');
 Route::post('/renovacao/{estagio}', 'EstagioWorkflowController@renovacao');
 Route::get('/iniciar_alteracao/{estagio}', 'EstagioWorkflowController@iniciar_alteracao');
 
-# Rotas Rescisão
-Route::get('/reiniciar_estagio/{estagio}', 'EstagioWorkflowController@reiniciar_estagio');
-
 # Rotas Alteração
 Route::post('/enviar_alteracao/{estagio}', 'EstagioWorkflowController@enviar_alteracao');
 
@@ -77,3 +75,9 @@ Route::post('/enviar_alteracao/{estagio}', 'EstagioWorkflowController@enviar_alt
 Route::post('/analise_tecnica_alteracao/{estagio}', 'EstagioWorkflowController@analise_tecnica_alteracao');
 
 Route::get('/parecer_merito', 'EstagioController@parecerMerito');
+
+#alterar parecerista
+
+Route::post('/parecer_merito/{estagio}', 'EstagioController@alterarParecerista');
+
+

@@ -71,7 +71,15 @@ Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise
     <a onClick="return confirm('Tem certeza que deseja um email para a empresa?')" href="/emails/enviar_para_analise_tecnica/{{$estagio->id}}">
     <i class="fas fa-envelope-open-text"></i> </a>
     Enviar E-mail contendo Termo de Ciência e Termo de Ciência para Renovação para a empresa   
-<br><br>    
+<br><br> 
+
+@can('admin')
+    <div class="card-header"><b>Gerenciar Parecerista</b></div> 
+    <div class="card">
+      @include('estagios.partials.gerenciar_parecerista')
+    </div></div>
+<br><br>
+@endcan('admin')  
 
 
 @switch($estagio->status)
