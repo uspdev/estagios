@@ -4,6 +4,12 @@
 @inject('pessoa','Uspdev\Replicado\Pessoa')
 @inject('graduacao','Uspdev\Replicado\Graduacao')
 
+@php
+    $empresa = App\Empresa::where('cnpj',$estagio->cnpj)->first();
+    $parecerista = Uspdev\Replicado\Pessoa::dump($estagio->numparecerista)['nompes'];
+    $pareceristanum = $estagio->numparecerista;
+@endphp
+
 @inject('replicado_utils','App\Utils\ReplicadoUtils')
 
 @section('content')
@@ -23,8 +29,8 @@
     Empresa: <b>{{ $empresa->nome }}</b><br><br>
     Área de atuação da Empresa: <b>S{{ $empresa->area_de_atuacao }}</b><br><br>
     Período do Estágio<br>
-    Início: <b>{{ \Carbon\Carbon::parse($estagio->dataini)->format('d/m/Y')}}</b><br>
-    Término: <b>{{ \Carbon\Carbon::parse($estagio->datafin)->format('d/m/Y')}}</b>
+    Início: <b>{{$estagio->data_inicial}}</b><br>
+    Término: <b>{{$estagio->data_final}}</b>
 </div>
 
 <div style="text-align: justify;">

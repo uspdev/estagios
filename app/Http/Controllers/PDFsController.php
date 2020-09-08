@@ -85,13 +85,7 @@ class PDFsController extends Controller
 
     public function parecer(Estagio $estagio){
         if (Gate::allows('admin') | Gate::allows('parecerista') | Gate::allows('empresa',$estagio->cnpj)) {
-
-            $empresa = Empresa::where('cnpj',$estagio->cnpj)->first();
-
-            $parecerista = User::find($estagio->analise_academica_user_id)->name;
-            $pareceristanum = User::find($estagio->analise_academica_user_id)->codpes;
-
-            $pdf = PDF::loadView('pdfs.parecer', compact('estagio','empresa','parecerista','pareceristanum'));
+            $pdf = PDF::loadView('pdfs.parecer', compact('estagio'));
             return $pdf->download('parecer.pdf');
         }
         abort(403, 'Access denied');

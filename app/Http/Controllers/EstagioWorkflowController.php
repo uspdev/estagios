@@ -7,6 +7,8 @@ use App\Http\Requests\EstagioRequest;
 
 use App\Estagio;
 use Illuminate\Support\Facades\Gate;
+use App\User;
+use Uspdev\Replicado\Pessoa;
 use Auth;
 use App\Mail\enviar_para_analise_tecnica_mail;
 use Illuminate\Support\Facades\Mail;
@@ -85,6 +87,8 @@ class EstagioWorkflowController extends Controller
             $estagio->tipodeferimento = $request->tipodeferimento;
             $estagio->condicaodeferimento = $request->condicaodeferimento;
             $estagio->analise_academica_user_id = Auth::user()->id;
+            $estagio->save();            
+            $estagio->numparecerista = User::find($estagio->analise_academica_user_id)->codpes;
             $estagio->save();
             $workflow = $estagio->workflow_get();
             $workflow->apply($estagio,$request->analise_academica_action);

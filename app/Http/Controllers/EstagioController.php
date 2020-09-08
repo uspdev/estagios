@@ -113,4 +113,15 @@ class EstagioController extends Controller
         ]);
     }
 
+    public function alterarParecerista(Request $request, Estagio $estagio){
+        if (Gate::allows('admin')) {
+        $estagio->numparecerista = $request->numparecerista;
+        $estagio->save();
+
+    } else {
+        request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
+    }
+    return redirect("/estagios/{$estagio->id}");
+    }
+
 }
