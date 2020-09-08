@@ -137,7 +137,7 @@ $endereco = [
     Nome do supervisor(a) interno(a) do Estágio na Empresa: <b>{{ $empresa->nome_do_supervisor_estagio }}</b><br>
     Telefone: <b>{{ $empresa->telefone_do_supervisor_estagio }}</b> , E-mail: <b>{{ $empresa->email_do_supervisor_estagio }}</b><br>
     Data de início do estágio: <b>{{$estagio->data_inicial}}</b><br>
-    Data do término do estágio: <b>{{{$estagio->data_final}}</b><br>
+    Data do término do estágio: <b>{{$estagio->data_final}}</b><br>
     Horário do Estágio: <b>{{ $estagio->horario }}</b> Carga horária semanal: <b>{{ $estagio->cargahoras }}
     h{{ $estagio->cargaminutos }} semanais</b><br>
     Duração em meses (em casos excepcionais inferiores a 6 meses, a empresa deverá incluir justificativa circunstanciada
