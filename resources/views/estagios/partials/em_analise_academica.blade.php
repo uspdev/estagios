@@ -69,8 +69,21 @@
 
     <div class="form-group" id="deferimentoparcial">
     <br>
-        <label for="condicaodeferimento">Em caso de deferimento com restrição, o estágio será reduzido para seis meses?: </label><br>
-        <textarea name="condicaodeferimento" rows="5" cols="60" value="{{old('condicaodeferimento',$estagio->condicaodeferimento)}} "></textarea>  
+        <label for="condicaodeferimento">Em caso de deferimento com restrição, o estágio será reduzido para seis meses?: </label>               
+    <select name="condicaodeferimento" class="form-control" id="condicaodeferimento">
+        <option value="" selected="">- Selecione -</option>
+                @foreach ($estagio->condicaodeferimentoOptions() as $option)
+                @if (old('condicaodeferimento') == '' and isset($estagio->condicaodeferimento) )
+        <option value="{{$option}}" {{ ( $estagio->condicaodeferimento == $option) ? 'selected' : ''}}>
+                {{$option}}
+        </option>
+                @else
+        <option value="{{$option}}" {{ ( old('condicaodeferimento') == $option) ? 'selected' : ''}}>
+                {{$option}}
+        </option>
+            @endif
+            @endforeach
+    </select>  
     </div>  
 
     <br>    
@@ -79,8 +92,7 @@
         <textarea name="analise_academica" rows="5" cols="60" value="{{old('analise_academica',$estagio->analise_academica)}}"></textarea>    
 
     <div class="form-group">
-        <button type="submit" class="btn btn-info" name="analise_academica_action" value="indeferimento_analise_academica">Indeferir</button>
-        <button type="submit" class="btn btn-success" name="analise_academica_action" value="deferimento_analise_academica">Enviar</button>
+        <button type="submit" class="btn btn-success" name="analise_academica_action" value="analise_academica">Enviar</button>
     </div>
 
 </form>

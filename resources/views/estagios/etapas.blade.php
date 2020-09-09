@@ -46,7 +46,7 @@ Análise técnica do setor de Graduação realizada por: {{ $estagio->analise_te
 @endif
 
 @if($estagio->analise_academica_user)
-Parecer de mérito realizado por: {{ $estagio->analise_academica_user->name }} <br>
+Parecer de mérito realizado por: {{Uspdev\Replicado\Pessoa::dump($estagio->numparecerista)['nompes']}} <br>
 @endif
 
 @if($estagio->analise_alteracao_user)
@@ -73,12 +73,20 @@ Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise
     Enviar E-mail contendo Termo de Ciência e Termo de Ciência para Renovação para a empresa   
 <br><br> 
 
+@if(($estagio->tipodeferimento)!=null)
+<br>
+    Status do deferimento do parecer de mérito: {{$estagio->tipodeferimento}}<br>
+    Parecerista: {{Uspdev\Replicado\Pessoa::dump($estagio->numparecerista)['nompes']}}<br><br>
+@endif
+
 @can('admin')
+@if(($estagio->desempenhoacademico)!=null)
     <div class="card-header"><b>Gerenciar Parecerista</b></div> 
     <div class="card">
       @include('estagios.partials.gerenciar_parecerista')
     </div></div>
 <br><br>
+@endif
 @endcan('admin')  
 
 
