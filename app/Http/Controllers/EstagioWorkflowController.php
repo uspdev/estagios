@@ -98,6 +98,19 @@ class EstagioWorkflowController extends Controller
         return redirect("/estagios/{$estagio->id}");
     }
 
+    public function editar_analise_academica(Request $request, Estagio $estagio){
+
+        if (Gate::allows('parecerista')) {
+                $workflow = $estagio->workflow_get();
+                $workflow->apply($estagio,'editar_analise_academica');
+                $estagio->save();
+        } else {
+            request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
+        }
+
+        return redirect("/estagios/{$estagio->id}");
+    }
+
     #Funções Concluido
 
     public function renovacao(Request $request, Estagio $estagio) {

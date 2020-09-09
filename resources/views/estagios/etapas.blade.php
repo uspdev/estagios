@@ -36,6 +36,7 @@
 Enviado para: <b>{{ $estagio->getStatus()[$estagio->status]['name'] }} - 
 {{ $estagio->getStatus()[$estagio->status]['optional'] }}
 </b>
+
 <br>
 
 Última alteração realizada em: <b>{{ Carbon\Carbon::parse($estagio->updated_at)->format('d/m/Y H:i') }}</b>
@@ -46,7 +47,8 @@ Análise técnica do setor de Graduação realizada por: {{ $estagio->analise_te
 @endif
 
 @if($estagio->analise_academica_user)
-Parecer de mérito realizado por: {{Uspdev\Replicado\Pessoa::dump($estagio->numparecerista)['nompes']}} <br>
+Parecer de mérito realizado por: {{$estagio->analise_academica_user->name}} <br>
+Status do deferimento do parecer de mérito: {{$estagio->tipodeferimento}} <br>
 @endif
 
 @if($estagio->analise_alteracao_user)
@@ -72,12 +74,6 @@ Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise
     <i class="fas fa-envelope-open-text"></i> </a>
     Enviar E-mail contendo Termo de Ciência e Termo de Ciência para Renovação para a empresa   
 <br><br> 
-
-@if(($estagio->tipodeferimento)!=null)
-<br>
-    Status do deferimento do parecer de mérito: {{$estagio->tipodeferimento}}<br>
-    Parecerista: {{Uspdev\Replicado\Pessoa::dump($estagio->numparecerista)['nompes']}}<br><br>
-@endif
 
 @can('admin')
 @if(($estagio->desempenhoacademico)!=null)
@@ -105,6 +101,11 @@ Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise
       @break              
 
     @case('concluido')
+    @can('parecerista')
+    <a onClick="return confirm('Tem certeza que deseja editar o parecer de mérito?')" href="/editar_analise_academica/{{$estagio->id}}">
+    <i class="far fa-edit"></i> </a>
+    Editar Parecer de Mérito
+    @endcan('parecerista')
     @include('estagios.partials.concluido')
       @break 
 
