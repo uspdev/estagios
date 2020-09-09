@@ -14,7 +14,7 @@ class AddNumpareceristaToEstagiosTable extends Migration
     public function up()
     {
         Schema::table('estagios', function (Blueprint $table) {
-            //
+            $table->unsignedBigInteger('numparecerista')->nullable();
         });
     }
 
