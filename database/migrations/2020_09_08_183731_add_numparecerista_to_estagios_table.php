@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class NewupdatesFieldsEstagios2 extends Migration
+class AddNumpareceristaToEstagiosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class NewupdatesFieldsEstagios2 extends Migration
     public function up()
     {
         Schema::table('estagios', function (Blueprint $table) {
-            $table->unsignedBigInteger('numparecerista')->nullable();
+            //
         });
     }
 
@@ -26,7 +26,7 @@ class NewupdatesFieldsEstagios2 extends Migration
     public function down()
     {
         Schema::table('estagios', function (Blueprint $table) {
-            $table->dropColumn('numparecerista');
+            //
         });
     }
 }
