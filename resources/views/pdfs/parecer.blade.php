@@ -8,6 +8,7 @@
     $empresa = App\Empresa::where('cnpj',$estagio->cnpj)->first();
     $parecerista = Uspdev\Replicado\Pessoa::dump($estagio->numparecerista)['nompes'];
     $pareceristanum = $estagio->numparecerista;
+    $empresa = App\Empresa::where('cnpj',$estagio->cnpj)->first();
 @endphp
 
 @inject('replicado_utils','App\Utils\ReplicadoUtils')
@@ -60,7 +61,7 @@
 <br><br>
 
 <div style="text-align: center">
-    PARECERISTA:<b> {{ $parecerista }} - {{ $pareceristanum }}</b>
+    PARECERISTA: <b> {{ $parecerista }} - {{ $pareceristanum }}</b>
 <div>
 
 <p style="page-break-after: always;"></p>

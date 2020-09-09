@@ -76,7 +76,6 @@ class EstagioWorkflowController extends Controller
                 'analise_academica'=> 'required',
                 'tipodeferimento'=> 'required',
                 'condicaodeferimento'=> 'required_if:tipodeferimento,==,Deferido com Restrição'
-
             ]);
             $estagio->analise_academica = $request->analise_academica;
             $estagio->mediaponderada = $request->mediaponderada;

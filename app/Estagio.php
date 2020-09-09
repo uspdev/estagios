@@ -56,6 +56,13 @@ class Estagio extends Model
             'Indeferido'
         ];
     }
+
+    public function condicaodeferimentoOptions(){
+        return [
+            'Sim',
+            'Não'
+        ];
+    }
     
     public function getDataInicialAttribute($value) {
         return implode('/',array_reverse(explode('-',$value)));
