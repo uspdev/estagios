@@ -81,6 +81,14 @@ $workflow_estagio = [
             'to' => 'concluido'
         ],
 
+        'editar_analise_academica' => [
+            'metadata' => [
+                'label' => "Editar Análise Acadêmica"
+            ],
+            'from' => 'concluido',
+            'to' => 'em_analise_academica'
+        ],
+
         /*'indeferimento_analise_academica' => [
             'metadata' => [
                 'label' => "Indeferido"

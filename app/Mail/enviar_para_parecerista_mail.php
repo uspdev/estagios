@@ -44,7 +44,7 @@ class enviar_para_parecerista_mail extends Mailable
         return $this->view('emails.enviar_para_parecerista')
                     ->to($to)
                     ->subject($subject)
-                    ->attachData($pdf->output(), 'parecer.pdf')
+                    //->attachData($pdf->output(), 'parecer.pdf')
                     ->with([
                         'estagio' => $this->estagio,
                     ]);
