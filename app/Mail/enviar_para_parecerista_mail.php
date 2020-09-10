@@ -33,18 +33,19 @@ class enviar_para_parecerista_mail extends Mailable
      */
     public function build()
     {
-        $subject = Pessoa::dump($this->estagio->numero_usp)['nompes'] . ' - Parecer de Mérito - FFLCH-USP';
 
         $to = [Pessoa::email($this->estagio->numparecerista),
                config('mail.reply_to.address')
               ];
+              
+        $subject = Pessoa::dump($this->estagio->numero_usp)['nompes'] . ' - Parecer de Mérito - FFLCH-USP';
 
         $pdf = PDF::loadView('pdfs.parecer', ['estagio'=>$this->estagio]);      
 
         return $this->view('emails.enviar_para_parecerista')
                     ->to($to)
                     ->subject($subject)
-                    //->attachData($pdf->output(), 'parecer.pdf')
+                    ->attachData($pdf->output(), 'parecer.pdf')
                     ->with([
                         'estagio' => $this->estagio,
                     ]);

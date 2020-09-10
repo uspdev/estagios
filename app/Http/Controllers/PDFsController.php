@@ -28,10 +28,8 @@ class PDFsController extends Controller
     }
 
     public function convenio(Convenio $convenio){
-        if (Gate::allows('admin') | Gate::allows('parecerista') | Gate::allows('empresa',$estagio->cnpj)) {
-            $now = Carbon::now();
-            $empresa = Empresa::where('cnpj',$convenio->cnpj)->first();
-            $pdf = PDF::loadView('pdfs.convenio', compact('convenio', 'empresa', 'now'));
+        if (Gate::allows('admin') | Gate::allows('parecerista') | Gate::allows('empresa',$convenio->cnpj)) {
+            $pdf = PDF::loadView('pdfs.convenio', compact('convenio'));
             return $pdf->download('convenio.pdf');
         }
         abort(403, 'Access denied');
@@ -66,10 +64,9 @@ class PDFsController extends Controller
         abort(403, 'Access denied');
     }
 
-    public function aditivo(Empresa $empresa){
+    public function aditivo(Estagio $estagio){
         if (Gate::allows('admin') | Gate::allows('parecerista') | Gate::allows('empresa',$estagio->cnpj)) {
-            $now = Carbon::now();
-            $pdf = PDF::loadView('pdfs.aditivo', compact('empresa', 'now'));
+            $pdf = PDF::loadView('pdfs.aditivo', compact('estagio'));
             return $pdf->download('aditivo.pdf');
         }
         abort(403, 'Access denied');
