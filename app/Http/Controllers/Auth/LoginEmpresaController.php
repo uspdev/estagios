@@ -43,6 +43,7 @@ class LoginEmpresaController extends Controller
         /* Se a empresa já tem cadastro, mas o email informando não coincide o banco de dados
            informamos */
         $cnpj = preg_replace("/[^0-9]/", "", $request->cnpj);
+
         $empresa = Empresa::where('cnpj',$cnpj)->first();
         if (!is_null($empresa)) {
             if($empresa->email != $request->email){
@@ -64,7 +65,7 @@ class LoginEmpresaController extends Controller
         /* Verificação se esse email já não está alocado para outra empresa */
         $user = User::where('email',$request->email)->first();
         if (!is_null($user)) {
-            if($user->cnpj != $request->cnpj) {
+            if($user->cnpj != $cnpj) {
                 $request->session()->flash('alert-danger',
                     "O email {$request->email} está cadastrado para outro CNPJ");
                     return redirect('/login/empresa');

@@ -49,6 +49,17 @@ class EmpresaController extends Controller
     public function store(EmpresaRequest $request){
         if (Gate::allows('empresa') | Gate::allows('admin')) {
             $validated = $request->validated();
+
+            /* Vamos validar na mão depois passaremos para o request */
+            // Verificar se o email não está cadastrado para outra empresa
+            $outra_empresa = Empresa::where('email',$validated['email'])->first();
+            if($outra_empresa){
+                $request->session()->flash('alert-danger',"Email {$validated['email']} cadastrado para outra empresa, escolha outro");
+                $validated['email'] = $validated['email'] . '.invalido';
+                $empresa = Empresa::create($validated);
+                return redirect("/empresas/$empresa->id/edit");
+            }
+
             $empresa = Empresa::create($validated);
             return redirect("/empresas/$empresa->id");
         } else {
@@ -68,8 +79,21 @@ class EmpresaController extends Controller
     }
 
     public function update(EmpresaRequest $request, Empresa $empresa){
+        
         if (Gate::allows('empresa', $empresa->cnpj) | Gate::allows('admin')) {
             $validated = $request->validated();
+
+            /* Vamos validar na mão depois passaremos para o request */
+            // Verificar se o email não está cadastrado para outra empresa
+            $outra_empresa = Empresa::where('email',$validated['email'])->first();
+            if($outra_empresa){
+                if($outra_empresa->id != $empresa->id){
+                    $request->session()->flash('alert-danger',"Email {$validated['email']} cadastrado para outra empresa, escolha outro");
+                    $validated['email'] = $empresa->email;
+                    $empresa->update($validated);
+                    return redirect("/empresas/$empresa->id/edit");
+                }
+            }
             
             $empresa->update($validated);
             return redirect("/empresas/$empresa->id");
@@ -87,7 +111,6 @@ class EmpresaController extends Controller
 
     /* Métodos além do CRUD */
     public function empresa_update(Request $request){
-
         $this->authorize('empresa');
         
         $cnpj = Auth::user()->cnpj;
