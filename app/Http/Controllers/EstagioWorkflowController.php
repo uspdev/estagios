@@ -92,7 +92,6 @@ class EstagioWorkflowController extends Controller
             $workflow = $estagio->workflow_get();
             $workflow->apply($estagio,$request->analise_academica_action);
             $estagio->save();
-
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }

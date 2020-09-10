@@ -104,8 +104,8 @@ $endereco = [
         e as limitações dos meios de transportes.</p>
     <p>2.1. Nos períodos de avaliação do rendimento escolar, conforme informado pelo estágiário, a jornada de atividade
         em estágio será reduzida à metade, sem desconto no valor da bolsa.</p>
-    <p>3. A CONCEDENTE designa o Sr(a). <b>{{ $empresa->nome_do_representante }}</b>, que ocupa o cargo de
-        <b>{{ $empresa->cargo_do_representante }}</b>,
+    <p>3. A CONCEDENTE designa o Sr(a). <b>{{ $empresa->nome_do_supervisor_estagio }}</b>, que ocupa o cargo de
+        <b>{{$empresa->cargo_do_supervisor_estagio}}</b>,
         para ser o(a) SUPERVISOR(a) INTERNO(a) do Estágio que será por ele programado.</p>
     <p>4. O ESTAGIÁRIO se obriga a cumprir fielmente a programação do estágio, salvo impossibilidade da qual a
         CONCEDENTE será previamente informada.</p>
