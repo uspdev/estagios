@@ -1,4 +1,5 @@
-@can('empresa',$estagio->cnpj)
+@can('admin_ou_empresa',$estagio->cnpj)
+
 <div>
     <a href="/iniciar_alteracao/{{$estagio->id}}" class="btn btn-info" onClick="return confirm('Tem certeza que deseja iniciar o processo de alterações?')">Solicitar Aditivo de Alterações</a>
     <hr>

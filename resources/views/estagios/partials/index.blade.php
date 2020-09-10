@@ -25,19 +25,28 @@ button {
     <thead>
         <tr>
         <th>Número USP</th>
+        <th>Tipo</th>
         <th>Nome</th>
         <th>Período</th>
+        <th>Status</th>
         @can('admin')<th>Deletar</th>@endcan 
         </tr>
     </thead>
     <tbody>
-        @forelse($estagios->where('renovacao_parent_id','') as $estagio)
+        @forelse($estagios as $estagio)
         <tr>
 
         <td>
         <a href ="/estagios/{{$estagio->id}}">
         {{$estagio->numero_usp}}             
         </a>
+        <td>
+            @if( empty($estagio->renovacao_parent_id) )
+                Original
+            @else
+                Renovação 
+            @endif
+        </td>
 
         </td>
 
@@ -47,17 +56,9 @@ button {
 
         <td>
         {{$estagio->data_inicial}} - {{$estagio->data_final}}
-    
-        <br><b>Renovações:</b>
-        @foreach( App\Estagio::where('renovacao_parent_id',$estagio->id)->get() as $renovacao)
-            <br>
-            <a href ="/estagios/{{$renovacao->id}}">
-            {{$renovacao->data_inicial}} - {{$renovacao->data_final}}
-            </a>
-        @endforeach
 
         </td>
-  
+        <td> {{$estagio->getStatus()[$estagio->status]['name'] }} </td>
         @can('admin')
         <td>
             <form  method="POST" action="/estagios/{{$estagio->id}}">         

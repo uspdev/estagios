@@ -41,11 +41,6 @@ class EstagioController extends Controller
             $cnpj = Auth::user()->cnpj;
             $estagios = Estagio::where('cnpj',$cnpj)->paginate(10);
 
-        } else if (Gate::allows('parecerista')){
-
-            $identificacao = Auth::user()->id;           
-            $estagios = Estagio::where('analise_academica_user_id','LIKE',$identificacao)->paginate(10);
-     
         } else {
             $request->session()->flash('alert-danger','Usuário sem permissão');
             return redirect('/');
@@ -106,8 +101,24 @@ class EstagioController extends Controller
     } 
 
     public function parecerMerito(Estagio $estagio){
-        $this->authorize('parecerista', $estagio->cnpj);
-        $estagios = Estagio::where('status', "em_analise_academica")->get();
+        $this->authorize('parecerista');
+
+        $estagios = Estagio::where('status', "em_analise_academica")
+                      ->where('numparecerista',Auth::user()->codpes)->get();
+
+
+        return view('estagios.parecer_merito')->with([
+            'estagios' => $estagios,
+        ]);
+    }
+
+    public function meusPareceres(Estagio $estagio){
+        $this->authorize('parecerista');
+
+        $estagios = Estagio::where('status',"!=", "em_analise_academica")
+                      ->where('numparecerista',Auth::user()->codpes)->get();
+
+
         return view('estagios.parecer_merito')->with([
             'estagios' => $estagios,
         ]);

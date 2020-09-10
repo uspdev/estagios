@@ -118,14 +118,14 @@ return [
         ],
 
         [
-            'text'    => 'Parecer de Mérito',
+            'text'    => 'Estágio para Parecer de Mérito',
             'url'     => '/parecer_merito',
             'can'     => 'parecerista',
         ],
 
         [
-            'text'    => 'Ver Todos os Estágios',
-            'url'     => '/estagios',
+            'text'    => 'Meus Pareceres',
+            'url'     => '/meus_pareceres',
             'can'     => 'parecerista',
         ],
     ]
