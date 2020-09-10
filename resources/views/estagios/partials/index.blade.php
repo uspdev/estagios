@@ -33,7 +33,7 @@ button {
         </tr>
     </thead>
     <tbody>
-        @forelse($estagios as $estagio)
+        @forelse($estagios->sortByDesc('created_at') as $estagio)
         <tr>
 
         <td>
