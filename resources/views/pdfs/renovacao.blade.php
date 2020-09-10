@@ -171,7 +171,7 @@ $endereco = [
     Representante da {{ $empresa->nome }}<br><br>
 
     _______________________________________________<br>
-    <b>{{ $empresa->nome }}</b><br><br>
+    <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b><br><br>
     _______________________________________________<br>
     <b>{{ $pessoa::dump($presidente->numero_usp)['nompes'] }}</b><br>
     <b>Presidente da Comissão de Graduação da FFLCH/USP</b><br>

@@ -2,7 +2,7 @@ jQuery(function ($) {
     $(".cnpj").mask('00.000.000/0000-00');
 });
 
-function checagemmedidas(that) {
+function checagemmmedidas(that) {
     if (that.value == "Não") {
         document.getElementById("medidas").style.display = "block";
     }
