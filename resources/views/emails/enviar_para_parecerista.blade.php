@@ -7,7 +7,8 @@ Segue em anexo o parecer de mérito relativo ao estágio de {{$pessoa::dump($est
 Parecer Realizado por: {{$pessoa::dump($estagio->numparecerista)['nompes']}} <br><br>
 
 
-Link para a página do estágio: https://estagios.fflch.usp.br/estagios/{{$estagio->id}}
+Acesse o sistema de estágio https://estagios.fflch.usp.br/ com senha única USP e vá na opção
+"Estágios para Parecer de Mérito".
 
 
 <br><br>

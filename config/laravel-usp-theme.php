@@ -118,7 +118,7 @@ return [
         ],
 
         [
-            'text'    => 'Estágio para Parecer de Mérito',
+            'text'    => 'Estágios para Parecer de Mérito',
             'url'     => '/parecer_merito',
             'can'     => 'parecerista',
         ],
