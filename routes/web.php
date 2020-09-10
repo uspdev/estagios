@@ -26,7 +26,7 @@ Route::get('/emails/enviar_para_parecerista/{estagio}', 'EmailController@enviar_
 Route::get('/pdfs/rescisao/{estagio}', 'PDFsController@rescisao');
 
 #Aditivo
-Route::get('/pdfs/aditivo/{empresa}', 'PDFsController@aditivo');
+Route::get('/pdfs/aditivo/{estagio}', 'PDFsController@aditivo');
 
 #Renovação
 Route::get('/pdfs/renovacao/{estagio}', 'PDFsController@renovacao');

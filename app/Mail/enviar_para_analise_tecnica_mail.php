@@ -33,11 +33,12 @@ class enviar_para_analise_tecnica_mail extends Mailable
      */
     public function build()
     {
-        $subject = Pessoa::dump($this->estagio->numero_usp)['nompes'] . ' - Documentos Relatívos a Estágio - FFLCH-USP';
 
         $to = [Empresa::where('cnpj',$this->estagio->cnpj)->first()->email_de_contato,
                config('mail.reply_to.address')
               ];
+
+        $subject = Pessoa::dump($this->estagio->numero_usp)['nompes'] . ' - Documentos Relatívos a Estágio - FFLCH-USP';      
 
         $pdf = PDF::loadView('pdfs.termo', ['estagio'=>$this->estagio]);
         $pdf2 = PDF::loadView('pdfs.renovacao', ['estagio'=>$this->estagio]);        
