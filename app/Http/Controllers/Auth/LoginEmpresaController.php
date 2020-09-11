@@ -96,6 +96,7 @@ class LoginEmpresaController extends Controller
                 $empresa = Empresa::where('cnpj',$user_email->cnpj)->first();
                 if(!is_null($empresa)){
                     if($empresa->email != $user_email->email) $user_email->delete();
+                    $user = new User;
                 } else {
                     $user = $user_email;
                 }
@@ -105,15 +106,14 @@ class LoginEmpresaController extends Controller
                 $empresa = Empresa::where('cnpj',$user_cnpj->cnpj)->first();
                 if(!is_null($empresa)){
                     if($empresa->email != $user_cnpj->email) $user_cnpj->delete();
+                    $user = new User;
                 } else {
                     $user = $user_cnpj;
                 }
             }
             
-
             $user->cnpj  = $request->cnpj;
             $user->name  = $request->cnpj;
-
             $user->email = $request->email;
             $user->save();
             Auth::login($user, true);
