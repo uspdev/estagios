@@ -40,39 +40,25 @@ class LoginEmpresaController extends Controller
             return redirect('/login/empresa')->withErrors($validator)->withInput();
         }
 
-        /* Se a empresa já tem cadastro, mas o email informando não coincide o banco de dados
-           informamos */
         $cnpj = preg_replace("/[^0-9]/", "", $request->cnpj);
+        # Se a empresa já tem cadastro, mas o email informando não coincide com o banco de dados */
+        $empresa = Empresa::where('cnpj',$cnpj)
+                  ->orWhere('email',$request->email)->first();
 
-        $empresa = Empresa::where('cnpj',$cnpj)->first();
         if (!is_null($empresa)) {
-            if($empresa->email != $request->email){
+            if( ($empresa->email != $request->email) | ($empresa->cnpj != $cnpj) ){
                 $email_limpo = Utils::partially_email($empresa->email);
 
                 $request->session()->flash('alert-danger',
-                    "Email informando {$request->email} não corresponde ao cnpj 
-                    {$request->cnpj} cadastrado.");
-
-                $request->session()->flash('alert-info',
-                    "Dica do email cadastrado: {$email_limpo} para o 
-                    respectivo cnpj. Caso necessite trocar,
-                    escreva para estagiosfflch@usp.br informando o novo email da empresa.");
-
+                    "Foi solicitado login para email <b> {$request->email} </b>e cnpj <b>{$request->cnpj}</b></br> <br>
+                    Porém, no sistema consta a relação:<br>
+                    email <b>{$email_limpo}</b> e cnpj <b>{$empresa->cnpj}</b> <br><br>
+                    Caso necessite corrigir esses dados, escreva para estagiosfflch@usp.br 
+                    informando o cnpj e email correto da empresa
+                    ");
                 return redirect('/login/empresa');
             }
         }
-
-        /* Verificação se esse email já não está alocado para outra empresa */
-        /*
-        $user = User::where('email',$request->email)->first();
-        if (!is_null($user)) {
-            if($user->cnpj != $cnpj) {
-                $request->session()->flash('alert-danger',
-                    "O email {$request->email} está cadastrado para outro CNPJ");
-                    return redirect('/login/empresa');
-            }
-        }
-        */
         
         /* Se a empresa não tem cadastro ou o cnpj coincide com o cadastro, enviamos a url de login */
         $url_login = URL::temporarySignedRoute('login_empresa', now()->addMinutes(120), [
@@ -92,10 +78,12 @@ class LoginEmpresaController extends Controller
         if ($request->hasValidSignature()) {
  
             /* Inserindo empresa na tabela de usuários para login */
-            $user = User::where('cnpj',$request->cnpj)->first();
+            $user = User::where('cnpj',$request->cnpj)->orWhere('email',$request->email)->first();
+
             if (is_null($user)) $user = new User;
             $user->cnpj  = $request->cnpj;
             $user->name  = $request->cnpj;
+
             $user->email = $request->email;
             $user->save();
             Auth::login($user, true);
