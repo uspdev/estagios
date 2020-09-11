@@ -86,6 +86,13 @@ Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise
       @break
 
     @case('em_analise_academica')
+      @if(($estagio->numparecerista)!=null)
+      <b>Aguardando parecer de mérito de:</b>
+          <br>
+          <b>Nome:</b> {{Uspdev\Replicado\Pessoa::dump($estagio->numparecerista)['nompes']}}<br>
+          <b>Email Cadastrado:</b> {{Uspdev\Replicado\Pessoa::email($estagio->numparecerista)}}</b><br> 
+      @endif
+
       @include('estagios.partials.em_analise_academica')
       @break              
 
