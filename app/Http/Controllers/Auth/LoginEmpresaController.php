@@ -90,9 +90,27 @@ class LoginEmpresaController extends Controller
                     }
             }
 
-            if(!is_null($user_email) & is_null($user_cnpj)) $user = $user_email;
-            if(is_null($user_email) & !is_null($user_cnpj)) $user = $user_cnpj;
-            if(!is_null($user_email) & !is_null($user_cnpj)) $user = new User;
+            if(!is_null($user_email) & is_null($user_cnpj)) {
+                $empresa = Empresa::where('cnpj',$user_email->cnpj)->first();
+                if(!is_null($empresa)){
+                    if($empresa->email != $user_email->email) $user_email->delete();
+                } else {
+                    $user = $user_email;
+                }
+            }
+
+            if(is_null($user_email) & !is_null($user_cnpj)) {
+                $empresa = Empresa::where('cnpj',$user_cnpj->cnpj)->first();
+                if(!is_null($empresa)){
+                    if($empresa->email != $user_cnpj->email) $user_cnpj->delete();
+                } else {
+                    $user = $user_cnpj;
+                }
+            }
+
+            $user_cnpj = User::where('cnpj',$request->cnpj)->first();
+            $user_email = User::where('email',$request->email)->first();
+            if(is_null($user_email) & is_null($user_cnpj)) $user = new User;
 
             $user->cnpj  = $request->cnpj;
             $user->name  = $request->cnpj;
