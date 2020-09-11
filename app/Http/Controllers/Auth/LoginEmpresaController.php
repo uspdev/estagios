@@ -90,6 +90,7 @@ class LoginEmpresaController extends Controller
                         $user_email->delete();
                         $user_cnpj->delete();
                     }
+                $user = $user_email;
             }
 
             if(!is_null($user_email) & is_null($user_cnpj)) {
@@ -101,7 +102,7 @@ class LoginEmpresaController extends Controller
                     $user = $user_email;
                 }
             }
-
+            
             if(is_null($user_email) & !is_null($user_cnpj)) {
                 $empresa = Empresa::where('cnpj',$user_cnpj->cnpj)->first();
                 if(!is_null($empresa)){
