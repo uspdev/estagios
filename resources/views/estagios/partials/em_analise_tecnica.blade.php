@@ -4,6 +4,7 @@
 <div class="card-body">
 
 @can('admin')
+
 <form method="POST" action="/analise_tecnica/{{$estagio->id}}">
     @csrf
     <div class="row">
@@ -21,6 +22,16 @@
         </button>
     </div>
 </form>
+
+<div class="card">
+    <div class="card-header"><b>Gerenciar Parecerista</b></div> 
+      <div class="card-body">
+        @include('estagios.partials.gerenciar_parecerista')
+      </div>
+    </div>
+</div>
+<br>
+
 @endcan('admin')
 
 @if(!empty($estagio->analise_academica))

@@ -75,17 +75,6 @@ Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise
     Enviar E-mail contendo Termo de Ciência e Termo de Ciência para Renovação para a empresa   
 <br><br> 
 
-@can('admin')
-@if(($estagio->desempenhoacademico)!=null)
-    <div class="card-header"><b>Gerenciar Parecerista</b></div> 
-    <div class="card">
-      @include('estagios.partials.gerenciar_parecerista')
-    </div></div>
-<br><br>
-@endif
-@endcan('admin')  
-
-
 @switch($estagio->status)
 
     @case('em_elaboracao')

@@ -52,9 +52,15 @@ class EstagioWorkflowController extends Controller
             $estagio->analise_tecnica = $request->analise_tecnica;
             $estagio->analise_tecnica_user_id = Auth::user()->numero_usp;
             $estagio->save();
-            $workflow = $estagio->workflow_get();
-            $workflow->apply($estagio,$request->analise_tecnica_action);
-            $estagio->save();
+
+            if($estagio->numparecerista){
+                $workflow = $estagio->workflow_get();
+                $workflow->apply($estagio,$request->analise_tecnica_action);
+                $estagio->save();
+            } else {
+                request()->session()->flash('alert-danger','Não enviado para parecer de mérito! Informe o parecerista!');
+            }
+
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
