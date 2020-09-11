@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PareceristaRequest;
 use App\Parecerista;
+use App\User;
+use Auth;
+use Uspdev\Replicado\Pessoa;
 
 class PareceristaController extends Controller
 {
@@ -68,6 +71,20 @@ class PareceristaController extends Controller
         $this->authorize('admin');
         $parecerista->delete();
         return redirect('/pareceristas');
+    }
+
+    public function adminLogandoComoParecerista($codpes){
+        $this->authorize('admin');
+
+        $user = User::where('codpes',$codpes)->first();
+
+        if (is_null($user)) $user = new User;
+        $user->codpes  = $codpes;
+        $user->name  = Pessoa::nomeCompleto($codpes);
+        $user->email = Pessoa::email($codpes);
+        $user->save();
+        Auth::login($user, true);
+        return redirect('/');
     }
 
 }

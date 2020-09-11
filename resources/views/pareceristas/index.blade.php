@@ -33,17 +33,22 @@
     <tr>
       <td>
         <a href="/pareceristas/{{$parecerista->id}}">
-          {{ $pessoa::dump($parecerista->numero_usp)['nompes'] }}
+          {{ $pessoa::nomeCompleto($parecerista->numero_usp) }}
         </a>
         @if($parecerista->presidente == 1) Presidente da Comissão @endif
       </td>
       <td>{{$parecerista->numero_usp}}</td>
       <td><a href="/pareceristas/{{$parecerista->id}}/edit"><i class="fas fa-edit"></a></i></td>
       <td>
-        <form method="POST" action="/pareceristas/{{$parecerista->id}}">
+        <form method="POST" action="/pareceristas/{{$parecerista->id}}" class="form-inline">
           @csrf
           @method('delete')
-          <button type="submit"><i class="fas fa-trash-alt"></i></button>
+          <button type="submit" class="btn btn-link" onclick="return confirm('Tem certeza que deseja deletar esse parecerista?');"><i class="fas fa-trash-alt"></i></button>
+        </form>
+
+        <form method="POST" action="/adminLogandoComoParecerista/{{$parecerista->numero_usp}}" class="form-inline">
+            @csrf
+            <button type="submit" class="btn btn-link"><i class="fas fa-user-secret"></i></button>
         </form>
       </td>
     </tr>

@@ -105,7 +105,8 @@ class EmpresaController extends Controller
 
     public function destroy(Request $request, Empresa $empresa){
         $this->authorize('admin');
-        $empresa->delete();
+        /* Não vamos permitir deletar empresa, quebra o sistema */
+        //$empresa->delete();
         return redirect('/empresas');
     }
 

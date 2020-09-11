@@ -45,6 +45,11 @@ Route::get('login/usp', 'Auth\LoginUspController@redirectToProvider');
 Route::get('callback', 'Auth\LoginUspController@handleProviderCallback');
 Route::get('/logout', 'Auth\LogoutController@logout');
 
+# logins secrets
+Route::post('/adminLogandoComoEmpresa/{cnpj}', 'EmpresaController@adminLogandoComoEmpresa');
+Route::post('/adminLogandoComoParecerista/{codpes}', 'PareceristaController@adminLogandoComoParecerista');
+
+
 # Login empresa
 Route::get('login/empresa', 'Auth\LoginEmpresaController@create');
 Route::post('login/empresa', 'Auth\LoginEmpresaController@store');
@@ -52,7 +57,6 @@ Route::get('login/empresa/check', 'Auth\LoginEmpresaController@empresa')->name('
 
 # Rotas para empresa
 Route::get('/empresa_update', 'EmpresaController@empresa_update');
-Route::post('/adminLogandoComoEmpresa/{cnpj}', 'EmpresaController@adminLogandoComoEmpresa');
 
 # rotas para workflow do estágio
 
