@@ -100,7 +100,7 @@ Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise
             </div>
           </div>
       </div>
-      @end('admin')
+      @endcan('admin')
 
 
       @include('estagios.partials.em_analise_academica')
