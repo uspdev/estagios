@@ -59,6 +59,7 @@ Route::post('/adminLogandoComoEmpresa/{cnpj}', 'EmpresaController@adminLogandoCo
 # Rotas Análise Técnica
 Route::post('/analise_tecnica/{estagio}', 'EstagioWorkflowController@analise_tecnica');
 Route::post('/enviar_para_analise_tecnica/{estagio}', 'EstagioWorkflowController@enviar_para_analise_tecnica');
+Route::post('/mover_analise_tecnica/{estagio}', 'EstagioWorkflowController@mover_analise_tecnica');
 
 # Rotas Análise Acadêmica
 Route::post('/analise_academica/{estagio}', 'EstagioWorkflowController@analise_academica');

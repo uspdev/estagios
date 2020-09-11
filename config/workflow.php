@@ -89,13 +89,13 @@ $workflow_estagio = [
             'to' => 'em_analise_academica'
         ],
 
-        /*'indeferimento_analise_academica' => [
+        'indeferimento_analise_academica' => [
             'metadata' => [
                 'label' => "Indeferido"
             ],
             'from' => 'em_analise_academica',
             'to' => 'em_analise_tecnica'
-        ],*/
+        ],
 
         'iniciar_alteracao' => [
             'metadata' => [

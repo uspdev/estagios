@@ -20,7 +20,11 @@
             onClick="return confirm('Tem certeza que quer enviar para Parecer?')" >
             Enviar para parecerista
         </button>
+        <button type="submit" class="btn btn-warning" name="analise_tecnica_action" value="concluir">Concluir Estágio
+        </button>
     </div>
+
+
 </form>
 
 <div class="card">

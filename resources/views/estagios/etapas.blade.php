@@ -47,8 +47,8 @@ Análise técnica do setor de Graduação realizada por: {{ $estagio->analise_te
 @endif
 
 @if($estagio->analise_academica_user)
-Parecer de mérito realizado por: {{$estagio->analise_academica_user->name}} <br>
-Status do deferimento do parecer de mérito: {{$estagio->tipodeferimento}} <br>
+Parecer de mérito realizado por: <b>{{$estagio->analise_academica_user->name}}</b> <br>
+Status do deferimento do parecer de mérito:<b>{{$estagio->tipodeferimento}}</b> <br>
 @endif
 
 @if($estagio->analise_alteracao_user)
@@ -90,11 +90,13 @@ Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise
       @break              
 
     @case('concluido')
-    @can('parecerista')
-    <a onClick="return confirm('Tem certeza que deseja editar o parecer de mérito?')" href="/editar_analise_academica/{{$estagio->id}}">
-    <i class="far fa-edit"></i> </a>
-    Editar Parecer de Mérito
-    @endcan('parecerista')
+
+      @can('parecerista')
+      <a onClick="return confirm('Tem certeza que deseja editar o parecer de mérito?')" href="/editar_analise_academica/{{$estagio->id}}">
+      <i class="far fa-edit"></i> </a>
+      Editar Parecer de Mérito
+      @endcan('parecerista')
+
     @include('estagios.partials.concluido')
       @break 
 

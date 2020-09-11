@@ -53,6 +53,13 @@ class EstagioWorkflowController extends Controller
             $estagio->analise_tecnica_user_id = Auth::user()->numero_usp;
             $estagio->save();
 
+            /* A administrador pode concluir o estágio diretamente se assim quiser */
+            if($request->analise_tecnica_action == 'concluir'){
+                $estagio->status = 'concluido';
+                $estagio->save();
+                return redirect("/estagios/{$estagio->id}");
+            }  
+            
             if($estagio->numparecerista){
                 $workflow = $estagio->workflow_get();
                 $workflow->apply($estagio,$request->analise_tecnica_action);
@@ -64,6 +71,18 @@ class EstagioWorkflowController extends Controller
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
+        return redirect("/estagios/{$estagio->id}");
+    }
+
+    public function mover_analise_tecnica(Request $request, Estagio $estagio){
+
+        if (Gate::allows('admin')) {
+            $estagio->status = 'em_analise_tecnica';
+            $estagio->save();
+        } else {
+            request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
+        }
+
         return redirect("/estagios/{$estagio->id}");
     }
 
@@ -92,12 +111,10 @@ class EstagioWorkflowController extends Controller
             $estagio->tipodeferimento = $request->tipodeferimento;
             $estagio->condicaodeferimento = $request->condicaodeferimento;
             $estagio->analise_academica_user_id = Auth::user()->id;
-            $estagio->save();            
             $estagio->numparecerista = User::find($estagio->analise_academica_user_id)->codpes;
-            $estagio->save();
-            $workflow = $estagio->workflow_get();
-            $workflow->apply($estagio,$request->analise_academica_action);
-            $estagio->save();
+            // Vamos sempre devolver para o setor de graduação depois do parecer
+            $estagio->status = 'em_analise_tecnica';
+            $estagio->save();            
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
@@ -115,7 +132,7 @@ class EstagioWorkflowController extends Controller
         }
 
         return redirect("/estagios/{$estagio->id}");
-    }
+    }   
 
     #Funções Concluido
 
@@ -129,14 +146,22 @@ class EstagioWorkflowController extends Controller
             if(empty($estagio->renovacao_parent_id)){
                 $renovacao->renovacao_parent_id = $estagio->id;
             }
-            $estagio->analise_tecnica = null;
-            $estagio->analise_academica = null;
-            $estagio->analise_alteracao = null;
-            $estagio->save();
+
+            /* Verificar quais campos mais dever ser zerado na renovanção */
+            $renovacao->analise_tecnica = null;
+            $renovacao->analise_academica = null;
+            $renovacao->analise_alteracao = null;
+            $renovacao->tipodeferimento = null;
+            $renovacao->condicaodeferimento = null;
+            $renovacao->atividades = null;
+            $renovacao->justificativa = null;
+            $renovacao->atividadesjustificativa = null;
+
+            $renovacao->save();
+
             $workflow = $renovacao->workflow_get();
             $workflow->apply($renovacao,'renovacao');
             $renovacao->save();
-            $estagio->save();
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
