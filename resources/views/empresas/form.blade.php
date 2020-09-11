@@ -78,6 +78,30 @@
                 <input type="email" maxlength="128" class="form-control" name="email" value="{{old('email', $empresa->email)}}">
             </div> 
         </div>
+
+        <div class="row">
+          <div class="col-sm form-group">
+            <b>Conceder acesso de administração:</b> 
+            <br>
+            <select name="conceder_acesso_cnpj">
+            <option value="" selected=""> - Selecione  -</option>
+                @foreach (App\Empresa::all() as $empresa_lista)
+
+                @if (old('conceder_acesso_cnpj') == '' and isset($empresa->conceder_acesso_cnpj))
+                    <option value="{{$empresa_lista->cnpj}}" {{ ( $empresa->conceder_acesso_cnpj == $empresa_lista->cnpj) ? 'selected' : ''}}>
+                        {{$empresa_lista->cnpj}} - {{$empresa_lista->nome}}
+                    </option>
+                @else
+                    <option value="{{$empresa_lista->cnpj}}" {{ ( old('conceder_acesso_cnpj') == $empresa_lista->cnpj) ? 'selected' : ''}}>
+                        {{$empresa_lista->cnpj}} - {{$empresa_lista->nome}}
+                    </option>
+                @endif
+                
+                @endforeach
+            </select>
+          </div>
+        </div>
+
         <div class="row">
             <div class="col-sm form-group">
                 <button type="submit" class="btn btn-success">Enviar</button>    

@@ -118,6 +118,12 @@ return [
         ],
 
         [
+            'text'    => 'Acessar outra Empresa',
+            'url'     => '/acessar_outra_empresa',
+            'can'     => 'empresa',
+        ],
+
+        [
             'text'    => 'Estágios para Parecer de Mérito',
             'url'     => '/parecer_merito',
             'can'     => 'parecerista',

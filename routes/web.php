@@ -46,9 +46,9 @@ Route::get('callback', 'Auth\LoginUspController@handleProviderCallback');
 Route::get('/logout', 'Auth\LogoutController@logout');
 
 # logins secrets
-Route::post('/adminLogandoComoEmpresa/{cnpj}', 'EmpresaController@adminLogandoComoEmpresa');
+Route::post('/logandoComoEmpresa/{cnpj}', 'EmpresaController@logandoComoEmpresa');
 Route::post('/adminLogandoComoParecerista/{codpes}', 'PareceristaController@adminLogandoComoParecerista');
-
+Route::get('/acessar_outra_empresa', 'EmpresaController@acessar_outra_empresa');
 
 # Login empresa
 Route::get('login/empresa', 'Auth\LoginEmpresaController@create');

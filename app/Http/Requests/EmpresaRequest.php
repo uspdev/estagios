@@ -42,7 +42,8 @@ class EmpresaRequest extends FormRequest
                     'cargo_do_supervisor_estagio' => 'required',
                     'telefone_do_supervisor_estagio' => 'required|numeric|min:10',
                     'email_do_supervisor_estagio' => 'required|email',
-                    'email_de_contato' => 'required|email'
+                    'email_de_contato' => 'required|email',
+                    'conceder_acesso_cnpj' => ''
                 ];
 
         /* Email e Cnpj devem ser únicos, porém isso não está ocorrendo */

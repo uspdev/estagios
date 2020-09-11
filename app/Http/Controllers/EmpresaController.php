@@ -73,7 +73,7 @@ class EmpresaController extends Controller
         if (Gate::allows('empresa', $empresa->cnpj) | Gate::allows('admin')) {
             return view('empresas.edit')->with('empresa', $empresa);
         } else {
-            $request->session()->flash('alert-danger','Usuário sem permissão');
+            request()->session()->flash('alert-danger','Usuário sem permissão');
             return redirect('/');
         }
     }
@@ -128,19 +128,40 @@ class EmpresaController extends Controller
         }
     }
 
-    public function adminLogandoComoEmpresa($cnpj){
-        $this->authorize('admin');
+    public function logandoComoEmpresa($cnpj){
 
-        $cnpj = preg_replace("/[^0-9]/", "", $cnpj);
-        $empresa = Empresa::where('cnpj',$cnpj)->first();
+        if (Gate::allows('empresa') | Gate::allows('admin')) {
 
-        $user = User::where('cnpj',$cnpj)->first();
-        if (is_null($user)) $user = new User;
-        $user->cnpj  = $empresa->cnpj;
-        $user->name  = $empresa->cnpj;
-        $user->email = $empresa->email;
-        $user->save();
-        Auth::login($user, true);
+            $cnpj = preg_replace("/[^0-9]/", "", $cnpj);
+            $empresa = Empresa::where('cnpj',$cnpj)->first();
+
+            if (Gate::allows('empresa')){
+                if(!is_null($empresa)){
+                    if($empresa->conceder_acesso_cnpj != Auth::user()->cnpj){
+                        request()->session()->flash('alert-danger','Usuário sem permissão');
+                        return redirect('/');
+                    }
+                }
+            }
+
+            $user = User::where('cnpj',$cnpj)->first();
+            if (is_null($user)) $user = new User;
+            $user->cnpj  = $empresa->cnpj;
+            $user->name  = $empresa->cnpj;
+            $user->email = $empresa->email;
+            $user->save();
+            Auth::login($user, true);
+            request()->session()->flash("alert-info","Login alterado! Agora você está logado(a) como {$user->name} e {$user->email}");
+
+        } else {
+            request()->session()->flash('alert-danger','Usuário sem permissão');
+        }
         return redirect('/');
+    }
+
+    public function acessar_outra_empresa(){
+        $this->authorize('empresa',Auth::user()->cnpj);
+        $empresas = Empresa::where('conceder_acesso_cnpj',Auth::user()->cnpj)->get();
+        return view('empresas.index', compact('empresas'));
     }
 }

@@ -36,6 +36,12 @@
         <b>Cargo do Supervisor Interno do Estágio:</b> {{$empresa->cargo_do_supervisor_estagio}}<br>
         <b>Telefone do Supervisor Interno do Estágio:</b> {{$empresa->telefone_do_supervisor_estagio}}<br>
         <b>Email do Supervisor do Estágio:</b> {{$empresa->email_do_supervisor_estagio}}<br>
+        @if($empresa->conceder_acesso_cnpj)
+            <br>
+            <b>Acesso de administração concedido à:</b> {{$empresa->conceder_acesso_cnpj}} - 
+            {{ App\Empresa::where('cnpj',$empresa->conceder_acesso_cnpj)->first()->nome }}
+            <br>
+        @endif
     </div>
 </div>
 
