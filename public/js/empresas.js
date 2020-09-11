@@ -13,6 +13,7 @@ $(document).ready(function() {
         paging      	: true,
         lengthChange	: true,
         searching   	: true,
+        paging          : false,
         ordering    	: true,
         info        	: true,
         autoWidth   	: true,
