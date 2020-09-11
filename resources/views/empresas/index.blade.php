@@ -9,7 +9,7 @@
 
 <br>
 
-<table class="table table-striped datatable" id="index">
+<table class="table table-striped" id="datatable">
 
     <thead>
         <tr>
