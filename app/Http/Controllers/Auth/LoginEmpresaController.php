@@ -85,12 +85,15 @@ class LoginEmpresaController extends Controller
 
             # se existir o cadastro difere deletamos ambos
             if(!is_null($user_email) & !is_null($user_cnpj)) {
-                if( ($user_email->email != $user_cnpj->email) |
-                    ($user_email->cnpj  != $user_cnpj->cnpj)){
-                        $user_email->delete();
-                        $user_cnpj->delete();
-                    }
-                $user = $user_email;
+
+                if( $user_email->id == $user_cnpj->id ) {
+                    $user = $user_email;
+  
+                } else {
+                   $user_email->delete();
+                   $user_cnpj->delete();
+                   $user = new User;
+                }
             }
 
             if(!is_null($user_email) & is_null($user_cnpj)) {
