@@ -78,7 +78,8 @@ class LoginEmpresaController extends Controller
         if ($request->hasValidSignature()) {
  
             /* Inserindo empresa na tabela de usuários para login */
-            $user = User::where('cnpj',$request->cnpj)->orWhere('email',$request->email)->first();
+            #$user = User::where('cnpj',$request->cnpj)->orWhere('email',$request->email)->first();
+            $user = User::where('email',$request->email)->first();
 
             if (is_null($user)) $user = new User;
             $user->cnpj  = $request->cnpj;
