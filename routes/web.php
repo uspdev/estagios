@@ -81,8 +81,8 @@ Route::post('/enviar_alteracao/{estagio}', 'EstagioWorkflowController@enviar_alt
 # Rotas Análise da Alteração
 Route::post('/analise_tecnica_alteracao/{estagio}', 'EstagioWorkflowController@analise_tecnica_alteracao');
 
-Route::get('/parecer_merito', 'EstagioController@parecerMerito');
-Route::get('/meus_pareceres', 'EstagioController@meusPareceres');
+Route::get('/parecer_merito', 'PareceristaController@parecerMerito');
+Route::get('/meus_pareceres', 'PareceristaController@meusPareceres');
 
 #alterar parecerista
 

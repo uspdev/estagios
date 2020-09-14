@@ -100,30 +100,6 @@ class EstagioController extends Controller
         abort(403, 'Access denied');
     } 
 
-    public function parecerMerito(Estagio $estagio){
-        $this->authorize('parecerista');
-
-        $estagios = Estagio::where('status', "em_analise_academica")
-                      ->where('numparecerista',Auth::user()->codpes)->get();
-
-
-        return view('estagios.parecer_merito')->with([
-            'estagios' => $estagios,
-        ]);
-    }
-
-    public function meusPareceres(Estagio $estagio){
-        $this->authorize('parecerista');
-
-        $estagios = Estagio::where('status',"!=", "em_analise_academica")
-                      ->where('numparecerista',Auth::user()->codpes)->get();
-
-
-        return view('estagios.parecer_merito')->with([
-            'estagios' => $estagios,
-        ]);
-    }
-
     public function alterarParecerista(Request $request, Estagio $estagio){
         if (Gate::allows('admin')) {
         $estagio->numparecerista = $request->numparecerista;

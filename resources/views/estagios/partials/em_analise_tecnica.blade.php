@@ -16,12 +16,13 @@
     <div class="form-group">
         <button type="submit" class="btn btn-info" name="analise_tecnica_action" value="indeferimento_analise_tecnica">Devolver para empresa
         </button>
+
         <button type="submit" class="btn btn-success" name="analise_tecnica_action" value="deferimento_analise_tecnica"
             onClick="return confirm('Tem certeza que quer enviar para Parecer?')" >
             Enviar para parecerista
         </button>
-        <button type="submit" class="btn btn-warning" name="analise_tecnica_action" value="concluir">Concluir Estágio
-        </button>
+        
+        <button type="submit" class="btn btn-warning" name="analise_tecnica_action" value="concluir">Concluir Estágio </button>
     </div>
 
 

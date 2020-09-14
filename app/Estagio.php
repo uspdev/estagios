@@ -114,10 +114,6 @@ class Estagio extends Model
                 'name' => "Aditivo de Alterações",
                 'optional' => 'Empresa'
             ],
-            'em_analise_tecnica_alteracao' => [
-                'name' => "Análise das Alterações",
-                'optional' => 'Setor de Graduação'
-            ],
             'rescisao' => [
                 'name' => "Rescisão",
                 'optional' => 'Empresa'

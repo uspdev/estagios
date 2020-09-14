@@ -33,24 +33,31 @@
 
   </div>
 
-Enviado para: <b>{{ $estagio->getStatus()[$estagio->status]['name'] }} - 
-{{ $estagio->getStatus()[$estagio->status]['optional'] }}
-</b>
-
-<br>
-
-Última alteração realizada em: <b>{{ Carbon\Carbon::parse($estagio->updated_at)->format('d/m/Y H:i') }}</b>
-<br>
+@if($estagio->last_status)
+  <div class="text-warning bg-info text-center">
+  Último Status: <b>{{ $estagio->getStatus()[$estagio->last_status]['name'] }} </b> <br>
+  Status Atual: <b>{{ $estagio->getStatus()[$estagio->status]['name'] }} </b>
+  </b>
+  <br>
+  Última mudança realizada em: <b>{{ Carbon\Carbon::parse($estagio->updated_at)->format('d/m/Y H:i') }}</b>
+  </div>
+  <br>
+@endif
 
 @if($estagio->analise_tecnica_user)
 Análise técnica do setor de Graduação realizada por: {{ $estagio->analise_tecnica_user->name  }} <br>
 @endif
 
 @if($estagio->analise_academica_user)
-Parecer de mérito realizado por: <b>{{$estagio->analise_academica_user->name}}</b> <br>
-Status do deferimento do parecer de mérito:<b>{{$estagio->tipodeferimento}}</b> <br>
+  Parecer de mérito realizado por: <b>{{$estagio->analise_academica_user->name}}</b>
+  @can('parecerista')
+          <a class="btn btn-info" onClick="return confirm('Tem certeza que deseja editar o parecer de mérito?')" href="/editar_analise_academica/{{$estagio->id}}">
+          <i class="far fa-edit"></i> 
+          Editar parecer de mérito </a> <br>
+  @endcan('parecerista')
+  Status do deferimento do parecer de mérito:<b>{{$estagio->tipodeferimento}}</b>
 @endif
-
+<br>
 @if($estagio->analise_alteracao_user)
 Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise_alteracao_user->name  }}<br>
 @endif
@@ -82,6 +89,7 @@ Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise
       @break
 
     @case('em_analise_tecnica')
+
       @include('estagios.partials.em_analise_tecnica')
       @break
 
@@ -102,17 +110,10 @@ Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise
       </div>
       @endcan('admin')
 
-
       @include('estagios.partials.em_analise_academica')
       @break              
 
     @case('concluido')
-
-      @can('parecerista')
-      <a onClick="return confirm('Tem certeza que deseja editar o parecer de mérito?')" href="/editar_analise_academica/{{$estagio->id}}">
-      <i class="far fa-edit"></i> </a>
-      Editar Parecer de Mérito
-      @endcan('parecerista')
 
     @include('estagios.partials.concluido')
       @break 
@@ -120,10 +121,6 @@ Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise
     @case('em_alteracao')
       @include('estagios.partials.em_alteracao')
       @break  
-
-    @case('em_analise_tecnica_alteracao')
-      @include('estagios.partials.em_analise_tecnica_alteracao')
-      @break 
 
     @case('rescisao')
       @include('estagios.partials.rescisao')

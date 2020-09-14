@@ -36,11 +36,6 @@ $workflow_estagio = [
                 'label' => "Em elaboração das\n alterações (Empresa)"
             ]
         ],
-        'em_analise_tecnica_alteracao' => [
-            'metadata' => [
-                'label' => "Em análise das alterações \n (Setor de Graduação)"
-            ]
-        ],
         'rescisao' => [
             'metadata' => [
                 'label' => "Rescisão",
@@ -81,14 +76,6 @@ $workflow_estagio = [
             'to' => 'concluido'
         ],
 
-        'editar_analise_academica' => [
-            'metadata' => [
-                'label' => "Editar Análise Acadêmica"
-            ],
-            'from' => 'concluido',
-            'to' => 'em_analise_academica'
-        ],
-
         'indeferimento_analise_academica' => [
             'metadata' => [
                 'label' => "Indeferido"
@@ -96,7 +83,6 @@ $workflow_estagio = [
             'from' => 'em_analise_academica',
             'to' => 'em_analise_tecnica'
         ],
-
         'iniciar_alteracao' => [
             'metadata' => [
                 'label' => "Iniciar alterações\n (Empresa)"
@@ -104,31 +90,6 @@ $workflow_estagio = [
             'from' => 'concluido',
             'to' => 'em_alteracao'
         ],
-
-        'enviar_analise_tecnica_alteracao' => [
-            'metadata' => [
-                'label' => "Enviar para análise"
-            ],
-            'from' => 'em_alteracao',
-            'to' => 'em_analise_tecnica_alteracao'
-        ],
-
-        'deferimento_analise_tecnica_alteracao' => [
-            'metadata' => [
-                'label' => "Deferido"
-            ],
-            'from' => 'em_analise_tecnica_alteracao',
-            'to' => 'concluido'
-        ],
-
-        'indeferimento_analise_tecnica_alteracao' => [
-            'metadata' => [
-                'label' => "Indeferido"
-            ],
-            'from' => 'em_analise_tecnica_alteracao',
-            'to' => 'em_alteracao'
-        ],
-
         'renovacao' => [
             'metadata' => [
                 'label' => "Renovação \n(Empresa)"

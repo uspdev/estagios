@@ -37,9 +37,7 @@ button {
         <tr>
 
         <td>
-        <a href ="/estagios/{{$estagio->id}}">
-        {{$estagio->numero_usp}}             
-        </a>
+          <a href ="/estagios/{{$estagio->id}}"> {{$estagio->numero_usp}}</a>
         <td>
             @if( empty($estagio->renovacao_parent_id) )
                 Original
@@ -73,7 +71,7 @@ button {
         </tr>
         <div></div>
         @empty
-            <td colspan="4">Sem estagiários/as no momento</td>
+            <td colspan="5">Sem estagiários/as no momento</td>
         @endforelse
     </tbody>
     </table>

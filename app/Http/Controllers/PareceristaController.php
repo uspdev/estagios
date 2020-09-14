@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PareceristaRequest;
 use App\Parecerista;
+use App\Estagio;
 use App\User;
 use Auth;
 use Uspdev\Replicado\Pessoa;
@@ -87,5 +88,26 @@ class PareceristaController extends Controller
         return redirect('/');
     }
 
+    public function meusPareceres(){
+        $this->authorize('parecerista');
+
+        $estagios = Estagio::where('status',"!=", "em_analise_academica")
+                      ->where('numparecerista',Auth::user()->codpes)->get();
+
+        return view('pareceristas.estagios')->with([
+            'estagios' => $estagios,
+        ]);
+    }
+
+    public function parecerMerito(){
+        $this->authorize('parecerista');
+
+        $estagios = Estagio::where('status', "em_analise_academica")
+                      ->where('numparecerista',Auth::user()->codpes)->get();
+
+        return view('pareceristas.estagios')->with([
+            'estagios' => $estagios,
+        ]);
+    }
 }
 
