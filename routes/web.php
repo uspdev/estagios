@@ -31,7 +31,7 @@ Route::get('/pdfs/aditivo/{estagio}', 'PDFsController@aditivo');
 #Renovação
 Route::get('/pdfs/renovacao/{estagio}', 'PDFsController@renovacao');
 
-#Termo
+#Termoz
 Route::get('/pdfs/termo/{estagio}', 'PDFsController@termo');
 
 #Parecer

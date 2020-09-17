@@ -174,15 +174,16 @@ class EstagioWorkflowController extends Controller
 
             /* Verificar quais campos mais dever ser zerado na renovanção */
             $renovacao->analise_tecnica = null;
-            $renovacao->analise_academica = null;
             $renovacao->analise_alteracao = null;
+            $renovacao->mediaponderada = null;
+            $renovacao->horariocompativel = null;
+            $renovacao->desempenhoacademico = null;
+            $renovacao->atividadespertinentes= null;
+            $renovacao->atividadesjustificativa = null;
             $renovacao->tipodeferimento = null;
             $renovacao->condicaodeferimento = null;
-            $renovacao->atividades = null;
-            $renovacao->justificativa = null;
-            $renovacao->atividadesjustificativa = null;
+            $renovacao->analise_academica = null;
             $renovacao->save();
-
             $workflow = $renovacao->workflow_get();
             $workflow->apply($renovacao,'renovacao');
             $renovacao->save();

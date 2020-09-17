@@ -1,11 +1,16 @@
 @extends('laravel-usp-theme::master')
 
+@section('javascripts_head')
+  <script src="{{asset('/js/estagios.js')}}"></script>
+@endsection('javascript_head')
+
 @section('styles')
   <link rel="stylesheet" type="text/css" href="{{asset('/css/estagios.css')}}">
 @endsection('styles')
 
 @section('content')
 @include('flash')
+
 
 @can('admin')
 <form method="get" action="/estagios">
@@ -18,11 +23,11 @@
       <select name="buscastatus" class="form-control">
         <option value="" selected="">- Status do Estágio -</option>
         @foreach($estagio->getStatus() as $key=>$status)
-          
+
             <option value="{{$key}}" name="buscastatus" 
               @if($key == Request()->buscastatus) selected @endif
             >{{$status['name']}}</option>
-          
+
         @endforeach
       </select>
 
@@ -33,9 +38,11 @@
   </div>
 </form>
 @endcan('admin')
+
 <br>
 
 {{$estagios->appends(request()->query())->links()}}
+
 @include('estagios.partials.index')
 
 @endsection('content')

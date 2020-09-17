@@ -245,8 +245,8 @@ empresa? Haverá deslocamento para a empresa? Se sim, quais dias?: <br></label>
                 </div></div>
 
 
-<div class="form-group" id="medidas">
-<label for="pandemiamedidas" class="required" required>Descreva quais são as medidas sanitárias adotadas pela empresa: </label>
+<div class="col-sm form-group" id="medidas">
+<label for="pandemiamedidas" class="required" required>Descreva brevemente quais são as medidas sanitárias adotadas pela empresa: </label><br>
     <textarea name="pandemiamedidas" rows="5" cols="60">{{old('pandemiamedidas',$estagio->pandemiamedidas)}}</textarea>
 
         </div>

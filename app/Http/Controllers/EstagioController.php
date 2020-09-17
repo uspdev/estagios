@@ -50,6 +50,7 @@ class EstagioController extends Controller
             'estagios' => $estagios,
             'estagio' => new Estagio()
         ]);
+
     }
 
     public function show(Estagio $estagio)
