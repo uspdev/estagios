@@ -49,7 +49,7 @@ class EstagioRequest extends FormRequest
 
             //pandemia
             'pandemiahomeoffice' => 'required',
-            'pandemiamedidas' => 'required_if:pandemiahomeoffice,==,Não'
+            'pandemiamedidas' => 'required_if:pandemiahomeoffice,==,Não|max:255'
         ];
     }
 }
