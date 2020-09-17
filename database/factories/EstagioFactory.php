@@ -17,7 +17,6 @@ $factory->define(Estagio::class, function (Faker $faker) {
         'em_analise_academica',
         'concluido',
         'em_alteracao',
-        'em_analise_tecnica_alteracao'
     ];
 
     return [
