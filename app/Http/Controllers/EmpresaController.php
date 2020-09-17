@@ -10,6 +10,7 @@ use App\Convenio;
 use Auth;
 use App\User;
 use Illuminate\Support\Facades\Gate;
+use App\Utils\LoginEmpresa;
 
 class EmpresaController extends Controller
 {
@@ -144,13 +145,8 @@ class EmpresaController extends Controller
                 }
             }
 
-            $user = User::where('cnpj',$cnpj)->first();
-            if (is_null($user)) $user = new User;
-            $user->cnpj  = $empresa->cnpj;
-            $user->name  = $empresa->cnpj;
-            $user->email = $empresa->email;
-            $user->save();
-            Auth::login($user, true);
+            $user = LoginEmpresa::login($empresa->cnpj,$empresa->email);
+
             request()->session()->flash("alert-info","Login alterado! Agora você está logado(a) como {$user->name} e {$user->email}");
 
         } else {
