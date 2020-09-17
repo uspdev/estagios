@@ -11,17 +11,13 @@ button {
 }
 </style>
 
-<div class="card">
-  <div class="card-header"><b>Estagiários/as</b></div>
-  <div class="card-body">
-
     @can('empresa')
         <a href="/estagios/create" class="btn btn-success"> Novo/a estagiário/a </a>
         <br>
     @endcan('empresa')
     <br>
 
-    <table class="table table-striped">
+    <table class="table table-striped" id="datatable">
     <thead>
         <tr>
         <th>Número USP</th>
@@ -75,5 +71,3 @@ button {
         @endforelse
     </tbody>
     </table>
-  </div>
-</div>

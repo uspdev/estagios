@@ -20,36 +20,34 @@ class EstagioController extends Controller
             if ($request->buscastatus != null && $request->busca != null){
 
                 $estagios = Estagio::where('numero_usp','LIKE',"%{$request->busca}%")
-                -> where('status', $request->buscastatus)->paginate(10);
+                -> where('status', $request->buscastatus)->get();
                 
             } else if(isset($request->busca)) {
-                $estagios = Estagio::where('numero_usp','LIKE',"%{$request->busca}%")->paginate(10);
+                $estagios = Estagio::where('numero_usp','LIKE',"%{$request->busca}%")->get();
                 }
                 
                 else if(isset($request->buscastatus)){
                 if ($request->buscastatus != null){
-                    $estagios = Estagio::where('status', $request->buscastatus)->paginate(10);
+                    $estagios = Estagio::where('status', $request->buscastatus)->get();
                 }
 
             } else {
 
-            $estagios = Estagio::paginate(10);
+            $estagios = Estagio::get();
 
             }
 
         } else if (Gate::allows('empresa')){
             $cnpj = Auth::user()->cnpj;
-            $estagios = Estagio::where('cnpj',$cnpj)->paginate(10);
+            $estagios = Estagio::where('cnpj',$cnpj)->get();
 
         } else {
             $request->session()->flash('alert-danger','Usuário sem permissão');
             return redirect('/');
         }
 
-        return view('estagios.index')->with([
-            'estagios' => $estagios,
-            'estagio' => new Estagio()
-        ]);
+        return view('estagios.index', compact('estagios'));
+
     }
 
     public function show(Estagio $estagio)
