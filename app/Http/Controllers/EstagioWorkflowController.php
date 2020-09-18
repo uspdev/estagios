@@ -33,7 +33,16 @@ class EstagioWorkflowController extends Controller
                 $estagio->save();
 
                 // Envio de email
-                Mail::send(new enviar_para_analise_tecnica_mail($estagio));
+                if(is_null($estagio->renovacao_parent_id))
+                {
+
+                    Mail::send(new enviar_para_analise_tecnica_mail($estagio));
+    
+                } else {
+
+                    Mail::send(new enviar_para_analise_tecnica_renovacao_mail($estagio));
+
+                }
             }
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');

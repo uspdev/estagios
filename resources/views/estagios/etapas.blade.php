@@ -74,16 +74,21 @@ Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise
     <a href="/pdfs/termo/{{$estagio->id}}"target="_blank" >
     <i class="fas fa-file-pdf"></i> </a>
      Visualizar PDF do Termo de Ciência
+     <br>
+    <a onClick="return confirm('Tem certeza que deseja um email para a empresa?')" href="/emails/enviar_para_analise_tecnica/{{$estagio->id}}">
+    <i class="fas fa-envelope-open-text"></i> </a>
+    Enviar E-mail contendo o Termo de Ciência para a empresa    
 @else
 <br>
     <a href="/pdfs/renovacao/{{$estagio->id}}" target="_blank" >
     <i class="fas fa-file-pdf"></i> </a>
-    Visualizar PDF do Termo de Ciência para Renovação   
+    Visualizar PDF do Termo de Ciência para Renovação
+    <br>
+    <a onClick="return confirm('Tem certeza que deseja um email para a empresa?')" href="/emails/enviar_para_analise_tecnica_renovacao/{{$estagio->id}}">
+    <i class="fas fa-envelope-open-text"></i> </a>  
+    Enviar E-mail contendo o Termo de Ciência para Renovação para a empresa    
 @endif    
-<br><br>
-    <a onClick="return confirm('Tem certeza que deseja um email para a empresa?')" href="/emails/enviar_para_analise_tecnica/{{$estagio->id}}">
-    <i class="fas fa-envelope-open-text"></i> </a>
-    Enviar E-mail contendo Termo de Ciência e Termo de Ciência para Renovação para a empresa   
+
 <br><br> 
 
 @switch($estagio->status)

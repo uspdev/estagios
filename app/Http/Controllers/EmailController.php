@@ -9,6 +9,7 @@ use App\Estagio;
 use Illuminate\Support\Facades\Gate;
 use Auth;
 use App\Mail\enviar_para_analise_tecnica_mail;
+use App\Mail\enviar_para_analise_tecnica_renovacao_mail;
 use App\Mail\enviar_para_parecerista_mail;
 use Illuminate\Support\Facades\Mail;
 use Uspdev\Replicado\Pessoa;
@@ -17,6 +18,11 @@ class EmailController extends Controller
 {
     public function enviar_para_analise_tecnica(Request $request, Estagio $estagio){
         Mail::send(new enviar_para_analise_tecnica_mail($estagio));        
+        return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
+    }
+
+    public function enviar_para_analise_tecnica_renovacao(Request $request, Estagio $estagio){
+        Mail::send(new enviar_para_analise_tecnica_renovacao_mail($estagio));        
         return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
     }
 

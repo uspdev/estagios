@@ -20,6 +20,7 @@ Route::get('/pdfs/termo/{estagio}', 'PDFsController@termo');
 
 #E-mails
 Route::get('/emails/enviar_para_analise_tecnica/{estagio}', 'EmailController@enviar_para_analise_tecnica');
+Route::get('/emails/enviar_para_analise_tecnica_renovacao/{estagio}', 'EmailController@enviar_para_analise_tecnica_renovacao');
 Route::get('/emails/enviar_para_parecerista/{estagio}', 'EmailController@enviar_para_parecerista');
 
 #Rescisão
