@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class EmpresaRequest extends FormRequest
 {
@@ -46,17 +47,29 @@ class EmpresaRequest extends FormRequest
                     'conceder_acesso_cnpj' => ''
                 ];
 
-        /* Email e Cnpj devem ser únicos, porém isso não está ocorrendo */
-        /*
-        dd($this->empresa->email);
         if ($this->method() == 'PATCH' || $this->method() == 'PUT'){
-            #array_push($rules['cnpj'], 'unique:empresas,cnpj,'.$this->empresa->id);
-            $rules['email'] =  'required|email|unique:empresas,email,'.$this->empresa->email;
+            array_push($rules['cnpj'], 'unique:empresas,cnpj,' .$this->empresa->id);
+            #$rules['email'] =  'required|email|unique:empresas,email,'.$this->empresa->email;
         }
         else{
             array_push($rules['cnpj'], 'unique:empresas');
         }
-        */
+        #dd($rules);
         return $rules;
+    }
+
+    /* Remover caracters antes da validação do CNPJ */
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'cnpj' => preg_replace('/[^0-9]/', '', $this->cnpj),
+        ]);
+    }
+
+    public function messages()
+    {
+        return [
+            'cnpj.unique' => 'Este CNPJ já está cadastrado',
+        ];
     }
 }
