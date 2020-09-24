@@ -2,21 +2,38 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Vaga;
+namespace Database\Factories;
+
+use App\Models\Vaga;
+use App\Models\Empresa;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Generator as Faker;
 
-$factory->define(Vaga::class, function (Faker $faker) {
+class VagaFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Vaga::class;
 
-    return [
-        'cnpj' => factory(App\Empresa::class)->create()->cnpj, 
-        'titulo' => $faker->sentence($nbWords = 6, $variableNbWords = true),
-        'descricao' => $faker->text,
-        'expediente' => $faker->buildingNumber,
-        'salario' => $faker->buildingNumber,
-        'horario' => $faker->time($format = 'H:i:s', $max = 'now'),
-        'beneficios' => $faker->text,
-        'divulgar_ate' =>$faker->dateTimeBetween($startDate = '-2 years',$endDate = '+ 2 years')->format('Y-m-d'),
-    ];
-});
-
-
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'cnpj' => User::factory(Empresa::class)->create()->cnpj, 
+            'titulo' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
+            'descricao' => $this->faker->text,
+            'expediente' => $this->faker->buildingNumber,
+            'salario' => $this->faker->buildingNumber,
+            'horario' => $this->faker->time($format = 'H:i:s', $max = 'now'),
+            'beneficios' => $this->faker->text,
+            'divulgar_ate' =>$this->faker->dateTimeBetween($startDate = '-2 years',$endDate = '+ 2 years')->format('Y-m-d'),
+        ];
+    }
+}

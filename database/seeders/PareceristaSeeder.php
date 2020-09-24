@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Parecerista;
+namespace Database\Seeders;
 
 class PareceristaSeeder extends Seeder
 {
@@ -19,9 +21,8 @@ class PareceristaSeeder extends Seeder
             'presidente' => 1
         ];
         
-        App\Parecerista::create($entrada1);
-        App\Parecerista::create($entrada2);
-
-        factory(App\Parecerista::class, 15)->create();
+        Parecerista::create($entrada1);
+        Parecerista::create($entrada2);
+        Parecerista::factory(15)->create();
     }
 }

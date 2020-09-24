@@ -39,7 +39,7 @@
         @if($empresa->conceder_acesso_cnpj)
             <br>
             <b>Acesso de administração concedido à:</b> {{$empresa->conceder_acesso_cnpj}} - 
-            {{ App\Empresa::where('cnpj',$empresa->conceder_acesso_cnpj)->first()->nome }}
+            {{ App\Models\Empresa::where('cnpj',$empresa->conceder_acesso_cnpj)->first()->nome }}
             <br>
         @endif
     </div>

@@ -5,10 +5,10 @@
 @inject('graduacao','Uspdev\Replicado\Graduacao')
 
 @php
-    $empresa = App\Empresa::where('cnpj',$estagio->cnpj)->first();
+    $empresa = App\Models\Empresa::where('cnpj',$estagio->cnpj)->first();
     $parecerista = Uspdev\Replicado\Pessoa::dump($estagio->numparecerista)['nompes'];
     $pareceristanum = $estagio->numparecerista;
-    $empresa = App\Empresa::where('cnpj',$estagio->cnpj)->first();
+    $empresa = App\Models\Empresa::where('cnpj',$estagio->cnpj)->first();
 @endphp
 
 @inject('replicado_utils','App\Utils\ReplicadoUtils')

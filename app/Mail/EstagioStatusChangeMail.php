@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Estagio;
+use App\Models\Estagio;
 use Auth;
 use Uspdev\Replicado\Pessoa;
 

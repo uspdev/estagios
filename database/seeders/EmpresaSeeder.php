@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Empresa;
+namespace Database\Seeders;
 
 class EmpresaSeeder extends Seeder
 {
@@ -29,8 +31,8 @@ class EmpresaSeeder extends Seeder
             'telefone_do_supervisor_estagio' => '1188888888',
             'email_do_supervisor_estagio' => 'geni@uol.com.br'
         ];
-        App\Empresa::create($entrada);
-
-        factory(App\Empresa::class, 10)->create();
+       
+        Empresa::create($entrada);
+        Emppresa::factory(10)->create();
     }
 }

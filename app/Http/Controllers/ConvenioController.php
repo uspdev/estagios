@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ConvenioRequest;
-use App\Convenio;
+use App\Models\Convenio;
 
 class ConvenioController extends Controller
 {

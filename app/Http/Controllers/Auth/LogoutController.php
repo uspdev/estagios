@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use Socialite;
-use App\User;
+use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 

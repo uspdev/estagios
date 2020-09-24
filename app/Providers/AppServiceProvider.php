@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 use Faker\Generator as FakerGenerator;
 use Faker\Factory as FakerFactory;
@@ -25,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrap();
         // força https na produção
         if (\App::environment('production')) {
             \URL::forceScheme('https');

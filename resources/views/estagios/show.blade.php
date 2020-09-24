@@ -41,8 +41,8 @@
         @endif   
 
         <b>CNPJ da empresa:</b> {{$estagio->cnpj}}<br>
-        <b>Nome da empresa:</b> {{App\Empresa::where('cnpj',$estagio->cnpj)->first()->nome}}<br>
-        <b>E-mail de contato:</b> {{App\Empresa::where('cnpj',$estagio->cnpj)->first()->email_de_contato}}
+        <b>Nome da empresa:</b> {{App\Models\Empresa::where('cnpj',$estagio->cnpj)->first()->nome}}<br>
+        <b>E-mail de contato:</b> {{App\Models\Empresa::where('cnpj',$estagio->cnpj)->first()->email_de_contato}}
 
     </div>
 </div>

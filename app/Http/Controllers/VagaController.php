@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\VagaRequest;
-use App\Vaga;
+use App\Models\Vaga;
 use Auth;
 use Illuminate\Support\Facades\Gate;
 

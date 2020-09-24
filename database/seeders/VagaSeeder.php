@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Vaga;
+namespace Database\Seeders;
 
 class VagaSeeder extends Seeder
 {
@@ -21,7 +23,8 @@ class VagaSeeder extends Seeder
             'beneficios' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             'divulgar_ate' => '2020-12-20'
         ];
-        App\Vaga::create($entrada);
-        factory(App\Vaga::class, 10)->create();
+        
+        Vaga::create($entrada);
+        Vaga::factory(10)->create();
     }
 }

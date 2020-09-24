@@ -39,9 +39,9 @@
 
       <div class="col-sm">
 
-        <b>Nome da empresa:</b> {{ App\Empresa::where('cnpj',$vaga->cnpj)->first()->nome }}
+        <b>Nome da empresa:</b> {{ App\Models\Empresa::where('cnpj',$vaga->cnpj)->first()->nome }}
         <br><br>
-        <b>Email empresa:</b> {{ App\Empresa::where('cnpj',$vaga->cnpj)->first()->email }}
+        <b>Email empresa:</b> {{ App\Models\Empresa::where('cnpj',$vaga->cnpj)->first()->email }}
         </br><br>
         <b>Título da Vaga:</b> {{ $vaga->titulo }}
         <br></br>

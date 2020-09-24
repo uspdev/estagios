@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Estagio;
+namespace Database\Seeders;
 
 class EstagioSeeder extends Seeder
 {
@@ -41,8 +43,8 @@ class EstagioSeeder extends Seeder
             'pandemiamedidas' => 'Alcool gel e cafezinho liberado',
             'atividadesjustificativa' => 'Atuação no meio profissional de universidade e lidar com professores'  
         ];
-        App\Estagio::create($entrada); 
-        
-        factory(App\Estagio::class, 20)->create();
+      
+        Estagio::create($entrada); 
+        Estagio::factory(20)->create();
     }
 }
