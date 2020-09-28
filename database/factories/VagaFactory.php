@@ -26,7 +26,7 @@ class VagaFactory extends Factory
     public function definition()
     {
         return [
-            'cnpj' => User::factory(Empresa::class)->create()->cnpj, 
+            'cnpj' => Empresa::factory()->create()->cnpj, 
             'titulo' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
             'descricao' => $this->faker->text,
             'expediente' => $this->faker->buildingNumber,

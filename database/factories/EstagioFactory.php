@@ -39,7 +39,7 @@ class EstagioFactory extends Factory
         ];
 
         return [
-            'cnpj' => User::factory(Empresa::class)->create()->cnpj, 
+            'cnpj' => Empresa::factory()->create()->cnpj, 
             'numero_usp' => $this->faker->unique()->graduacao(),           
             'valorbolsa' => $this->faker->numberBetween(300, 4000),
             'tipobolsa' => $bolsa[array_rand($bolsa)],

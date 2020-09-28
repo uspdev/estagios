@@ -1,8 +1,9 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use App\Models\Vaga;
-namespace Database\Seeders;
 
 class VagaSeeder extends Seeder
 {

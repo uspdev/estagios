@@ -1,8 +1,8 @@
 <?php
 
+namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Estagio;
-namespace Database\Seeders;
 
 class EstagioSeeder extends Seeder
 {

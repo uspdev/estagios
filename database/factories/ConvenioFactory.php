@@ -41,7 +41,7 @@ class ConvenioFactory extends Factory
         'nome_contato' => $this->faker->name,
         'tel_contato' => $this->faker->cellphoneNumber,
         'email_contato' => $this->faker->email,
-        'cnpj' => User::factory(Empresa::class)->create()->cnpj,
+        'cnpj' => Empresa::factory()->create()->cnpj,
       ];
     }
 }

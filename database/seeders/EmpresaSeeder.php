@@ -1,8 +1,9 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use App\Models\Empresa;
-namespace Database\Seeders;
 
 class EmpresaSeeder extends Seeder
 {
@@ -33,6 +34,6 @@ class EmpresaSeeder extends Seeder
         ];
        
         Empresa::create($entrada);
-        Emppresa::factory(10)->create();
+        Empresa::factory(10)->create();
     }
 }

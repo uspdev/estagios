@@ -1,8 +1,10 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use App\Models\Aviso;
-namespace Database\Seeders;
+
 
 class AvisoSeeder extends Seeder
 {

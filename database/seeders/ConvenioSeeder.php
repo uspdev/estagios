@@ -1,8 +1,8 @@
 <?php
 
+namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Convenio;
-namespace Database\Seeders;
 
 class ConvenioSeeder extends Seeder
 {
