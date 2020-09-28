@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\PareceristaRequest;
-use App\Parecerista;
-use App\Estagio;
-use App\User;
+use App\Models\Parecerista;
+use App\Models\Estagio;
+use App\Models\User;
 use Auth;
 use Uspdev\Replicado\Pessoa;
 

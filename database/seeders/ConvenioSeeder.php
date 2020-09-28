@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Convenio;
+namespace Database\Seeders;
 
 class ConvenioSeeder extends Seeder
 {
@@ -29,8 +31,8 @@ class ConvenioSeeder extends Seeder
             'tel_contato' => 55432180,
             'email_contato' => 'nolomia@gmail.com'
     ];
-    App\Convenio::create($entrada);
-
-    factory(App\Convenio::class, 10)->create();
+ 
+    Convenio::create($entrada);
+    convenio::factory(10)->create();
     }
 }

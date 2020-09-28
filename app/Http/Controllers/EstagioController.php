@@ -1,8 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Estagio;
-use App\User;
+use App\Models\Estagio;
+use App\Models\User;
 use Auth;
 
 use Uspdev\Replicado\Pessoa;

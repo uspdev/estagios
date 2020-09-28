@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\EmailRequest;
-use App\Email;
-use App\Estagio;
+use App\Models\Email;
+use App\Models\Estagio;
 use Illuminate\Support\Facades\Gate;
 use Auth;
 use App\Mail\enviar_para_analise_tecnica_mail;

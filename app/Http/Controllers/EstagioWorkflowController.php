@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\EstagioRequest;
 
-use App\Estagio;
-use Illuminate\Support\Facades\Gate;
-use App\User;
-use Uspdev\Replicado\Pessoa;
 use Auth;
+use App\Models\Estagio;
+use App\Models\User;
+use Illuminate\Support\Facades\Gate;
+use Uspdev\Replicado\Pessoa;
 use App\Mail\enviar_para_analise_tecnica_mail;
 use App\Mail\EstagioStatusChangeMail;
 use Illuminate\Support\Facades\Mail;

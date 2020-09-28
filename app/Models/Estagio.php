@@ -1,12 +1,14 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use ZeroDaHero\LaravelWorkflow\Traits\WorkflowTrait;
 
 class Estagio extends Model
 {
+    use HasFactory;
     use WorkflowTrait;
 
     protected $guarded = ['id'];
@@ -124,16 +126,16 @@ class Estagio extends Model
 
     public function analise_academica_user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     public function analise_tecnica_user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     public function analise_alteracao_user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
 }

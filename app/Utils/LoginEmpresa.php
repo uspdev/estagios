@@ -2,8 +2,8 @@
 
 namespace App\Utils;
 
-use App\User;
-use App\Empresa;
+use App\Models\User;
+use App\Models\Empresa;
 use Auth;
 
 class LoginEmpresa

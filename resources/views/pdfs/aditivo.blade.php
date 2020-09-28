@@ -5,8 +5,8 @@
 @inject('graduacao','Uspdev\Replicado\Graduacao')
 
 @php
-$presidente = App\Parecerista::where('presidente', true)->first();
-$empresa = App\Empresa::where('cnpj',$estagio->cnpj)->first();
+$presidente = App\Models\Parecerista::where('presidente', true)->first();
+$empresa = App\Models\Empresa::where('cnpj',$estagio->cnpj)->first();
 
 $empresa->cnpj =  substr($empresa->cnpj, 0, 2) . '.' . substr($empresa->cnpj, 2, 3) . '.' . substr($empresa->cnpj, 5, 3) . '/' . substr($empresa->cnpj, 8, 4) . '-' . substr($empresa->cnpj, 12, 2);
 

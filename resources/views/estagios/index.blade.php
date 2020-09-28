@@ -18,7 +18,7 @@
     <div class=" col-sm input-group">
       <input type="text" class="form-control" name="busca" value="{{Request()->busca}}" placeholder="Busca somente por número USP do/a aluno/a">  
 
-      @inject('estagio','App\Estagio')
+      @inject('estagio','App\Models\Estagio')
 
       <select name="buscastatus" class="form-control">
         <option value="" selected="">- Status do Estágio -</option>

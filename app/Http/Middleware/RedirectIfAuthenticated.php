@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Support\Facades\Auth;
-use App\Empresa;
+use App\Models\Empresa;
 
 class RedirectIfAuthenticated
 {

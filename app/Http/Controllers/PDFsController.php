@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use PDF;
-use App\Estagio;
-use App\Empresa;
-use App\Convenio;
-use App\Parecerista;
 use Carbon\Carbon;
-use App\User;
+use App\Models\Estagio;
+use App\Models\Empresa;
+use App\Models\Convenio;
+use App\Models\Parecerista;
+use App\Models\User;
 
 use Uspdev\Replicado\Pessoa;
 

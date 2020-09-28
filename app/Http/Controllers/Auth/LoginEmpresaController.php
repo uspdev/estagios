@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\Validator;
 use Uspdev\Utils;
 
 use Socialite;
-use App\User;
+use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\LoginEmpresaMail;
-use App\Empresa;
+use App\Models\Empresa;
 use App\Utils\LoginEmpresa;
 
 class LoginEmpresaController extends Controller

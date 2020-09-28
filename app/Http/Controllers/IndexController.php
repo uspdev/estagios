@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Uspdev\Replicado\Pessoa;
-use App\Vaga;
-use App\Aviso;
+use App\Models\Vaga;
+use App\Models\Aviso;
 
 class IndexController extends Controller
 {

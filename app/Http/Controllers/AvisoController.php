@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\AvisoRequest;
-use App\Aviso;
+use App\Models\Aviso;
 
 class AvisoController extends Controller
 {
