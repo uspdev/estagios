@@ -35,7 +35,6 @@ class EstagioRequest extends FormRequest
             'horario' => 'required',
             'auxiliotransporte' => 'required',
             'especifiquevt' => 'required',
-            'cnpj' => '',
             'seguradora' => 'required',
             'numseguro' => 'required',
 
@@ -49,7 +48,17 @@ class EstagioRequest extends FormRequest
 
             //pandemia
             'pandemiahomeoffice' => 'required',
-            'pandemiamedidas' => 'required_if:pandemiahomeoffice,==,Não'
+            'pandemiamedidas' => 'required_if:pandemiahomeoffice,==,Não',
+
+            //empresa
+            'cnpj' => '',
+            'nome_de_contato' => 'required',
+            'email_de_contato' => 'required|email',
+            'telefone_de_contato' => 'required|numeric|min:10',
+            'nome_do_supervisor_estagio' => 'required',
+            'cargo_do_supervisor_estagio' => 'required',
+            'telefone_do_supervisor_estagio' => 'required|numeric|min:10',
+            'email_do_supervisor_estagio' => 'required|email',
         ];
     }
 }

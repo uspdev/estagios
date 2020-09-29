@@ -39,7 +39,38 @@
     <a onClick="return confirm('Tem certeza que deseja um email para o parecerista?')" href="/emails/enviar_para_parecerista/{{$estagio->id}}">
     <i class="fas fa-envelope-open-text"></i> </a>
     Enviar e-mail com parecer em anexo para o e-mail USP do parecerista
+
+    @if(($estagio->desempenhoacademico)!=null)
+        <br>
+        <a href="/pdfs/parecer/{{$estagio->id}}"target="_blank" >
+        <i class="fas fa-file-pdf"></i> </a>
+        Visualizar PDF do Parecer de Mérito 
+    @endif
+
+    @if(is_null($estagio->renovacao_parent_id))
+        <br>
+        <a onClick="return confirm('Tem certeza que deseja um email para a empresa?')" href="/emails/enviar_para_analise_tecnica/{{$estagio->id}}">
+        <i class="fas fa-envelope-open-text"></i> </a>
+        Enviar E-mail contendo o Termo de Ciência para a empresa   
+        <br>
+        <a href="/pdfs/termo/{{$estagio->id}}"target="_blank" >
+        <i class="fas fa-file-pdf"></i> </a>
+        Visualizar PDF do Termo de Ciência 
+    @else
+        <br>
+        <a onClick="return confirm('Tem certeza que deseja um email para a empresa?')" href="/emails/enviar_para_analise_tecnica_renovacao/{{$estagio->id}}">
+        <i class="fas fa-envelope-open-text"></i> </a>  
+        Enviar E-mail contendo o Termo de Ciência para Renovação para a empresa    
+        <br>
+        <a href="/pdfs/renovacao/{{$estagio->id}}" target="_blank" >
+        <i class="fas fa-file-pdf"></i> </a>
+        Visualizar PDF do Termo de Ciência para Renovação
+    @endif    
+
+<br>
   </div>
+
+  
 
 
 
