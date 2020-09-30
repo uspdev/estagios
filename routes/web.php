@@ -45,7 +45,7 @@ Route::get('/emails/enviar_para_parecerista/{estagio}', [EmailController::class,
 # Login comunidade USP
 Route::get('login/usp', [LoginUspController::class, 'redirectToProvider']);
 Route::get('callback', [LoginUspController::class, 'handleProviderCallback']);
-Route::get('/logout', [LoginUspController::class, 'logout']);
+Route::post('/logout', [LoginUspController::class, 'logout']);
 
 # logins secrets
 Route::post('/logandoComoEmpresa/{cnpj}', [EmpresaController::class,'logandoComoEmpresa']);
