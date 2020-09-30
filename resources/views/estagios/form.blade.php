@@ -166,6 +166,53 @@ aditivo por até 12 meses.
 </div></div>
 
 <hr>
+<div class="card">
+  <div class="card-header">Informações sobre a empresa</div>
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-sm form-group">
+                <div class="form-group">
+                <label for="nome_de_contato" class="required">Nome de contato da empresa: </label>
+                    <input type="text" class="form-control" id="nome_de_contato" name="nome_de_contato" value="{{old('nome_de_contato',$estagio->nome_de_contato)}}">
+                </div></div>
+            <div class="col-sm form-group">
+                <div class="form-group">
+                <label for="email_de_contato" class="required">E-mail de contato da empresa: </label>
+                    <input type="email" maxlength="128" class="form-control" id="email_de_contato" name="email_de_contato" value="{{old('email_de_contato',$estagio->email_de_contato)}}">
+                </div></div>
+            <div class="col-sm form-group">
+            <div class="form-group">
+                <label for="telefone_de_contato" class="required">Telefone de contato da empresa: </label>
+                    <input type="text" maxlength="11" class="form-control" id="telefone-com-ddd" name="telefone_de_contato" value="{{old('telefone_de_contato',$estagio->telefone_de_contato)}}">
+                </div></div>
+            </div>     
+        <div class="row">
+            <div class="col-sm form-group">
+                <div class="form-group">
+                <label for="nome_do_supervisor_estagio" class="required">Nome do supervisor do estágio: </label>
+                    <input type="text" class="form-control" id="nome_do_supervisor_estagio" name="nome_do_supervisor_estagio" value="{{old('nome_do_supervisor_estagio',$estagio->nome_do_supervisor_estagio)}}">
+                </div></div>
+            <div class="col-sm form-group">
+                <div class="form-group">
+                <label for="cargo_do_supervisor_estagio" class="required">Cargo do supervisor de estágio: </label>
+                    <input type="text" class="form-control" id="cargo_do_supervisor_estagio" name="cargo_do_supervisor_estagio" value="{{old('cargo_do_supervisor_estagio',$estagio->cargo_do_supervisor_estagio)}}">
+                </div></div>    
+            <div class="col-sm form-group">
+                <div class="form-group">
+                <label for="email_do_supervisor_estagio" class="required">E-mail do supervisor de estágio: </label>
+                    <input type="email" maxlength="128" class="form-control" id="email_do_supervisor_estagio" name="email_do_supervisor_estagio" value="{{old('email_do_supervisor_estagio',$estagio->email_do_supervisor_estagio)}}">
+                </div></div>
+            <div class="col-sm form-group">
+            <div class="form-group">
+                <label for="telefone_do_supervisor_estagio" class="required">Telefone do supervisor de estágio: </label>
+                    <input type="text" maxlength="11" class="form-control" id="telefone-com-ddd" name="telefone_do_supervisor_estagio" value="{{old('telefone_do_supervisor_estagio',$estagio->telefone_do_supervisor_estagio)}}">
+                </div></div>
+            </div>                
+    </div>
+</div>
+
+<hr>
 
 <div class="card">
   <div class="card-header">Informações sobre seguro</div>

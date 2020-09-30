@@ -68,7 +68,7 @@ $endereco = [
 </div>
 
 <div style="text-align: justify;">
-    <p style="text-indent : 1em;"><b>{{ $empresa->razao_social }}, {{ $empresa->endereco }}, CNPJ
+    <p style="text-indent : 1em;"><b>{{ $empresa->nome }}, {{ $empresa->endereco }}, CEP {{ $empresa->cep }}, CNPJ
             {{ $empresa->cnpj }}</b>, representada por
         s{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "ua" : "eu" }}
         <b>{{ $empresa->cargo_do_representante }}</b>, Sr(a)
@@ -104,8 +104,8 @@ $endereco = [
         e as limitações dos meios de transportes.</p>
     <p>2.1. Nos períodos de avaliação do rendimento escolar, conforme informado pelo estágiário, a jornada de atividade
         em estágio será reduzida à metade, sem desconto no valor da bolsa.</p>
-    <p>3. A CONCEDENTE designa o Sr(a). <b>{{ $empresa->nome_do_supervisor_estagio }}</b>, que ocupa o cargo de
-        <b>{{$empresa->cargo_do_supervisor_estagio}}</b>,
+    <p>3. A CONCEDENTE designa o Sr(a). <b>{{ $estagio->nome_do_supervisor_estagio }}</b>, que ocupa o cargo de
+        <b>{{$estagio->cargo_do_supervisor_estagio}}</b>,
         para ser o(a) SUPERVISOR(a) INTERNO(a) do Estágio que será por ele programado.</p>
     <p>4. O ESTAGIÁRIO se obriga a cumprir fielmente a programação do estágio, salvo impossibilidade da qual a
         CONCEDENTE será previamente informada.</p>
@@ -153,7 +153,7 @@ $endereco = [
 
 <div style="font-style: italic; font-weight: bold">
     ________________________________________________<br>
-    {{ $empresa->razao_social }}
+    {{ $empresa->nome }}
     <br><br><br>
     _______________________________________________<br>
     {{ $pessoa::dump($estagio->numero_usp)['nompes'] }}<br><br><br>
@@ -187,9 +187,9 @@ $endereco = [
     E-mail: <b>{{ $pessoa::email($estagio->numero_usp) }}</b><br>
     Nome da Empresa: <b>{{ $empresa->nome }}</b><br>
     Área de atuação da Empresa: <b>{{ $empresa->area_de_atuacao }}</b><br>
-    Nome do supervisor(a) interno(a) do Estágio na Empresa: <b>{{ $empresa->nome_do_supervisor_estagio }}</b><br>
-    Telefone do Supervisor: <b>{{ $empresa->telefone_do_supervisor_estagio }}</b> / <b>{{ $empresa->telefone_de_contato }}</b>,
-    E-mail do Supervisor: <b>{{ $empresa->email_do_supervisor_estagio }}</b><br>
+    Nome do supervisor(a) interno(a) do Estágio na Empresa: <b>{{ $estagio->nome_do_supervisor_estagio }}</b><br>
+    Telefone do Supervisor: <b>{{ $estagio->telefone_do_supervisor_estagio }}</b> / <b>{{ $estagio->telefone_de_contato }}</b>,
+    E-mail do Supervisor: <b>{{ $estagio->email_do_supervisor_estagio }}</b><br>
     Data de início do estágio: <b>{{$estagio->data_inicial}}</b><br>
     Data do término do estágio: <b>{{$estagio->data_final}}</b><br>
     Horário do Estágio: <b>{{ $estagio->horario }}</b><br>
@@ -232,8 +232,8 @@ $endereco = [
     <br><br><br>
 
 <div>
-    <p><b>CONTATO:</b> {{ $empresa->nome_de_contato }}, Telefone: {{ $empresa->telefone_de_contato }}, E-mail:
-        {{ $empresa->email }}
+    <p><b>Contato:</b> {{ $estagio->nome_de_contato }}, Telefone: {{ $estagio->telefone_de_contato }} <br>
+    <b>E-mail da empresa:</b> {{ $empresa->email }}
     </p>
 </div>
 

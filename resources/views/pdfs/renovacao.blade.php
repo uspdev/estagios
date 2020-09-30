@@ -134,8 +134,8 @@ $endereco = [
     E-mail: <b>{{ $pessoa::email($estagio->numero_usp) }}</b><br>
     Nome da Empresa: <b>{{ $empresa->nome }}</b><br>
     Área de atuação da Empresa: <b>{{ $empresa->area_de_atuacao }}</b><br>
-    Nome do supervisor(a) interno(a) do Estágio na Empresa: <b>{{ $empresa->nome_do_supervisor_estagio }}</b><br>
-    Telefone: <b>{{ $empresa->telefone_do_supervisor_estagio }}</b> , E-mail: <b>{{ $empresa->email_do_supervisor_estagio }}</b><br>
+    Nome do supervisor(a) interno(a) do Estágio na Empresa: <b>{{ $estagio->nome_do_supervisor_estagio }}</b><br>
+    Telefone: <b>{{ $estagio->telefone_do_supervisor_estagio }}</b> , E-mail: <b>{{ $estagio->email_do_supervisor_estagio }}</b><br>
     Data de início do estágio: <b>{{$estagio->data_inicial}}</b><br>
     Data do término do estágio: <b>{{$estagio->data_final}}</b><br>
     Horário do Estágio: <b>{{ $estagio->horario }}</b> Carga horária semanal: <b>{{ $estagio->cargahoras }}

@@ -66,7 +66,14 @@ class EstagioFactory extends Factory
             'status' => $status[array_rand($status)],
             'pandemiahomeoffice' => $homeoffice[array_rand($homeoffice)], 
             'pandemiamedidas' => $this->faker->text($maxNbChars = 200),
-            'atividadesjustificativa' => $this->faker->text($maxNbChars = 200)
+            'atividadesjustificativa' => $this->faker->text($maxNbChars = 200),
+            'nome_do_supervisor_estagio' => $this->faker->name,
+            'cargo_do_supervisor_estagio' => $this->faker->jobTitle,
+            'telefone_do_supervisor_estagio' => $this->faker->cellphoneNumber,
+            'email_do_supervisor_estagio' => $this->faker->email,
+            'nome_de_contato' => $this->faker->name,
+            'email_de_contato' => $this->faker->email,
+            'telefone_de_contato' => $this->faker->cellphoneNumber
         ];
     }
 }

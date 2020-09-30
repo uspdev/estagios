@@ -62,34 +62,7 @@ Análise técnica do setor de Graduação realizada por: {{ $estagio->analise_te
 Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise_alteracao_user->name  }}<br>
 @endif
 
-@if(($estagio->desempenhoacademico)!=null)
-<br>
-    <a href="/pdfs/parecer/{{$estagio->id}}"target="_blank" >
-    <i class="fas fa-file-pdf"></i> </a>
-    Visualizar PDF do Parecer de Mérito 
-@endif
-
-@if(is_null($estagio->renovacao_parent_id))
-<br>
-    <a href="/pdfs/termo/{{$estagio->id}}"target="_blank" >
-    <i class="fas fa-file-pdf"></i> </a>
-     Visualizar PDF do Termo de Ciência
-     <br>
-    <a onClick="return confirm('Tem certeza que deseja um email para a empresa?')" href="/emails/enviar_para_analise_tecnica/{{$estagio->id}}">
-    <i class="fas fa-envelope-open-text"></i> </a>
-    Enviar E-mail contendo o Termo de Ciência para a empresa    
-@else
-<br>
-    <a href="/pdfs/renovacao/{{$estagio->id}}" target="_blank" >
-    <i class="fas fa-file-pdf"></i> </a>
-    Visualizar PDF do Termo de Ciência para Renovação
-    <br>
-    <a onClick="return confirm('Tem certeza que deseja um email para a empresa?')" href="/emails/enviar_para_analise_tecnica_renovacao/{{$estagio->id}}">
-    <i class="fas fa-envelope-open-text"></i> </a>  
-    Enviar E-mail contendo o Termo de Ciência para Renovação para a empresa    
-@endif    
-
-<br><br> 
+<br> 
 
 @switch($estagio->status)
 
@@ -111,7 +84,7 @@ Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise
       @endif
       @can('admin')
       <div class="card">
-          <div class="card-header"><b>Gerenciar Parecerista</b></div> 
+          <div class="card-header"><b>Área de Administrador</b></div> 
             <div class="card-body">
               @include('estagios.partials.gerenciar_parecerista')
             </div>

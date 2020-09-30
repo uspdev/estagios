@@ -26,8 +26,8 @@ class EmpresaRequest extends FormRequest
     { 
         $rules = [
                     'nome' => 'required',
-                    'razao_social' => 'required',
-                    'cnpj' => [
+                    //'razao_social' => 'required',
+                   'cnpj' => [
                         'required',
                         'cnpj'
                     ],
@@ -35,15 +35,15 @@ class EmpresaRequest extends FormRequest
                     'area_de_atuacao' => 'required',
                     'endereco' => 'required',
                     'cep' => 'required|formato_cep',
-                    'nome_de_contato' => 'required',
-                    'telefone_de_contato' => 'required|numeric|min:10',
+                    //'nome_de_contato' => 'required',
+                    //'telefone_de_contato' => 'required|numeric|min:10',
                     'nome_do_representante' => 'required',
                     'cargo_do_representante' => 'required',
-                    'nome_do_supervisor_estagio' => 'required',
-                    'cargo_do_supervisor_estagio' => 'required',
-                    'telefone_do_supervisor_estagio' => 'required|numeric|min:10',
-                    'email_do_supervisor_estagio' => 'required|email',
-                    'email_de_contato' => 'required|email',
+                    //'nome_do_supervisor_estagio' => 'required',
+                    //'cargo_do_supervisor_estagio' => 'required',
+                    //'telefone_do_supervisor_estagio' => 'required|numeric|min:10',
+                    //'email_do_supervisor_estagio' => 'required|email',
+                    //'email_de_contato' => 'required|email',
                     'conceder_acesso_cnpj' => ''
                 ];
 

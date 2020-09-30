@@ -41,7 +41,14 @@ class EstagioSeeder extends Seeder
             'status' => 'em_elaboracao',
             'pandemiahomeoffice' => 'Sim',
             'pandemiamedidas' => 'Alcool gel e cafezinho liberado',
-            'atividadesjustificativa' => 'Atuação no meio profissional de universidade e lidar com professores'  
+            'atividadesjustificativa' => 'Atuação no meio profissional de universidade e lidar com professores',  
+            'nome_do_supervisor_estagio' => 'Genivaldo',
+            'cargo_do_supervisor_estagio' => 'Gerente',
+            'telefone_do_supervisor_estagio' => '1188888888',
+            'email_do_supervisor_estagio' => 'geni@uol.com.br',
+            'nome_de_contato' => 'Joãozinho',
+            'email_de_contato' => 'contatointerno@empresa.com',
+            'telefone_de_contato' => '1199999999'
         ];
       
         Estagio::create($entrada); 

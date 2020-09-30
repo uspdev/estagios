@@ -32,20 +32,31 @@
         <b>As ativídades são pertinentes ao curso?:</b> {{$estagio->atividadespertinentes}}<br> 
         <b>Justificativa da pertinencia:</b> {{$estagio->atividadesjustificativa}}<br>         
         <b>Desempenho acadêmico:</b> {{$estagio->desempenhoacademico}}<br>
-
         <b>Análise Acadêmica:</b> {{$estagio->analise_academica}}<br>
-        
         <b>Situação do deferimento do parecer de mérito:</b> {{$estagio->tipodeferimento}}<br>
         @if(($estagio->condicaodeferimento)!=null)
             <b>O estágio foi reduzido para seis meses?:</b> {{$estagio->condicaodeferimento}}<br>
         @endif   
 
-        <b>CNPJ da empresa:</b> {{$estagio->cnpj}}<br>
-        <b>Nome da empresa:</b> {{App\Models\Empresa::where('cnpj',$estagio->cnpj)->first()->nome}}<br>
-        <b>E-mail de contato:</b> {{App\Models\Empresa::where('cnpj',$estagio->cnpj)->first()->email_de_contato}}
-
     </div>
 </div>
+
+<br>
+
+<div class="card">
+  <div class="card-header"><b>Informações Sobre a Empresa</b></div>
+    <div class="card-body">
+        <b>Nome da empresa:</b> {{App\Models\Empresa::where('cnpj',$estagio->cnpj)->first()->nome}}<br>
+        <b>CNPJ da empresa:</b> {{$estagio->cnpj}}<br>
+        <b>Nome do supervisor do estágio:</b> {{$estagio->nome_do_supervisor_estagio}}<br>
+        <b>Cargo do supervisor do estágio:</b> {{$estagio->cargo_do_supervisor_estagio}}<br>
+        <b>Telefone do supervisor do estágio:</b> {{$estagio->telefone_do_supervisor_estagio}}<br>
+        <b>E-mail do supervisor do estágio:</b> {{$estagio->email_do_supervisor_estagio}}<br>
+        <b>Nome de contato da empresa:</b> {{$estagio->nome_de_contato}}<br>
+        <b>Telefone de contato da empresa:</b> {{$estagio->telefone_de_contato}}<br>
+        <b>E-mail de contato da empresa:</b> {{$estagio->email_de_contato}}
+    </div>    
+</div>   
 
 <br>
 
