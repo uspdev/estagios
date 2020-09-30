@@ -34,7 +34,7 @@ class enviar_para_analise_tecnica_renovacao_mail extends Mailable
     public function build()
     {
 
-        $to = [Empresa::where('cnpj',$this->estagio->cnpj)->first()->email_de_contato,
+        $to = [$this->estagio->email_de_contato,
                config('mail.reply_to.address')
               ];
 
