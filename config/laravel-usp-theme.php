@@ -77,7 +77,7 @@ $pareceristas =  [
 return [
     'title'=> 'Estágios FFLCH',
     'dashboard_url' => '/',
-    'logout_method' => 'GET',
+    'logout_method' => 'POST',
     'logout_url' => '/logout',
     'login_url' => '/',
     'menu' => [
