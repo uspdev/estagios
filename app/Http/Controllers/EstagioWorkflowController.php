@@ -161,7 +161,19 @@ class EstagioWorkflowController extends Controller
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
         return redirect("/estagios/{$estagio->id}");
-    }   
+    }  
+    
+    public function voltar_analise_academica(Request $request, Estagio $estagio){
+
+        if (Gate::allows('admin')) {
+            $estagio->last_status = $estagio->status;
+            $estagio->status = 'em_analise_tecnica';
+            $estagio->save();
+        } else {
+            request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
+        }
+        return redirect("/estagios/{$estagio->id}");
+    }  
 
     #Funções Concluido
 

@@ -17,7 +17,6 @@
             <th>CNPJ</th>
             <th>Email</th>
             <th>Representante</th>
-            <th>Supervisor Interno</th>
             <th>Ações</th>
         </tr>
     </thead>
@@ -35,7 +34,6 @@
                 <td>{{$empresa->cnpj}}</td>
                 <td>{{$empresa->email}}</td>
                 <td>{{$empresa->nome_do_representante}}</td>
-                <td>{{$empresa->nome_do_supervisor_estagio}}</td>
                 <td style="text-align:center">
 
                 @can('admin_ou_empresa',$empresa->cnpj)
