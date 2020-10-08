@@ -69,6 +69,7 @@ Route::post('/mover_analise_tecnica/{estagio}', [EstagioWorkflowController::clas
 
 # Rotas Análise Acadêmica
 Route::post('/analise_academica/{estagio}', [EstagioWorkflowController::class,'analise_academica']);
+Route::get('/voltar_analise_academica/{estagio}', [EstagioWorkflowController::class,'voltar_analise_academica']);
 Route::get('/editar_analise_academica/{estagio}', [EstagioWorkflowController::class,'editar_analise_academica']);
 
 
