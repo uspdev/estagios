@@ -11,6 +11,8 @@ class EmpresaUtils
 {
 
     public static function login($cnpj,$email) {
+        $cnpj = preg_replace("/[^0-9]/", "", $request->cnpj);
+        
         $user = self::user([
             'cnpj'     => $cnpj,
             'email'    => $email,
