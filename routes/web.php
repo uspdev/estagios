@@ -66,6 +66,10 @@ Route::get('/empresa_update', [EmpresaController::class,'empresa_update']);
 Route::post('/analise_tecnica/{estagio}', [EstagioWorkflowController::class,'analise_tecnica']);
 Route::post('/enviar_para_analise_tecnica/{estagio}', [EstagioWorkflowController::class,'enviar_para_analise_tecnica']);
 Route::post('/mover_analise_tecnica/{estagio}', [EstagioWorkflowController::class,'mover_analise_tecnica']);
+Route::post('/enviar_assinatura/{estagio}', [EstagioWorkflowController::class,'enviar_assinatura']);
+
+# Rotas Assinatura
+Route::get('/retornar_assinatura/{estagio}', [EstagioWorkflowController::class,'retornar_assinatura']);
 
 # Rotas Análise Acadêmica
 Route::post('/analise_academica/{estagio}', [EstagioWorkflowController::class,'analise_academica']);

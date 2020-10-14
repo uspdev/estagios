@@ -14,7 +14,13 @@
     </div>
 
     <div class="form-group">
-        <button type="submit" class="btn btn-info" name="analise_tecnica_action" value="indeferimento_analise_tecnica">Devolver para empresa
+        <button type="submit" class="btn btn-info" name="analise_tecnica_action" value="indeferimento_analise_tecnica">
+            Devolver para empresa
+        </button>
+
+        <button type="submit" class="btn btn-success" name="analise_tecnica_action" value="enviar_assinatura"
+            onClick="return confirm('Tem certeza que quer enviar para Assinatura?')" >
+            Enviar para assinatura
         </button>
 
         <button type="submit" class="btn btn-success" name="analise_tecnica_action" value="deferimento_analise_tecnica"
