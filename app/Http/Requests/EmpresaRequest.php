@@ -25,36 +25,28 @@ class EmpresaRequest extends FormRequest
     public function rules()
     { 
         $rules = [
-                    'nome' => 'required',
-                    //'razao_social' => 'required',
-                   'cnpj' => [
-                        'required',
-                        'cnpj'
-                    ],
-                    'email' => 'required|email',
-                    'area_de_atuacao' => 'required',
-                    'endereco' => 'required',
-                    'cep' => 'required|formato_cep',
-                    //'nome_de_contato' => 'required',
-                    //'telefone_de_contato' => 'required|numeric|min:10',
-                    'nome_do_representante' => 'required',
-                    'cargo_do_representante' => 'required',
-                    //'nome_do_supervisor_estagio' => 'required',
-                    //'cargo_do_supervisor_estagio' => 'required',
-                    //'telefone_do_supervisor_estagio' => 'required|numeric|min:10',
-                    //'email_do_supervisor_estagio' => 'required|email',
-                    //'email_de_contato' => 'required|email',
-                    'conceder_acesso_cnpj' => ''
-                ];
+            'nome' => 'required',
+            'cnpj' => [
+                'required',
+                'cnpj'
+            ],
+            'email' => 'required|email',
+            'area_de_atuacao' => 'required',
+            'endereco' => 'required',
+            'cep' => 'required|formato_cep',
+            'nome_do_representante' => 'required',
+            'cargo_do_representante' => 'required',
+            'conceder_acesso_cnpj' => '',
+            'password' => 'nullable|confirmed|min:10',
+            'password_confirmation' => 'nullable',
+        ];
 
         if ($this->method() == 'PATCH' || $this->method() == 'PUT'){
             array_push($rules['cnpj'], 'unique:empresas,cnpj,' .$this->empresa->id);
-            #$rules['email'] =  'required|email|unique:empresas,email,'.$this->empresa->email;
         }
         else{
             array_push($rules['cnpj'], 'unique:empresas');
         }
-        #dd($rules);
         return $rules;
     }
 

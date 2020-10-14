@@ -10,7 +10,7 @@ use App\Models\Convenio;
 use Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
-use App\Utils\LoginEmpresa;
+use App\Utils\EmpresaUtils;
 
 class EmpresaController extends Controller
 {
@@ -50,18 +50,8 @@ class EmpresaController extends Controller
     public function store(EmpresaRequest $request){
         if (Gate::allows('empresa') | Gate::allows('admin')) {
             $validated = $request->validated();
-
-            /* Vamos validar na mão depois passaremos para o request */
-            // Verificar se o email não está cadastrado para outra empresa
-            $outra_empresa = Empresa::where('email',$validated['email'])->first();
-            if($outra_empresa){
-                $request->session()->flash('alert-danger',"Email {$validated['email']} cadastrado para outra empresa, escolha outro");
-                $validated['email'] = $validated['email'] . '.invalido';
-                $empresa = Empresa::create($validated);
-                return redirect("/empresas/$empresa->id/edit");
-            }
-
             $empresa = Empresa::create($validated);
+            EmpresaUtils::user($validated);
             return redirect("/empresas/$empresa->id");
         } else {
             $request->session()->flash('alert-danger','Usuário sem permissão');
@@ -70,7 +60,6 @@ class EmpresaController extends Controller
     }
 
     public function edit(Empresa $empresa){
-
         if (Gate::allows('empresa', $empresa->cnpj) | Gate::allows('admin')) {
             return view('empresas.edit')->with('empresa', $empresa);
         } else {
@@ -80,23 +69,10 @@ class EmpresaController extends Controller
     }
 
     public function update(EmpresaRequest $request, Empresa $empresa){
-        
         if (Gate::allows('empresa', $empresa->cnpj) | Gate::allows('admin')) {
-            $validated = $request->validated();
-
-            /* Vamos validar na mão depois passaremos para o request */
-            // Verificar se o email não está cadastrado para outra empresa
-            $outra_empresa = Empresa::where('email',$validated['email'])->first();
-            if($outra_empresa){
-                if($outra_empresa->id != $empresa->id){
-                    $request->session()->flash('alert-danger',"Email {$validated['email']} cadastrado para outra empresa, escolha outro");
-                    $validated['email'] = $empresa->email;
-                    $empresa->update($validated);
-                    return redirect("/empresas/$empresa->id/edit");
-                }
-            }
-            
+            $validated = $request->validated();           
             $empresa->update($validated);
+            EmpresaUtils::user($validated);
             return redirect("/empresas/$empresa->id");
         } else {
             $request->session()->flash('alert-danger','Usuário sem permissão');
@@ -104,17 +80,7 @@ class EmpresaController extends Controller
         }
     }
 
-    public function destroy(Request $request, Empresa $empresa){
-        $this->authorize('admin');
-        /* Não vamos permitir deletar empresa, quebra o sistema */
-        //$empresa->delete();
-        return redirect('/empresas');
-    }
-
-    /* Métodos além do CRUD */
     public function empresa_update(Request $request){
-        $this->authorize('empresa');
-        
         $cnpj = Auth::user()->cnpj;
         $this->authorize('empresa', $cnpj);
 
@@ -132,7 +98,6 @@ class EmpresaController extends Controller
     public function logandoComoEmpresa($cnpj){
 
         if (Gate::allows('empresa') | Gate::allows('admin')) {
-
             $cnpj = preg_replace("/[^0-9]/", "", $cnpj);
             $empresa = Empresa::where('cnpj',$cnpj)->first();
 
@@ -144,11 +109,14 @@ class EmpresaController extends Controller
                     }
                 }
             }
-
-            $user = LoginEmpresa::login($empresa->cnpj,$empresa->email);
-
-            request()->session()->flash("alert-info","Login alterado! Agora você está logado(a) como {$user->name} e {$user->email}");
-
+            $user = EmpresaUtils::user([
+                'cnpj'     => $empresa->cnpj,
+                'email'    => $empresa->email,
+                'password' => $empresa->nome,
+                'nome'     => ''
+            ]);
+            auth()->login($user);
+            request()->session()->flash("alert-info", "Logado(a) como {$user->name}");
         } else {
             request()->session()->flash('alert-danger','Usuário sem permissão');
         }
@@ -160,4 +128,11 @@ class EmpresaController extends Controller
         $empresas = Empresa::where('conceder_acesso_cnpj',Auth::user()->cnpj)->get();
         return view('empresas.index', compact('empresas'));
     }
+
+    public function destroy(Request $request, Empresa $empresa){
+        $this->authorize('admin');
+        $request->session()->flash('alert-danger','Recurso desativado');
+        return redirect('/empresas');
+    }
+
 }
