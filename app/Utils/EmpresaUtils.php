@@ -25,8 +25,8 @@ class EmpresaUtils
         $empresa = Empresa::where('cnpj',$cnpj)->first();
         if (is_null($empresa)) {
             $empresa = new Empresa;
-            $empresa->cnpj = $request->cnpj;
-            $empresa->email = $request->email;
+            $empresa->cnpj = $cnpj;
+            $empresa->email = $email;
         }
         return $empresa;
     }
