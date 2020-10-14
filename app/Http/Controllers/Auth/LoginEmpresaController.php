@@ -43,20 +43,7 @@ class LoginEmpresaController extends Controller
         }
 
         $cnpj = preg_replace("/[^0-9]/", "", $request->cnpj);
-
-        /* Se há um campo de senha, vamos logar por ele */
-        if($request->password){
-            $user = User::where('cnpj',$cnpj)->first();
-            if($user){
-                if (Hash::check($request->password, $user->password)) {
-                    $empresa = EmpresaUtils::login($request->cnpj, $request->email);
-                    return view('empresas.edit')->with('empresa', $empresa);
-                }
-            }
-            request()->session()->flash('alert-danger','Senha não confere!');
-            return redirect('/login/empresa');
-        }
-        
+       
         # Se a empresa já tem cadastro, mas o email informando não coincide com o banco de dados
         $empresa = Empresa::where('cnpj',$cnpj)
                   ->orWhere('email',$request->email)->first();
@@ -74,6 +61,19 @@ class LoginEmpresaController extends Controller
                     ");
                 return redirect('/login/empresa');
             }
+        }
+
+        /* Se há um campo de senha, vamos logar por ele */
+        if($request->password){
+            $user = User::where('cnpj',$cnpj)->first();
+            if($user){
+                if (Hash::check($request->password, $user->password)) {
+                    $empresa = EmpresaUtils::login($request->cnpj, $request->email);
+                    return view('empresas.edit')->with('empresa', $empresa);
+                }
+            }
+            request()->session()->flash('alert-danger','Senha não confere!');
+            return redirect('/login/empresa');
         }
         
         /* Se a empresa não tem cadastro ou o cnpj coincide com o cadastro, enviamos a url de login */
