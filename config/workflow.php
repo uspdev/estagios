@@ -20,6 +20,13 @@ $workflow_estagio = [
                 'label' => "Em análise Técnica \n (Setor de Graduação)"
             ]
         ],
+
+        'assinatura' => [
+            'metadata' => [
+                'label' => "Aguardando Assinaturas"
+            ]
+        ],
+
         'em_analise_academica' => [
             'metadata' => [
                 'label' => "Em análise Acadêmica \n (Docente)"
@@ -66,6 +73,22 @@ $workflow_estagio = [
             ],
             'from' => 'em_analise_tecnica',
             'to' => 'em_elaboracao'
+        ],
+
+        'enviar_assinatura' => [
+            'metadata' => [
+                'label' => "Enviar Assinaturas"
+            ],
+            'from' => 'em_analise_tecnica',
+            'to' => 'assinatura'
+        ],
+
+        'retornar_assinatura' => [
+            'metadata' => [
+                'label' => "Retornar Assinaturas"
+            ],
+            'from' => 'assinatura',
+            'to' => 'em_analise_tecnica'
         ],
 
         'analise_academica' => [

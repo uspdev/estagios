@@ -104,6 +104,12 @@ class Estagio extends Model
                 'name' => "Análise Técnica",
                 'optional' => 'Setor de Graduação'
             ],
+
+            'assinatura' => [
+                'name' => "Assinatura",
+                'optional' => 'Setor de Graduação'
+            ],
+
             'em_analise_academica' => [
                 'name' => "Parecer de Mérito",
                 'optional' => 'Docente'

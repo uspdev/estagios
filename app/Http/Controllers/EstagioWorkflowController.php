@@ -71,6 +71,17 @@ class EstagioWorkflowController extends Controller
                 return redirect("/estagios/{$estagio->id}");
             }
 
+            if($request->analise_tecnica_action == 'enviar_assinatura') {
+                $request->validate([
+                    'analise_tecnica' => 'required',
+                ]);
+                $estagio->last_status = $estagio->status;
+                $estagio->status = 'assinatura';
+                $estagio->save();
+                Mail::send(new EstagioStatusChangeMail($estagio));
+                return redirect("/estagios/{$estagio->id}");
+            }
+
             if($request->analise_tecnica_action == 'indeferimento_analise_tecnica'){
                 $request->validate([
                     'analise_tecnica' => 'required',
@@ -164,6 +175,20 @@ class EstagioWorkflowController extends Controller
     }  
     
     public function voltar_analise_academica(Request $request, Estagio $estagio){
+
+        if (Gate::allows('admin')) {
+            $estagio->last_status = $estagio->status;
+            $estagio->status = 'em_analise_tecnica';
+            $estagio->save();
+        } else {
+            request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
+        }
+        return redirect("/estagios/{$estagio->id}");
+    }  
+
+    #Funções Assinatura
+
+    public function retornar_assinatura(Request $request, Estagio $estagio){
 
         if (Gate::allows('admin')) {
             $estagio->last_status = $estagio->status;

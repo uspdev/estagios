@@ -104,6 +104,10 @@ Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise
       @include('estagios.partials.em_analise_academica')
       @break              
 
+    @case('assinatura')
+    @include('estagios.partials.assinatura')
+      @break
+
     @case('concluido')
 
     @include('estagios.partials.concluido')
