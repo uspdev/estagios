@@ -13,12 +13,6 @@
   <div class="card-header"><b>Login para empresas</b></div>
   
   <div class="card-body">
-    <div class="row">
-      <div class="col-sm">
-        Será enviado um link para o email do representante da empresa para a realização do login.
-      </div>
-    </div>
-    <br>
 
     <div class="row">
       <div class="col-sm form-group">
@@ -27,10 +21,20 @@
       </div>
 
       <div class="col-sm form-group">
-        <label class="col-sm required" for="titulo">Email do Representante da Empresa: </label>
+        <label class="col-sm required" for="email">Email do Representante da Empresa: </label>
           <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}">
       </div>
+    </div>
 
+    <div class="row">
+      <div class="col-sm form-group">
+        <label class="col-sm required" for="titulo">Senha </label>
+          <input type="password" class="form-control" id="password" name="password">
+          <small>
+          Deixe a senha em branco caso queira fazer login através de um 
+          link enviado para o email.
+          </small>
+      </div>
     </div>   
   
     <br>
@@ -40,6 +44,7 @@
       </div>
     </div>  
   </div>
+
 </div>
 
 </form>

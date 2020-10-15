@@ -39,10 +39,19 @@
                 <input type="email" maxlength="128" class="form-control" name="email" value="{{old('email', $empresa->email)}}">
             </div>   
         </div>
-        </div>
-        <hr>
+
         <div class="row">
+            <div class="col-4 form-group">
+                <label for="password" >Senha:</label>
+                <input type="password" maxlength="128" class="form-control" name="password">
+            </div>
+            <div class="col-4 form-group">
+                <label for="password_confirmation">Repetir Senha:</label>
+                <input type="password" maxlength="128" class="form-control" name="password_confirmation">
+            </div>
         </div>
+
+        <hr>
 
         <div class="row">
           <div class="col-sm form-group">
@@ -66,6 +75,8 @@
             </select>
           </div>
         </div>
+
+
 
         <div class="row">
             <div class="col-sm form-group">

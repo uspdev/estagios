@@ -16,7 +16,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\LoginEmpresaMail;
 use App\Models\Empresa;
-use App\Utils\LoginEmpresa;
+use App\Utils\EmpresaUtils;
+use Illuminate\Support\Facades\Hash;
 
 class LoginEmpresaController extends Controller
 {
@@ -34,7 +35,7 @@ class LoginEmpresaController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'email' => 'required|email',
-            'cnpj' => 'required|cnpj'
+            'cnpj'  => 'required|cnpj'
           ]);
 
         if($validator->fails()){
@@ -42,7 +43,8 @@ class LoginEmpresaController extends Controller
         }
 
         $cnpj = preg_replace("/[^0-9]/", "", $request->cnpj);
-        # Se a empresa já tem cadastro, mas o email informando não coincide com o banco de dados */
+       
+        # Se a empresa já tem cadastro, mas o email informando não coincide com o banco de dados
         $empresa = Empresa::where('cnpj',$cnpj)
                   ->orWhere('email',$request->email)->first();
 
@@ -59,6 +61,19 @@ class LoginEmpresaController extends Controller
                     ");
                 return redirect('/login/empresa');
             }
+        }
+
+        /* Se há um campo de senha, vamos logar por ele */
+        if($request->password){
+            $user = User::where('cnpj',$cnpj)->first();
+            if($user){
+                if (Hash::check($request->password, $user->password)) {
+                    $empresa = EmpresaUtils::login($request->cnpj, $request->email);
+                    return view('empresas.edit')->with('empresa', $empresa);
+                }
+            }
+            request()->session()->flash('alert-danger','Senha não confere!');
+            return redirect('/login/empresa');
         }
         
         /* Se a empresa não tem cadastro ou o cnpj coincide com o cadastro, enviamos a url de login */
@@ -77,25 +92,11 @@ class LoginEmpresaController extends Controller
     public function empresa(Request $request)
     {
         if ($request->hasValidSignature()) {
- 
-            LoginEmpresa::login($request->cnpj,$request->email);
-
-            /* Verificando se empresa tem cadastro, se não, redirecionar para pagina
-               de criação da empresa, se não, redirecionar para página de atualização dos dados */
-               
-            $empresa = Empresa::where('cnpj',$request->cnpj)->first();
-            if (is_null($empresa)) {
-                $empresa = new Empresa;
-                $empresa->cnpj = $request->cnpj;
-                $empresa->email = $request->email;
-                return view('empresas.create')->with('empresa',$empresa);
-            } else {
-                return view('empresas.edit')->with('empresa', $empresa);
-            }
-            
+            $empresa = EmpresaUtils::login($request->cnpj, $request->email);
+            return view('empresas.edit')->with('empresa', $empresa);
         } else {
             $request->session()->flash('alert-danger',
-            "Url de login expirada, crie uma url nova!");
+                "Url de login expirada, crie uma url nova!");
             return redirect('/login/empresa');
         }
     }
