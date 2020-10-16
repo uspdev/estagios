@@ -45,8 +45,7 @@ class LoginEmpresaController extends Controller
         $cnpj = preg_replace("/[^0-9]/", "", $request->cnpj);
        
         # Se a empresa já tem cadastro, mas o email informando não coincide com o banco de dados
-        $empresa = Empresa::where('cnpj',$cnpj)
-                  ->orWhere('email',$request->email)->first();
+        $empresa = Empresa::where('cnpj',$cnpj)->first();
 
         if (!is_null($empresa)) {
             if( ($empresa->email != $request->email) | ($empresa->cnpj != $cnpj) ){

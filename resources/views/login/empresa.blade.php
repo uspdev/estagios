@@ -31,8 +31,11 @@
         <label class="col-sm required" for="titulo">Senha </label>
           <input type="password" class="form-control" id="password" name="password">
           <small>
-          Deixe a senha em branco caso queira fazer login através de um 
-          link enviado para o email.
+            <b>Deixe a senha em branco:</b>
+            <ul>
+              <li> Caso queira fazer login através de um link enviado para o email</li> 
+              <li> Caso sua empresa ainda não esteja cadastrada </li>
+            </ul>
           </small>
       </div>
     </div>   
