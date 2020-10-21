@@ -62,6 +62,8 @@ Análise técnica do setor de Graduação realizada por: {{ $estagio->analise_te
 Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise_alteracao_user->name  }}<br>
 @endif
 
+@include('files.partials.form')
+
 <br> 
 
 @switch($estagio->status)
