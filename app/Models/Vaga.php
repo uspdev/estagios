@@ -19,4 +19,12 @@ class Vaga extends Model
         /* Chega no formato DD/MM/YYYY e vamos salvar como YYYY-MM-DD */
        $this->attributes['divulgar_ate'] = implode('-',array_reverse(explode('/',$value)));
     }
+
+    public function statusOptions(){
+        return [
+            'Aprovada',
+            'Reprovada',
+            'Em análise'
+        ];
+    }
 }

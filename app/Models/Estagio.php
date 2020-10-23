@@ -13,6 +13,10 @@ class Estagio extends Model
 
     protected $guarded = ['id'];
 
+    public function arquivos(){
+        return $this->hasMany('App\Models\File');
+    }
+
     public function especifiquevtOptions(){
         return [
             'Mensal',
@@ -144,4 +148,5 @@ class Estagio extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
 }

@@ -1,4 +1,4 @@
-Enviar documentos:
+Enviar documentos (Apenas arquivos em formato PDF):
 
 <form method="post" enctype="multipart/form-data" action="/files/store">
     @csrf 
