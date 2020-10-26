@@ -50,7 +50,7 @@
     <select name="status" class="form-control" id="status">
       <option value="" selected="">- Selecione -</option>
         @foreach ($vaga->statusOptions() as $option)
-          @if (old('status') == '' and isset($vagasS->status) )
+          @if (old('status') == '' and isset($vaga->status) )
              <option value="{{$option}}" {{ ( $vaga->status == $option) ? 'selected' : ''}}>
               {{$option}}
              </option>

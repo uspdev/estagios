@@ -19,42 +19,6 @@
 <br>
 
 <div class="card">
-    <div class="card-header"><b>Arquivos Enviados</b></div>
-      <div class="card-body">
-
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Arquivo</th>
-            @can('admin')
-            <th>Ações</th>
-            @endcan('admin')
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>            
-            @foreach($estagio->arquivos as $arquivo)
-            <a href="/files/{{$arquivo->id}}" target="_blank"><i class="fas fa-file-pdf"></i> Arquivo </a>
-            @endforeach
-            </td>
-
-            @can('admin')
-            <td>            
-
-            <div>
-            </td>
-            @endcan('admin')
-
-          </tr>
-        </tbody>
-      </table>
-
-
-
-      </div>
-
-      <br>
 
       <div class="card-header"><b>Informações Gerais</b></div>
         <div class="card-body">
