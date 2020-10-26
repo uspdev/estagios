@@ -9,7 +9,6 @@
 <div class="card-header"><b>Justificativa da análise acadêmica</b></div>
 <div class="card-body">
 
-
 <form method="POST" action="/analise_academica/{{$estagio->id}}">
     @csrf
 

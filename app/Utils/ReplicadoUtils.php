@@ -25,4 +25,23 @@ class ReplicadoUtils {
         }
         return false;
     }
+
+    public static function grade($codpes){
+        $query = "SELECT DISTINCT h.coddis, t.codtur, t.diasmnocp from HISTESCOLARGR h 
+        INNER JOIN OCUPTURMA t ON h.codtur = t.codtur
+        WHERE h.codpes = convert(int,:codpes) and h.rstfim = NULL";
+        $param = [
+            'codpes' => $codpes,
+        ];
+        return DBreplicado::fetchAll($query, $param);
+    }
+
+    public static function media($codpes){
+        $query = "SELECT notfim from HISTESCOLARGR where codpes = convert(int,:codpes) AND rstfim != NULL;";
+        $param = [
+            'codpes' => $codpes,
+        ];
+        $notas = DBreplicado::fetchAll($query, $param);
+        // Calcular a média  e retorná-la
+    }
 }
