@@ -18,8 +18,13 @@ class CreateFilesTable extends Migration
             $table->timestamps();
             $table->string('original_name');
             $table->string('path');
-            $table->unsignedBigInteger('id_arquivo')->nullable();
-            $table->foreign('id_arquivo')->references('id')->on('estagios')->onDelete('set null');
+            $table->unsignedBigInteger('estagio_id')->nullable();
+            $table->foreign('estagio_id')->references('id')->on('estagios')->onDelete('set null');
+
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('estagios')->onDelete('set null');
+
+
         });
     }
 

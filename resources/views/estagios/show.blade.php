@@ -34,7 +34,9 @@
         <tbody>
           <tr>
             <td>            
-            INSIRA AQUI OS ARQUIVOS
+            @foreach($estagio->arquivos as $arquivo)
+            <a href="/files/{{$arquivo->id}}" target="_blank"><i class="fas fa-file-pdf"></i> Arquivo </a>
+            @endforeach
             </td>
 
             @can('admin')

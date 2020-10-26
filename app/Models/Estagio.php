@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use ZeroDaHero\LaravelWorkflow\Traits\WorkflowTrait;
+use App\Models\File;
 
 class Estagio extends Model
 {
@@ -14,7 +15,7 @@ class Estagio extends Model
     protected $guarded = ['id'];
 
     public function arquivos(){
-        return $this->hasMany('App\Models\File');
+        return $this->hasMany(File::class);
     }
 
     public function especifiquevtOptions(){
