@@ -42,6 +42,30 @@
     </div>
   </div>
 
+  @can('admin')
+  <hr>
+  <div class="row">
+    <div class="col-sm form-group">
+    <label for="status" class="required"><strong>STATUS DA VAGA: </strong></label>
+    <select name="status" class="form-control" id="status">
+      <option value="" selected="">- Selecione -</option>
+        @foreach ($vaga->statusOptions() as $option)
+          @if (old('status') == '' and isset($vagasS->status) )
+             <option value="{{$option}}" {{ ( $vaga->status == $option) ? 'selected' : ''}}>
+              {{$option}}
+             </option>
+          @else
+              <option value="{{$option}}" {{ ( old('status') == $option) ? 'selected' : ''}}>
+              {{$option}}
+              </option>
+          @endif                       
+        @endforeach    
+    </select> 
+    </div>
+  </div>
+  @endcan('admin')
+
+
   <div class="row">  
     <div class="col-sm form-group">
       <button type="submit" class="btn btn-success">Enviar</button>

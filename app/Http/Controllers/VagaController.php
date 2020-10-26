@@ -11,10 +11,18 @@ use Illuminate\Support\Facades\Gate;
 class VagaController extends Controller
 {
     public function index(Request $request){
-        $this->authorize('empresa');
+        if ( Gate::allows('empresa')) {
         $cnpj = Auth::user()->cnpj;
         $vagas = Vaga::where('cnpj',$cnpj)->paginate(10);
         return view('vagas.index')->with('vagas',$vagas);
+    } else if ( Gate::allows('admin')){
+        $vagas = Vaga::paginate(10);
+    }
+
+    return view('vagas.index')->with([
+        'vagas' => $vagas,
+    ]);
+    
     }
 
     public function show(Vaga $vaga){
@@ -22,13 +30,13 @@ class VagaController extends Controller
     }
 
     public function create(){
-        $this->authorize('empresa');
+        $this->authorize('admin_ou_empresa');
         return view('vagas.create')->with('vaga',new Vaga);
     }
 
     public function store(VagaRequest $request){
 
-        $this->authorize('empresa');
+        $this->authorize('admin_ou_empresa');
         
         $validated = $request->validated();
         $validated['cnpj'] = Auth::user()->cnpj;

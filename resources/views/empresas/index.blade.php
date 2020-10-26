@@ -7,9 +7,21 @@
 @section('content')
 @include('flash')
 
+<form method="get" action="/empresas">
+    <div class="row">
+        <div class="col-sm input-group">
+        <input type="text" class="form-control" name="busca" value="{{ Request()->busca }}" placeholder="Busca somente por CNPJ">
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-success"> Buscar </button>
+            </span>
+        </div>
+    </div>
+</form>
 <br>
 
-<table class="table table-striped" id="datatable">
+{{ $empresas->appends(request()->query())->links() }}
+
+<table class="table table-striped" id="index">
 
     <thead>
         <tr>

@@ -17,17 +17,7 @@
       
         <button type="submit" style="background-color: transparent;border: none;" >
           <a href="{{ route('vagas.edit',$vaga->id) }}"><i class="far fa-edit"></a></i>
-        </button>
-
-        <form method="POST" action="/vagas/{{$vaga->id}}">
-          @csrf
-          @method('delete')
-
-          <button type="submit" style="background-color: transparent;border: none;">
-            <i class="far fa-trash-alt" color="#007bff"></i>
-          </button>
-
-        </form>     
+        </button>   
 
     </tr>
     </tbody>
@@ -56,6 +46,8 @@
         <b>Horário do Estágio:</b> {{ $vaga->horario }}
         <br></br>
         <b>Divulgar até:</b> {{ $vaga->divulgar_ate }}
+        <br></br>
+        <b>Status da Vaga:</b> {{ $vaga->status }}
         <br></br>
 
       </div>

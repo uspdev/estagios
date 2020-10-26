@@ -19,9 +19,9 @@ class EmpresaController extends Controller
         if(isset($request->busca)) {
             $empresas = Empresa::where('nome','LIKE',"%{$request->busca}%")
                                 ->orWhere('cnpj','LIKE',"%{$request->busca}%")
-                ->get();
+                ->paginate(10);
         } else {
-            $empresas = Empresa::get();
+            $empresas = Empresa::paginate(10);
         }        
         return view('empresas.index', compact('empresas'));
     }
@@ -29,8 +29,8 @@ class EmpresaController extends Controller
     public function show(Request $request, Empresa $empresa){
 
         if (Gate::allows('empresa', $empresa->cnpj) | Gate::allows('admin')) {
-            $estagios = Estagio::where('cnpj',$empresa->cnpj)->get();
-            $convenios = Convenio::where('cnpj',$empresa->cnpj)->get();
+            $estagios = Estagio::where('cnpj',$empresa->cnpj)->paginate(10);
+            $convenios = Convenio::where('cnpj',$empresa->cnpj)->paginate(10);
             return view('empresas.show')->with([
                 'empresa'  => $empresa,
                 'estagios' => $estagios,
