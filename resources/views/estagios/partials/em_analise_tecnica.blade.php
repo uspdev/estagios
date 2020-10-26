@@ -1,4 +1,4 @@
-
+<br>
 <div class="card">
 <div class="card-header"><b>Justificativa da análise técnica</b></div>
 <div class="card-body">

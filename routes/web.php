@@ -12,6 +12,7 @@ use App\Http\Controllers\ConvenioController;
 use App\Http\Controllers\PDFsController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\EstagioWorkflowController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\Auth\LoginEmpresaController;
 use App\Http\Controllers\Auth\LoginUspController;
 use App\Http\Controllers\Auth\LogoutController;
@@ -26,6 +27,7 @@ Route::resource('/vagas',VagaController::class);
 Route::resource('/empresas', EmpresaController::class);
 Route::resource('/avisos',AvisoController::class);
 Route::resource('/convenios',ConvenioController::class);
+Route::resource('/files', FileController::class);
 
 
 #PDF's 
@@ -95,4 +97,7 @@ Route::get('/meus_pareceres', [PareceristaController::class,'meusPareceres']);
 
 Route::post('/parecer_merito/{estagio}', [EstagioController::class,'alterarParecerista']);
 
+#arquivos
+
+Route::post('/files/store', [FileController::class,'store']);
 
