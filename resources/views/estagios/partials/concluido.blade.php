@@ -1,19 +1,26 @@
 @can('admin')
-    <br><br>
+      <div class="card">
+          <div class="card-header"><b>Área de Administrador</b></div> 
+            <div class="card-body">
+              @include('estagios.partials.gerenciar_parecerista')
+            </div>
+          </div>
+      </div>
+    <br>
     <form method="POST" action="/mover_analise_tecnica/{{$estagio->id}}">
     @csrf
-        <button type="submit" class="btn btn-success" name="rescisao_action" value="rescisao"
+        <button type="submit" class="btn btn-info" name="rescisao_action" value="rescisao"
                 onClick="return confirm('Tem certeza que deseja mover estágio para análise técnica?')" >
                 Mover estágio para análise técnica
         </button>   
     </form>
-    <br>
-@endcan
 
+@endcan
 
 @can('admin_ou_empresa',$estagio->cnpj)
 
 <div>
+    <br>
     <a href="/iniciar_alteracao/{{$estagio->id}}" class="btn btn-info" onClick="return confirm('Tem certeza que deseja iniciar o processo de alterações?')">Solicitar Aditivo de Alterações</a>
     <hr>
     
