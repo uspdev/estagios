@@ -15,7 +15,7 @@ class FileSeeder extends Seeder
     {
         $entrada = [
             'original_name' => 'PDF de Teste',
-            'path' => './teste/PDFdeTeste.pdf',
+            'path' => './tmp/PDFdeTeste.pdf',
             'estagio_id'  => '1',
             'user_id'  => '1',
     ];
