@@ -41,11 +41,12 @@ class FileController extends Controller
     {
         $request->validate([
             'file' => 'required|file|mimes:pdf',
+            'original_name' => 'required',
             'estagio_id' => 'required|integer|exists:estagios,id'
         ]);
         $file = new File;
         $file->estagio_id = $request->estagio_id;
-        $file->original_name = $request->file('file')->getClientOriginalName();
+        $file->original_name = $request->original_name;
         $file->path = $request->file('file')->store('.');
         $file->user_id = Auth::user()->id;
         $file->save();

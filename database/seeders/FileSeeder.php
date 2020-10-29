@@ -1,8 +1,8 @@
 <?php
 
 namespace Database\Seeders;
-
 use Illuminate\Database\Seeder;
+use App\Models\File;
 
 class FileSeeder extends Seeder
 {
@@ -13,6 +13,14 @@ class FileSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $entrada = [
+            'original_name' => 'PDF de Teste',
+            'path' => './teste/PDFdeTeste.pdf',
+            'estagio_id'  => '1',
+            'user_id'  => '1',
+    ];
+ 
+    File::create($entrada);
+    FIle::factory(40)->create();
     }
 }

@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             ConvenioSeeder::class,
             AvisoSeeder::class,
             VagaSeeder::class,
+            FileSeeder::class,
         ]);
     }
 }

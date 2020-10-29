@@ -25,6 +25,8 @@ class VagaFactory extends Factory
      */
     public function definition()
     {
+        $valstatus = ['Aprovada','Reprovada','Em análise'];
+
         return [
             'cnpj' => Empresa::factory()->create()->cnpj, 
             'titulo' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
@@ -34,6 +36,7 @@ class VagaFactory extends Factory
             'horario' => $this->faker->time($format = 'H:i:s', $max = 'now'),
             'beneficios' => $this->faker->text,
             'divulgar_ate' =>$this->faker->dateTimeBetween($startDate = '-2 years',$endDate = '+ 2 years')->format('Y-m-d'),
+            'status' => $valstatus[array_rand($valstatus)],
         ];
     }
 }

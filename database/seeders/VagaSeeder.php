@@ -22,7 +22,8 @@ class VagaSeeder extends Seeder
             'salario' => 'R$ 1000,00',
             'horario' => '8h às 18h',
             'beneficios' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            'divulgar_ate' => '2020-12-20'
+            'divulgar_ate' => '2020-12-20',
+            'status' => 'Aprovada',
         ];
         
         Vaga::create($entrada);
