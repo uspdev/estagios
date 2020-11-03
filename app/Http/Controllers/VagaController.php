@@ -56,6 +56,7 @@ class VagaController extends Controller
     public function update(VagaRequest $request, Vaga $vaga){
         if ( Gate::allows('empresa',$vaga->cnpj) | Gate::allows('admin') ) {
             $this->authorize('admin_ou_empresa',$vaga->cnpj);;
+            $vaga->status = $request->status;
             $validated = $request->validated();
             $vaga->update($validated);
             return redirect("/vagas/{$vaga->id}");

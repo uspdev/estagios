@@ -100,4 +100,5 @@ Route::post('/parecer_merito/{estagio}', [EstagioController::class,'alterarParec
 #arquivos
 
 Route::post('/files/store', [FileController::class,'store']);
+Route::post('/files/destroy', [FileController::class,'destroy']);
 

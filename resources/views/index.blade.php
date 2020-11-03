@@ -44,7 +44,9 @@
         <tbody>
           @foreach($vagas as $vaga)
           <tr>
-            <td><a href="/vagas/{{$vaga->id}}">{{$vaga->titulo}}</a></td>
+            @if(($vaga->status) == 'Aprovada')
+              <td><a href="/vagas/{{$vaga->id}}">{{$vaga->titulo}}</a></td>
+            @endif
           </tr>
           @endforeach
         </tbody>

@@ -3,7 +3,10 @@
 namespace Database\Factories;
 
 use App\Models\File;
+use App\Models\Estagio;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Generator as Faker;
+use Faker\Provider\File as Files;
 
 class FileFactory extends Factory
 {
@@ -21,8 +24,15 @@ class FileFactory extends Factory
      */
     public function definition()
     {
+
+        //número baseado na quantidade de entradas que o factory de estágios gera
+        $id = $this->faker->numberBetween(2, 21);
+
         return [
-            //
+            'original_name' => $this->faker->text($maxNbChars = 25), 
+            'path' => $this->faker->file($sourceDir = './storage/app/teste', $targetDir = './storage/app', false),        
+            'estagio_id'  => $id,
+            'user_id'  => $id,  
         ];
     }
 }

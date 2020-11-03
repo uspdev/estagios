@@ -62,17 +62,13 @@ Análise técnica do setor de Graduação realizada por: {{ $estagio->analise_te
 Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise_alteracao_user->name  }}<br>
 @endif
 
-@can('admin')
-
 <div class="card">
-          <div class="card-header"><b>Área de Administrador - Anexo de Documentos</b></div> 
+          <div class="card-header"><b>Anexo de Documentos</b></div> 
             <div class="card-body">
               @include('files.partials.form')
             </div>
           </div>
       </div>
-
-@endcan('admin')
 
 <br> 
 
@@ -95,24 +91,6 @@ Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise
           <b>Email Cadastrado:</b> {{Uspdev\Replicado\Pessoa::email($estagio->numparecerista)}}</b><br>
                  
       @endif
-      @can('admin')
-      <div class="card">
-          <div class="card-header"><b>Área de Administrador</b></div> 
-            <div class="card-body">
-              @include('estagios.partials.gerenciar_parecerista')
-            </div>
-          </div>
-      </div>
-      <div class="card">
-              <div class="card-header"><b>Retornar Estágio</b></div> 
-              <div class="card-body">
-                      <a class="btn btn-success" onClick="return confirm('Tem certeza que deseja retornar o estágio para a etapa anterior?')" href="/voltar_analise_academica/{{$estagio->id}}">
-                      <i class="fas fa-undo"></i> 
-                      Retornar estágio para etapa anterior </a> <br>
-              </div>
-      </div>
-
-      @endcan('admin')
       @include('estagios.partials.em_analise_academica')
       @break              
 
