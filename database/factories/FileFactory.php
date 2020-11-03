@@ -30,7 +30,7 @@ class FileFactory extends Factory
 
         return [
             'original_name' => $this->faker->text($maxNbChars = 25), 
-            'path' => $this->faker->file($sourceDir = './storage/app/teste', $targetDir = './storage/app', false),        
+            'path' => $this->faker->file('./storage/app'),        
             'estagio_id'  => $id,
             'user_id'  => $id,  
         ];
