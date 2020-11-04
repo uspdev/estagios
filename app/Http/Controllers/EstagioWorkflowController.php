@@ -11,7 +11,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Uspdev\Replicado\Pessoa;
 use App\Mail\enviar_para_analise_tecnica_mail;
-use App\Mail\EstagioStatusChangeMail;
 use Illuminate\Support\Facades\Mail;
 
 class EstagioWorkflowController extends Controller
@@ -67,7 +66,6 @@ class EstagioWorkflowController extends Controller
                 $estagio->last_status = $estagio->status;
                 $estagio->status = 'concluido';
                 $estagio->save();
-                Mail::send(new EstagioStatusChangeMail($estagio));
                 return redirect("/estagios/{$estagio->id}");
             }
 
@@ -78,7 +76,6 @@ class EstagioWorkflowController extends Controller
                 $estagio->last_status = $estagio->status;
                 $estagio->status = 'assinatura';
                 $estagio->save();
-                Mail::send(new EstagioStatusChangeMail($estagio));
                 return redirect("/estagios/{$estagio->id}");
             }
 
@@ -89,7 +86,6 @@ class EstagioWorkflowController extends Controller
                 $estagio->last_status = $estagio->status;
                 $workflow = $estagio->workflow_get();
                 $workflow->apply($estagio,$request->analise_tecnica_action);
-                Mail::send(new EstagioStatusChangeMail($estagio));
                 $estagio->save();
                 return redirect("/estagios/{$estagio->id}");
             } else {
@@ -98,7 +94,6 @@ class EstagioWorkflowController extends Controller
                     $workflow = $estagio->workflow_get();
                     $workflow->apply($estagio,$request->analise_tecnica_action);
                     $estagio->save();
-                    Mail::send(new EstagioStatusChangeMail($estagio));
                 } else {
                     request()->session()->flash('alert-danger','Não enviado para parecer de mérito! Informe o parecerista!');
                 }
@@ -116,7 +111,6 @@ class EstagioWorkflowController extends Controller
             $estagio->last_status = $estagio->status;
             $estagio->status = 'em_analise_tecnica';
             $estagio->save();
-            Mail::send(new EstagioStatusChangeMail($estagio));
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
@@ -153,8 +147,7 @@ class EstagioWorkflowController extends Controller
             // Vamos sempre devolver para o setor de graduação depois do parecer
             $estagio->last_status = $estagio->status;
             $estagio->status = 'em_analise_tecnica';
-            $estagio->save();
-            Mail::send(new EstagioStatusChangeMail($estagio));   
+            $estagio->save(); 
             request()->session()->flash('alert-info','Parecer incluído com sucesso! Estágio enviado para o setor de graduação');    
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
@@ -254,7 +247,6 @@ class EstagioWorkflowController extends Controller
             $workflow = $estagio->workflow_get();
             $workflow->apply($estagio,'rescisao_do_estagio');
             $estagio->save();
-            Mail::send(new EstagioStatusChangeMail($estagio));
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
@@ -268,7 +260,6 @@ class EstagioWorkflowController extends Controller
             $workflow = $estagio->workflow_get();
             $workflow->apply($estagio,'iniciar_alteracao');
             $estagio->save();
-            Mail::send(new EstagioStatusChangeMail($estagio));
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
@@ -292,7 +283,6 @@ class EstagioWorkflowController extends Controller
                 $estagio->status = 'em_analise_tecnica';
                 request()->session()->flash('alert-info', 'Enviado para análise do setor de graduação');
                 $estagio->save();
-                Mail::send(new EstagioStatusChangeMail($estagio));
             }
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
