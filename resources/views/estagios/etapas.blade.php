@@ -49,28 +49,32 @@ Análise técnica do setor de Graduação realizada por: {{ $estagio->analise_te
 @endif
 
 @if($estagio->analise_academica_user)
-  Parecer de mérito realizado por: <b>{{$estagio->analise_academica_user->name}}</b>
+  Parecer de mérito realizado por: <b>{{$estagio->analise_academica_user->name}}</b><br>
+  Status do deferimento do parecer de mérito:<b>{{$estagio->tipodeferimento}}</b><br>
   @can('parecerista')
           <a class="btn btn-info" onClick="return confirm('Tem certeza que deseja editar o parecer de mérito?')" href="/editar_analise_academica/{{$estagio->id}}">
           <i class="far fa-edit"></i> 
           Editar parecer de mérito </a> <br>
   @endcan('parecerista')
-  Status do deferimento do parecer de mérito:<b>{{$estagio->tipodeferimento}}</b>
 @endif
 <br>
 @if($estagio->analise_alteracao_user)
 Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise_alteracao_user->name  }}<br>
 @endif
 
-<div class="card">
-          <div class="card-header"><b>Anexo de Documentos</b></div> 
-            <div class="card-body">
-              @include('files.partials.form')
-            </div>
-          </div>
-      </div>
+@can('admin')
 
+<br>
+  <div class="card">
+    <div class="card-header"><b>Anexo de Documentos</b></div> 
+      <div class="card-body">
+          @include('files.partials.form')
+        </div>
+    </div>
+  </div>
 <br> 
+
+@endcan('admin')
 
 @switch($estagio->status)
 

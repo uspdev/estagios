@@ -183,6 +183,7 @@ $endereco = [
     Nome d{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }} Estagiári{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }}: <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b><br>
     Nº USP: <b>{{ $estagio->numero_usp }}</b><br>
     Curso: <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomhab'] }}</b><br>
+    Período: <b>{{ $replicado_utils->periodo($estagio->numero_usp) }}</b><br>
     Semestre: <b>{{ $replicado_utils->semestreAtual($estagio->numero_usp) }}º</b><br>
     E-mail: <b>{{ $pessoa::email($estagio->numero_usp) }}</b><br>
     Nome da Empresa: <b>{{ $empresa->nome }}</b><br>

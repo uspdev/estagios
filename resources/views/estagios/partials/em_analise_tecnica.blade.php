@@ -41,12 +41,11 @@
       </div>
     </div>
 </div>
-<br>
+<br><br>
 
 @endcan('admin')
 
 @if(!empty($estagio->analise_academica))
-    <br><br>
     <b>Parecerista:</b> {{App\Models\User::find($estagio->analise_academica_user_id)->name}} <br>
     <b>Parecer de Mérito:</b> {{$estagio->analise_academica}}<br>
 @endif
