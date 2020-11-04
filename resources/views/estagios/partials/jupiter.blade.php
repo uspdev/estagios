@@ -1,4 +1,6 @@
 
+<b>Grade horária:</b>
+<br>
 <table class="table">
   <thead>
     <tr>
@@ -8,7 +10,7 @@
     </tr>
    </thead>
     <tbody>
-        @foreach(\App\Utils\ReplicadoUtils::grade(11284280) as $linha)
+        @foreach(\App\Utils\ReplicadoUtils::grade($estagio->numero_usp) as $linha)
             <tr>
                 <td>{{ $linha['coddis'] }} </td>
                 <td>{{ $linha['codtur'] }} </td>
@@ -17,4 +19,6 @@
         @endforeach
     </tbody>
 </table>
-<br>
+
+<b>Média ponderada</b>: {{ $estagio->mediaponderada() }}
+<br><br>

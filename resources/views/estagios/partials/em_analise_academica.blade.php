@@ -27,13 +27,10 @@
 <div class="card-header"><b>Justificativa da análise acadêmica</b></div>
 <div class="card-body">
 
+@include('estagios.partials.jupiter')
+
 <form method="POST" action="/analise_academica/{{$estagio->id}}">
     @csrf
-
-    <label for="mediaponderada">Média ponderada com reprovações: </label>
-        <input type="text" class="form-control" id="mediaponderada" name="mediaponderada" value="{{old('mediaponderada',$estagio->mediaponderada)}}">
-
-    <br> 
 
     <label for="horariocompativel">O Horário é compatível com os horários disponíveis na grade horária do aluno?: </label>
         <input type="text" class="form-control" id="horariocompativel" name="horariocompativel" value="{{old('horariocompativel',$estagio->horariocompativel)}}">

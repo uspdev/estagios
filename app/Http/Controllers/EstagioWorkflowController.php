@@ -128,14 +128,12 @@ class EstagioWorkflowController extends Controller
                 'atividadespertinentes' => 'required',
                 'desempenhoacademico' => 'required',
                 'horariocompativel' => 'required',
-                'mediaponderada' => 'required',
                 'atividadesjustificativa'=> 'required',
                 'analise_academica'=> 'required',
                 'tipodeferimento'=> 'required',
                 'condicaodeferimento'=> 'required_if:tipodeferimento,==,Deferido com Restrição'
             ]);
             $estagio->analise_academica = $request->analise_academica;
-            $estagio->mediaponderada = $request->mediaponderada;
             $estagio->horariocompativel = $request->horariocompativel;
             $estagio->desempenhoacademico = $request->desempenhoacademico;
             $estagio->atividadespertinentes = $request->atividadespertinentes;
@@ -214,7 +212,6 @@ class EstagioWorkflowController extends Controller
             /* Verificar quais campos mais dever ser zerado na renovanção */
             $renovacao->analise_tecnica = null;
             $renovacao->analise_alteracao = null;
-            $renovacao->mediaponderada = null;
             $renovacao->horariocompativel = null;
             $renovacao->desempenhoacademico = null;
             $renovacao->atividadespertinentes= null;

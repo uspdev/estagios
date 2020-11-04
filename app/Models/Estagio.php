@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use ZeroDaHero\LaravelWorkflow\Traits\WorkflowTrait;
 use App\Models\File;
+use App\Utils\ReplicadoUtils;
 
 class Estagio extends Model
 {
@@ -148,6 +149,10 @@ class Estagio extends Model
     public function analise_alteracao_user()
     {
         return $this->belongsTo('App\Models\User');
+    }
+
+    public function mediaponderada() {
+        return ReplicadoUtils::media($this->numero_usp);
     }
 
 }

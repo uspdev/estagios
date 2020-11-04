@@ -27,9 +27,12 @@ class ReplicadoUtils {
     }
 
     public static function grade($codpes){
-        $query = "SELECT DISTINCT h.coddis, t.codtur, t.diasmnocp from HISTESCOLARGR h 
-        INNER JOIN OCUPTURMA t ON h.codtur = t.codtur
-        WHERE h.codpes = convert(int,:codpes) and h.rstfim = NULL";
+        $current = date("Y") . (date("m") > 6? 2:1);
+
+        $query =  "SELECT h.coddis, h.codtur, o.diasmnocp, p.horent, p.horsai FROM HISTESCOLARGR h 
+        INNER JOIN OCUPTURMA o ON (h.coddis = o.coddis AND h.codtur = o.codtur)
+        INNER JOIN PERIODOHORARIO p ON (o.codperhor = p.codperhor)
+        where h.codpes = convert(int,:codpes) and h.codtur LIKE '%{$current}%'";
         $param = [
             'codpes' => $codpes,
         ];
@@ -37,12 +40,19 @@ class ReplicadoUtils {
     }
 
     public static function media($codpes){
-        $query = "SELECT notfim from HISTESCOLARGR where codpes = convert(int,:codpes) AND rstfim != NULL";
+        $query = "SELECT medpon FROM CLASSIFICACAOPROGRAMA where codpes = convert(int,:codpes) and 
+        anosemmtr = convert(int,:anosemmtr)";
+
         $param = [
             'codpes' => $codpes,
+            'anosemmtr' => date("Y") . (date("m") > 6? 2:1)
         ];
-        $notas = DBreplicado::fetchAll($query, $param);
-        // Calcular a média  e retorná-la
+        $result = DBreplicado::fetch($query, $param);
+
+        if(!empty($result)){
+            return $result['medpon'];
+        }
+        return 0;
     }
 
     public static function periodo($codpes){
@@ -52,5 +62,6 @@ class ReplicadoUtils {
         ];
         $result = DBreplicado::fetch($query, $param);
         return $result['perhab'];
-    }   
+    } 
+
 }

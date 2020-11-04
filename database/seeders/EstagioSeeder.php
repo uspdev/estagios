@@ -20,7 +20,6 @@ class EstagioSeeder extends Seeder
             'justificativa' => 'Desenvolvimento PHP',
             'duracao' => '12 meses',
             'atividadespertinentes' => 'Parcialmente',
-            'mediaponderada' => '7.5',
             'horariocompativel' => 'Sim, estágio realizado fora do horário do curso', 
             'desempenhoacademico' => 'Honestamente, podia ser bem melhor',                        
             'data_inicial' => '2020-03-12',

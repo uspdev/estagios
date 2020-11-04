@@ -46,7 +46,6 @@ class EstagioFactory extends Factory
             'justificativa' => $this->faker->text($maxNbChars = 200),
             'duracao' => $this->faker->numberBetween(12, 24), 
             'atividadespertinentes' => $atvpertinentes[array_rand($atvpertinentes)],
-            'mediaponderada' => $this->faker->numberBetween(0, 10),
             'horariocompativel' => $this->faker->text($maxNbChars = 200), 
             'desempenhoacademico' => $this->faker->text($maxNbChars = 200),              
             'data_inicial' => $this->faker->date,
