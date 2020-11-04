@@ -26,7 +26,7 @@
 <div style="border-width: 1px; border-style: solid; border-color: #000; text-align: justify; padding: 0px;">
     Nome do Estagiário(a): <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b><br><br>
     Número USP: <b>{{ $estagio->numero_usp }}</b><br><br>
-    Curso: <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomhab'] }}</b><br><br>
+    Curso: <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomhab'] }}</b>, período <b>{{ $replicado_utils->periodo($estagio->numero_usp) }}</b><br><br>
     Empresa: <b>{{ $empresa->nome }}</b><br><br>
     Área de atuação da Empresa: <b>S{{ $empresa->area_de_atuacao }}</b><br><br>
     Período do Estágio<br>
@@ -73,7 +73,7 @@
 <div style="border-width: 1px; border-style: solid; border-color: #000; text-align: justify; padding: 0px;">
     Nome do Estagiário(a): <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b><br><br>
     Número USP: <b>{{ $estagio->numero_usp }}</b><br><br>
-    Curso: <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomhab'] }}</b><br><br>
+    Curso: <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomhab'] }}</b>, período <b>{{ $replicado_utils->periodo($estagio->numero_usp) }}</b><br><br>
     Empresa: <b>{{ $empresa->nome }}</b><br><br>
     Área de atuação da Empresa: <b>S{{ $empresa->area_de_atuacao }}</b><br><br>
     Período do Estágio<br>

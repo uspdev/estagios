@@ -37,11 +37,20 @@ class ReplicadoUtils {
     }
 
     public static function media($codpes){
-        $query = "SELECT notfim from HISTESCOLARGR where codpes = convert(int,:codpes) AND rstfim != NULL;";
+        $query = "SELECT notfim from HISTESCOLARGR where codpes = convert(int,:codpes) AND rstfim != NULL";
         $param = [
             'codpes' => $codpes,
         ];
         $notas = DBreplicado::fetchAll($query, $param);
         // Calcular a média  e retorná-la
     }
+
+    public static function periodo($codpes){
+        $query = "SELECT perhab FROM SITALUNOATIVOGR WHERE codpes = convert(int,:codpes) ORDER BY dtager DESC";
+        $param = [
+            'codpes' => $codpes,
+        ];
+        $result = DBreplicado::fetch($query, $param);
+        return $result['perhab'];
+    }   
 }
