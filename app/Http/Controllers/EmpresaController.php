@@ -125,7 +125,7 @@ class EmpresaController extends Controller
 
     public function acessar_outra_empresa(){
         $this->authorize('empresa',Auth::user()->cnpj);
-        $empresas = Empresa::where('conceder_acesso_cnpj',Auth::user()->cnpj)->get();
+        $empresas = Empresa::where('conceder_acesso_cnpj',Auth::user()->cnpj)->paginate(10);
         return view('empresas.index', compact('empresas'));
     }
 

@@ -78,4 +78,6 @@
     </tbody>
 </table>
 
+{{ $empresas->appends(request()->query())->links() }}
+
 @endsection('content')
