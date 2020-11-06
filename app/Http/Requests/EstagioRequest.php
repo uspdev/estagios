@@ -51,7 +51,7 @@ class EstagioRequest extends FormRequest
             'pandemiamedidas' => 'required_if:pandemiahomeoffice,==,Não',
 
             //empresa
-            'cnpj' => '',
+            'cnpj' => 'required|exists:empresas,cnpj',
             'nome_de_contato' => 'required',
             'email_de_contato' => 'required|email',
             'telefone_de_contato' => 'required|numeric|min:10',
@@ -59,6 +59,20 @@ class EstagioRequest extends FormRequest
             'cargo_do_supervisor_estagio' => 'required',
             'telefone_do_supervisor_estagio' => 'required|numeric|min:10',
             'email_do_supervisor_estagio' => 'required|email',
+        ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'cnpj' => auth()->user()->cnpj
+        ]);
+    }
+
+    public function messages()
+    {
+        return [
+            'cnpj.exists' => 'Atualize o cadastro da empresa antes de executar essa ação',
         ];
     }
 }

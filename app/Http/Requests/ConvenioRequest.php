@@ -39,9 +39,14 @@ class ConvenioRequest extends FormRequest
             'nome_contato' => 'required',
             'tel_contato' => 'required|numeric|min:10',
             'email_contato' => 'required|email',
-            'cnpj' => 'required|cnpj',
-        ];
+            'cnpj' => 'required|exists:empresas,cnpj',
+        ];       
+    }
 
-       
+    public function messages()
+    {
+        return [
+            'cnpj.exists' => 'Atualize os dados da empresa',
+        ];
     }
 }

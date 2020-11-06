@@ -35,13 +35,8 @@ class VagaController extends Controller
     }
 
     public function store(VagaRequest $request){
-
         $this->authorize('admin_ou_empresa');
-        
-        $validated = $request->validated();
-        $validated['cnpj'] = Auth::user()->cnpj;
-        $vaga = Vaga::create($validated);
-
+        $vaga = Vaga::create($request->validated());
         return redirect ("vagas/{$vaga->id}");
     }
     

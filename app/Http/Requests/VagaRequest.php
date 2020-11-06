@@ -24,7 +24,7 @@ class VagaRequest extends FormRequest
     public function rules()
     {
         return [
-            'cnpj' => '',
+            'cnpj' => 'required|exists:empresas,cnpj',
             'titulo' => 'required',
             'descricao' => 'required',
             'expediente' => 'required',
@@ -32,6 +32,20 @@ class VagaRequest extends FormRequest
             'horario' => 'required',
             'beneficios' => 'required',
             'divulgar_ate' => 'required|data'
+        ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'cnpj' => auth()->user()->cnpj
+        ]);
+    }
+
+    public function messages()
+    {
+        return [
+            'cnpj.exists' => 'Atualize o cadastro da empresa antes de executar essa ação',
         ];
     }
 }

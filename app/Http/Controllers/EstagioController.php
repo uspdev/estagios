@@ -70,7 +70,6 @@ class EstagioController extends Controller
     {
         $this->authorize('empresa');
         $validated = $request->validated();
-        $validated['cnpj'] = Auth::user()->cnpj;
         $validated['status'] = 'em_elaboracao';           
         $estagio = Estagio::create($validated);        
         return redirect("estagios/{$estagio->id}");
