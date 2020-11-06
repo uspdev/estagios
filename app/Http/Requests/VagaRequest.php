@@ -23,7 +23,7 @@ class VagaRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'cnpj' => 'required|exists:empresas,cnpj',
             'titulo' => 'required',
             'descricao' => 'required',
@@ -31,14 +31,16 @@ class VagaRequest extends FormRequest
             'salario' => 'required',
             'horario' => 'required',
             'beneficios' => 'required',
-            'divulgar_ate' => 'required|data'
+            'divulgar_ate' => 'required|data',
+            'status' => ''
         ];
+        return $rules;
     }
 
     protected function prepareForValidation()
     {
         $this->merge([
-            'cnpj' => auth()->user()->cnpj
+            'cnpj'   => empty(auth()->user()->cnpj) ? $this->vaga->cnpj : auth()->user()->cnpj,
         ]);
     }
 

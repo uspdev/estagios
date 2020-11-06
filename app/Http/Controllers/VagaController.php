@@ -12,17 +12,16 @@ class VagaController extends Controller
 {
     public function index(Request $request){
         if ( Gate::allows('empresa')) {
-        $cnpj = Auth::user()->cnpj;
-        $vagas = Vaga::where('cnpj',$cnpj)->paginate(10);
-        return view('vagas.index')->with('vagas',$vagas);
-    } else if ( Gate::allows('admin')){
-        $vagas = Vaga::paginate(10);
-    }
+            $cnpj = Auth::user()->cnpj;
+            $vagas = Vaga::where('cnpj',$cnpj)->orderBy('created_at', 'desc')->paginate(10);
+            return view('vagas.index')->with('vagas',$vagas);
+        } else if ( Gate::allows('admin')){
+            $vagas = Vaga::orderBy('created_at', 'desc')->paginate(10);
+        }
 
-    return view('vagas.index')->with([
-        'vagas' => $vagas,
-    ]);
-    
+        return view('vagas.index')->with([
+            'vagas' => $vagas,
+        ]);
     }
 
     public function show(Vaga $vaga){
@@ -30,12 +29,12 @@ class VagaController extends Controller
     }
 
     public function create(){
-        $this->authorize('admin_ou_empresa');
+        $this->authorize('empresa');
         return view('vagas.create')->with('vaga',new Vaga);
     }
 
     public function store(VagaRequest $request){
-        $this->authorize('admin_ou_empresa');
+        $this->authorize('empresa');
         $vaga = Vaga::create($request->validated());
         return redirect ("vagas/{$vaga->id}");
     }

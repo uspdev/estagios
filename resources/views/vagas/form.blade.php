@@ -65,7 +65,6 @@
   </div>
   @endcan('admin')
 
-
   <div class="row">  
     <div class="col-sm form-group">
       <button type="submit" class="btn btn-success">Enviar</button>

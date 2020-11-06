@@ -23,7 +23,7 @@ class EstagioRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'numero_usp' => 'required|numeric|codpes|graduacao',
             'valorbolsa' => 'required',
             'tipobolsa' => 'required',
@@ -60,12 +60,14 @@ class EstagioRequest extends FormRequest
             'telefone_do_supervisor_estagio' => 'required|numeric|min:10',
             'email_do_supervisor_estagio' => 'required|email',
         ];
+
+        return $rules;
     }
 
     protected function prepareForValidation()
     {
         $this->merge([
-            'cnpj' => auth()->user()->cnpj
+            'cnpj'   => empty(auth()->user()->cnpj) ? $this->vaga->cnpj : auth()->user()->cnpj,
         ]);
     }
 

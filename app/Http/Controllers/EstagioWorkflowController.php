@@ -34,13 +34,9 @@ class EstagioWorkflowController extends Controller
                 // Envio de email
                 if(is_null($estagio->renovacao_parent_id))
                 {
-
                     Mail::send(new enviar_para_analise_tecnica_mail($estagio));
-    
                 } else {
-
                     Mail::send(new enviar_para_analise_tecnica_renovacao_mail($estagio));
-
                 }
             }
         } else {
