@@ -6,6 +6,7 @@ use Auth;
 use App\Models\File;
 use App\Models\Estagio;
 use Illuminate\Http\Request;
+use App\Http\Requests\FileRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
 
@@ -43,13 +44,9 @@ class FileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FileRequest $request)
     {
-        $request->validate([
-            'file' => 'required|file|size:12000|mimes:pdf',
-            'original_name' => 'required',
-            'estagio_id' => 'required|integer|exists:estagios,id'
-        ]);
+        $validated = $request->validated();
         $file = new File;
         $file->estagio_id = $request->estagio_id;
         $file->original_name = $request->original_name;
@@ -57,6 +54,7 @@ class FileController extends Controller
         $file->user_id = Auth::user()->id;
         $file->save();
         return back()->with('success', 'Arquivo enviado com sucesso'); ;;
+
     }
 
     /**
