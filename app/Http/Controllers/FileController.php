@@ -46,7 +46,7 @@ class FileController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'file' => 'required|file|mimes:pdf',
+            'file' => 'required|file|size:12000|mimes:pdf',
             'original_name' => 'required',
             'estagio_id' => 'required|integer|exists:estagios,id'
         ]);

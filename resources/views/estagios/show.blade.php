@@ -18,6 +18,15 @@
 
 <br>
 
+    <div class="card">
+    <div class="card-header"><b>Documentos do Estágio</b></div>
+      <div class="card-body">
+        @include('files.partials.form')
+      </div>  
+    </div>
+
+<br>
+
 <div class="card">
 
       <div class="card-header"><b>Informações Gerais</b></div>

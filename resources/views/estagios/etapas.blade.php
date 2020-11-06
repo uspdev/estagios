@@ -62,20 +62,6 @@ Análise técnica do setor de Graduação realizada por: {{ $estagio->analise_te
 Análise técnica do aditivo de alterações realizada por: {{ $estagio->analise_alteracao_user->name  }}<br>
 @endif
 
-@can('admin')
-
-<br>
-  <div class="card">
-    <div class="card-header"><b>Anexo de Documentos</b></div> 
-      <div class="card-body">
-          @include('files.partials.form')
-        </div>
-    </div>
-  </div>
-<br> 
-
-@endcan('admin')
-
 @switch($estagio->status)
 
     @case('em_elaboracao')

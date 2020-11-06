@@ -1,3 +1,5 @@
+@can('admin_ou_empresa',$estagio->cnpj)
+
 <div class="row">
     <div class="col-4 form-group">
 
@@ -15,7 +17,7 @@
         </form>   
 
     </div>
-        <div class="col-8 form-group">
+    <div class="col-8 form-group">
 
             <table class="table table-striped">
                 <thead>
@@ -48,3 +50,25 @@
             </table>
 
     </div>
+
+</div>
+<hr>
+@endcan('admin_ou_empresa')
+
+@can('parecerista')
+
+<div class="row">
+
+<table class="table table-striped">
+    @foreach($estagio->arquivos as $arquivo)
+        <tr>
+        <td>            
+        <a href="/files/{{$arquivo->id}}" target="_blank"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>
+        </td>
+        </tr>
+    @endforeach
+</table>
+
+</div>
+
+@endcan('parecerista')
