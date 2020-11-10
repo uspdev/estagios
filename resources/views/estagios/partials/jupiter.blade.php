@@ -40,5 +40,6 @@
     </tbody>
 </table>
 
-<b>Média ponderada</b>: {{ $estagio->mediaponderada() }}
-<br><br>
+<b>Periodo de Matrícula</b>: {{ $estagio->periodo() }}<br>
+<b>Média ponderada</b>: {{ $estagio->mediaponderada() }}<br>
+<br>
