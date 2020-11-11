@@ -32,7 +32,7 @@ class ReplicadoUtils {
         $query =  "SELECT h.coddis, h.codtur, o.diasmnocp, p.horent, p.horsai FROM HISTESCOLARGR h 
         INNER JOIN OCUPTURMA o ON (h.coddis = o.coddis AND h.codtur = o.codtur)
         INNER JOIN PERIODOHORARIO p ON (o.codperhor = p.codperhor)
-        where h.codpes = convert(int,:codpes) and h.codtur LIKE '%{$current}%'";
+        where h.codpes = convert(int,:codpes) and h.codtur LIKE '%{$current}%' ORDER BY o.diasmnocp";
         $param = [
             'codpes' => $codpes,
         ];
@@ -40,19 +40,13 @@ class ReplicadoUtils {
     }
 
     public static function media($codpes){
-        $query = "SELECT medpon FROM CLASSIFICACAOPROGRAMA where codpes = convert(int,:codpes) and 
-        anosemmtr = convert(int,:anosemmtr)";
+        $query = "SELECT medpon FROM CLASSIFICACAOPROGRAMA where codpes = convert(int,:codpes) ORDER BY timestamp DESC";
 
         $param = [
             'codpes' => $codpes,
-            'anosemmtr' => date("Y") . (date("m") > 6? 2:1)
         ];
         $result = DBreplicado::fetch($query, $param);
-
-        if(!empty($result)){
-            return $result['medpon'];
-        }
-        return 0;
+        return $result['medpon'];
     }
 
     public static function periodo($codpes){

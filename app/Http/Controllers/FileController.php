@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Response;
 use App\Models\File;
 use App\Models\Estagio;
 use Illuminate\Http\Request;
@@ -65,7 +66,11 @@ class FileController extends Controller
      */
     public function show(File $file)
     {
-        return Storage::download($file->path, $file->original_name);
+        $filename = $file->original_name;
+        $path = Storage::disk('local')->path($file->path);
+        $pdf = Response::make(file_get_contents($path), 200);
+        $pdf->header('Content-Type', 'application/pdf', 'filename="'.$filename.'"');
+        return $pdf;
     }
 
     /**

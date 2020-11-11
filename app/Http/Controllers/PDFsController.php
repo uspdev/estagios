@@ -22,7 +22,7 @@ class PDFsController extends Controller
     public function termo(Estagio $estagio){
         if (Gate::allows('admin') | Gate::allows('parecerista') | Gate::allows('empresa',$estagio->cnpj)) {
             $pdf = PDF::loadView('pdfs.termo', compact('estagio'));
-            return $pdf->download('termo.pdf');
+            return $pdf->file('termo.pdf', $headers);
         }
         abort(403, 'Access denied');
     }
