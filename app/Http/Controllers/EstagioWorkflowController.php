@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\EstagioRequest;
 
 use Auth;
+use PDF;
 use App\Models\Estagio;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
@@ -276,6 +277,8 @@ class EstagioWorkflowController extends Controller
                 $estagio->status = 'em_analise_tecnica';
                 request()->session()->flash('alert-info', 'Enviado para análise do setor de graduação');
                 $estagio->save();
+                $pdf = PDF::loadView('pdfs.aditivo', compact('estagio'));
+                return $pdf->download('aditivo.pdf');
             }
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');

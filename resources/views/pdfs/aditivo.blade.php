@@ -41,8 +41,8 @@ adiante designada CONCEDENTE e o ESTAGIÁRIO(A) <b>{{ $pessoa::dump($estagio->nu
 a Faculdade de Filosofia, Letras e Ciências Humanas da Universidade de São Paulo, representada pela Presidente da Comissão de Graduação 
 <b>{{ $pessoa::dump($presidente->numero_usp)['nompes'] }}</b>, firmam o presente TERMO DE ADITAMENTO DE COMPROMISSO DE ESTÁGIO, nos termos da Lei
 11.788/08 e da Resolução USP no 5.528/09, conforme as condições a seguir:</div>
-<p style="text-align: justify; text-indent : 1em;">1. Alterações a serem feitas a partir de <b>%alteracoes_a_serem_feitas</b></p>
-<p><b>%alteracoes</b></p>
+<p style="text-align: justify; text-indent : 1em;">1. Alterações a serem feitas:
+<b>{{$estagio->alteracao}}</b></p>
 <div style="text-align: justify; text-indent : 1em;">2. Permanecem inalteradas as demais cláusulas do Termo de Compromisso de
 Estágio, inclusive o Plano de Estágios, do qual passa a fazer parte integrante o
 presente Termo Aditivo, ficando sem efeito as disposições em contrário.<br>
@@ -57,7 +57,6 @@ carimbo contendo o CNPJ da empresa, para que produza seus jurídicos efeitos.</p
 
 <br><br>
 
-
 ________________________________________<br>
 <b>{{ $empresa->nome }}</b>
 <br>
@@ -71,7 +70,7 @@ ________________________________________<br>
 <b>Presidente da Comissão de Graduação da FFLCH</b>
 <br><br><br>
 E-mail do estagiario: {{ $pessoa::email($estagio->numero_usp) }}<br>
-Contato: {{$empresa->nome_de_contato}}, tel.: {{$empresa->telefone_de_contato}}, e-mail: {{$empresa->email_de_contato}}
+Contato: {{$estagio->nome_de_contato}}, tel.: {{$estagio->telefone_de_contato}}, e-mail: {{$estagio->email_de_contato}}
 <br>
 </div>
 
