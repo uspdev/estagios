@@ -155,4 +155,8 @@ class Estagio extends Model
         return ReplicadoUtils::media($this->numero_usp);
     }
 
+    public function periodo() {
+        return ReplicadoUtils::periodo($this->numero_usp);
+    }
+
 }

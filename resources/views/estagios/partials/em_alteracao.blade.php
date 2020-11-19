@@ -9,7 +9,7 @@
     <hr>
 @endif
 
-@can('empresa',$estagio->cnpj)
+@can('admin_ou_empresa',$estagio->cnpj)
 <form method="POST" action="/enviar_alteracao/{{$estagio->id}}">
     @csrf
     <div class="row">
@@ -18,14 +18,23 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div>
         <button type="submit" class="btn btn-success" name="enviar_analise_tecnica_alteracao" value="enviar_analise_tecnica_alteracao" 
-        onClick="return confirm('Tem certeza que deseja enviar a alteração?')">Salvar e Enviar aditivo de alteração para análise</button>
+        onClick="return confirm('Tem certeza que deseja enviar a alteração?')">Gerar PDF e Enviar aditivo de alteração para análise</button>
     </div>
-    
-    <div class="form-group">
+
+    <br>
+
+    <div>
         <button type="submit" class="btn btn-info" name="enviar_analise_tecnica_alteracao" value="apenas_salvar">Apenas salvar alterações</button>
     </div>
+
+    <br>
+
+    <div>
+        <a class="btn btn-info" href="/pdfs/aditivo/{{$estagio->id}}" target="_blank" ><i class="fas fa-file-pdf"></i>  Apenas Gerar PDF de Aditivo</a>
+    </div>
+
     @include ('estagios.form')
 </form>
 @endcan

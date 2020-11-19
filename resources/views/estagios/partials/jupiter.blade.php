@@ -6,6 +6,7 @@
       <th scope="col">Disciplina</th>
       <th scope="col">Turma</th>
       <th scope="col">Dia da Semana</th>
+      <th scope="col">Horário da Aula</th>
     </tr>
    </thead>
     <tbody>
@@ -35,10 +36,12 @@
                       @break
                     @endswitch 
                 </td>
+                <td>{{ $linha['horent'] }} - {{ $linha['horsai'] }}</td>
             </tr>
         @endforeach
     </tbody>
 </table>
 
-<b>Média ponderada</b>: {{ $estagio->mediaponderada() }}
-<br><br>
+<b>Periodo de Matrícula</b>: {{ $estagio->periodo() }}<br>
+<b>Média ponderada</b>: {{ $estagio->mediaponderada() }}<br>
+<br>

@@ -32,7 +32,7 @@
                 @foreach($estagio->arquivos as $arquivo)
                     <tr>
                     <td>            
-                    <a href="/files/{{$arquivo->id}}" target="_blank"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>
+                    <a href="/files/{{$arquivo->id}}.pdf" type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>
                     </td>
                     @can('admin')
                         <td>
@@ -63,7 +63,7 @@
     @foreach($estagio->arquivos as $arquivo)
         <tr>
         <td>            
-        <a href="/files/{{$arquivo->id}}" target="_blank"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>
+        <a href="/files/{{$arquivo->id}}.pdf" type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>
         </td>
         </tr>
     @endforeach
