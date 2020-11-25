@@ -20,7 +20,7 @@ class FileSeeder extends Seeder
             'user_id'  => '1',
     ];
  
-    File::create($entrada);
-    FIle::factory(40)->create();
+    /* File::create($entrada);
+    File::factory(40)->create(); */
     }
 }
