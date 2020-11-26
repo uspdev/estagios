@@ -5,8 +5,11 @@
         <b>Última análise técnica do setor de graduação:</b> {{$estagio->analise_tecnica}}
     @endif
 
-    <br><br>
+    <br>
     @can('admin_ou_empresa',$estagio->cnpj)
+
+    <div style="text-align: center;"><b>Aviso Importante:</b> O termo deve ser entregue assinado para a instituição no mínimo 10 dias úteis antes do início do estágio.</div>
+    <br>
 
     <form method="POST" action="/enviar_para_analise_tecnica/{{$estagio->id}}">
     @csrf
