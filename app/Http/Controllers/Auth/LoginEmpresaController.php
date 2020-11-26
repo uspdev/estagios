@@ -92,7 +92,7 @@ class LoginEmpresaController extends Controller
     {
         if ($request->hasValidSignature()) {
             $empresa = EmpresaUtils::login($request->cnpj, $request->email);
-            return view('empresas.edit')->with('empresa', $empresa);
+            return redirect('/empresa_update');
         } else {
             $request->session()->flash('alert-danger',
                 "Url de login expirada, crie uma url nova!");
