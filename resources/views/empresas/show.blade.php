@@ -31,6 +31,9 @@
 </div>
 
 <br>
+
+{{$estagios->appends(request()->query())->links()}}
+
 @include('estagios.partials.index')
 <br>
 
