@@ -118,5 +118,18 @@
             </div>  
 </div>
 
+
+
+@if($estagio->status == 'em_elaboracao' | $estagio->status == 'em_analise_tecnica' | $estagio->status == 'em_analise_academica' | $estagio->status == 'assinatura')
+
+    @can('admin_ou_empresa',$estagio->cnpj)
+    <br>
+    <a class="btn btn-danger" onClick="return confirm('Tem certeza que deseja cancelar o estágio?')" href="/cancelar_estagio/{{$estagio->id}}">
+        Cancelar Estágio </a>
+
+    @endcan
+
+@endif
+
 @endsection('content')
 

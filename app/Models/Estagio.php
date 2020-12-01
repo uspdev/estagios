@@ -132,6 +132,10 @@ class Estagio extends Model
                 'name' => "Rescisão",
                 'optional' => 'Empresa'
             ],
+            'cancelado' => [
+                'name' => "Cancelado",
+                'optional' => 'Estágio Cancelado'
+            ],
         ];
         return $status;
     }
