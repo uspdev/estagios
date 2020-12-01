@@ -25,7 +25,13 @@
             <a href="/pdfs/renovacao/{{$estagio->id}}" target="_blank" >
             <i class="fas fa-file-pdf"></i> </a>
             Gerar PDF do Termo de Ciência para Renovação
-        @endif  
+        @endif
+        <br><br>  
+
+    <a class="btn btn-warning" onClick="return confirm('Tem certeza que deseja reativar o estágio?')" href="/retornar_rescisao/{{$estagio->id}}">
+        <i class="fas fa-undo"></i> 
+        Reativar estágio </a> <br>
+
     @endcan('admin_ou_empresa')
     
 </div>  

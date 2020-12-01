@@ -48,7 +48,13 @@ $workflow_estagio = [
                 'label' => "Rescisão",
                 'bg_color' => '#add8e6'
             ]
-        ]
+        ],
+        'cancelado' => [
+            'metadata' => [
+                'label' => "Estágio Cancelado",
+                'bg_color' => '#add8e6'
+            ]
+        ],
     ],
     'transitions' => [
         'enviar_para_analise_tecnica' => [

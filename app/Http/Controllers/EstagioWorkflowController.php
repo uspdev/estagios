@@ -285,4 +285,32 @@ class EstagioWorkflowController extends Controller
         }
         return redirect("/estagios/{$estagio->id}");
     }
+
+    #Funções Rescisão
+
+    public function retornar_rescisao(Estagio $estagio){
+
+        if ( Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
+            $estagio->last_status = $estagio->status;
+            $estagio->status = 'concluido';
+            $estagio->save();
+        } else {
+            request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
+        }
+        return redirect("/estagios/{$estagio->id}");
+    }      
+
+    #Funções Cancelamento
+
+    public function cancelar_estagio(Estagio $estagio){
+
+        if ( Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
+                $estagio->last_status = $estagio->status;
+                $estagio->status = 'cancelado';
+                $estagio->save();
+            } else {
+                request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
+            }
+            return redirect("/estagios/{$estagio->id}");
+        }  
 }
