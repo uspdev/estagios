@@ -67,6 +67,13 @@
         Gerar PDF do Termo de Ciência para Renovação
     @endif    
 
+    @if(($estagio->alteracao)!=null)
+        <br>
+        <a href="/pdfs/aditivo/{{$estagio->id}}" target="_blank" >
+        <i class="fas fa-file-pdf"></i> </a>
+        Gerar PDF do Parecer de Alteração
+    @endif
+
 <br>
   </div>
 
