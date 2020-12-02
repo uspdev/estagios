@@ -206,7 +206,6 @@ class EstagioWorkflowController extends Controller
             ]);
             $renovacao->renovacao_justificativa = $request->renovacao_justificativa;
 
-            /* Verificar quais campos mais dever ser zerado na renovanção */
             $renovacao->analise_tecnica = null;
             $renovacao->analise_alteracao = null;
             $renovacao->horariocompativel = null;
@@ -216,6 +215,7 @@ class EstagioWorkflowController extends Controller
             $renovacao->tipodeferimento = null;
             $renovacao->condicaodeferimento = null;
             $renovacao->analise_academica = null;
+            $renovacao->alteracao = null;
             $renovacao->save();
             $workflow = $renovacao->workflow_get();
             $workflow->apply($renovacao,'renovacao');
