@@ -61,7 +61,7 @@
     <br>
 
     <label for="atividadesjustificativa">Justifique a pertinencia das atividades: </label><br>
-        <textarea name="atividadesjustificativa" rows="5" cols="60" value="{{old('atividadesjustificativa',$estagio->atividadesjustificativa)}}"></textarea>  
+        <textarea name="atividadesjustificativa" rows="5" cols="60" class="form-control" id="atividadesjustificativa" name="atividadesjustificativa" value="{{old('atividadesjustificativa',$estagio->atividadesjustificativa)}}"></textarea>  
 
     <br>     
 

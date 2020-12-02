@@ -35,7 +35,6 @@
         <a class="btn btn-info" href="/pdfs/aditivo/{{$estagio->id}}" target="_blank" ><i class="fas fa-file-pdf"></i>  Apenas Gerar PDF de Aditivo</a>
     </div>
 
-    @include ('estagios.form')
 </form>
 @endcan
 

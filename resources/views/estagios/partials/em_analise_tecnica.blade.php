@@ -1,9 +1,12 @@
 <br>
+<div style="text-align: center;"><b>Aviso Importante:</b> O termo deve ser entregue assinado para a instituição no mínimo 10 dias úteis antes do início do estágio.</div>
+<br>
+
+@can('admin')
+
 <div class="card">
 <div class="card-header"><b>Justificativa da análise técnica</b></div>
 <div class="card-body">
-
-@can('admin')
 
 <form method="POST" action="/analise_tecnica/{{$estagio->id}}">
     @csrf
@@ -44,11 +47,14 @@
 <br><br>
 
 @endcan('admin')
+<br>
 
 @if(!empty($estagio->analise_academica))
     <b>Parecerista:</b> {{App\Models\User::find($estagio->analise_academica_user_id)->name}} <br>
     <b>Parecer de Mérito:</b> {{$estagio->analise_academica}}<br>
 @endif
+
+<br>
 
 </div>  
 </div>
