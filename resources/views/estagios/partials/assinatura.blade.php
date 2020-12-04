@@ -1,3 +1,7 @@
+<br>
+<div style="text-align: center;"><b>Aviso Importante:</b> O termo deve ser entregue assinado para a instituição no mínimo 10 dias úteis antes do início do estágio.</div>
+<br>
+
 @can('admin')
 
 <div class="card">

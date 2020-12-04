@@ -33,7 +33,7 @@
     @csrf
         <div class="form-group">
             <label for="renovacao_justificativa" class="required"><b>Justificativa: </b></label><br>
-            <textarea name="renovacao_justificativa" rows="5" cols="60">{{old('rescisao_motivo',$estagio->rescisao_motivo)}}</textarea>
+            <textarea name="renovacao_justificativa" rows="5" cols="60">{{old('renovacao_justificativa',$estagio->renovacao_justificativa)}}</textarea>
         </div>
     <button type="submit" class="btn btn-success" name="rescisao_action" value="rescisao"
             onClick="return confirm('Tem certeza que deseja renovar o estágio?')" >

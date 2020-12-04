@@ -56,6 +56,9 @@ class EstagioWorkflowController extends Controller
             $estagio->save();
 
             if($request->analise_tecnica_action == 'concluir') {
+                $request->validate([
+                    'analise_tecnica' => 'required',
+                ]);
                 if(is_null($estagio->analise_academica)){
                     request()->session()->flash('alert-danger','Não existe parecer de mérito para esse estágio. Não é possível concluir.');
                     return redirect("/estagios/{$estagio->id}");
@@ -215,6 +218,7 @@ class EstagioWorkflowController extends Controller
             $renovacao->tipodeferimento = null;
             $renovacao->condicaodeferimento = null;
             $renovacao->analise_academica = null;
+            $renovacao->analise_academica_user_id = null;
             $renovacao->alteracao = null;
             $renovacao->save();
             $workflow = $renovacao->workflow_get();
@@ -274,7 +278,7 @@ class EstagioWorkflowController extends Controller
             if($request->enviar_analise_tecnica_alteracao == 'enviar_analise_tecnica_alteracao'){
                 $estagio->alteracao = $request->alteracao;
                 $estagio->last_status = $estagio->status;
-                $estagio->status = 'em_analise_tecnica';
+                $estagio->status = 'concluido';
                 request()->session()->flash('alert-info', 'Enviado para análise do setor de graduação');
                 $estagio->save();
                 $pdf = PDF::loadView('pdfs.aditivo', compact('estagio'));

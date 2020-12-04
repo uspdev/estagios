@@ -81,7 +81,7 @@ class PDFsController extends Controller
     }
 
     public function parecer(Estagio $estagio){
-        if (Gate::allows('admin') | Gate::allows('parecerista') | Gate::allows('empresa',$estagio->cnpj)) {
+        if (Gate::allows('admin') | Gate::allows('parecerista') ) {
             if($estagio->numparecerista){
                 $pdf = PDF::loadView('pdfs.parecer', compact('estagio'));
                 return $pdf->download('parecer.pdf');
