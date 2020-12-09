@@ -80,6 +80,7 @@ Route::get('/editar_analise_academica/{estagio}', [EstagioWorkflowController::cl
 
 # Rotas Cancelamento
 Route::get('/cancelar_estagio/{estagio}', [EstagioWorkflowController::class,'cancelar_estagio']);
+Route::get('/cancelar_cancelamento/{estagio}', [EstagioWorkflowController::class,'cancelar_cancelamento']);
 
 #Rotas Rescisão
 Route::get('/retornar_rescisao/{estagio}', [EstagioWorkflowController::class,'retornar_rescisao']);
