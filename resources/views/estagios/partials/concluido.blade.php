@@ -19,10 +19,8 @@
 
 @can('admin_ou_empresa',$estagio->cnpj)
 
+<br>
 <div>
-    <br>
-    <a href="/iniciar_alteracao/{{$estagio->id}}" class="btn btn-info" onClick="return confirm('Tem certeza que deseja iniciar o processo de alterações?')">Solicitar Aditivo de Alterações</a>
-    <hr>
     
     <div class="card">
     <div class="card-header"><b>EM CASO DE RENOVAÇÃO</b></div>
@@ -62,6 +60,17 @@
             Enviar Pedido de Rescisão
     </button>   
     </form>
+    </div></div> <br>
+
+    <div class="card">
+    <div class="card-header"><b>EM CASO DE ALTERAÇÃO</b></div>
+    <div class="card-body">
+
+    <br>
+    <a href="/iniciar_alteracao/{{$estagio->id}}" class="btn btn-info" onClick="return confirm('Tem certeza que deseja iniciar o processo de alterações?')">Solicitar Aditivo de Alterações</a>
+
+    </div></div> <br>
+
 </div>
 @endcan
 
