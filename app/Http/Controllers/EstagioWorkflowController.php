@@ -31,14 +31,6 @@ class EstagioWorkflowController extends Controller
                 #$workflow = $estagio->workflow_get();
                 #$workflow->apply($estagio,'enviar_para_analise_tecnica');
                 $estagio->save();
-
-                // Envio de email
-                if(is_null($estagio->renovacao_parent_id))
-                {
-                    Mail::send(new enviar_para_analise_tecnica_mail($estagio));
-                } else {
-                    Mail::send(new enviar_para_analise_tecnica_renovacao_mail($estagio));
-                }
             }
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
@@ -276,7 +268,7 @@ class EstagioWorkflowController extends Controller
             if($request->enviar_analise_tecnica_alteracao == 'enviar_analise_tecnica_alteracao'){
                 $estagio->alteracao = $request->alteracao;
                 $estagio->last_status = $estagio->status;
-                $estagio->status = 'concluido';
+                $estagio->status = 'em_analise_tecnica';
                 request()->session()->flash('alert-info', 'Enviado para análise do setor de graduação');
                 $estagio->save();
                 $pdf = PDF::loadView('pdfs.aditivo', compact('estagio'));

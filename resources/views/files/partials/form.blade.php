@@ -52,11 +52,10 @@
     </div>
 
 </div>
-<hr>
-@endcan('admin_ou_empresa')
+@endcan
 
 @can('parecerista')
-
+<hr>
 <div class="row">
 
 <table class="table table-striped">
@@ -71,4 +70,4 @@
 
 </div>
 
-@endcan('parecerista')
+@endcan
