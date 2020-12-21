@@ -19,6 +19,13 @@ class Estagio extends Model
         return $this->hasMany(File::class);
     }
 
+    public function avaliacao_empresaOptions(){
+        return [
+            'Positivo',
+            'Negativo'
+        ];
+    }
+
     public function especifiquevtOptions(){
         return [
             'Mensal',

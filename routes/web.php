@@ -84,6 +84,7 @@ Route::get('/cancelar_cancelamento/{estagio}', [EstagioWorkflowController::class
 
 #Rotas Rescisão
 Route::get('/retornar_rescisao/{estagio}', [EstagioWorkflowController::class,'retornar_rescisao']);
+Route::post('/avaliacao/{estagio}', [EstagioWorkflowController::class,'avaliacao']);
 
 # Rotas Concluido
 Route::post('/rescisao/{estagio}', [EstagioWorkflowController::class,'rescisao']);
@@ -106,5 +107,6 @@ Route::post('/parecer_merito/{estagio}', [EstagioController::class,'alterarParec
 #arquivos
 
 Route::post('/files/store', [FileController::class,'store']);
+Route::post('/files/store_relatorio', [FileController::class,'store_relatorio']);
 Route::post('/files/destroy', [FileController::class,'destroy']);
 
