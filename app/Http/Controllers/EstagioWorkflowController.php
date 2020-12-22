@@ -292,7 +292,18 @@ class EstagioWorkflowController extends Controller
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
         return redirect("/estagios/{$estagio->id}");
-    }      
+    }     
+    
+    public function avaliacao(Request $request, Estagio $estagio){
+
+        if (Gate::allows('parecerista')) {
+            $estagio->avaliacao_empresa = $request->avaliacao_empresa;
+            $estagio->save();
+        } else {
+            request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
+        }
+        return redirect("/estagios/{$estagio->id}");
+    }  
 
     #Funções Cancelamento
 

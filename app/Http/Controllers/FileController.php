@@ -58,6 +58,20 @@ class FileController extends Controller
 
     }
 
+    public function store_relatorio(FileRequest $request)
+    {
+        $validated = $request->validated();
+        $file = new File;
+        $file->estagio_id = $request->estagio_id;
+        $file->original_name = $request->original_name;
+        $file->path = $request->file('file')->store('.');
+        $file->user_id = Auth::user()->id;
+        $file->tipo_documento = 'Relatorio';
+        $file->save();
+        return back()->with('success', 'Arquivo enviado com sucesso'); ;;
+
+    }
+
     /**
      * Display the specified resource.
      *
