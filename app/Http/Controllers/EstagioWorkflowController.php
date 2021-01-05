@@ -12,6 +12,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Uspdev\Replicado\Pessoa;
 use App\Mail\enviar_para_analise_tecnica_mail;
+use App\Mail\enviar_para_analise_tecnica_renovacao_mail;
+use App\Mail\assinatura_mail;
 use Illuminate\Support\Facades\Mail;
 
 class EstagioWorkflowController extends Controller
@@ -68,6 +70,7 @@ class EstagioWorkflowController extends Controller
                 $estagio->last_status = $estagio->status;
                 $estagio->status = 'assinatura';
                 $estagio->save();
+                Mail::send(new assinatura_mail($estagio));
                 return redirect("/estagios/{$estagio->id}");
             }
 
