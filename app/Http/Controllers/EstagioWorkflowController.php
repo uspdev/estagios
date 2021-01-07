@@ -300,7 +300,12 @@ class EstagioWorkflowController extends Controller
     public function avaliacao(Request $request, Estagio $estagio){
 
         if (Gate::allows('parecerista')) {
+            $request->validate([
+                'avaliacao_empresa' => 'required',
+                'avaliacaodescricao' => 'required',
+            ]);
             $estagio->avaliacao_empresa = $request->avaliacao_empresa;
+            $estagio->avaliacaodescricao = $request->avaliacaodescricao;
             $estagio->save();
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
