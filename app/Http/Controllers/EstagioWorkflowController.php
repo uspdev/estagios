@@ -14,6 +14,7 @@ use Uspdev\Replicado\Pessoa;
 use App\Mail\enviar_para_analise_tecnica_mail;
 use App\Mail\enviar_para_analise_tecnica_renovacao_mail;
 use App\Mail\assinatura_mail;
+use App\Mail\alteracao_mail;
 use Illuminate\Support\Facades\Mail;
 
 class EstagioWorkflowController extends Controller
@@ -274,8 +275,7 @@ class EstagioWorkflowController extends Controller
                 $estagio->status = 'em_analise_tecnica';
                 request()->session()->flash('alert-info', 'Enviado para análise do setor de graduação');
                 $estagio->save();
-                $pdf = PDF::loadView('pdfs.aditivo', compact('estagio'));
-                return $pdf->download('aditivo.pdf');
+                Mail::send(new alteracao_mail($estagio));
             }
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
@@ -300,7 +300,12 @@ class EstagioWorkflowController extends Controller
     public function avaliacao(Request $request, Estagio $estagio){
 
         if (Gate::allows('parecerista')) {
+            $request->validate([
+                'avaliacao_empresa' => 'required',
+                'avaliacaodescricao' => 'required',
+            ]);
             $estagio->avaliacao_empresa = $request->avaliacao_empresa;
+            $estagio->avaliacaodescricao = $request->avaliacaodescricao;
             $estagio->save();
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');

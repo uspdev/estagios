@@ -20,7 +20,7 @@
 
     <div>
         <button type="submit" class="btn btn-success" name="enviar_analise_tecnica_alteracao" value="enviar_analise_tecnica_alteracao" 
-        onClick="return confirm('Tem certeza que deseja enviar a alteração?')">Gerar PDF e Enviar aditivo de alteração para análise</button>
+        onClick="return confirm('Tem certeza que deseja enviar a alteração?')">Enviar aditivo de alteração para análise</button>
     </div>
 
     <br>

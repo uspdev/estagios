@@ -9,6 +9,7 @@
 <!-- -->
 
 @can('empresa',$estagio->cnpj)
+
         <br>
         <a href="/pdfs/rescisao/{{$estagio->id}}" target="_blank" >
         <i class="fas fa-file-pdf"></i> </a>
@@ -77,6 +78,7 @@
 
         @if(($estagio->avaliacao_empresa)!=null)
         <b>Avaliação do relatório pelo parecerista: </b> {{$estagio->avaliacao_empresa}}<br>
+        <b>Justificativa do parecerista: </b> {{$estagio->avaliacaodescricao}}<br>
         @endif
 
         <br>
@@ -113,10 +115,11 @@
         <br>
         @if(($estagio->avaliacao_empresa)!=null)
         <b>Avaliação do relatório: </b> {{$estagio->avaliacao_empresa}}<br>
+        <b>Justificativa: </b> {{$estagio->avaliacaodescricao}}<br>
         @endif
 
         <br>
-        Relatório Final do Aluno:
+        <b>Relatório Final do Aluno:</b>
         <table class="table table-striped">
             @foreach($estagio->arquivos as $arquivo)
                 @if($arquivo->tipo_documento == 'Relatorio')
@@ -147,6 +150,12 @@
                         @endforeach
                 </select>  
                 <br>
+                <div class="form-group">
+                    <label for="avaliacaodescricao" class="required">Justifique a avaliação: </label>
+                    <input type="text" class="form-control" id="avaliacaodescricao" name="avaliacaodescricao" value="{{old('avaliacaodescricao',$estagio->avaliacaodescricao)}}">
+                </div>
+                <br>
+
                 <button type="submit" class="btn btn-success"> Enviar Avaliaçao </button>
             </div>
         </form>
