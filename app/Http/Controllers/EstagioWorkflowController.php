@@ -206,7 +206,6 @@ class EstagioWorkflowController extends Controller
             $renovacao->renovacao_justificativa = $request->renovacao_justificativa;
 
             $renovacao->analise_tecnica = null;
-            $renovacao->analise_alteracao = null;
             $renovacao->horariocompativel = null;
             $renovacao->desempenhoacademico = null;
             $renovacao->atividadespertinentes= null;
@@ -215,7 +214,6 @@ class EstagioWorkflowController extends Controller
             $renovacao->condicaodeferimento = null;
             $renovacao->analise_academica = null;
             $renovacao->analise_academica_user_id = null;
-            $renovacao->alteracao = null;
             $renovacao->save();
             $workflow = $renovacao->workflow_get();
             $workflow->apply($renovacao,'renovacao');
@@ -265,11 +263,18 @@ class EstagioWorkflowController extends Controller
 
     public function enviar_alteracao(Request $request, Estagio $estagio){
 
+        $estagio->aditivos()->attach([
+            'alteracao' => $request->alteracao,
+        ]);
+
+        dd($request->alteracao);
+
         if (Gate::allows('empresa',$estagio->cnpj)) {
             $estagio->alteracao = $request->alteracao;
             $estagio->save();
 
             if($request->enviar_analise_tecnica_alteracao == 'enviar_analise_tecnica_alteracao'){
+               
                 $estagio->alteracao = $request->alteracao;
                 $estagio->last_status = $estagio->status;
                 $estagio->status = 'em_analise_tecnica';

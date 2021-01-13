@@ -2,13 +2,6 @@
 <div class="card-header"><b>Justificativa para alteração</b></div>
 <div class="card-body">
 
-@if(!empty($estagio->analise_alteracao))</b>
-    <hr>
-    <b>INDEFERIMENTO DO PEDIDO DE ALTERAÇÃO</b> <br>
-    <b>Motivo:</b> {{$estagio->analise_alteracao}}<br>
-    <hr>
-@endif
-
 @can('admin_ou_empresa',$estagio->cnpj)
 <form method="POST" action="/enviar_alteracao/{{$estagio->id}}">
     @csrf

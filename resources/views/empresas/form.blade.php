@@ -59,7 +59,7 @@
             <br>
             <select name="conceder_acesso_cnpj">
             <option value="" selected=""> - Selecione  -</option>
-                @foreach (App\Models\Empresa::all() as $empresa_lista)
+                @foreach (App\Models\Empresa::get()->sortBy('nome', SORT_NATURAL|SORT_FLAG_CASE) as $empresa_lista)
 
                 @if (old('conceder_acesso_cnpj') == '' and isset($empresa->conceder_acesso_cnpj))
                     <option value="{{$empresa_lista->cnpj}}" {{ ( $empresa->conceder_acesso_cnpj == $empresa_lista->cnpj) ? 'selected' : ''}}>
