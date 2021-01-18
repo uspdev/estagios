@@ -25,7 +25,11 @@
       @foreach($vagas as $vaga)
       <tr>
         <td><a href="/vagas/{{$vaga->id}}">{{$vaga->titulo}}</a></td>
-        <td>{{App\Models\Empresa::where('cnpj',$vaga->cnpj)->first()->nome}}</td>
+        <td>
+          @if(App\Models\Empresa::where('cnpj',$vaga->cnpj)->first())
+            {{ App\Models\Empresa::where('cnpj',$vaga->cnpj)->first()->nome }}
+          @endif
+        </td>
         <td>{{$vaga->status}}</td>
         <td>Divugação até {{$vaga->divulgar_ate}}</td>
         <td> 
