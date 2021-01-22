@@ -11,6 +11,7 @@ use Auth;
 use App\Mail\enviar_para_analise_tecnica_mail;
 use App\Mail\enviar_para_analise_tecnica_renovacao_mail;
 use App\Mail\enviar_para_parecerista_mail;
+use App\Mail\enviar_analise_academica;
 use App\Mail\assinatura_mail;
 use App\Mail\alteracao_mail;
 use Illuminate\Support\Facades\Mail;
@@ -38,6 +39,11 @@ class EmailController extends Controller
         return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
     }
 
+    public function enviar_analise_academica(Request $request, Estagio $estagio){
+        Mail::send(new enviar_analise_academica_mail($estagio));        
+        return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
+    }
+
     public function enviar_para_parecerista(Request $request, Estagio $estagio){
         if($estagio->numparecerista){
             Mail::send(new enviar_para_parecerista_mail($estagio));
@@ -48,9 +54,4 @@ class EmailController extends Controller
         return redirect("/estagios/{$estagio->id}") ;
     }
 }
-
-
-
-
-
 
