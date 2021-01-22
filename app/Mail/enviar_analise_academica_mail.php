@@ -39,9 +39,12 @@ class enviar_analise_academica_mail extends Mailable
               
         $subject = Pessoa::dump($this->estagio->numero_usp)['nompes'] . ' - RESULTADO DO PARECER DE MÉRITO - Setor de Estágios - FFLCH-USP';
 
+        $pdf = PDF::loadView('pdfs.parecer', ['estagio'=>$this->estagio]);
+
         return $this->view('emails.enviar_analise_academica')
                     ->to($to)
                     ->subject($subject)
+                    ->attachData($pdf->output(), 'parecer.pdf')
                     ->with([
                         'estagio' => $this->estagio,
                     ]);

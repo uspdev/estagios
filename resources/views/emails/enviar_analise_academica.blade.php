@@ -4,7 +4,7 @@
 Informamos que o professor parecerista, {{$pessoa::dump($estagio->numparecerista)['nompes']}}, enviou a avaliação de parecer de mérito relativa a seu estágio 
 na empresa {{ App\Models\Empresa::where('cnpj',$estagio->cnpj)->first()->nome }} para o setor de estágios.<br><br>
 
-Com base na análise do parecerista, informamos que o estágio foi <b>{{ $estagio->tipodeferimento }}</b>.<br><br>
+Com base na análise do parecerista, informamos que o estágio foi <b>{{ $estagio->tipodeferimento }}</b>, segue o documento do parecer em anexo.<br><br>
 
 @if($estagio->tipodeferimento == 'Indeferido')
 

@@ -277,7 +277,6 @@ class EstagioWorkflowController extends Controller
                 $estagio->status = 'em_analise_tecnica';
                 request()->session()->flash('alert-info', 'Enviado para análise do setor de graduação');
                 $estagio->save();
-                Mail::send(new alteracao_mail($estagio));
             }
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
