@@ -72,6 +72,10 @@
         <a href="/pdfs/aditivo/{{$estagio->id}}" target="_blank" >
         <i class="fas fa-file-pdf"></i> </a>
         Gerar PDF do Parecer de Alteração
+        <br>
+        <a onClick="return confirm('Tem certeza que deseja um email para o parecerista?')" href="/emails/alteracao/{{$estagio->id}}">
+        <i class="fas fa-envelope-open-text"></i> </a>
+        Enviar E-mail contendo a Alteração para o parecerista.  
     @endif
 
 <br>

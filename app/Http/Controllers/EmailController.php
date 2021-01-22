@@ -12,6 +12,7 @@ use App\Mail\enviar_para_analise_tecnica_mail;
 use App\Mail\enviar_para_analise_tecnica_renovacao_mail;
 use App\Mail\enviar_para_parecerista_mail;
 use App\Mail\enviar_analise_academica;
+use App\Mail\analise_rescisao_mail;
 use App\Mail\assinatura_mail;
 use App\Mail\alteracao_mail;
 use Illuminate\Support\Facades\Mail;
@@ -41,6 +42,11 @@ class EmailController extends Controller
 
     public function enviar_analise_academica(Request $request, Estagio $estagio){
         Mail::send(new enviar_analise_academica_mail($estagio));        
+        return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
+    }
+
+    public function analise_rescisao(Request $request, Estagio $estagio){
+        Mail::send(new analise_rescisao_mail($estagio));        
         return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
     }
 

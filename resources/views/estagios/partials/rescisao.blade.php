@@ -74,8 +74,8 @@
                 @endif
             @endforeach
         </table>
-        <br>
 
+        <br>
         @if(($estagio->avaliacao_empresa)!=null)
         <b>Avaliação do relatório pelo parecerista: </b> {{$estagio->avaliacao_empresa}}<br>
         <b>Justificativa do parecerista: </b> {{$estagio->avaliacaodescricao}}<br>
@@ -104,7 +104,10 @@
 
         <a class="btn btn-warning" onClick="return confirm('Tem certeza que deseja reativar o estágio?')" href="/retornar_rescisao/{{$estagio->id}}">
         <i class="fas fa-undo"></i> 
-        Reativar estágio </a> <br>
+        Reativar estágio </a> 
+        <a class="btn btn-info" onClick="return confirm('Tem certeza que deseja um email para a empresa?')" 
+        href="/emails/analise_rescisao/{{$estagio->id}}"><i class="fas fa-envelope-open-text"></i>  Enviar email de aviso para o parecerista</a>
+        <br>
 
 @endcan('admin')
 
