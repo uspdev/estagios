@@ -19,12 +19,6 @@
     <br>
 
     <div>
-        <button type="submit" class="btn btn-info" name="enviar_analise_tecnica_alteracao" value="apenas_salvar">Apenas salvar alterações</button>
-    </div>
-
-    <br>
-
-    <div>
         <a class="btn btn-info" href="/pdfs/aditivo/{{$estagio->id}}" target="_blank" ><i class="fas fa-file-pdf"></i>  Apenas Gerar PDF de Aditivo</a>
     </div>
 

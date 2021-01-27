@@ -9,6 +9,7 @@ use Auth;
 use PDF;
 use App\Models\Estagio;
 use App\Models\User;
+use App\Models\Aditivo;
 use Illuminate\Support\Facades\Gate;
 use Uspdev\Replicado\Pessoa;
 use App\Mail\enviar_para_analise_tecnica_mail;
@@ -263,25 +264,19 @@ class EstagioWorkflowController extends Controller
 
     public function enviar_alteracao(Request $request, Estagio $estagio){
 
-        $estagio->aditivos()->attach([
-            'alteracao' => $request->alteracao,
-        ]);
-
-        dd($request->alteracao);
-
         if (Gate::allows('empresa',$estagio->cnpj)) {
-            $estagio->alteracao = $request->alteracao;
+
+            $aditivo = new Aditivo;
+            $aditivo->alteracao = $request->alteracao;
+            $aditivo->estagio_id = $estagio->id;
+            $aditivo->save();
+
+            $estagio->last_status = $estagio->status;
+            $estagio->status = 'em_analise_tecnica';
             $estagio->save();
 
-            if($request->enviar_analise_tecnica_alteracao == 'enviar_analise_tecnica_alteracao'){
-               
-                $estagio->alteracao = $request->alteracao;
-                $estagio->last_status = $estagio->status;
-                $estagio->status = 'em_analise_tecnica';
-                request()->session()->flash('alert-info', 'Enviado para análise do setor de graduação');
-                $estagio->save();
-                Mail::send(new alteracao_mail($estagio));
-            }
+            request()->session()->flash('alert-info', 'Enviado para análise do setor de graduação');
+            Mail::send(new alteracao_mail($estagio));
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }

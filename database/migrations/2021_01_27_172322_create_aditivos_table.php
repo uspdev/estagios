@@ -16,7 +16,6 @@ class CreateAditivosTable extends Migration
         Schema::create('aditivos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            
             // id do estágio
             $table->foreignId('estagio_id')->constrained('estagios');
 
@@ -34,7 +33,6 @@ class CreateAditivosTable extends Migration
 
             // Comentários do
             $table->text('comentario_parecerista')->nullable();
-
         });
     }
 
