@@ -42,7 +42,11 @@ a Faculdade de Filosofia, Letras e Ciências Humanas da Universidade de São Pau
 <b>{{ $pessoa::dump($presidente->numero_usp)['nompes'] }}</b>, firmam o presente TERMO DE ADITAMENTO DE COMPROMISSO DE ESTÁGIO, nos termos da Lei
 11.788/08 e da Resolução USP no 5.528/09, conforme as condições a seguir:</div>
 <p style="text-align: justify; text-indent : 1em;">1. Alterações a serem feitas:
-<b>{{$estagio->alteracao}}</b></p>
+<b>
+@foreach($estagio->aditivos as $aditivo)
+    {{ $aditivo->alteracao }} <br>
+@endforeach
+</b></p>
 <div style="text-align: justify; text-indent : 1em;">2. Permanecem inalteradas as demais cláusulas do Termo de Compromisso de
 Estágio, inclusive o Plano de Estágios, do qual passa a fazer parte integrante o
 presente Termo Aditivo, ficando sem efeito as disposições em contrário.<br>

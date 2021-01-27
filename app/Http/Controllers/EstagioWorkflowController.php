@@ -9,6 +9,7 @@ use Auth;
 use PDF;
 use App\Models\Estagio;
 use App\Models\User;
+use App\Models\Aditivo;
 use Illuminate\Support\Facades\Gate;
 use Uspdev\Replicado\Pessoa;
 use App\Mail\enviar_para_analise_tecnica_mail;
@@ -208,7 +209,6 @@ class EstagioWorkflowController extends Controller
             $renovacao->renovacao_justificativa = $request->renovacao_justificativa;
 
             $renovacao->analise_tecnica = null;
-            $renovacao->analise_alteracao = null;
             $renovacao->horariocompativel = null;
             $renovacao->desempenhoacademico = null;
             $renovacao->atividadespertinentes= null;
@@ -217,7 +217,6 @@ class EstagioWorkflowController extends Controller
             $renovacao->condicaodeferimento = null;
             $renovacao->analise_academica = null;
             $renovacao->analise_academica_user_id = null;
-            $renovacao->alteracao = null;
             $renovacao->save();
             $workflow = $renovacao->workflow_get();
             $workflow->apply($renovacao,'renovacao');
@@ -268,16 +267,18 @@ class EstagioWorkflowController extends Controller
     public function enviar_alteracao(Request $request, Estagio $estagio){
 
         if (Gate::allows('empresa',$estagio->cnpj)) {
-            $estagio->alteracao = $request->alteracao;
+
+            $aditivo = new Aditivo;
+            $aditivo->alteracao = $request->alteracao;
+            $aditivo->estagio_id = $estagio->id;
+            $aditivo->save();
+
+            $estagio->last_status = $estagio->status;
+            $estagio->status = 'em_analise_tecnica';
             $estagio->save();
 
-            if($request->enviar_analise_tecnica_alteracao == 'enviar_analise_tecnica_alteracao'){
-                $estagio->alteracao = $request->alteracao;
-                $estagio->last_status = $estagio->status;
-                $estagio->status = 'em_analise_tecnica';
-                request()->session()->flash('alert-info', 'Enviado para análise do setor de graduação');
-                $estagio->save();
-            }
+            request()->session()->flash('alert-info', 'Enviado para análise do setor de graduação');
+            Mail::send(new alteracao_mail($estagio));
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
