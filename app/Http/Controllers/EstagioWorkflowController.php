@@ -16,6 +16,7 @@ use App\Mail\enviar_para_analise_tecnica_mail;
 use App\Mail\enviar_para_analise_tecnica_renovacao_mail;
 use App\Mail\assinatura_mail;
 use App\Mail\alteracao_mail;
+use App\Mail\enviar_analise_academica_mail;
 use Illuminate\Support\Facades\Mail;
 
 class EstagioWorkflowController extends Controller
@@ -143,6 +144,7 @@ class EstagioWorkflowController extends Controller
             $estagio->last_status = $estagio->status;
             $estagio->status = 'em_analise_tecnica';
             $estagio->save(); 
+            Mail::send(new enviar_analise_academica_mail($estagio));
             request()->session()->flash('alert-info','Parecer incluído com sucesso! Estágio enviado para o setor de graduação');    
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');

@@ -45,12 +45,12 @@
     <table style='width:100%'>
         <tr>
             <td style='width:20%' style='text-align:left;'>
-                <img src='https://www.fflch.usp.br/themes/contrib/aegan-subtheme/images/logo.png' width='230px'/>
+                <img src='images/logo-fflch.jpg' width='100px'/>
             </td>
             <td style='width:80%'; style='text-align:center;'>
                 <p align='center'><b>FACULDADE DE FILOSOFIA, LETRAS E CIÊNCIAS HUMANAS</b>
                 <br>Universidade de São Paulo<br>
-                Serviço de Graduação</p>
+                Serviço de Assistência ao Ensino de Graduação</p>
             </td>
         </tr>
     </table>

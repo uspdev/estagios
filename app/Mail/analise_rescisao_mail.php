@@ -11,7 +11,7 @@ use App\Models\Empresa;
 use App\Models\Estagio;
 use PDF;
 
-class alteracao_mail extends Mailable
+class analise_rescisao_mail extends Mailable
 {
     use Queueable, SerializesModels;
     private $estagio;
@@ -38,14 +38,11 @@ class alteracao_mail extends Mailable
                config('mail.reply_to.address')
               ];
 
-        $subject = Pessoa::dump($this->estagio->numero_usp)['nompes'] . ' - Setor de Estágios - Foi realizada uma alteração neste estágio';         
+        $subject = Pessoa::dump($this->estagio->numero_usp)['nompes'] . ' - Setor de Estágios - O relatório final de estágio foi enviado para o sistema';         
 
-        $pdf = PDF::loadView('pdfs.aditivo', ['estagio'=>$this->estagio]);      
-
-        return $this->view('emails.alteracao')
+        return $this->view('emails.analise_rescisao')
                     ->to($to)
                     ->subject($subject)
-                    ->attachData($pdf->output(), 'aditivo.pdf')
                     ->with([
                         'estagio' => $this->estagio,
                     ]);
