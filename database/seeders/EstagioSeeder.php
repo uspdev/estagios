@@ -18,10 +18,7 @@ class EstagioSeeder extends Seeder
             'valorbolsa' => '1200',
             'tipobolsa' => 'Mensal',
             'justificativa' => 'Desenvolvimento PHP',
-            'duracao' => '12 meses',
-            'atividadespertinentes' => 'Parcialmente',
-            'horariocompativel' => 'Sim, estágio realizado fora do horário do curso', 
-            'desempenhoacademico' => 'Honestamente, podia ser bem melhor',                        
+            'duracao' => '12 meses',                      
             'data_inicial' => '2020-03-12',
             'data_final' => '2021-03-12',
             'cargahoras' => '30',
@@ -40,14 +37,21 @@ class EstagioSeeder extends Seeder
             'status' => 'em_elaboracao',
             'pandemiahomeoffice' => 'Sim',
             'pandemiamedidas' => 'Alcool gel e cafezinho liberado',
-            'atividadesjustificativa' => 'Atuação no meio profissional de universidade e lidar com professores',  
             'nome_do_supervisor_estagio' => 'Genivaldo',
             'cargo_do_supervisor_estagio' => 'Gerente',
             'telefone_do_supervisor_estagio' => '1188888888',
             'email_do_supervisor_estagio' => 'geni@uol.com.br',
             'nome_de_contato' => 'Joãozinho',
             'email_de_contato' => 'contatointerno@empresa.com',
-            'telefone_de_contato' => '1199999999'
+            'telefone_de_contato' => '1199999999',
+            //
+            'horariocompativel' => 'Sim, estágio realizado fora do horário do curso', 
+            'desempenhoacademico' => 'Honestamente, podia ser bem melhor',  
+            'atividadespertinentes' => 'Sim',  
+            'atividadesjustificativa' => 'Atuação no meio profissional de universidade e lidar com professores',  
+            'tipodeferimento' => 'Deferido',    
+            'condicaodeferimento' => 'Não', 
+            'analise_academica' => 'O estágio está de acordo com a área de estudo e atividade profissional do aluno.'
         ];
       
         Estagio::create($entrada); 
