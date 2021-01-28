@@ -7,7 +7,7 @@
     @csrf
     <div class="row">
         <div class="form-group">
-            <textarea name="alteracao" rows="5" cols="60">{{old('alteracao',$estagio->alteracao)}}</textarea>
+            <textarea name="alteracao" rows="5" cols="60"></textarea>
         </div>
     </div>
 
