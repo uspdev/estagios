@@ -99,8 +99,10 @@ Route::post('/enviar_alteracao/{estagio}', [EstagioWorkflowController::class,'en
 # Rotas Análise da Alteração
 Route::post('/analise_tecnica_alteracao/{estagio}', [EstagioWorkflowController::class,'analise_tecnica_alteracao']);
 
+# Rotas Menu dos pareceristas
 Route::get('/parecer_merito', [PareceristaController::class,'parecerMerito']);
 Route::get('/meus_pareceres', [PareceristaController::class,'meusPareceres']);
+Route::get('/estagios_rescindidos', [PareceristaController::class,'estagiosRescindidos']);
 
 #alterar parecerista
 
