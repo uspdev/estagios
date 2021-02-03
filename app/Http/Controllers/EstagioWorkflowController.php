@@ -202,12 +202,6 @@ class EstagioWorkflowController extends Controller
             if(empty($estagio->renovacao_parent_id)){
                 $renovacao->renovacao_parent_id = $estagio->id;
             }
-
-            $request->validate([
-                'renovacao_justificativa' => 'required',
-            ]);
-            $renovacao->renovacao_justificativa = $request->renovacao_justificativa;
-
             $renovacao->analise_tecnica = null;
             $renovacao->horariocompativel = null;
             $renovacao->desempenhoacademico = null;

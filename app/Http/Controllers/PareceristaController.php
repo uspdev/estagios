@@ -109,5 +109,16 @@ class PareceristaController extends Controller
             'estagios' => $estagios,
         ]);
     }
+
+    public function estagiosRescindidos(){
+        $this->authorize('parecerista');
+
+        $estagios = Estagio::where('status', "rescisao")
+                      ->where('numparecerista',Auth::user()->codpes)->get();
+
+        return view('pareceristas.estagios')->with([
+            'estagios' => $estagios,
+        ]);
+    }
 }
 
