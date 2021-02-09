@@ -3,14 +3,6 @@
 
 @inject('pessoa','Uspdev\Replicado\Pessoa')
 @inject('graduacao','Uspdev\Replicado\Graduacao')
-
-@php
-    $empresa = App\Models\Empresa::where('cnpj',$estagio->cnpj)->first();
-    $parecerista = Uspdev\Replicado\Pessoa::dump($estagio->numparecerista)['nompes'];
-    $pareceristanum = $estagio->numparecerista;
-    $empresa = App\Models\Empresa::where('cnpj',$estagio->cnpj)->first();
-@endphp
-
 @inject('replicado_utils','App\Utils\ReplicadoUtils')
 
 @section('content')
@@ -20,11 +12,11 @@
 </div>
 <br>
 <div style="border-width: 1px; border-style: solid; border-color: #000; text-align: justify; padding: 0px;">
-    Nome do Estagiário(a): <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b><br><br>
+    Nome do Estagiário(a): <b>{{ $pessoa::nomeCompleto($estagio->numero_usp) }}</b><br><br>
     Número USP: <b>{{ $estagio->numero_usp }}</b><br><br>
     Curso: <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomhab'] }}</b>, período <b>{{ $replicado_utils->periodo($estagio->numero_usp) }}</b><br><br>
-    Empresa: <b>{{ $empresa->nome }}</b><br><br>
-    Área de atuação da Empresa: <b>S{{ $empresa->area_de_atuacao }}</b><br><br>
+    Empresa: <b>{{ $estagio->empresa->nome }}</b><br><br>
+    Área de atuação da Empresa: <b>S{{ $estagio->empresa->area_de_atuacao }}</b><br><br>
     Período do Estágio<br>
     Início: <b>{{$estagio->data_inicial}}</b><br>
     Término: <b>{{$estagio->data_final}}</b>
@@ -57,7 +49,7 @@
 <br><br>
 
 <div style="text-align: center">
-    PARECERISTA: <b> {{ $parecerista }} - {{ $pareceristanum }}</b>
+    PARECERISTA: <b> {{ $pessoa::nomeCompleto($estagio->numparecerista) }} - {{ $estagio->numparecerista }}</b>
 <div>
 
 @endsection('content')

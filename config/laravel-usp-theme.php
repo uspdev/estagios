@@ -17,12 +17,12 @@ $vagas =  [
     [
         'text' => 'Listar',
         'url'  => '/vagas',
-        'can'  => 'admin_ou_empresa',
+        'can'  => 'logado',
     ],
     [
         'text' => 'Cadastrar',
         'url'  => '/vagas/create',
-        'can'  => 'empresa',
+        'can'  => 'logado',
     ],
 ];
 
@@ -86,7 +86,7 @@ return [
         [
             'text'    => 'Mural de Vagas',
             'submenu' => $vagas,
-            'can'     => 'admin_ou_empresa',
+            'can'     => 'logado',
         ],
         [
             'text'    => 'Estágios',

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Gate;
 class VagaController extends Controller
 {
     public function index(Request $request){
-        if ( Gate::allows('empresa')) {
+        if ( Gate::allows('empresa') ) {
             $cnpj = Auth::user()->cnpj;
             $vagas = Vaga::where('cnpj',$cnpj)->orderBy('created_at', 'desc')->paginate(10);
             return view('vagas.index')->with('vagas',$vagas);
@@ -29,17 +29,18 @@ class VagaController extends Controller
     }
 
     public function create(){
-        $this->authorize('empresa');
+        $this->authorize('logado');
         return view('vagas.create')->with('vaga',new Vaga);
     }
 
     public function store(VagaRequest $request){
-        $this->authorize('empresa');
+        $this->authorize('logado');
         $vaga = Vaga::create($request->validated());
         return redirect ("vagas/{$vaga->id}");
     }
     
     public function edit(Vaga $vaga) {
+        # PRECISAMOS ARRUMAR
         if ( Gate::allows('empresa',$vaga->cnpj) | Gate::allows('admin') ) {
             return view('/vagas.edit')-> with('vaga', $vaga);
         } else {
@@ -48,6 +49,7 @@ class VagaController extends Controller
     }
 
     public function update(VagaRequest $request, Vaga $vaga){
+        # PRECISAMOS ARRUMAR
         if ( Gate::allows('empresa',$vaga->cnpj) | Gate::allows('admin') ) {
             $this->authorize('admin_ou_empresa',$vaga->cnpj);;
             $vaga->status = $request->status;
@@ -60,6 +62,7 @@ class VagaController extends Controller
     }
 
     public function destroy(Vaga $vaga){
+        # PRECISAMOS ARRUMAR
         if ( Gate::allows('empresa',$vaga->cnpj) | Gate::allows('admin') ) {
             $vaga->delete();
             return redirect('/');

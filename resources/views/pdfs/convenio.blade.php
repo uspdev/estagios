@@ -2,18 +2,6 @@
 
 @inject('pessoa','Uspdev\Replicado\Pessoa')
 @inject('graduacao','Uspdev\Replicado\Graduacao')
-@inject('empresa','App\Models\Empresa')
-
-@php
-
-use App\Models\Empresa;
-
-$empresa = Empresa::where('cnpj',$convenio->cnpj)->first();
-$empresa->cnpj =  substr($empresa->cnpj, 0, 2) . '.' . substr($empresa->cnpj, 2, 3) . '.' . substr($empresa->cnpj, 5, 3) . '/' . substr($empresa->cnpj, 8, 4) . '-' . substr($empresa->cnpj, 12, 2);
-
-@endphp
-
-
 @inject('replicado_utils','App\Utils\ReplicadoUtils')
 
 @section('content')

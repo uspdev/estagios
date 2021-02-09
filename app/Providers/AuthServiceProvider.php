@@ -26,7 +26,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        
         Gate::define('admin', function ($user) {
             $admins = explode(',', trim(config('estagios.admins')));
             return in_array($user->codpes, $admins);
@@ -56,6 +55,10 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('admin_ou_empresa', function ($user, $cnpj = null) {
             if(Gate::allows('admin')) return True;
             return Gate::allows('empresa',$cnpj);
+        });
+
+        Gate::define('logado', function ($user) {
+            return true;
         });
 
     }

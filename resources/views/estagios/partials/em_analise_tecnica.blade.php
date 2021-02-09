@@ -50,7 +50,7 @@
 <br>
 
 @if(!empty($estagio->analise_academica))
-    <b>Parecerista:</b> {{App\Models\User::find($estagio->analise_academica_user_id)->name}} <br>
+    <b>Parecerista:</b> {{ $estagio->parecerista->numero_usp }} <br>
     <b>Parecer de Mérito:</b> {{$estagio->analise_academica}}<br>
 @endif
 

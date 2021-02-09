@@ -9,7 +9,7 @@
     
     <select name="numparecerista">
         <option value="" selected=""> - Selecione  -</option>
-        @foreach (App\Models\Parecerista::all() as $parecerista)
+        @foreach ($estagio->parecerista->all() as $parecerista)
 
             @if (old('numparecerista') == '' and isset($estagio->numparecerista))
                 <option value="{{$parecerista->numero_usp}}" {{ ( $estagio->numparecerista == $parecerista->numero_usp) ? 'selected' : ''}}>

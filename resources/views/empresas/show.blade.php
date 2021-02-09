@@ -23,8 +23,8 @@
         <b>Cargo do Representante da Empresa:</b> {{$empresa->cargo_do_representante}}<br>
         @if($empresa->conceder_acesso_cnpj)
             <br>
-            <b>Acesso de administração concedido à:</b> {{$empresa->conceder_acesso_cnpj}} - 
-            {{ App\Models\Empresa::where('cnpj',$empresa->conceder_acesso_cnpj)->first()->nome }}
+            <b>Acesso de administração concedido à:</b> 
+            {{$empresa->conceder_acesso_cnpj}} - {{ $empresa->empresa_com_acesso->nome }}
             <br>
         @endif
     </div>

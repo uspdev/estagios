@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use ZeroDaHero\LaravelWorkflow\Traits\WorkflowTrait;
 use App\Models\File;
+use App\Models\Empresa;
+use App\Models\User;
 use App\Models\Aditivo;
+use App\Models\Parecerista;
 use App\Utils\ReplicadoUtils;
 
 class Estagio extends Model
@@ -155,7 +158,7 @@ class Estagio extends Model
 
     public function analise_tecnica_user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     public function mediaponderada() {
@@ -170,4 +173,13 @@ class Estagio extends Model
         return $this->hasMany(Aditivo::class);
     }
 
+    public function empresa()
+    {
+        return $this->belongsTo(Empresa::class,'cnpj','cnpj');
+    }
+
+    public function parecerista()
+    {
+        return $this->belongsTo(Parecerista::class,'numparecerista','numero_usp');
+    }
 }

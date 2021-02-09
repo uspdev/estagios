@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Empresa;
 
 class Vaga extends Model
 {
@@ -26,5 +27,10 @@ class Vaga extends Model
             'Reprovada',
             'Em análise'
         ];
+    }
+
+    public function empresa()
+    {
+        return $this->belongsTo(Empresa::class,'cnpj','cnpj');
     }
 }

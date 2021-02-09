@@ -5,13 +5,9 @@
 @inject('graduacao','Uspdev\Replicado\Graduacao')
 
 @php
-$presidente = App\Models\Parecerista::where('presidente', true)->first();
-
-$empresa = App\Models\Empresa::where('cnpj',$estagio->cnpj)->first();
-
-$empresa->cnpj =  substr($empresa->cnpj, 0, 2) . '.' . substr($empresa->cnpj, 2, 3) . '.' . substr($empresa->cnpj, 5, 3) . '/' . substr($empresa->cnpj, 8, 4) . '-' . substr($empresa->cnpj, 12, 2);
-
+$presidente = $pessoa::nomeCompleto($estagio->parecerista->presidente()->numero_usp);
 $endereco = Uspdev\Replicado\Pessoa::obterEndereco($estagio->numero_usp);
+
 // Formata endereço
 $endereco = [
     $endereco['nomtiplgr'],
@@ -68,11 +64,11 @@ $endereco = [
 </div>
 
 <div style="text-align: justify;">
-    <p style="text-indent : 1em;"><b>{{ $empresa->nome }}, {{ $empresa->endereco }}, CEP {{ $empresa->cep }}, CNPJ
-            {{ $empresa->cnpj }}</b>, representada por
+    <p style="text-indent : 1em;"><b>{{ $estagio->empresa->nome }}, {{ $estagio->empresa->endereco }}, CEP {{ $estagio->empresa->cep }}, CNPJ
+            {{ $estagio->empresa->cnpj }}</b>, representada por
         s{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "ua" : "eu" }}
-        <b>{{ $empresa->cargo_do_representante }}</b>, Sr(a)
-        <b>{{ $empresa->nome_do_representante }}</b>, adiante designada CONCEDENTE e
+        <b>{{ $estagio->empresa->cargo_do_representante }}</b>, Sr(a)
+        <b>{{ $estagio->empresa->nome_do_representante }}</b>, adiante designada CONCEDENTE e
         {{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }} ESTAGIÁRIO
         <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b>, estudante, residente a <b>@foreach ($endereco as
             $campos) {{ $campos }}@endforeach</b>, portador da cédula de identidade
@@ -87,7 +83,7 @@ $endereco = [
         63.025.530/0001-04, adiante denominada USP, no interesse da Faculdade de Filosofia, Letras e Ciências Humanas,
         localizada à Rua do Lago, 717, na Cidade Universitária “Armando de Salles Oliveira, Butantã, São Paulo, neste
         ato representada pel{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }} Presidente da
-        Comissão de Graduação, <b>{{ $pessoa::dump($presidente->numero_usp)['nompes'] }}</b>, da mencionada
+        Comissão de Graduação, <b>{{ $presidente }}</b>, da mencionada
         Faculdade, celebram o presente TERMO DE COMPROMISSO DE ESTÁGIO, que se vincula ao convênio para Realização de
         Estágio firmado entre a CONCEDENTE e a INSTITUIÇÃO DE ENSINO nos termos da Lei no 9.394/96 e da Lei nº
         11.788/08, conforme as condições a seguir:</p>
@@ -140,7 +136,7 @@ $endereco = [
     <p>10. A Instituição de Ensino INTERVENIENTE supervisionará o estágio de conformidade com os seus regulamentos
         internos, ficando o ESTAGIÁRIO sujeito a essa regulamentação.</p>
     <p>10.1.Como supervisora, a INSTITUIÇÃO DE ENSINO INTERVENIENTE indica
-        <b>{{ $pessoa::dump($presidente->numero_usp)['nompes'] }}</b>.</p>
+        <b>{{ $presidente }}</b>.</p>
     <p>E, por estarem de acordo com os termos do presente instrumento, <b>as partes o assinam em 03 (três) vias</b>, na
         presença de duas testemunhas para todos os fins e efeitos de direito.</p>
 </div>
@@ -153,12 +149,12 @@ $endereco = [
 
 <div style="font-style: italic; font-weight: bold">
     ________________________________________________<br>
-    {{ $empresa->nome }}
+    {{ $estagio->empresa->nome }}
     <br><br><br>
     _______________________________________________<br>
-    {{ $pessoa::dump($estagio->numero_usp)['nompes'] }}<br><br><br>
+    {{ $pessoa::nomeCompleto($estagio->numero_usp) }}<br><br><br>
     ________________________________________________<br>
-    {{ $pessoa::dump($presidente->numero_usp)['nompes'] }}<br>
+    {{ $presidente }}<br>
     Presidente da Comissão de Graduação da FFLCH-USP
 </div>
 
@@ -186,8 +182,8 @@ $endereco = [
     Período: <b>{{ $replicado_utils->periodo($estagio->numero_usp) }}</b><br>
     Semestre: <b>{{ $replicado_utils->semestreAtual($estagio->numero_usp) }}º</b><br>
     E-mail: <b>{{ $pessoa::email($estagio->numero_usp) }}</b><br>
-    Nome da Empresa: <b>{{ $empresa->nome }}</b><br>
-    Área de atuação da Empresa: <b>{{ $empresa->area_de_atuacao }}</b><br>
+    Nome da Empresa: <b>{{ $estagio->empresa->nome }}</b><br>
+    Área de atuação da Empresa: <b>{{ $estagio->empresa->area_de_atuacao }}</b><br>
     Nome do supervisor(a) interno(a) do Estágio na Empresa: <b>{{ $estagio->nome_do_supervisor_estagio }}</b><br>
     Telefone do Supervisor: <b>{{ $estagio->telefone_do_supervisor_estagio }}</b> / <b>{{ $estagio->telefone_de_contato }}</b>,
     E-mail do Supervisor: <b>{{ $estagio->email_do_supervisor_estagio }}</b><br>
@@ -222,19 +218,19 @@ $endereco = [
 
     <br>
     _______________________________________________<br>
-    {{ $empresa->nome_do_representante }}<br>
-    Representante da {{ $empresa->nome }}<br><br>
+    {{ $estagio->empresa->nome_do_representante }}<br>
+    Representante da {{ $estagio->empresa->nome }}<br><br>
     _______________________________________________<br>
-    {{ $pessoa::dump($estagio->numero_usp)['nompes'] }}<br><br>
+    {{ $pessoa::nomeCompleto($estagio->numero_usp) }}<br><br>
     _______________________________________________<br>
-    {{ $pessoa::dump($presidente->numero_usp)['nompes'] }} <br>
+    {{ $presidente }} <br>
     Presidente da Comissão de Graduação da FFLCH/USP
 
     <br><br><br>
 
 <div>
     <p><b>Contato:</b> {{ $estagio->nome_de_contato }}, Telefone: {{ $estagio->telefone_de_contato }} <br>
-    <b>E-mail da empresa:</b> {{ $empresa->email }}
+    <b>E-mail da empresa:</b> {{ $estagio->empresa->email }}
     </p>
 </div>
 

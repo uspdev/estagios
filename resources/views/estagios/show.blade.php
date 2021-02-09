@@ -53,8 +53,8 @@
 
       <div class="card-header"><b>Informações Sobre a Empresa</b></div>
         <div class="card-body">
-            <b>Nome da empresa:</b> {{App\Models\Empresa::where('cnpj',$estagio->cnpj)->first()->nome}}<br>
-            <b>CNPJ da empresa:</b> {{$estagio->cnpj}}<br>
+            <b>Nome da empresa:</b> {{ $estagio->empresa->nome }}<br>
+            <b>CNPJ da empresa:</b> {{ $estagio->empresa->cnpj }}<br>
             <b>Nome do supervisor do estágio:</b> {{$estagio->nome_do_supervisor_estagio}}<br>
             <b>Cargo do supervisor do estágio:</b> {{$estagio->cargo_do_supervisor_estagio}}<br>
             <b>Telefone do supervisor do estágio:</b> {{$estagio->telefone_do_supervisor_estagio}}<br>

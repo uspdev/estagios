@@ -9,4 +9,10 @@ class Parecerista extends Model
 {
     use HasFactory;
     protected $fillable = ['numero_usp','presidente'];
+
+    public function scopePresidente($query)
+    {
+        return $query->where('presidente', true)->first();
+    }
+
 }

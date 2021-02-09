@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Empresa;
 
 class Convenio extends Model
 {
@@ -20,5 +21,10 @@ class Convenio extends Model
 
     public function setCnpjAttribute($value){
       $this->attributes['cnpj'] = preg_replace("/[^0-9]/", "", $value);  
+    }
+
+    public function empresa()
+    {
+        return $this->belongsTo(Empresa::class,'cnpj','cnpj');
     }
 }

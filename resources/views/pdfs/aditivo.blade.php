@@ -5,12 +5,9 @@
 @inject('graduacao','Uspdev\Replicado\Graduacao')
 
 @php
-$presidente = App\Models\Parecerista::where('presidente', true)->first();
-$empresa = App\Models\Empresa::where('cnpj',$estagio->cnpj)->first();
+$presidente = $pessoa::nomeCompleto($estagio->parecerista->presidente()->numero_usp);
+$endereco = $pessoa::obterEndereco($estagio->numero_usp);
 
-$empresa->cnpj =  substr($empresa->cnpj, 0, 2) . '.' . substr($empresa->cnpj, 2, 3) . '.' . substr($empresa->cnpj, 5, 3) . '/' . substr($empresa->cnpj, 8, 4) . '-' . substr($empresa->cnpj, 12, 2);
-
-$endereco = Uspdev\Replicado\Pessoa::obterEndereco($estagio->numero_usp);
 // Formata endereço
 $endereco = [
     $endereco['nomtiplgr'],
@@ -34,12 +31,12 @@ $endereco = [
 </div>
 
 <br>
-<div style="text-align: justify; text-indent : 1em;"><b>{{ $empresa->nome }}, CNPJ Nº {{ $empresa->cnpj }},
-</b> representada por seu(a) <b>{{ $empresa->cargo_do_representante }}, {{ $empresa->nome_do_representante }}</b> 
-adiante designada CONCEDENTE e o ESTAGIÁRIO(A) <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b>, no USP <b>
+<div style="text-align: justify; text-indent : 1em;"><b>{{ $estagio->empresa->nome }}, CNPJ Nº {{ $estagio->empresa->cnpj }},
+</b> representada por seu(a) <b>{{ $estagio->empresa->cargo_do_representante }}, {{ $estagio->empresa->nome_do_representante }}</b> 
+adiante designada CONCEDENTE e o ESTAGIÁRIO(A) <b>{{ $pessoa::nomeCompleto($estagio->numero_usp) }}</b>, no USP <b>
 {{ $estagio->numero_usp }}</b>, curso <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomhab'] }}</b> e como INTERVENIENTE 
 a Faculdade de Filosofia, Letras e Ciências Humanas da Universidade de São Paulo, representada pela Presidente da Comissão de Graduação 
-<b>{{ $pessoa::dump($presidente->numero_usp)['nompes'] }}</b>, firmam o presente TERMO DE ADITAMENTO DE COMPROMISSO DE ESTÁGIO, nos termos da Lei
+<b>{{ $presidente }}</b>, firmam o presente TERMO DE ADITAMENTO DE COMPROMISSO DE ESTÁGIO, nos termos da Lei
 11.788/08 e da Resolução USP no 5.528/09, conforme as condições a seguir:</div>
 <p style="text-align: justify; text-indent : 1em;">1. Alterações realizadas no termo:
 <b>
@@ -64,15 +61,15 @@ carimbo contendo o CNPJ da empresa, para que produza seus jurídicos efeitos.</p
 <br><br>
 
 ________________________________________<br>
-<b>{{ $empresa->nome }}</b>
+<b>{{ $estagio->empresa->nome }}</b>
 <br>
 <br>
 ________________________________________<br>
-<b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b>
+<b>{{ $pessoa::nomeCompleto($estagio->numero_usp) }}</b>
 <br>
 <br>
 ________________________________________<br>
-<b>{{ $pessoa::dump($presidente->numero_usp)['nompes'] }}</b><br>
+<b>{{ $presidente }}</b><br>
 <b>Presidente da Comissão de Graduação da FFLCH</b>
 <br><br><br>
 E-mail do estagiario: {{ $pessoa::email($estagio->numero_usp) }}<br>

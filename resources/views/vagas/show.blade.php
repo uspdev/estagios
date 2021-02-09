@@ -28,14 +28,9 @@
     <div class="row">
 
       <div class="col-sm">
-
-        @if(App\Models\Empresa::where('cnpj',$vaga->cnpj)->first())
-          <b>Nome da empresa:</b> {{ App\Models\Empresa::where('cnpj',$vaga->cnpj)->first()->nome }}
-          <br><br>
-          <b>Email empresa:</b> {{ App\Models\Empresa::where('cnpj',$vaga->cnpj)->first()->email }}
-          </br><br>
+        @if($vaga->empresa)  
+        <b>Nome da empresa:</b> {{ $vaga->empresa->nome }} <br>
         @endif
-          
         <b>Título da Vaga:</b> {{ $vaga->titulo }}
         <br></br>
         <b>Descrição da Vaga:</b> {{ $vaga->descricao }}
