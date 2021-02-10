@@ -9,15 +9,15 @@
     
     <select name="numparecerista">
         <option value="" selected=""> - Selecione  -</option>
-        @foreach ($estagio->parecerista->all() as $parecerista)
+        @foreach (\App\Models\Parecerista::all() as $parecerista)
 
             @if (old('numparecerista') == '' and isset($estagio->numparecerista))
                 <option value="{{$parecerista->numero_usp}}" {{ ( $estagio->numparecerista == $parecerista->numero_usp) ? 'selected' : ''}}>
-                    {{$parecerista->numero_usp}} - {{Uspdev\Replicado\Pessoa::nomeCompleto($parecerista->numero_usp)}}
+                    {{$parecerista->numero_usp}} - {{\Uspdev\Replicado\Pessoa::nomeCompleto($parecerista->numero_usp)}}
                 </option>
             @else
                 <option value="{{$parecerista->numero_usp}}" {{ ( old('numparecerista') == $parecerista->numero_usp) ? 'selected' : ''}}>
-                    {{$parecerista->numero_usp}} - {{Uspdev\Replicado\Pessoa::nomeCompleto($parecerista->numero_usp)}}
+                    {{$parecerista->numero_usp}} - {{\Uspdev\Replicado\Pessoa::nomeCompleto($parecerista->numero_usp)}}
                 </option>
             @endif
         
