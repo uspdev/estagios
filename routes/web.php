@@ -29,6 +29,9 @@ Route::resource('/avisos',AvisoController::class);
 Route::resource('/convenios',ConvenioController::class);
 Route::resource('/files', FileController::class);
 
+# vagas
+Route::post('/statusvagas/{vaga}',[VagaController::class,'status'])->name('vagas.status');
+
 #PDF's 
 Route::get('/pdfs/convenio/{convenio}', [PDFsController::class, 'convenio']);
 Route::get('/pdfs/termo/{estagio}', [PDFsController::class, 'termo']);

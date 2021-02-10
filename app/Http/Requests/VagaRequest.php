@@ -24,8 +24,8 @@ class VagaRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'cnpj' => 'required|exists:empresas,cnpj',
             'titulo' => 'required',
+            'contato' => 'required',
             'descricao' => 'required',
             'expediente' => 'required',
             'salario' => 'required',
@@ -35,19 +35,5 @@ class VagaRequest extends FormRequest
             'status' => ''
         ];
         return $rules;
-    }
-
-    protected function prepareForValidation()
-    {
-        $this->merge([
-            'cnpj'   => empty(auth()->user()->cnpj) ? $this->vaga->cnpj : auth()->user()->cnpj,
-        ]);
-    }
-
-    public function messages()
-    {
-        return [
-            'cnpj.exists' => 'Atualize o cadastro da empresa antes de executar essa ação',
-        ];
     }
 }

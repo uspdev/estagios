@@ -13,16 +13,12 @@ class PareceristaSeeder extends Seeder
      */
     public function run()
     {
-        $entrada1 = [
-            'numero_usp' => 5385361,
-        ];
-        $entrada2 = [
+        $entrada = [
             'numero_usp' => 2989060,
             'presidente' => 1
         ];
         
-        Parecerista::create($entrada1);
-        Parecerista::create($entrada2);
+        Parecerista::create($entrada);
         Parecerista::factory(15)->create();
     }
 }

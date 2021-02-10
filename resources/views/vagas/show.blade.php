@@ -9,28 +9,26 @@
 
 
   <div class="card-body">
+    @can('owner',$vaga)
+      <a href="{{ route('vagas.edit',$vaga->id) }}" class="btn btn-success">Editar</a>
+    @endcan
+    <br><br>
 
     @can('admin')
-    <table class="table table-striped">
-    <tbody>
-    <tr>
-      
-        <button type="submit" style="background-color: transparent;border: none;" >
-          <a href="{{ route('vagas.edit',$vaga->id) }}"><i class="far fa-edit"></a></i>
-        </button>   
-
-    </tr>
-    </tbody>
-    </table>
-    @endcan('admin')
-  
-
+    <form method="POST" action="{{ route('vagas.status',$vaga->id) }}">
+      @csrf
+      @if($vaga->status != 'Aprovada')
+        <button type="submit" value="Aprovada" name="status" class="btn btn-info"> Aprovar </button>
+      @endif
+      @if($vaga->status != 'Reprovada')
+        <button type="submit" value="Reprovada" name="status" class="btn btn-info"> Reprovar </button>
+      @endif
+    </form>
+    @endcan
+    <br>
     <div class="row">
 
       <div class="col-sm">
-        @if($vaga->empresa)  
-        <b>Nome da empresa:</b> {{ $vaga->empresa->nome }} <br>
-        @endif
         <b>Título da Vaga:</b> {{ $vaga->titulo }}
         <br></br>
         <b>Descrição da Vaga:</b> {{ $vaga->descricao }}
@@ -45,9 +43,8 @@
         <br></br>
         <b>Divulgar até:</b> {{ $vaga->divulgar_ate }}
         <br></br>
-        <b>Status da Vaga:</b> {{ $vaga->status }}
+        <b>Contato para vaga:</b> {{ $vaga->contato ?? 'Não informado' }}
         <br></br>
-
       </div>
 
     </div>

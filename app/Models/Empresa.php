@@ -22,6 +22,10 @@ class Empresa extends Model
         }
     }
 
+    public function getCnpjNumberAttribute($value) {
+        return preg_replace( '/[^0-9]/', '', $this->cnpj );
+    }
+
     public function getCnpjAttribute($value) {
         if($value && strlen($value)==14){
             $value = preg_replace("/[^0-9]/", "", $value);

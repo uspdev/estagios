@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Empresa;
+use App\Models\User;
 
 class Vaga extends Model
 {
@@ -29,8 +30,8 @@ class Vaga extends Model
         ];
     }
 
-    public function empresa()
+    public function user()
     {
-        return $this->belongsTo(Empresa::class,'cnpj','cnpj');
+        return $this->belongsTo(User::class,'user_id','id');
     }
 }

@@ -51,14 +51,14 @@
                 @can('admin_ou_empresa',$empresa->cnpj)
                     <a href="/empresas/{{$empresa->id}}/edit"><i class="fas fa-edit"></i></a>
                 @else
-                    <form method="POST" action="/logandoComoEmpresa/{{$empresa->cnpj}}" class="form-inline">
+                    <form method="POST" action="/logandoComoEmpresa/{{$empresa->cnpj_number}}" class="form-inline">
                         @csrf
                         <button type="submit" class="btn btn-link"><i class="fas fa-user-secret"></i></button>
                     </form>
                 @endcan
 
                 @can('admin')
-                    <form method="POST" action="/logandoComoEmpresa/{{$empresa->cnpj}}" class="form-inline">
+                    <form method="POST" action="/logandoComoEmpresa/{{ $empresa->cnpj_number }}" class="form-inline">
                         @csrf
                         <button type="submit" class="btn btn-link"><i class="fas fa-user-secret"></i></button>
                     </form>

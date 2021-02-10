@@ -11,14 +11,13 @@ use Illuminate\Support\Facades\Gate;
 class VagaController extends Controller
 {
     public function index(Request $request){
-        if ( Gate::allows('empresa') ) {
-            $cnpj = Auth::user()->cnpj;
-            $vagas = Vaga::where('cnpj',$cnpj)->orderBy('created_at', 'desc')->paginate(10);
-            return view('vagas.index')->with('vagas',$vagas);
-        } else if ( Gate::allows('admin')){
-            $vagas = Vaga::orderBy('created_at', 'desc')->paginate(10);
+        if ( Gate::allows('admin') ) {
+            $vagas = Vaga::where('status','Em análise')
+                ->orWhere('status','Reprovada')
+                ->orderBy('status', 'desc')->paginate(10);
+        } else {
+            $vagas = Vaga::where('user_id',auth()->user()->id)->orderBy('created_at', 'desc')->paginate(10);
         }
-
         return view('vagas.index')->with([
             'vagas' => $vagas,
         ]);
@@ -35,30 +34,25 @@ class VagaController extends Controller
 
     public function store(VagaRequest $request){
         $this->authorize('logado');
-        $vaga = Vaga::create($request->validated());
+        $validated = $request->validated();
+        $validated['user_id'] = auth()->user()->id;
+        $validated['status'] = 'Em análise';
+        $vaga = Vaga::create($validated);
         return redirect ("vagas/{$vaga->id}");
     }
     
     public function edit(Vaga $vaga) {
-        # PRECISAMOS ARRUMAR
-        if ( Gate::allows('empresa',$vaga->cnpj) | Gate::allows('admin') ) {
-            return view('/vagas.edit')-> with('vaga', $vaga);
-        } else {
-            request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
-        }
+        $this->authorize('owner',$vaga);
+        return view('/vagas.edit')-> with('vaga', $vaga);
     }
 
     public function update(VagaRequest $request, Vaga $vaga){
-        # PRECISAMOS ARRUMAR
-        if ( Gate::allows('empresa',$vaga->cnpj) | Gate::allows('admin') ) {
-            $this->authorize('admin_ou_empresa',$vaga->cnpj);;
-            $vaga->status = $request->status;
-            $validated = $request->validated();
-            $vaga->update($validated);
-            return redirect("/vagas/{$vaga->id}");
-        } else {
-            request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
-        }
+        $this->authorize('owner',$vaga);
+        $validated = $request->validated();
+        # quando houver edição, volta para análise
+        $validated['status'] = 'Em análise';
+        $vaga->update($validated);
+        return redirect("/vagas/{$vaga->id}");
     }
 
     public function destroy(Vaga $vaga){
@@ -69,5 +63,13 @@ class VagaController extends Controller
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
+    }
+
+    public function status(Request $request, Vaga $vaga){
+        $this->authorize('admin');
+        if($request->status == 'Aprovada') $vaga->status = 'Aprovada';
+        if($request->status == 'Reprovada') $vaga->status = 'Reprovada';
+        $vaga->save();
+        return redirect()->route('vagas.show', [$vaga]);
     }
 }

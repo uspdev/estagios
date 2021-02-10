@@ -33,37 +33,19 @@
       <label for="horario" class="required"><strong>Horário do Estágio:</strong></label>
       <input type="text" class="form-control" id="horario" name="horario" width="190" value="{{old('horario',$vaga->horario)}}">
     </div>
-  </div>
-
-  <div class="row">
     <div class="col-sm form-group">
       <label for="divulgar_ate" class="required"><strong>Divulgar até:</strong></label>
       <input type="text" class="form-control datepicker" id="divulgar_ate" name="divulgar_ate" value="{{old('divulgar_ate',$vaga->divulgar_ate)}}">
     </div>
   </div>
 
-  @can('admin')
-  <hr>
   <div class="row">
     <div class="col-sm form-group">
-    <label for="status" class="required"><strong>STATUS DA VAGA: </strong></label>
-    <select name="status" class="form-control" id="status">
-      <option value="" selected="">- Selecione -</option>
-        @foreach ($vaga->statusOptions() as $option)
-          @if (old('status') == '' and isset($vaga->status) )
-             <option value="{{$option}}" {{ ( $vaga->status == $option) ? 'selected' : ''}}>
-              {{$option}}
-             </option>
-          @else
-              <option value="{{$option}}" {{ ( old('status') == $option) ? 'selected' : ''}}>
-              {{$option}}
-              </option>
-          @endif                       
-        @endforeach    
-    </select> 
+      <label for="contato" class="required"><strong>Contato para Vaga:</strong></label>
+      <textarea class="form-control" name="contato">{{old('contato',$vaga->contato)}}</textarea>
+      <small> Emails, sites ou telefones no qual alunos e alunas devem entrar em contato</small>
     </div>
   </div>
-  @endcan('admin')
 
   <div class="row">  
     <div class="col-sm form-group">

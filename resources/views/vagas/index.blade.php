@@ -9,14 +9,15 @@
 
 <div class="card">
 
+<div class="card-body">
 <table class="table table-striped">
 
     <thead>
       <tr> 
         <th><h3>Vagas Disponíveis</h3></th>
-        <th><h3>Empresa</h3></th>
-        <th><h3>Status da Vaga</h3></th>
-        <th><h3>Status da Divulgação</h3></th>
+        <th><h3>Cadastrada por</h3></th>
+        <th><h3>Status</h3></th>
+        <th><h3>Divulgação até</h3></th>
         <th><h3>Ações</h3></th>
       </tr>
     </thead>
@@ -25,11 +26,10 @@
       @foreach($vagas as $vaga)
       <tr>
         <td><a href="/vagas/{{$vaga->id}}">{{ $vaga->titulo }}</a></td>
-        <td>
-            {{ $vaga->empresa->nome }}
+        <td> @if($vaga->user){{ $vaga->user->name }}@endif
         </td>
         <td>{{$vaga->status}}</td>
-        <td>Divugação até {{$vaga->divulgar_ate}}</td>
+        <td>{{$vaga->divulgar_ate}}</td>
         <td> 
           <form method="POST" action="/vagas/{{$vaga->id}}">
             @csrf
@@ -42,6 +42,7 @@
     </tbody>
 
 </table>
+<div>
 <div>
 
 @endsection('content')

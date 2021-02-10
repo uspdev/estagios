@@ -14,7 +14,8 @@ class NewColumnsInVagasTable extends Migration
     public function up()
     {
         Schema::table('vagas', function (Blueprint $table) {
-            $table->string('cnpj')->nullable()->change();
+            $table->dropColumn('cnpj');
+            $table->text('contato')->nullable();
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
         });
     }

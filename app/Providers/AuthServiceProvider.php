@@ -61,5 +61,11 @@ class AuthServiceProvider extends ServiceProvider
             return true;
         });
 
+        Gate::define('owner', function ($user, $model) {
+            if(Gate::allows('admin')) return true;
+            if($model->user_id == $user->id) return true;
+            return false;
+        });
+
     }
 }

@@ -37,4 +37,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function setCnpjAttribute($value) {
+        if($value) {
+            $this->attributes['cnpj'] = preg_replace('/[^0-9]/', '', $value);
+        }
+    }
 }

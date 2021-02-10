@@ -28,7 +28,7 @@ class EmpresaController extends Controller
 
     public function show(Request $request, Empresa $empresa){
 
-        if (Gate::allows('empresa', $empresa->cnpj) | Gate::allows('admin')) {
+        if (Gate::allows('empresa', $empresa->cnpj_number) | Gate::allows('admin')) {
             $estagios = Estagio::where('cnpj',$empresa->cnpj)->paginate(10);
             $convenios = Convenio::where('cnpj',$empresa->cnpj)->paginate(10);
             return view('empresas.show')->with([
@@ -60,7 +60,7 @@ class EmpresaController extends Controller
     }
 
     public function edit(Empresa $empresa){
-        if (Gate::allows('empresa', $empresa->cnpj) | Gate::allows('admin')) {
+        if (Gate::allows('empresa', $empresa->cnpj_number) | Gate::allows('admin')) {
             return view('empresas.edit')->with('empresa', $empresa);
         } else {
             request()->session()->flash('alert-danger','Usuário sem permissão');
@@ -69,7 +69,7 @@ class EmpresaController extends Controller
     }
 
     public function update(EmpresaRequest $request, Empresa $empresa){
-        if (Gate::allows('empresa', $empresa->cnpj) | Gate::allows('admin')) {
+        if (Gate::allows('empresa', $empresa->cnpj_number) | Gate::allows('admin')) {
             $validated = $request->validated();           
             $empresa->update($validated);
             EmpresaUtils::user($validated);
@@ -110,7 +110,7 @@ class EmpresaController extends Controller
                 }
             }
             $user = EmpresaUtils::user([
-                'cnpj'     => $empresa->cnpj,
+                'cnpj'     => $empresa->cnpj_number,
                 'email'    => $empresa->email,
                 'password' => $empresa->nome,
                 'nome'     => ''

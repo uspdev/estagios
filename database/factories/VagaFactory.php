@@ -28,7 +28,6 @@ class VagaFactory extends Factory
         $valstatus = ['Aprovada','Reprovada','Em análise'];
 
         return [
-            'cnpj' => Empresa::factory()->create()->cnpj, 
             'titulo' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
             'descricao' => $this->faker->text,
             'expediente' => $this->faker->buildingNumber,
