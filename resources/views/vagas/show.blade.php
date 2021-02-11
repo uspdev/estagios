@@ -11,21 +11,22 @@
   <div class="card-body">
     @can('owner',$vaga)
       <a href="{{ route('vagas.edit',$vaga->id) }}" class="btn btn-success">Editar</a>
+      <br><br>
     @endcan
-    <br><br>
-
+    
     @can('admin')
-    <form method="POST" action="{{ route('vagas.status',$vaga->id) }}">
-      @csrf
-      @if($vaga->status != 'Aprovada')
-        <button type="submit" value="Aprovada" name="status" class="btn btn-info"> Aprovar </button>
-      @endif
-      @if($vaga->status != 'Reprovada')
-        <button type="submit" value="Reprovada" name="status" class="btn btn-info"> Reprovar </button>
-      @endif
-    </form>
+      <form method="POST" action="{{ route('vagas.status',$vaga->id) }}">
+        @csrf
+        @if($vaga->status != 'Aprovada')
+          <button type="submit" value="Aprovada" name="status" class="btn btn-info"> Aprovar </button>
+        @endif
+        @if($vaga->status != 'Reprovada')
+          <button type="submit" value="Reprovada" name="status" class="btn btn-info"> Reprovar </button>
+        @endif
+      </form>
+      <br>
     @endcan
-    <br>
+    
     <div class="row">
 
       <div class="col-sm">
