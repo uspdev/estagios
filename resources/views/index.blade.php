@@ -37,7 +37,7 @@
       <table class="table table-striped">
         <thead>
           <tr> 
-            <th><h3>Mural de Vagas</h3></th>
+            <th colspan="2"><h2>Mural de Vagas</h3></th>
           </tr>
         </thead>
 
@@ -45,34 +45,35 @@
           @foreach($vagas as $vaga)
           <tr>
             @if(($vaga->status) == 'Aprovada')
-              <td><a href="/vagas/{{$vaga->id}}">{{$vaga->titulo}}</a></td>
+              <td><h4>{{$vaga->titulo}}</h4>{{ $vaga->descricao }}</td>
+              <td><a href="/vagas/{{$vaga->id}}">Acessar vaga</a></td>
             @endif
           </tr>
           @endforeach
         </tbody>
       </table>
+
+    @if(!$avisos->isEmpty())
+    <table class="table table-striped">
+      <thead>
+        <tr> 
+          <th><h3> Avisos </h3></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @foreach($avisos as $aviso)
+        <tr>
+          <td><b>{{$aviso->titulo}}</b><br>
+              {{$aviso->corpo}}
+          </td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+    @endif
+
     </div>
-
-    <div class="col-sm">
-      <table class="table table-striped">
-        <thead>
-          <tr> 
-            <th><h3>Avisos</h3></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          @foreach($avisos as $aviso)
-          <tr>
-            <td><b>{{$aviso->titulo}}</b><br>
-                {{$aviso->corpo}}
-            </td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
-    </div>
-
   </div>
   </div>
 </div>
