@@ -5,7 +5,7 @@
 @inject('graduacao','Uspdev\Replicado\Graduacao')
 
 @php
-$presidente = $pessoa::nomeCompleto($estagio->parecerista->presidente()->numero_usp);
+$presidente = $pessoa::nomeCompleto(\App\Models\Parecerista::presidente()->numero_usp);
 $endereco = $pessoa::obterEndereco($estagio->numero_usp);
 
 // Formata endereço

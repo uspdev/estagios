@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Gate;
 class VagaController extends Controller
 {
     public function index(Request $request){
+        $this->authorize('logado');
         if ( Gate::allows('admin') ) {
             $vagas = Vaga::where('status','Em análise')
                 ->orWhere('status','Reprovada')

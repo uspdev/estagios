@@ -48,7 +48,7 @@ class LoginEmpresaController extends Controller
         $empresa = Empresa::where('cnpj',$cnpj)->first();
 
         if (!is_null($empresa)) {
-            if( ($empresa->email != $request->email) | ($empresa->cnpj != $cnpj) ){
+            if( ($empresa->email != $request->email) | ($empresa->cnpj_number != $cnpj) ){
                 $email_limpo = Utils::partially_email($empresa->email);
 
                 $request->session()->flash('alert-danger',

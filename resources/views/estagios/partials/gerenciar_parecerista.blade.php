@@ -6,7 +6,6 @@
     <form method="POST" action="/parecer_merito/{{$estagio->id}}">
     @csrf
     
-    
     <select name="numparecerista">
         <option value="" selected=""> - Selecione  -</option>
         @foreach (\App\Models\Parecerista::all() as $parecerista)

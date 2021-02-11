@@ -27,7 +27,7 @@ class EmpresaController extends Controller
     }
 
     public function show(Request $request, Empresa $empresa){
-
+        $this->authorize('logado');
         if (Gate::allows('empresa', $empresa->cnpj_number) | Gate::allows('admin')) {
             $estagios = Estagio::where('cnpj',$empresa->cnpj)->paginate(10);
             $convenios = Convenio::where('cnpj',$empresa->cnpj)->paginate(10);
@@ -48,6 +48,7 @@ class EmpresaController extends Controller
     }
 
     public function store(EmpresaRequest $request){
+        $this->authorize('logado');
         if (Gate::allows('empresa') | Gate::allows('admin')) {
             $validated = $request->validated();
             $empresa = Empresa::create($validated);
@@ -60,6 +61,7 @@ class EmpresaController extends Controller
     }
 
     public function edit(Empresa $empresa){
+        $this->authorize('logado');
         if (Gate::allows('empresa', $empresa->cnpj_number) | Gate::allows('admin')) {
             return view('empresas.edit')->with('empresa', $empresa);
         } else {
@@ -69,6 +71,7 @@ class EmpresaController extends Controller
     }
 
     public function update(EmpresaRequest $request, Empresa $empresa){
+        $this->authorize('logado');
         if (Gate::allows('empresa', $empresa->cnpj_number) | Gate::allows('admin')) {
             $validated = $request->validated();           
             $empresa->update($validated);
@@ -81,6 +84,7 @@ class EmpresaController extends Controller
     }
 
     public function empresa_update(Request $request){
+        $this->authorize('logado');
         $cnpj = Auth::user()->cnpj;
         $this->authorize('empresa', $cnpj);
 
@@ -96,7 +100,7 @@ class EmpresaController extends Controller
     }
 
     public function logandoComoEmpresa($cnpj){
-
+        $this->authorize('logado');
         if (Gate::allows('empresa') | Gate::allows('admin')) {
             $cnpj = preg_replace("/[^0-9]/", "", $cnpj);
             $empresa = Empresa::where('cnpj',$cnpj)->first();
