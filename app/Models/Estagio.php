@@ -128,6 +128,10 @@ class Estagio extends Model
         ];
     }
 
+    public function getNomeAttribute() {
+        return Pessoa::nomeCompleto($this->numero_usp);
+    }
+
     public function getStatus(){
         $status = [
             'em_elaboracao' => [

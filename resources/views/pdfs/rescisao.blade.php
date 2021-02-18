@@ -58,7 +58,7 @@ ________________________________________<br>
 <br>
 <br>
 ________________________________________<br>
-<b>{{ $pessoa::dump($presidente->numero_usp)['nompes'] }}<br>
+<b>{{ $presidente }}<br>
 Presidente da Comissão de Graduação da FFLCH/USP</b>
 
 

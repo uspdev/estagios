@@ -22,6 +22,7 @@ aditivo por até 12 meses.
                 <div class="form-group">
                     <label for="numero_usp" class="required">Número USP: </label>
                     <input type="text" class="form-control" id="numero_usp" name="numero_usp" value="{{old('numero_usp',$estagio->numero_usp)}}">
+                    @if($estagio->numero_usp != null){{ $estagio->nome }}@endif
                 </div>
 
                 </div>

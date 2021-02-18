@@ -54,10 +54,10 @@ class EstagioRequest extends FormRequest
             'cnpj' => 'required|exists:empresas,cnpj',
             'nome_de_contato' => 'required',
             'email_de_contato' => 'required|email',
-            'telefone_de_contato' => 'required|numeric|min:10',
+            'telefone_de_contato' => 'required',
             'nome_do_supervisor_estagio' => 'required',
             'cargo_do_supervisor_estagio' => 'required',
-            'telefone_do_supervisor_estagio' => 'required|numeric|min:10',
+            'telefone_do_supervisor_estagio' => 'required',
             'email_do_supervisor_estagio' => 'required|email',
         ];
 

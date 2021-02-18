@@ -26,14 +26,17 @@ Route::resource('/estagios',EstagioController::class);
 Route::resource('/vagas',VagaController::class);
 Route::resource('/empresas', EmpresaController::class);
 Route::resource('/avisos',AvisoController::class);
-Route::resource('/convenios',ConvenioController::class);
 Route::resource('/files', FileController::class);
+
+# não usados
+#Route::resource('/convenios',ConvenioController::class);
+#Route::get('/pdfs/convenio/{convenio}', [PDFsController::class, 'convenio']);
 
 # vagas
 Route::post('/statusvagas/{vaga}',[VagaController::class,'status'])->name('vagas.status');
 
 #PDF's 
-Route::get('/pdfs/convenio/{convenio}', [PDFsController::class, 'convenio']);
+
 Route::get('/pdfs/termo/{estagio}', [PDFsController::class, 'termo']);
 Route::get('/pdfs/renovacao/{estagio}', [PDFsController::class, 'renovacao']);
 Route::get('/pdfs/aditivo/{estagio}', [PDFsController::class, 'aditivo']);

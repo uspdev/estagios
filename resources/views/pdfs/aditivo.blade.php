@@ -4,25 +4,6 @@
 @inject('pessoa','Uspdev\Replicado\Pessoa')
 @inject('graduacao','Uspdev\Replicado\Graduacao')
 
-@php
-$presidente = $pessoa::nomeCompleto(\App\Models\Parecerista::presidente()->numero_usp);
-$endereco = $pessoa::obterEndereco($estagio->numero_usp);
-
-// Formata endereço
-$endereco = [
-    $endereco['nomtiplgr'],
-    $endereco['epflgr'] . ",",
-    $endereco['numlgr'] . " ",
-    $endereco['cpllgr'] . " - ",
-    $endereco['nombro'] . " - ",
-    $endereco['cidloc'] . " - ",
-    $endereco['sglest'] . " - ",
-    "CEP: " . $endereco['codendptl'],
-];
-
-@endphp
-
-
 @inject('replicado_utils','App\Utils\ReplicadoUtils')
 
 @section('content')

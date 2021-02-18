@@ -4,25 +4,6 @@
 @inject('pessoa','Uspdev\Replicado\Pessoa')
 @inject('graduacao','Uspdev\Replicado\Graduacao')
 
-@php
-$presidente = $pessoa::nomeCompleto(\App\Models\Parecerista::presidente()->numero_usp);
-$endereco = Uspdev\Replicado\Pessoa::obterEndereco($estagio->numero_usp);
-
-// Formata endereço
-$endereco = [
-    $endereco['nomtiplgr'],
-    $endereco['epflgr'] . ",",
-    $endereco['numlgr'] . " ",
-    $endereco['cpllgr'] . " - ",
-    $endereco['nombro'] . " - ",
-    $endereco['cidloc'] . " - ",
-    $endereco['sglest'] . " - ",
-    "CEP: " . $endereco['codendptl'],
-];
-
-@endphp
-
-
 @inject('replicado_utils','App\Utils\ReplicadoUtils')
 
 @section('content')
@@ -70,7 +51,7 @@ $endereco = [
         <b>{{ $estagio->empresa->cargo_do_representante }}</b>, Sr(a)
         <b>{{ $estagio->empresa->nome_do_representante }}</b>, adiante designada CONCEDENTE e
         {{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }} ESTAGIÁRIO
-        <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b>, estudante, residente a <b>@foreach ($endereco as
+        <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b>, estudante, residente a <b>@foreach ($estagio->endereco as
             $campos) {{ $campos }}@endforeach</b>, portador da cédula de identidade
         {{ $pessoa::dump($estagio->numero_usp)['tipdocidf'] }} n°
         <b>{{ $pessoa::dump($estagio->numero_usp)['numdocidf'] }}</b> e CPF nº
