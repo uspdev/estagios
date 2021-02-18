@@ -92,7 +92,7 @@ $endereco = [
     <p>________________________________________<br>
         <b> {{ $estagio->empresa->nome }}</b></p>
     <p>________________________________________<br>
-        <b> {{ $presidente }} </b></p>
+        <b> {{ $pessoa::nomeCompleto($estagio->numero_usp) }} </b></p>
     <p>________________________________________<br>
         <b>{{ $presidente }}</b><br>
         <b>Presidente da Comissão de Graduação da FFLCH</b></p>
