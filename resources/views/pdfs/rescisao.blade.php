@@ -49,8 +49,8 @@ Ensino.
 <br>
 
 ________________________________________<br>
-<b>{{ $empresa->nome_do_representante }}<br>
-Representante da {{ $empresa->nome }}</b>
+<b>{{ $estagio->empresa->nome_do_representante }}<br>
+Representante da {{ $estagio->empresa->nome }}</b>
 <br>
 <br>
 ________________________________________<br>

@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Aditivo;
 use App\Models\Parecerista;
 use App\Utils\ReplicadoUtils;
+use Uspdev\Replicado\Pessoa;
 
 class Estagio extends Model
 {
@@ -99,16 +100,32 @@ class Estagio extends Model
        $this->attributes['data_final'] = implode('-',array_reverse(explode('/',$value)));
     }
 
-    public function getDataRescisaoAttribute($value) {
+    public function getRescisaoDataAttribute($value) {
         return implode('/',array_reverse(explode('-',$value)));
     }
 
-    public function setDataRescisaoAttribute($value) {
+    public function setRescisaoDataAttribute($value) {
        $this->attributes['rescisao_data'] = implode('-',array_reverse(explode('/',$value)));
     }
 
     public function setCnpjAttribute($value){
         $this->attributes['cnpj'] = preg_replace("/[^0-9]/", "", $value);  
+    }
+
+    public function getEnderecoAttribute() {
+        $endereco = Pessoa::obterEndereco($this->numero_usp);
+            
+        // Formata endereço
+        return [
+            $endereco['nomtiplgr'],
+            $endereco['epflgr'] . ",",
+            $endereco['numlgr'] . " ",
+            $endereco['cpllgr'] . " - ",
+            $endereco['nombro'] . " - ",
+            $endereco['cidloc'] . " - ",
+            $endereco['sglest'] . " - ",
+            "CEP: " . $endereco['codendptl'],
+        ];
     }
 
     public function getStatus(){
