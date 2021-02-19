@@ -6,7 +6,6 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Uspdev\Replicado\Pessoa;
 use App\Models\Empresa;
 use App\Models\Estagio;
 use PDF;
@@ -33,13 +32,8 @@ class enviar_para_analise_tecnica_renovacao_mail extends Mailable
      */
     public function build()
     {
-
-        $to = [$this->estagio->email_de_contato,
-               config('mail.reply_to.address')
-              ];
-
-        $subject = Pessoa::dump($this->estagio->numero_usp)['nompes'] . ' - Documentos Relatívos a Estágio - FFLCH-USP';      
-
+        $to = [$this->estagio->email_de_contato,config('mail.reply_to.address')];
+        $subject = $this->estagio->nome. ' - Documentos Relatívos a Estágio - FFLCH-USP';      
         $pdf = PDF::loadView('pdfs.renovacao', ['estagio'=>$this->estagio]);        
 
         return $this->view('emails.enviar_para_analise_tecnica_renovacao')

@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Schema;
 use Faker\Generator as FakerGenerator;
 use Faker\Factory as FakerFactory;
 
+use App\Models\Parecerista;
+use Uspdev\Replicado\Pessoa;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -32,5 +35,8 @@ class AppServiceProvider extends ServiceProvider
         if (\App::environment('production')) {
             \URL::forceScheme('https');
         }
+
+        # Variáveis globais do sistema
+        view()->share('presidente', Pessoa::nomeCompleto(Parecerista::presidente()->numero_usp));
     }
 }

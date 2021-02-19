@@ -6,7 +6,6 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Uspdev\Replicado\Pessoa;
 use App\Models\Empresa;
 use App\Models\Estagio;
 use PDF;
@@ -33,12 +32,8 @@ class assinatura_mail extends Mailable
      */
     public function build()
     {
-
-        $to = [$this->estagio->email_de_contato,
-               config('mail.reply_to.address')
-              ];
-
-        $subject = Pessoa::dump($this->estagio->numero_usp)['nompes'] . ' - Estágio Aguardando Assinaturas - FFLCH-USP';         
+        $to = [$this->estagio->email_de_contato,config('mail.reply_to.address')];
+        $subject = $this->estagio->nome. ' - Estágio Aguardando Assinaturas - FFLCH-USP';         
 
         return $this->view('emails.assinatura')
                     ->to($to)

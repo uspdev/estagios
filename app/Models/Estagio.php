@@ -129,7 +129,13 @@ class Estagio extends Model
     }
 
     public function getNomeAttribute() {
-        return Pessoa::nomeCompleto($this->numero_usp);
+        if($this->numero_usp)
+            return Pessoa::nomeCompleto($this->numero_usp);
+    }
+
+    public function getEmailAttribute() {
+        if($this->numero_usp)
+            return Pessoa::email($this->numero_usp);
     }
 
     public function getStatus(){

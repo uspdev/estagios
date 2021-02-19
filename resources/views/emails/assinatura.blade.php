@@ -1,6 +1,5 @@
-@inject('pessoa','Uspdev\Replicado\Pessoa')
 
-Aviso de que o estágio de {{$pessoa::nomeCompleto($estagio->numero_usp) }}, Nº USP {{ $estagio->numero_usp }}, 
+Aviso de que o estágio de {{ $estagio->nome }}, Nº USP {{ $estagio->numero_usp }}, 
 na empresa {{ $estagio->empresa->nome }}, foi aprovado em análise técnica pelo
 setor de estágios da FFLCH-USP.
 <br><br>

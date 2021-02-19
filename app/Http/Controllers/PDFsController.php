@@ -18,17 +18,11 @@ use Illuminate\Support\Facades\Gate;
 
 class PDFsController extends Controller
 {
-    private $presidente;
-    
-    public function __construct(){
-        $this->presidente = Pessoa::nomeCompleto(Parecerista::presidente()->numero_usp);
-    }
 
     public function termo(Estagio $estagio){
         if (Gate::allows('admin') | Gate::allows('parecerista') | Gate::allows('empresa',$estagio->cnpj)) {
             $pdf = PDF::loadView('pdfs.termo', [
                 'estagio'    => $estagio,
-                'presidente' => $this->presidente 
             ]);
             return $pdf->download("termo-{$estagio->numero_usp}.pdf");
         }
@@ -39,7 +33,6 @@ class PDFsController extends Controller
         if (Gate::allows('admin') | Gate::allows('parecerista') | Gate::allows('empresa',$estagio->cnpj)) {
             $pdf = PDF::loadView('pdfs.rescisao', [
                 'estagio'    => $estagio,
-                'presidente' => $this->presidente 
             ]);
             return $pdf->download("rescisao-{$estagio->numero_usp}.pdf");
         }
@@ -50,7 +43,6 @@ class PDFsController extends Controller
         if (Gate::allows('admin') | Gate::allows('parecerista') | Gate::allows('empresa',$estagio->cnpj)) {
             $pdf = PDF::loadView('pdfs.aditivo', [
                 'estagio'    => $estagio,
-                'presidente' => $this->presidente 
             ]);
             return $pdf->download("aditivo-{$estagio->numero_usp}.pdf");
         }
@@ -61,7 +53,6 @@ class PDFsController extends Controller
         if (Gate::allows('admin') | Gate::allows('parecerista') | Gate::allows('empresa',$estagio->cnpj)) {
             $pdf = PDF::loadView('pdfs.renovacao', [
                 'estagio'    => $estagio,
-                'presidente' => $this->presidente 
             ]);
             return $pdf->download("renovacao-{$estagio->numero_usp}.pdf");
         }
@@ -73,7 +64,6 @@ class PDFsController extends Controller
             if($estagio->numparecerista){
                 $pdf = PDF::loadView('pdfs.parecer', [
                     'estagio'    => $estagio,
-                    'presidente' => $this->presidente 
                 ]);
                 return $pdf->download("parecer-{$estagio->numero_usp}.pdf");
             } else {

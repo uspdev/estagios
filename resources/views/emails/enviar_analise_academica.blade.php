@@ -1,10 +1,11 @@
-@inject('pessoa','Uspdev\Replicado\Pessoa')
 
 
-Informamos que o professor parecerista, {{ $pessoa::nomeCompleto($estagio->numparecerista) }}, enviou a avaliação de parecer de mérito relativa a seu estágio 
+Informamos que o docente parecerista, {{ $estagio->parecerista->nome }}, 
+enviou a avaliação de parecer de mérito relativa a seu estágio 
 na empresa {{ $estagio->empresa->nome }} para o setor de estágios.<br><br>
 
-Com base na análise do parecerista, informamos que o estágio foi <b>{{ $estagio->tipodeferimento }}</b>, segue o documento do parecer em anexo.<br><br>
+Com base na análise do parecerista, informamos que o estágio foi <b>{{ $estagio->tipodeferimento }}</b>,
+segue o documento do parecer em anexo.<br><br>
 
 @if($estagio->tipodeferimento == 'Indeferido')
 

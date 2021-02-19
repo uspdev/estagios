@@ -1,6 +1,5 @@
-@inject('pessoa','Uspdev\Replicado\Pessoa')
 
-Aviso de que foi realizado um aditivo de alteração no estágio de {{$pessoa::nomeCompleto($estagio->numero_usp) }}, Nº USP {{ $estagio->numero_usp }}, 
+Aviso de que foi realizado um aditivo de alteração no estágio de {{ $estagio->nome }}, Nº USP {{ $estagio->numero_usp }}, 
 na empresa {{ $estagio->empresa->nome }}. O setor de estágios julgou que a alteração realizada necessita de aprovação
 do parecerista.
 <br><br>
