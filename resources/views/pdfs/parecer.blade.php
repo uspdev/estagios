@@ -24,7 +24,7 @@
 
 <p>Avalie o desempenho acadêmico do aluno: <b>{{ $estagio->desempenhoacademico }}</b></p>
 
-<p>Média ponderada com reprovação: <b>{{ $estagio->mediaponderada() }}</b></p>
+<p>Média ponderada com reprovação: <b>{{ $estagio->media_ponderada }}</b></p>
 
 <p>O horário do estágio é compatível com os horários disponíveis na grade horária do aluno?: <b>{{ $estagio->atividadesjustificativa }}</b></p>
 

@@ -147,6 +147,11 @@ class Estagio extends Model
         }
     }
 
+    public function getMediaPonderadaAttribute() {
+        if($this->numero_usp)
+            return ReplicadoUtils::media($this->numero_usp);
+    }
+
     public function getPeriodoAttribute() {
         if($this->numero_usp)
             return ReplicadoUtils::periodo($this->numero_usp);
@@ -240,14 +245,6 @@ class Estagio extends Model
     public function analise_tecnica_user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function mediaponderada() {
-        return ReplicadoUtils::media($this->numero_usp);
-    }
-
-    public function periodo() {
-        return ReplicadoUtils::periodo($this->numero_usp);
     }
 
     public function aditivos(){
