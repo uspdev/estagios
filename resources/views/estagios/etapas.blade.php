@@ -74,8 +74,8 @@ Análise técnica do setor de Graduação realizada por: {{ $estagio->analise_te
       @if(($estagio->numparecerista)!=null)
       <b>Aguardando parecer de mérito de:</b>
           <br>
-          <b>Nome:</b> {{Uspdev\Replicado\Pessoa::dump($estagio->numparecerista)['nompes']}}<br>
-          <b>Email Cadastrado:</b> {{Uspdev\Replicado\Pessoa::email($estagio->numparecerista)}}</b><br>
+          <b>Nome:</b> {{ $estagio->parecerista->nome }}<br>
+          <b>Email Cadastrado:</b> {{ $estagio->parecerista->email }}</b><br>
                  
       @endif
       @include('estagios.partials.em_analise_academica')

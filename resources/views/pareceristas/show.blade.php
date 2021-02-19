@@ -3,8 +3,6 @@
 @section('content')
 @include('flash')
 
-@inject('pessoa','Uspdev\Replicado\Pessoa')
-
 <div class="card">
   <div class="card-header">Dados do/a parecerista:</div>
   <div class="card-body">
@@ -19,7 +17,7 @@
       <div class="col-sm">
         <b>Número usp:</b> {{ $parecerista->numero_usp }}
         <br>
-        <b>Nome:</b> {{ $pessoa::dump($parecerista->numero_usp)['nompes'] }}
+        <b>Nome:</b> {{ $parecerista->nome }}
         <br>
         É o/a Presidente da Comissão de Graduação? {{$parecerista->presidente? "sim":"não"}} 
       </div>

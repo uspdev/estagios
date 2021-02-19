@@ -1,10 +1,5 @@
 @extends('pdfs.fflch')
 
-@inject('pessoa','Uspdev\Replicado\Pessoa')
-@inject('graduacao','Uspdev\Replicado\Graduacao')
-
-@inject('replicado_utils','App\Utils\ReplicadoUtils')
-
 @section('content')
 
 <div style="border-width: 1px; border-style: solid; border-color: #000; text-align: center; padding: 0px;">
@@ -21,12 +16,12 @@
     <p>É obrigatória a entrega de um relatório pessoal (digitado, datado e assinado) na renovação e no término do
         estágio, relatando sua experiência no período do estágio.</p>
     <br><br>
-    <p>Ciência d{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }} 
-    alun{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }} 
-    {{ $pessoa::nomeCompleto($estagio->numero_usp) }}:</p>
+    <p>Ciência d{{ $estagio->artigo_definido }} 
+    alun{{ $estagio->artigo_definido }} 
+    {{ $estagio->nome }}:</p>
     <br><br><br><br>
     <p>________________________________________<br>
-        <b>{{ $pessoa::nomeCompleto($estagio->numero_usp) }}</b><br>
+        <b>{{ $estagio->nome }}</b><br>
         Número USP: <b>{{ $estagio->numero_usp }}</b></p>
 </div>
 
@@ -42,8 +37,8 @@
 <div style="text-align: justify;">
     <p style="text-indent : 6em;"><b>{{ $estagio->empresa->nome }}, CNPJ {{ $estagio->empresa->cnpj }}</b>,
         representada por seu(a) <b>{{ $estagio->empresa->cargo_do_representante }}, {{ $estagio->empresa->nome_do_representante }}</b> adiante designada
-        CONCEDENTE e o ESTAGIÁRIO(A) <b>{{ $pessoa::nomeCompleto($estagio->numero_usp) }}</b>, no USP <b>{{ $estagio->numero_usp }}</b>, 
-        curso {{ $graduacao::curso($estagio->numero_usp, 8)['nomcur'] }} e como
+        CONCEDENTE e o ESTAGIÁRIO(A) <b>{{ $estagio->nome }}</b>, no USP <b>{{ $estagio->numero_usp }}</b>, 
+        curso {{ $estagio->curso }} e como
         INTERVENIENTE a Faculdade de Filosofia, Letras e Ciências Humanas da Universidade de São Paulo, representada
         pela Presidente da Comissão de Graduação <b> {{ $presidente }} </b>, firmam o presente TERMO DE
         ADITAMENTO DE COMPROMISSO DE ESTÁGIO, nos termos da Lei 11.788/08 e da Resolução USP no 5.528/09, conforme as
@@ -73,7 +68,7 @@
     <p>________________________________________<br>
         <b> {{ $estagio->empresa->nome }}</b></p>
     <p>________________________________________<br>
-        <b> {{ $pessoa::nomeCompleto($estagio->numero_usp) }} </b></p>
+        <b> {{ $estagio->nome }} </b></p>
     <p>________________________________________<br>
         <b>{{ $presidente }}</b><br>
         <b>Presidente da Comissão de Graduação da FFLCH</b></p>
@@ -104,12 +99,12 @@
 <br>
 
 <div style="text-align: justify">
-    Nome d{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }} Estagiári{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }}: <b>{{ $pessoa::nomeCompleto($estagio->numero_usp) }}</b><br>
+    Nome d{{ $estagio->artigo_definido }} Estagiári{{ $estagio->artigo_definido }}: <b>{{ $estagio->nome }}</b><br>
     Nº USP: <b>{{ $estagio->numero_usp }}</b><br>
-    Curso: <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomhab'] }}</b><br>
-    Período: <b>{{ $replicado_utils->periodo($estagio->numero_usp) }}</b><br>
-    Semestre: <b>{{ $replicado_utils->semestreAtual($estagio->numero_usp) }}º</b><br>
-    E-mail: <b>{{ $pessoa::email($estagio->numero_usp) }}</b><br>
+    Curso: <b>{{ $estagio->curso }}</b><br>
+    Período: <b>{{ $estagio->periodo }}</b><br>
+    Semestre: <b>{{ $estagio->semestre_atual }}º</b><br>
+    E-mail: <b>{{ $estagio->email }}</b><br>
     Nome da Empresa: <b>{{ $estagio->empresa->nome }}</b><br>
     Área de atuação da Empresa: <b>{{ $estagio->empresa->area_de_atuacao }}</b><br>
     Nome do supervisor(a) interno(a) do Estágio na Empresa: <b>{{ $estagio->nome_do_supervisor_estagio }}</b><br>
@@ -120,7 +115,7 @@
     h{{ $estagio->cargaminutos }} semanais</b><br>
     Duração em meses (em casos excepcionais inferiores a 6 meses, a empresa deverá incluir justificativa circunstanciada
     que será avaliada pelo Supervisor Geral de Estágios): <b>{{ $estagio->duracao }}</b><br>
-    Justificativa: <b><i>{{ $estagio->justificativa }}</i></b><br>{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }}
+    Justificativa: <b><i>{{ $estagio->justificativa }}</i></b><br>{{ $estagio->artigo_definido }}
     Valor da Bolsa: R$ <b>{{ $estagio->valorbolsa }} {{ $estagio->tipobolsa }}</b><br>
     Valor do auxílio transporte: R$ <b>{{ $estagio->auxiliotransporte }} {{ $estagio->especifiquevt }}</b><br>
     Descrição detalhada das atividades a serem desenvolvidas pelo estagiário, com a finalidade de permitir a avaliação
@@ -149,7 +144,7 @@
     Representante da {{ $estagio->empresa->nome }}<br><br>
 
     _______________________________________________<br>
-    <b>{{ $pessoa::nomeCompleto($estagio->numero_usp) }}</b><br><br>
+    <b>{{ $estagio->nome }}</b><br><br>
     _______________________________________________<br>
     <b>{{ $presidente }}</b><br>
     <b>Presidente da Comissão de Graduação da FFLCH/USP</b><br>

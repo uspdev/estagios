@@ -1,11 +1,5 @@
 @extends('pdfs.fflch')
 
-
-@inject('pessoa','Uspdev\Replicado\Pessoa')
-@inject('graduacao','Uspdev\Replicado\Graduacao')
-
-@inject('replicado_utils','App\Utils\ReplicadoUtils')
-
 @section('content')
 <div style="border: 1px solid #000; text-align: center;">
     <b>ADITIVO DE ALTERAÇÕES NO TERMO DE COMPROMISSO</b>
@@ -14,8 +8,8 @@
 <br>
 <div style="text-align: justify; text-indent : 1em;"><b>{{ $estagio->empresa->nome }}, CNPJ Nº {{ $estagio->empresa->cnpj }},
 </b> representada por seu(a) <b>{{ $estagio->empresa->cargo_do_representante }}, {{ $estagio->empresa->nome_do_representante }}</b> 
-adiante designada CONCEDENTE e o ESTAGIÁRIO(A) <b>{{ $pessoa::nomeCompleto($estagio->numero_usp) }}</b>, no USP <b>
-{{ $estagio->numero_usp }}</b>, curso <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomhab'] }}</b> e como INTERVENIENTE 
+adiante designada CONCEDENTE e o ESTAGIÁRIO(A) <b>{{ $estagio->nome }}</b>, no USP <b>
+{{ $estagio->numero_usp }}</b>, curso <b>{{ $estagio->curso }}</b> e como INTERVENIENTE 
 a Faculdade de Filosofia, Letras e Ciências Humanas da Universidade de São Paulo, representada pela Presidente da Comissão de Graduação 
 <b>{{ $presidente }}</b>, firmam o presente TERMO DE ADITAMENTO DE COMPROMISSO DE ESTÁGIO, nos termos da Lei
 11.788/08 e da Resolução USP no 5.528/09, conforme as condições a seguir:</div>
@@ -46,14 +40,14 @@ ________________________________________<br>
 <br>
 <br>
 ________________________________________<br>
-<b>{{ $pessoa::nomeCompleto($estagio->numero_usp) }}</b>
+<b>{{ $estagio->nome) }}</b>
 <br>
 <br>
 ________________________________________<br>
 <b>{{ $presidente }}</b><br>
 <b>Presidente da Comissão de Graduação da FFLCH</b>
 <br><br><br>
-E-mail do estagiario: {{ $pessoa::email($estagio->numero_usp) }}<br>
+E-mail do estagiario: {{ $estagio->email }}<br>
 Contato: {{$estagio->nome_de_contato}}, tel.: {{$estagio->telefone_de_contato}}, e-mail: {{$estagio->email_de_contato}}
 <br>
 </div>

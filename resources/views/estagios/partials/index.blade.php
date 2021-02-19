@@ -1,5 +1,3 @@
-@inject('pessoa','Uspdev\Replicado\Pessoa')
-
 <style>
 button {
     background-color: Transparent;
@@ -49,7 +47,7 @@ button {
         </td>
 
         <td>
-        {{$pessoa::dump($estagio->numero_usp)['nompes'] }}
+        {{ $estagio->nome }}
         </td>
 
         <td>

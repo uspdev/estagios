@@ -1,11 +1,5 @@
 @extends('pdfs.fflch')
 
-
-@inject('pessoa','Uspdev\Replicado\Pessoa')
-@inject('graduacao','Uspdev\Replicado\Graduacao')
-
-@inject('replicado_utils','App\Utils\ReplicadoUtils')
-
 @section('content')
 
 <div style="width:100%; border-width: 1px; border-style: solid; border-color: #000; text-align: center; padding: 0px;">
@@ -24,18 +18,18 @@
     <p style="text-indent : 3em; font-weight: bold">Uma via deste termo de Ciência deve ser entregue com o Termo de
         Compromisso e Plano de Estágio.</p>
     <br>
-    <p>Ciência d{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }}
-        alun{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }}
-        {{ $pessoa::dump($estagio->numero_usp)['nompes'] }}:</p>
+    <p>Ciência d{{ $estagio->artigo_definido }}
+        alun{{ $estagio->artigo_definido}}
+        {{ $estagio->nome }}:</p>
 </div>
 
 <br><br>
 
 <div>
     _______________________________________________<br>
-    <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b><br>
+    <b>{{ $estagio->nome }}</b><br>
     Nº USP: <b>{{ $estagio->numero_usp }}</b><br>
-    <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomhab'] }}</b>
+    <b>{{ $estagio->curso }}</b>
 </div>
 
 <p style="page-break-after: always;"></p>
@@ -47,23 +41,23 @@
 <div style="text-align: justify;">
     <p style="text-indent : 1em;"><b>{{ $estagio->empresa->nome }}, {{ $estagio->empresa->endereco }}, CEP {{ $estagio->empresa->cep }}, CNPJ
             {{ $estagio->empresa->cnpj }}</b>, representada por
-        s{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "ua" : "eu" }}
+        {{ $estagio->pronome_possessivo }}
         <b>{{ $estagio->empresa->cargo_do_representante }}</b>, Sr(a)
         <b>{{ $estagio->empresa->nome_do_representante }}</b>, adiante designada CONCEDENTE e
-        {{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }} ESTAGIÁRIO
-        <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b>, estudante, residente a <b>@foreach ($estagio->endereco as
+        {{ $estagio->artigo_definido }} ESTAGIÁRIO
+        <b>{{ $estagio->nome }}</b>, estudante, residente a <b>@foreach ($estagio->endereco as
             $campos) {{ $campos }}@endforeach</b>, portador da cédula de identidade
-        {{ $pessoa::dump($estagio->numero_usp)['tipdocidf'] }} n°
-        <b>{{ $pessoa::dump($estagio->numero_usp)['numdocidf'] }}</b> e CPF nº
-        <b>{{ $pessoa::dump($estagio->numero_usp)['numcpf'] }}</b>, aluno do Curso de
-        <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomcur'] }}</b>, nº USP
+        {{ $estagio->tipo_identidade }} n°
+        <b>{{ $estagio->identidade }}</b> e CPF nº
+        <b>{{ $estagio->cpf }}</b>, aluno do Curso de
+        <b>{{ $estagio->curso }}</b>, nº USP
         <b>{{ $estagio->numero_usp }}</b>, e como INTERVENIENTE a UNIVERSIDADE DE SÃO PAULO, autarquia estadual de
         regime especial, regida por seu Estatuto, aprovado pela Resolução nº 3.461, de 07 de outubro de 1988, e pelo
         Regimento Geral, aprovado
         pela Resolução nº 3.745, de 19 de outubro de 1990, com sede em São Paulo (Capital), inscrita no CNPJ-MF sob nº
         63.025.530/0001-04, adiante denominada USP, no interesse da Faculdade de Filosofia, Letras e Ciências Humanas,
         localizada à Rua do Lago, 717, na Cidade Universitária “Armando de Salles Oliveira, Butantã, São Paulo, neste
-        ato representada pel{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }} Presidente da
+        ato representada pel{{ $estagio->artigo_definido }} Presidente da
         Comissão de Graduação, <b>{{ $presidente }}</b>, da mencionada
         Faculdade, celebram o presente TERMO DE COMPROMISSO DE ESTÁGIO, que se vincula ao convênio para Realização de
         Estágio firmado entre a CONCEDENTE e a INSTITUIÇÃO DE ENSINO nos termos da Lei no 9.394/96 e da Lei nº
@@ -133,7 +127,7 @@
     {{ $estagio->empresa->nome }}
     <br><br><br>
     _______________________________________________<br>
-    {{ $pessoa::nomeCompleto($estagio->numero_usp) }}<br><br><br>
+    {{ $estagio->nome }}<br><br><br>
     ________________________________________________<br>
     {{ $presidente }}<br>
     Presidente da Comissão de Graduação da FFLCH-USP
@@ -157,12 +151,12 @@
 
 <div style="text-align: justify">
     Solicitação: <b>ESTÁGIO NOVO</b><br>
-    Nome d{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }} Estagiári{{ $pessoa::dump($estagio->numero_usp)['sexpes'] === "F" ? "a" : "o" }}: <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b><br>
+    Nome d{{ $estagio->artigo_definido}} Estagiári{{ $estagio->artigo_definido }}: <b>{{ $estagio->nome }}</b><br>
     Nº USP: <b>{{ $estagio->numero_usp }}</b><br>
-    Curso: <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomhab'] }}</b><br>
-    Período: <b>{{ $replicado_utils->periodo($estagio->numero_usp) }}</b><br>
-    Semestre: <b>{{ $replicado_utils->semestreAtual($estagio->numero_usp) }}º</b><br>
-    E-mail: <b>{{ $pessoa::email($estagio->numero_usp) }}</b><br>
+    Curso: <b>{{ $estagio->curso }}</b><br>
+    Período: <b>{{ $estagio->periodo }}</b><br>
+    Semestre: <b>{{ $estagio->semestre_atual }}º</b><br>
+    E-mail: <b>{{ $estagio->email }}</b><br>
     Nome da Empresa: <b>{{ $estagio->empresa->nome }}</b><br>
     Área de atuação da Empresa: <b>{{ $estagio->empresa->area_de_atuacao }}</b><br>
     Nome do supervisor(a) interno(a) do Estágio na Empresa: <b>{{ $estagio->nome_do_supervisor_estagio }}</b><br>
@@ -202,7 +196,7 @@
     {{ $estagio->empresa->nome_do_representante }}<br>
     Representante da {{ $estagio->empresa->nome }}<br><br>
     _______________________________________________<br>
-    {{ $pessoa::nomeCompleto($estagio->numero_usp) }}<br><br>
+    {{ $estagio->nome }}<br><br>
     _______________________________________________<br>
     {{ $presidente }} <br>
     Presidente da Comissão de Graduação da FFLCH/USP

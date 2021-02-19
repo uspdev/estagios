@@ -1,10 +1,5 @@
 @extends('pdfs.fflch')
 
-
-@inject('pessoa','Uspdev\Replicado\Pessoa')
-@inject('graduacao','Uspdev\Replicado\Graduacao')
-@inject('replicado_utils','App\Utils\ReplicadoUtils')
-
 @section('content')
 
 <div style="text-align: center">
@@ -12,9 +7,9 @@
 </div>
 <br>
 <div style="border-width: 1px; border-style: solid; border-color: #000; text-align: justify; padding: 0px;">
-    Nome do Estagiário(a): <b>{{ $pessoa::nomeCompleto($estagio->numero_usp) }}</b><br><br>
+    Nome do Estagiário(a): <b>{{ $estagio->nome }}</b><br><br>
     Número USP: <b>{{ $estagio->numero_usp }}</b><br><br>
-    Curso: <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomhab'] }}</b>, período <b>{{ $replicado_utils->periodo($estagio->numero_usp) }}</b><br><br>
+    Curso: <b>{{ $estagio->curso }}</b>, período <b>{{ $estagio->periodo }}</b><br><br>
     Empresa: <b>{{ $estagio->empresa->nome }}</b><br><br>
     Área de atuação da Empresa: <b>S{{ $estagio->empresa->area_de_atuacao }}</b><br><br>
     Período do Estágio<br>
@@ -49,7 +44,7 @@
 <br><br>
 
 <div style="text-align: center">
-    PARECERISTA: <b> {{ $pessoa::nomeCompleto($estagio->numparecerista) }} - {{ $estagio->numparecerista }}</b>
+    PARECERISTA: <b> {{ $estagio->parecerista->nome }} - {{ $estagio->numparecerista }}</b>
 <div>
 
 @endsection('content')

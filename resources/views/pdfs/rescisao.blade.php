@@ -1,11 +1,5 @@
 @extends('pdfs.fflch')
 
-
-@inject('pessoa','Uspdev\Replicado\Pessoa')
-@inject('graduacao','Uspdev\Replicado\Graduacao')
-
-@inject('replicado_utils','App\Utils\ReplicadoUtils')
-
 @section('content')
 
 <div style="border-width: 1px; border-style: solid; border-color: #000; text-align: justify; padding: 0px;"><b>INFORMAÇÃO IMPORTANTE</b>
@@ -28,8 +22,8 @@ estágio.
 
 <div style="text-align: justify;">
 Comunicamos que em <b>{{ $estagio->rescisao_data }}</b> foi/será rescindido o Termo de Compromisso de Estágio firmado em <b>{{ $estagio->data_inicial }}</b> 
-entre <b>{{ $estagio->empresa->nome }}</b>, CNPJ <b>{{ $estagio->empresa->cnpj}}</b> e o(a) estagiário(a) <b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b>, 
-nº USP <b>{{ $estagio->numero_usp }}</b>, regularmente matriculado no curso de <b>{{ $graduacao::curso($estagio->numero_usp, 8)['nomcur'] }}</b> com 
+entre <b>{{ $estagio->empresa->nome }}</b>, CNPJ <b>{{ $estagio->empresa->cnpj}}</b> e o(a) estagiário(a) <b>{{ $estagio->nome }}</b>, 
+nº USP <b>{{ $estagio->numero_usp }}</b>, regularmente matriculado no curso de <b>{{ $estagio->curso }}</b> com 
 interveniência da Universidade de São Paulo.
 <br>
 <br>
@@ -54,7 +48,7 @@ Representante da {{ $estagio->empresa->nome }}</b>
 <br>
 <br>
 ________________________________________<br>
-<b>{{ $pessoa::dump($estagio->numero_usp)['nompes'] }}</b>
+<b>{{ $estagio->nome }}</b>
 <br>
 <br>
 ________________________________________<br>

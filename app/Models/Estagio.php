@@ -12,6 +12,7 @@ use App\Models\Aditivo;
 use App\Models\Parecerista;
 use App\Utils\ReplicadoUtils;
 use Uspdev\Replicado\Pessoa;
+use Uspdev\Replicado\Graduacao;
 
 class Estagio extends Model
 {
@@ -113,19 +114,52 @@ class Estagio extends Model
     }
 
     public function getEnderecoAttribute() {
-        $endereco = Pessoa::obterEndereco($this->numero_usp);
-            
-        // Formata endereço
-        return [
-            $endereco['nomtiplgr'],
-            $endereco['epflgr'] . ",",
-            $endereco['numlgr'] . " ",
-            $endereco['cpllgr'] . " - ",
-            $endereco['nombro'] . " - ",
-            $endereco['cidloc'] . " - ",
-            $endereco['sglest'] . " - ",
-            "CEP: " . $endereco['codendptl'],
-        ];
+        if($this->numero_usp) {
+            $endereco = Pessoa::obterEndereco($this->numero_usp);
+                
+            // Formata endereço
+            return [
+                $endereco['nomtiplgr'],
+                $endereco['epflgr'] . ",",
+                $endereco['numlgr'] . " ",
+                $endereco['cpllgr'] . " - ",
+                $endereco['nombro'] . " - ",
+                $endereco['cidloc'] . " - ",
+                $endereco['sglest'] . " - ",
+                "CEP: " . $endereco['codendptl'],
+            ];
+        }
+    }
+
+    /* Método para auxiliar na construção de preposição com artigo definido */
+    public function getArtigoDefinidoAttribute() {
+        if($this->numero_usp){
+            if(Pessoa::dump($this->numero_usp)['sexpes'] == "F") return "a";
+            return "o";
+        }
+    }
+
+    /* Método para auxiliar na construção de pronomes possessivos: seu/sua */
+    public function getPronomePossessivoAttribute() {
+        if($this->numero_usp){
+            if(Pessoa::dump($this->numero_usp)['sexpes'] == "F") return "sua";
+            return "seu";
+        }
+    }
+
+    public function getPeriodoAttribute() {
+        if($this->numero_usp)
+            return ReplicadoUtils::periodo($this->numero_usp);
+    }
+
+    public function getSemestreAtualAttribute() {
+        if($this->numero_usp)
+            return ReplicadoUtils::semestreAtual($this->numero_usp);
+    }
+
+    public function getCursoAttribute() {
+        if($this->numero_usp)
+            return Graduacao::curso($this->numero_usp, 8)['nomhab'];
     }
 
     public function getNomeAttribute() {
@@ -136,6 +170,26 @@ class Estagio extends Model
     public function getEmailAttribute() {
         if($this->numero_usp)
             return Pessoa::email($this->numero_usp);
+    }
+
+    public function getTipoIdentidadeAttribute() {
+        if($this->numero_usp)
+            return Pessoa::dump($this->numero_usp)['tipdocidf'];
+    }
+
+    public function getIdentidadeAttribute() {
+        if($this->numero_usp)
+            return Pessoa::dump($this->numero_usp)['numdocidf'];
+    }
+
+    public function getCpfAttribute() {
+        if($this->numero_usp)
+            return Pessoa::dump($this->numero_usp)['numcpf'];
+    }
+
+    public function getGradeAttribute() {
+        if($this->numero_usp)
+            return ReplicadoUtils::grade($this->numero_usp);
     }
 
     public function getStatus(){

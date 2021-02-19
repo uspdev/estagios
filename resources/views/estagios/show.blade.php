@@ -7,8 +7,6 @@
 @section('content')
 @include('flash')
 
-@inject('pessoa','Uspdev\Replicado\Pessoa')
-
   <div class="card">
     <div class="card-header"><b>Status do Estágio</b></div>
       <div class="card-body">

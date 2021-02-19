@@ -10,7 +10,7 @@
     </tr>
    </thead>
     <tbody>
-        @foreach(\App\Utils\ReplicadoUtils::grade($estagio->numero_usp) as $linha)
+        @foreach($estagio->grade as $linha)
             <tr>
                 <td>{{ $linha['coddis'] }} </td>
                 <td>{{ $linha['codtur'] }} </td>

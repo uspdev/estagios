@@ -12,11 +12,11 @@
 
             @if (old('numparecerista') == '' and isset($estagio->numparecerista))
                 <option value="{{$parecerista->numero_usp}}" {{ ( $estagio->numparecerista == $parecerista->numero_usp) ? 'selected' : ''}}>
-                    {{$parecerista->numero_usp}} - {{\Uspdev\Replicado\Pessoa::nomeCompleto($parecerista->numero_usp)}}
+                    {{$parecerista->numero_usp}} - {{ $parecerista->nome }}
                 </option>
             @else
                 <option value="{{$parecerista->numero_usp}}" {{ ( old('numparecerista') == $parecerista->numero_usp) ? 'selected' : ''}}>
-                    {{$parecerista->numero_usp}} - {{\Uspdev\Replicado\Pessoa::nomeCompleto($parecerista->numero_usp)}}
+                    {{$parecerista->numero_usp}} - {{ $parecerista->nome }}
                 </option>
             @endif
         
@@ -25,8 +25,8 @@
 
     @if(($estagio->numparecerista)!=null)
         <br>
-        <b>Nome:</b> {{Uspdev\Replicado\Pessoa::dump($estagio->numparecerista)['nompes']}}<br>
-        <b>Email Cadastrado:</b> {{Uspdev\Replicado\Pessoa::email($estagio->numparecerista)}}</b><br> 
+        <b>Nome:</b> {{ $estagio->parecerista->nome }}<br>
+        <b>Email Cadastrado:</b> {{ $estagio->parecerista->email }}</b><br> 
     @endif
     
     <br>

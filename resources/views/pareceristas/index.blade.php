@@ -3,8 +3,6 @@
 @section('content')
 @include('flash')
 
-@inject('pessoa','Uspdev\Replicado\Pessoa')
-
 <form method="get" action="/pareceristas">
 <div class="row">
     <div class=" col-sm input-group">
@@ -33,7 +31,7 @@
     <tr>
       <td>
         <a href="/pareceristas/{{$parecerista->id}}">
-          {{ $pessoa::nomeCompleto($parecerista->numero_usp) }}
+          {{ $parecerista->nome }}
         </a>
         @if($parecerista->presidente == 1) Presidente da Comissão @endif
       </td>
