@@ -24,19 +24,19 @@ class EstagioRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'numero_usp' => 'required|numeric|codpes|graduacao',
-            'valorbolsa' => 'required',
-            'tipobolsa' => 'required',
-            'duracao' => 'required',
+            'numero_usp' => 'required|max:255|numeric|codpes|graduacao',
+            'valorbolsa' => 'required|max:255',
+            'tipobolsa' => 'required|max:255',
+            'duracao' => 'required|max:255',
             'data_inicial' => 'required|data',
             'data_final' => 'required|data',
-            'cargahoras' => 'required',
-            'cargaminutos' => 'required',
-            'horario' => 'required',
-            'auxiliotransporte' => 'required',
-            'especifiquevt' => 'required',
-            'seguradora' => 'required',
-            'numseguro' => 'required',
+            'cargahoras' => 'required|max:255',
+            'cargaminutos' => 'required|max:255',
+            'horario' => 'required|max:255',
+            'auxiliotransporte' => 'required|max:255',
+            'especifiquevt' => 'required|max:255',
+            'seguradora' => 'required|max:255',
+            'numseguro' => 'required|max:255',
 
             //campos opcionais
             'controlehorario' => 'nullable',
@@ -47,18 +47,18 @@ class EstagioRequest extends FormRequest
             'atividades' => 'nullable',
 
             //pandemia
-            'pandemiahomeoffice' => 'required',
+            'pandemiahomeoffice' => 'required|max:255',
             'pandemiamedidas' => 'required_if:pandemiahomeoffice,==,Não',
 
             //empresa
-            'cnpj' => 'required|exists:empresas,cnpj',
-            'nome_de_contato' => 'required',
-            'email_de_contato' => 'required|email',
-            'telefone_de_contato' => 'required',
-            'nome_do_supervisor_estagio' => 'required',
-            'cargo_do_supervisor_estagio' => 'required',
-            'telefone_do_supervisor_estagio' => 'required',
-            'email_do_supervisor_estagio' => 'required|email',
+            'cnpj' => 'required|max:255|exists:empresas,cnpj',
+            'nome_de_contato' => 'required|max:255',
+            'email_de_contato' => 'required|email|max:255',
+            'telefone_de_contato' => 'required|max:255',
+            'nome_do_supervisor_estagio' => 'required|max:255',
+            'cargo_do_supervisor_estagio' => 'required|max:255',
+            'telefone_do_supervisor_estagio' => 'required|max:255',
+            'email_do_supervisor_estagio' => 'required|email|max:255',
         ];
 
         return $rules;

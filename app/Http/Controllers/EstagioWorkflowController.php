@@ -125,7 +125,7 @@ class EstagioWorkflowController extends Controller
             $request->validate([
                 'atividadespertinentes' => 'required',
                 'desempenhoacademico' => 'required',
-                'horariocompativel' => 'required',
+                'horariocompativel' => 'required|max:255',
                 'atividadesjustificativa'=> 'required',
                 'analise_academica'=> 'required',
                 'tipodeferimento'=> 'required',
@@ -297,8 +297,8 @@ class EstagioWorkflowController extends Controller
 
         if (Gate::allows('parecerista')) {
             $request->validate([
-                'avaliacao_empresa' => 'required',
-                'avaliacaodescricao' => 'required',
+                'avaliacao_empresa' => 'required|max:255',
+                'avaliacaodescricao' => 'required|max:255',
             ]);
             $estagio->avaliacao_empresa = $request->avaliacao_empresa;
             $estagio->avaliacaodescricao = $request->avaliacaodescricao;
