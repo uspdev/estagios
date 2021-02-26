@@ -3,7 +3,6 @@ jQuery(function ($) {
 
     // Mostra informações dos alunos abaixo do input
     $('#numero_usp').change(function(){
-        console.log('entrei');
         var data = { codpes: $( "#numero_usp" ).val() };
         function success(response) {
             $( "#info" ).html(response).css('color', 'red');;
