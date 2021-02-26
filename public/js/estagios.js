@@ -1,5 +1,16 @@
 jQuery(function ($) {
-    $(".cnpj").mask('00.000.000/0000-00');  
+    $(".cnpj").mask('00.000.000/0000-00');
+
+    // Mostra informações dos alunos abaixo do input
+    $('#numero_usp').change(function(){
+        console.log('entrei');
+        var data = { codpes: $( "#numero_usp" ).val() };
+        function success(response) {
+            $( "#info" ).html(response).css('color', 'red');;
+            console.log(response);
+        }
+        $.get('info', data, success);
+    });
 });
 
 function checagemmmedidas(that) {

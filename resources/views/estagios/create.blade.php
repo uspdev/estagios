@@ -1,7 +1,6 @@
-@extends('laravel-usp-theme::master')
+@extends('main')
 
 @section('content')
-@include('flash')
 
 <form method="POST" action="/estagios">
 @csrf

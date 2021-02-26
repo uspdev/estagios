@@ -1,6 +1,6 @@
-@section('javascripts_head')
+@section('javascripts_bottom')
   <script src="{{asset('/js/estagios.js')}}"></script>
-@endsection('javascript_head')
+@endsection('javascripts_bottom')
 
 @section('styles')
   <link rel="stylesheet" type="text/css" href="{{asset('/css/estagios.css')}}">
@@ -21,8 +21,8 @@ aditivo por até 12 meses.
                     <div class="col-sm form-group">
                 <div class="form-group">
                     <label for="numero_usp" class="required">Número USP: </label>
-                    <input type="text" class="form-control" id="numero_usp" name="numero_usp" value="{{old('numero_usp',$estagio->numero_usp)}}">
-                    @if($estagio->numero_usp != null){{ $estagio->nome }}@endif
+                    <input type="number" class="form-control" id="numero_usp" name="numero_usp" value="{{old('numero_usp',$estagio->numero_usp)}}">
+                    <div id="info"></div>
                 </div>
 
                 </div>
@@ -34,6 +34,11 @@ aditivo por até 12 meses.
                 </div>
 
                 </div>
+        </div>
+
+        <div class="form-group">
+            <label for="horariocompativel" class="required">O horário é compatível com o curso? </label>
+            <input type="text" class="form-control" name="horariocompativel" value="{{old('horariocompativel',$estagio->horariocompativel)}}">
         </div>
 
 
@@ -128,8 +133,8 @@ aditivo por até 12 meses.
 
             <div class="form-group">
                 <label for="horario" class="required">Horário do Estágio (Caso os horários sejam em períodos diferentes, favor especificar): </label>
-                    <input type="text" class="form-control horario" id="horario" name="horario" value="{{old('horario',$estagio->horario)}}">
-                </div>
+                <input type="text" class="form-control horario" id="horario" name="horario" value="{{old('horario',$estagio->horario)}}">
+            </div>
 
     </div>
 </div>

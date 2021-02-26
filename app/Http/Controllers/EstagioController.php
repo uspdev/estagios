@@ -10,6 +10,7 @@ use App\Http\Requests\EstagioRequest;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Gate;
+use App\Utils\ReplicadoUtils;
 
 class EstagioController extends Controller
 {
@@ -91,7 +92,32 @@ class EstagioController extends Controller
     } else {
         request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
     }
-    return redirect("/estagios/{$estagio->id}");
+        return redirect("/estagios/{$estagio->id}");
+    }
+
+    /* Api para entregar dados do(a) aluno(a) no blade */
+    public function info(Request $request)
+    {
+        $this->authorize('empresa');
+        if(empty($request->codpes)){
+            return response('Pessoa não encontrada');
+        }
+
+        if(!is_int((int)$request->codpes)){
+            return response('Pessoa não encontrada');
+        }
+
+        if(strlen($request->codpes) < 6){
+            return response('Pessoa não encontrada');
+        }
+
+        $info = Pessoa::nomeCompleto($request->codpes);
+        if($info) {
+            $info .= ' - Período do curso: ' . ReplicadoUtils::periodo($request->codpes);
+            return response($info);
+        } else {
+            return response('Pessoa não encontrada');
+        } 
     }
 
 }

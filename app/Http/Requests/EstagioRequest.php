@@ -24,15 +24,15 @@ class EstagioRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'numero_usp' => 'required|max:255|numeric|codpes|graduacao',
+            'numero_usp' => 'required|numeric|codpes|graduacao',
             'valorbolsa' => 'required|max:255',
             'tipobolsa' => 'required|max:255',
-            'duracao' => 'required|max:255',
+            'duracao' => 'required',
             'data_inicial' => 'required|data',
             'data_final' => 'required|data',
             'cargahoras' => 'required|max:255',
             'cargaminutos' => 'required|max:255',
-            'horario' => 'required|max:255',
+            'horario' => 'required',
             'auxiliotransporte' => 'required|max:255',
             'especifiquevt' => 'required|max:255',
             'seguradora' => 'required|max:255',
@@ -59,6 +59,9 @@ class EstagioRequest extends FormRequest
             'cargo_do_supervisor_estagio' => 'required|max:255',
             'telefone_do_supervisor_estagio' => 'required|max:255',
             'email_do_supervisor_estagio' => 'required|email|max:255',
+
+            //
+            'horariocompativel' => 'nullable',
         ];
 
         return $rules;

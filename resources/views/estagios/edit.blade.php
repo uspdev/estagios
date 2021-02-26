@@ -1,4 +1,4 @@
-@extends('laravel-usp-theme::master')
+@extends('main')
 
 @section('javascripts_head')
   <script src="{{asset('/js/estagios.js')}}"></script>
@@ -10,7 +10,6 @@
 @endsection('styles')
 
 @section('content')
-@include('flash')
 
 <form method="POST" action="/estagios/{{$estagio->id}}">
 @csrf

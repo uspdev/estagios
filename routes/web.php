@@ -118,3 +118,6 @@ Route::post('/files/store', [FileController::class,'store']);
 Route::post('/files/store_relatorio', [FileController::class,'store_relatorio']);
 Route::post('/files/destroy', [FileController::class,'destroy']);
 
+# api
+Route::get('info', [EstagioController::class, 'info'])->name('estagios.info');
+
