@@ -6,7 +6,6 @@ jQuery(function ($) {
         var data = { codpes: $( "#numero_usp" ).val() };
         function success(response) {
             $( "#info" ).html(response).css('color', 'red');;
-            console.log(response);
         }
         $.get('info', data, success);
     });
