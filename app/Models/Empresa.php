@@ -40,9 +40,12 @@ class Empresa extends Model
 
     public function empresa_com_acesso()
     {
-        if(Empresa::where('cnpj',$this->conceder_acesso_cnpj)->first()){
-          return $this->belongsTo($this,'conceder_acesso_cnpj','cnpj');
-        } return new Empresa;
+        # deleta relação antes se empresa com acesso foi deletada
+        if(!Empresa::where('cnpj',$this->conceder_acesso_cnpj)->first()){
+            $this->attributes['conceder_acesso_cnpj'] = null;
+            $this->save();
+        }
+        return $this->belongsTo($this,'conceder_acesso_cnpj','cnpj');
     }
      
 }
