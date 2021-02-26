@@ -40,7 +40,9 @@ class Empresa extends Model
 
     public function empresa_com_acesso()
     {
-        return $this->belongsTo($this,'conceder_acesso_cnpj','cnpj');
+        if(Empresa::where('cnpj',$this->conceder_acesso_cnpj)->first()){
+          return $this->belongsTo($this,'conceder_acesso_cnpj','cnpj');
+        } return new Empresa;
     }
      
 }
