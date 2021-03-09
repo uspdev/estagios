@@ -19,6 +19,7 @@ $vagas =  [
         'url'  => '/vagas',
         'can'  => 'logado',
     ],
+    
     [
         'text' => 'Cadastrar',
         'url'  => '/vagas/create',

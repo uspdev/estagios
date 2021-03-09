@@ -1,4 +1,4 @@
-@extends('laravel-usp-theme::master')
+@extends('main') 
 
 @section('javascripts_head')
   <script src="{{asset('/js/convenios.js')}}"></script>
