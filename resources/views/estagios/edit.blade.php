@@ -1,4 +1,4 @@
-@extends('main')
+@extends('main') 
 
 @section('javascripts_head')
   <script src="{{asset('/js/estagios.js')}}"></script>

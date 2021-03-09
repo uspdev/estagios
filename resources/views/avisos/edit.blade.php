@@ -1,4 +1,4 @@
-@extends('laravel-usp-theme::master')
+@extends('main') 
 
 @section('styles')
   <link rel="stylesheet" type="text/css" href="{{asset('/css/avisos.css')}}">
