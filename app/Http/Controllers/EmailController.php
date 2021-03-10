@@ -14,6 +14,7 @@ use App\Mail\enviar_para_parecerista_mail;
 use App\Mail\enviar_analise_academica;
 use App\Mail\analise_rescisao_mail;
 use App\Mail\assinatura_mail;
+use App\Mail\alteracao_empresa_mail;
 use App\Mail\alteracao_mail;
 use Illuminate\Support\Facades\Mail;
 use Uspdev\Replicado\Pessoa;
@@ -37,6 +38,11 @@ class EmailController extends Controller
 
     public function alteracao(Request $request, Estagio $estagio){
         Mail::send(new alteracao_mail($estagio));        
+        return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
+    }
+
+    public function alteracao_empresa(Request $request, Estagio $estagio){
+        Mail::send(new alteracao_empresa_mail($estagio));        
         return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
     }
 
