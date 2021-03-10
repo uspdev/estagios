@@ -48,6 +48,7 @@ Route::get('/emails/enviar_para_analise_tecnica/{estagio}', [EmailController::cl
 Route::get('/emails/enviar_para_analise_tecnica_renovacao/{estagio}', [EmailController::class, 'enviar_para_analise_tecnica_renovacao']);
 Route::get('/emails/enviar_para_parecerista/{estagio}', [EmailController::class, 'enviar_para_parecerista']);
 Route::get('/emails/alteracao/{estagio}', [EmailController::class, 'alteracao']); 
+Route::get('/emails/alteracao_empresa/{estagio}', [EmailController::class, 'alteracao_empresa']); 
 Route::get('/emails/analise_rescisao/{estagio}', [EmailController::class, 'analise_rescisao']);
 
 # Login comunidade USP

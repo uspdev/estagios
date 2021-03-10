@@ -72,6 +72,10 @@
         <i class="fas fa-envelope-open-text"></i> </a>
         Enviar E-mail contendo a alteração para o parecerista.
         <br>
+        <a onClick="return confirm('Tem certeza que deseja um email para a empresa?')" href="/emails/alteracao_empresa/{{$estagio->id}}">
+        <i class="fas fa-envelope-open-text"></i> </a>
+        Enviar E-mail contendo a alteração para a empresa.
+        <br>
         <a href="/pdfs/aditivo/{{$estagio->id}}" target="_blank" >
         <i class="fas fa-file-pdf"></i> </a>
         Gerar PDF do Parecer de Alteração
