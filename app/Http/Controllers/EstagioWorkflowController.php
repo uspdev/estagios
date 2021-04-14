@@ -264,11 +264,14 @@ class EstagioWorkflowController extends Controller
 
         if (Gate::allows('empresa',$estagio->cnpj)) {
 
-            #nulifica comentário relativo a alteração anterior
-            $estagio->comentario_alteracao = null;
+            $aditivo = new Aditivo;
+            $aditivo->alteracao = $request->alteracao;
+            $aditivo->estagio_id = $estagio->id;
+            $aditivo->aprovado_graduacao = 0;
+            $aditivo->aprovado_parecerista = 0; 
+            $aditivo->save();
 
-            #inicio da alteração
-            $estagio->analise_alteracao = $request->analise_alteracao;
+            # inicio da alteração
             $estagio->last_status = $estagio->status;
             $estagio->status = 'em_analise_tecnica';
             $estagio->save();

@@ -92,18 +92,19 @@
 
 </div>
 
-@if(($estagio->analise_alteracao)!=null)
+@foreach($estagio->aditivos->where('aprovado_graduacao','=',0) as $aditivo)
+
 
 <div class="row">
     <div class="col-12 form-group">
-        <form method="POST" action="/analise_alteracao/{{$estagio->id}}">
+        <form method="POST" action="#">
             @csrf
             <br><b>Aditivo de Alteração Pendente:</b><br><br>
             
-            - {{ $estagio->analise_alteracao }}<br><br>
+            - {{ $aditivo->alteracao }}<br><br>
 
-            <label for="comentario_alteracao">Em caso de indeferimento, especidique o motivo: </label><br>
-            <textarea name="comentario_alteracao" rows="5" cols="60"></textarea><br>
+            <label for="comentario_graduacao">Em caso de indeferimento, especidique o motivo: </label><br>
+            <textarea name="comentario_graduacao" rows="5" cols="60"></textarea><br>
             
             <button type="submit" class="btn btn-success" name="analise_alteracao_action" value="deferir_alteracao"
                 onClick="return confirm('Tem certeza que deseja deferir o aditivo?')" >
@@ -115,12 +116,12 @@
                 Indeferir Aditivo
             </button>
 
-            <a class="btn btn-info" href="/emails/alteracao/{{$estagio->id}}" target="_blank" ><i class="fas fa-envelope-open-text"></i>  Enviar email com aditivo pendente para o parecerista</a>
+            <a class="btn btn-info" href="#" target="_blank" ><i class="fas fa-envelope-open-text"></i>  Enviar email com aditivo pendente para o parecerista</a>
             
         </form>
     </div>
 </div>
 
-@endif
+@endforeach
 
 @endcan('admin')
