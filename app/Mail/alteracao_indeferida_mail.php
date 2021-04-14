@@ -11,7 +11,7 @@ use App\Models\Empresa;
 use App\Models\Estagio;
 use PDF;
 
-class alteracao_mail extends Mailable
+class alteracao_indeferida_mail extends Mailable
 {
     use Queueable, SerializesModels;
     private $estagio;
@@ -34,13 +34,12 @@ class alteracao_mail extends Mailable
     public function build()
     {
 
-        $to = [Pessoa::email($this->estagio->numparecerista),
-               config('mail.reply_to.address')
-              ];
+        $to = [$this->estagio->email_de_contato,config('mail.reply_to.address')];
+        
+        $subject = $this->estagio->nome . ' - Setor de Estágios FFLCH-USP - O aditivo requisitado foi negado'; 
+   
 
-        $subject = $this->estagio->nome . ' - Setor de Estágios - Existe uma alteração pendente neste estágio que necessita de avaliação';           
-
-        return $this->view('emails.alteracao')
+        return $this->view('emails.alteracao_indeferida')
                     ->to($to)
                     ->subject($subject)
                     ->with([

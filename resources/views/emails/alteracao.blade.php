@@ -3,12 +3,10 @@ Aviso de que foi realizado um aditivo de alteração no estágio de {{ $estagio-
 na empresa {{ $estagio->empresa->nome }}. O setor de estágios julgou que a alteração realizada necessita de aprovação
 do parecerista.
 <br><br>
-O documento de aditivo segue em anexo, as alteração realizadas no termo até o momento são: <br><br>
+A alteração pendente é a seguinte: <br><br>
 
 <b>
-@foreach($estagio->aditivos as $aditivo)
-    - {{ $aditivo->alteracao }} <br><br>
-@endforeach
+    - {{ $estagio->analise_alteracao }} <br><br>
 </b>
 
 <br>
