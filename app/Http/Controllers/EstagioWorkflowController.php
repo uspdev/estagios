@@ -16,6 +16,8 @@ use App\Mail\enviar_para_analise_tecnica_mail;
 use App\Mail\enviar_para_analise_tecnica_renovacao_mail;
 use App\Mail\assinatura_mail;
 use App\Mail\alteracao_mail;
+use App\Mail\alteracao_empresa_mail;
+use App\Mail\alteracao_indeferida_mail;
 use App\Mail\enviar_analise_academica_mail;
 use Illuminate\Support\Facades\Mail;
 
@@ -262,17 +264,49 @@ class EstagioWorkflowController extends Controller
 
         if (Gate::allows('empresa',$estagio->cnpj)) {
 
-            $aditivo = new Aditivo;
-            $aditivo->alteracao = $request->alteracao;
-            $aditivo->estagio_id = $estagio->id;
-            $aditivo->save();
+            #nulifica comentário relativo a alteração anterior
+            $estagio->comentario_alteracao = null;
 
+            #inicio da alteração
+            $estagio->analise_alteracao = $request->analise_alteracao;
             $estagio->last_status = $estagio->status;
             $estagio->status = 'em_analise_tecnica';
             $estagio->save();
 
             request()->session()->flash('alert-info', 'Enviado para análise do setor de graduação');
             Mail::send(new alteracao_mail($estagio));
+        } else {
+            request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
+        }
+        return redirect("estagios/{$estagio->id}");
+    }
+
+    public function analise_alteracao(Request $request, Estagio $estagio){
+
+        if (Gate::allows('admin')) {
+
+            if($request->analise_alteracao_action == 'deferir_alteracao') {
+                $aditivo = new Aditivo;
+                $aditivo->estagio_id = $estagio->id;            
+                $aditivo->alteracao = $estagio->analise_alteracao;
+                $aditivo->save();
+                $estagio->analise_alteracao = null;
+                $estagio->save();
+                Mail::send(new alteracao_empresa_mail($estagio));
+                request()->session()->flash('alert-info', 'Analise Deferida com sucesso');
+            }
+
+            if($request->analise_alteracao_action == 'indeferir_alteracao') {
+                $request->validate([
+                    'comentario_alteracao' => 'required',
+                ]);
+                $estagio->comentario_alteracao = $request->comentario_alteracao;
+                Mail::send(new alteracao_indeferida_mail($estagio));
+                $estagio->analise_alteracao = null;
+                $estagio->save();
+                request()->session()->flash('alert-info', 'Analise indeferida com sucesso');
+            }
+
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }

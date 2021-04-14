@@ -36,6 +36,7 @@ class EstagioController extends Controller
 
             $estagios = Estagio::paginate(10);
 
+            
             }
 
         } else if (Gate::allows('empresa')){

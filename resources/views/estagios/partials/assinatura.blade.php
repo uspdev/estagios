@@ -18,9 +18,9 @@
 </div>
 
 <div class="card">
-    <div class="card-header"><b>Gerenciar Parecerista</b></div> 
+    <div class="card-header"><b>Área de Administrador</b></div> 
       <div class="card-body">
-        @include('estagios.partials.gerenciar_parecerista')
+        @include('estagios.partials.gerenciar_estagio')
       </div>
     </div>
 </div>    

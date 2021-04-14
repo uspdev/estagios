@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeColumnsInEstagiosTable extends Migration
+class UpdateEstagiosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -26,7 +26,7 @@ class ChangeColumnsInEstagiosTable extends Migration
     public function down()
     {
         Schema::table('estagios', function (Blueprint $table) {
-            //
+            $table->dropColumn('comentario_alteracao');
         });
     }
 }

@@ -34,7 +34,7 @@ class alteracao_empresa_mail extends Mailable
     {
         $to = [$this->estagio->email_de_contato,config('mail.reply_to.address')];
         
-        $subject = $this->estagio->nome . ' - Setor de Estágios FFLCH-USP - Foi realizada uma alteração neste estágio'; 
+        $subject = $this->estagio->nome . ' - Setor de Estágios FFLCH-USP - Foi realizada uma alteração com sucesso neste estágio'; 
 
         $pdf = PDF::loadView('pdfs.aditivo', ['estagio'=>$this->estagio]);      
 
