@@ -92,18 +92,18 @@
 
 </div>
 
-@foreach($estagio->aditivos->where('aprovado_graduacao','=',0) as $aditivo)
+@foreach($estagio->aditivos->where('aprovado_graduacao','=',0)->where('comentario_graduacao','=',null) as $aditivo)
 
 
 <div class="row">
     <div class="col-12 form-group">
-        <form method="POST" action="#">
+        <form method="POST" action="/analise_alteracao/{{$aditivo->id}}">
             @csrf
             <br><b>Aditivo de Alteração Pendente:</b><br><br>
             
             - {{ $aditivo->alteracao }}<br><br>
 
-            <label for="comentario_graduacao">Em caso de indeferimento, especidique o motivo: </label><br>
+            <label for="comentario_graduacao">Em caso de indeferimento, especifique o motivo: </label><br>
             <textarea name="comentario_graduacao" rows="5" cols="60"></textarea><br>
             
             <button type="submit" class="btn btn-success" name="analise_alteracao_action" value="deferir_alteracao"
@@ -116,7 +116,7 @@
                 Indeferir Aditivo
             </button>
 
-            <a class="btn btn-info" href="#" target="_blank" ><i class="fas fa-envelope-open-text"></i>  Enviar email com aditivo pendente para o parecerista</a>
+            <a class="btn btn-info" href="/emails/alteracao/{{$estagio->id}}" target="_blank" ><i class="fas fa-envelope-open-text"></i>  Enviar email com aditivo pendente para o parecerista</a>
             
         </form>
     </div>
