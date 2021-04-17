@@ -5,9 +5,11 @@ do parecerista.
 <br><br>
 A alteração pendente é a seguinte: <br><br>
 
+@foreach($estagio->aditivos->where('aprovado_graduacao','=',0)->where('comentario_graduacao','=',null) as $aditivo)
 <b>
-    - {{ $estagio->analise_alteracao }} <br><br>
+    - {{ $aditivo->alteracao }} <br><br>
 </b>
+@endforeach
 
 <br>
 Favor entrar em contato com o setor de estágios da fflch, informando sua avaliação relativa a alteração realizada.

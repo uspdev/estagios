@@ -5,7 +5,7 @@ na empresa {{ $estagio->empresa->nome }}.
 O documento de aditivo segue em anexo, as alteração realizadas no termo até o momento são: <br><br>
 
 <b>
-@foreach($estagio->aditivos as $aditivo)
+@foreach($estagio->aditivos->where('aprovado_graduacao','=',1) as $aditivo)
     - {{ $aditivo->alteracao }} <br><br>
 @endforeach
 </b>

@@ -270,8 +270,6 @@ class EstagioWorkflowController extends Controller
             $aditivo->aprovado_graduacao = 0;
             $aditivo->aprovado_parecerista = 0; 
             $aditivo->save();
-
-            # inicio da alteração
             $estagio->last_status = $estagio->status;
             $estagio->status = 'em_analise_tecnica';
             $estagio->save();
@@ -284,29 +282,27 @@ class EstagioWorkflowController extends Controller
         return redirect("estagios/{$estagio->id}");
     }
 
-    public function analise_alteracao(Request $request, Estagio $estagio){
+    public function analise_alteracao(Request $request, Aditivo $aditivo, Estagio $estagio){
 
         if (Gate::allows('admin')) {
 
-            if($request->analise_alteracao_action == 'deferir_alteracao') {
-                $aditivo = new Aditivo;
-                $aditivo->estagio_id = $estagio->id;            
-                $aditivo->alteracao = $estagio->analise_alteracao;
+            if($request->analise_alteracao_action == 'deferir_alteracao') {    
+                $estagio = Estagio::find($aditivo->estagio_id); 
+                $aditivo->aprovado_graduacao = 1;
+                $aditivo->aprovado_parecerista = 1;  
                 $aditivo->save();
-                $estagio->analise_alteracao = null;
-                $estagio->save();
-                Mail::send(new alteracao_empresa_mail($estagio));
+                Mail::send(new alteracao_empresa_mail($estagio));      
                 request()->session()->flash('alert-info', 'Analise Deferida com sucesso');
             }
 
             if($request->analise_alteracao_action == 'indeferir_alteracao') {
                 $request->validate([
-                    'comentario_alteracao' => 'required',
+                    'comentario_graduacao' => 'required',
                 ]);
-                $estagio->comentario_alteracao = $request->comentario_alteracao;
-                Mail::send(new alteracao_indeferida_mail($estagio));
-                $estagio->analise_alteracao = null;
-                $estagio->save();
+                $estagio = Estagio::find($aditivo->estagio_id); 
+                $aditivo->comentario_graduacao = $request->comentario_graduacao;
+                $aditivo->save();
+                Mail::send(new alteracao_indeferida_mail($estagio));                
                 request()->session()->flash('alert-info', 'Analise indeferida com sucesso');
             }
 
