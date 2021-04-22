@@ -37,6 +37,8 @@ class AppServiceProvider extends ServiceProvider
         }
 
         # Variáveis globais do sistema
-        view()->share('presidente', Pessoa::nomeCompleto(Parecerista::presidente()->numero_usp));
+        if(!empty(config('app.key'))) {
+            view()->share('presidente', Pessoa::nomeCompleto(Parecerista::presidente()->numero_usp));
+        }
     }
 }
