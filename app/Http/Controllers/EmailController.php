@@ -16,6 +16,7 @@ use App\Mail\analise_rescisao_mail;
 use App\Mail\assinatura_mail;
 use App\Mail\alteracao_empresa_mail;
 use App\Mail\alteracao_mail;
+use App\Mail\rescisao_empresa_mail;
 use Illuminate\Support\Facades\Mail;
 use Uspdev\Replicado\Pessoa;
 
@@ -53,6 +54,11 @@ class EmailController extends Controller
 
     public function analise_rescisao(Request $request, Estagio $estagio){
         Mail::send(new analise_rescisao_mail($estagio));        
+        return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
+    }
+
+    public function rescisao_empresa(Request $request, Estagio $estagio){
+        Mail::send(new rescisao_empresa_mail($estagio));        
         return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
     }
 

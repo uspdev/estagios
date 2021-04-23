@@ -103,10 +103,13 @@
         <br><br>  
 
         <a class="btn btn-warning" onClick="return confirm('Tem certeza que deseja reativar o estágio?')" href="/retornar_rescisao/{{$estagio->id}}">
-        <i class="fas fa-undo"></i> 
-        Reativar estágio </a> 
-        <a class="btn btn-info" onClick="return confirm('Tem certeza que deseja um email para a empresa?')" 
+        <i class="fas fa-undo"></i>Reativar estágio </a> 
+
+        <a class="btn btn-info" onClick="return confirm('Tem certeza que deseja um email para o parecerista?')" 
         href="/emails/analise_rescisao/{{$estagio->id}}"><i class="fas fa-envelope-open-text"></i>  Enviar email de aviso para o parecerista</a>
+
+        <a class="btn btn-info" onClick="return confirm('Tem certeza que deseja um email para a empresa?')" 
+        href="/emails/rescisao_empresa/{{$estagio->id}}"><i class="fas fa-envelope-open-text"></i>  Enviar email de aviso para a empresa</a>
         <br>
 
 @endcan('admin')
