@@ -19,6 +19,7 @@ use App\Mail\alteracao_mail;
 use App\Mail\alteracao_empresa_mail;
 use App\Mail\alteracao_indeferida_mail;
 use App\Mail\enviar_analise_academica_mail;
+use App\Mail\alteracao_pendente_empresa_mail;
 use Illuminate\Support\Facades\Mail;
 
 class EstagioWorkflowController extends Controller
@@ -273,9 +274,8 @@ class EstagioWorkflowController extends Controller
             $estagio->last_status = $estagio->status;
             $estagio->status = 'em_analise_tecnica';
             $estagio->save();
-
+            Mail::send(new alteracao_pendente_empresa_mail($estagio));  
             request()->session()->flash('alert-info', 'Enviado para análise do setor de graduação');
-            Mail::send(new alteracao_mail($estagio));
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }

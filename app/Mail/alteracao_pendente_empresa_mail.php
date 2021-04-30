@@ -10,7 +10,7 @@ use App\Models\Empresa;
 use App\Models\Estagio;
 use PDF;
 
-class alteracao_empresa_mail extends Mailable
+class alteracao_pendente_empresa_mail extends Mailable
 {
     use Queueable, SerializesModels;
     private $estagio;
@@ -33,18 +33,18 @@ class alteracao_empresa_mail extends Mailable
     public function build()
     {
 
-        $aditivopendente = null; 
+        $aditivopendente = true; 
 
         $to = [$this->estagio->email_de_contato,config('mail.reply_to.address')];
         
-        $subject = $this->estagio->nome . ' - Setor de Estágios FFLCH-USP - Versão atualizada do parecer de alteração deste estágio'; 
+        $subject = $this->estagio->nome . ' - Setor de Estágios FFLCH-USP - Um novo aditivo foi requisitado'; 
 
         $pdf = PDF::loadView('pdfs.aditivo', [
             'estagio'=>$this->estagio, 
             'aditivopendente'=>$aditivopendente,
         ]);      
 
-        return $this->view('emails.alteracao_empresa')
+        return $this->view('emails.alteracao_pendente_empresa')
                     ->to($to)
                     ->subject($subject)
                     ->attachData($pdf->output(), 'aditivo.pdf')
