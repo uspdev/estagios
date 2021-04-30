@@ -53,6 +53,22 @@
     <b>Parecer de Mérito:</b> {{$estagio->analise_academica}}<br>
 @endif
 
+@can('empresa')
+
+@foreach($estagio->aditivos->where('aprovado_graduacao','=',0)->where('comentario_graduacao','=',null) as $aditivo)
+<br>
+<b>Opções de Aditivo Pendente</b>
+<form method="GET" action="/pdfs/aditivo/{{$estagio->id}}">
+    @csrf
+    <button type="submit" class="btn btn-info" name="aditivo_action" value="pendente">
+        <i class="fas fa-file-pdf"></i> Gerar PDF com requisição do Aditivo
+    </button>
+</form>
+
+@endforeach
+
+@endcan('empresa')
+
 <br>
 
 </div>  

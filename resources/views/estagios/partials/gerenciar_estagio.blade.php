@@ -57,7 +57,7 @@
 
         @if(($estagio->aditivos)->isNotEmpty())
             <br>
-            <a href="/pdfs/aditivo/{{$estagio->id}}" target="_blank" >
+            <a href="/pdfs/aditivo/{{$estagio->id}}" target="_blank" name="aditivo_action" value="aprovados"> 
             <i class="fas fa-file-pdf"></i> </a>
             Gerar PDF do Parecer de Alteração
         @endif
@@ -85,7 +85,7 @@
 
         @if(($estagio->aditivos)->isNotEmpty())
             <br>
-            <a onClick="return confirm('Tem certeza que deseja um email para a empresa?')" href="/emails/alteracao_empresa/{{$estagio->id}}">
+            <a onClick="return confirm('Tem certeza que deseja um email para a empresa?')" name="aditivo_action" value="aprovados" href="/emails/alteracao_empresa/{{$estagio->id}}">
             <i class="fas fa-envelope-open-text"></i> </a>
             Enviar E-mail contendo as alterações para a empresa.
         @endif
@@ -117,8 +117,17 @@
             </button>
 
             <a class="btn btn-info" href="/emails/alteracao/{{$estagio->id}}" target="_blank" ><i class="fas fa-envelope-open-text"></i>  Enviar email com aditivo pendente para o parecerista</a>
-            
         </form>
+
+        <br>
+
+        <form method="GET" action="/pdfs/aditivo/{{$estagio->id}}">
+            @csrf
+            <button type="submit" class="btn btn-info" name="aditivo_action" value="pendente">
+                <i class="fas fa-file-pdf"></i> Gerar PDF com requisição do Aditivo
+            </button>
+        </form>
+        
     </div>
 </div>
 
