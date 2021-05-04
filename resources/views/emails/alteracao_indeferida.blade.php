@@ -7,7 +7,11 @@ indeferido pelo setor de estágios da FFLCH - USP
 
 Aditivo que havia sido requisitado: <b>{{ $aditivo->alteracao }}</b><br><br>
 
-Motivo do indeferimento: <b>{{ $aditivo->comentario_graduacao }}</b>
+Comentário do setor de estágios: <b>{{ $aditivo->comentario_graduacao }}</b><br><br>
+
+@if(($aditivo->comentario_parecerista)!=null)
+Análise do Parecerista sobre o Aditivo: <b>{{ $aditivo->comentario_parecerista }}</b><br><br>
+@endif
 
 @endforeach
 
