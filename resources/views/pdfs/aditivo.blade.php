@@ -13,13 +13,26 @@ adiante designada CONCEDENTE e o ESTAGIÁRIO(A) <b>{{ $estagio->nome }}</b>, no 
 a Faculdade de Filosofia, Letras e Ciências Humanas da Universidade de São Paulo, representada pela Presidente da Comissão de Graduação 
 <b>{{ $presidente }}</b>, firmam o presente TERMO DE ADITAMENTO DE COMPROMISSO DE ESTÁGIO, nos termos da Lei
 11.788/08 e da Resolução USP no 5.528/09, conforme as condições a seguir:</div>
-<p style="text-align: justify; text-indent : 1em;">1. Alterações realizadas no termo:
-<b>
-@foreach($estagio->aditivos->where('aprovado_graduacao','=',1) as $aditivo)
-    <p style="text-align: justify; text-indent : 1em;">
-    - {{ $aditivo->alteracao }} <br>
-    </p>
-@endforeach
+<!--<p style="text-align: justify; text-indent : 1em;">1. Alterações realizadas no termo:
+<b>-->
+@if($aditivopendente != null)
+    @foreach($estagio->aditivos->where('aprovado_graduacao','=',0)->where('comentario_graduacao','=',null) as $aditivo)
+        <p style="text-align: justify; text-indent : 1em;">1. O seguinte aditivo foi requisitado:
+        <b>
+        <p style="text-align: justify; text-indent : 1em;">
+        - {{ $aditivo->alteracao }} <br>
+        </p>
+    @endforeach
+@else
+    <p style="text-align: justify; text-indent : 1em;">1. Aditivos realizados no termo:
+    <b>
+    @foreach($estagio->aditivos->where('aprovado_graduacao','=',1) as $aditivo)
+        <p style="text-align: justify; text-indent : 1em;">
+        - {{ $aditivo->alteracao }} <br>
+        </p>
+    @endforeach
+@endif
+
 </b></p>
 <div style="text-align: justify; text-indent : 1em;">2. Permanecem inalteradas as demais cláusulas do Termo de Compromisso de
 Estágio, inclusive o Plano de Estágios, do qual passa a fazer parte integrante o

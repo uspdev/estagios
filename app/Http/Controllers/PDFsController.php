@@ -39,10 +39,16 @@ class PDFsController extends Controller
         abort(403, 'Access denied');
     }
 
-    public function aditivo(Estagio $estagio){
+    public function aditivo(Estagio $estagio, Request $request){
         if (Gate::allows('admin') | Gate::allows('parecerista') | Gate::allows('empresa',$estagio->cnpj)) {
+            if($request->aditivo_action == 'pendente'){
+                $aditivopendente=true;   
+            }else{
+                $aditivopendente=null;  
+            };
             $pdf = PDF::loadView('pdfs.aditivo', [
                 'estagio'    => $estagio,
+                'aditivopendente' => $aditivopendente,
             ]);
             return $pdf->download("aditivo-{$estagio->numero_usp}.pdf");
         }
