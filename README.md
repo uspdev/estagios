@@ -113,3 +113,19 @@ Graduação recebe de volta e deve aprovar ou reprovar:
 
 
 
+## Models
+
+|   campo  |    descrição                | é usado?|
+|----------|-----------------------------|---------|
+| codpes   | Número USP do aluno         | sim     |
+| cnpj     | CNPJ da empresa contratante | sim     |
+
+
+
+
+
+
+
+
+
+
