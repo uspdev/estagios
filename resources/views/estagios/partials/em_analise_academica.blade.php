@@ -1,11 +1,6 @@
 @can('admin')
-      <div class="card">
-          <div class="card-header"><b>Área de Administrador</b></div> 
-            <div class="card-body">
-              @include('estagios.partials.gerenciar_estagio')
-            </div>
-          </div>
-      </div>
+@include('estagios.partials.gerenciar_estagio')
+
       <div class="card">
               <div class="card-header"><b>Retornar Estágio</b></div> 
               <div class="card-body">

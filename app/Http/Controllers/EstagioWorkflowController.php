@@ -274,7 +274,6 @@ class EstagioWorkflowController extends Controller
             $estagio->last_status = $estagio->status;
             $estagio->status = 'em_analise_tecnica';
             $estagio->save();
-            Mail::send(new alteracao_pendente_empresa_mail($estagio));  
             request()->session()->flash('alert-info', 'Enviado para análise do setor de graduação');
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
@@ -284,26 +283,85 @@ class EstagioWorkflowController extends Controller
 
     public function analise_alteracao(Request $request, Aditivo $aditivo, Estagio $estagio){
 
-        if (Gate::allows('admin')) {
+        if (Gate::allows('admin') | Gate::allows('parecerista')) {
 
+            //caso de aditivo deferido diretamente
             if($request->analise_alteracao_action == 'deferir_alteracao') {    
-                $estagio = Estagio::find($aditivo->estagio_id); 
+                $estagio = Estagio::find($aditivo->estagio_id);
+                $aditivo->comentario_graduacao = $request->comentario_graduacao; 
                 $aditivo->aprovado_graduacao = 1;
                 $aditivo->aprovado_parecerista = 1;  
                 $aditivo->save();
                 Mail::send(new alteracao_empresa_mail($estagio));      
-                request()->session()->flash('alert-info', 'Analise Deferida com sucesso');
+                request()->session()->flash('alert-info', 'Aditivo deferido com sucesso');
             }
 
+            //caso de aditivo indeferido diretamente
             if($request->analise_alteracao_action == 'indeferir_alteracao') {
                 $request->validate([
                     'comentario_graduacao' => 'required',
                 ]);
                 $estagio = Estagio::find($aditivo->estagio_id); 
                 $aditivo->comentario_graduacao = $request->comentario_graduacao;
+                $aditivo->aprovado_graduacao = 0;
                 $aditivo->save();
                 Mail::send(new alteracao_indeferida_mail($estagio));                
-                request()->session()->flash('alert-info', 'Analise indeferida com sucesso');
+                request()->session()->flash('alert-info', 'Aditivo indeferido com sucesso');
+            }
+            
+            //caso de necessidade de análise do parecerista
+            if($request->analise_alteracao_action == 'solicitar_parecerista') {
+                $request->validate([
+                    'comentario_graduacao' => 'required',
+                ]);
+                $estagio = Estagio::find($aditivo->estagio_id); 
+                $aditivo->aprovado_graduacao = null;
+                $aditivo->comentario_graduacao = $request->comentario_graduacao;
+                $aditivo->save();
+                Mail::send(new alteracao_mail($estagio));                
+                request()->session()->flash('alert-info', 'Aditivo enviado para análise do parecerista');
+            }
+
+            //parecerista aprova o aditivo
+            if($request->analise_alteracao_action == 'parecerista_deferir_alteracao') {
+                $request->validate([
+                    'comentario_parecerista' => 'required',
+                ]);
+                $estagio = Estagio::find($aditivo->estagio_id); 
+                $aditivo->comentario_parecerista = $request->comentario_parecerista;
+                $aditivo->aprovado_parecerista = 1;
+                $aditivo->save();              
+                request()->session()->flash('alert-info', 'Análise enviada para o setor de estágios');
+            }
+
+            //parecerista reprova o aditivo
+            if($request->analise_alteracao_action == 'parecerista_indeferir_alteracao') {
+                $request->validate([
+                    'comentario_parecerista' => 'required',
+                ]);
+                $estagio = Estagio::find($aditivo->estagio_id); 
+                $aditivo->comentario_parecerista = $request->comentario_parecerista;
+                $aditivo->aprovado_parecerista = 0;
+                $aditivo->save();           
+                request()->session()->flash('alert-info', 'Análise enviada para o setor de estágios');
+            }
+
+            //Adm aprova após parecerista reprovar o aditivo
+            if($request->analise_alteracao_action == 'deferir_alteracao_posparecerista') {    
+                $estagio = Estagio::find($aditivo->estagio_id); 
+                $aditivo->aprovado_graduacao = 1;
+                $aditivo->save();
+                Mail::send(new alteracao_empresa_mail($estagio));      
+                request()->session()->flash('alert-info', 'Aditivo deferido com sucesso');
+            }
+
+            //Adm reprova após parecerista reprovar o aditivo
+            if($request->analise_alteracao_action == 'indeferir_alteracao_posparecerista') {
+                $estagio = Estagio::find($aditivo->estagio_id); 
+                $aditivo->aprovado_graduacao = 0;
+                $aditivo->save();
+                Mail::send(new alteracao_indeferida_mail($estagio));                
+                request()->session()->flash('alert-info', 'Aditivo indeferido com sucesso');
             }
 
         } else {

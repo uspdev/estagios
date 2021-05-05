@@ -36,22 +36,11 @@
 
 </form>
 
-<div class="card">
-    <div class="card-header"><b>Área de Administrador</b></div> 
-      <div class="card-body">
-        @include('estagios.partials.gerenciar_estagio')
-      </div>
-    </div>
-</div>
-<br><br>
-
 @endcan('admin')
-<br>
 
-@if(!empty($estagio->analise_academica))
-    <b>Parecerista:</b> {{ $estagio->parecerista->numero_usp }} <br>
-    <b>Parecer de Mérito:</b> {{$estagio->analise_academica}}<br>
-@endif
+@include('estagios.partials.gerenciar_estagio')
+
+<br><br>
 
 @can('empresa')
 

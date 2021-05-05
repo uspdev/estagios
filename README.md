@@ -48,6 +48,7 @@ https://youtu.be/UHg433C2JkE
 
 ## Aditivos de Alterações
 
+// OK
 - A empresa solicitou um aditivo: o status do estágio muda para 'Análise Técnica'.
 
   aprovado_graduacao=NULL
@@ -55,28 +56,37 @@ https://youtu.be/UHg433C2JkE
   comentario_graduacao=empty
   comentario_parecerista=empty
 
+//
+
 - O setor de graduação pode:
 
+// OK
 Se aprovado diretamente pelo setor de graduação:
 
   aprovado_graduacao=1
   aprovado_parecerista=1
   comentario_graduacao=opcional
   comentario_parecerista=empty
+//
 
+// OK
 Se reprovado diretamente pelo setor de graduação:
 
   aprovado_graduacao=0
   aprovado_parecerista=NULL
   comentario_graduacao=obrigatório
   comentario_parecerista=empty
+//
 
-Se encaminhado pelo setor de graduação para o parecerista (mostra na lista dos pareceristas):
+// OK
+Se encaminhado pelo setor de graduação para o parecerista (mostra na lista dos pareceristas): 
 
   aprovado_graduacao=NULL
   aprovado_parecerista=NULL
   comentario_graduacao=obrigatório
   comentario_parecerista=empty
+//
+
 
 Quando o parecerista aprova:
 

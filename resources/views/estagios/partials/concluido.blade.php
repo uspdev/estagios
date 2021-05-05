@@ -1,11 +1,6 @@
 @can('admin')
-      <div class="card">
-          <div class="card-header"><b>Área de Administrador</b></div> 
-            <div class="card-body">
-              @include('estagios.partials.gerenciar_estagio')
-            </div>
-          </div>
-      </div>
+@include('estagios.partials.gerenciar_estagio')
+
     <br>
     <form method="POST" action="/mover_analise_tecnica/{{$estagio->id}}">
     @csrf
@@ -18,10 +13,10 @@
 @endcan
 
 @can('admin_ou_empresa',$estagio->cnpj)
-
+</div></div>
 <br>
-<div>
 
+<div>
     <div class="card">
     <div class="card-header"><b>EM CASO DE RESCISÃO</b></div>
     <div class="card-body">
