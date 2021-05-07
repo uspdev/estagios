@@ -40,12 +40,11 @@
 
 @include('estagios.partials.gerenciar_estagio')
 
-<br><br>
+<br>
 
-@can('empresa')
+@can('admin_ou_empresa')
 
 @foreach($estagio->aditivos->where('aprovado_graduacao','=',0)->where('comentario_graduacao','=',null) as $aditivo)
-<br>
 <b>Opções de Aditivo Pendente</b>
 <form method="GET" action="/pdfs/aditivo/{{$estagio->id}}">
     @csrf
@@ -56,7 +55,7 @@
 
 @endforeach
 
-@endcan('empresa')
+@endcan('admin_ou_empresa')
 
 <br>
 
