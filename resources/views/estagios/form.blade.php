@@ -98,13 +98,6 @@ aditivo por até 12 meses.
                     <input type="text" class="form-control datepicker" id="data_final" name="data_final" value="{{old('data_final',$estagio->data_final)}}" onblur="calculodata(this);">
                 </div>
         </div>
-
-        <div class="form-group">
-        <label for="duracao" class="required">Descreva a duração [(ex.: 12 meses, 6 meses e 19 dias, 27 dias, etc) Em casos 
-        excepcionais inferiores a 6 meses, a empresa deverá incluir justificativa circunstanciada 
-        que será avaliada pelo Supervisor Geral de Estágios.</label>
-            <input type="text" class="form-control" id="duracao" name="duracao" value="{{old('duracao',$estagio->duracao)}}">
-        </div>
         
     </div>
 </div>

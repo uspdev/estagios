@@ -27,7 +27,6 @@ class EstagioRequest extends FormRequest
             'numero_usp' => 'required|numeric|codpes|graduacao',
             'valorbolsa' => 'required|max:255',
             'tipobolsa' => 'required|max:255',
-            'duracao' => 'required',
             'data_inicial' => 'required|data',
             'data_final' => 'required|data',
             'cargahoras' => 'required|max:255',

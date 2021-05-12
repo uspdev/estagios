@@ -13,6 +13,7 @@ use App\Models\Parecerista;
 use App\Utils\ReplicadoUtils;
 use Uspdev\Replicado\Pessoa;
 use Uspdev\Replicado\Graduacao;
+use Carbon\Carbon;
 
 class Estagio extends Model
 {
@@ -195,6 +196,16 @@ class Estagio extends Model
     public function getGradeAttribute() {
         if($this->numero_usp)
             return ReplicadoUtils::grade($this->numero_usp);
+    }
+
+    public function getDuracaoAttribute() {
+        $data_inicial = Carbon::createFromFormat("d/m/Y", $this->data_inicial);
+        $data_final = Carbon::createFromFormat("d/m/Y", $this->data_final);
+        
+        $dias = $data_inicial->diffInDays($data_final);
+        $meses = $data_inicial->diffInMonths($data_final);
+
+        return $dias . " dias" . " (aproximadamente " . $meses . " meses)";
     }
 
     public function getStatus(){
