@@ -117,10 +117,10 @@ Graduação recebe de volta e deve aprovar ou reprovar:
 
 FK = Chave Estrangeira
 FID = ID Estrangeiro
+
 Tabela users 
 
 
-|---------------------------------|------------------------------------------------------------------|---------|
 |          campo                  |                           descrição                              | é usado?|
 |---------------------------------|------------------------------------------------------------------|---------|
 | name                            | Nome do usuário                                                  | sim     |
@@ -128,22 +128,20 @@ Tabela users
 | codpes                          | Número USP (caso seja pessoa física)                             | sim     |
 | cnpj                            | CNPJ (caso seja empresa)                                         | sim     |
 | password                        | Senha                                                            | sim     |
-|---------------------------------|------------------------------------------------------------------|---------|
 
 
+Tabela pareceristas 
 
-|--------------------------------------------------------------------------------------------------------------|
-|                                                 Tabela pareceristas                                          |
-|---------------------------------|------------------------------------------------------------------|---------|
+
 |          campo                  |                           descrição                              | é usado?|
 |---------------------------------|------------------------------------------------------------------|---------|
 | numero_usp                      | Numero USP do parecerista                                        | sim     |
 | presidente                      | Identificador de se o parecerista é o presidente da comissão     | sim     |
-|---------------------------------|------------------------------------------------------------------|---------|
+
 
 Tabela convenios 
 
-|---------------------------------|------------------------------------------------------------------|---------|
+
 |          campo                  |                           descrição                              | é usado?|
 |---------------------------------|------------------------------------------------------------------|---------|
 | cnpj                            | CNPJ da empresa conveniada                                       | sim     |
@@ -162,11 +160,11 @@ Tabela convenios
 | nome_contato                    | Nome do funcionário de contato                                   | sim     |
 | tel_contato                     | Telefone do funcionário de contato                               | sim     |
 | email_contato                   | Email do funcionário de contato                                  | sim     |
-|---------------------------------|------------------------------------------------------------------|---------|
+
 
 Tabela empresas   
 
-|---------------------------------|------------------------------------------------------------------|---------|
+
 |          campo                  |                           descrição                              | é usado?|
 |---------------------------------|------------------------------------------------------------------|---------|
 | nome                            | Nome da empresa                                                  | sim     |
@@ -178,23 +176,22 @@ Tabela empresas
 | nome_do_representante           | Nome do representante da empresa                                 | sim     |
 | cargo_do_representante          | Cargo do representante da empresa                                | sim     |
 | conceder_acesso_cnpj            | Conceder acesso administrativo a outra empresa cadastrada        | sim     |
-|---------------------------------|------------------------------------------------------------------|---------|
+
 
 
  Tabela avisos  
 
-|---------------------------------|------------------------------------------------------------------|---------|
 |          campo                  |                           descrição                              | é usado?|
 |---------------------------------|------------------------------------------------------------------|---------|
 | titulo                          | Título do aviso                                                  | sim     |
 | corpo                           | Descrição do aviso                                               | sim     |
 | divulgacao_home_ate             | Data limite de exibição do aviso na homepage                     | sim     |
-|---------------------------------|------------------------------------------------------------------|---------|
+
 
 
 Tabela vagas     
 
-|---------------------------------|------------------------------------------------------------------|---------|
+
 |          campo                  |                           descrição                              | é usado?|
 |---------------------------------|------------------------------------------------------------------|---------|
 | titulo                          | Título da vaga                                                   | sim     |
@@ -208,11 +205,10 @@ Tabela vagas
 | status                          | Status de aprovação da vaga (Aprovada/Reprovada)                 | sim     |
 | contato                         | Informação de contato da vaga                                    | sim     |
 | user_id (FID)                   | ID do criador da vaga                                            | sim     |
-|---------------------------------|------------------------------------------------------------------|---------|
 
 
  Tabela estagios      
-|---------------------------------|------------------------------------------------------------------|---------|
+
 |          campo                  |                           descrição                              | é usado?|
 |---------------------------------|------------------------------------------------------------------|---------|
 | numero_usp                      | Número USP do aluno                                              | sim     |
@@ -265,12 +261,11 @@ Tabela vagas
 | telefone_de_contato             | Telefone do contato da empresa                                   | sim     |
 | avaliacao_empresa               | Avaliação da empresa no realatório final (Positivo/Negativo)     | sim     |
 | avaliacaodescricao              | Justificativa da avaliação do relatório final                    | sim     |
-|---------------------------------|------------------------------------------------------------------|---------|-
 
 
  Tabela files   
 
-|---------------------------------|------------------------------------------------------------------|---------|
+
 |          campo                  |                           descrição                              | é usado?|
 |---------------------------------|------------------------------------------------------------------|---------|
 | original_name                   | Nome do arquivo                                                  | sim     |
@@ -278,12 +273,10 @@ Tabela vagas
 | estagio_id (FK)                 | Estágio relativo ao documento                                    | sim     |
 | user_id (FK)                    | Dado de quem enviou o arquivo                                    | não     |
 | tipo_documento                  | Identificador do tipo de documento (Documento simples/Relatório) | sim     |
-|---------------------------------|------------------------------------------------------------------|---------|
 
 
 Tabela aditivos    
 
-|---------------------------------|------------------------------------------------------------------|---------|
 |          campo                  |                           descrição                              | é usado?|
 |---------------------------------|------------------------------------------------------------------|---------|
 | estagio_id (FID)                | ID do estagio relativo ao aditivo                                | sim     |
@@ -292,4 +285,3 @@ Tabela aditivos
 | aprovado_parecerista            | Aprovação do aditivo por parte do parecerista                    | sim     |
 | comentario_graduacao            | Comentário sobre o aditivo do setor de estágios                  | sim     |
 | comentario_parecerista          | Comentário sobre o aditivo do parecerista                        | sim     |
-|---------------------------------|------------------------------------------------------------------|---------|
