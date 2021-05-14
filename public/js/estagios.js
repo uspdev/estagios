@@ -50,14 +50,3 @@ function checagemdeferimento(that) {
 
     }
 }
-
-/*
-function calculodata(that) {
-    var dia=1000*60*60*24;
-    var date1_ms = new Date("data_inicial");
-    var date2_ms = new Date("data_final");
-    var diferenca = Math.abs(date2_ms - date1_ms);
-    var tempo = Math.ceil(diferenca/dia);
-    document.getElementById("duracao").value = tempo;
-}
-*/
