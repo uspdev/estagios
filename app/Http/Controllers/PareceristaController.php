@@ -92,7 +92,7 @@ class PareceristaController extends Controller
         $this->authorize('parecerista');
 
         $estagios = Estagio::where('status',"!=", "em_analise_academica")
-                      ->where('numparecerista',Auth::user()->codpes)->get();
+                      ->where('numparecerista',Auth::user()->codpes)->paginate(10);
 
         return view('pareceristas.estagios')->with([
             'estagios' => $estagios,

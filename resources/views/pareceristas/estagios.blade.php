@@ -6,5 +6,7 @@
 
 @section('content')
 @include('flash')
-    @include('estagios.partials.index')
+    {{ $estagios->appends(request()->query())->links() }}
+      @include('estagios.partials.index')
+    {{ $estagios->appends(request()->query())->links() }}
 @endsection('content')

@@ -23,54 +23,66 @@ button {
     <thead>
         <tr>
         <th>Número USP</th>
-        <th>Tipo</th>
         <th>Nome</th>
+        <th>Tipo</th>
+        <th>Habilitação</th>
+        <th>Empresa</th>
         <th>Período</th>
         <th>Status</th>
         @can('admin')<th>Deletar</th>@endcan 
         </tr>
     </thead>
     <tbody>
+
         @forelse($estagios->sortByDesc('created_at') as $estagio)
         <tr>
 
-        <td>
-          <a href ="/estagios/{{$estagio->id}}"> {{$estagio->numero_usp}}</a>
-        <td>
-            @if( empty($estagio->renovacao_parent_id) )
-                Original
-            @else
-                Renovação 
-            @endif
-        </td>
+            <td>
+            <a href ="/estagios/{{$estagio->id}}"> {{$estagio->numero_usp}}</a>
+            </td>
 
-        </td>
+            <td>
+                {{ $estagio->nome }}
+            </td>
 
-        <td>
-        {{ $estagio->nome }}
-        </td>
+            <td>
+                @if( empty($estagio->renovacao_parent_id) )
+                    Original
+                @else
+                    Renovação 
+                @endif
+            </td>
 
-        <td>
-        {{$estagio->data_inicial}} - {{$estagio->data_final}}
+            <td> 
+                {{ $estagio->habilitacao }} 
+            </td>
 
-        </td>
-        <td> {{$estagio->getStatus()[$estagio->status]['name'] }} </td>
-        @can('admin')
-        <td>
-            <form  method="POST" action="/estagios/{{$estagio->id}}">         
-                @csrf
-                @method('delete')
-                <button class="botao" type="submit" onclick="return confirm('Tem certeza que deseja deletar?');"><i class="fas fa-trash-alt"></i></button>
-            </form>
-            <div>
-        </td>
-        @endcan('admin')
+            <td> 
+                {{ $estagio->empresa->nome }} 
+            </td>
+
+            <td>
+                {{$estagio->data_inicial}} - {{$estagio->data_final}}
+            </td>
+
+            <td> 
+                {{ $estagio->getStatus()[$estagio->status]['name'] }} 
+            </td>
+
+            @can('admin')
+            <td>
+                <form  method="POST" action="/estagios/{{$estagio->id}}">         
+                    @csrf
+                    @method('delete')
+                    <button class="botao" type="submit" onclick="return confirm('Tem certeza que deseja deletar?');"><i class="fas fa-trash-alt"></i></button>
+                </form>
+            </td>
+            @endcan('admin')
 
         </tr>
-        <div></div>
         @empty
             <td colspan="5">Sem estagiários/as no momento</td>
         @endforelse
     </tbody>
     </table>
-<div></div>    
+<div>   

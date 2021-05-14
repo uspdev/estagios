@@ -14,9 +14,11 @@ use App\Utils\ReplicadoUtils;
 use Uspdev\Replicado\Pessoa;
 use Uspdev\Replicado\Graduacao;
 use Carbon\Carbon;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Estagio extends Model
+class Estagio extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     use HasFactory;
     use WorkflowTrait;
 
@@ -191,6 +193,15 @@ class Estagio extends Model
     public function getCpfAttribute() {
         if($this->numero_usp)
             return Pessoa::dump($this->numero_usp)['numcpf'];
+    }
+
+    public function getHabilitacaoAttribute() {
+        if($this->numero_usp) {
+            $curso = Graduacao::curso($this->numero_usp,8);
+            if($curso) {
+                return Graduacao::nomeHabilitacao($curso['codhab'], $curso['codcur']);
+            }
+        }   
     }
 
     public function getGradeAttribute() {
