@@ -212,11 +212,36 @@ class Estagio extends Model implements Auditable
     public function getDuracaoAttribute() {
         $data_inicial = Carbon::createFromFormat("d/m/Y", $this->data_inicial);
         $data_final = Carbon::createFromFormat("d/m/Y", $this->data_final);
-        
-        $dias = $data_inicial->diffInDays($data_final);
-        $meses = $data_inicial->diffInMonths($data_final);
 
-        return $dias . " dias" . " (aproximadamente " . $meses . " meses)";
+        # Vamos somar 4 dias para englobar feriados
+        $diff = $data_inicial->diff($data_final->addDays(4));
+
+        # Estágios maiores que dois ano
+        if($diff->format('%y') > 1){
+            $text =  $diff->format('%y anos');
+            if($diff->format('%m') > 1)
+                $text .= $diff->format(' e %m meses');
+            else if($diff->format('%m') == 1)
+                $text .= $diff->format(' e %m mês');
+        }
+        
+        # Estágios iguais a um ano
+        else if($diff->format('%y') == 1){
+            $text =  $diff->format('%y ano');
+            if($diff->format('%m') > 1)
+                $text .= $diff->format(' e %m meses');
+            else if($diff->format('%m') == 1)
+                $text .= $diff->format(' e %m mês');
+        }
+
+        else {
+            if($diff->format('%m') > 1)
+                $text = $diff->format('%m meses');
+            else if($diff->format('%m') == 1)
+                $text = $diff->format('%m mês');  
+        }
+
+        return $text;
     }
 
     public function getStatus(){
