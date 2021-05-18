@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
-use Uspdev\Utils;
+use Uspdev\Utils\Generic;
 
 use Socialite;
 use App\Models\User;
@@ -49,7 +49,7 @@ class LoginEmpresaController extends Controller
 
         if (!is_null($empresa)) {
             if( ($empresa->email != $request->email) | ($empresa->cnpj_number != $cnpj) ){
-                $email_limpo = Utils::partially_email($empresa->email);
+                $email_limpo = Generic::partially_email($empresa->email);
 
                 $request->session()->flash('alert-danger',
                     "Foi solicitado login para email <b> {$request->email} </b>e cnpj <b>{$request->cnpj}</b></br> <br>
