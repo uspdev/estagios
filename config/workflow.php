@@ -43,6 +43,11 @@ $workflow_estagio = [
                 'label' => "Em elaboração das\n alterações (Empresa)"
             ]
         ],
+        'analise_alteracao_parecerista' => [
+            'metadata' => [
+                'label' => "Em análise de alteração pelo parecerista \n (Docente)"
+            ]
+        ],
         'rescisao' => [
             'metadata' => [
                 'label' => "Rescisão",

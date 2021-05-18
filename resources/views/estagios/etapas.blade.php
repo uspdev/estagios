@@ -94,6 +94,10 @@ Análise técnica do setor de Graduação realizada por: {{ $estagio->analise_te
       @include('estagios.partials.em_alteracao')
       @break  
 
+    @case('analise_alteracao_parecerista')
+      @include('estagios.partials.em_analise_tecnica')
+      @break  
+
     @case('rescisao')
       @include('estagios.partials.rescisao')
       @break     
