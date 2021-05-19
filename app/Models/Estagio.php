@@ -272,6 +272,10 @@ class Estagio extends Model implements Auditable
                 'name' => "Aditivo de Alterações",
                 'optional' => 'Empresa'
             ],
+            'analise_alteracao_parecerista' => [
+                'name' => "Aditivo de Alterações - Análise do Parecerista",
+                'optional' => 'Docente'
+            ],
             'rescisao' => [
                 'name' => "Rescisão",
                 'optional' => 'Empresa'
@@ -281,6 +285,7 @@ class Estagio extends Model implements Auditable
                 'optional' => 'Estágio Cancelado'
             ],
         ];
+
         return $status;
     }
 
