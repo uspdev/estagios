@@ -318,7 +318,9 @@ class EstagioWorkflowController extends Controller
                 $estagio = Estagio::find($aditivo->estagio_id); 
                 $aditivo->aprovado_graduacao = null;
                 $aditivo->comentario_graduacao = $request->comentario_graduacao;
+                $estagio->status = 'analise_alteracao_parecerista';
                 $aditivo->save();
+                $estagio->save();
                 Mail::send(new alteracao_mail($estagio));                
                 request()->session()->flash('alert-info', 'Aditivo enviado para análise do parecerista');
             }
@@ -331,7 +333,9 @@ class EstagioWorkflowController extends Controller
                 $estagio = Estagio::find($aditivo->estagio_id); 
                 $aditivo->comentario_parecerista = $request->comentario_parecerista;
                 $aditivo->aprovado_parecerista = 1;
-                $aditivo->save();              
+                $estagio->status = 'em_analise_tecnica';
+                $aditivo->save();       
+                $estagio->save();       
                 request()->session()->flash('alert-info', 'Análise enviada para o setor de estágios');
             }
 
@@ -343,7 +347,9 @@ class EstagioWorkflowController extends Controller
                 $estagio = Estagio::find($aditivo->estagio_id); 
                 $aditivo->comentario_parecerista = $request->comentario_parecerista;
                 $aditivo->aprovado_parecerista = 0;
+                $estagio->status = 'em_analise_tecnica';
                 $aditivo->save();           
+                $estagio->save();
                 request()->session()->flash('alert-info', 'Análise enviada para o setor de estágios');
             }
 
