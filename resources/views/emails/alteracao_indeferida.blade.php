@@ -4,6 +4,7 @@ indeferido pelo setor de estágios da FFLCH - USP
 <br><br>
 
 @foreach($estagio->aditivos->where('aprovado_graduacao','=',0)->where('comentario_graduacao','!=',null) as $aditivo)
+@if($loop->last)
 
 Aditivo que havia sido requisitado: <b>{{ $aditivo->alteracao }}</b><br><br>
 
@@ -13,6 +14,7 @@ Comentário do setor de estágios: <b>{{ $aditivo->comentario_graduacao }}</b><b
 Análise do Parecerista sobre o Aditivo: <b>{{ $aditivo->comentario_parecerista }}</b><br><br>
 @endif
 
+@endif
 @endforeach
 
 <br><br>

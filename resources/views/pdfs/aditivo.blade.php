@@ -27,9 +27,11 @@ a Faculdade de Filosofia, Letras e Ciências Humanas da Universidade de São Pau
     <p style="text-align: justify; text-indent : 1em;">1. Aditivos realizados no termo:
     <b>
     @foreach($estagio->aditivos->where('aprovado_graduacao','=',1) as $aditivo)
+        @if($loop->last)
         <p style="text-align: justify; text-indent : 1em;">
         - {{ $aditivo->alteracao }} <br>
         </p>
+        @endif
     @endforeach
 @endif
 
