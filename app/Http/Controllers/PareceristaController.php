@@ -9,6 +9,7 @@ use App\Models\Estagio;
 use App\Models\User;
 use Auth;
 use Uspdev\Replicado\Pessoa;
+use Rap2hpoutre\FastExcel\FastExcel;
 
 class PareceristaController extends Controller
 {
@@ -88,39 +89,67 @@ class PareceristaController extends Controller
         return redirect('/');
     }
 
-    public function meusPareceres(){
+    public function meusPareceres(Request $request){
         $this->authorize('parecerista');
 
         $estagios = Estagio::where('status',"!=", "em_analise_academica")
-                      ->where('numparecerista',Auth::user()->codpes)->paginate(10);
+                      ->where('numparecerista',Auth::user()->codpes);
 
-        return view('pareceristas.estagios')->with([
-            'estagios' => $estagios,
-        ]);
+        if($request->type){
+            $export = new FastExcel($this->excel($estagios));
+            return $export->download('estagios.xlsx');
+        } else {
+            return view('pareceristas.estagios')->with([
+                'estagios' => $estagios->paginate(10),
+            ]);
+        }
     }
 
-    public function parecerMerito(){
+    public function parecerMerito(Request $request){
         $this->authorize('parecerista');
 
         $estagios = Estagio::where('status', "em_analise_academica")
                       ->where('numparecerista',Auth::user()->codpes)
                       ->orWhere('status', "analise_alteracao_parecerista")
-                      ->where('numparecerista',Auth::user()->codpes)->paginate(10);
+                      ->where('numparecerista',Auth::user()->codpes);
 
-        return view('pareceristas.estagios')->with([
-            'estagios' => $estagios,
-        ]);
+        if($request->type){
+            $export = new FastExcel($this->excel($estagios));
+            return $export->download('estagios.xlsx');
+        } else {
+            return view('pareceristas.estagios')->with([
+                'estagios' => $estagios->paginate(10),
+            ]);
+        }
     }
 
-    public function estagiosRescindidos(){
+    public function estagiosRescindidos(Request $request){
         $this->authorize('parecerista');
 
         $estagios = Estagio::where('status', "rescisao")
-                      ->where('numparecerista',Auth::user()->codpes)->get();
+                      ->where('numparecerista',Auth::user()->codpes);
 
-        return view('pareceristas.estagios')->with([
-            'estagios' => $estagios,
-        ]);
+        if($request->type){
+            $export = new FastExcel($this->excel($estagios));
+            return $export->download('estagios.xlsx');
+        } else {
+            return view('pareceristas.estagios')->with([
+                'estagios' => $estagios->paginate(10),
+            ]);
+        }
+    }
+
+    private function excel($estagios){
+        $aux =[];
+        foreach($estagios->get() as $estagio){
+            $aux[] = [
+                'Nome'         => $estagio->nome,
+                'Habilitaçao'  => $estagio->habilitacao,
+                'Atividades'   => $estagio->atividade,
+                'Empresa'      => $estagio->empresa->nome
+            ];
+        }
+        return collect($aux);
     }
 }
 

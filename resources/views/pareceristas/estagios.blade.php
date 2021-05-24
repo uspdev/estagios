@@ -6,7 +6,14 @@
 
 @section('content')
 @include('flash')
+
+    <a href="{{ request()->path() }}?type=excel" class="btn btn-success">
+      <i class="fa fa-file" aria-hidden="true"></i>
+      Exportar para Excel
+    </a>
+    <br><br>
+    
     {{ $estagios->appends(request()->query())->links() }}
-      @include('estagios.partials.index')
+    @include('estagios.partials.index')
     {{ $estagios->appends(request()->query())->links() }}
 @endsection('content')
