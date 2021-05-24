@@ -146,7 +146,8 @@ class PareceristaController extends Controller
                 'Nome'         => $estagio->nome,
                 'Habilitaçao'  => $estagio->habilitacao,
                 'Atividades'   => $estagio->atividade,
-                'Empresa'      => $estagio->empresa->nome
+                'Empresa'      => $estagio->empresa->nome,
+                'Área de Atuação' => $estagio->empresa->area_de_atuacao,
             ];
         }
         return collect($aux);

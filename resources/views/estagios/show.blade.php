@@ -54,6 +54,7 @@
         <div class="card-body">
             <b>Nome da empresa:</b> {{ $estagio->empresa->nome }}<br>
             <b>CNPJ da empresa:</b> {{ $estagio->empresa->cnpj }}<br>
+            <b>Área de Atuação:</b> {{ $estagio->empresa->area_de_atuacao }}<br>
             <b>Nome do supervisor do estágio:</b> {{$estagio->nome_do_supervisor_estagio}}<br>
             <b>Cargo do supervisor do estágio:</b> {{$estagio->cargo_do_supervisor_estagio}}<br>
             <b>Telefone do supervisor do estágio:</b> {{$estagio->telefone_do_supervisor_estagio}}<br>
