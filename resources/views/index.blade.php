@@ -45,8 +45,10 @@
           @foreach($vagas as $vaga)
           <tr>
             @if(($vaga->status) == 'Aprovada')
-              <td><h4>{{$vaga->titulo}}</h4>{{ $vaga->descricao }}</td>
-              <td><a href="/vagas/{{$vaga->id}}">Acessar vaga</a></td>
+              <td><h4>{{$vaga->titulo}}</h4>
+              Carga horária semanal: {{ $vaga->expediente }} horas <br>
+              Valor da bolsa: R$ {{ $vaga->salario }}</td>
+              <td><a href="/vagas/{{$vaga->id}}">Acessar vaga para mais detalhes</a></td>
             @endif
           </tr>
           @endforeach

@@ -22,7 +22,7 @@
 
   <div class="row">
     <div class="col-sm form-group">
-      <label for="expediente" class="required"><strong>Carga Horário Semanal:</strong></label>
+      <label for="expediente" class="required"><strong>Carga Horária Semanal:</strong></label>
       <input type="text" class="form-control" id="expediente" name="expediente" value="{{old('expediente',$vaga->expediente)}}">
     </div>
     <div class="col-sm form-group">

@@ -34,7 +34,7 @@
         <br></br>
         <b>Benefícios:</b> {{ $vaga->beneficios }}
         <br></br>
-        <b>Carga Horário Semanal:</b> {{ $vaga->expediente }}
+        <b>Carga Horária Semanal:</b> {{ $vaga->expediente }}
         <br></br>
         <b>Valor mensal da Bolsa:</b> {{ $vaga->salario }}
         <br></br>
