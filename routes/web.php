@@ -125,3 +125,6 @@ Route::post('/files/destroy', [FileController::class,'destroy']);
 # api
 Route::get('info', [EstagioController::class, 'info'])->name('estagios.info');
 
+# Logs  
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('can:admin');
+
