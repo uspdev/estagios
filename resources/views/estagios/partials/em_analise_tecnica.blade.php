@@ -10,10 +10,16 @@
 
 <form method="POST" action="/analise_tecnica/{{$estagio->id}}">
     @csrf
-    <div class="row">
-        <div class="form-group">
-            <textarea name="analise_tecnica" rows="5" cols="60">{{old('analise_tecnica',$estagio->analise_tecnica)}}</textarea>
-        </div>
+    <details>
+        <summary>Clique aqui para visualizar mais informações sobre a matricula vigente</summary>
+        <br>
+        @include('estagios.partials.jupiter')
+    </details>
+
+    <br>    
+
+    <div class="form-group">
+        <textarea name="analise_tecnica" rows="5" cols="60">{{old('analise_tecnica',$estagio->analise_tecnica)}}</textarea>
     </div>
 
     <div class="form-group">
