@@ -10,10 +10,16 @@
 
 <form method="POST" action="/analise_tecnica/{{$estagio->id}}">
     @csrf
-    <div class="row">
-        <div class="form-group">
-            <textarea name="analise_tecnica" rows="5" cols="60">{{old('analise_tecnica',$estagio->analise_tecnica)}}</textarea>
-        </div>
+    <details>
+        <summary>Clique aqui para visualizar mais informações sobre a matricula vigente</summary>
+        <br>
+        @include('estagios.partials.jupiter')
+    </details>
+
+    <br>    
+
+    <div class="form-group">
+        <textarea name="analise_tecnica" rows="5" cols="60">{{old('analise_tecnica',$estagio->analise_tecnica)}}</textarea>
     </div>
 
     <div class="form-group">
@@ -24,6 +30,11 @@
         <button type="submit" class="btn btn-success" name="analise_tecnica_action" value="enviar_assinatura"
             onClick="return confirm('Tem certeza que quer enviar para Assinatura?')" >
             Enviar para assinatura
+        </button>
+
+        <button type="submit" class="btn btn-success" name="analise_tecnica_action" value="deferimento_analise_tecnica"
+            onClick="return confirm('Tem certeza que quer enviar para Parecer?')" >
+            Enviar para parecerista
         </button>
 
         <button type="submit" class="btn btn-success" name="analise_tecnica_action" value="deferimento_analise_tecnica"
