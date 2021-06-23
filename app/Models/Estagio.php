@@ -169,11 +169,6 @@ class Estagio extends Model implements Auditable
             return Graduacao::curso($this->numero_usp, 8)['nomhab'];
     }
 
-    public function getNomeAttribute() {
-        if($this->numero_usp)
-            return Pessoa::nomeCompleto($this->numero_usp);
-    }
-
     public function getEmailAttribute() {
         if($this->numero_usp)
             return Pessoa::email($this->numero_usp);
