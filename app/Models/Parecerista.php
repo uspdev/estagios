@@ -17,8 +17,9 @@ class Parecerista extends Model
     }
 
     public function getNomeAttribute() {
-        if($this->numero_usp)
+        if($this->numero_usp) {
             return Pessoa::nomeCompleto($this->numero_usp);
+        }
     }
 
     public function getEmailAttribute() {

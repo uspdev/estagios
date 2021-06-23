@@ -79,6 +79,10 @@ class EstagioController extends Controller
 
     public function destroy(Estagio $estagio){
         if (Gate::allows('admin') | Gate::allows('empresa',$estagio->cnpj)) {
+            // deletar os aditivos
+
+            // todos arquivos relacionados a esse esse estágio (o arquivo e a File)
+
             $estagio->delete();
             return redirect('/estagios');
         }

@@ -71,8 +71,8 @@
 
                 @if(($estagio->numparecerista)!=null)
                     <br>
-                    <b>Nome:</b> {{ $estagio->parecerista->nome }}<br>
-                    <b>Email Cadastrado:</b> {{ $estagio->parecerista->email }}</b><br> 
+                    <b>Nome:</b> {{ $estagio->parecerista_nome }}<br>
+                    <b>Email Cadastrado:</b> {{ $estagio->parecerista_email }}</b><br> 
                 @endif
                 
                 <br>

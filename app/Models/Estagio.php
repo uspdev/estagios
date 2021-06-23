@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use ZeroDaHero\LaravelWorkflow\Traits\WorkflowTrait;
 use App\Models\File;
 use App\Models\Empresa;
 use App\Models\User;
@@ -21,7 +20,6 @@ class Estagio extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
     use HasFactory;
-    use WorkflowTrait;
 
     protected $guarded = ['id'];
 
@@ -281,5 +279,16 @@ class Estagio extends Model implements Auditable
     public function parecerista()
     {
         return $this->belongsTo(Parecerista::class,'numparecerista','numero_usp');
+    }
+
+    public function getPareceristaNomeAttribute() {
+        if($this->numparecerista) {
+            return Pessoa::nomeCompleto($this->numparecerista);
+        }
+    }
+
+    public function getPareceristaEmailAttribute() {
+        if($this->numparecerista)
+            return Pessoa::email($this->numparecerista);
     }
 }

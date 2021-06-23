@@ -27,8 +27,7 @@
         "uspdev/laravel-usp-validators": "^1.0",
         "uspdev/replicado": "^1.5",
         "uspdev/senhaunica-socialite": "^2.0",
-        "uspdev/utils": "^1.0.4",
-        "zerodahero/laravel-workflow": "^3.0"
+        "uspdev/utils": "^1.0.4"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
