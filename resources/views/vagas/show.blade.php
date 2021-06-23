@@ -34,9 +34,9 @@
         <br></br>
         <b>Benefícios:</b> {{ $vaga->beneficios }}
         <br></br>
-        <b>Carga Horária Semanal:</b> {{ $vaga->expediente }}
+        <b>Carga Horária Semanal:</b> {{ $vaga->expediente }} Horas
         <br></br>
-        <b>Valor mensal da Bolsa:</b> {{ $vaga->salario }}
+        <b>Valor mensal da Bolsa:</b> R$ {{ $vaga->salario }}
         <br></br>
         <b>Horário do Estágio:</b> {{ $vaga->horario }}
         <br></br>

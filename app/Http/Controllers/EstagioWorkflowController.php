@@ -36,8 +36,6 @@ class EstagioWorkflowController extends Controller
             if($request->enviar_para_analise_tecnica=="enviar_para_analise_tecnica"){
                 $estagio->last_status = 'em_elaboracao';
                 $estagio->status = 'em_analise_tecnica';
-                #$workflow = $estagio->workflow_get();
-                #$workflow->apply($estagio,'enviar_para_analise_tecnica');
                 $estagio->save();
             }
         } else {
@@ -85,15 +83,13 @@ class EstagioWorkflowController extends Controller
                     'analise_tecnica' => 'required',
                 ]);
                 $estagio->last_status = $estagio->status;
-                $workflow = $estagio->workflow_get();
-                $workflow->apply($estagio,$request->analise_tecnica_action);
+                $estagio->status = 'em_elaboracao';
                 $estagio->save();
                 return redirect("/estagios/{$estagio->id}");
             } else {
                 if($estagio->numparecerista){
                     $estagio->last_status = $estagio->status;
-                    $workflow = $estagio->workflow_get();
-                    $workflow->apply($estagio,$request->analise_tecnica_action);
+                    $estagio->status = 'em_analise_academica';
                     $estagio->save();
                 } else {
                     request()->session()->flash('alert-danger','Não enviado para parecer de mérito! Informe o parecerista!');
@@ -143,7 +139,6 @@ class EstagioWorkflowController extends Controller
             $estagio->condicaodeferimento = $request->condicaodeferimento;
             $estagio->analise_academica_user_id = Auth::user()->id;
             $estagio->numparecerista = User::find($estagio->analise_academica_user_id)->codpes;
-            // Vamos sempre devolver para o setor de graduação depois do parecer
             $estagio->last_status = $estagio->status;
             $estagio->status = 'em_analise_tecnica';
             $estagio->save(); 
@@ -215,8 +210,7 @@ class EstagioWorkflowController extends Controller
             $renovacao->analise_academica = null;
             $renovacao->analise_academica_user_id = null;
             $renovacao->save();
-            $workflow = $renovacao->workflow_get();
-            $workflow->apply($renovacao,'renovacao');
+            $renovacao->status = 'em_elaboracao';
             $renovacao->save();
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
@@ -236,8 +230,7 @@ class EstagioWorkflowController extends Controller
             $estagio->rescisao_data = implode('-',array_reverse(explode('/',$request->rescisao_data)));
             $estagio->last_status = $estagio->status;
             $estagio->save();
-            $workflow = $estagio->workflow_get();
-            $workflow->apply($estagio,'rescisao_do_estagio');
+            $estagio->status = 'rescisao';
             $estagio->save();
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
@@ -249,8 +242,7 @@ class EstagioWorkflowController extends Controller
 
         if (Gate::allows('empresa',$estagio->cnpj)) {
             $estagio->last_status = $estagio->status;
-            $workflow = $estagio->workflow_get();
-            $workflow->apply($estagio,'iniciar_alteracao');
+            $estagio->status = 'em_alteracao';
             $estagio->save();
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
