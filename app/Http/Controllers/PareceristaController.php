@@ -99,8 +99,10 @@ class PareceristaController extends Controller
             $export = new FastExcel($this->excel($estagios));
             return $export->download('estagios.xlsx');
         } else {
+            $pareceristatable = true;
             return view('pareceristas.estagios')->with([
-                'estagios' => $estagios->paginate(10),
+                'estagios' => $estagios->paginate(),
+                'pareceristable'
             ]);
         }
     }

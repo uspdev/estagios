@@ -274,6 +274,19 @@ class EstagioWorkflowController extends Controller
         return redirect("estagios/{$estagio->id}");
     }
 
+    public function voltar_aditivo(Request $request, Estagio $estagio){
+
+        if (Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
+            $estagio->last_status = $estagio->status;
+            $estagio->status = 'concluido';
+            $estagio->save();
+        } else {
+            request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
+        }
+        return redirect("/estagios/{$estagio->id}");
+    }  
+
+
     public function analise_alteracao(Request $request, Aditivo $aditivo, Estagio $estagio){
 
         if (Gate::allows('admin') | Gate::allows('parecerista')) {
@@ -331,7 +344,7 @@ class EstagioWorkflowController extends Controller
                 request()->session()->flash('alert-info', 'Análise enviada para o setor de estágios');
             }
 
-            //parecerista reprova o aditivo
+            //pareceanalise_alteracaorista reprova o aditivo
             if($request->analise_alteracao_action == 'parecerista_indeferir_alteracao') {
                 $request->validate([
                     'comentario_parecerista' => 'required',

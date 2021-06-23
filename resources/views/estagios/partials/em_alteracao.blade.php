@@ -21,3 +21,14 @@
 
     </div>
 </div>
+
+<br>
+
+<div class="card">
+    <div class="card-header"><b>Voltar Estágio</b></div>
+    <div class="card-body">
+        <a class="btn btn-info" onClick="return confirm('Tem certeza que deseja retornar o estágio para a etapa anterior?')" href="/voltar_aditivo/{{$estagio->id}}">
+        <i class="fas fa-undo"></i> 
+        Retornar estágio para concluído</a> <br>
+    </div>
+</div>

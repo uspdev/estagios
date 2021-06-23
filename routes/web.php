@@ -103,6 +103,7 @@ Route::get('/iniciar_alteracao/{estagio}', [EstagioWorkflowController::class,'in
 # Rotas Alteração
 Route::post('/enviar_alteracao/{estagio}', [EstagioWorkflowController::class,'enviar_alteracao']);
 Route::post('/analise_alteracao/{aditivo}', [EstagioWorkflowController::class,'analise_alteracao']);
+Route::get('/voltar_aditivo/{estagio}', [EstagioWorkflowController::class,'voltar_aditivo']);
 
 # Rotas Análise da Alteração
 Route::post('/analise_tecnica_alteracao/{estagio}', [EstagioWorkflowController::class,'analise_tecnica_alteracao']);
