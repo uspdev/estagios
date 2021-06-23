@@ -22,12 +22,14 @@
 
   <div class="row">
     <div class="col-sm form-group">
-      <label for="expediente" class="required"><strong>Carga Horária Semanal:</strong></label>
-      <input type="text" class="form-control" id="expediente" name="expediente" value="{{old('expediente',$vaga->expediente)}}">
+      <label for="expediente" class="required"><strong>Carga Horária Semanal (Somente o Número):</strong></label>
+      <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" 
+      class="form-control" id="expediente" name="expediente" value="{{old('expediente',$vaga->expediente)}}">
     </div>
     <div class="col-sm form-group">
-      <label for="salario" class="required"><strong>Valor mensal da Bolsa:</strong></label>
-      <input type="text" class="form-control" id="salario" name="salario" placeholder="R$ 1000,00" width="190" value="{{old('salario',$vaga->salario)}}">
+      <label for="salario" class="required"><strong>Valor mensal da Bolsa (Somente o Número):</strong></label>
+      <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" 
+      class="form-control" id="salario" name="salario" width="190" value="{{old('salario',$vaga->salario)}}">
     </div>
     <div class="col-sm form-group">
       <label for="horario" class="required"><strong>Horário do Estágio:</strong></label>

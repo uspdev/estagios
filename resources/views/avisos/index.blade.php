@@ -15,8 +15,6 @@
 </form>
 </br>
 
-{{ $avisos->appends(request()->query())->links() }}
-
 <div class="card">
   <div class="card-body">
     <table class="table table-striped"> 
@@ -45,6 +43,7 @@
       @endforeach
       </tbody>
     </table>
+    {{ $avisos->appends(request()->query())->links() }}
   </div>
 </div>
 
