@@ -32,7 +32,6 @@
   <br>
 
   <div class="row">
-
     <div class="col-sm">
       <table class="table table-striped">
         <thead>
@@ -54,29 +53,30 @@
           @endforeach
         </tbody>
       </table>
-
-    @if(!$avisos->isEmpty())
-    <table class="table table-striped">
-      <thead>
-        <tr> 
-          <th><h3> Avisos </h3></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        @foreach($avisos as $aviso)
-        <tr>
-          <td><b>{{$aviso->titulo}}</b><br>
-              {{$aviso->corpo}}
-          </td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
-    @endif
-
     </div>
-  </div>
+
+      <div class="col-sm">
+      @if(!$avisos->isEmpty())
+      <table class="table table-striped">
+        <thead>
+          <tr> 
+            <th><h3> Avisos </h3></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @foreach($avisos as $aviso)
+          <tr>
+            <td><b>{{$aviso->titulo}}</b><br>
+                {{$aviso->corpo}}
+            </td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+      @endif
+      </div>
+    </div>
   </div>
 </div>
 

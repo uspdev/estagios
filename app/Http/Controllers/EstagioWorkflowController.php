@@ -74,7 +74,7 @@ class EstagioWorkflowController extends Controller
                 $estagio->last_status = $estagio->status;
                 $estagio->status = 'assinatura';
                 $estagio->save();
-                Mail::send(new assinatura_mail($estagio));
+                Mail::queue(new assinatura_mail($estagio));
                 return redirect("/estagios/{$estagio->id}");
             }
 
@@ -142,7 +142,7 @@ class EstagioWorkflowController extends Controller
             $estagio->last_status = $estagio->status;
             $estagio->status = 'em_analise_tecnica';
             $estagio->save(); 
-            Mail::send(new enviar_analise_academica_mail($estagio));
+            Mail::queue(new enviar_analise_academica_mail($estagio));
             request()->session()->flash('alert-info','Parecer incluído com sucesso! Estágio enviado para o setor de graduação');    
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
@@ -266,7 +266,7 @@ class EstagioWorkflowController extends Controller
             $estagio->last_status = $estagio->status;
             $estagio->status = 'em_analise_tecnica';
             $estagio->save();
-            Mail::send(new alteracao_pendente_empresa_mail($estagio)); 
+            Mail::queue(new alteracao_pendente_empresa_mail($estagio)); 
             request()->session()->flash('alert-info', 'Enviado para análise do setor de graduação');
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
@@ -298,7 +298,7 @@ class EstagioWorkflowController extends Controller
                 $aditivo->aprovado_graduacao = 1;
                 $aditivo->aprovado_parecerista = 1;  
                 $aditivo->save();
-                Mail::send(new alteracao_empresa_mail($estagio));      
+                Mail::queue(new alteracao_empresa_mail($estagio));      
                 request()->session()->flash('alert-info', 'Aditivo deferido com sucesso');
             }
 
@@ -311,7 +311,7 @@ class EstagioWorkflowController extends Controller
                 $aditivo->comentario_graduacao = $request->comentario_graduacao;
                 $aditivo->aprovado_graduacao = 0;
                 $aditivo->save();
-                Mail::send(new alteracao_indeferida_mail($estagio));                
+                Mail::queue(new alteracao_indeferida_mail($estagio));                
                 request()->session()->flash('alert-info', 'Aditivo indeferido com sucesso');
             }
             
@@ -326,7 +326,7 @@ class EstagioWorkflowController extends Controller
                 $estagio->status = 'analise_alteracao_parecerista';
                 $aditivo->save();
                 $estagio->save();
-                Mail::send(new alteracao_mail($estagio));                
+                Mail::queue(new alteracao_mail($estagio));                
                 request()->session()->flash('alert-info', 'Aditivo enviado para análise do parecerista');
             }
 
@@ -363,7 +363,7 @@ class EstagioWorkflowController extends Controller
                 $estagio = Estagio::find($aditivo->estagio_id); 
                 $aditivo->aprovado_graduacao = 1;
                 $aditivo->save();
-                Mail::send(new alteracao_empresa_mail($estagio));      
+                Mail::queue(new alteracao_empresa_mail($estagio));      
                 request()->session()->flash('alert-info', 'Aditivo deferido com sucesso');
             }
 
@@ -372,7 +372,7 @@ class EstagioWorkflowController extends Controller
                 $estagio = Estagio::find($aditivo->estagio_id); 
                 $aditivo->aprovado_graduacao = 0;
                 $aditivo->save();
-                Mail::send(new alteracao_indeferida_mail($estagio));                
+                Mail::queue(new alteracao_indeferida_mail($estagio));                
                 request()->session()->flash('alert-info', 'Aditivo indeferido com sucesso');
             }
 

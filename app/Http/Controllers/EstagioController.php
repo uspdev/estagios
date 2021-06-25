@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estagio;
+use App\Models\File;
+use App\Models\Aditivo;
 use App\Models\User;
 use Auth;
 
@@ -11,6 +13,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Gate;
 use App\Utils\ReplicadoUtils;
+use Illuminate\Support\Facades\Storage;
 
 class EstagioController extends Controller
 {
@@ -21,27 +24,29 @@ class EstagioController extends Controller
             if ($request->buscastatus != null && $request->busca != null){
 
                 $estagios = Estagio::where('numero_usp','LIKE',"%{$request->busca}%")
-                -> where('status', $request->buscastatus)->paginate(10);
+                ->orWhere('nome','LIKE',"%{$request->busca}%")
+                ->where('status', $request->buscastatus)->orderBy('nome')->paginate(10);
                 
             } else if(isset($request->busca)) {
-                $estagios = Estagio::where('numero_usp','LIKE',"%{$request->busca}%")->paginate(10);
+                $estagios = Estagio::where('numero_usp','LIKE',"%{$request->busca}%")
+                ->orWhere('nome','LIKE',"%{$request->busca}%")->orderBy('nome')->paginate(10);
                 }
                 
                 else if(isset($request->buscastatus)){
                 if ($request->buscastatus != null){
-                    $estagios = Estagio::where('status', $request->buscastatus)->paginate(10);
+                    $estagios = Estagio::where('status', $request->buscastatus)->orderBy('nome')->paginate(10);
                 }
 
             } else {
 
-            $estagios = Estagio::paginate(10);
+            $estagios = Estagio::orderBy('nome')->paginate(10);
 
             
             }
 
         } else if (Gate::allows('empresa')){
             $cnpj = Auth::user()->cnpj;
-            $estagios = Estagio::where('cnpj',$cnpj)->paginate(10);
+            $estagios = Estagio::where('cnpj',$cnpj)->orderBy('nome')->paginate(10);
 
         } else {
             $request->session()->flash('alert-danger','Usuário sem permissão');
@@ -77,11 +82,19 @@ class EstagioController extends Controller
         return redirect("estagios/{$estagio->id}");
     }
 
-    public function destroy(Estagio $estagio){
+    public function destroy(Estagio $estagio, Aditivo $aditivo, File $file){
         if (Gate::allows('admin') | Gate::allows('empresa',$estagio->cnpj)) {
-            // deletar os aditivos
 
-            // todos arquivos relacionados a esse esse estágio (o arquivo e a File)
+            $aditivos = Aditivo::where('estagio_id','=',$estagio->id)->get();
+            foreach ($aditivos as $aditivo) {
+                $aditivo->delete();
+            }
+
+            $arquivos = File::where('estagio_id','=',$estagio->id)->get();
+            foreach ($arquivos as $arquivo) {
+                Storage::delete($arquivo->path);
+                $arquivo->delete();
+            }
 
             $estagio->delete();
             return redirect('/estagios');

@@ -17,9 +17,10 @@ class EmpresaController extends Controller
     public function index(Request $request){
         $this->authorize('admin');
         if(isset($request->busca)) {
-            #$cnpj_limpo = str_replace('.','',$request->busca);
+            $pontuacoes = ['.','-','/'];
+            $cnpj_limpo = str_replace($pontuacoes,'',$request->busca);
             $empresas = Empresa::where('nome','LIKE',"%{$request->busca}%")
-                                ->orWhere('cnpj','LIKE',"%{$request->busca}%")
+                                ->orWhere('cnpj','LIKE',"%{$cnpj_limpo}%")
                 ->paginate(10);
         } else {
             $empresas = Empresa::paginate(10);

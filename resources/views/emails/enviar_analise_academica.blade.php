@@ -1,6 +1,6 @@
 
 
-Informamos que o docente parecerista, {{ $estagio->parecerista->nome }}, 
+Informamos que o docente parecerista, {{ $estagio->parecerista_nome }}, 
 enviou a avaliação de parecer de mérito relativa a seu estágio 
 na empresa {{ $estagio->empresa->nome }} para o setor de estágios.<br><br>
 

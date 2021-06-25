@@ -44,7 +44,7 @@
 <br><br>
 
 <div style="text-align: center">
-    PARECERISTA: <b> {{ $estagio->parecerista->nome }} - {{ $estagio->numparecerista }}</b>
+    PARECERISTA: <b> {{ $estagio->parecerista_nome }} - {{ $estagio->numparecerista }}</b>
 <div>
 
 @endsection('content')
