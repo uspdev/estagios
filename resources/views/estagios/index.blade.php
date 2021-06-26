@@ -16,7 +16,7 @@
 <form method="get" action="/estagios">
   <div class="row">
     <div class=" col-sm input-group">
-      <input type="text" class="form-control" name="busca" value="{{Request()->busca}}" placeholder="Busca somente por número USP do/a aluno/a">  
+      <input type="text" class="form-control" name="busca" value="{{Request()->busca}}" placeholder="Busca por número USP ou nome do/a aluno/a">  
 
       @inject('estagio','App\Models\Estagio')
 

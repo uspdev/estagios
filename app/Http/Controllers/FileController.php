@@ -119,6 +119,7 @@ class FileController extends Controller
     public function destroy(File $file, Estagio $estagio)
     {
         if (Gate::allows('admin')) {
+            Storage::delete($file->path);
             $file->delete();
             return back()->with('success', 'Arquivo Deletado'); ;
         }

@@ -23,48 +23,48 @@ use Uspdev\Replicado\Pessoa;
 class EmailController extends Controller
 {
     public function enviar_para_analise_tecnica(Request $request, Estagio $estagio){
-        Mail::send(new enviar_para_analise_tecnica_mail($estagio));        
+        Mail::queue(new enviar_para_analise_tecnica_mail($estagio));        
         return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
     }
 
     public function enviar_para_analise_tecnica_renovacao(Request $request, Estagio $estagio){
-        Mail::send(new enviar_para_analise_tecnica_renovacao_mail($estagio));        
+        Mail::queue(new enviar_para_analise_tecnica_renovacao_mail($estagio));        
         return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
     }
 
     public function assinatura(Request $request, Estagio $estagio){
-        Mail::send(new assinatura_mail($estagio));        
+        Mail::queue(new assinatura_mail($estagio));        
         return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
     }
 
     public function alteracao(Request $request, Estagio $estagio){
-        Mail::send(new alteracao_mail($estagio));        
+        Mail::queue(new alteracao_mail($estagio));        
         return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
     }
 
     public function alteracao_empresa(Request $request, Estagio $estagio){
-        Mail::send(new alteracao_empresa_mail($estagio));        
+        Mail::queue(new alteracao_empresa_mail($estagio));        
         return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
     }
 
     public function enviar_analise_academica(Request $request, Estagio $estagio){
-        Mail::send(new enviar_analise_academica_mail($estagio));        
+        Mail::queue(new enviar_analise_academica_mail($estagio));        
         return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
     }
 
     public function analise_rescisao(Request $request, Estagio $estagio){
-        Mail::send(new analise_rescisao_mail($estagio));        
+        Mail::queue(new analise_rescisao_mail($estagio));        
         return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
     }
 
     public function rescisao_empresa(Request $request, Estagio $estagio){
-        Mail::send(new rescisao_empresa_mail($estagio));        
+        Mail::queue(new rescisao_empresa_mail($estagio));        
         return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
     }
 
     public function enviar_para_parecerista(Request $request, Estagio $estagio){
         if($estagio->numparecerista){
-            Mail::send(new enviar_para_parecerista_mail($estagio));
+            Mail::queue(new enviar_para_parecerista_mail($estagio));
             $request->session()->flash('alert-info','E-mail enviado com sucesso!');
         } else {
             $request->session()->flash('alert-danger','E-mail não enviado! Informe o parecerista!');

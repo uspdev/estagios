@@ -81,7 +81,7 @@ class LoginEmpresaController extends Controller
             'email' => $request->email,
         ]);
 
-        Mail::send(new LoginEmpresaMail($url_login,$request->email));
+        Mail::queue(new LoginEmpresaMail($url_login,$request->email));
         $request->session()->flash('alert-info',
             'Informações de login enviadas para o email: ' . $request->email);
 

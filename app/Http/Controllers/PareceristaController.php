@@ -101,7 +101,7 @@ class PareceristaController extends Controller
         } else {
             $pareceristatable = true;
             return view('pareceristas.estagios')->with([
-                'estagios' => $estagios->paginate(),
+                'estagios' => $estagios->orderBy('nome')->paginate(10),
                 'pareceristable'
             ]);
         }
@@ -120,7 +120,7 @@ class PareceristaController extends Controller
             return $export->download('estagios.xlsx');
         } else {
             return view('pareceristas.estagios')->with([
-                'estagios' => $estagios->paginate(10),
+                'estagios' => $estagios->orderBy('nome')->paginate(10),
             ]);
         }
     }
@@ -136,7 +136,7 @@ class PareceristaController extends Controller
             return $export->download('estagios.xlsx');
         } else {
             return view('pareceristas.estagios')->with([
-                'estagios' => $estagios->paginate(10),
+                'estagios' => $estagios->orderBy('nome')->paginate(10),
             ]);
         }
     }
