@@ -46,7 +46,8 @@ class ReplicadoUtils {
             'codpes' => $codpes,
         ];
         $result = DBreplicado::fetch($query, $param);
-        return $result['medpon'];
+        if($result) return $result['medpon'];
+        else return null;
     }
 
     public static function periodo($codpes){
