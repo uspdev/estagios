@@ -156,5 +156,10 @@ return [
             'url'     => '/estagios_rescindidos',
             'can'     => 'parecerista',
         ],
+        [
+            'text'    => 'Estatísticas do Sistema',
+            'url'     => '/estatisticas',
+            'can'     => 'logado',
+        ],
     ]
 ];

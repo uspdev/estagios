@@ -13,9 +13,11 @@ use App\Http\Controllers\PDFsController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\EstagioWorkflowController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\EstatisticaController;
 use App\Http\Controllers\Auth\LoginEmpresaController;
 use App\Http\Controllers\Auth\LoginUspController;
 use App\Http\Controllers\Auth\LogoutController;
+
 
 Route::get('/',[IndexController::class, 'index'])->name('login');
 Route::get('/home',[IndexController::class, 'index'])->name('home');
@@ -27,6 +29,7 @@ Route::resource('/vagas',VagaController::class);
 Route::resource('/empresas', EmpresaController::class);
 Route::resource('/avisos',AvisoController::class);
 Route::resource('/files', FileController::class);
+Route::resource('/estatisticas',EstatisticaController::class);
 
 # não usados
 #Route::resource('/convenios',ConvenioController::class);
@@ -36,7 +39,6 @@ Route::resource('/files', FileController::class);
 Route::post('/statusvagas/{vaga}',[VagaController::class,'status'])->name('vagas.status');
 
 #PDF's 
-
 Route::get('/pdfs/termo/{estagio}', [PDFsController::class, 'termo']);
 Route::get('/pdfs/renovacao/{estagio}', [PDFsController::class, 'renovacao']);
 Route::get('/pdfs/aditivo/{estagio}', [PDFsController::class, 'aditivo']);
@@ -114,11 +116,9 @@ Route::get('/meus_pareceres', [PareceristaController::class,'meusPareceres']);
 Route::get('/estagios_rescindidos', [PareceristaController::class,'estagiosRescindidos']);
 
 #alterar parecerista
-
 Route::post('/parecer_merito/{estagio}', [EstagioController::class,'alterarParecerista']);
 
 #arquivos
-
 Route::post('/files/store', [FileController::class,'store']);
 Route::post('/files/store_relatorio', [FileController::class,'store_relatorio']);
 Route::post('/files/destroy', [FileController::class,'destroy']);
