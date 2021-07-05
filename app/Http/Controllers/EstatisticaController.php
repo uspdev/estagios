@@ -21,7 +21,7 @@ class EstatisticaController extends Controller
 
                 $total_estagios = Estagio::whereYear('created_at', '=', $request->busca_ano)->count();
 
-                $total_ativos = Estagio::whereYear('updated_at', '=', $request->busca_ano)->where('status','=','concluido')->count();
+                $total_concluidos = Estagio::whereYear('updated_at', '=', $request->busca_ano)->where('status','=','concluido')->count();
         
                 $total_renovados = Estagio::whereYear('updated_at', '=', $request->busca_ano)->where('renovacao_parent_id','!=',null)->count();
         
@@ -35,7 +35,7 @@ class EstatisticaController extends Controller
 
         $total_estagios = Estagio::get('id')->count();
 
-        $total_ativos = Estagio::where('status','=','concluido')
+        $total_concluidos = Estagio::where('status','=','concluido')
         ->orWhere('status','=','em_alteracao')->count();
 
         $total_renovados = Estagio::where('renovacao_parent_id','!=',null)->count();
@@ -48,10 +48,11 @@ class EstatisticaController extends Controller
 
         return view('estatisticas.index')->with([
             'total_estagios' => $total_estagios,
-            'total_ativos' => $total_ativos,
+            'total_concluidos' => $total_concluidos,
             'total_renovados' => $total_renovados,
             'total_rescindidos' => $total_rescindidos,
             'total_empresas' => $total_empresas,
+            'busca_ano' => $request->busca_ano,
         ]);
     }
 }
