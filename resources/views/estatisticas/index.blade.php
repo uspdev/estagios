@@ -37,7 +37,7 @@
     <div class="card-body">
 
         <b>Total de estágios cadastrados:</b> {{ $total_estagios }} estágios cadastrados<br>
-        <b>Total de estágios Concluidos:</b> {{ $total_concluidos }} estágios concluidos<br>
+        <b>Total de estágios em andamento:</b> {{ $total_concluidos }} estágios em andamento<br>
         <b>Total de estágios renovados:</b> {{ $total_renovados }} estágios renovados<br>
         <b>Total de estágios rescindidos:</b> {{ $total_rescindidos }} estágios rescindidos<br>
         <b>Total de empresas cadastradas:</b> {{ $total_empresas }} empresas<br><br>

@@ -130,6 +130,8 @@ class PareceristaController extends Controller
 
         $estagios = Estagio::where('status', "rescisao")
                       ->where('numparecerista',Auth::user()->codpes);
+        
+        $statusavaliado = true;
 
         if($request->type){
             $export = new FastExcel($this->excel($estagios));
@@ -137,6 +139,7 @@ class PareceristaController extends Controller
         } else {
             return view('pareceristas.estagios')->with([
                 'estagios' => $estagios->orderBy('nome')->paginate(10),
+                'statusavaliado' => $statusavaliado,
             ]);
         }
     }
