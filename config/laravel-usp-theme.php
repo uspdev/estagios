@@ -76,6 +76,24 @@ $pareceristas =  [
     ],
 ];
 
+$menudoparecerista =  [
+    [
+        'text' => 'Todos os meus Pareceres',
+        'url'  => '/meus_pareceres',
+        'can'     => 'parecerista',
+    ],
+    [
+        'text' => 'Estágios para Parecer de Mérito e Análises de Aditivo',
+        'url'  => '/parecer_merito',
+        'can'     => 'parecerista',
+    ],
+    [
+        'text' => 'Estágios Rescindidos',
+        'url'  => '/estagios_rescindidos',
+        'can'     => 'parecerista',
+    ],
+];
+
 $right_menu = [
     [
         'text'   => '<i class="fas fa-cog"></i>',
@@ -140,21 +158,15 @@ return [
         ],
 
         [
-            'text'    => 'Meus Pareceres',
-            'url'     => '/meus_pareceres',
+            'text'    => 'Acessar Pareceres',
+            'submenu' => $menudoparecerista,
             'can'     => 'parecerista',
         ],
 
         [
-            'text'    => 'Estágios para Parecer de Mérito e Análises de Aditivo',
-            'url'     => '/parecer_merito',
-            'can'     => 'parecerista',
-        ],
-
-        [
-            'text'    => 'Estágios Rescindidos',
-            'url'     => '/estagios_rescindidos',
-            'can'     => 'parecerista',
+            'text'    => 'Estatísticas do Sistema',
+            'url'     => '/estatisticas',
+            'can'     => 'logado',
         ],
     ]
 ];

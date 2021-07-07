@@ -24,6 +24,9 @@ button {
         <tr>
         <th>Número USP</th>
         <th>Nome</th>
+        @isset($statusavaliado)
+        <th>Status da Avaliação</th>
+        @endisset
         <th>Tipo</th>
         <th>Habilitação</th>
         <th>Empresa</th>
@@ -44,6 +47,18 @@ button {
             <td>
                 {{ $estagio->nome }}
             </td>
+
+            @isset($statusavaliado)
+                <td>
+                    <b>
+                    @if($estagio->avaliacao_empresa)
+                    Avaliado
+                    @else
+                    Não Avaliado
+                    @endif
+                    </b>
+                </td>
+            @endisset
 
             <td>
                 @if( empty($estagio->renovacao_parent_id) )
