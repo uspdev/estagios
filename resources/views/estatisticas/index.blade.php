@@ -28,20 +28,37 @@
 <div class="card">
     <div class="card-header">    
         @if($busca_ano)
-        <b>Informações da base de dados do ano de {{$busca_ano}}</b>
+        <b>Totais gerais da base de dados - Ano de {{$busca_ano}}</b>
         @else
-        <b>Informações gerais da base de dados</b>
+        <b>Totais gerais da base de dados</b>
         @endif
     </div>
 
     <div class="card-body">
-
-        <b>Total de estágios cadastrados:</b> {{ $total_estagios }} estágios cadastrados<br>
-        <b>Total de estágios em andamento:</b> {{ $total_concluidos }} estágios em andamento<br>
-        <b>Total de estágios renovados:</b> {{ $total_renovados }} estágios renovados<br>
-        <b>Total de estágios rescindidos:</b> {{ $total_rescindidos }} estágios rescindidos<br>
-        <b>Total de empresas cadastradas:</b> {{ $total_empresas }} empresas<br><br>
-
+        <table class="table table-striped" style="width:25%">
+            <tr>
+                <th>Estágios cadastrados:</th>
+                <td>{{ $total_estagios }}</td>
+            </tr>
+            <tr>
+                <th>Estágios em andamento:</th>
+                <td>{{ $total_concluidos }}</td>
+            </tr>
+            <tr>
+                <th>Estágios renovados:</th>
+                <td>{{ $total_renovados }}</td>
+            </tr>
+            <tr>
+                <th>Estágios rescindidos:</th>
+                <td>{{ $total_rescindidos }} </td>
+            </tr>
+            <tr>
+                <th>Empresas cadastradas:</th>
+                <td>{{ $total_empresas }}</td>
+            </tr>
+        </table>
+        
+        <br>
         Informações geradas ás {{ date("H:i"); }} do dia {{ date("d/m/Y")}}; 
 
     </div>
