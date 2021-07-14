@@ -38,6 +38,20 @@ class EstagioWorkflowController extends Controller
                 $estagio->status = 'em_analise_tecnica';
                 $estagio->save();
             }
+
+            if($request->enviar_para_analise_tecnica=="apenas_salvar_renovacao"){
+                $estagio->alteracoesadcionais = $request->alteracoesadcionais;
+                $estagio->save();
+            }
+
+            if($request->enviar_para_analise_tecnica=="enviar_para_analise_tecnica_renovacao"){
+                $estagio->alteracoesadcionais = $request->alteracoesadcionais;
+                $estagio->save();
+                $estagio->last_status = 'em_elaboracao';
+                $estagio->status = 'em_analise_tecnica';
+                $estagio->save();
+            }
+
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }

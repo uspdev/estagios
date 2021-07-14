@@ -45,10 +45,21 @@
         condições a seguir:
     </p>
 
-    <p>1. Alterações a serem feitas: <b> PRORROGAÇÃO de {{$estagio->data_inicial}} a
+    <p>1. Alteração da data de vigência do estágio: <b> PRORROGAÇÃO de {{$estagio->data_inicial}} a
             {{$estagio->data_final}}. </b></p>
 
-    <p>2. Permanecem inalteradas as demais cláusulas do Termo de Compromisso de Estágio, do qual passa a fazer parte
+    @if(is_null($estagio->alteracoesadcionais))
+
+        <p>2. Não foi realizada nenhuma alteração adcional neste estágio para além da prorrogação de datas. </b></p>
+
+    @else
+
+        <p>2. Para além da prorrogação de datas, foram realizadas pela empresa as seguintes 
+        alterações adcionais: <b>{{$estagio->alteracoesadcionais}}. </b></p>
+
+    @endif
+    
+    <p> 3. Permanecem inalteradas as demais cláusulas do Termo de Compromisso de Estágio, do qual passa a fazer parte
         integrante o presente Termo Aditivo, ficando sem efeito as disposições em contrário.
     </p>
 

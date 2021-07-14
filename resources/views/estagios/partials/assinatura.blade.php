@@ -1,5 +1,5 @@
 <br>
-<div style="text-align: center;"><b>Aviso Importante:</b> O termo deve ser entregue assinado para a instituição no mínimo 10 dias úteis antes do início do estágio no email estagiosfflch@usp.br</div>
+<div style="text-align: center;"><b style="color:red">Aviso Importante:</b> O termo deve ser entregue assinado para a instituição no mínimo 10 dias úteis antes do início do período do estágio no email <b>estagiosfflch@usp.br</b></div>
 <br>
 
 @if(!empty($estagio->analise_tecnica))
