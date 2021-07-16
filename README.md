@@ -252,6 +252,8 @@ Tabela vagas
 | telefone_de_contato             | Telefone do contato da empresa                                   | sim     |
 | avaliacao_empresa               | Avaliação da empresa no realatório final (Positivo/Negativo)     | sim     |
 | avaliacaodescricao              | Justificativa da avaliação do relatório final                    | sim     |
+| nome                            | Nome do aluno armazenado na DB                                   | sim     |
+| alteracoesadcionais             | Descrição de alterações extras na renovação                      | sim     |
 
 
  Tabela files   
