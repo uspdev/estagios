@@ -56,7 +56,8 @@ class ReplicadoUtils {
             'codpes' => $codpes,
         ];
         $result = DBreplicado::fetch($query, $param);
-        return $result['perhab'];
+        if($result) return $result['perhab'];
+        else return null;
     } 
 
 }
