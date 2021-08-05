@@ -52,7 +52,7 @@ button {
                 <td>
                     <b>
                     @if($estagio->avaliacao_empresa)
-                    Avaliado
+                    Avaliado ({{$estagio->avaliacao_empresa}})
                     @else
                     Não Avaliado
                     @endif
