@@ -41,7 +41,6 @@ class EstagioController extends Controller
 
             $estagios = Estagio::orderBy('nome')->paginate(10);
 
-            
             }
 
         } else if (Gate::allows('empresa')){
@@ -53,15 +52,14 @@ class EstagioController extends Controller
             return redirect('/');
         }
 
-        if(isset($request->buscastatus)){
-            if ($request->buscastatus = 'rescisao') {
+        if ($request->buscastatus == 'rescisao') {
                 $statusavaliado = true;
                 return view('estagios.index')->with([
                     'estagios' => $estagios,
                     'estagio' => new Estagio(),
                     'statusavaliado' => $statusavaliado,
                 ]);
-            } 
+
         } else {
 
             return view('estagios.index')->with([
