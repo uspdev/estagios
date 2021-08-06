@@ -53,10 +53,23 @@ class EstagioController extends Controller
             return redirect('/');
         }
 
-        return view('estagios.index')->with([
-            'estagios' => $estagios,
-            'estagio' => new Estagio()
-        ]);
+        if(isset($request->buscastatus)){
+            if ($request->buscastatus = 'rescisao') {
+                $statusavaliado = true;
+                return view('estagios.index')->with([
+                    'estagios' => $estagios,
+                    'estagio' => new Estagio(),
+                    'statusavaliado' => $statusavaliado,
+                ]);
+            } 
+        } else {
+
+            return view('estagios.index')->with([
+                'estagios' => $estagios,
+                'estagio' => new Estagio(),
+            ]);
+
+        }
 
     }
 
