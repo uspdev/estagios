@@ -13,6 +13,13 @@
             <label for="original_name" class="required">Nome do Arquivo: </label>
             <input type="text" class="form-control" id="original_name" name="original_name">
             <br>
+            <label for="tipoarquivo" class="required">Tipo de Arquivo: </label>
+            <select name="tipoarquivo" class="form-control" id="tipoarquivo">
+                <option value="" selected="">- Selecione -</option>
+                <option value="documento">Documento Anexo</option>
+                <option value="relatorioparcial">Relatório</option>
+            </select> 
+            <br>
             <button type="submit" class="btn btn-success"> Enviar </button>
         </form>   
 
@@ -32,8 +39,12 @@
                 @foreach($estagio->arquivos as $arquivo)
                 @if($arquivo->tipo_documento != 'Relatorio')
                     <tr>
-                    <td>            
-                    <a href="/files/{{$arquivo->id}}.pdf" type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>
+                    <td>
+                    @if($arquivo->tipo_documento == 'relatorioparcial')
+                        <a href="/files/{{$arquivo->id}}.pdf" type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> (Relatório) {{$arquivo->original_name}} </a>
+                    @else            
+                        <a href="/files/{{$arquivo->id}}.pdf" type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>
+                    @endif
                     </td>
                     @can('admin')
                         <td>
@@ -63,8 +74,12 @@
 <table class="table table-striped">
     @foreach($estagio->arquivos as $arquivo)
         <tr>
-        <td>            
-        <a href="/files/{{$arquivo->id}}.pdf" type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>
+        <td>
+            @if($arquivo->tipo_documento == 'relatorioparcial')
+                <a href="/files/{{$arquivo->id}}.pdf" type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> (Relatório) {{$arquivo->original_name}}</a>
+            @else            
+                <a href="/files/{{$arquivo->id}}.pdf" type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>
+            @endif            
         </td>
         </tr>
     @endforeach

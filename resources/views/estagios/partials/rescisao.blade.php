@@ -171,4 +171,3 @@
 @endcan('parecerista')
 
 </div>  
-</div>

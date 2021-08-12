@@ -26,7 +26,8 @@ class FileRequest extends FormRequest
         return [
             'file' => 'required|file|max:12000|mimes:pdf',
             'original_name' => 'required',
-            'estagio_id' => 'required|integer|exists:estagios,id'
+            'estagio_id' => 'required|integer|exists:estagios,id',
+            'tipoarquivo' => 'required'
         ];
     }
 
@@ -38,6 +39,7 @@ class FileRequest extends FormRequest
             'file.mimes' => 'O sistema apenas aceita arquivos no formato PDF',
             'file.max' => 'O peso máximo aceito por arquivo é de 12 MB',
             'original_name.required' => 'O arquvo enviado deve possuir um nome para ser armazenado no sistema',
+            'tipoarquivo.required' => 'É necessário informar o tipo de arquivo anexado'
         ];
     }
 }
