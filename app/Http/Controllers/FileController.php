@@ -47,7 +47,7 @@ class FileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(FileRequest $request,File $file,Estagio $estagio)
+    public function store(FileRequest $request)
     {
         $validated = $request->validated();
         if($request->tipoarquivo=="relatorioparcial")
