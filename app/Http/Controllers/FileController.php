@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\FileRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
+use App\Mail\enviar_relatorio_mail;
+use Illuminate\Support\Facades\Mail;
 
 class FileController extends Controller
 {
@@ -48,13 +50,27 @@ class FileController extends Controller
     public function store(FileRequest $request)
     {
         $validated = $request->validated();
-        $file = new File;
-        $file->estagio_id = $request->estagio_id;
-        $file->original_name = $request->original_name;
-        $file->path = $request->file('file')->store('.');
-        $file->user_id = Auth::user()->id;
-        $file->save();
-        return back()->with('success', 'Arquivo enviado com sucesso'); ;;
+        if($request->tipoarquivo=="relatorioparcial")
+        {
+            $file = new File;
+            $file->estagio_id = $request->estagio_id;
+            $file->original_name = $request->original_name;
+            $file->path = $request->file('file')->store('.');
+            $file->user_id = Auth::user()->id;
+            $file->tipo_documento = 'relatorioparcial';
+            $file->save();
+            $estagio = Estagio::find($file->estagio_id);
+            Mail::queue(new enviar_relatorio_mail($estagio,$file));
+            return back()->with('success', 'Arquivo enviado com sucesso');
+        } else {
+            $file = new File;
+            $file->estagio_id = $request->estagio_id;
+            $file->original_name = $request->original_name;
+            $file->path = $request->file('file')->store('.');
+            $file->user_id = Auth::user()->id;
+            $file->save();
+            return back()->with('success', 'Arquivo enviado com sucesso');
+        }
 
     }
 
