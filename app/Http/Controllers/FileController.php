@@ -84,7 +84,21 @@ class FileController extends Controller
         $file->user_id = Auth::user()->id;
         $file->tipo_documento = 'Relatorio';
         $file->save();
-        return back()->with('success', 'Arquivo enviado com sucesso'); ;;
+        return back()->with('success', 'Arquivo enviado com sucesso');
+
+    }
+
+    public function ciente_relatorio(File $file)
+    {
+        if (Gate::allows('parecerista')) {
+            $file->tipo_documento = 'relatorioparcial_ciente';
+            $file->save();
+            request()->session()->flash('alert-success','Parecer de ciência do relatório incluído com sucesso!');  
+        } else {
+            request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
+        }
+
+        return back();
 
     }
 

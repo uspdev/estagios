@@ -30,6 +30,7 @@
                 <thead>
                 <tr>
                     <th>Arquivo</th>
+                    <th>Parecer de Relatório</th>
                     @can('admin')
                     <th>Ações</th>
                     @endcan('admin')
@@ -40,12 +41,21 @@
                 @if($arquivo->tipo_documento != 'Relatorio')
                     <tr>
                     <td>
-                    @if($arquivo->tipo_documento == 'relatorioparcial')
+                    @if($arquivo->tipo_documento == 'relatorioparcial' || $arquivo->tipo_documento == 'relatorioparcial_ciente')
                         <a href="/files/{{$arquivo->id}}.pdf" type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> (Relatório) {{$arquivo->original_name}} </a>
                     @else            
-                        <a href="/files/{{$arquivo->id}}.pdf" type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>
+                        <a href="/files/{{$arquivo->id}}.pdf"  type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>
                     @endif
                     </td>
+
+                    <td>
+                        @if($arquivo->tipo_documento == 'relatorioparcial')
+                            O parecerista ainda não confirmou ciência do relatório
+                        @elseif ($arquivo->tipo_documento == 'relatorioparcial_ciente')
+                            O parecerista está ciente do relatório
+                        @endif            
+                    </td>
+
                     @can('admin')
                         <td>
                             <form method="post" action="/files/{{$arquivo->id}}">         
@@ -56,6 +66,7 @@
                             <div>
                         </td>
                     @endcan('admin')
+
                     </tr>
                 @endif    
                 @endforeach
@@ -65,20 +76,36 @@
     </div>
 
 </div>
+<hr>
 @endcan
 
+
 @can('parecerista')
-<hr>
+
 <div class="row">
 
 <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Arquivo</th>
+            <th>Parecer de Relatório</th>
+        </tr>
+    </thead>
     @foreach($estagio->arquivos as $arquivo)
         <tr>
         <td>
-            @if($arquivo->tipo_documento == 'relatorioparcial')
+            @if($arquivo->tipo_documento == 'relatorioparcial' || $arquivo->tipo_documento == 'relatorioparcial_ciente')
                 <a href="/files/{{$arquivo->id}}.pdf" type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> (Relatório) {{$arquivo->original_name}}</a>
             @else            
                 <a href="/files/{{$arquivo->id}}.pdf" type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>
+            @endif            
+        </td>
+        <td>
+            @if($arquivo->tipo_documento == 'relatorioparcial')
+                <a onClick="return confirm('Tem certeza que deseja confirmar ciência do relatório?')" href="/files/ciente_relatorio/{{$arquivo->id}}"> 
+                <i class="fas fa-check"></i> Clique aqui para confirmar ciência do relatório </a>
+            @elseif ($arquivo->tipo_documento == 'relatorioparcial_ciente')
+                Você marcou que está ciente deste relatório
             @endif            
         </td>
         </tr>
