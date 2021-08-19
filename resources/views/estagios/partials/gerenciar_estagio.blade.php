@@ -108,6 +108,13 @@
                         Gerar PDF do Parecer de Alteração
                     @endif
 
+                    @if(($estagio->status)=='rescisao')
+                        <br>
+                        <a href="/pdfs/rescisao/{{$estagio->id}}" target="_blank" >
+                        <i class="fas fa-file-pdf"></i> </a>
+                        Gerar PDF do Termo de Rescisão
+                    @endif
+
                     <br>
                 </div>
 

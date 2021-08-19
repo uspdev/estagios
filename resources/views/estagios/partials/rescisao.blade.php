@@ -29,7 +29,8 @@
             <i class="fas fa-file-pdf"></i> </a>
             Gerar PDF do Termo de Ciência para Renovação
         @endif
-        <br><br>  
+    
+    </div> 
 
 @endcan('empresa')
 
@@ -53,6 +54,7 @@
             </div>
         </form>   
 
+        
         <br><br>
         Relatório Final:
         <table class="table table-striped">
@@ -78,29 +80,8 @@
         <br>
         @if(($estagio->avaliacao_empresa)!=null)
         <b>Avaliação do relatório pelo parecerista: </b> {{$estagio->avaliacao_empresa}}<br>
-        <b>Justificativa do parecerista: </b> {{$estagio->avaliacaodescricao}}<br>
+        <b>Justificativa do parecerista: </b> {{$estagio->avaliacaodescricao}}<br><br>
         @endif
-
-        <br>
-        <a href="/pdfs/rescisao/{{$estagio->id}}" target="_blank" >
-        <i class="fas fa-file-pdf"></i> </a>
-        Gerar PDF do Termo de Rescisão 
-        </a>
-        <br>
-        <a href="/pdfs/parecer/{{$estagio->id}}"target="_blank" >
-        <i class="fas fa-file-pdf"></i> </a>
-        Gerar PDF do Parecer de Mérito 
-        <br>
-        @if(is_null($estagio->renovacao_parent_id))
-            <a href="/pdfs/termo/{{$estagio->id}}.pdf" type="application/pdf" target="pdf-frame">
-            <i class="fas fa-file-pdf"></i> </a>
-            Gerar PDF do Termo de Ciência 
-        @else
-            <a href="/pdfs/renovacao/{{$estagio->id}}" target="_blank" >
-            <i class="fas fa-file-pdf"></i> </a>
-            Gerar PDF do Termo de Ciência para Renovação
-        @endif
-        <br><br>  
 
         <a class="btn btn-warning" onClick="return confirm('Tem certeza que deseja reativar o estágio?')" href="/retornar_rescisao/{{$estagio->id}}">
         <i class="fas fa-undo"></i>Reativar estágio </a> 
@@ -110,7 +91,12 @@
 
         <a class="btn btn-info" onClick="return confirm('Tem certeza que deseja um email para a empresa?')" 
         href="/emails/rescisao_empresa/{{$estagio->id}}"><i class="fas fa-envelope-open-text"></i>  Enviar email de aviso para a empresa</a>
+        <br><br>
+
         <br>
+        @include('estagios.partials.gerenciar_estagio')
+
+    </div> 
 
 @endcan('admin')
 

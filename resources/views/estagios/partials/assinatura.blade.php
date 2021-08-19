@@ -4,6 +4,7 @@
 
 @if(!empty($estagio->analise_tecnica))
     <b>Última análise técnica do setor de graduação:</b> {{$estagio->analise_tecnica}}
+    <br>
 @endif
 
 @can('admin')
@@ -16,6 +17,7 @@
         Retornar estágio para análise técnica </a> <br>
     </div>
 </div>
+<br>
 
 @include('estagios.partials.gerenciar_estagio')
 

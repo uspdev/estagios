@@ -74,9 +74,13 @@ class FileController extends Controller
 
     }
 
-    public function store_relatorio(FileRequest $request)
+    public function store_relatorio(Request $request)
     {
-        $validated = $request->validated();
+        $request->validate([
+            'file' => 'required|file|max:12000|mimes:pdf',
+            'original_name' => 'required',
+            'estagio_id' => 'required|integer|exists:estagios,id',
+        ]);
         $file = new File;
         $file->estagio_id = $request->estagio_id;
         $file->original_name = $request->original_name;
