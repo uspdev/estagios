@@ -74,9 +74,13 @@ class FileController extends Controller
 
     }
 
-    public function store_relatorio(FileRequest $request)
+    public function store_relatorio(Request $request)
     {
-        $validated = $request->validated();
+        $request->validate([
+            'file' => 'required|file|max:12000|mimes:pdf',
+            'original_name' => 'required',
+            'estagio_id' => 'required|integer|exists:estagios,id',
+        ]);
         $file = new File;
         $file->estagio_id = $request->estagio_id;
         $file->original_name = $request->original_name;
@@ -84,7 +88,21 @@ class FileController extends Controller
         $file->user_id = Auth::user()->id;
         $file->tipo_documento = 'Relatorio';
         $file->save();
-        return back()->with('success', 'Arquivo enviado com sucesso'); ;;
+        return back()->with('success', 'Arquivo enviado com sucesso');
+
+    }
+
+    public function ciente_relatorio(File $file)
+    {
+        if (Gate::allows('parecerista')) {
+            $file->tipo_documento = 'relatorioparcial_ciente';
+            $file->save();
+            request()->session()->flash('alert-success','Parecer de ciência do relatório incluído com sucesso!');  
+        } else {
+            request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
+        }
+
+        return back();
 
     }
 
