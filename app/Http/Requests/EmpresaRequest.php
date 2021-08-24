@@ -26,10 +26,6 @@ class EmpresaRequest extends FormRequest
     { 
         $rules = [
             'nome' => 'required',
-            'cnpj' => [
-                'required',
-                'cnpj'
-            ],
             'email' => 'required|email',
             'area_de_atuacao' => 'required',
             'endereco' => 'required',
@@ -42,10 +38,10 @@ class EmpresaRequest extends FormRequest
         ];
 
         if ($this->method() == 'PATCH' || $this->method() == 'PUT'){
-            array_push($rules['cnpj'], 'unique:empresas,cnpj,' .$this->empresa->id);
+            $rules['cnpj'] = 'nullable';
         }
-        else{
-            array_push($rules['cnpj'], 'unique:empresas');
+        else {
+            $rules['cnpj']  = 'required|cnpj|unique:empresas';
         }
         return $rules;
     }

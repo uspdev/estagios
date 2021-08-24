@@ -5,11 +5,13 @@
             <div class="col-8 form-group">
                 <label for="nome" class="required">Nome da Empresa:</label>
                 <input type="text" maxlength="128" class="form-control" name="nome" value="{{old('nome', $empresa->nome)}}">
-            </div>     
+            </div>
+            @if(!isset($empresa->cnpj))
             <div class="col-4 form-group">
                 <label for="cnpj" class="required">CNPJ:</label>
                 <input type="text" maxlength="18" class="form-control cnpj" name="cnpj" value="{{old('cnpj', $empresa->cnpj)}}">
             </div>
+            @endif
         </div>
         <div class="row">
             <div class="col-4 form-group">
