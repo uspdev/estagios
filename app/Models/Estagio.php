@@ -166,7 +166,12 @@ class Estagio extends Model implements Auditable
 
     public function getCursoAttribute() {
         if($this->numero_usp)
-            return Graduacao::curso($this->numero_usp, 8)['nomhab'];
+            $curso = Graduacao::curso($this->numero_usp, 8)['nomhab'];
+            if($curso) {
+                return Graduacao::curso($this->numero_usp, 8)['nomhab'];
+            }else{
+                return 'Sem infomação disponível';
+            }
     }
 
     public function getEmailAttribute() {
@@ -194,8 +199,10 @@ class Estagio extends Model implements Auditable
             $curso = Graduacao::curso($this->numero_usp,8);
             if($curso) {
                 return Graduacao::nomeHabilitacao($curso['codhab'], $curso['codcur']);
+            }else{
+                return 'Sem infomação disponível';
             }
-        }   
+        } 
     }
 
     public function getGradeAttribute() {
