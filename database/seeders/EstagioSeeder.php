@@ -14,7 +14,7 @@ class EstagioSeeder extends Seeder
     public function run()
     {
         $entrada = [
-            'numero_usp' => 8978875,           
+            'numero_usp' => 4308894,           
             'valorbolsa' => '1200',
             'tipobolsa' => 'Mensal',
             'justificativa' => 'Desenvolvimento PHP',                
@@ -33,7 +33,7 @@ class EstagioSeeder extends Seeder
             'supervisao' => 'teste',
             'interacao' => 'teste',
             'enderecoedias' => 'teste',
-            'status' => 'em_analise_tecnica',
+            'status' => 'em_elaboracao',
             'pandemiahomeoffice' => 'Sim',
             'pandemiamedidas' => 'Alcool gel e cafezinho liberado',
             'nome_do_supervisor_estagio' => 'Genivaldo',
