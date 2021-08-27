@@ -16,6 +16,10 @@ class EstatisticaController extends Controller
     public function index(Request $request, Estagio $estagio, Empresa $empresa){
 
         if(isset($request->busca_ano)){
+
+            $request->validate([
+                'busca_ano' => 'required|numeric',
+            ]);
             
             if ($request->busca_ano != null){
 

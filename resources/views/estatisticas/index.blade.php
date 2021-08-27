@@ -34,34 +34,65 @@
         @endif
     </div>
 
-    <div class="card-body">
-        <table class="table table-striped" style="width:25%">
-            <tr>
-                <th>Estágios cadastrados:</th>
-                <td>{{ $total_estagios }}</td>
-            </tr>
-            <tr>
-                <th>Estágios em andamento:</th>
-                <td>{{ $total_concluidos }}</td>
-            </tr>
-            <tr>
-                <th>Estágios renovados:</th>
-                <td>{{ $total_renovados }}</td>
-            </tr>
-            <tr>
-                <th>Estágios rescindidos:</th>
-                <td>{{ $total_rescindidos }} </td>
-            </tr>
-            <tr>
-                <th>Empresas cadastradas:</th>
-                <td>{{ $total_empresas }}</td>
-            </tr>
-        </table>
+    <div class="row">
+            <div class="col-sm form-group">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Estágios cadastrados:</th>
+                        <td>{{ $total_estagios }}</td>
+                    </tr>
+                    @if($busca_ano == null)
+                    <tr>
+                        <th>Estágios em andamento:</th>
+                        <td>{{ $total_concluidos }}</td>
+                    </tr>
+                    <tr>
+                        <th>Estágios renovados:</th>
+                        <td>{{ $total_renovados }}</td>
+                    </tr>
+                    <tr>
+                        <th>Estágios rescindidos:</th>
+                        <td>{{ $total_rescindidos }} </td>
+                    </tr>
+                    @endif
+                    <tr>
+                        <th>Empresas cadastradas:</th>
+                        <td>{{ $total_empresas }}</td>
+                    </tr>
+                </table>
+            </div>
+            <!--
+            <div class="col-sm form-group">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Estágiarios do curso de Ciências Humanas:</th>
+                        <td></td> 
+                    </tr>
+                    <tr>
+                        <th>Estágiarios do curso de Filosofia:</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Estágiarios do curso de Geografia:</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Estágiarios do curso de História:</th>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <th>Estágiarios do curso de Letras:</th>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            -->
         
-        <br>
-        Informações geradas ás {{ date("H:i"); }} do dia {{ date("d/m/Y")}}; 
+        </div>
 
     </div>
+
+    <br> Informações geradas ás {{ date("H:i"); }} do dia {{ date("d/m/Y")}} 
 </div>
 
 @endsection('content')

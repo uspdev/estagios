@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
             PareceristaSeeder::class,
             EmpresaSeeder::class,
             EstagioSeeder::class,
-            ConvenioSeeder::class,
             AvisoSeeder::class,
             VagaSeeder::class,
             FileSeeder::class,

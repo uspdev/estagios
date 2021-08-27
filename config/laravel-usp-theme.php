@@ -38,19 +38,6 @@ $empresas =  [
     ],
 ];
 
-$convenios =  [
-    [
-        'text' => 'Listar',
-        'url'  => '/convenios',
-        'can'     => 'admin',
-    ],
-    [
-        'text' => 'Cadastrar',
-        'url'  => '/convenios/create',
-        'can'     => 'admin',
-    ],
-];
-
 $avisos =  [
     [
         'text' => 'Listar',
@@ -134,11 +121,6 @@ return [
             'text'    => 'Avisos',
             'submenu' => $avisos,
             'can'     => 'admin',
-        ],
-        [
-            'text'    => 'Convênios',
-            'submenu' => $convenios,
-            'can'     => 'nao_habilitado_ainda',
         ],
         [
             'text'    => 'Pareceristas',

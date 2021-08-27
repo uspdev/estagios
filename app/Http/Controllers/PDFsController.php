@@ -6,12 +6,9 @@ use PDF;
 use Carbon\Carbon;
 use App\Models\Estagio;
 use App\Models\Empresa;
-use App\Models\Convenio;
 use App\Models\Parecerista;
 use App\Models\User;
-
 use Uspdev\Replicado\Pessoa;
-
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Gate;
@@ -81,13 +78,4 @@ class PDFsController extends Controller
         abort(403, 'Access denied');
     }
 
-    /* Não usado por enquanto...
-    public function convenio(Convenio $convenio){
-        if (Gate::allows('admin') | Gate::allows('parecerista') | Gate::allows('empresa',$convenio->cnpj)) {
-            $pdf = PDF::loadView('pdfs.convenio', compact('convenio'));
-            return $pdf->download('convenio.pdf');
-        }
-        abort(403, 'Access denied');
-    }
-    */
 }

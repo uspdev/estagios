@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\EmpresaRequest;
 use App\Models\Empresa;
 use App\Models\Estagio;
-use App\Models\Convenio;
 use Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
@@ -32,11 +31,9 @@ class EmpresaController extends Controller
         $this->authorize('logado');
         if (Gate::allows('empresa', $empresa->cnpj_number) | Gate::allows('admin')) {
             $estagios = Estagio::where('cnpj',$empresa->cnpj)->paginate(10);
-            $convenios = Convenio::where('cnpj',$empresa->cnpj)->paginate(10);
             return view('empresas.show')->with([
                 'empresa'  => $empresa,
                 'estagios' => $estagios,
-                'convenios' => $convenios,
             ]);
         } else {
             $request->session()->flash('alert-danger','Usuário sem permissão');
