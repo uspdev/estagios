@@ -8,7 +8,6 @@ use App\Http\Controllers\EstagioController;
 use App\Http\Controllers\VagaController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\AvisoController;
-use App\Http\Controllers\ConvenioController;
 use App\Http\Controllers\PDFsController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\EstagioWorkflowController;
@@ -30,10 +29,6 @@ Route::resource('/empresas', EmpresaController::class);
 Route::resource('/avisos',AvisoController::class);
 Route::resource('/files', FileController::class);
 Route::resource('/estatisticas',EstatisticaController::class);
-
-# não usados
-#Route::resource('/convenios',ConvenioController::class);
-#Route::get('/pdfs/convenio/{convenio}', [PDFsController::class, 'convenio']);
 
 # vagas
 Route::post('/statusvagas/{vaga}',[VagaController::class,'status'])->name('vagas.status');

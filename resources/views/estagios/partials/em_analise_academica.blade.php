@@ -106,11 +106,6 @@
 
 </form>
 
-@if($estagio->analise_academica)
-    <b>último parecer de mérito:</b> {{$estagio->analise_academica}}<br>
-    Parecer de mérito realizado por: {{ $estagio->analise_academica_user->name }} <br>
-@endif
-
 </div>
 </div>
 
