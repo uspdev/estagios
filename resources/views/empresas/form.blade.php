@@ -11,6 +11,8 @@
                 <label for="cnpj" class="required">CNPJ:</label>
                 <input type="text" maxlength="18" class="form-control cnpj" name="cnpj" value="{{old('cnpj', $empresa->cnpj)}}">
             </div>
+            @else
+                <input type="hidden" name="cnpj" value="{{ $empresa->cnpj }}">
             @endif
         </div>
         <div class="row">

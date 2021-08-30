@@ -37,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
         # Variáveis globais do sistema
-        if(!empty(config('app.key'))) {
+        if(!Parecerista::all()->isEmpty()) {
             view()->share('presidente', Pessoa::nomeCompleto(Parecerista::presidente()->numero_usp));
         }
     }
