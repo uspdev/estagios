@@ -35,8 +35,10 @@ class enviar_relatorio_mail extends Mailable
      */
     public function build()
     {
-
-        $to = [$this->estagio->parecerista->email,config('mail.reply_to.address')];
+        $to = [config('mail.reply_to.address')];
+        if($this->estagio->parecerista) {
+            array_push($to,$this->estagio->parecerista->email);
+        }
               
         $subject = $this->estagio->nome. ' - Foi enviado um novo relatório no estágio - FFLCH-USP';
 

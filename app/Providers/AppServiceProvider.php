@@ -38,7 +38,9 @@ class AppServiceProvider extends ServiceProvider
 
         # Variáveis globais do sistema
         if(!Parecerista::all()->isEmpty()) {
-            view()->share('presidente', Pessoa::nomeCompleto(Parecerista::presidente()->numero_usp));
+            if(Parecerista::whereNotNull('presidente')->get()->isEmpty()) {
+                view()->share('presidente', Pessoa::nomeCompleto(Parecerista::presidente()->numero_usp));
+            }
         }
     }
 }

@@ -23,8 +23,10 @@ class Parecerista extends Model
     }
 
     public function getEmailAttribute() {
-        if($this->numero_usp)
+        
+        if($this->numero_usp){
             return Pessoa::email($this->numero_usp);
+        }
     }
 
 }
