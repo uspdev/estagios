@@ -92,7 +92,12 @@ class Estagio extends Model implements Auditable
     }
 
     public function setDataInicialAttribute($value) {
-       $this->attributes['data_inicial'] = implode('-',array_reverse(explode('/',$value)));
+        if (str_contains($value, '/')) {
+            $this->attributes['data_inicial'] = implode('-',array_reverse(explode('/',$value)));
+        } else {
+            $this->attributes['data_inicial'] = $value;
+        }
+       
     }
 
     public function getDataFinalAttribute($value) {
@@ -100,7 +105,11 @@ class Estagio extends Model implements Auditable
     }
 
     public function setDataFinalAttribute($value) {
-       $this->attributes['data_final'] = implode('-',array_reverse(explode('/',$value)));
+        if (str_contains($value, '/')) {
+            $this->attributes['data_final'] = implode('-',array_reverse(explode('/',$value)));
+        } else {
+            $this->attributes['data_final'] = $value;
+        }
     }
 
     public function getRescisaoDataAttribute($value) {
