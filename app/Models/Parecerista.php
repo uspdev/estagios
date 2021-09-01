@@ -27,7 +27,7 @@ class Parecerista extends Model
         if($presidente){
             return Pessoa::nomeCompleto($presidente->numero_usp);
         } else {
-            return "Não há presidente cadastrado(a)"
+            return "Não há presidente cadastrado(a)";
         }
     }
 
