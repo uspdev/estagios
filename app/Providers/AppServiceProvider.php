@@ -36,11 +36,5 @@ class AppServiceProvider extends ServiceProvider
             \URL::forceScheme('https');
         }
 
-        # Variáveis globais do sistema
-        if(!Parecerista::all()->isEmpty()) {
-            if(Parecerista::whereNotNull('presidente')->get()->isEmpty()) {
-                view()->share('presidente', Pessoa::nomeCompleto(Parecerista::presidente()->numero_usp));
-            }
-        }
     }
 }

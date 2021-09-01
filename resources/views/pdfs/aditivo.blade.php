@@ -11,7 +11,7 @@
 adiante designada CONCEDENTE e o ESTAGIÁRIO(A) <b>{{ $estagio->nome }}</b>, no USP <b>
 {{ $estagio->numero_usp }}</b>, curso <b>{{ $estagio->curso }}</b> e como INTERVENIENTE 
 a Faculdade de Filosofia, Letras e Ciências Humanas da Universidade de São Paulo, representada pela Presidente da Comissão de Graduação 
-<b>{{ $presidente }}</b>, firmam o presente TERMO DE ADITAMENTO DE COMPROMISSO DE ESTÁGIO, nos termos da Lei
+<b>{{ \App\Models\Parecerista::presidente() }}</b>, firmam o presente TERMO DE ADITAMENTO DE COMPROMISSO DE ESTÁGIO, nos termos da Lei
 11.788/08 e da Resolução USP no 5.528/09, conforme as condições a seguir:</div>
 <!--<p style="text-align: justify; text-indent : 1em;">1. Alterações realizadas no termo:
 <b>-->
@@ -59,7 +59,7 @@ ________________________________________<br>
 <br>
 <br>
 ________________________________________<br>
-<b>{{ $presidente }}</b><br>
+<b>{{ \App\Models\Parecerista::presidente() }}</b><br>
 <b>Presidente da Comissão de Graduação da FFLCH</b>
 <br><br><br>
 E-mail do estagiario: {{ $estagio->email }}<br>

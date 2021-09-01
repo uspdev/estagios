@@ -22,6 +22,15 @@ class Parecerista extends Model
         }
     }
 
+    public static function presidente() {
+        $presidente = Parecerista::where('presidente', true)->first();
+        if($presidente){
+            return Pessoa::nomeCompleto($presidente->numero_usp);
+        } else {
+            return "Não há presidente cadastrado(a)"
+        }
+    }
+
     public function getEmailAttribute() {
         
         if($this->numero_usp){
