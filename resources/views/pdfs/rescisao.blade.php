@@ -52,7 +52,7 @@ ________________________________________<br>
 <br>
 <br>
 ________________________________________<br>
-<b>{{ $presidente }}<br>
+<b>{{ \App\Models\Parecerista::presidente() }}<br>
 Presidente da Comissão de Graduação da FFLCH/USP</b>
 
 
