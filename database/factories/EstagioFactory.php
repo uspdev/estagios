@@ -84,4 +84,3 @@ class EstagioFactory extends Factory
         ];
     }
 }
-
