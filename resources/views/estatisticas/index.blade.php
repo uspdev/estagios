@@ -28,9 +28,9 @@
 <div class="card">
     <div class="card-header">    
         @if($busca_ano)
-        <b>Totais gerais da base de dados - Ano de {{$busca_ano}}</b>
+        <b>Totais gerais da base de dados e novos estágios criados por curso - Ano de {{$busca_ano}}</b>
         @else
-        <b>Totais gerais da base de dados</b>
+        <b>Totais gerais da base de dados e estágios por curso</b>
         @endif
     </div>
 
@@ -41,11 +41,17 @@
                         <th>Estágios cadastrados:</th>
                         <td>{{ $total_estagios }}</td>
                     </tr>
-                    @if($busca_ano == null)
+                    @if($busca_ano)
+                    <tr>
+                        <th>Estágios que estão/estiveram ativos neste ano:</th>
+                        <td>{{ $total_concluidos }}</td>
+                    </tr>
+                    @else
                     <tr>
                         <th>Estágios em andamento:</th>
                         <td>{{ $total_concluidos }}</td>
                     </tr>
+                    @endif
                     <tr>
                         <th>Estágios renovados:</th>
                         <td>{{ $total_renovados }}</td>
@@ -54,39 +60,62 @@
                         <th>Estágios rescindidos:</th>
                         <td>{{ $total_rescindidos }} </td>
                     </tr>
-                    @endif
                     <tr>
                         <th>Empresas cadastradas:</th>
                         <td>{{ $total_empresas }}</td>
                     </tr>
                 </table>
             </div>
-            <!--
+            
             <div class="col-sm form-group">
                 <table class="table table-striped">
                     <tr>
-                        <th>Estágiarios do curso de Ciências Humanas:</th>
-                        <td></td> 
+                        <th>Estágiarios do curso de Licenciatura em Ciências Sociais:</th>
+                        <td>{{ $total_licsociais }}</td> 
                     </tr>
                     <tr>
-                        <th>Estágiarios do curso de Filosofia:</th>
-                        <td></td>
+                        <th>Estágiarios do curso de Bacharelado em Ciências Sociais:</th>
+                        <td>{{ $total_bachsociais }}</td> 
                     </tr>
                     <tr>
-                        <th>Estágiarios do curso de Geografia:</th>
-                        <td></td>
+                        <th>Estágiarios do curso de Licenciatura em Filosofia:</th>
+                        <td>{{ $total_licfilosofia }}</td>
                     </tr>
                     <tr>
-                        <th>Estágiarios do curso de História:</th>
-                        <td> </td>
+                        <th>Estágiarios do curso de Bacharelado em Filosofia:</th>
+                        <td>{{ $total_bachfilosofia }}</td>
                     </tr>
                     <tr>
-                        <th>Estágiarios do curso de Letras:</th>
-                        <td></td>
+                        <th>Estágiarios do curso de Licenciatura em Geografia:</th>
+                        <td>{{ $total_licgeografia }}</td>
+                    </tr>
+                    <tr>
+                        <th>Estágiarios do curso de Bacharelado em Geografia:</th>
+                        <td>{{ $total_bachgeografia }}</td>
+                    </tr>
+                    <tr>
+                        <th>Estágiarios do curso de Licenciatura em História:</th>
+                        <td>{{ $total_lichistoria }}</td>
+                    </tr>
+                    <tr>
+                        <th>Estágiarios do curso de Bacharelado em História:</th>
+                        <td>{{ $total_bachhistoria }}</td>
+                    </tr>
+                    <tr>
+                        <th>Estágiarios dos cursos de Licenciatura em Letras:</th>
+                        <td>{{ $total_licletras }}</td>
+                    </tr>
+                    <tr>
+                        <th>Estágiarios dos cursos de Bacharelado em Letras:</th>
+                        <td>{{ $total_bachletras }}</td>
+                    </tr>
+                    <tr>
+                        <th>Estágiarios do ciclo básico em Letras:</th>
+                        <td>{{ $total_basicoletras }}</td>
                     </tr>
                 </table>
             </div>
-            -->
+            
         
         </div>
 

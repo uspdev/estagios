@@ -6,7 +6,7 @@ use App\Models\File;
 use App\Models\Aditivo;
 use App\Models\User;
 use Auth;
-
+use Uspdev\Replicado\Graduacao;
 use Uspdev\Replicado\Pessoa;
 use App\Http\Requests\EstagioRequest;
 use Illuminate\Http\Request;
@@ -89,7 +89,9 @@ class EstagioController extends Controller
         $this->authorize('empresa');
         $validated = $request->validated();
         $validated['status'] = 'em_elaboracao';           
-        $estagio = Estagio::create($validated);        
+        $estagio = Estagio::create($validated);
+        $estagio->graduacao = Graduacao::curso($estagio->numero_usp, 8)['nomhab'];
+        $estagio->save();
         return redirect("estagios/{$estagio->id}");
     }
 

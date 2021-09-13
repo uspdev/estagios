@@ -69,7 +69,7 @@ button {
             </td>
 
             <td> 
-                {{ $estagio->habilitacao }} 
+                {{ $estagio->graduacao }} 
             </td>
 
             <td> 
