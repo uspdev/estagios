@@ -15,7 +15,7 @@ class EstagioSeeder extends Seeder
     {
         $entrada = [
             'numero_usp' => 4308894,
-            'graduacao' => 'Bacharelado em Historia',           
+            'nomhab' => 'Bacharelado em Historia',           
             'valorbolsa' => '1200',
             'tipobolsa' => 'Mensal',
             'justificativa' => 'Desenvolvimento PHP',                

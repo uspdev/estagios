@@ -46,7 +46,7 @@ class EstagioFactory extends Factory
             //cadastro
             'cnpj' => Empresa::factory()->create()->cnpj, 
             'numero_usp' => $numusp, 
-            'graduacao' => Graduacao::curso($numusp, 8)['nomhab'],        
+            'nomhab' => Graduacao::curso($numusp, 8)['nomhab'],        
             'valorbolsa' => $this->faker->numberBetween(300, 4000),
             'tipobolsa' => $bolsa[array_rand($bolsa)],
             'justificativa' => $this->faker->text($maxNbChars = 200),         
