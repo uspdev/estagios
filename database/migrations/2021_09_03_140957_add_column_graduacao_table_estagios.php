@@ -16,15 +16,17 @@ class AddColumnGraduacaoTableEstagios extends Migration
     public function up()
     {
         Schema::table('estagios', function (Blueprint $table) {
-            $table->string('graduacao')->nullable();
+            $table->string('nomcur')->nullable();
+            $table->string('nomhab')->nullable();
         });
 
         $estagios = Estagio::all();
         foreach($estagios as $estagio) {
             if($estagio->numero_usp) {
-                $curso_usp = Graduacao::curso($estagio->numero_usp, 8)['nomhab'];
-                if($curso_usp) {
-                    $estagio->graduacao =  $curso_usp;
+                $curso = Graduacao::curso($estagio->numero_usp, 8);
+                if($curso) {
+                    $estagio->nomcur =  $curso['nomcur'];
+                    $estagio->nomhab =  $curso['nomhab'];
                     $estagio->save();
                 }
                  
@@ -40,7 +42,6 @@ class AddColumnGraduacaoTableEstagios extends Migration
     public function down()
     {
         Schema::table('estagios', function (Blueprint $table) {
-            Schema::dropIfExists('graduacao');
         });
     }
 }

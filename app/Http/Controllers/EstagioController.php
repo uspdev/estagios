@@ -90,7 +90,11 @@ class EstagioController extends Controller
         $validated = $request->validated();
         $validated['status'] = 'em_elaboracao';           
         $estagio = Estagio::create($validated);
-        $estagio->graduacao = Graduacao::curso($estagio->numero_usp, 8)['nomhab'];
+        $curso = Graduacao::curso($estagio->numero_usp, 8);
+        if($curso) {
+            $estagio->codcur =  $curso['nomcur'];
+            $estagio->nomcur =  $curso['nomhab'];
+        }
         $estagio->save();
         return redirect("estagios/{$estagio->id}");
     }
