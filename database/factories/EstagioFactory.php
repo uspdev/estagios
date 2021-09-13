@@ -6,6 +6,7 @@ namespace Database\Factories;
 
 use App\Models\Estagio;
 use App\Models\Empresa;
+use Uspdev\Replicado\Graduacao;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Generator as Faker;
 
@@ -39,19 +40,21 @@ class EstagioFactory extends Factory
             'concluido',
             'em_alteracao',
         ];
+        $numusp = $this->faker->unique()->graduacao();
 
         return [
             //cadastro
             'cnpj' => Empresa::factory()->create()->cnpj, 
-            'numero_usp' => $this->faker->unique()->graduacao(),           
+            'numero_usp' => $numusp, 
+            'graduacao' => Graduacao::curso($numusp, 8)['nomhab'],        
             'valorbolsa' => $this->faker->numberBetween(300, 4000),
             'tipobolsa' => $bolsa[array_rand($bolsa)],
             'justificativa' => $this->faker->text($maxNbChars = 200),         
             'atividadespertinentes' => $atvpertinentes[array_rand($atvpertinentes)],
             'horariocompativel' => $this->faker->text($maxNbChars = 100),
             'desempenhoacademico' => $this->faker->text($maxNbChars = 200),              
-            'data_inicial' => $this->faker->date,
-            'data_final' => $this->faker->date,
+            'data_inicial' => $this->faker->date('2020-1-1', '2022-12-31'),
+            'data_final' => $this->faker->date('2020-1-1', '2022-12-31'),
             'cargahoras' => $this->faker->numberBetween(00, 23),
             'cargaminutos' => $this->faker->numberBetween(00, 59),            
             'horario' => $this->faker->time($format = 'H:i', $max = 'now'), 

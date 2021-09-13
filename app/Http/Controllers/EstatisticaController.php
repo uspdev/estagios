@@ -21,15 +21,17 @@ class EstatisticaController extends Controller
                 'busca_ano' => 'required|numeric',
             ]);
             
+            // retorno de variaveis em caso de pesquisa por data
+
             if ($request->busca_ano != null){
 
                 $total_estagios = Estagio::whereYear('created_at', '=', $request->busca_ano)->count();
 
-                $total_concluidos = Estagio::whereYear('updated_at', '=', $request->busca_ano)->where('status','=','concluido')->count();
+                $total_concluidos = Estagio::whereYear('data_inicial', '=', $request->busca_ano)->where('status','=','concluido')->orWhereYear('data_final', '=', $request->busca_ano)->count();
         
-                $total_renovados = Estagio::whereYear('updated_at', '=', $request->busca_ano)->where('renovacao_parent_id','!=',null)->count();
+                $total_renovados = Estagio::whereYear('created_at', '=', $request->busca_ano)->where('renovacao_parent_id','!=',null)->count();
         
-                $total_rescindidos = Estagio::whereYear('updated_at', '=', $request->busca_ano)->where('status','=','rescisao')->count();
+                $total_rescindidos = Estagio::whereYear('rescisao_data', '=', $request->busca_ano)->where('status','=','rescisao')->count();
         
                 $total_empresas = Empresa::whereYear('created_at', '=', $request->busca_ano)->count();
 
@@ -58,6 +60,8 @@ class EstatisticaController extends Controller
             }
 
         }else{
+
+        // retorno de variaveis gerais
 
         $total_estagios = Estagio::get('id')->count();
 

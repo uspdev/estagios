@@ -14,7 +14,8 @@ class EstagioSeeder extends Seeder
     public function run()
     {
         $entrada = [
-            'numero_usp' => 4308894,           
+            'numero_usp' => 4308894,
+            'graduacao' => 'Bacharelado em Historia',           
             'valorbolsa' => '1200',
             'tipobolsa' => 'Mensal',
             'justificativa' => 'Desenvolvimento PHP',                
@@ -54,6 +55,6 @@ class EstagioSeeder extends Seeder
         ];
       
         Estagio::create($entrada); 
-        Estagio::factory(200)->create();
+        Estagio::factory(20)->create();
     }
 }
