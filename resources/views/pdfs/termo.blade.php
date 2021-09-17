@@ -149,43 +149,45 @@
 
 <br>
 
-<div style="text-align: justify">
-    Solicitação: <b>ESTÁGIO NOVO</b><br>
-    Nome d{{ $estagio->artigo_definido}} Estagiári{{ $estagio->artigo_definido }}: <b>{{ $estagio->nome }}</b><br>
-    Nº USP: <b>{{ $estagio->numero_usp }}</b><br>
-    Curso: <b>{{ $estagio->curso }}</b><br>
-    Período: <b>{{ $estagio->periodo }}</b><br>
-    Semestre: <b>{{ $estagio->semestre_atual }}º</b><br>
-    E-mail: <b>{{ $estagio->email }}</b><br>
-    Nome da Empresa: <b>{{ $estagio->empresa->nome }}</b><br>
-    Área de atuação da Empresa: <b>{{ $estagio->empresa->area_de_atuacao }}</b><br>
-    Nome do supervisor(a) interno(a) do Estágio na Empresa: <b>{{ $estagio->nome_do_supervisor_estagio }}</b><br>
-    Telefone do Supervisor: <b>{{ $estagio->telefone_do_supervisor_estagio }}</b> / <b>{{ $estagio->telefone_de_contato }}</b>,
-    E-mail do Supervisor: <b>{{ $estagio->email_do_supervisor_estagio }}</b><br>
-    Data de início do estágio: <b>{{$estagio->data_inicial}}</b><br>
-    Data do término do estágio: <b>{{$estagio->data_final}}</b><br>
-    Horário do Estágio: <b>{{ $estagio->horario }}</b><br>
-    Carga horária semanal: <b>{{ $estagio->cargahoras }}h{{ $estagio->cargaminutos }} semanais</b><br>
-    Duração em meses (em casos excepcionais inferiores a 6 meses, a empresa deverá incluir justificativa circunstanciada
-    que será avaliada pelo Supervisor Geral de Estágios): <b>{{ $estagio->duracao }}</b><br>
-    Justificativa: <b><i>{{ $estagio->justificativa }}</i></b><br>
-    Número de horas por semana: <b>{{ $estagio->cargahoras }}h{{ $estagio->cargaminutos }} semanais</b><br>
-    Valor da Bolsa: R$ <b>{{ $estagio->valorbolsa }} {{ $estagio->tipobolsa }}</b><br>
-    Valor do auxílio transporte: R$ <b>{{ $estagio->auxiliotransporte }} {{ $estagio->especifiquevt }}</b><br>
-    Descrição detalhada das atividades a serem desenvolvidas pelo estagiário, com a finalidade de permitir a avaliação
-    da Comissão de Estágios: <b><i>{{ $estagio->atividades }}</i></b><br>
+<div style="text-align: justify; page-break-inside: auto;">
+    <b>Solicitação: ESTÁGIO NOVO</b><br>
+    <b>Nome d{{ $estagio->artigo_definido}} Estagiári{{ $estagio->artigo_definido }}:</b> {{ $estagio->nome }}<br>
+    <b>Nº USP:</b> {{ $estagio->numero_usp }}<br>
+    <b>Curso:</b> {{ $estagio->curso }}<br>
+    <b>Período:</b> {{ $estagio->periodo }}<br>
+    <b>Semestre:</b> {{ $estagio->semestre_atual }}º<br>
+    <b>E-mail:</b> {{ $estagio->email }}<br>
+    <b>Nome da Empresa:</b> {{ $estagio->empresa->nome }}<br>
+    <b>Área de atuação da Empresa:</b> {{ $estagio->empresa->area_de_atuacao }}<br>
+    <b>Nome do supervisor(a) interno(a) do Estágio na Empresa:</b> {{ $estagio->nome_do_supervisor_estagio }}<br>
+    <b>Telefone do Supervisor:</b> {{ $estagio->telefone_do_supervisor_estagio }} / {{ $estagio->telefone_de_contato }},
+    <b>E-mail do Supervisor:</b> {{ $estagio->email_do_supervisor_estagio }}<br>
+    <b>Data de início do estágio:</b> {{$estagio->data_inicial}}<br>
+    <b>Data do término do estágio:</b> {{$estagio->data_final}}<br>
+    <b>Horário do Estágio:</b> {{ $estagio->horario }}<br>
+    <b>Carga horária semanal:</b> {{ $estagio->cargahoras }}h{{ $estagio->cargaminutos }} semanais<br>
+    <b>Duração em meses (em casos excepcionais inferiores a 6 meses, a empresa deverá incluir justificativa circunstanciada
+    que será avaliada pelo Supervisor Geral de Estágios):</b> {{ $estagio->duracao }}<br>
+    <b>Justificativa:</b> {{ $estagio->justificativa }}<br>
+    <b>Número de horas por semana:</b> {{ $estagio->cargahoras }}h{{ $estagio->cargaminutos }} semanais<br>
+    <b>Valor da Bolsa:</b> R$ {{ $estagio->valorbolsa }} {{ $estagio->tipobolsa }}<br>
+    <b>Valor do auxílio transporte:</b> R$ {{ $estagio->auxiliotransporte }} {{ $estagio->especifiquevt }}<br>
+    <b>Descrição detalhada das atividades a serem desenvolvidas pelo estagiário, com a finalidade de permitir a avaliação
+    da Comissão de Estágios:</b> {{ $estagio->atividades }}<br>
     <b>NO CASO DE ESTÁGIO DOMICILIAR</b><br>
-    Como se dará o controle diário dos horários de início e encerramento das atividades? <b>{{ $estagio->controlehorario }}</b><br>
-    Como se dará a supervisão interna (por parte da empresa) do estagiário? <b>{{ $estagio->supervisao}}</b><br>
-    Como se dará a interação do estagiário com o ambiente e com os demais colaboradores da empresa? Haverá
-    deslocamento para a empresa? Se sim, quais dias? <b>{{ $estagio->interacao }}</b><br>
-    Qual o endereço e em quais dias será realizado o estágio?<b>{{$estagio->enderecoedias}}</b><br>
+    <b>Como se dará o controle diário dos horários de início e encerramento das atividades?</b> {{ $estagio->controlehorario }}<br>
+    <b>Como se dará a supervisão interna (por parte da empresa) do estagiário?</b> {{ $estagio->supervisao}}<br>
+    <b>Como se dará a interação do estagiário com o ambiente e com os demais colaboradores da empresa? Haverá
+    deslocamento para a empresa? Se sim, quais dias?</b> {{ $estagio->interacao }}<br>
+    <b>Qual o endereço e em quais dias será realizado o estágio?</b>{{$estagio->enderecoedias}}<br>
     <b>INFORMAÇÕES RELATIVAS A ESTÁGIO NO PERÍODO DE PANDEMIA</b><br>
-    O estágio será realizado em home-office?:</b> <b>{{$estagio->pandemiahomeoffice}}</b><br>
-    Em caso do estágio não ser home-office, quais as medidas sanitárias adotadas pela empresa são:</b> <b>{{$estagio->pandemiamedidas}}</b><br>
+    <b>O estágio será realizado em home-office?:</b> {{$estagio->pandemiahomeoffice}}<br>
+    <b>Em caso do estágio não ser home-office, quais as medidas sanitárias adotadas pela empresa são:</b> {{$estagio->pandemiamedidas}}<br>
 </div>
 
 <div style="page-break-inside: avoid;">
+
+<br><br>
 
 <div style="text-align: center;">São Paulo, {{ Carbon\Carbon::now()->formatLocalized('%d/%m/%Y') }}</div>
 

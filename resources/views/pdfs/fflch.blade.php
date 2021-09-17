@@ -32,10 +32,15 @@
             page-break-after: always;
             margin-top:160px;
         }
-        p:last-child { page-break-after: never; }
-        .content {
-            margin-top:0px;
+        p:last-child { 
+            page-break-after: never; 
         }
+
+        content {
+            margin-top:0px;
+            bottom: 50px;
+        }
+
     </style>
 </head>
 
