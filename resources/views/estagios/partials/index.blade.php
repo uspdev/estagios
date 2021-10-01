@@ -32,6 +32,7 @@ button {
         <th>Empresa</th>
         <th>Período</th>
         <th>Status</th>
+        <th>Status do Parecer<th>
         @can('admin')<th>Deletar</th>@endcan 
         </tr>
     </thead>
@@ -82,6 +83,14 @@ button {
 
             <td> 
                 {{ $estagio->getStatus()[$estagio->status]['name'] }} 
+            </td>
+
+            <td>
+                @if(empty($estagio->tipodeferimento) )
+                    Ainda não realizado
+                @else
+                    {{$estagio->tipodeferimento}}
+                @endif
             </td>
 
             @can('admin')
