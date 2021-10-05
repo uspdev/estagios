@@ -58,6 +58,19 @@
                         <th>Estágios rescindidos:</th>
                         <td>  {{ $estagios->where('status','rescisao')->count() }} </td>
                     </tr>
+                    <tr>
+                        <th>Estágios com parecer de mérito deferido:</th>
+                        <td>  {{ $estagios->where('tipodeferimento','Deferido')->count() }} </td>
+                    </tr>
+                    <tr>
+                        <th>Estágios com parecer de mérito deferido com restrições:</th>
+                        <td>  {{ $estagios->where('tipodeferimento','Deferido com Restrição')->count() }} </td>
+                    </tr>
+                    <tr>
+                        <th>Estágios com parecer de mérito indeferido:</th>
+                        <td>  {{ $estagios->where('tipodeferimento','Indeferido')->count() }} </td>
+                    </tr>
+
                 </table>
             </div>            
 
