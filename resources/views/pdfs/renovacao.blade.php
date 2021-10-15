@@ -88,8 +88,9 @@
 <br><br>
 
 <div>
-    <p>Contato: Gabriela Castro, tel.: 1130032433 <br>
-        e-mail: gabriela.castro@ciee.ong.br</p>
+    <p><b>Contato:</b> {{ $estagio->nome_de_contato }}, Telefone: {{ $estagio->telefone_de_contato }} <br>
+    <b>E-mail da empresa:</b> {{ $estagio->empresa->email }}
+    </p>
 </div>
 
 </div>
