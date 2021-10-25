@@ -64,6 +64,7 @@ Route::get('/acessar_outra_empresa', [EmpresaController::class,'acessar_outra_em
 Route::get('login/empresa', [LoginEmpresaController::class,'create']);
 Route::post('login/empresa', [LoginEmpresaController::class,'store']);
 Route::get('login/empresa/check', [LoginEmpresaController::class,'empresa'])->name('login_empresa');
+Route::get('login/empresa_perdisenha', [LoginEmpresaController::class,'create']);
 
 # Rotas para empresa
 Route::get('/empresa_update', [EmpresaController::class,'empresa_update']);
