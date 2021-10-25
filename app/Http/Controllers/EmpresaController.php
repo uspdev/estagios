@@ -16,16 +16,16 @@ class EmpresaController extends Controller
     public function index(Request $request){
         $this->authorize('admin');
         if(isset($request->busca)) {
-            $pontuacoes = ['.','-','/'];
-            $cnpj_limpo = str_replace($pontuacoes,'',$request->busca);
-            $empresas = Empresa::where('nome','LIKE',"%{$request->busca}%")
-                                ->orWhere('cnpj','LIKE',"%{$cnpj_limpo}%")
-                ->paginate(10);
+                $pontuacoes = ['.','-','/'];
+                $cnpj_limpo = str_replace($pontuacoes,'',$request->busca);
+                $empresas = Empresa::where('nome','LIKE',"%{$request->busca}%")
+                                    ->orWhere('cnpj','LIKE',"%{$cnpj_limpo}%")
+                    ->paginate(10);
         } else {
             $empresas = Empresa::paginate(10);
-        }        
-        return view('empresas.index', compact('empresas'));
-    }
+        }
+            return view('empresas.index', compact('empresas'));
+    }                    
 
     public function show(Request $request, Empresa $empresa){
         $this->authorize('logado');
@@ -126,9 +126,19 @@ class EmpresaController extends Controller
         return redirect('/');
     }
 
-    public function acessar_outra_empresa(){
+    public function acessar_outra_empresa(Request $request, Empresa $empresa){
         $this->authorize('empresa',Auth::user()->cnpj);
-        $empresas = Empresa::where('conceder_acesso_cnpj',Auth::user()->cnpj)->paginate(10);
+        if(isset($request->busca)) {
+            $pontuacoes = ['.','-','/'];
+            $cnpj_limpo = str_replace($pontuacoes,'',$request->busca);
+            $empresas = Empresa::where('nome','LIKE',"%{$request->busca}%")
+                                ->where('conceder_acesso_cnpj',Auth::user()->cnpj)
+                                ->orWhere('cnpj','LIKE',"%{$cnpj_limpo}%")
+                                ->where('conceder_acesso_cnpj',Auth::user()->cnpj)
+                ->paginate(10);
+        } else {
+            $empresas = Empresa::where('conceder_acesso_cnpj',Auth::user()->cnpj)->paginate(10);
+        }  
         return view('empresas.index', compact('empresas'));
     }
 
@@ -139,3 +149,5 @@ class EmpresaController extends Controller
     }
 
 }
+
+
