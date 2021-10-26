@@ -19,12 +19,18 @@
     </div>
 
     <div class="col-sm">
-        <a href="/login/empresa" class="btn btn-success"> 
-          <i class="fa fa-building" aria-hidden="true"></i>
-          Login Empresa 
-        </a>
-    </div>
+      <form method="GET" action="/login/empresa">
+        @csrf
 
+        <button type="submit" class="btn btn-success" name="login_action" value="email">
+        <i class="fa fa-building" aria-hidden="true"></i>  Empresa - Primeiro Acesso
+        </button>
+
+        <button type="submit" class="btn btn-success" name="login_action" value="senha">
+        <i class="fa fa-building" aria-hidden="true"></i>  Login com Senha
+        </button>
+      </form>
+    </div>
   </div>
   
   @endauth

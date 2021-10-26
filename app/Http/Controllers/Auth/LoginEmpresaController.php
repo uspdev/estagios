@@ -28,11 +28,46 @@ class LoginEmpresaController extends Controller
 
     public function create(Request $request)
     {
-        return view('login.empresa');
+        if($request->login_action=="senha")
+        {
+            $campo_senha = true;
+            $info_acesso = false;
+        } else {
+            $campo_senha = false;
+            if ($request->login_action=="email")
+            {
+                $info_acesso = true;
+            } else {
+                $info_acesso = false;
+            }
+        }
+
+        return view('login.empresa')->with([
+            'campo_senha' => $campo_senha,
+            'info_acesso' => $info_acesso,
+        ]);
     }
 
     public function store(Request $request)
     {
+        if(isset($request->password)){
+            $request->validate([
+                'password' => 'required',
+                'cnpj' => 'required|cnpj',
+            ]);
+            $cnpj = preg_replace("/[^0-9]/", "", $request->cnpj);
+            $user = User::where('cnpj',$cnpj)->first();
+            if($user){
+                if (Hash::check($request->password, $user->password)) {
+                    $email = $user->email;
+                    $empresa = EmpresaUtils::login($request->cnpj, $email);
+                    return view('empresas.edit')->with('empresa', $empresa);
+                }
+            }
+            request()->session()->flash('alert-danger','Senha não confere!');
+            return redirect('/');
+        }
+
         $validator = Validator::make($request->all(),[
             'email' => 'required|email',
             'cnpj'  => 'required|cnpj'
@@ -60,19 +95,6 @@ class LoginEmpresaController extends Controller
                     ");
                 return redirect('/login/empresa');
             }
-        }
-
-        /* Se há um campo de senha, vamos logar por ele */
-        if($request->password){
-            $user = User::where('cnpj',$cnpj)->first();
-            if($user){
-                if (Hash::check($request->password, $user->password)) {
-                    $empresa = EmpresaUtils::login($request->cnpj, $request->email);
-                    return view('empresas.edit')->with('empresa', $empresa);
-                }
-            }
-            request()->session()->flash('alert-danger','Senha não confere!');
-            return redirect('/login/empresa');
         }
         
         /* Se a empresa não tem cadastro ou o cnpj coincide com o cadastro, enviamos a url de login */

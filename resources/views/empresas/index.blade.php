@@ -7,7 +7,11 @@
 @section('content')
 @include('flash')
 
+@can('admin')
 <form method="get" action="/empresas">
+@else
+<form method="get" action="/acessar_outra_empresa">
+@endcan
     <div class="row">
         <div class="col-sm input-group">
         <input type="text" class="form-control" name="busca" value="{{ Request()->busca }}" placeholder="Busca por CNPJ ou nome">
@@ -18,7 +22,6 @@
     </div>
 </form>
 <br>
-
 {{ $empresas->appends(request()->query())->links() }}
 
 <table class="table table-striped" id="index">
