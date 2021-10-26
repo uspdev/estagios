@@ -61,7 +61,7 @@ class LoginEmpresaController extends Controller
                 if (Hash::check($request->password, $user->password)) {
                     $email = $user->email;
                     $empresa = EmpresaUtils::login($request->cnpj, $email);
-                    return view('empresas.edit')->with('empresa', $empresa);
+                    return redirect('/')->with('empresa', $empresa);
                 }
             }
             request()->session()->flash('alert-danger','Senha não confere!');
