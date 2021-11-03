@@ -16,6 +16,33 @@
 
 <br>
 
+  @can('empresa',$estagio->cnpj)
+    @if($estagio->status == 'assinatura' | $estagio->status == 'concluido')
+      <div class="card">
+        <div class="card-header"><b>Gerar Documentos</b></div>
+          <div class="card-body">
+              @if(is_null($estagio->renovacao_parent_id))
+                  <a href="/pdfs/termo/{{$estagio->id}}.pdf" type="application/pdf" target="pdf-frame">
+                  <i class="fas fa-file-pdf"></i> </a>
+                  Gerar PDF do Termo de Ciência 
+              @else
+                  <a href="/pdfs/renovacao/{{$estagio->id}}" target="_blank" >
+                  <i class="fas fa-file-pdf"></i> </a>
+                  Gerar PDF do Termo de Ciência para Renovação
+              @endif
+
+              @if(($estagio->aditivos)->isNotEmpty())
+                  <br>
+                  <a href="/pdfs/aditivo/{{$estagio->id}}" target="_blank" >
+                  <i class="fas fa-file-pdf"></i> </a>
+                  Gerar PDF do Parecer de Alteração
+              @endif
+          </div>  
+        </div>
+      <br>
+    @endif
+  @endcan('empresa')
+
     <div class="card">
     <div class="card-header"><b>Documentos do Estágio</b></div>
       <div class="card-body">
