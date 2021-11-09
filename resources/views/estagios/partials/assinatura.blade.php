@@ -22,20 +22,3 @@
 @include('estagios.partials.gerenciar_estagio')
 
 @endcan('admin')
-
-<!-- -->
-
-@can('empresa',$estagio->cnpj)
-
-        <br>
-        @if(is_null($estagio->renovacao_parent_id))
-            <a href="/pdfs/termo/{{$estagio->id}}.pdf" type="application/pdf" target="pdf-frame">
-            <i class="fas fa-file-pdf"></i> </a>
-            Gerar PDF do Termo de Ciência 
-        @else
-            <a href="/pdfs/renovacao/{{$estagio->id}}" target="_blank" >
-            <i class="fas fa-file-pdf"></i> </a>
-            Gerar PDF do Termo de Ciência para Renovação
-        @endif
-
-@endcan('empresa')

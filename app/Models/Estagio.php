@@ -203,6 +203,11 @@ class Estagio extends Model implements Auditable
             return Pessoa::dump($this->numero_usp)['numcpf'];
     }
 
+    public function getVerificarEstagioAttribute() {
+        if($this->numero_usp)
+            return Pessoa::verificarEstagioUSP($this->numero_usp);
+    }
+
     public function getHabilitacaoAttribute() {
         if($this->numero_usp) {
             $curso = Graduacao::curso($this->numero_usp,8);

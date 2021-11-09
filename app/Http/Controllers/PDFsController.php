@@ -21,7 +21,7 @@ class PDFsController extends Controller
             $pdf = PDF::loadView('pdfs.termo', [
                 'estagio'    => $estagio,
             ]);
-            return $pdf->download("termo-{$estagio->numero_usp}.pdf");
+            return $pdf->download("Termo-{$estagio->nome}.pdf");
         }
         abort(403, 'Access denied');
     }
@@ -31,7 +31,7 @@ class PDFsController extends Controller
             $pdf = PDF::loadView('pdfs.rescisao', [
                 'estagio'    => $estagio,
             ]);
-            return $pdf->download("rescisao-{$estagio->numero_usp}.pdf");
+            return $pdf->download("Rescisao-{$estagio->nome}.pdf");
         }
         abort(403, 'Access denied');
     }
@@ -47,7 +47,7 @@ class PDFsController extends Controller
                 'estagio'    => $estagio,
                 'aditivopendente' => $aditivopendente,
             ]);
-            return $pdf->download("aditivo-{$estagio->numero_usp}.pdf");
+            return $pdf->download("Aditivo-{$estagio->nome}.pdf");
         }
         abort(403, 'Access denied');
     }
@@ -57,7 +57,7 @@ class PDFsController extends Controller
             $pdf = PDF::loadView('pdfs.renovacao', [
                 'estagio'    => $estagio,
             ]);
-            return $pdf->download("renovacao-{$estagio->numero_usp}.pdf");
+            return $pdf->download("Renovacao-{$estagio->nome}.pdf");
         }
         abort(403, 'Access denied');
     }
@@ -68,7 +68,7 @@ class PDFsController extends Controller
                 $pdf = PDF::loadView('pdfs.parecer', [
                     'estagio'    => $estagio,
                 ]);
-                return $pdf->download("parecer-{$estagio->numero_usp}.pdf");
+                return $pdf->download("Parecer-{$estagio->nome}.pdf");
             } else {
                 request()->session()->flash('alert-danger','PDF não foi gerado! Informe o parecerista!');
                 return redirect("/estagios/{$estagio->id}") ;

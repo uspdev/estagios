@@ -43,5 +43,10 @@
 </table>
 
 <b>Periodo de Matrícula</b>: {{ $estagio->periodo }}<br>
-<b>Média ponderada</b>: {{ $estagio->media_ponderada }}<br>
+<b>Média ponderada</b>: {{ $estagio->media_ponderada }}<br><br>
+@if ($estagio->VerificarEstagio != 'true')
+  Este aluno NÃO possui estágio ativo no sistema.<br>
+@else
+  Este aluno JÁ POSSUI um estágio ativo no sistema, favor checar a situação em caso este seja um novo estágio.<br>
+@endif
 <br>
