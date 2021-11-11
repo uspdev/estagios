@@ -110,7 +110,6 @@ Route::post('/analise_tecnica_alteracao/{estagio}', [EstagioWorkflowController::
 Route::get('/parecer_merito', [PareceristaController::class,'parecerMerito']);
 Route::get('/meus_pareceres', [PareceristaController::class,'meusPareceres']);
 Route::get('/estagios_rescindidos', [PareceristaController::class,'estagiosRescindidos']);
-Route::get('/estagios_pendentes', [PareceristaController::class,'estagiosPendentes']);
 
 #alterar parecerista
 Route::post('/parecer_merito/{estagio}', [EstagioController::class,'alterarParecerista']);
