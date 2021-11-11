@@ -39,17 +39,6 @@ class ReplicadoUtils {
         return DBreplicado::fetchAll($query, $param);
     }
 
-    public static function media($codpes){
-        $query = "SELECT medpon FROM CLASSIFICACAOPROGRAMA where codpes = convert(int,:codpes) ORDER BY timestamp DESC";
-
-        $param = [
-            'codpes' => $codpes,
-        ];
-        $result = DBreplicado::fetch($query, $param);
-        if($result) return $result['medpon'];
-        else return null;
-    }
-
     public static function periodo($codpes){
         $query = "SELECT perhab FROM SITALUNOATIVOGR WHERE codpes = convert(int,:codpes) ORDER BY dtager DESC";
         $param = [

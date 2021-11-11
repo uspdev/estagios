@@ -159,8 +159,11 @@ class Estagio extends Model implements Auditable
     }
 
     public function getMediaPonderadaAttribute() {
-        if($this->numero_usp)
-            return ReplicadoUtils::media($this->numero_usp);
+        if($this->numero_usp){
+            return Graduacao::obterMediaPonderadaLimpa($this->numero_usp,null);
+        }else{
+            return 'Média não disponível, favor entrar em contato com o Setor de Estágios';
+        }
     }
 
     public function getPeriodoAttribute() {
