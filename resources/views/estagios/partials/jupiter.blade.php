@@ -43,10 +43,11 @@
 </table>
 
 <b>Periodo de Matrícula</b>: {{ $estagio->periodo }}<br>
-<b>Média ponderada</b>: {{ $estagio->media_ponderada }}<br><br>
+<b>Média ponderada</b>: {{ $estagio->media_ponderada }}<br>
+<b>Situação sobre Estágio USP</b>: 
 @if ($estagio->VerificarEstagio != 'true')
-  Este aluno NÃO possui estágio ativo no sistema.<br>
+  Este estudante NÃO possui nenhum estágio USP ativo no sistema.<br>
 @else
-  Este aluno JÁ POSSUI um estágio ativo no sistema, favor checar a situação em caso este seja um novo estágio.<br>
+  Este estudante JÁ POSSUI um estágio USP ativo no sistema, favor checar a situação do aluno em caso este seja um novo estágio ou em processo de aprovação.<br>
 @endif
 <br>
