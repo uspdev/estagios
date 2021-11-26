@@ -177,7 +177,11 @@ class Estagio extends Model implements Auditable
     }
 
     public function getCursoAttribute() {
-        return $this->nomcur;
+        if($this->numero_usp){
+            return $this->nomcur;
+        }else{
+            return 'Sem infomação disponível';
+        }
     }
 
     public function getEmailAttribute() {
@@ -197,7 +201,8 @@ class Estagio extends Model implements Auditable
 
     public function getCpfAttribute() {
         if($this->numero_usp)
-            return Pessoa::dump($this->numero_usp)['numcpf'];
+            $cpf = Pessoa::dump($this->numero_usp)['numcpf'];
+            return str_pad($cpf, 11, 0, STR_PAD_LEFT);
     }
 
     public function getVerificarEstagioAttribute() {
