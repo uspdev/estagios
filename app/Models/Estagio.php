@@ -160,7 +160,7 @@ class Estagio extends Model implements Auditable
 
     public function getMediaPonderadaAttribute() {
         if($this->numero_usp){
-            return Graduacao::obterMediaPonderadaSuja($this->numero_usp);
+            return Graduacao::obterMediaPonderadaLimpa($this->numero_usp);
         }else{
             return 'Média não disponível, favor entrar em contato com o Setor de Estágios';
         }
@@ -177,10 +177,15 @@ class Estagio extends Model implements Auditable
     }
 
     public function getCursoAttribute() {
-        if($this->numero_usp){
+        if($this->nomcur){
             return $this->nomcur;
         }else{
-            return 'Sem infomação disponível';
+            $curso = Graduacao::curso($this->numero_usp,8);
+            if($curso) {
+                return $curso;
+            }else{
+                return 'Sem infomação disponível';
+            }
         }
     }
 
