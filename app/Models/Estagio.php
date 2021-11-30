@@ -177,10 +177,15 @@ class Estagio extends Model implements Auditable
     }
 
     public function getCursoAttribute() {
-        if($this->numero_usp){
+        if($this->nomcur){
             return $this->nomcur;
         }else{
-            return 'Sem infomação disponível';
+            $curso = Graduacao::curso($this->numero_usp,8);
+            if($curso) {
+                return $curso;
+            }else{
+                return 'Sem infomação disponível';
+            }
         }
     }
 
