@@ -44,6 +44,9 @@ class EstagioRequest extends FormRequest
             'enderecoedias' => 'nullable',
             'justificativa' => 'nullable',
             'atividades' => 'nullable',
+            'nome_do_representante_opcional' => 'nullable',
+            'cargo_do_representante_opcional' => 'nullable',
+            'email_do_representante_opcional' => 'nullable',            
 
             //pandemia
             'pandemiahomeoffice' => 'required|max:255',

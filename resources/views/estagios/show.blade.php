@@ -90,8 +90,9 @@
             <b>Nome de contato da empresa:</b> {{$estagio->nome_de_contato}}<br>
             <b>Telefone de contato da empresa:</b> {{$estagio->telefone_de_contato}}<br>
             <b>E-mail de contato da empresa:</b> {{$estagio->email_de_contato}}
-        </div>      
-
+            <b>Nome do representante da empresa:</b> @if(nome_do_representante_opcional) {{ $estagio->nome_do_representante_opcional }} @else {{ $estagio->empresa->nome_do_representante }} @endif<br>
+            <b>Cargo do representante da empresa:</b> @if(cargo_do_representante_opcional) {{ $estagio->cargo_do_representante_opcional }} @else {{ $estagio->empresa->cargo_do_representante }} @endif<br>
+            <b>E-mail do representante da empresa:</b> @if(email_do_representante_opcional) {{ $estagio->email_do_representante_opcional }} @else {{ $estagio->empresa->email }} @endif<br>
     <br>
 
       <div class="card-header"><b>Período do Estágio</b></div>
