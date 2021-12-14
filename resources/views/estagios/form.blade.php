@@ -208,7 +208,28 @@ aditivo por até 12 meses.
                 <label for="telefone_do_supervisor_estagio" class="required">Telefone do supervisor de estágio: </label>
                     <input type="text" maxlength="11" class="form-control" id="telefone-com-ddd" name="telefone_do_supervisor_estagio" value="{{old('telefone_do_supervisor_estagio',$estagio->telefone_do_supervisor_estagio)}}">
                 </div></div>
-            </div>                
+            </div> 
+            
+            <hr><b>Caso a empresa tenha multiplos representantes legais, rotativos ou esta delegue representantes distintos, favor inserir a informação relativa a este 
+                estágio abaixo. Caso algum campo ou todos sejam deixados em branco, a respectiva informação usada sobre o representante da empresa será a mesma que 
+                que se encontra no cadastro da empresa:</b><br><br>
+            <div class="row">
+                <div class="col-sm form-group">
+                    <div class="form-group">
+                    <label for="nome_do_representante_opcional">Nome do Representante da Empresa: </label>
+                        <input type="text" class="form-control" id="nome_do_representante_opcional" name="nome_do_representante_opcional" value="{{old('nome_do_representante_opcional',$estagio->nome_do_representante_opcional)}}">
+                </div></div>    
+                <div class="col-sm form-group">
+                    <div class="form-group">
+                    <label for="cargo_do_representante_opcional">Cargo do Representante da Empresa: </label>
+                        <input type="text" class="form-control" id="cargo_do_representante_opcional" name="cargo_do_representante_opcional" value="{{old('cargo_do_representante_opcional',$estagio->cargo_do_representante_opcional)}}">
+                </div></div>  
+                <div class="col-sm form-group">
+                    <div class="form-group">
+                    <label for="email_do_representante_opcional">Email do Representante da Empresa: </label>
+                        <input type="text" class="form-control" id="email_do_representante_opcional" name="email_do_representante_opcional" value="{{old('email_do_representante_opcional',$estagio->email_do_representante_opcional)}}">
+                </div></div>   
+            </div>   
     </div>
 </div>
 

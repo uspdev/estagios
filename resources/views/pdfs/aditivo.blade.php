@@ -7,7 +7,8 @@
 
 <br>
 <div style="text-align: justify; text-indent : 1em;"><b>{{ $estagio->empresa->nome }}, CNPJ Nº {{ $estagio->empresa->cnpj }},
-</b> representada por seu(a) <b>{{ $estagio->empresa->cargo_do_representante }}, {{ $estagio->empresa->nome_do_representante }}</b> 
+</b> representada por seu(a) <b>@if($estagio->cargo_do_representante_opcional) {{ $estagio->cargo_do_representante_opcional }} @else {{ $estagio->empresa->cargo_do_representante }} @endif, 
+    @if($estagio->nome_do_representante_opcional) {{ $estagio->nome_do_representante_opcional }} @else {{ $estagio->empresa->nome_do_representante }} @endif</b> 
 adiante designada CONCEDENTE e o ESTAGIÁRIO(A) <b>{{ $estagio->nome }}</b>, no USP <b>
 {{ $estagio->numero_usp }}</b>, curso <b>{{ $estagio->curso }}</b> e como INTERVENIENTE 
 a Faculdade de Filosofia, Letras e Ciências Humanas da Universidade de São Paulo, representada pela Presidente da Comissão de Graduação 

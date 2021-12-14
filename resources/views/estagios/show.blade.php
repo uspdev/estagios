@@ -58,7 +58,7 @@
         <div class="card-body">
             <b>Número USP:</b> {{$estagio->numero_usp}}<br>
             <b>Nome do(a) aluno(a):</b> {{ $estagio->nome }}<br>
-            <b>Curso:</b> {{ $estagio->nomhab }}<br>
+            <b>Curso:</b> {{ $estagio->curso }}<br>
             <b>Média ponderada:</b> {{ $estagio->media_ponderada }}<br>
             <b>Periodo de Matrícula</b>: {{ $estagio->periodo }}<br>           
             <b>Valor da bolsa:</b> {{$estagio->valorbolsa}}<br>
@@ -89,10 +89,12 @@
             <b>E-mail do supervisor do estágio:</b> {{$estagio->email_do_supervisor_estagio}}<br>
             <b>Nome de contato da empresa:</b> {{$estagio->nome_de_contato}}<br>
             <b>Telefone de contato da empresa:</b> {{$estagio->telefone_de_contato}}<br>
-            <b>E-mail de contato da empresa:</b> {{$estagio->email_de_contato}}
-        </div>      
-
-    <br>
+            <b>E-mail de contato da empresa:</b> {{$estagio->email_de_contato}}<br>
+            <b>Nome do representante da empresa:</b> @if($estagio->nome_do_representante_opcional) {{ $estagio->nome_do_representante_opcional }} @else {{ $estagio->empresa->nome_do_representante }} @endif<br>
+            <b>Cargo do representante da empresa:</b> @if($estagio->cargo_do_representante_opcional) {{ $estagio->cargo_do_representante_opcional }} @else {{ $estagio->empresa->cargo_do_representante }} @endif<br>
+            <b>E-mail do representante da empresa:</b> @if($estagio->email_do_representante_opcional) {{ $estagio->email_do_representante_opcional }} @else {{ $estagio->empresa->email }} @endif<br>
+        </div>
+      <br>
 
       <div class="card-header"><b>Período do Estágio</b></div>
         <div class="card-body">
