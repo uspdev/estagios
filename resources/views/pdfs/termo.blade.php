@@ -42,8 +42,8 @@
     <p style="text-indent : 1em;"><b>{{ $estagio->empresa->nome }}, {{ $estagio->empresa->endereco }}, CEP {{ $estagio->empresa->cep }}, CNPJ
             {{ $estagio->empresa->cnpj }}</b>, representada por
         {{ $estagio->pronome_possessivo }}
-        <b>@if(cargo_do_representante_opcional) {{ $estagio->cargo_do_representante_opcional }} @else {{ $estagio->empresa->cargo_do_representante }} @endif</b>, Sr(a)
-        <b>@if(nome_do_representante_opcional) {{ $estagio->nome_do_representante_opcional }} @else {{ $estagio->empresa->nome_do_representante }} @endif</b>, adiante designada CONCEDENTE e
+        <b>@if($estagio->cargo_do_representante_opcional) {{ $estagio->cargo_do_representante_opcional }} @else {{ $estagio->empresa->cargo_do_representante }} @endif</b>, Sr(a)
+        <b>@if($estagio->nome_do_representante_opcional) {{ $estagio->nome_do_representante_opcional }} @else {{ $estagio->empresa->nome_do_representante }} @endif</b>, adiante designada CONCEDENTE e
         {{ $estagio->artigo_definido }} ESTAGIÁRIO
         <b>{{ $estagio->nome }}</b>, estudante, residente a <b>@foreach ($estagio->endereco as
             $campos) {{ $campos }}@endforeach</b>, portador da cédula de identidade
@@ -195,7 +195,7 @@
 
     <br>
     _______________________________________________<br>
-    @if(nome_do_representante_opcional) {{ $estagio->nome_do_representante_opcional }} @else {{ $estagio->empresa->nome_do_representante }} @endif<br>
+    @if($estagio->nome_do_representante_opcional) {{ $estagio->nome_do_representante_opcional }} @else {{ $estagio->empresa->nome_do_representante }} @endif<br>
     Representante da {{ $estagio->empresa->nome }}<br><br>
     _______________________________________________<br>
     {{ $estagio->nome }}<br><br>
@@ -207,7 +207,7 @@
 
 <div>
     <p><b>Contato:</b> {{ $estagio->nome_de_contato }}, Telefone: {{ $estagio->telefone_de_contato }} <br>
-    <b>E-mail da empresa:</b> @if(email_do_representante_opcional) {{ $estagio->email_do_representante_opcional }} @else {{ $estagio->empresa->email }} @endif
+    <b>E-mail da empresa:</b> @if($estagio->email_do_representante_opcional) {{ $estagio->email_do_representante_opcional }} @else {{ $estagio->empresa->email }} @endif
     </p>
 </div>
 

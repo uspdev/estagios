@@ -36,8 +36,8 @@
 
 <div style="text-align: justify;">
     <p style="text-indent : 6em;"><b>{{ $estagio->empresa->nome }}, CNPJ {{ $estagio->empresa->cnpj }}</b>,
-        representada por seu(a) <b>@if(cargo_do_representante_opcional) {{ $estagio->cargo_do_representante_opcional }} @else {{ $estagio->empresa->cargo_do_representante }} @endif
-        , @if(nome_do_representante_opcional) {{ $estagio->nome_do_representante_opcional }} @else {{ $estagio->empresa->nome_do_representante }} @endif</b> adiante designada
+        representada por seu(a) <b>@if($estagio->cargo_do_representante_opcional) {{ $estagio->cargo_do_representante_opcional }} @else {{ $estagio->empresa->cargo_do_representante }} @endif
+        , @if($estagio->nome_do_representante_opcional) {{ $estagio->nome_do_representante_opcional }} @else {{ $estagio->empresa->nome_do_representante }} @endif</b> adiante designada
         CONCEDENTE e o ESTAGIÁRIO(A) <b>{{ $estagio->nome }}</b>, no USP <b>{{ $estagio->numero_usp }}</b>, 
         curso {{ $estagio->curso }} e como
         INTERVENIENTE a Faculdade de Filosofia, Letras e Ciências Humanas da Universidade de São Paulo, representada
@@ -90,7 +90,7 @@
 
 <div>
     <p><b>Contato:</b> {{ $estagio->nome_de_contato }}, Telefone: {{ $estagio->telefone_de_contato }} <br>
-    <b>E-mail da empresa:</b> @if(email_do_representante_opcional) {{ $estagio->email_do_representante_opcional }} @else {{ $estagio->empresa->email }} @endif
+    <b>E-mail da empresa:</b> @if($estagio->email_do_representante_opcional) {{ $estagio->email_do_representante_opcional }} @else {{ $estagio->empresa->email }} @endif
     </p>
 </div>
 
@@ -153,7 +153,7 @@
 
 <div style="font-style: italic; font-weight: bold;">
     _______________________________________________<br>
-    @if(nome_do_representante_opcional) {{ $estagio->nome_do_representante_opcional }} @else {{ $estagio->empresa->nome_do_representante }} @endif<br>
+    @if($estagio->nome_do_representante_opcional) {{ $estagio->nome_do_representante_opcional }} @else {{ $estagio->empresa->nome_do_representante }} @endif<br>
     Representante da {{ $estagio->empresa->nome }}<br><br>
 
     _______________________________________________<br>
