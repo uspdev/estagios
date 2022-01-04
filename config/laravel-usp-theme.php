@@ -96,7 +96,6 @@ $right_menu = [
 return [
     'title' => 'Estágios',
     'skin' => env('USP_THEME_SKIN', 'uspdev'),
-    'slogan' => config('app.slogan'),
     'container' => 'container container-fflch',
     'app_url' => config('app.url'),
     'logout_method' => 'POST',
