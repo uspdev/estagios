@@ -21,9 +21,9 @@ estágio.
 <br>
 
 <div style="text-align: justify;">
-Comunicamos que em <b>{{ $estagio->rescisao_data }}</b> foi/será rescindido o Termo de Compromisso de Estágio firmado em <b>{{ $estagio->data_inicial }}</b> 
-entre <b>{{ $estagio->empresa->nome }}</b>, CNPJ <b>{{ $estagio->empresa->cnpj}}</b> e o(a) estagiário(a) <b>{{ $estagio->nome }}</b>, 
-nº USP <b>{{ $estagio->numero_usp }}</b>, regularmente matriculado no curso de <b>{{ $estagio->curso }}</b> com 
+Comunicamos que em <b>{{ $estagio->rescisao_data }}</b> foi/será rescindido o Termo de Compromisso de Estágio firmado em <b>{{ $estagio->data_inicial }}</b>
+entre <b>{{ $estagio->empresa->nome }}</b>, CNPJ <b>{{ $estagio->empresa->cnpj}}</b> e o(a) estagiário(a) <b>{{ $estagio->nome }}</b>,
+nº USP <b>{{ $estagio->numero_usp }}</b>, regularmente matriculado no curso de <b>{{ $estagio->curso }}</b> com
 interveniência da Universidade de São Paulo.
 <br>
 <br>
@@ -52,7 +52,7 @@ ________________________________________<br>
 <br>
 <br>
 ________________________________________<br>
-<b>{{ \App\Models\Parecerista::presidente() }}<br>
+<b>{{ \App\Models\Parecerista::nomePresidente() }}<br>
 Presidente da Comissão de Graduação da FFLCH/USP</b>
 
 

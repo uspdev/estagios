@@ -20,7 +20,6 @@
     <div class="row">
       <div class="col-sm form-group">
         <label for="presidente">É o/a Presidente da Comissão de Graduação?</label>
-        <input type="hidden" name="presidente" value="0">
         <input type="checkbox" id="presidente" name="presidente" value="1"
         @if($parecerista->presidente) checked @endif>
       </div>

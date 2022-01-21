@@ -22,7 +22,7 @@ class Parecerista extends Model
         }
     }
 
-    public function getNomePresidenteAttribute() {
+    public static function nomePresidente() {
         $presidente = Parecerista::where('presidente', true)->first();
         if($presidente){
             return Pessoa::nomeCompleto($presidente->numero_usp);

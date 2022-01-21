@@ -37,11 +37,10 @@ class PareceristaController extends Controller
 
     public function store(PareceristaRequest $request){
         $this->authorize('admin');
-        $validated = $request->validated();
-        if($validated['presidente'] == 1) {
+        if(array_key_exists('presidente', $request->validated())) {
             Parecerista::where('presidente', 1)->update(['presidente' => 0]);
         }
-        Parecerista::create($validated);
+        Parecerista::create($request->validated());
         return redirect('/pareceristas/');
     }
 
@@ -52,12 +51,11 @@ class PareceristaController extends Controller
 
     public function update(PareceristaRequest $request, Parecerista $parecerista){
         $this->authorize('admin');
-        $validated = $request->validated();
-        if($validated['presidente'] == 1) {
+        if(array_key_exists('presidente', $request->validated())) {
             Parecerista::where('presidente', 1)->update(['presidente' => 0]);
         }
         $parecerista = Parecerista::find($parecerista->id);
-        $parecerista->update($validated);
+        $parecerista->update($request->validated());
         return redirect("pareceristas/$parecerista->id");
     }
 
