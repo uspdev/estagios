@@ -39,11 +39,7 @@ class PareceristaController extends Controller
         $this->authorize('admin');
         $validated = $request->validated();
         if($validated['presidente'] == 1) {
-            $pareceristas = Parecerista::all();
-            foreach($pareceristas as $parecerista){
-                $parecerista->presidente = 0;
-                $parecerista->save();
-            }
+            Parecerista::where('presidente', 1)->update(['presidente' => 0]);
         }
         Parecerista::create($validated);
         return redirect('/pareceristas/');
@@ -58,12 +54,9 @@ class PareceristaController extends Controller
         $this->authorize('admin');
         $validated = $request->validated();
         if($validated['presidente'] == 1) {
-            $pareceristas = Parecerista::all();
-            foreach($pareceristas as $parecerista){
-                $parecerista->presidente = 0;
-                $parecerista->save();
-            }
+            Parecerista::where('presidente', 1)->update(['presidente' => 0]);
         }
+        $parecerista = Parecerista::find($parecerista->id);
         $parecerista->update($validated);
         return redirect("pareceristas/$parecerista->id");
     }
@@ -130,7 +123,7 @@ class PareceristaController extends Controller
 
         $estagios = Estagio::where('status', "rescisao")
                       ->where('numparecerista',Auth::user()->codpes);
-        
+
         $statusavaliado = true;
 
         if($request->type){

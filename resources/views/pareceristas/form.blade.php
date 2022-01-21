@@ -11,7 +11,7 @@
   <div class="card-body">
 
     <div class="row">
-      <div class="col-sm form-group"> 
+      <div class="col-sm form-group">
         <label for="numero_usp" class="required">Número USP: </label>
         <input type="text" class="form-control" id="numero_usp" name="numero_usp" value="{{old('numero_usp',$parecerista->numero_usp)}}">
       </div>
@@ -21,7 +21,8 @@
       <div class="col-sm form-group">
         <label for="presidente">É o/a Presidente da Comissão de Graduação?</label>
         <input type="hidden" name="presidente" value="0">
-        <input type="checkbox" id="presidente" name="presidente" value="1" @if($parecerista->presidente) checked @endif>
+        <input type="checkbox" id="presidente" name="presidente" value="1"
+        @if($parecerista->presidente) checked @endif>
       </div>
     </div>
 
