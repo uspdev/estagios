@@ -45,9 +45,8 @@
         <b>@if($estagio->cargo_do_representante_opcional) {{ $estagio->cargo_do_representante_opcional }} @else {{ $estagio->empresa->cargo_do_representante }} @endif</b>, Sr(a)
         <b>@if($estagio->nome_do_representante_opcional) {{ $estagio->nome_do_representante_opcional }} @else {{ $estagio->empresa->nome_do_representante }} @endif</b>, adiante designada CONCEDENTE e
         {{ $estagio->artigo_definido }} ESTAGIÁRIO
-        <b>{{ $estagio->nome }}</b>, estudante, residente a <b>@foreach ($estagio->endereco as
-            $campos) {{ $campos }}@endforeach</b>, portador da cédula de identidade
-        {{ $estagio->tipo_identidade }} n°
+        <b>{{ $estagio->nome }}</b>, estudante, residente a <b>{{ $estagio->endereco }}</b>,
+        portador da cédula de identidade {{ $estagio->tipo_identidade }} n°
         <b>{{ $estagio->identidade }}</b> e CPF nº
         <b>{{ $estagio->cpf }}</b>, aluno do Curso de
         <b>{{ $estagio->curso }}</b>, nº USP

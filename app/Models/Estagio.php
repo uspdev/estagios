@@ -55,14 +55,14 @@ class Estagio extends Model implements Auditable
             'Parcialmente'
         ];
     }
-    
+
     public function buscastatusOptions(){
         return [
             'Sim',
             'Não',
             'Parcialmente'
         ];
-    }  
+    }
 
     public function pandemiahomeofficeOptions(){
         return [
@@ -86,7 +86,7 @@ class Estagio extends Model implements Auditable
             'Não'
         ];
     }
-    
+
     public function getDataInicialAttribute($value) {
         return implode('/',array_reverse(explode('-',$value)));
     }
@@ -97,7 +97,7 @@ class Estagio extends Model implements Auditable
         } else {
             $this->attributes['data_inicial'] = $value;
         }
-       
+
     }
 
     public function getDataFinalAttribute($value) {
@@ -121,24 +121,19 @@ class Estagio extends Model implements Auditable
     }
 
     public function setCnpjAttribute($value){
-        $this->attributes['cnpj'] = preg_replace("/[^0-9]/", "", $value);  
+        $this->attributes['cnpj'] = preg_replace("/[^0-9]/", "", $value);
     }
 
     public function getEnderecoAttribute() {
         if($this->numero_usp) {
-            $endereco = Pessoa::obterEndereco($this->numero_usp);
-                
             // Formata endereço
-            return [
-                $endereco['nomtiplgr'],
-                $endereco['epflgr'] . ",",
-                $endereco['numlgr'] . " ",
-                $endereco['cpllgr'] . " - ",
-                $endereco['nombro'] . " - ",
-                $endereco['cidloc'] . " - ",
-                $endereco['sglest'] . " - ",
-                "CEP: " . $endereco['codendptl'],
-            ];
+            if($endereco = Pessoa::obterEndereco($this->numero_usp)) {
+                return $endereco = "{$endereco['nomtiplgr']} {$endereco['epflgr']},
+                    {$endereco['numlgr']} {$endereco['cpllgr']} -
+                    {$endereco['nombro']} - {$endereco['cidloc']} -
+                    {$endereco['sglest']} - CEP: {$endereco['codendptl']}";
+            }
+            return $endereco = 'não cadastrado';
         }
     }
 
@@ -223,7 +218,7 @@ class Estagio extends Model implements Auditable
             }else{
                 return 'Sem infomação disponível';
             }
-        } 
+        }
     }
 
     public function getGradeAttribute() {
