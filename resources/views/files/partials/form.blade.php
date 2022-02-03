@@ -1,4 +1,4 @@
-@can('admin_ou_empresa',$estagio->cnpj)
+@can('admin')
 
 <div class="row">
     <div class="col-4 form-group">
@@ -67,6 +67,59 @@
                         </td>
                     @endcan('admin')
 
+                    </tr>
+                @endif    
+                @endforeach
+                </tbody>
+            </table>
+
+    </div>
+
+</div>
+<hr>
+@endcan
+
+
+@can('empresa',$estagio->cnpj)
+
+<div class="row">
+    <div class="col-4 form-group">
+
+        Enviar documentos (Apenas arquivos em formato PDF):
+
+        <form method="post" enctype="multipart/form-data" action="/files/store">
+            @csrf 
+            <input type="hidden" name="estagio_id" value="{{ $estagio->id }}">
+            <input type="file" name="file">
+            <br><hr>
+            <label for="original_name" class="required">Nome do Arquivo: </label>
+            <input type="text" class="form-control" id="original_name" name="original_name">
+            <br>
+            <label for="tipoarquivo" class="required">Tipo de Arquivo: </label>
+            <select name="tipoarquivo" class="form-control" id="tipoarquivo">
+                <option value="" selected="">- Selecione -</option>
+                <option value="documento">Documento Anexo</option>
+            </select> 
+            <br>
+            <button type="submit" class="btn btn-success"> Enviar </button>
+        </form>   
+
+    </div>
+    <div class="col-8 form-group">
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Arquivo</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($estagio->arquivos as $arquivo)
+                @if($arquivo->tipo_documento == null)
+                    <tr>
+                    <td>
+                        <a href="/files/{{$arquivo->id}}.pdf"  type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>
+                    </td>
                     </tr>
                 @endif    
                 @endforeach
