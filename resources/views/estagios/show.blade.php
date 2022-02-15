@@ -56,6 +56,16 @@
 
       <div class="card-header"><b>Informações Gerais</b></div>
         <div class="card-body">
+          @can('admin')
+            <form method="POST" action="/editar/{{$estagio->id}}">
+              @csrf
+              <div class="form-group">
+                  <button type="submit" class="btn btn-info" name="enviar_para_analise_tecnica" value="apenas_salvar_renovacao">
+                  Editar Informações
+                  </button>
+                </div>
+            </form>
+          @endcan('admin')
             <b>Número USP:</b> {{$estagio->numero_usp}}<br>
             <b>Nome do(a) aluno(a):</b> {{ $estagio->nome }}<br>
             <b>Curso:</b> {{ $estagio->curso }}<br>

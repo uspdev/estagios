@@ -155,4 +155,14 @@ class EstagioController extends Controller
         } 
     }
 
+    public function Editar(Estagio $estagio)
+    {
+        if (Gate::allows('admin')) {
+            return view('estagios.edit')->with([
+                'estagio' => $estagio,
+            ]);
+        }
+        abort(403, 'Access denied');
+    }
+
 }

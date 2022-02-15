@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\EstagioRequest;
+use App\Http\Requests\EdicaoRequest;
 
 use Auth;
 use PDF;
@@ -451,4 +452,18 @@ class EstagioWorkflowController extends Controller
                 }
                 return redirect("/estagios/{$estagio->id}");
             }      
+
+    #Funções Edição
+
+    public function enviarEdicao(EdicaoRequest $request, Estagio $estagio){
+
+        if ( Gate::allows('admin')) {
+                $validated = $request->validated();
+                $estagio->update($validated);   
+            } else {
+                request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
+            }
+            return redirect("/estagios/{$estagio->id}");
+        }    
+
 }

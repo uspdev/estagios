@@ -114,6 +114,10 @@ Route::get('/estagios_rescindidos', [PareceristaController::class,'estagiosResci
 #alterar parecerista
 Route::post('/parecer_merito/{estagio}', [EstagioController::class,'alterarParecerista']);
 
+#editar
+Route::post('/editar/{estagio}', [EstagioController::class,'Editar']);
+Route::patch('/enviar_edicao/{estagio}', [EstagioWorkflowController::class,'enviarEdicao']);
+
 #arquivos
 Route::post('/files/store', [FileController::class,'store']);
 Route::post('/files/store_relatorio', [FileController::class,'store_relatorio']);
