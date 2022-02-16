@@ -10,10 +10,11 @@
 <h4>Editar Estágio</h4>
 
 <div class="card">
-  <div class="card-header">Informações sobre o estágio</div>
+  <div class="card-header">Informações sobre o estágio ( <b>{{ $estagio->nome
+      }}</b> )</div>
     <div class="card-body">
         <div class="form-group">
-            <label for="nomcur">Curso de Graduação: </label>  
+            <label for="nomcur">Curso de Graduação: </label>
             <select name="nomcur" class="form-control" id="nomcur">
                         <option value="" selected="">- Selecione -</option>
                             @foreach ($estagio->nomcurOptions() as $option)
@@ -34,8 +35,8 @@
             <button type="submit" class="btn btn-info">
                 Salvar alterações
             </button>
-        </div>    
-    
+        </div>
+
     </div>
 </div>
 
