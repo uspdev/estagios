@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\EstagioRequest;
+use App\Http\Requests\EdicaoRequest;
 
 use Auth;
 use PDF;
@@ -155,9 +156,9 @@ class EstagioWorkflowController extends Controller
             $estagio->numparecerista = User::find($estagio->analise_academica_user_id)->codpes;
             $estagio->last_status = $estagio->status;
             $estagio->status = 'em_analise_tecnica';
-            $estagio->save(); 
+            $estagio->save();
             Mail::queue(new enviar_analise_academica_mail($estagio));
-            request()->session()->flash('alert-info','Parecer incluído com sucesso! Estágio enviado para o setor de graduação');    
+            request()->session()->flash('alert-info','Parecer incluído com sucesso! Estágio enviado para o setor de graduação');
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
@@ -174,8 +175,8 @@ class EstagioWorkflowController extends Controller
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
         return redirect("/estagios/{$estagio->id}");
-    }  
-    
+    }
+
     public function voltar_analise_academica(Request $request, Estagio $estagio){
 
         if (Gate::allows('admin')) {
@@ -186,7 +187,7 @@ class EstagioWorkflowController extends Controller
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
         return redirect("/estagios/{$estagio->id}");
-    }  
+    }
 
     #Funções Assinatura
 
@@ -200,7 +201,7 @@ class EstagioWorkflowController extends Controller
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
         return redirect("/estagios/{$estagio->id}");
-    }  
+    }
 
     #Funções Concluido
 
@@ -275,12 +276,12 @@ class EstagioWorkflowController extends Controller
             $aditivo->alteracao = $request->alteracao;
             $aditivo->estagio_id = $estagio->id;
             $aditivo->aprovado_graduacao = 0;
-            $aditivo->aprovado_parecerista = 0; 
+            $aditivo->aprovado_parecerista = 0;
             $aditivo->save();
             $estagio->last_status = $estagio->status;
             $estagio->status = 'em_analise_tecnica';
             $estagio->save();
-            Mail::queue(new alteracao_pendente_empresa_mail($estagio)); 
+            Mail::queue(new alteracao_pendente_empresa_mail($estagio));
             request()->session()->flash('alert-info', 'Enviado para análise do setor de graduação');
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
@@ -298,7 +299,7 @@ class EstagioWorkflowController extends Controller
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
         return redirect("/estagios/{$estagio->id}");
-    }  
+    }
 
 
     public function analise_alteracao(Request $request, Aditivo $aditivo, Estagio $estagio){
@@ -306,13 +307,13 @@ class EstagioWorkflowController extends Controller
         if (Gate::allows('admin') | Gate::allows('parecerista')) {
 
             //caso de aditivo deferido diretamente
-            if($request->analise_alteracao_action == 'deferir_alteracao') {    
+            if($request->analise_alteracao_action == 'deferir_alteracao') {
                 $estagio = Estagio::find($aditivo->estagio_id);
-                $aditivo->comentario_graduacao = $request->comentario_graduacao; 
+                $aditivo->comentario_graduacao = $request->comentario_graduacao;
                 $aditivo->aprovado_graduacao = 1;
-                $aditivo->aprovado_parecerista = 1;  
+                $aditivo->aprovado_parecerista = 1;
                 $aditivo->save();
-                Mail::queue(new alteracao_empresa_mail($estagio));      
+                Mail::queue(new alteracao_empresa_mail($estagio));
                 request()->session()->flash('alert-info', 'Aditivo deferido com sucesso');
             }
 
@@ -321,26 +322,26 @@ class EstagioWorkflowController extends Controller
                 $request->validate([
                     'comentario_graduacao' => 'required',
                 ]);
-                $estagio = Estagio::find($aditivo->estagio_id); 
+                $estagio = Estagio::find($aditivo->estagio_id);
                 $aditivo->comentario_graduacao = $request->comentario_graduacao;
                 $aditivo->aprovado_graduacao = 0;
                 $aditivo->save();
-                Mail::queue(new alteracao_indeferida_mail($estagio));                
+                Mail::queue(new alteracao_indeferida_mail($estagio));
                 request()->session()->flash('alert-info', 'Aditivo indeferido com sucesso');
             }
-            
+
             //caso de necessidade de análise do parecerista
             if($request->analise_alteracao_action == 'solicitar_parecerista') {
                 $request->validate([
                     'comentario_graduacao' => 'required',
                 ]);
-                $estagio = Estagio::find($aditivo->estagio_id); 
+                $estagio = Estagio::find($aditivo->estagio_id);
                 $aditivo->aprovado_graduacao = null;
                 $aditivo->comentario_graduacao = $request->comentario_graduacao;
                 $estagio->status = 'analise_alteracao_parecerista';
                 $aditivo->save();
                 $estagio->save();
-                Mail::queue(new alteracao_mail($estagio));                
+                Mail::queue(new alteracao_mail($estagio));
                 request()->session()->flash('alert-info', 'Aditivo enviado para análise do parecerista');
             }
 
@@ -349,12 +350,12 @@ class EstagioWorkflowController extends Controller
                 $request->validate([
                     'comentario_parecerista' => 'required',
                 ]);
-                $estagio = Estagio::find($aditivo->estagio_id); 
+                $estagio = Estagio::find($aditivo->estagio_id);
                 $aditivo->comentario_parecerista = $request->comentario_parecerista;
                 $aditivo->aprovado_parecerista = 1;
                 $estagio->status = 'em_analise_tecnica';
-                $aditivo->save();       
-                $estagio->save();       
+                $aditivo->save();
+                $estagio->save();
                 request()->session()->flash('alert-info', 'Análise enviada para o setor de estágios');
             }
 
@@ -363,30 +364,30 @@ class EstagioWorkflowController extends Controller
                 $request->validate([
                     'comentario_parecerista' => 'required',
                 ]);
-                $estagio = Estagio::find($aditivo->estagio_id); 
+                $estagio = Estagio::find($aditivo->estagio_id);
                 $aditivo->comentario_parecerista = $request->comentario_parecerista;
                 $aditivo->aprovado_parecerista = 0;
                 $estagio->status = 'em_analise_tecnica';
-                $aditivo->save();           
+                $aditivo->save();
                 $estagio->save();
                 request()->session()->flash('alert-info', 'Análise enviada para o setor de estágios');
             }
 
             //Adm aprova após parecerista reprovar o aditivo
-            if($request->analise_alteracao_action == 'deferir_alteracao_posparecerista') {    
-                $estagio = Estagio::find($aditivo->estagio_id); 
+            if($request->analise_alteracao_action == 'deferir_alteracao_posparecerista') {
+                $estagio = Estagio::find($aditivo->estagio_id);
                 $aditivo->aprovado_graduacao = 1;
                 $aditivo->save();
-                Mail::queue(new alteracao_empresa_mail($estagio));      
+                Mail::queue(new alteracao_empresa_mail($estagio));
                 request()->session()->flash('alert-info', 'Aditivo deferido com sucesso');
             }
 
             //Adm reprova após parecerista reprovar o aditivo
             if($request->analise_alteracao_action == 'indeferir_alteracao_posparecerista') {
-                $estagio = Estagio::find($aditivo->estagio_id); 
+                $estagio = Estagio::find($aditivo->estagio_id);
                 $aditivo->aprovado_graduacao = 0;
                 $aditivo->save();
-                Mail::queue(new alteracao_indeferida_mail($estagio));                
+                Mail::queue(new alteracao_indeferida_mail($estagio));
                 request()->session()->flash('alert-info', 'Aditivo indeferido com sucesso');
             }
 
@@ -408,8 +409,8 @@ class EstagioWorkflowController extends Controller
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
         return redirect("/estagios/{$estagio->id}");
-    }     
-    
+    }
+
     public function avaliacao(Request $request, Estagio $estagio){
 
         if (Gate::allows('parecerista')) {
@@ -424,7 +425,7 @@ class EstagioWorkflowController extends Controller
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
         return redirect("/estagios/{$estagio->id}");
-    }  
+    }
 
     #Funções Cancelamento
 
@@ -438,7 +439,7 @@ class EstagioWorkflowController extends Controller
                 request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
             }
             return redirect("/estagios/{$estagio->id}");
-        }  
+        }
 
         public function cancelar_cancelamento(Estagio $estagio){
 
@@ -450,5 +451,17 @@ class EstagioWorkflowController extends Controller
                     request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
                 }
                 return redirect("/estagios/{$estagio->id}");
-            }      
+            }
+
+    #Funções Edição
+
+    public function enviarEdicao(EdicaoRequest $request, Estagio $estagio){
+        if ( Gate::allows('admin')) {
+            $estagio->update($request->validated());
+        } else {
+            request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
+        }
+        return redirect("/estagios/{$estagio->id}");
+    }
+
 }

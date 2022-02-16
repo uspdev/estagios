@@ -33,7 +33,7 @@ Route::resource('/estatisticas',EstatisticaController::class);
 # vagas
 Route::post('/statusvagas/{vaga}',[VagaController::class,'status'])->name('vagas.status');
 
-#PDF's 
+#PDF's
 Route::get('/pdfs/termo/{estagio}', [PDFsController::class, 'termo']);
 Route::get('/pdfs/renovacao/{estagio}', [PDFsController::class, 'renovacao']);
 Route::get('/pdfs/aditivo/{estagio}', [PDFsController::class, 'aditivo']);
@@ -44,8 +44,8 @@ Route::get('/pdfs/parecer/{estagio}', [PDFsController::class, 'parecer']);
 Route::get('/emails/enviar_para_analise_tecnica/{estagio}', [EmailController::class, 'enviar_para_analise_tecnica']);
 Route::get('/emails/enviar_para_analise_tecnica_renovacao/{estagio}', [EmailController::class, 'enviar_para_analise_tecnica_renovacao']);
 Route::get('/emails/enviar_para_parecerista/{estagio}', [EmailController::class, 'enviar_para_parecerista']);
-Route::get('/emails/alteracao/{estagio}', [EmailController::class, 'alteracao']); 
-Route::get('/emails/alteracao_empresa/{estagio}', [EmailController::class, 'alteracao_empresa']); 
+Route::get('/emails/alteracao/{estagio}', [EmailController::class, 'alteracao']);
+Route::get('/emails/alteracao_empresa/{estagio}', [EmailController::class, 'alteracao_empresa']);
 Route::get('/emails/analise_rescisao/{estagio}', [EmailController::class, 'analise_rescisao']);
 Route::get('/emails/rescisao_empresa/{estagio}', [EmailController::class, 'rescisao_empresa']);
 
@@ -114,6 +114,10 @@ Route::get('/estagios_rescindidos', [PareceristaController::class,'estagiosResci
 #alterar parecerista
 Route::post('/parecer_merito/{estagio}', [EstagioController::class,'alterarParecerista']);
 
+#editar
+Route::post('/editar/{estagio}', [EstagioController::class,'editar']);
+Route::patch('/enviar_edicao/{estagio}', [EstagioWorkflowController::class,'enviarEdicao']);
+
 #arquivos
 Route::post('/files/store', [FileController::class,'store']);
 Route::post('/files/store_relatorio', [FileController::class,'store_relatorio']);
@@ -123,6 +127,6 @@ Route::post('/files/destroy', [FileController::class,'destroy']);
 # api
 Route::get('info', [EstagioController::class, 'info'])->name('estagios.info');
 
-# Logs  
+# Logs
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('can:admin');
 

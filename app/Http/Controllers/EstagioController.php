@@ -26,12 +26,12 @@ class EstagioController extends Controller
                 $estagios = Estagio::where('numero_usp','LIKE',"%{$request->busca}%")
                 ->orWhere('nome','LIKE',"%{$request->busca}%")
                 ->where('status', $request->buscastatus)->orderBy('nome')->paginate(10);
-                
+
             } else if(isset($request->busca)) {
                 $estagios = Estagio::where('numero_usp','LIKE',"%{$request->busca}%")
                 ->orWhere('nome','LIKE',"%{$request->busca}%")->orderBy('nome')->paginate(10);
                 }
-                
+
                 else if(isset($request->buscastatus)){
                 if ($request->buscastatus != null){
                     $estagios = Estagio::where('status', $request->buscastatus)->orderBy('nome')->paginate(10);
@@ -77,7 +77,7 @@ class EstagioController extends Controller
             return view('estagios.show')->with('estagio',$estagio);
         }
         abort(403, 'Access denied');
-    }    
+    }
 
     public function create(){
         $this->authorize('empresa');
@@ -88,7 +88,7 @@ class EstagioController extends Controller
     {
         $this->authorize('empresa');
         $validated = $request->validated();
-        $validated['status'] = 'em_elaboracao';           
+        $validated['status'] = 'em_elaboracao';
         $estagio = Estagio::create($validated);
         $curso = Graduacao::curso($estagio->numero_usp, 8);
         if($curso) {
@@ -117,7 +117,7 @@ class EstagioController extends Controller
             return redirect('/estagios');
         }
         abort(403, 'Access denied');
-    } 
+    }
 
     public function alterarParecerista(Request $request, Estagio $estagio){
         if (Gate::allows('admin')) {
@@ -152,7 +152,17 @@ class EstagioController extends Controller
             return response($info);
         } else {
             return response('Pessoa não encontrada');
-        } 
+        }
+    }
+
+    public function editar(Estagio $estagio)
+    {
+        if (Gate::allows('admin')) {
+            return view('estagios.edit')->with([
+                'estagio' => $estagio,
+            ]);
+        }
+        abort(403, 'Access denied');
     }
 
 }

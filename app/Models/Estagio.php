@@ -87,6 +87,17 @@ class Estagio extends Model implements Auditable
         ];
     }
 
+    public function nomcurOptions(){
+        return [
+            'Letras',
+            'Filosofia',            
+            'História',
+            'Ciências Sociais',
+            'Geografia',
+            'Ciências Moleculares',
+        ];
+    }
+
     public function getDataInicialAttribute($value) {
         return implode('/',array_reverse(explode('-',$value)));
     }

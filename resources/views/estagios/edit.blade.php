@@ -11,9 +11,9 @@
 
 @section('content')
 
-<form method="POST" action="/estagios/{{$estagio->id}}">
+<form method="POST" action="/enviar_edicao/{{$estagio->id}}">
 @csrf
 @method('patch')
-@include ('estagios.form')
+@include ('estagios.partials.editar')
 </form>
 @endsection('content')
