@@ -11,7 +11,6 @@ use PDF;
 use App\Models\Estagio;
 use App\Models\User;
 use App\Models\Aditivo;
-use App\Models\File;
 use Illuminate\Support\Facades\Gate;
 use Uspdev\Replicado\Pessoa;
 use App\Mail\enviar_para_analise_tecnica_mail;
@@ -206,7 +205,7 @@ class EstagioWorkflowController extends Controller
 
     #Funções Concluido
 
-    public function renovacao(Request $request, Estagio $estagio, File $file) {
+    public function renovacao(Request $request, Estagio $estagio) {
 
         if ( Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
 
