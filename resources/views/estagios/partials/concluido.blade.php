@@ -20,6 +20,9 @@
     <div class="card">
     <div class="card-header"><b>EM CASO DE RESCISÃO</b></div>
     <div class="card-body">
+    <b>Aviso:</b>Para realizar o pedido de renovação do estágio será necessária a realização da rescisão e a finalização dos procedimentos de entrega do 
+    relatório final e de avaliação do parecerista deste estágio.
+    <br><br>
 
     <form method="POST" action="/rescisao/{{$estagio->id}}">
     @csrf
@@ -36,21 +39,6 @@
             Enviar Pedido de Rescisão
     </button>   
     </form>
-    </div></div> <br>
-
-    <div class="card">
-    <div class="card-header"><b>EM CASO DE RENOVAÇÃO</b></div>
-    <div class="card-body">
-
-    
-    <form method="POST" action="/renovacao/{{$estagio->id}}">
-    @csrf
-    <button type="submit" class="btn btn-info" name="rescisao_action" value="rescisao"
-            onClick="return confirm('Tem certeza que deseja renovar o estágio?')" >
-            Enviar Pedido de Renovação
-    </button>   
-    </form>
-    
     </div></div> <br>
 
     <div class="card">

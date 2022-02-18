@@ -11,6 +11,7 @@ use PDF;
 use App\Models\Estagio;
 use App\Models\User;
 use App\Models\Aditivo;
+use App\Models\File;
 use Illuminate\Support\Facades\Gate;
 use Uspdev\Replicado\Pessoa;
 use App\Mail\enviar_para_analise_tecnica_mail;
@@ -205,32 +206,42 @@ class EstagioWorkflowController extends Controller
 
     #Funções Concluido
 
-    public function renovacao(Request $request, Estagio $estagio) {
+    public function renovacao(Request $request, Estagio $estagio, File $file) {
 
         if ( Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
 
-            $renovacao = $estagio->replicate();
-            $renovacao->push();
-
-            if(empty($estagio->renovacao_parent_id)){
-                $renovacao->renovacao_parent_id = $estagio->id;
+            if($estagio->avaliacao_empresa == true) 
+            {
+                $renovacao = $estagio->replicate();
+                $renovacao->push();
+    
+                if(empty($estagio->renovacao_parent_id)){
+                    $renovacao->renovacao_parent_id = $estagio->id;
+                }
+                $renovacao->analise_tecnica = null;
+                $renovacao->horariocompativel = null;
+                $renovacao->desempenhoacademico = null;
+                $renovacao->atividadespertinentes= null;
+                $renovacao->atividadesjustificativa = null;
+                $renovacao->tipodeferimento = null;
+                $renovacao->condicaodeferimento = null;
+                $renovacao->analise_academica = null;
+                $renovacao->analise_academica_user_id = null;
+                $renovacao->avaliacao_empresa = null;
+                $renovacao->avaliacaodescricao = null;
+                $renovacao->save();
+                $renovacao->status = 'em_elaboracao';
+                $renovacao->save();
+                return redirect("estagios/{$renovacao->id}");
+            } else {
+                request()->session()->flash('alert-danger', 'O processo de finalização do estágio ainda não foi concluido. Favor checar o andamento 
+                com o setor de estágio em caso de dúvidas');
+                return redirect("/estagios/{$estagio->id}");
             }
-            $renovacao->analise_tecnica = null;
-            $renovacao->horariocompativel = null;
-            $renovacao->desempenhoacademico = null;
-            $renovacao->atividadespertinentes= null;
-            $renovacao->atividadesjustificativa = null;
-            $renovacao->tipodeferimento = null;
-            $renovacao->condicaodeferimento = null;
-            $renovacao->analise_academica = null;
-            $renovacao->analise_academica_user_id = null;
-            $renovacao->save();
-            $renovacao->status = 'em_elaboracao';
-            $renovacao->save();
+
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
-        return redirect("estagios/{$renovacao->id}");
     }
 
     public function rescisao(Request $request, Estagio $estagio){
