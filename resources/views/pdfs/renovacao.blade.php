@@ -122,6 +122,9 @@
     Área de atuação da Empresa: <b>{{ $estagio->empresa->area_de_atuacao }}</b><br>
     Nome do supervisor(a) interno(a) do Estágio na Empresa: <b>{{ $estagio->nome_do_supervisor_estagio }}</b><br>
     Telefone: <b>{{ $estagio->telefone_do_supervisor_estagio }}</b> , E-mail: <b>{{ $estagio->email_do_supervisor_estagio }}</b><br>
+    Nome do Representante da Empresa: <b>@if($estagio->nome_do_representante_opcional) {{ $estagio->nome_do_representante_opcional }} @else {{ $estagio->empresa->nome_do_representante }} @endif </b><br>
+    Cargo do Representante da Empresa: <b>@if($estagio->cargo_do_representante_opcional) {{ $estagio->cargo_do_representante_opcional }} @else {{ $estagio->empresa->cargo_do_representante }} @endif </b><br>
+    E-mail do Representante da Empresa: <b>@if($estagio->email_do_representante_opcional) {{ $estagio->email_do_representante_opcional }} @else {{ $estagio->empresa->email }} @endif </b><br>
     Data de início do estágio: <b>{{$estagio->data_inicial}}</b><br>
     Data do término do estágio: <b>{{$estagio->data_final}}</b><br>
     Horário do Estágio: <b>{{ $estagio->horario }}</b> Carga horária semanal: <b>{{ $estagio->cargahoras }}
