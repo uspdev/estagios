@@ -32,6 +32,22 @@
     
     </div> 
 
+    
+    <div class="card-header"><b>EM CASO DE RENOVAÇÃO</b></div>
+    <div class="card-body">
+        <b>Aviso:</b> A renovação do estágio só podera ser realizada após o aluno enviar o relatório final e o mesmo ser avaliado pelo parecerista.
+        <br><br>
+
+        <form method="POST" action="/renovacao/{{$estagio->id}}">
+            @csrf
+            <button type="submit" class="btn btn-info" name="rescisao_action" value="rescisao"
+                onClick="return confirm('Tem certeza que deseja renovar o estágio?')" >
+                Enviar Pedido de Renovação
+            </button>   
+        </form>   
+    </div>
+   
+
 @endcan('empresa')
 
 <!-- -->
@@ -82,16 +98,25 @@
         <b>Avaliação do relatório pelo parecerista: </b> {{$estagio->avaliacao_empresa}}<br>
         <b>Justificativa do parecerista: </b> {{$estagio->avaliacaodescricao}}<br><br>
         @endif
+    
+        <form method="POST" action="/renovacao/{{$estagio->id}}">
+        @csrf
+            <a class="btn btn-warning" onClick="return confirm('Tem certeza que deseja reativar o estágio?')" href="/retornar_rescisao/{{$estagio->id}}">
+            <i class="fas fa-undo"></i>Reativar estágio </a> 
 
-        <a class="btn btn-warning" onClick="return confirm('Tem certeza que deseja reativar o estágio?')" href="/retornar_rescisao/{{$estagio->id}}">
-        <i class="fas fa-undo"></i>Reativar estágio </a> 
+            <a class="btn btn-info" onClick="return confirm('Tem certeza que deseja um email para o parecerista?')" 
+            href="/emails/analise_rescisao/{{$estagio->id}}"><i class="fas fa-envelope-open-text"></i>  Enviar email de aviso para o parecerista</a>
 
-        <a class="btn btn-info" onClick="return confirm('Tem certeza que deseja um email para o parecerista?')" 
-        href="/emails/analise_rescisao/{{$estagio->id}}"><i class="fas fa-envelope-open-text"></i>  Enviar email de aviso para o parecerista</a>
-
-        <a class="btn btn-info" onClick="return confirm('Tem certeza que deseja um email para a empresa?')" 
-        href="/emails/rescisao_empresa/{{$estagio->id}}"><i class="fas fa-envelope-open-text"></i>  Enviar email de aviso para a empresa</a>
+            <a class="btn btn-info" onClick="return confirm('Tem certeza que deseja um email para a empresa?')" 
+            href="/emails/rescisao_empresa/{{$estagio->id}}"><i class="fas fa-envelope-open-text"></i>  Enviar email de aviso para a empresa</a>
+                
+            <button type="submit" class="btn btn-success" name="rescisao_action" value="rescisao"
+                    onClick="return confirm('Tem certeza que deseja renovar o estágio?')" >
+                    Enviar Pedido de Renovação
+            </button>   
+        </form>
         <br><br>
+
 
         <br>
         @include('estagios.partials.gerenciar_estagio')

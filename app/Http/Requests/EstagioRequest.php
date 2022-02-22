@@ -27,8 +27,8 @@ class EstagioRequest extends FormRequest
             'numero_usp' => 'required|numeric|codpes|graduacao',
             'valorbolsa' => 'required|max:255',
             'tipobolsa' => 'required|max:255',
-            'data_inicial' => 'required|data',
-            'data_final' => 'required|data',
+            'data_inicial' => 'required|date_format:"d/m/Y"',
+            'data_final' => 'required|date_format:"d/m/Y"|after:data_inicial',
             'cargahoras' => 'required|max:255',
             'cargaminutos' => 'required|max:255',
             'horario' => 'required',
@@ -80,6 +80,7 @@ class EstagioRequest extends FormRequest
     {
         return [
             'cnpj.exists' => 'Atualize o cadastro da empresa antes de executar essa ação',
+            'data_final.after' => 'A data final não pode ser anterior à data incial',
         ];
     }
 }

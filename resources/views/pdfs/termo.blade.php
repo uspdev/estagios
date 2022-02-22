@@ -161,6 +161,9 @@
     <b>Nome do supervisor(a) interno(a) do Estágio na Empresa:</b> {{ $estagio->nome_do_supervisor_estagio }}<br>
     <b>Telefone do Supervisor:</b> {{ $estagio->telefone_do_supervisor_estagio }} / {{ $estagio->telefone_de_contato }},
     <b>E-mail do Supervisor:</b> {{ $estagio->email_do_supervisor_estagio }}<br>
+    <b>Nome do Representante da Empresa:</b> @if($estagio->nome_do_representante_opcional) {{ $estagio->nome_do_representante_opcional }} @else {{ $estagio->empresa->nome_do_representante }} @endif <br>
+    <b>Cargo do Representante da Empresa:</b> @if($estagio->cargo_do_representante_opcional) {{ $estagio->cargo_do_representante_opcional }} @else {{ $estagio->empresa->cargo_do_representante }} @endif <br>
+    <b>E-mail do Representante da Empresa:</b> @if($estagio->email_do_representante_opcional) {{ $estagio->email_do_representante_opcional }} @else {{ $estagio->empresa->email }} @endif<br>
     <b>Data de início do estágio:</b> {{$estagio->data_inicial}}<br>
     <b>Data do término do estágio:</b> {{$estagio->data_final}}<br>
     <b>Horário do Estágio:</b> {{ $estagio->horario }}<br>
