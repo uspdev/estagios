@@ -9,6 +9,7 @@
 <br>
 <h4>Editar Estágio</h4>
 
+Todos os campos que não estiverem marcados como opcionais devem ser preenchidos para evitar problemas posteriores.<br>
 Apenas serão salvos os campos alterados, aqueles que não forem alterados manterão a mesma informação.
 <br><br>
 
@@ -72,12 +73,12 @@ Apenas serão salvos os campos alterados, aqueles que não forem alterados mante
         </div>
 
         <div class="form-group">
-        <label for="justificativa">Justificativa do estágio: </label>
+        <label for="justificativa">Justificativa do estágio (Campo opcional): </label>
             <textarea name="justificativa" rows="5" cols="60">{{old('justificativa',$estagio->justificativa)}}</textarea>
         </div>
 
         <div class="form-group">
-        <label for="atividades">Descrição das atividades: </label>
+        <label for="atividades">Descrição das atividades (Campo opcional): </label>
             <textarea name="atividades" rows="5" cols="60">{{old('atividades',$estagio->atividades)}}</textarea>
         </div>
 
@@ -201,7 +202,7 @@ Apenas serão salvos os campos alterados, aqueles que não forem alterados mante
 
 
             <div class="col-sm form-group" id="medidas">
-                <label for="pandemiamedidas" class="required" required>Descrição das medidas sanitárias em caso de estágio presencial(Campo opcional sobre COVID-19): </label><br>
+                <label for="pandemiamedidas" class="required" required>Descrição das medidas sanitárias em caso de estágio presencial(Campo obrigatório apenas em caso de estágio presencial): </label><br>
                 <textarea name="pandemiamedidas" rows="5" cols="60">{{old('pandemiamedidas',$estagio->pandemiamedidas)}}</textarea>
             </div>
 
@@ -285,4 +286,3 @@ Apenas serão salvos os campos alterados, aqueles que não forem alterados mante
 <br>
 
 @include('estagios.partials.informacoes')
-

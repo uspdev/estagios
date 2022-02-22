@@ -53,7 +53,7 @@
 <br>
 
 @can('admin')
-            <form method="POST" action="/editar/{{$estagio->id}}">
+            <form method="GET" action="/editar/{{$estagio->id}}">
               @csrf
               <div class="form-group">
                   <button type="submit" class="btn btn-info" name="enviar_para_analise_tecnica" value="apenas_salvar_renovacao">
