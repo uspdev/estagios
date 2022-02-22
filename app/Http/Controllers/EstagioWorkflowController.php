@@ -207,13 +207,13 @@ class EstagioWorkflowController extends Controller
 
     public function renovacao(Request $request, Estagio $estagio) {
 
-        if ( Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
+        if ( Gate::allows('empresa',$estagio->cnpj) || Gate::allows('admin')) {
 
-            if($estagio->avaliacao_empresa == true) 
+            if($estagio->avaliacao_empresa == true)
             {
                 $renovacao = $estagio->replicate();
                 $renovacao->push();
-    
+
                 if(empty($estagio->renovacao_parent_id)){
                     $renovacao->renovacao_parent_id = $estagio->id;
                 }
@@ -228,12 +228,11 @@ class EstagioWorkflowController extends Controller
                 $renovacao->analise_academica_user_id = null;
                 $renovacao->avaliacao_empresa = null;
                 $renovacao->avaliacaodescricao = null;
-                $renovacao->save();
                 $renovacao->status = 'em_elaboracao';
                 $renovacao->save();
                 return redirect("estagios/{$renovacao->id}");
             } else {
-                request()->session()->flash('alert-danger', 'O processo de finalização do estágio ainda não foi concluido. Favor checar o andamento 
+                request()->session()->flash('alert-danger', 'O processo de finalização do estágio ainda não foi concluido. Favor checar o andamento
                 com o setor de estágio em caso de dúvidas');
                 return redirect("/estagios/{$estagio->id}");
             }
