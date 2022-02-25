@@ -55,8 +55,8 @@
 
     @can('admin_ou_empresa',$estagio->cnpj)
         
-        <b>Aviso:</b> Para que possa ser realizado o pedido de renovação do estágio, será necessária a finalização dos procedimento de entrega do 
-        relatório final do estágio atual.
+        <b>Aviso:</b> Para que possa ser realizado o pedido de renovação do estágio, é necessário que seja feita a entrega do relatório
+        final deste estágio atual.
         <br><br>
 
         <form method="POST" action="/renovacao/{{$estagio->id}}">
