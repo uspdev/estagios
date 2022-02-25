@@ -10,6 +10,7 @@ use Auth;
 use PDF;
 use App\Models\Estagio;
 use App\Models\User;
+use App\Models\File;
 use App\Models\Aditivo;
 use Illuminate\Support\Facades\Gate;
 use Uspdev\Replicado\Pessoa;
@@ -205,12 +206,16 @@ class EstagioWorkflowController extends Controller
 
     #Funções Concluido
 
-    public function renovacao(Request $request, Estagio $estagio) {
+    public function renovacao(Request $request, Estagio $estagio, File $file) {
 
         if ( Gate::allows('empresa',$estagio->cnpj) || Gate::allows('admin')) {
 
-            if($estagio->avaliacao_empresa == true)
-            {
+
+            $arquivos = File::where('estagio_id','=',$estagio->id)->where('tipo_documento','=','Relatorio')->get();
+            $relatorio = $arquivos->pluck('tipo_documento');
+
+
+            if ($relatorio->contains('Relatorio')) {
                 $renovacao = $estagio->replicate();
                 $renovacao->push();
 
@@ -232,7 +237,7 @@ class EstagioWorkflowController extends Controller
                 $renovacao->save();
                 return redirect("estagios/{$renovacao->id}");
             } else {
-                request()->session()->flash('alert-danger', 'O processo de finalização do estágio ainda não foi concluido. Favor checar o andamento
+                request()->session()->flash('alert-danger', 'O processo de entrega do relatório final ainda não foi concluido. Favor checar o andamento
                 com o setor de estágio em caso de dúvidas');
                 return redirect("/estagios/{$estagio->id}");
             }

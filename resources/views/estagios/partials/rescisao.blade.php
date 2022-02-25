@@ -4,7 +4,7 @@
 <div class="card-body">
     
     <b>Motivo da Rescisão:</b> {{$estagio->rescisao_motivo}} <br>
-    <b>Data de Rescisão:</b> {{$estagio->rescisao_data}}<br>
+    <b>Data de Rescisão:</b> {{$estagio->rescisao_data}}
 
 <!-- -->
 
@@ -32,21 +32,6 @@
     
     </div> 
 
-    
-    <div class="card-header"><b>EM CASO DE RENOVAÇÃO</b></div>
-    <div class="card-body">
-        <b>Aviso:</b> A renovação do estágio só podera ser realizada após o aluno enviar o relatório final e o mesmo ser avaliado pelo parecerista.
-        <br><br>
-
-        <form method="POST" action="/renovacao/{{$estagio->id}}">
-            @csrf
-            <button type="submit" class="btn btn-info" name="rescisao_action" value="rescisao"
-                onClick="return confirm('Tem certeza que deseja renovar o estágio?')" >
-                Enviar Pedido de Renovação
-            </button>   
-        </form>   
-    </div>
-   
 
 @endcan('empresa')
 
@@ -54,25 +39,9 @@
 
 @can('admin')
 
-        <br>
-        Enviar relatório final (Apenas arquivos em formato PDF):
-
-        <form method="post" enctype="multipart/form-data" action="/files/store_relatorio">
-            @csrf 
-            <div class="col-sm form-group">
-                <input type="hidden" name="estagio_id" value="{{ $estagio->id }}">
-                <input type="file" name="file">
-                <br><hr>
-                <label for="original_name" class="required">Nome do Arquivo: </label>
-                <input type="text" class="form-control" id="original_name" name="original_name">
-                <br>
-                <button type="submit" class="btn btn-success"> Enviar </button>
-            </div>
-        </form>   
-
         
         <br><br>
-        Relatório Final:
+        Relatório final do estágio:
         <table class="table table-striped">
             @foreach($estagio->arquivos as $arquivo)
                 @if($arquivo->tipo_documento == 'Relatorio')
@@ -95,7 +64,7 @@
 
         <br>
         @if(($estagio->avaliacao_empresa)!=null)
-        <b>Avaliação do relatório pelo parecerista: </b> {{$estagio->avaliacao_empresa}}<br>
+        <b>Avaliação do relatório final pelo parecerista: </b> {{$estagio->avaliacao_empresa}}<br>
         <b>Justificativa do parecerista: </b> {{$estagio->avaliacaodescricao}}<br><br>
         @endif
     
@@ -109,76 +78,14 @@
 
             <a class="btn btn-info" onClick="return confirm('Tem certeza que deseja um email para a empresa?')" 
             href="/emails/rescisao_empresa/{{$estagio->id}}"><i class="fas fa-envelope-open-text"></i>  Enviar email de aviso para a empresa</a>
-                
-            <button type="submit" class="btn btn-success" name="rescisao_action" value="rescisao"
-                    onClick="return confirm('Tem certeza que deseja renovar o estágio?')" >
-                    Enviar Pedido de Renovação
-            </button>   
+                 
         </form>
         <br><br>
 
-
-        <br>
         @include('estagios.partials.gerenciar_estagio')
 
     </div> 
 
 @endcan('admin')
-
-<!-- -->
-    
-@can('parecerista')
-
-        <br>
-        @if(($estagio->avaliacao_empresa)!=null)
-        <b>Avaliação do relatório: </b> {{$estagio->avaliacao_empresa}}<br>
-        <b>Justificativa: </b> {{$estagio->avaliacaodescricao}}<br>
-        @endif
-
-        <br>
-        <b>Relatório Final do Aluno:</b>
-        <table class="table table-striped">
-            @foreach($estagio->arquivos as $arquivo)
-                @if($arquivo->tipo_documento == 'Relatorio')
-                    <tr>
-                    <td>            
-                    <a href="/files/{{$arquivo->id}}.pdf" type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>
-                    </td>
-                    </tr>
-                @endif
-            @endforeach
-        </table>
-
-        <form method="POST" action="/avaliacao/{{$estagio->id}}">
-            @csrf
-            <label for="condicaodeferimento">Avalie o caráter do relatório: </label> 
-                <select name="avaliacao_empresa" class="form-control" id="avaliacao_empresa">
-                    <option value="" selected="">- Selecione -</option>
-                            @foreach ($estagio->avaliacao_empresaOptions() as $option)
-                            @if (old('avaliacao_empresa') == '' and isset($estagio->avaliacao_empresa) )
-                    <option value="{{$option}}" {{ ( $estagio->avaliacao_empresa == $option) ? 'selected' : ''}}>
-                            {{$option}}
-                    </option>
-                            @else
-                    <option value="{{$option}}" {{ ( old('avaliacao_empresa') == $option) ? 'selected' : ''}}>
-                            {{$option}}
-                    </option>
-                        @endif
-                        @endforeach
-                </select>  
-                <br>
-                <div class="form-group">
-                    <label for="avaliacaodescricao" class="required">Justifique a avaliação: </label>
-                    <input type="text" class="form-control" id="avaliacaodescricao" name="avaliacaodescricao" value="{{old('avaliacaodescricao',$estagio->avaliacaodescricao)}}">
-                </div>
-                <br>
-
-                <button type="submit" class="btn btn-success"> Enviar Avaliaçao </button>
-            </div>
-        </form>
-
-
-
-@endcan('parecerista')
 
 </div>  
