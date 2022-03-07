@@ -65,7 +65,8 @@
 
 @include('estagios.partials.informacoes')
 
-@if($estagio->status == 'em_elaboracao' | $estagio->status == 'em_analise_tecnica' | $estagio->status == 'em_analise_academica' | $estagio->status == 'assinatura')
+@if($estagio->status == 'em_elaboracao' | $estagio->status == 'em_analise_tecnica' | $estagio->status == 'em_analise_academica' 
+| $estagio->status == 'assinatura' | $estagio->status == 'concluido')
 
     @can('admin_ou_empresa',$estagio->cnpj)
     <br>
