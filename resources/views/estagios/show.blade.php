@@ -11,7 +11,7 @@
     <div class="card-header"><b>Status do Estágio</b></div>
       <div class="card-body">
         @include('estagios.etapas')
-      </div>  
+      </div>
     </div>
 
 <br>
@@ -24,7 +24,7 @@
               @if(is_null($estagio->renovacao_parent_id))
                   <a href="/pdfs/termo/{{$estagio->id}}.pdf" type="application/pdf" target="pdf-frame">
                   <i class="fas fa-file-pdf"></i> </a>
-                  Gerar PDF do Termo de Ciência 
+                  Gerar PDF do Termo de Ciência
               @else
                   <a href="/pdfs/renovacao/{{$estagio->id}}" target="_blank" >
                   <i class="fas fa-file-pdf"></i> </a>
@@ -37,7 +37,7 @@
                   <i class="fas fa-file-pdf"></i> </a>
                   Gerar PDF do Parecer de Alteração
               @endif
-          </div>  
+          </div>
         </div>
       <br>
     @endif
@@ -47,7 +47,7 @@
     <div class="card-header"><b>Documentos do Estágio</b></div>
       <div class="card-body">
         @include('files.partials.form')
-      </div>  
+      </div>
     </div>
 
 <br>
@@ -65,13 +65,11 @@
 
 @include('estagios.partials.informacoes')
 
-@if($estagio->status == 'em_elaboracao' | $estagio->status == 'em_analise_tecnica' | $estagio->status == 'em_analise_academica' | $estagio->status == 'assinatura')
-
+@if(! in_array($estagio->status,['analise_alteracao_parecerista','rescisao','cancelado']))
     @can('admin_ou_empresa',$estagio->cnpj)
     <br>
     <a class="btn btn-danger" onClick="return confirm('Tem certeza que deseja cancelar o estágio?')" href="/cancelar_estagio/{{$estagio->id}}">
         Cancelar Estágio </a>
-
     @endcan
 
 @endif
