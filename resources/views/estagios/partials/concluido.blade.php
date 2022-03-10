@@ -7,7 +7,7 @@
         <button type="submit" class="btn btn-info" name="rescisao_action" value="rescisao"
                 onClick="return confirm('Tem certeza que deseja mover estágio para análise técnica?')" >
                 Mover estágio para análise técnica
-        </button>   
+        </button>
     </form>
 
 @endcan
@@ -34,7 +34,7 @@
     <button type="submit" class="btn btn-success" name="rescisao_action" value="rescisao"
             onClick="return confirm('Tem certeza que deseja rescindir o estágio?')" >
             Enviar Pedido de Rescisão
-    </button>   
+    </button>
     </form>
     </div></div> <br>
 
@@ -54,10 +54,10 @@
     <div class="card-body">
 
     @can('admin_ou_empresa',$estagio->cnpj)
-        
-        <b>Aviso:</b> Para que possa ser realizado o pedido de renovação do estágio, é necessário que o próprio estagiario faça a entrega  
-        do relatório final ao setor de estágios. <b>O relatório final é pessoal e livre do aluno</b>, e seu upload no sistema só ser pode 
-        ser feito pelo próprio setor de estágios. A opção de envio de relatório na área de Documentos do Estágio serve apenas para o envio 
+
+        <b>Aviso:</b> Para que possa ser realizado o pedido de renovação do estágio, é necessário que o próprio estagiário faça a entrega
+        do relatório final ao setor de estágios. <b>O relatório final é pessoal e livre do aluno</b>, e seu upload no sistema só pode
+        ser feito pelo próprio setor de estágios. A opção de envio de relatório na área de Documentos do Estágio serve apenas para o envio
         de relatórios parciais.
         <br><br>
 
@@ -66,11 +66,11 @@
                 <button type="submit" class="btn btn-info" name="rescisao_action" value="rescisao"
                     onClick="return confirm('Tem certeza que deseja renovar o estágio?')" >
                     Enviar Pedido de Renovação
-                </button>   
-        </form>   
+                </button>
+        </form>
 
     @endcan('admin_ou_empresa',$estagio->cnpj)
-    
+
 
     <!-- -->
 
@@ -80,7 +80,7 @@
     Enviar relatório final (Apenas arquivos em formato PDF):
 
     <form method="post" enctype="multipart/form-data" action="/files/store_relatorio">
-        @csrf 
+        @csrf
         <div class="col-sm form-group">
             <input type="hidden" name="estagio_id" value="{{ $estagio->id }}">
             <input type="file" name="file">
@@ -90,7 +90,7 @@
             <br>
             <button type="submit" class="btn btn-success"> Enviar </button>
         </div>
-    </form>   
+    </form>
 
 
     <br><br>
@@ -100,11 +100,11 @@
             @foreach($estagio->arquivos as $arquivo)
                 @if($arquivo->tipo_documento == 'Relatorio')
                 <tr>
-                <td>            
+                <td>
                 <a href="/files/{{$arquivo->id}}.pdf" type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>
                 </td>
                 <td>
-                    <form method="post" action="/files/{{$arquivo->id}}">         
+                    <form method="post" action="/files/{{$arquivo->id}}">
                         @csrf
                         @method('delete')
                         <button class="botao" type="submit" onclick="return confirm('Tem certeza que deseja deletar?');"><i class="fas fa-trash-alt"></i></button>
@@ -140,7 +140,7 @@
         @foreach($estagio->arquivos as $arquivo)
             @if($arquivo->tipo_documento == 'Relatorio')
                 <tr>
-                <td>            
+                <td>
                 <a href="/files/{{$arquivo->id}}.pdf" type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>
                 </td>
                 </tr>
@@ -150,7 +150,7 @@
 
     <form method="POST" action="/avaliacao/{{$estagio->id}}">
         @csrf
-        <label for="condicaodeferimento">Avalie o caráter do relatório: </label> 
+        <label for="condicaodeferimento">Avalie o caráter do relatório: </label>
             <select name="avaliacao_empresa" class="form-control" id="avaliacao_empresa">
                 <option value="" selected="">- Selecione -</option>
                         @foreach ($estagio->avaliacao_empresaOptions() as $option)
@@ -164,7 +164,7 @@
                 </option>
                     @endif
                     @endforeach
-            </select>  
+            </select>
             <br>
             <div class="form-group">
                 <label for="avaliacaodescricao" class="required">Justifique a avaliação: </label>
