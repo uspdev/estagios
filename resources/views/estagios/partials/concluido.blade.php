@@ -55,8 +55,10 @@
 
     @can('admin_ou_empresa',$estagio->cnpj)
         
-        <b>Aviso:</b> Para que possa ser realizado o pedido de renovação do estágio, é necessário que seja feita a entrega do relatório
-        final deste estágio atual.
+        <b>Aviso:</b> Para que possa ser realizado o pedido de renovação do estágio, é necessário que o próprio estagiario faça a entrega  
+        do relatório final ao setor de estágios. <b>O relatório final é pessoal e livre do aluno</b>, e seu upload no sistema só ser pode 
+        ser feito pelo próprio setor de estágios. A opção de envio de relatório na área de Documentos do Estágio serve apenas para o envio 
+        de relatórios parciais.
         <br><br>
 
         <form method="POST" action="/renovacao/{{$estagio->id}}">
@@ -178,6 +180,6 @@
 
     @endcan('parecerista')
 
-</div></div></div>
+</div></div>
 
 
