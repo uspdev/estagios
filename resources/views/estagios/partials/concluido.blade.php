@@ -55,10 +55,12 @@
 
     @can('admin_ou_empresa',$estagio->cnpj)
 
-        <b>Aviso:</b> Para que possa ser realizado o pedido de renovação do estágio, é necessário que o próprio estagiário faça a entrega
-        do relatório final ao setor de estágios. <b>O relatório final é pessoal e livre do aluno</b>, e seu upload no sistema só pode
-        ser feito pelo próprio setor de estágios. A opção de envio de relatório na área de Documentos do Estágio serve apenas para o envio
-        de relatórios parciais.
+        <b>Aviso:</b> Para que possa ser realizado o pedido de renovação do estágio, é necessário que seja anexado o relatório do
+        aluno referente ao período de estágio. <b>O relatório final deve ser pessoal e livre</b>, e o envio deste para o sistema só 
+        pode ser realizado pelo setor de estágios. 
+        <br><br>
+        <b>Aviso Importante:</b> A opção de envio de relatório na área de Documentos do Estágio serve APENAS para o envio de relatórios 
+        parciais.
         <br><br>
 
         <form method="POST" action="/renovacao/{{$estagio->id}}">
@@ -107,10 +109,14 @@
                     <form method="post" action="/files/{{$arquivo->id}}">
                         @csrf
                         @method('delete')
-                        <button class="botao" type="submit" onclick="return confirm('Tem certeza que deseja deletar?');"><i class="fas fa-trash-alt"></i></button>
+                        <button type="submit" onclick="return confirm('Tem certeza que deseja deletar?');"><i class="fas fa-trash-alt"></i> Deletar Relatório </button>
                     </form>
                     <div>
                 </td>
+                <td>
+                    <a onClick="return confirm('Tem certeza que deseja um email para o parecerista?')" 
+                        href="/emails/analise_rescisao/{{$estagio->id}}"><i class="fas fa-envelope-open-text"></i>  Enviar email de aviso para o parecerista</a>
+                </td>   
                 </tr>
                 @endif
                 @endforeach

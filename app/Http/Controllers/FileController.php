@@ -11,6 +11,7 @@ use App\Http\Requests\FileRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
 use App\Mail\enviar_relatorio_mail;
+use App\Mail\analise_rescisao_mail;
 use Illuminate\Support\Facades\Mail;
 
 class FileController extends Controller
@@ -88,6 +89,8 @@ class FileController extends Controller
         $file->user_id = Auth::user()->id;
         $file->tipo_documento = 'Relatorio';
         $file->save();
+        $estagio = Estagio::find($file->estagio_id);
+        Mail::queue(new analise_rescisao_mail($estagio,$file));
         return back()->with('success', 'Arquivo enviado com sucesso');
 
     }
