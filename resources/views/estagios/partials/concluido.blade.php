@@ -55,10 +55,8 @@
 
     @can('admin_ou_empresa',$estagio->cnpj)
 
-        <b>Aviso:</b> Para que possa ser realizado o pedido de renovação do estágio, é necessário que o próprio estagiário faça a entrega
-        do relatório final ao setor de estágios. <b>O relatório final é pessoal e livre do aluno</b>, e seu upload no sistema só pode
-        ser feito pelo próprio setor de estágios. A opção de envio de relatório na área de Documentos do Estágio serve apenas para o envio
-        de relatórios parciais.
+        <b>Aviso:</b> Para realizar o pedido de renovação, é necessário
+        anexar e enviar o relatório do aluno, que deverá ser de cunho pessoal e livre.
         <br><br>
 
         <form method="POST" action="/renovacao/{{$estagio->id}}">
@@ -77,7 +75,7 @@
     @can('admin')
     <br>
 
-    Enviar relatório final (Apenas arquivos em formato PDF):
+    Anexar relatório (Apenas arquivos em formato PDF):
 
     <form method="post" enctype="multipart/form-data" action="/files/store_relatorio">
         @csrf
@@ -88,13 +86,10 @@
             <label for="original_name" class="required">Nome do Arquivo: </label>
             <input type="text" class="form-control" id="original_name" name="original_name">
             <br>
-            <button type="submit" class="btn btn-success"> Enviar </button>
+            <button type="submit" class="btn btn-success"> Enviar Relatório </button>
         </div>
     </form>
-
-
-    <br><br>
-    Relatório Final:
+    Relatório:
     <table class="table table-striped">
 
             @foreach($estagio->arquivos as $arquivo)
@@ -107,9 +102,13 @@
                     <form method="post" action="/files/{{$arquivo->id}}">
                         @csrf
                         @method('delete')
-                        <button class="botao" type="submit" onclick="return confirm('Tem certeza que deseja deletar?');"><i class="fas fa-trash-alt"></i></button>
+                        <button type="submit" onclick="return confirm('Tem certeza que deseja deletar?');"><i class="fas fa-trash-alt"></i> Deletar Relatório </button>
                     </form>
                     <div>
+                </td>
+                <td>
+                    <a onClick="return confirm('Tem certeza que deseja um email para o parecerista?')"
+                        href="/emails/analise_rescisao/{{$estagio->id}}"><i class="fas fa-envelope-open-text"></i>  Enviar email de aviso para o parecerista</a>
                 </td>
                 </tr>
                 @endif
