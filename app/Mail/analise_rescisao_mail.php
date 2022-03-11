@@ -35,7 +35,7 @@ class analise_rescisao_mail extends Mailable
 
         $to = [$this->estagio->parecerista->email,config('mail.reply_to.address')];
 
-        $subject = $this->estagio->nome . ' - Setor de Estágios - O relatório final de estágio foi enviado para o sistema';         
+        $subject = $this->estagio->nome . ' - Setor de Estágios - O relatório final de estágio foi enviado para o sistema';
 
         return $this->view('emails.analise_rescisao')
                     ->to($to)

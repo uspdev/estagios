@@ -55,12 +55,8 @@
 
     @can('admin_ou_empresa',$estagio->cnpj)
 
-        <b>Aviso:</b> Para que possa ser realizado o pedido de renovação do estágio, é necessário que seja anexado o relatório do
-        aluno referente ao período de estágio. <b>O relatório final deve ser pessoal e livre</b>, e o envio deste para o sistema só 
-        pode ser realizado pelo setor de estágios. 
-        <br><br>
-        <b>Aviso Importante:</b> A opção de envio de relatório na área de Documentos do Estágio serve APENAS para o envio de relatórios 
-        parciais.
+        <b>Aviso:</b> Para realizar o pedido de renovação, é necessário
+        anexar e enviar o relatório do aluno, que deverá ser de cunho pessoal e livre.
         <br><br>
 
         <form method="POST" action="/renovacao/{{$estagio->id}}">
@@ -79,7 +75,7 @@
     @can('admin')
     <br>
 
-    Enviar relatório final (Apenas arquivos em formato PDF):
+    Anexar relatório (Apenas arquivos em formato PDF):
 
     <form method="post" enctype="multipart/form-data" action="/files/store_relatorio">
         @csrf
@@ -90,13 +86,10 @@
             <label for="original_name" class="required">Nome do Arquivo: </label>
             <input type="text" class="form-control" id="original_name" name="original_name">
             <br>
-            <button type="submit" class="btn btn-success"> Enviar </button>
+            <button type="submit" class="btn btn-success"> Enviar Relatório </button>
         </div>
     </form>
-
-
-    <br><br>
-    Relatório Final:
+    Relatório:
     <table class="table table-striped">
 
             @foreach($estagio->arquivos as $arquivo)
@@ -114,9 +107,9 @@
                     <div>
                 </td>
                 <td>
-                    <a onClick="return confirm('Tem certeza que deseja um email para o parecerista?')" 
+                    <a onClick="return confirm('Tem certeza que deseja um email para o parecerista?')"
                         href="/emails/analise_rescisao/{{$estagio->id}}"><i class="fas fa-envelope-open-text"></i>  Enviar email de aviso para o parecerista</a>
-                </td>   
+                </td>
                 </tr>
                 @endif
                 @endforeach

@@ -237,8 +237,7 @@ class EstagioWorkflowController extends Controller
                 $renovacao->save();
                 return redirect("estagios/{$renovacao->id}");
             } else {
-                request()->session()->flash('alert-danger', 'O processo de entrega do relatório final ainda não foi concluido. Favor checar o andamento
-                com o setor de estágio em caso de dúvidas');
+                request()->session()->flash('alert-danger', 'O relatório do aluno ainda não foi anexado e enviado.');
                 return redirect("/estagios/{$estagio->id}");
             }
 
