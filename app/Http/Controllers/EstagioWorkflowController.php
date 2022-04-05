@@ -207,13 +207,9 @@ class EstagioWorkflowController extends Controller
     #Funções Concluido
 
     public function renovacao(Request $request, Estagio $estagio, File $file) {
-
-        if ( Gate::allows('empresa',$estagio->cnpj) || Gate::allows('admin')) {
-
-
+        if(Gate::allows('empresa',$estagio->cnpj) || Gate::allows('admin')) {
             $arquivos = File::where('estagio_id','=',$estagio->id)->where('tipo_documento','=','Relatorio')->get();
             $relatorio = $arquivos->pluck('tipo_documento');
-
 
             if ($relatorio->contains('Relatorio')) {
                 $renovacao = $estagio->replicate();
@@ -237,7 +233,6 @@ class EstagioWorkflowController extends Controller
                 $renovacao->save();
                 return redirect("estagios/{$renovacao->id}");
             } else {
-                request()->session()->flash('alert-danger', 'O relatório do aluno ainda não foi anexado e enviado.');
                 return redirect("/estagios/{$estagio->id}");
             }
 
@@ -248,8 +243,7 @@ class EstagioWorkflowController extends Controller
 
     public function rescisao(Request $request, Estagio $estagio){
 
-        if ( Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
-
+        if(Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
             $request->validate([
                 'rescisao_motivo' => 'required',
                 'rescisao_data' => 'required|data',
@@ -267,7 +261,6 @@ class EstagioWorkflowController extends Controller
     }
 
     public function iniciar_alteracao(Estagio $estagio) {
-
         if (Gate::allows('empresa',$estagio->cnpj)) {
             $estagio->last_status = $estagio->status;
             $estagio->status = 'em_alteracao';
@@ -276,15 +269,12 @@ class EstagioWorkflowController extends Controller
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
         return redirect("estagios/{$estagio->id}");
-
     }
 
     #Funções Alteração
 
     public function enviar_alteracao(Request $request, Estagio $estagio){
-
         if (Gate::allows('empresa',$estagio->cnpj)) {
-
             $aditivo = new Aditivo;
             $aditivo->alteracao = $request->alteracao;
             $aditivo->estagio_id = $estagio->id;
@@ -303,7 +293,6 @@ class EstagioWorkflowController extends Controller
     }
 
     public function voltar_aditivo(Request $request, Estagio $estagio){
-
         if (Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
             $estagio->last_status = $estagio->status;
             $estagio->status = 'concluido';
@@ -314,11 +303,8 @@ class EstagioWorkflowController extends Controller
         return redirect("/estagios/{$estagio->id}");
     }
 
-
     public function analise_alteracao(Request $request, Aditivo $aditivo, Estagio $estagio){
-
-        if (Gate::allows('admin') | Gate::allows('parecerista')) {
-
+        if(Gate::allows('admin') | Gate::allows('parecerista')) {
             //caso de aditivo deferido diretamente
             if($request->analise_alteracao_action == 'deferir_alteracao') {
                 $estagio = Estagio::find($aditivo->estagio_id);
@@ -329,7 +315,6 @@ class EstagioWorkflowController extends Controller
                 Mail::queue(new alteracao_empresa_mail($estagio));
                 request()->session()->flash('alert-info', 'Aditivo deferido com sucesso');
             }
-
             //caso de aditivo indeferido diretamente
             if($request->analise_alteracao_action == 'indeferir_alteracao') {
                 $request->validate([
@@ -413,8 +398,7 @@ class EstagioWorkflowController extends Controller
     #Funções Rescisão
 
     public function retornar_rescisao(Estagio $estagio){
-
-        if ( Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
+        if(Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
             $estagio->last_status = $estagio->status;
             $estagio->status = 'concluido';
             $estagio->save();
@@ -425,8 +409,7 @@ class EstagioWorkflowController extends Controller
     }
 
     public function avaliacao(Request $request, Estagio $estagio){
-
-        if (Gate::allows('parecerista')) {
+        if(Gate::allows('parecerista')) {
             $request->validate([
                 'avaliacao_empresa' => 'required|max:255',
                 'avaliacaodescricao' => 'required|max:255',
@@ -443,7 +426,6 @@ class EstagioWorkflowController extends Controller
     #Funções Cancelamento
 
     public function cancelar_estagio(Estagio $estagio){
-
         if ( Gate::allows('empresa',$estagio->cnpj) | Gate::allows('admin')) {
                 $estagio->last_status = $estagio->status;
                 $estagio->status = 'cancelado';
@@ -453,7 +435,7 @@ class EstagioWorkflowController extends Controller
             }
             return redirect("/estagios/{$estagio->id}");
         }
-
+        
         public function cancelar_cancelamento(Estagio $estagio){
 
             if ( Gate::allows('admin')) {
