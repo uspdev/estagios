@@ -51,6 +51,7 @@ class FileController extends Controller
     public function store(FileRequest $request)
     {
         $validated = $request->validated();
+        
         if($request->tipoarquivo=="relatorioparcial")
         {
             $file = new File;
@@ -69,6 +70,7 @@ class FileController extends Controller
             $file->original_name = $request->original_name;
             $file->path = $request->file('file')->store('.');
             $file->user_id = Auth::user()->id;
+            $file->tipo_documento = 'Relatorio';
             $file->save();
             return back()->with('success', 'Arquivo enviado com sucesso');
         }

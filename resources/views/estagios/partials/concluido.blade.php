@@ -25,7 +25,7 @@
     @csrf
         <div class="form-group">
             <label for="rescisao_motivo" class="required"><b>Justificativa: </b></label><br>
-            <textarea name="rescisao_motivo" rows="5" cols="60">{{old('rescisao_motivo',$estagio->rescisao_motivo)}}</textarea>
+            <textarea name="rescisao_motivo" rows="5" cols="116">{{old('rescisao_motivo',$estagio->rescisao_motivo)}}</textarea>
         </div>
         <div class="form-group">
             <label for="rescisao_data" class="required"><b>Data de Rescisão: </b></label>
@@ -59,18 +59,25 @@
         anexar e enviar o relatório do aluno, que deverá ser de cunho pessoal e livre.
         <br><br>
 
-        <form method="POST" action="/renovacao/{{$estagio->id}}">
-                @csrf
-                <button type="submit" class="btn btn-info" name="rescisao_action" value="rescisao"
-                    onClick="return confirm('Tem certeza que deseja renovar o estágio?')" >
-                    Enviar Pedido de Renovação
-                </button>
-        </form>
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header"><b>Documentos do Estágio</b></div>
+                <div class="card-body">
+                    @include('files.partials.form')
+                </div>
+            </div><br>
+        
+
+            <form method="POST" action="/renovacao/{{$estagio->id}}">
+                    @csrf
+                    <button type="submit" class="btn btn-info" name="rescisao_action" value="rescisao"
+                        onClick="return confirm('Tem certeza que deseja renovar o estágio?')" >
+                        Enviar Pedido de Renovação
+                    </button>
+            </form>
+        </div>
 
     @endcan('admin_ou_empresa',$estagio->cnpj)
-
-
-    <!-- -->
 
     @can('admin')
     <br>

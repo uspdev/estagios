@@ -77,14 +77,16 @@
 @can('empresa',$estagio->cnpj)
 
 <div class="row">
-    <div class="col-4 form-group">
+    <div class="col-7 form-group">
 
-        Enviar documentos (Apenas arquivos em formato PDF):
+        Enviar documentos:
 
         <form method="post" enctype="multipart/form-data" action="/files/store">
             @csrf
             <input type="hidden" name="estagio_id" value="{{ $estagio->id }}">
-            <input type="file" name="file">
+            <input type="file" name="file"><br>
+            <span class="badge badge-pill badge-warning">Apenas arquivos em formato PDF:</span>
+            
             <br><hr>
             <label for="original_name" class="required">Nome do Arquivo: </label>
             <input type="text" class="form-control" id="original_name" name="original_name">
@@ -95,11 +97,12 @@
                 <option value="documento">Documento Anexo</option>
             </select>
             <br>
-            <button type="submit" class="btn btn-success"> Enviar </button>
+            <button type="submit" class="btn btn-success"> Enviar Relatório </button>
         </form>
 
     </div>
-    <div class="col-8 form-group">
+
+    <div class="col-5 form-group">
 
             <table class="table table-striped">
                 <thead>

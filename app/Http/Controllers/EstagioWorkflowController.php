@@ -209,15 +209,17 @@ class EstagioWorkflowController extends Controller
     public function renovacao(Request $request, Estagio $estagio, File $file) {
         if(Gate::allows('empresa',$estagio->cnpj) || Gate::allows('admin')) {
             $arquivos = File::where('estagio_id','=',$estagio->id)->where('tipo_documento','=','Relatorio')->get();
+            
             $relatorio = $arquivos->pluck('tipo_documento');
-
-            if ($relatorio->contains('Relatorio')) {
+            
+            if ($relatorio->contains('Relatorio')) {                
                 $renovacao = $estagio->replicate();
                 $renovacao->push();
 
                 if(empty($estagio->renovacao_parent_id)){
                     $renovacao->renovacao_parent_id = $estagio->id;
                 }
+
                 $renovacao->analise_tecnica = null;
                 $renovacao->horariocompativel = null;
                 $renovacao->desempenhoacademico = null;
@@ -231,8 +233,10 @@ class EstagioWorkflowController extends Controller
                 $renovacao->avaliacaodescricao = null;
                 $renovacao->status = 'em_elaboracao';
                 $renovacao->save();
+                request()->session()->flash('alert-success', 'O pedido de renovação foi enviado.');
                 return redirect("estagios/{$renovacao->id}");
             } else {
+                request()->session()->flash('alert-danger', 'O relatório do aluno ainda não foi anexado e enviado.');
                 return redirect("/estagios/{$estagio->id}");
             }
 
