@@ -23,6 +23,7 @@ use App\Mail\alteracao_indeferida_mail;
 use App\Mail\enviar_analise_academica_mail;
 use App\Mail\alteracao_pendente_empresa_mail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
 class EstagioWorkflowController extends Controller
 {
@@ -210,39 +211,50 @@ class EstagioWorkflowController extends Controller
 
         if ( Gate::allows('empresa',$estagio->cnpj) || Gate::allows('admin')) {
 
+            $request->validate([
+                'relatorio' => 'required|file|max:12000|mimes:pdf',
+                'estagio_id' => 'required|integer|exists:estagios,id',
+            ],
+            [
+                'relatorio.required' => 'O relatório é requerido.',
+                'estagio_id.required' => 'O código do estágio é requerido.'
+            ]);
 
-            $arquivos = File::where('estagio_id','=',$estagio->id)->where('tipo_documento','=','Relatorio')->get();
-            $relatorio = $arquivos->pluck('tipo_documento');
-
-
-            if ($relatorio->contains('Relatorio')) {
-                $renovacao = $estagio->replicate();
-                $renovacao->push();
-
-                if(empty($estagio->renovacao_parent_id)){
-                    $renovacao->renovacao_parent_id = $estagio->id;
-                }
-                $renovacao->analise_tecnica = null;
-                $renovacao->horariocompativel = null;
-                $renovacao->desempenhoacademico = null;
-                $renovacao->atividadespertinentes= null;
-                $renovacao->atividadesjustificativa = null;
-                $renovacao->tipodeferimento = null;
-                $renovacao->condicaodeferimento = null;
-                $renovacao->analise_academica = null;
-                $renovacao->analise_academica_user_id = null;
-                $renovacao->avaliacao_empresa = null;
-                $renovacao->avaliacaodescricao = null;
-                $renovacao->status = 'em_elaboracao';
+            try {
+                DB::beginTransaction();
+                $renovacao = $estagio->replicate([
+                    'analise_tecnica',
+                    'horariocompativel',
+                    'desempenhoacademico',
+                    'atividadespertinentes',
+                    'atividadesjustificativa',
+                    'tipodeferimento',
+                    'condicaodeferimento',
+                    'analise_academica',
+                    'analise_academica_user_id',
+                    'avaliacao_empresa',
+                    'avaliacaodescricao',
+                ])->fill([
+                    'renovacao_parent_id' => $estagio->id,
+                    'status' => 'em_elaboracao',
+                ]);
                 $renovacao->save();
-                return redirect("estagios/{$renovacao->id}");
-            } else {
-                request()->session()->flash('alert-danger', 'O relatório do aluno ainda não foi anexado e enviado.');
-                return redirect("/estagios/{$estagio->id}");
-            }
 
+                $file = new File;
+                $file->estagio_id = $renovacao->id;
+                $file->original_name = 'Relatório';
+                $file->path = $request->file('relatorio')->store('.');
+                $file->user_id = Auth::user()->id;
+                $file->tipo_documento = 'Relatorio';
+                $file->save();
+                DB::commit();
+                return redirect("estagios/{$renovacao->id}")->with('alert-info', 'Renovação efetuada com sucesso.');
+            } catch(\Exception $e) {
+                DB::rollBack();
+                return back()->with('alert-danger', 'Ocorreu um erro na renovação: ' . $e->getMessage());
+            }
         } else {
-            request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
+            return back()->with('alert-danger', 'Sem permissão para executar ação.' . $e->getMessage());
         }
     }
 
@@ -475,6 +487,7 @@ class EstagioWorkflowController extends Controller
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
         return redirect("/estagios/{$estagio->id}");
+
     }
 
 }

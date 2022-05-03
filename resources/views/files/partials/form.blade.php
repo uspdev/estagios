@@ -36,34 +36,29 @@
                 </thead>
                 <tbody>
                 @foreach($estagio->arquivos as $arquivo)
-                @if($arquivo->tipo_documento != 'Relatorio')
                     <tr>
-                    <td>
-                    @if($arquivo->tipo_documento == 'relatorioparcial' || $arquivo->tipo_documento == 'relatorioparcial_ciente')
-                        <a href="/files/{{$arquivo->id}}.pdf" type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> (Relatório) {{$arquivo->original_name}} </a>
-                    @else
-                        <a href="/files/{{$arquivo->id}}.pdf"  type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>
-                    @endif
-                    </td>
-
-                    <td>
+                      <td>
+                        @if(in_array($arquivo->tipo_documento, ['relatorioparcial','relatorioparcial_ciente']))
+                          <a href="/files/{{$arquivo->id}}.pdf" type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> (Relatório) {{$arquivo->original_name}} </a>
+                        @else
+                          <a href="/files/{{$arquivo->id}}.pdf"  type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>
+                        @endif
+                      </td>
+                      <td>
                         @if($arquivo->tipo_documento == 'relatorioparcial')
                             O parecerista ainda não confirmou ciência do relatório
                         @elseif ($arquivo->tipo_documento == 'relatorioparcial_ciente')
                             O parecerista está ciente do relatório
                         @endif
-                    </td>
-                    <td>
+                      </td>
+                      <td>
                         <form method="post" action="/files/{{$arquivo->id}}">
                             @csrf
                             @method('delete')
                             <button class="botao" type="submit" onclick="return confirm('Tem certeza que deseja deletar?');"><i class="fas fa-trash-alt"></i></button>
                         </form>
-                        <div>
-                    </td>
-
+                      </td>
                     </tr>
-                @endif
                 @endforeach
                 </tbody>
             </table>
@@ -141,7 +136,7 @@
     @foreach($estagio->arquivos as $arquivo)
         <tr>
         <td>
-            @if($arquivo->tipo_documento == 'relatorioparcial' || $arquivo->tipo_documento == 'relatorioparcial_ciente')
+            @if(in_array($arquivo->tipo_documento, ['relatorioparcial', 'relatorioparcial_ciente']))
                 <a href="/files/{{$arquivo->id}}.pdf" type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> (Relatório) {{$arquivo->original_name}}</a>
             @else
                 <a href="/files/{{$arquivo->id}}.pdf" type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>

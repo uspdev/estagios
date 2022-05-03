@@ -56,15 +56,21 @@
     @can('admin_ou_empresa',$estagio->cnpj)
 
         <b>Aviso:</b> Para realizar o pedido de renovação, é necessário
-        anexar e enviar o relatório do aluno, que deverá ser de cunho pessoal e livre.
+        anexar o relatório do aluno, que deverá ser de cunho pessoal e livre.
         <br><br>
 
-        <form method="POST" action="/renovacao/{{$estagio->id}}">
-                @csrf
-                <button type="submit" class="btn btn-info" name="rescisao_action" value="rescisao"
-                    onClick="return confirm('Tem certeza que deseja renovar o estágio?')" >
-                    Enviar Pedido de Renovação
-                </button>
+        Anexar relatório (Apenas arquivos em formato PDF):
+        <form method="POST" action="/renovacao/{{$estagio->id}}" enctype="multipart/form-data">
+            @csrf
+
+            <input type="hidden" name="estagio_id" value="{{ $estagio->id }}">
+            <input type="file" name="relatorio">
+            <br /><br />
+
+            <button type="submit" class="btn btn-info" name="rescisao_action" value="rescisao"
+                onClick="return confirm('Tem certeza que deseja renovar o estágio?')" >
+                Enviar Pedido de Renovação
+            </button>
         </form>
 
     @endcan('admin_ou_empresa',$estagio->cnpj)
@@ -74,7 +80,7 @@
 
     @can('admin')
     <br>
-
+<!--
     Anexar relatório (Apenas arquivos em formato PDF):
 
     <form method="post" enctype="multipart/form-data" action="/files/store_relatorio">
@@ -114,7 +120,7 @@
                 @endif
                 @endforeach
             </table>
-
+-->
             <br>
             @if(($estagio->avaliacao_empresa)!=null)
             <b>Avaliação do relatório pelo parecerista: </b> {{$estagio->avaliacao_empresa}}<br>
