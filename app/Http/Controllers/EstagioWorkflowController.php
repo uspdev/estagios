@@ -205,41 +205,34 @@ class EstagioWorkflowController extends Controller
     }
 
     #Funções Concluido
+    public function renovacao(Request $request, Estagio $estagio, File $file){
+        if(Gate::allows('empresa',$estagio->cnpj) || Gate::allows('admin')){                        
+            $request->validate([
+                'file' => 'required|file|max:12000|mimes:pdf',
+                'original_name' => 'required',
+                'estagio_id' => 'required|integer|exists:estagios,id',
+            ]);
 
-    public function renovacao(Request $request, Estagio $estagio, File $file) {
+            $renovacao = $estagio->replicate();
+            $renovacao->push();
 
-        if ( Gate::allows('empresa',$estagio->cnpj) || Gate::allows('admin')) {
-
-
-            $arquivos = File::where('estagio_id','=',$estagio->id)->where('tipo_documento','=','Relatorio')->get();
-            $relatorio = $arquivos->pluck('tipo_documento');
-
-
-            if ($relatorio->contains('Relatorio')) {
-                $renovacao = $estagio->replicate();
-                $renovacao->push();
-
-                if(empty($estagio->renovacao_parent_id)){
-                    $renovacao->renovacao_parent_id = $estagio->id;
-                }
-                $renovacao->analise_tecnica = null;
-                $renovacao->horariocompativel = null;
-                $renovacao->desempenhoacademico = null;
-                $renovacao->atividadespertinentes= null;
-                $renovacao->atividadesjustificativa = null;
-                $renovacao->tipodeferimento = null;
-                $renovacao->condicaodeferimento = null;
-                $renovacao->analise_academica = null;
-                $renovacao->analise_academica_user_id = null;
-                $renovacao->avaliacao_empresa = null;
-                $renovacao->avaliacaodescricao = null;
-                $renovacao->status = 'em_elaboracao';
-                $renovacao->save();
-                return redirect("estagios/{$renovacao->id}");
-            } else {
-                request()->session()->flash('alert-danger', 'O relatório do aluno ainda não foi anexado e enviado.');
-                return redirect("/estagios/{$estagio->id}");
+            if(empty($estagio->renovacao_parent_id)){
+                $renovacao->renovacao_parent_id = $estagio->id;
             }
+            
+            $renovacao->status = 'em_elaboracao';
+            $renovacao->save();
+            
+            $file = new File;
+            $file->estagio_id = $renovacao->id;
+            $file->original_name = $request->original_name;                
+            $file->path = $request->file('file')->store('.');
+            $file->user_id = Auth::user()->id;
+            $file->tipo_documento = 'Relatorio';
+            $file->save();                
+                        
+            request()->session()->flash('alert-success', 'Arquivo enviado com sucesso');
+            return redirect("estagios/{$renovacao->id}");           
 
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');

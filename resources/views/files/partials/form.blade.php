@@ -79,9 +79,8 @@
 <div class="row">
     <div class="col-4 form-group">
 
-        Enviar documentos (Apenas arquivos em formato PDF):
-
-        <form method="post" enctype="multipart/form-data" action="/files/store">
+        Enviar documentos (Apenas arquivos em formato PDF):        
+        <form method="post" enctype="multipart/form-data" action="/renovacao">
             @csrf
             <input type="hidden" name="estagio_id" value="{{ $estagio->id }}">
             <input type="file" name="file">
