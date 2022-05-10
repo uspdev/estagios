@@ -35,7 +35,7 @@
 <br><br>
 
 <div style="text-align: justify;">
-    <p style="text-indent : 6em;"><b>{{ $estagio->empresa->nome }}, CNPJ {{ $estagio->empresa->cnpj }}</b>,
+    <p style="text-indent: 1em;"><b>{{ $estagio->empresa->nome }}, CNPJ {{ $estagio->empresa->cnpj }}</b>,
         representada por seu(a) <b>@if($estagio->cargo_do_representante_opcional) {{ $estagio->cargo_do_representante_opcional }} @else {{ $estagio->empresa->cargo_do_representante }} @endif
         , @if($estagio->nome_do_representante_opcional) {{ $estagio->nome_do_representante_opcional }} @else {{ $estagio->empresa->nome_do_representante }} @endif</b> adiante designada
         CONCEDENTE e o ESTAGIÁRIO(A) <b>{{ $estagio->nome }}</b>, no USP <b>{{ $estagio->numero_usp }}</b>,
@@ -64,7 +64,7 @@
         integrante o presente Termo Aditivo, ficando sem efeito as disposições em contrário.
     </p>
 
-    <p style="text-indent : 3em;">E por estarem de comum acordo, as partes acima identificadas assinam o presente Termo
+    <p style="text-indent: 1em;">E por estarem de comum acordo, as partes acima identificadas assinam o presente Termo
         Aditivo em 03(três) vias de igual teor, em papel timbrado ou com carimbo contendo o CNPJ da empresa, para que
         produza seus jurídicos efeitos.
     </p>
