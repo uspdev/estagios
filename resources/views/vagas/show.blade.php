@@ -1,7 +1,7 @@
 @extends('main') 
 
 @section('content')
-@include('flash')
+ 
 
 <div class="card">
   <div class="card-header"><h3>Dados da Vaga:<h3></div>

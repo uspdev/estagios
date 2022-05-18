@@ -9,7 +9,7 @@
 @endsection('javascript_head')
 
 @section('content')
-@include('flash')
+ 
 
 
 <form method="POST" action="/avisos"> 
