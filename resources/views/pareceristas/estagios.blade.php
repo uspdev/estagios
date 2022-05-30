@@ -5,7 +5,7 @@
 @endsection('styles')
 
 @section('content')
-@include('flash')
+ 
 
     <a href="{{ request()->path() }}?type=excel" class="btn btn-success">
       <i class="fa fa-file" aria-hidden="true"></i>

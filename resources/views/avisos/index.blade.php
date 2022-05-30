@@ -1,7 +1,7 @@
 @extends('main') 
 
 @section('content')
-@include('flash')
+ 
 
 <form method="get" action="/avisos">
 <div class="row">
