@@ -5,7 +5,7 @@
 @endsection('javascript_head')
 
 @section('content')
-@include('flash')
+ 
 
 @can('admin')
 <form method="get" action="/empresas">

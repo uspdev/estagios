@@ -1,7 +1,7 @@
 @extends('main') 
 
 @section('content')
-@include('flash')
+ 
 <div class="card">
   <div class="card-header">
     <strong>Exibição </strong>

@@ -1,7 +1,7 @@
 @extends('main') 
 
 @section('content')
-@include('flash')
+ 
 
 <form method="POST" action="/pareceristas/{{$parecerista->id}}">
 @csrf

@@ -5,7 +5,7 @@
 @extends('laravel-usp-theme::master')
 
 @section('content')
-@include('flash')
+ 
 
   <div class="card">
     <div class="card-header"><b>Status do Estágio</b></div>
