@@ -9,7 +9,7 @@
 @endsection('styles')
 
 @section('content')
-@include('flash')
+ 
  
 <form method="POST" action="/vagas">
 @csrf

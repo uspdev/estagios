@@ -1,7 +1,7 @@
 @extends('main') 
 
 @section('content')
-@include('flash')
+ 
 
 @section('javascripts_head')
   <script src="{{asset('/js/empresas.js')}}"></script>
