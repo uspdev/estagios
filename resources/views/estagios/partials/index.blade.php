@@ -32,7 +32,7 @@ button {
         <th>Empresa</th>
         <th>Período</th>
         <th>Status</th>
-        <th>Status do Parecer<th>
+        <th>Status do Parecer</th>
         @can('admin')<th>Deletar</th>@endcan 
         </tr>
     </thead>
