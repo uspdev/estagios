@@ -14,11 +14,11 @@
 
     <thead>
       <tr> 
-        <th><h3>Vagas Disponíveis</h3></th>
-        <th><h3>Cadastrada por</h3></th>
-        <th><h3>Status</h3></th>
-        <th><h3>Divulgação até</h3></th>
-        <th><h3>Ações</h3></th>
+        <th><h5>Vagas Disponíveis</h5></th>
+        <th><h5>Cadastrada por</h5></th>
+        <th><h5>Status</h5></th>
+        <th><h5>Divulgação até</h5></th>
+        <th><h5>Ações</h5></th>
       </tr>
     </thead>
 

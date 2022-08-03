@@ -6,7 +6,7 @@
 <form method="get" action="/avisos">
 <div class="row">
     <div class=" col-sm input-group">
-    <input type="text" class="form-control" name="busca" value="{{ Request()->busca }}">
+    <input type="text" class="form-control" name="busca" value="{{ Request()->busca }}" placeholder="Buscar aviso">
     <span class="input-group-btn">
         <button type="submit" class="btn btn-success"> Buscar </button>
     </span>
@@ -16,7 +16,7 @@
 </br>
 
 <div class="card">
-  <div class="card-body">
+  <div class="card-body" style="padding: 0rem">
     <table class="table table-striped"> 
       <thead class="card-header">
         <tr>
@@ -28,10 +28,10 @@
       @foreach($avisos as $aviso)
         <tr>
           <td>{{$aviso->titulo}}</a></td>
-          <td >
-            <a class="row-sm" href="/avisos/{{$aviso->id}}/edit"><i class="far fa-edit"></i></a>
-            <a class="row-sm" href="/avisos/{{$aviso->id}}"><i class="fas fa-external-link-alt"></i></a>
-           
+          <td style="display: inline-flex; flex-direction: row; justify-content: center; align-items: center;">
+            <a style="padding-right: 10px" class="row-sm" href="/avisos/{{$aviso->id}}/edit"><i class="far fa-edit"></i></a> 
+
+            <a style="padding-right: 10px" class="row-sm" href="/avisos/{{$aviso->id}}"><i class="fas fa-external-link-alt"></i></a>
           
             <form class="row-sm" method="POST" action="/avisos/{{$aviso->id}}">
               @csrf

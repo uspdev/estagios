@@ -49,7 +49,7 @@
                 <td>{{$empresa->cnpj}}</td>
                 <td>{{$empresa->email}}</td>
                 <td>{{$empresa->nome_do_representante}}</td>
-                <td style="text-align:center">
+                <td style="display: inline-flex; flex-direction: row; justify-content: center; align-items: center;">
 
                 @can('admin_ou_empresa',$empresa->cnpj)
                     <a href="/empresas/{{$empresa->id}}/edit"><i class="fas fa-edit"></i></a>
@@ -65,15 +65,7 @@
                         @csrf
                         <button type="submit" class="btn btn-link"><i class="fas fa-user-secret"></i></button>
                     </form>
-                @endcan('admin') 
-
-                <!--
-                <form method="POST" action="/empresas/{{$empresa->id}}" class="form-inline">
-                    @csrf
-                    @method('delete')
-                    <button type="submit" class="btn btn-link" onclick="return confirm('Tem certeza que deseja deletar esta empresa?');"><i class="fas fa-trash-alt"></i></button>
-                </form>
-                -->  
+                @endcan('admin')               
                 </td>
                 
             </tr>

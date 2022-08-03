@@ -58,10 +58,10 @@
         <hr>
 
         <div class="row">
-          <div class="col-sm form-group">
+          <div class="col-sm-5 form-group">
             <b>Conceder acesso de administração:</b> 
             <br>
-            <select name="conceder_acesso_cnpj">
+            <select name="conceder_acesso_cnpj" class="form-control">
             <option value="" selected=""> - Selecione  -</option>
                 @foreach ($empresa->all()->sortBy('nome', SORT_NATURAL|SORT_FLAG_CASE) as $empresa_lista)
 

@@ -36,8 +36,9 @@
         @if($parecerista->presidente == 1) Presidente da Comissão @endif
       </td>
       <td>{{$parecerista->numero_usp}}</td>
-      <td><a href="/pareceristas/{{$parecerista->id}}/edit"><i class="fas fa-edit"></a></i></td>
-      <td>
+      <td style="display: inline-flex; flex-direction: row; justify-content: center; align-items: center;">
+        <a href="/pareceristas/{{$parecerista->id}}/edit"><i class="fas fa-edit"></a></i>
+      
         <form method="POST" action="/pareceristas/{{$parecerista->id}}" class="form-inline">
           @csrf
           @method('delete')
