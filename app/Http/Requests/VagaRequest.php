@@ -32,7 +32,8 @@ class VagaRequest extends FormRequest
             'horario' => 'required',
             'beneficios' => 'required',
             'divulgar_ate' => 'required|data',
-            'status' => ''
+            'status' => '',
+            'justificativa' => 'nullable',
         ];
         return $rules;
     }

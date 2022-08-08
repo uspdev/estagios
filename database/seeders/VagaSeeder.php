@@ -23,6 +23,7 @@ class VagaSeeder extends Seeder
             'beneficios' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             'divulgar_ate' => '2020-12-20',
             'status' => 'Aprovada',
+            'justificativa' => 'Justificativa teste', 
         ];
         
         Vaga::create($entrada);

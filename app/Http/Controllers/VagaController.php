@@ -69,7 +69,10 @@ class VagaController extends Controller
     public function status(Request $request, Vaga $vaga){
         $this->authorize('admin');
         if($request->status == 'Aprovada') $vaga->status = 'Aprovada';
-        if($request->status == 'Reprovada') $vaga->status = 'Reprovada';
+        if($request->status == 'Reprovada'){
+            $vaga->status = 'Reprovada';
+            $vaga->justificativa = $request->justificativa;
+        } 
         $vaga->save();
         return redirect()->route('vagas.show', [$vaga]);
     }
