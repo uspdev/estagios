@@ -105,7 +105,7 @@ button {
 
         </tr>
         @empty
-            <td colspan="5">Sem estagiários/as no momento</td>
+            <td colspan="8">Sem estagiários/as no momento</td>
         @endforelse
     </tbody>
     </table>
