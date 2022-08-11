@@ -41,7 +41,7 @@ class VagaController extends Controller
         $vaga = Vaga::create($validated);
         return redirect ("vagas/{$vaga->id}");
     }
-    
+
     public function edit(Vaga $vaga) {
         $this->authorize('owner',$vaga);
         return view('/vagas.edit')-> with('vaga', $vaga);
@@ -68,11 +68,8 @@ class VagaController extends Controller
 
     public function status(Request $request, Vaga $vaga){
         $this->authorize('admin');
-        if($request->status == 'Aprovada') $vaga->status = 'Aprovada';
-        if($request->status == 'Reprovada'){
-            $vaga->status = 'Reprovada';
-            $vaga->justificativa = $request->justificativa;
-        } 
+        $vaga->status = $request->status;
+        $vaga->justificativa = $request->justificativa ?? '';
         $vaga->save();
         return redirect()->route('vagas.show', [$vaga]);
     }
