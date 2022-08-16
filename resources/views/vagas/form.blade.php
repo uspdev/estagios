@@ -49,11 +49,16 @@
     </div>
   </div>
 
-  <div class="row">  
-    <div class="col-sm form-group">
-      <button type="submit" class="btn btn-success">Enviar</button>
-    </div>
+  <div class="row">
+      <div class="col-sm-4 form-group">
+        <label for="email" class="required"><strong>E-mail para vaga: </strong></label>
+        <input type="email" maxlength="128" class="form-control" id="email" name="email" value="{{old('email',$vaga->email)}}">
+      </div>
   </div>
-    
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-success">Enviar</button>
+  </div>
+  
   </div>
 </div>

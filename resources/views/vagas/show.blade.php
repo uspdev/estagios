@@ -68,6 +68,8 @@
         <br></br>
         <b>Contato para vaga:</b> {{ $vaga->contato ?? 'Não informado' }}
         <br></br>
+        <b>Email para vaga:</b> {{ $vaga->email }}
+        <br></br>
       </div>
 
     </div>

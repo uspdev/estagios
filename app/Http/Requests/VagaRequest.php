@@ -34,6 +34,7 @@ class VagaRequest extends FormRequest
             'divulgar_ate' => 'required|data',
             'status' => '',
             'justificativa' => 'nullable',
+            'email' => 'required|email|max:255'
         ];
         return $rules;
     }

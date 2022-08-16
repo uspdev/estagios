@@ -5,27 +5,25 @@
 
 <div class="card">
     <div class="card-header"><b>Filtrar estatísticas sobre o sistema</b></div>
-    <div class="card-body">
+        <div class="card-body">
 
         <form method="get" action="/estatisticas">
         @csrf
-            Estágios que iniciaram entre:
-            <div class="row">
-                <input class="datepicker" name="start_date" value="{{ request()->start_date }}"> 
-                    e
-                <input class="datepicker" name="end_date" value="{{ request()->end_date }}">
-
-                <select name="curso" class="form-select">
-                    <option value="0" selected>Qualquer curso</option>
-                    @foreach($cursos as $curso)
-                        <option value="{{ $curso }}"> {{ $curso }} </option>
-                    @endforeach
-                </select>
-
-                <span class="input-group-btn">
-                    <button type="submit" class="btn btn-success"> Buscar </button>
-                </span>
-            </div>
+        Estágios que iniciaram entre:            
+            <input class="datepicker" name="start_date" value="{{ request()->start_date }}"> 
+                e
+            <input class="datepicker" name="end_date" value="{{ request()->end_date }}">
+            <br><br>
+            <select name="curso" class="form-control" style="width: 60%;">
+                <option value="0" selected>Qualquer curso</option>
+                @foreach($cursos as $curso)
+                    <option value="{{ $curso }}"> {{ $curso }} </option>
+                @endforeach
+            </select>
+            <br>
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-success"> Buscar </button>
+            </span>
         </form>
     </div>
 </div>

@@ -24,6 +24,7 @@ class VagaSeeder extends Seeder
             'divulgar_ate' => '2020-12-20',
             'status' => 'Aprovada',
             'justificativa' => 'Justificativa teste', 
+            'email' => 'contato@vaga.com'
         ];
         
         Vaga::create($entrada);
