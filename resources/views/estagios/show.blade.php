@@ -66,7 +66,7 @@
 @include('estagios.partials.informacoes')
 
 @if(! in_array($estagio->status,['analise_alteracao_parecerista','rescisao','cancelado']))
-    @can('admin_ou_empresa',$estagio->cnpj)
+    @can('admin',$estagio->cnpj)
     <br>
     <a class="btn btn-danger" onClick="return confirm('Tem certeza que deseja cancelar o estágio?')" href="/cancelar_estagio/{{$estagio->id}}">
         Cancelar Estágio </a>
