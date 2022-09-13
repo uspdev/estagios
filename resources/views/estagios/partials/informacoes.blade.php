@@ -84,7 +84,7 @@
 
     <br>
 
-        <div class="card-header"><b>Informações relatívas a pandemia de COVID-19</b></div>
+        <div class="card-header"><b>Informações relativas à pandemia de COVID-19</b></div>
             <div class="card-body">
                 <b>O estágio será realizado em home-office?:</b> {{$estagio->pandemiahomeoffice}}<br>
                 @if(($estagio->pandemiamedidas)!=null)
