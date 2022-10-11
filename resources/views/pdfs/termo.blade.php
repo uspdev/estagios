@@ -105,7 +105,7 @@
             {{ $estagio->numseguro }}</b>,
         que está compatível com valores de mercado, da <b>{{ $estagio->seguradora }}</b>.</p>
     <p>9. O ESTAGIÁRIO deverá informar de imediato e por escrito à CONCEDENTE qualquer fato que interrompa, suspenda ou
-        cancele sua matrícula na instituição de Ensino INTERVENIENTE, ficando ele responsável por quaisquer despesas
+        cancele sua matrícula nas disciplinas na instituição de Ensino INTERVENIENTE, ficando ele responsável por quaisquer despesas
         causadas pela ausência dessa informação.</p>
     <p>10. A Instituição de Ensino INTERVENIENTE supervisionará o estágio de conformidade com os seus regulamentos
         internos, ficando o ESTAGIÁRIO sujeito a essa regulamentação.</p>
@@ -130,12 +130,6 @@
     ________________________________________________<br>
     {{ \App\Models\Parecerista::nomePresidente() }}<br>
     Presidente da Comissão de Graduação da FFLCH-USP
-</div>
-
-<div><br><br>
-    <b>TESTEMUNHAS:</b><br><br>
-    _______________________________________________<br><br>
-    _______________________________________________
 </div>
 
 </div>
