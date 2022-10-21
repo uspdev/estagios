@@ -14,6 +14,7 @@ use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Gate;
 use App\Utils\ReplicadoUtils;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class EstagioController extends Controller
 {
@@ -73,7 +74,7 @@ class EstagioController extends Controller
 
     public function show(Estagio $estagio)
     {
-        if (Gate::allows('admin') | Gate::allows('parecerista') | Gate::allows('empresa',$estagio->cnpj)) {
+        if (Gate::allows('admin') | Gate::allows('parecerista') | Gate::allows('empresa',$estagio->cnpj) | Gate::allows('logado',$estagio->numero_usp)) {
             return view('estagios.show')->with('estagio',$estagio);
         }
         abort(403, 'Access denied');

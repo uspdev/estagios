@@ -16,6 +16,8 @@ use App\Http\Controllers\EstatisticaController;
 use App\Http\Controllers\Auth\LoginEmpresaController;
 use App\Http\Controllers\Auth\LoginUspController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\EstudanteController;
 
 
 Route::get('/',[IndexController::class, 'index'])->name('login');
@@ -130,3 +132,6 @@ Route::get('info', [EstagioController::class, 'info'])->name('estagios.info');
 # Logs
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('can:admin');
 
+# Novas páginas 
+Route::resource('/reports',ReportController::class);
+Route::resource('/estudantes', EstudanteController::class);

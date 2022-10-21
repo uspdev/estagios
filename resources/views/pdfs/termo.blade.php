@@ -105,7 +105,7 @@
             {{ $estagio->numseguro }}</b>,
         que está compatível com valores de mercado, da <b>{{ $estagio->seguradora }}</b>.</p>
     <p>9. O ESTAGIÁRIO deverá informar de imediato e por escrito à CONCEDENTE qualquer fato que interrompa, suspenda ou
-        cancele sua matrícula nas disciplinas na instituição de Ensino INTERVENIENTE, ficando ele responsável por quaisquer despesas
+        cancele sua matrícula nas disciplinas da instituição de Ensino INTERVENIENTE, ficando ele responsável por quaisquer despesas
         causadas pela ausência dessa informação.</p>
     <p>10. A Instituição de Ensino INTERVENIENTE supervisionará o estágio de conformidade com os seus regulamentos
         internos, ficando o ESTAGIÁRIO sujeito a essa regulamentação.</p>
@@ -148,7 +148,6 @@
     <b>Nº USP:</b> {{ $estagio->numero_usp }}<br>
     <b>Curso:</b> {{ $estagio->curso }}<br>
     <b>Período:</b> {{ $estagio->periodo }}<br>
-    <b>Semestre:</b> {{ $estagio->semestre_atual }}º<br>
     <b>E-mail:</b> {{ $estagio->email }}<br>
     <b>Nome da Empresa:</b> {{ $estagio->empresa->nome }}<br>
     <b>Área de atuação da Empresa:</b> {{ $estagio->empresa->area_de_atuacao }}<br>

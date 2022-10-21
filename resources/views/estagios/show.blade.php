@@ -6,7 +6,6 @@
 
 @section('content')
  
-
   <div class="card">
     <div class="card-header"><b>Status do Estágio</b></div>
       <div class="card-body">
@@ -43,13 +42,14 @@
     @endif
   @endcan('empresa')
 
+  @can('admin','empresa','parecerista')
     <div class="card">
     <div class="card-header"><b>Documentos do Estágio</b></div>
       <div class="card-body">
         @include('files.partials.form')
       </div>
     </div>
-
+  @endcan
 <br>
 
 @can('admin')

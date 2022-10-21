@@ -40,8 +40,8 @@
                 <div class="form-group">
 
                 <div class="form-group">
-                    <label for="alteracoesadcionais">Caso tenha sido feita alguma outra alteração adcional para além das novas datas
-                    de contrato, favor descrever: (deixar em branco caso nenhuma alteração adcional tenha sido feita)</label>
+                    <label for="alteracoesadcionais">Caso tenha sido feita alguma outra alteração adicional para além das novas datas
+                    de contrato, favor descrever: (deixar em branco caso nenhuma alteração adicional tenha sido feita)</label>
                     <textarea name="alteracoesadcionais" rows="4">{{old('alteracoesadcionais',$estagio->alteracoesadcionais)}}</textarea>
                 </div>
 
