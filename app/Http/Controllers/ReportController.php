@@ -4,25 +4,25 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Estagio;
-use App\Models\Empresa;
-use Uspdev\Replicado\Pessoa;
-use Rap2hpoutre\FastExcel\FastExcel;
 use Carbon\Carbon;
 
 class ReportController extends Controller
 {
-    public function index(Request $request, Estagio $estagio, Empresa $empresa){
-        $cursos = Estagio::whereNotNull('nomcur')->select('nomcur')->distinct()->get()->pluck('nomcur');
+    private $cursos;
 
-        if(!$request->start_date) {
-            return view('reports.index')->with([
-                'cursos' => $cursos
-            ]);   
-        }
+    public function __construct(Estagio $estagio){
+        $this->cursos = $estagio->nomcurOptions();
+    }
 
-        $request->validate([
+    public function index(){
+        return view('reports.index')->with([
+            'cursos' => $this->cursos
+        ]);   
+    }    
+
+    public function report(Request $request){
+        $request->validate([   //form request 
             'start_date' => 'required',
             'end_date' => 'required',
         ]);
@@ -37,8 +37,8 @@ class ReportController extends Controller
         }
         
         return view('reports.index')->with([
-            'cursos' => $cursos,
-            'estagios' => $estagios->get()
+            'cursos' => $this->cursos,
+            'estagios' => $estagios->paginate()
         ]);
     }
 }

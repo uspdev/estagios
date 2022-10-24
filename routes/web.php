@@ -133,5 +133,6 @@ Route::get('info', [EstagioController::class, 'info'])->name('estagios.info');
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('can:admin');
 
 # Novas páginas 
-Route::resource('/reports',ReportController::class);
-Route::resource('/estudantes', EstudanteController::class);
+Route::get('/reports', [ReportController::class, 'index']);
+Route::get('report', [ReportController::class, 'report']);
+Route::get('/estudantes', [EstudanteController::class, 'index']);
