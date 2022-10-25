@@ -58,6 +58,7 @@
     @empty
         <td colspan="7">Sem resultados no momento</td>
 @endforelse
+{{ $estagios->appends(request()->query())->links() }}
 </tbody>
 </table>
 @endif

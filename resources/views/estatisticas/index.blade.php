@@ -74,7 +74,7 @@
 
     </div>
 
-    <br> Informações geradas ás {{ date("H:i"); }} do dia {{ date("d/m/Y")}} 
+    <br> Informações geradas às {{ date("H:i"); }} do dia {{ date("d/m/Y")}} 
 </div>
 @endif
 @endsection('content')
