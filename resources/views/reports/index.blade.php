@@ -7,7 +7,7 @@
     <div class="card-header"><b>Filtrar relatórios sobre estágios concluídos</b></div>
     <div class="card-body">
 
-        <form method="get" action="/reports">
+        <form method="get" action="report">
         @csrf
             Estágios que concluíram entre:
                 <input class="datepicker" name="start_date" value="{{ request()->start_date }}"> 
@@ -57,6 +57,7 @@
     @empty
         <td colspan="7">Sem resultados no momento</td>
 @endforelse
+{{ $estagios->appends(request()->query())->links() }}
 </tbody>
 </table>
 @endif

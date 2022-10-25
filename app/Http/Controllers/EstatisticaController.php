@@ -4,21 +4,22 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Estagio;
-use App\Models\Empresa;
-use Uspdev\Replicado\Pessoa;
-use Rap2hpoutre\FastExcel\FastExcel;
 use Carbon\Carbon;
 
 class EstatisticaController extends Controller
 {
-    public function index(Request $request, Estagio $estagio, Empresa $empresa){
-        $cursos = Estagio::whereNotNull('nomcur')->select('nomcur')->distinct()->get()->pluck('nomcur');
+    private $cursos;
+
+    public function __construct(Estagio $estagio){
+        $this->cursos = $estagio->nomcurOptions();
+    }
+
+    public function index(Request $request){
 
         if(!$request->start_date) {
             return view('estatisticas.index')->with([
-                'cursos' => $cursos
+                'cursos' => $this->cursos
             ]);   
         }
 
@@ -37,7 +38,7 @@ class EstatisticaController extends Controller
         }
 
         return view('estatisticas.index')->with([
-            'cursos' => $cursos,
+            'cursos' => $this->cursos,
             'estagios' => $estagios->get()
         ]);
     }
