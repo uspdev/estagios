@@ -1,16 +1,16 @@
-@extends('main') 
+@extends('main')
 
 @section('content')
- 
+
 
 <div class="card">
     <div class="card-header"><b>Filtrar relatórios sobre estágios concluídos</b></div>
     <div class="card-body">
 
-        <form method="get" action="report">
+        <form method="get" action="/report">
         @csrf
             Estágios que concluíram entre:
-                <input class="datepicker" name="start_date" value="{{ request()->start_date }}"> 
+                <input class="datepicker" name="start_date" value="{{ request()->start_date }}">
                     e
                 <input class="datepicker" name="end_date" value="{{ request()->end_date }}">
                 <br><br>
@@ -31,6 +31,7 @@
 <br>
 
 @if(isset($estagios))
+{{$estagios->appends(request()->query())->links()}}
 <table class="table table-striped">
 <thead>
     <tr>

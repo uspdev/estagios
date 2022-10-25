@@ -16,17 +16,21 @@ class ReportController extends Controller
     }
 
     public function index(){
+        $this->authorize('admin');
+
         return view('reports.index')->with([
             'cursos' => $this->cursos
-        ]);   
-    }    
+        ]);
+    }
 
     public function report(Request $request){
-        $request->validate([   //form request 
+        $this->authorize('admin');
+
+        $request->validate([   //form request
             'start_date' => 'required',
             'end_date' => 'required',
         ]);
-        
+
         $start_date = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
         $end_date = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
 
@@ -35,7 +39,7 @@ class ReportController extends Controller
         if($request->curso) {
             $estagios = $estagios->where('nomcur',$request->curso);
         }
-        
+
         return view('reports.index')->with([
             'cursos' => $this->cursos,
             'estagios' => $estagios->paginate()
