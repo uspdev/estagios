@@ -31,7 +31,6 @@
 <br>
 
 @if(isset($estagios))
-{{$estagios->appends(request()->query())->links()}}
 <table class="table table-striped">
 <thead>
     <tr>
