@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Aditivo;
 use App\Models\Parecerista;
 use App\Utils\ReplicadoUtils;
+use App\Utils\AuditUtils;
 use Uspdev\Replicado\Pessoa;
 use Uspdev\Replicado\Graduacao;
 use Carbon\Carbon;
@@ -94,7 +95,6 @@ class Estagio extends Model implements Auditable
             'História',
             'Ciências Sociais',
             'Geografia',
-            'Ciências Moleculares',
         ];
     }
 

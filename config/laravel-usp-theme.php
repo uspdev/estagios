@@ -147,8 +147,20 @@ return [
         ],
 
         [
-            'text'    => 'Estatísticas do Sistema',
+            'text'    => 'Estatísticas',
             'url'     => '/estatisticas',
+            'can'     => 'logado',
+        ],
+
+        [
+            'text'    => 'Relatórios',
+            'url'     => '/reports',
+            'can'     => 'admin',
+        ],
+
+        [
+            'text'    => 'Meu estágio',
+            'url'     => '/estudantes',
             'can'     => 'logado',
         ],
     ]
