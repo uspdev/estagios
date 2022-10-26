@@ -42,14 +42,14 @@
     @endif
   @endcan('empresa')
 
-  @can('admin','empresa','parecerista')
+  @canany(['admin','empresa','parecerista'])
     <div class="card">
     <div class="card-header"><b>Documentos do Estágio</b></div>
       <div class="card-body">
         @include('files.partials.form')
       </div>
     </div>
-  @endcan
+  @endcanany
 <br>
 
 @can('admin')
