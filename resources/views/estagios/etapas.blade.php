@@ -13,39 +13,49 @@
 
 <div class="md-stepper-horizontal orange">
 
-    @foreach ($estagio->getStatus() as $key => $status)
-      <div class="md-step editable
-        @if($estagio->status == $key) 
-          active
-        @else
-          next
-        @endif
-      ">
-        <a href="#">
-          <div class="md-step-circle"><span></span></div>
-          <div class="md-step-title">{{ $status['name'] }}</div>
-          <div class="md-step-optional">{{ $status['optional'] }}</div>
-        </a>
-        <div class="md-step-bar-left"></div>
-        <div class="md-step-bar-right"></div>
-      </div>
-    @endforeach
+  @foreach ($estagio->getStatus() as $key => $status)
+    <div class="md-step editable
+      @if($estagio->status == $key) 
+        active
+      @else
+        next
+      @endif
+    ">
+      <a href="#">
+        <div class="md-step-circle"><span></span></div>
+        <div class="md-step-title">{{ $status['name'] }}</div>
+        <div class="md-step-optional">{{ $status['optional'] }}</div>
+      </a>
+      <div class="md-step-bar-left"></div>
+      <div class="md-step-bar-right"></div>
+    </div>
+  @endforeach
 
-  </div>
+</div>
 
 @if($estagio->last_status)
   <div class="text-warning bg-info text-center">
-  Último Status: <b>{{ $estagio->getStatus()[$estagio->last_status]['name'] }} </b> <br>
-  Status Atual: <b>{{ $estagio->getStatus()[$estagio->status]['name'] }} </b>
-  </b>
-  <br>
-  Última mudança realizada em: <b>{{ Carbon\Carbon::parse($estagio->updated_at)->format('d/m/Y H:i') }}</b>
+    Último Status: <b>{{ $estagio->getStatus()[$estagio->last_status]['name'] }} </b> <br>
+    Status Atual: <b>{{ $estagio->getStatus()[$estagio->status]['name'] }} </b>
+    </b>
+    <br>
+    Última mudança realizada em: <b>{{ Carbon\Carbon::parse($estagio->updated_at)->format('d/m/Y H:i') }}</b>
   </div>
   <br>
 @endif
 
+
+@can('admin')
+<details>
+  <summary>Visualizar histórico de mudanças</summary>
+  <br>
+  @include('estagios.partials.audit', ['model'=>$estagio])
+</details>
+@endcan
+<br>
+
 @if($estagio->analise_tecnica_user)
-Análise técnica do setor de Graduação realizada por: {{ $estagio->analise_tecnica_user->name  }} <br>
+  Análise técnica do setor de Graduação realizada por: {{ $estagio->analise_tecnica_user->name  }} <br>
 @endif
 
 @if($estagio->analise_academica_user)

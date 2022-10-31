@@ -16,6 +16,7 @@ use Uspdev\Replicado\Graduacao;
 use Carbon\Carbon;
 use OwenIt\Auditing\Contracts\Auditable;
 use Uspdev\Utils\Generic;
+use App\Utils\Mapeamento;
 
 class Estagio extends Model implements Auditable
 {
@@ -319,5 +320,9 @@ class Estagio extends Model implements Auditable
     public function getPareceristaEmailAttribute() {
         if($this->numparecerista)
             return Pessoa::email($this->numparecerista);
+    }
+
+    public function mapeamento($chave) {
+        return Mapeamento::map($chave);
     }
 }
