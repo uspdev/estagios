@@ -46,11 +46,13 @@
 
 
 @can('admin')
-<details>
-  <summary>Visualizar histórico de mudanças</summary>
-  <br>
-  @include('estagios.partials.audit', ['model'=>$estagio])
-</details>
+  <div class="alert alert-info" role="alert">
+    <details>
+      <summary>Visualizar histórico de mudanças</summary>
+      <br>
+      @include('estagios.partials.audit', ['model'=>$estagio])
+    </details>
+  </div>
 @endcan
 <br>
 
