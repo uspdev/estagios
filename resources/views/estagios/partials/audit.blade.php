@@ -11,14 +11,14 @@
   @foreach($model->audits->sortByDesc('created_at') as $field => $audit)
     <tr>
       <td> {{ \Carbon\Carbon::parse($audit->getMetadata()['audit_created_at'])->format('d/m/Y H:i') }} </td>
-      
+
       @if(($estagio->cnpj) == ($audit->getMetadata()['user_name']))
         <td> {{ $estagio->empresa->nome }} </td>
       @else
         <td> {{ $audit->getMetadata()['user_name'] }}</td>
       @endif
 
-      <td> 
+      <td>
         @foreach($audit->getModified() as $field2 => $modified)
           @if($field)
             <b>{{ $estagio->mapeamento($field2) }}: </b> {{ $modified['old'] }} <br>
@@ -26,7 +26,7 @@
         @endforeach
       </td>
 
-      <td> 
+      <td>
         @foreach($audit->getModified() as $field => $modified)
           @if($field)
             <b>{{ $estagio->mapeamento($field) }}:</b> {{ $modified['new'] }}<br>

@@ -92,7 +92,7 @@ class Estagio extends Model implements Auditable
     public function nomcurOptions(){
         return [
             'Letras',
-            'Filosofia',            
+            'Filosofia',
             'História',
             'Ciências Sociais',
             'Geografia',

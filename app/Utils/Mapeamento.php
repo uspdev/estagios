@@ -66,7 +66,6 @@ class Mapeamento
             'cargo_do_representante_opcional' => 'Cargo do representante da empresa',
             'email_do_representante_opcional' => 'E-mail do representante da empresa',
             'id' => 'ID',
-            
         ];
 
         return $mapeamento[$chave];

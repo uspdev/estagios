@@ -15,7 +15,7 @@
 
   @foreach ($estagio->getStatus() as $key => $status)
     <div class="md-step editable
-      @if($estagio->status == $key) 
+      @if($estagio->status == $key)
         active
       @else
         next
@@ -65,7 +65,7 @@
   Status do deferimento do parecer de mérito:<b>{{$estagio->tipodeferimento}}</b><br>
   @can('parecerista')
           <a class="btn btn-info" onClick="return confirm('Tem certeza que deseja editar o parecer de mérito?')" href="/editar_analise_academica/{{$estagio->id}}">
-          <i class="far fa-edit"></i> 
+          <i class="far fa-edit"></i>
           Editar parecer de mérito </a> <br>
   @endcan('parecerista')
 @endif
@@ -88,10 +88,10 @@
           <br>
           <b>Nome:</b> {{ $estagio->parecerista_nome }}<br>
           <b>Email Cadastrado:</b> {{ $estagio->parecerista_email }}</b><br>
-                 
+
       @endif
       @include('estagios.partials.em_analise_academica')
-      @break              
+      @break
 
     @case('assinatura')
     @include('estagios.partials.assinatura')
@@ -100,23 +100,23 @@
     @case('concluido')
 
     @include('estagios.partials.concluido')
-      @break 
+      @break
 
     @case('em_alteracao')
       @include('estagios.partials.em_alteracao')
-      @break  
+      @break
 
     @case('analise_alteracao_parecerista')
       @include('estagios.partials.em_analise_tecnica')
-      @break  
+      @break
 
     @case('rescisao')
       @include('estagios.partials.rescisao')
-      @break     
+      @break
 
     @case('cancelado')
       @include('estagios.partials.cancelado')
-      @break                      
+      @break
 
     @default
         <span>Something went wrong, please try again</span>
