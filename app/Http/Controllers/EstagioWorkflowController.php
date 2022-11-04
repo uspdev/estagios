@@ -22,6 +22,7 @@ use App\Mail\alteracao_empresa_mail;
 use App\Mail\alteracao_indeferida_mail;
 use App\Mail\enviar_analise_academica_mail;
 use App\Mail\alteracao_pendente_empresa_mail;
+use App\Mail\justificativa_analise_tecnica;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 
@@ -102,6 +103,7 @@ class EstagioWorkflowController extends Controller
                 $estagio->last_status = $estagio->status;
                 $estagio->status = 'em_elaboracao';
                 $estagio->save();
+                Mail::queue(new justificativa_analise_tecnica($estagio));
                 return redirect("/estagios/{$estagio->id}");
             } else {
                 if($estagio->numparecerista){

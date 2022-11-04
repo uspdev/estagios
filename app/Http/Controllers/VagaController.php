@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\VagaRequest;
 use App\Models\Vaga;
 use Auth;
+use App\Mail\enviar_justificativa_reprovacao;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Gate;
 
 class VagaController extends Controller
@@ -71,6 +73,9 @@ class VagaController extends Controller
         $vaga->status = $request->status;
         $vaga->justificativa = $request->justificativa ?? '';
         $vaga->save();
+        if($request->status == 'Reprovada'){
+            Mail::queue(new enviar_justificativa_reprovacao($vaga));
+        }
         return redirect()->route('vagas.show', [$vaga]);
     }
 }
