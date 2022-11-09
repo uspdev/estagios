@@ -37,6 +37,7 @@ class VagaFactory extends Factory
             'divulgar_ate' =>$this->faker->dateTimeBetween($startDate = '-2 years',$endDate = '+ 2 years')->format('Y-m-d'),
             'status' => $valstatus[array_rand($valstatus)],
             'justificativa' => $this->faker->text($maxNbChars = 200),
+            'email' => $this->faker->email,
         ];
     }
 }
