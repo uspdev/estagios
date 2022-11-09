@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\VagaRequest;
+use App\Http\Requests\ReprovarVagaRequest;
 use App\Models\Vaga;
 use Auth;
 use App\Mail\enviar_justificativa_reprovacao;
@@ -68,14 +69,19 @@ class VagaController extends Controller
         }
     }
 
-    public function status(Request $request, Vaga $vaga){
+    public function aprovar(Vaga $vaga) {
         $this->authorize('admin');
-        $vaga->status = $request->status;
-        $vaga->justificativa = $request->justificativa ?? '';
+        $vaga->status = "Aprovada";
         $vaga->save();
-        if($request->status == 'Reprovada'){
-            Mail::queue(new enviar_justificativa_reprovacao($vaga));
-        }
+        return redirect()->route('vagas.show', [$vaga]);
+    }
+
+    public function reprovar(ReprovarVagaRequest $request, Vaga $vaga){
+        $this->authorize('admin');
+        $validated = $request->validated();
+        $validated['status'] = 'Reprovada';
+        $vaga->update($validated);
+        Mail::queue(new enviar_justificativa_reprovacao($vaga));
         return redirect()->route('vagas.show', [$vaga]);
     }
 }

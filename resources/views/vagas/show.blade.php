@@ -1,7 +1,7 @@
-@extends('main') 
+@extends('main')
 
 @section('content')
- 
+
 
 <div class="card">
   <div class="card-header"><h3>Dados da Vaga:<h3></div>
@@ -11,15 +11,18 @@
       <a href="{{ route('vagas.edit',$vaga->id) }}" class="btn btn-success">Editar</a>
       <br><br>
     @endcan
-    
+
     @can('admin')
-      <form method="POST" action="{{ route('vagas.status',$vaga->id) }}" id="formStatus">
+      <form method="POST" action="{{ route('vagas.aprovar',$vaga->id) }}" id="formStatus">
         @csrf
         @if($vaga->status != 'Aprovada')
           <button type="submit" value="Aprovada" name="status" class="btn btn-info"> Aprovar </button>
         @endif
+      </form>
+      <form method="POST" action="{{ route('vagas.reprovar', $vaga->id) }}">
+        @csrf
         @if($vaga->status != 'Reprovada')
-          <button type="button" value="Reprovada" name="status" data-toggle="modal" data-target="#exampleModal" class="btn btn-info"> Reprovar </button>              
+          <button type="button" value="Reprovada" name="status" data-toggle="modal" data-target="#exampleModal" class="btn btn-info"> Reprovar </button>
 
       <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -44,7 +47,7 @@
       </form>
       <br>
     @endcan
-    
+
     <div class="row">
 
       <div class="col-sm">

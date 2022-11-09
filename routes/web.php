@@ -33,7 +33,8 @@ Route::resource('/files', FileController::class);
 Route::resource('/estatisticas',EstatisticaController::class);
 
 # vagas
-Route::post('/statusvagas/{vaga}',[VagaController::class,'status'])->name('vagas.status');
+Route::post('/aprovar/{vaga}',[VagaController::class,'aprovar'])->name('vagas.aprovar');
+Route::post('/reprovar/{vaga}',[VagaController::class,'reprovar'])->name('vagas.reprovar');
 
 #PDF's
 Route::get('/pdfs/termo/{estagio}', [PDFsController::class, 'termo']);
@@ -132,7 +133,7 @@ Route::get('info', [EstagioController::class, 'info'])->name('estagios.info');
 # Logs
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('can:admin');
 
-# Novas páginas 
+# Novas páginas
 Route::get('/reports', [ReportController::class, 'index']);
 Route::get('report', [ReportController::class, 'report']);
 Route::get('/estudantes', [EstudanteController::class, 'index']);
