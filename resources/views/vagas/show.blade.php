@@ -33,26 +33,27 @@
         <br></br>
       </div>
 
-    </div>  
+    </div>
 
     <div class="btn-group" role="group">
       @can('owner',$vaga)
         <a href="{{ route('vagas.edit',$vaga->id) }}" class="btn btn-success">Editar</a>
-        <br><br>
       @endcan
-      
+
       @can('admin')
         <form method="POST" action="{{ route('vagas.aprovar',$vaga->id) }}" id="formStatus">
           @csrf
           @if($vaga->status != 'Aprovada')
-            <button type="submit" value="Aprovada" name="status" class="btn btn-info"> Aprovar </button>
+            <button type="submit" value="Aprovada" name="status" class="btn btn-info ml-1"> Aprovar </button>
           @endif
         </form>
 
         <form method="POST" action="{{ route('vagas.reprovar', $vaga->id) }}">
           @csrf
           @if($vaga->status != 'Reprovada')
-            <button type="button" value="Reprovada" name="status" data-toggle="modal" data-target="#exampleModal" class="btn btn-info"> Reprovar </button>
+            <button type="button" value="Reprovada" name="status"
+              data-toggle="modal" data-target="#exampleModal" class="btn
+              btn-info ml-1"> Reprovar </button>
 
             <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
