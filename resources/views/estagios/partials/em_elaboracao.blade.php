@@ -13,7 +13,7 @@
 
         @if(is_null($estagio->renovacao_parent_id))
             
-                <form method="POST" action="/enviar_para_analise_tecnica/{{$estagio->id}}">
+            <form method="POST" action="/enviar_para_analise_tecnica/{{$estagio->id}}">
                 @csrf
 
                 <div class="form-group">
@@ -30,24 +30,24 @@
                 </div>
                 
                 @include ('estagios.form')
-                </form>
+            </form>
 
         @else
 
-                <form method="POST" action="/enviar_para_analise_tecnica/{{$estagio->id}}">
+            <form method="POST" action="/enviar_para_analise_tecnica/{{$estagio->id}}">
                 @csrf
 
                 <div class="form-group">
 
-                <div class="form-group">
-                    <label for="alteracoesadcionais">Caso tenha sido feita alguma outra alteração adicional para além das novas datas
-                    de contrato, favor descrever: (deixar em branco caso nenhuma alteração adicional tenha sido feita)</label>
-                    <textarea name="alteracoesadcionais" rows="4">{{old('alteracoesadcionais',$estagio->alteracoesadcionais)}}</textarea>
-                </div>
+                    <div class="form-group">
+                        <label for="alteracoesadcionais">Caso tenha sido feita alguma outra alteração adicional para além das novas datas
+                        de contrato, favor descrever: (deixar em branco caso nenhuma alteração adicional tenha sido feita)</label>
+                        <textarea name="alteracoesadcionais" rows="4">{{old('alteracoesadcionais',$estagio->alteracoesadcionais)}}</textarea>
+                    </div>
 
                     <button type="submit" class="btn btn-success" name="enviar_para_analise_tecnica" value="enviar_para_analise_tecnica_renovacao"
                         onClick="return confirm('Tem certeza que quer enviar para o Setor de Graduação?')">
-                            Salvar e enviar para Análise Técnica do <b>Setor de Graduação
+                            Salvar e enviar para Análise Técnica do <b>Setor de Graduação</b>
                     </button>
                 </div>
 
@@ -58,7 +58,7 @@
                 </div>
 
                 @include ('estagios.form')
-                </form>
+            </form>
 
         @endif
 

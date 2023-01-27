@@ -1,8 +1,9 @@
+@extends('main')
+
+
 @section('javascripts_head')
   <script src="{{asset('/js/estagios.js')}}"></script>
 @endsection('javascript_head')
-
-@extends('laravel-usp-theme::master')
 
 @section('content')
  
