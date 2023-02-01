@@ -36,6 +36,7 @@ class EstagioRequest extends FormRequest
             'especifiquevt' => 'required|max:255',
             'seguradora' => 'required|max:255',
             'numseguro' => 'required|max:255',
+            'atividades' => 'required',
 
             //campos opcionais
             'controlehorario' => 'nullable',
@@ -43,7 +44,6 @@ class EstagioRequest extends FormRequest
             'interacao' => 'nullable',
             'enderecoedias' => 'nullable',
             'justificativa' => 'nullable',
-            'atividades' => 'nullable',
             'nome_do_representante_opcional' => 'nullable',
             'cargo_do_representante_opcional' => 'nullable',
             'email_do_representante_opcional' => 'nullable',            

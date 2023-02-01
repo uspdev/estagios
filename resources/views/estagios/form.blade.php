@@ -63,14 +63,9 @@ aditivo por até 12 meses.
         </div>
 
         <div class="form-group">
-        <label for="justificativa">Justificativa (Não é necessário preencher em caso de estágio inferior a 6 meses): </label>
-            <textarea name="justificativa" rows="5" cols="60">{{old('justificativa',$estagio->justificativa)}}</textarea>
-        </div>
-
-        <div class="form-group">
-        <label for="atividades">Descrição detalhada das atividades a serem desenvolvidas pelo 
+        <label for="atividades" class="required">Descrição detalhada das atividades a serem desenvolvidas pelo 
         estagiário para que o parecerista analise e constate a relação destas com a formação 
-        acadêmica do aluno (Não é necessário preencher em caso de estágio inferior a 6 meses): </label>
+        acadêmica do aluno: </label>
             <textarea name="atividades" rows="5" cols="60">{{old('atividades',$estagio->atividades)}}</textarea>
         </div>
 
@@ -82,55 +77,61 @@ aditivo por até 12 meses.
 <hr>
 
 <div class="card">
-  <div class="card-header">Período do Estágio</div>
+    <div class="card-header">Período do Estágio</div>
     <div class="card-body">
 
         <div class="row">
             <div class="col-sm form-group">
                 <div class="form-group">
-                <label for="data_inicial" class="required">Data de início do Estágio: </label>
+                    <label for="data_inicial" class="required">Data de início do Estágio: </label>
                     <input type="text" class="form-control datepicker" id="data_inicial" name="data_inicial" value="{{old('data_inicial',$estagio->data_inicial)}}" onblur="calculodata(this);">
                 </div>
             </div>    
             <div class="col-sm form-group">
                 <div class="form-group">
-                <label for="data_final" class="required">Data de término do Estágio: </label>
+                    <label for="data_final" class="required">Data de término do Estágio: </label>
                     <input type="text" class="form-control datepicker" id="data_final" name="data_final" value="{{old('data_final',$estagio->data_final)}}" onblur="calculodata(this);">
                 </div>
+            </div>
         </div>
-        
+
+        <div class="form-group">
+            <label for="justificativa">Justificativa (Caso o estágio seja inferior a 6 meses): </label>
+            <textarea name="justificativa" rows="5" cols="60">{{old('justificativa',$estagio->justificativa)}}</textarea>
+        </div>
+
     </div>
 </div>
-</div>
+
 <hr>
 
 
 <div class="card">
-  <div class="card-header">Carga Horária Semanal (máximo 30 horas)</div>
+    <div class="card-header">Carga Horária Semanal (máximo 30 horas)</div>
     <div class="card-body">
 
         <div class="row">
             <div class="col-sm form-group">
-                
                 <div class="form-group">
-                <label for="cargahoras" class="required">Horas: </label>
+                    <label for="cargahoras" class="required">Horas: </label>
                     <input type="text" class="form-control" id="cargahoras" name="cargahoras" value="{{old('cargahoras',$estagio->cargahoras)}}">
                 </div>
-                </div>
+            </div>
             <div class="col-sm form-group">
                 <div class="form-group">
-                <label for="cargaminutos" class="required">Minutos: </label>
+                    <label for="cargaminutos" class="required">Minutos: </label>
                     <input type="text" class="form-control" id="cargaminutos" name="cargaminutos" value="{{old('cargaminutos',$estagio->cargaminutos)}}">
                 </div>
-                </div></div>
+            </div>
 
             <div class="form-group">
                 <label for="horario" class="required">Horário do Estágio (Caso os horários sejam em períodos diferentes, favor especificar): </label>
                 <input type="text" class="form-control horario" id="horario" name="horario" value="{{old('horario',$estagio->horario)}}">
             </div>
-
+        </div>
     </div>
 </div>
+
 <hr>
 
 <div class="card">
