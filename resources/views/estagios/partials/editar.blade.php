@@ -73,12 +73,7 @@ Apenas serão salvos os campos alterados, aqueles que não forem alterados mante
         </div>
 
         <div class="form-group">
-        <label for="justificativa">Justificativa do estágio (Campo opcional): </label>
-            <textarea name="justificativa" rows="5" cols="60">{{old('justificativa',$estagio->justificativa)}}</textarea>
-        </div>
-
-        <div class="form-group">
-        <label for="atividades">Descrição das atividades (Campo opcional): </label>
+        <label for="atividades" class="required">Descrição das atividades: </label>
             <textarea name="atividades" rows="5" cols="60">{{old('atividades',$estagio->atividades)}}</textarea>
         </div>
 
@@ -97,6 +92,10 @@ Apenas serão salvos os campos alterados, aqueles que não forem alterados mante
             </div>
         </div>
 
+        <div class="form-group">
+        <label for="justificativa">Justificativa (Caso o estágio seja inferior a 6 meses): </label>
+            <textarea name="justificativa" rows="5" cols="60">{{old('justificativa',$estagio->justificativa)}}</textarea>
+        </div>
 
         <div class="row">
             <div class="col-sm form-group">
