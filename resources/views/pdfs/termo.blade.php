@@ -140,12 +140,16 @@
     <b>PLANO DE ESTÁGIO</b>
 </div>
 
-<br>
-
 <div style="text-align: justify; page-break-inside: auto;">
     <b>Solicitação: ESTÁGIO NOVO</b><br>
     <b>Nome d{{ $estagio->artigo_definido}} Estagiári{{ $estagio->artigo_definido }}:</b> {{ $estagio->nome }}<br>
     <b>Nº USP:</b> {{ $estagio->numero_usp }}<br>
+    <b>Telefone:</b>
+        @if(isset($fones))
+            {{  $fones }} <br> 
+        @else 
+            Não possui telefone cadastrado.<br>
+        @endif   
     <b>Curso:</b> {{ $estagio->curso }}<br>
     <b>Período:</b> {{ $estagio->periodo }}<br>
     <b>E-mail:</b> {{ $estagio->email }}<br>
