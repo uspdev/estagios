@@ -114,6 +114,12 @@
 <div style="text-align: justify">
     Nome d{{ $estagio->artigo_definido }} Estagiári{{ $estagio->artigo_definido }}: <b>{{ $estagio->nome }}</b><br>
     Nº USP: <b>{{ $estagio->numero_usp }}</b><br>
+    Telefone: 
+        @if(isset($fones))
+            <b>{{ $fones }}</b><br>
+        @else 
+            <b>Não possui telefone cadastrado.</b><br>
+        @endif    
     Curso: <b>{{ $estagio->curso }}</b><br>
     Período: <b>{{ $estagio->periodo }}</b><br>
     Semestre: <b>{{ $estagio->semestre_atual }}º</b><br>

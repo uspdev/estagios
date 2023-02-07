@@ -16,10 +16,13 @@ use Illuminate\Support\Facades\Gate;
 class PDFsController extends Controller
 {
 
-    public function termo(Estagio $estagio){
+    public function termo(Estagio $estagio, Request $request){
+        $telefones = Pessoa::telefones($estagio->numero_usp);
+        $fones = implode($telefones);
         if (Gate::allows('admin') | Gate::allows('parecerista') | Gate::allows('empresa',$estagio->cnpj)) {
             $pdf = PDF::loadView('pdfs.termo', [
                 'estagio'    => $estagio,
+                'fones' => $fones,
             ]);
             return $pdf->download("Termo-{$estagio->nome}.pdf");
         }
@@ -53,9 +56,12 @@ class PDFsController extends Controller
     }
 
     public function renovacao(Estagio $estagio){
+        $telefones = Pessoa::telefones($estagio->numero_usp);
+        $fones = implode($telefones);
         if (Gate::allows('admin') | Gate::allows('parecerista') | Gate::allows('empresa',$estagio->cnpj)) {
             $pdf = PDF::loadView('pdfs.renovacao', [
                 'estagio'    => $estagio,
+                'fones' => $fones,
             ]);
             return $pdf->download("Renovacao-{$estagio->nome}.pdf");
         }
