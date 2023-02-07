@@ -33,7 +33,7 @@ button {
         <th>Período</th>
         <th>Status</th>
         <th>Status do Parecer</th>
-        @can('admin')<th>Deletar</th>@endcan 
+          @can('admin') <th>Deletar</th> @endcan
         </tr>
     </thead>
     <tbody>
@@ -65,24 +65,24 @@ button {
                 @if( empty($estagio->renovacao_parent_id) )
                     Original
                 @else
-                    Renovação 
+                    Renovação
                 @endif
             </td>
 
-            <td> 
-                {{ $estagio->nomhab }} 
+            <td>
+                {{ $estagio->nomhab }}
             </td>
 
-            <td> 
-                {{ $estagio->empresa->nome }} 
+            <td>
+                {{ $estagio->empresa->nome }}
             </td>
 
             <td>
                 {{$estagio->data_inicial}} - {{$estagio->data_final}}
             </td>
 
-            <td> 
-                {{ $estagio->getStatus()[$estagio->status]['name'] }} 
+            <td>
+                {{ $estagio->getStatus()[$estagio->status]['name'] }}
             </td>
 
             <td>
@@ -92,16 +92,17 @@ button {
                     {{$estagio->tipodeferimento}}
                 @endif
             </td>
-
-            @can('admin')
             <td>
-                <form  method="POST" action="/estagios/{{$estagio->id}}">         
+              @if($estagio->getStatus()[$estagio->status]['name'] != 'Concluído')
+                @can('admin')
+                  <form  method="POST" action="/estagios/{{$estagio->id}}">
                     @csrf
                     @method('delete')
                     <button class="botao" type="submit" onclick="return confirm('Tem certeza que deseja deletar?');"><i class="fas fa-trash-alt"></i></button>
-                </form>
+                  </form>
+                @endcan('admin')
+              @endif
             </td>
-            @endcan('admin')
 
         </tr>
         @empty
@@ -109,4 +110,4 @@ button {
         @endforelse
     </tbody>
     </table>
-<div>   
+<div>

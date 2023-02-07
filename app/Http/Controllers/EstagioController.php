@@ -102,6 +102,10 @@ class EstagioController extends Controller
     public function destroy(Estagio $estagio, Aditivo $aditivo, File $file){
         if (Gate::allows('admin') | Gate::allows('empresa',$estagio->cnpj)) {
 
+            if($estagio->status == 'concluido'){
+                return back()->with('alert-danger', 'Não é possível deletar um estágio concluído.');
+            }
+            
             $aditivos = Aditivo::where('estagio_id','=',$estagio->id)->get();
             foreach ($aditivos as $aditivo) {
                 $aditivo->delete();
