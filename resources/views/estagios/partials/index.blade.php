@@ -33,7 +33,9 @@ button {
         <th>Período</th>
         <th>Status</th>
         <th>Status do Parecer</th>
-        @can('admin')<th>Deletar</th>@endcan 
+        @if(isset($estagios[0]) && $estagios[0]->getStatus()[$estagios[0]->status]['name'] != 'Concluído')
+            @can('admin') <th>Deletar</th> @endcan
+        @endif           
         </tr>
     </thead>
     <tbody>
@@ -93,15 +95,17 @@ button {
                 @endif
             </td>
 
-            @can('admin')
-            <td>
-                <form  method="POST" action="/estagios/{{$estagio->id}}">         
-                    @csrf
-                    @method('delete')
-                    <button class="botao" type="submit" onclick="return confirm('Tem certeza que deseja deletar?');"><i class="fas fa-trash-alt"></i></button>
-                </form>
-            </td>
-            @endcan('admin')
+            @if($estagio->getStatus()[$estagio->status]['name'] != 'Concluído')
+                @can('admin')
+                <td>
+                    <form  method="POST" action="/estagios/{{$estagio->id}}">         
+                        @csrf
+                        @method('delete')
+                        <button class="botao" type="submit" onclick="return confirm('Tem certeza que deseja deletar?');"><i class="fas fa-trash-alt"></i></button>
+                    </form>
+                </td>
+                @endcan('admin')
+            @endif
 
         </tr>
         @empty
