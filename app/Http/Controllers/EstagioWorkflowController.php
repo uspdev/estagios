@@ -23,6 +23,7 @@ use App\Mail\alteracao_indeferida_mail;
 use App\Mail\enviar_analise_academica_mail;
 use App\Mail\alteracao_pendente_empresa_mail;
 use App\Mail\justificativa_analise_tecnica;
+use App\Mail\GerarRescisaoMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 
@@ -274,6 +275,7 @@ class EstagioWorkflowController extends Controller
             $estagio->save();
             $estagio->status = 'rescisao';
             $estagio->save();
+            Mail::queue(new GerarRescisaoMail($estagio));
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
         }
