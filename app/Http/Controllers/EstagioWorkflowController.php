@@ -272,7 +272,6 @@ class EstagioWorkflowController extends Controller
             $estagio->rescisao_motivo = $request->rescisao_motivo;
             $estagio->rescisao_data = implode('-',array_reverse(explode('/',$request->rescisao_data)));
             $estagio->last_status = $estagio->status;
-            $estagio->save();
             $estagio->status = 'rescisao';
             $estagio->save();
             Mail::queue(new GerarRescisaoMail($estagio));
