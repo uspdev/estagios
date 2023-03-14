@@ -72,8 +72,8 @@
         <br>
         <div class="row">
             <div class="col">
-                <label for="email_indeferido" ><b> </b></label><br>
-                <textarea name="" cols="130" rows="10">{{ $ }}</textarea><br> 
+                <label for="assinatura_mail" ><b>assinatura_mail </b></label><br>
+                <textarea name="assinatura_mail" cols="130" rows="10">{{ $assinatura_mail }}</textarea><br> 
                 <span class="badge badge-warning">Token de substituição: %a_definir</span> 
             </div>
         </div>
@@ -82,8 +82,8 @@
         <br>
         <div class="row">
             <div class="col">
-                <label for="email_indeferido" ><b> </b></label><br>
-                <textarea name="" cols="130" rows="10">{{ $ }}</textarea><br> 
+                <label for="enviar_para_analise_tecnica_renovacao_mail" ><b> enviar_para_analise_tecnica_renovacao_mail</b></label><br>
+                <textarea name="enviar_para_analise_tecnica_renovacao_mail" cols="130" rows="10">{{ $enviar_para_analise_tecnica_renovacao_mail }}</textarea><br> 
                 <span class="badge badge-warning">Token de substituição: %a_definir</span> 
             </div>
         </div>
@@ -92,8 +92,8 @@
         <br>
         <div class="row">
             <div class="col">
-                <label for="email_indeferido" ><b> </b></label><br>
-                <textarea name="" cols="130" rows="10">{{ $ }}</textarea><br> 
+                <label for="justificativa_analise_tecnica" ><b> justificativa_analise_tecnica</b></label><br>
+                <textarea name="justificativa_analise_tecnica" cols="130" rows="10">{{ $justificativa_analise_tecnica }}</textarea><br> 
                 <span class="badge badge-warning">Token de substituição: %a_definir</span> 
             </div>
         </div>
@@ -102,8 +102,8 @@
         <br>
         <div class="row">
             <div class="col">
-                <label for="email_indeferido" ><b> </b></label><br>
-                <textarea name="" cols="130" rows="10">{{ $ }}</textarea><br> 
+                <label for="alteracao_mail" ><b> alteracao_mail</b></label><br>
+                <textarea name="alteracao_mail" cols="130" rows="10">{{ $alteracao_mail }}</textarea><br> 
                 <span class="badge badge-warning">Token de substituição: %a_definir</span> 
             </div>
         </div>
@@ -112,8 +112,8 @@
         <br>
         <div class="row">
             <div class="col">
-                <label for="email_indeferido" ><b> </b></label><br>
-                <textarea name="" cols="130" rows="10">{{ $ }}</textarea><br> 
+                <label for="enviar_analise_academica_mail" ><b>enviar_analise_academica_mail </b></label><br>
+                <textarea name="enviar_analise_academica_mail" cols="130" rows="10">{{ $enviar_analise_academica_mail }}</textarea><br> 
                 <span class="badge badge-warning">Token de substituição: %a_definir</span> 
             </div>
         </div>
@@ -122,8 +122,8 @@
         <br>
         <div class="row">
             <div class="col">
-                <label for="email_indeferido" ><b> </b></label><br>
-                <textarea name="" cols="130" rows="10">{{ $ }}</textarea><br> 
+                <label for="enviar_para_parecerista_mail" ><b>enviar_para_parecerista_mail </b></label><br>
+                <textarea name="enviar_para_parecerista_mail" cols="130" rows="10">{{ $enviar_para_parecerista_mail }}</textarea><br> 
                 <span class="badge badge-warning">Token de substituição: %a_definir</span> 
             </div>
         </div>
@@ -132,8 +132,8 @@
         <br>
         <div class="row">
             <div class="col">
-                <label for="email_indeferido" ><b> </b></label><br>
-                <textarea name="" cols="130" rows="10">{{ $ }}</textarea><br> 
+                <label for="login_empresa_mail" ><b> login_empresa_mail</b></label><br>
+                <textarea name="login_empresa_mail" cols="130" rows="10">{{ $login_empresa_mail }}</textarea><br> 
                 <span class="badge badge-warning">Token de substituição: %a_definir</span> 
             </div>
         </div>
@@ -142,8 +142,8 @@
         <br>
         <div class="row">
             <div class="col">
-                <label for="email_indeferido" ><b> </b></label><br>
-                <textarea name="" cols="130" rows="10">{{ $ }}</textarea><br> 
+                <label for="alteracao_pendente_empresa_mail" ><b> alteracao_pendente_empresa_mail</b></label><br>
+                <textarea name="alteracao_pendente_empresa_mail" cols="130" rows="10">{{ $alteracao_pendente_empresa_mail }}</textarea><br> 
                 <span class="badge badge-warning">Token de substituição: %a_definir</span> 
             </div>
         </div>
@@ -152,8 +152,8 @@
         <br>
         <div class="row">
             <div class="col">
-                <label for="email_indeferido" ><b> </b></label><br>
-                <textarea name="" cols="130" rows="10">{{ $ }}</textarea><br> 
+                <label for="enviar_justificativa_reprovacao" ><b>enviar_justificativa_reprovacao </b></label><br>
+                <textarea name="enviar_justificativa_reprovacao" cols="130" rows="10">{{ $enviar_justificativa_reprovacao }}</textarea><br> 
                 <span class="badge badge-warning">Token de substituição: %a_definir</span> 
             </div>
         </div>
@@ -162,8 +162,8 @@
         <br>
         <div class="row">
             <div class="col">
-                <label for="email_indeferido" ><b> </b></label><br>
-                <textarea name="" cols="130" rows="10">{{ $ }}</textarea><br> 
+                <label for="enviar_relatorio_mail" ><b>enviar_relatorio_mail</b></label><br>
+                <textarea name="enviar_relatorio_mail" cols="130" rows="10">{{ $enviar_relatorio_mail }}</textarea><br> 
                 <span class="badge badge-warning">Token de substituição: %a_definir</span> 
             </div>
         </div>
@@ -172,42 +172,12 @@
         <br>
         <div class="row">
             <div class="col">
-                <label for="email_indeferido" ><b> </b></label><br>
-                <textarea name="" cols="130" rows="10">{{ $ }}</textarea><br> 
+                <label for="rescisao_empresa_mail" ><b>rescisao_empresa_mail</b></label><br>
+                <textarea name="rescisao_empresa_mail" cols="130" rows="10">{{ $rescisao_empresa_mail }}</textarea><br> 
                 <span class="badge badge-warning">Token de substituição: %a_definir</span> 
             </div>
         </div>
         <br>
-
-        <br>
-        <div class="row">
-            <div class="col">
-                <label for="email_indeferido" ><b> </b></label><br>
-                <textarea name="" cols="130" rows="10">{{ $ }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
-            </div>
-        </div>
-        <br>
-
-        <br>
-        <div class="row">
-            <div class="col">
-                <label for="email_indeferido" ><b> </b></label><br>
-                <textarea name="" cols="130" rows="10">{{ $ }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
-            </div>
-        </div>
-        <br>
-    
-
-        <br>
-        <div class="row">
-            <div class="form-group col-sm">
-                    <button type="submit" onclick="return confirm('Mudar o Email?');" class="btn btn-success">
-                    Salvar
-                    </button>
-            </div>
-        </div>
 </form>
     
 @endsection
