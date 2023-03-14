@@ -23,6 +23,16 @@ class GeneralSettings extends Settings
     public string $enviar_relatorio_mail;
     public string $rescisao_empresa_mail;
 
+    public string $rodape;
+    public string $unidade;
+
+    public string $header;
+    public string $aditivo;
+    public string $parecer;
+    public string $rescisao;
+    public string $renovacao;
+    public string $termo;
+
     public static function group(): string
     {
         return 'general';

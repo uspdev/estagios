@@ -22,5 +22,14 @@ class CreateGeneralSettings extends SettingsMigration
         $this->migrator->add('general.enviar_justificativa_reprovacao', file_get_contents(__DIR__ . "/defaults/enviar_justificativa_reprovacao.txt"));
         $this->migrator->add('general.enviar_relatorio_mail', file_get_contents(__DIR__ . "/defaults/enviar_relatorio_mail.txt"));
         $this->migrator->add('general.rescisao_empresa_mail', file_get_contents(__DIR__ . "/defaults/rescisao_empresa_mail.txt"));
+        $this->migrator->add('general.unidade', 'Digite o nome da sua unidade');
+        $this->migrator->add('general.rodape', file_get_contents(__DIR__ . "/defaults/rodape.txt"));
+        $this->migrator->add('general.header', file_get_contents(__DIR__ . "/defaults/header.txt"));
+        $this->migrator->add('general.aditivo', file_get_contents(__DIR__ . "/defaults/aditivo.txt"));
+        $this->migrator->add('general.parecer', file_get_contents(__DIR__ . "/defaults/parecer.txt"));
+        $this->migrator->add('general.renovacao', file_get_contents(__DIR__ . "/defaults/renovacao.txt"));
+        $this->migrator->add('general.rescisao', file_get_contents(__DIR__ . "/defaults/rescisao.txt"));
+        $this->migrator->add('general.termo', file_get_contents(__DIR__ . "/defaults/termo.txt"));
+
     }
 }

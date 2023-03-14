@@ -19,6 +19,18 @@
 
 <form method="POST" action="/settings">
     @csrf 
+
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="unidade" ><b>Unidade</b></label><br>
+                <input name="unidade" value="{{ $unidade }}">
+                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+            </div>
+        </div>
+        <br>
+
+
         <br>
         <div class="row">
             <div class="col">
@@ -134,7 +146,7 @@
             <div class="col">
                 <label for="login_empresa_mail" ><b> login_empresa_mail</b></label><br>
                 <textarea name="login_empresa_mail" cols="130" rows="10">{{ $login_empresa_mail }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #unidade#, #url_login#, #rodape#</span> 
             </div>
         </div>
         <br>
@@ -175,6 +187,85 @@
                 <label for="rescisao_empresa_mail" ><b>rescisao_empresa_mail</b></label><br>
                 <textarea name="rescisao_empresa_mail" cols="130" rows="10">{{ $rescisao_empresa_mail }}</textarea><br> 
                 <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+            </div>
+        </div>
+        <br>
+
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="aditivo" ><b>Aditivo</b></label><br>
+                <textarea name="aditivo" cols="130" rows="10">{{ $aditivo }}</textarea><br> 
+                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+            </div>
+        </div>
+        <br>
+
+
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="termo" ><b>termo</b></label><br>
+                <textarea name="termo" cols="130" rows="10">{{ $termo }}</textarea><br> 
+                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+            </div>
+        </div>
+        <br>
+
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="header" ><b>Cabeçalho dos PDF</b></label><br>
+                <textarea name="header" cols="130" rows="10">{{ $header }}</textarea><br> 
+                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+            </div>
+        </div>
+        <br>
+
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="parecer" ><b>parecer</b></label><br>
+                <textarea name="parecer" cols="130" rows="10">{{ $parecer }}</textarea><br> 
+                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+            </div>
+        </div>
+        <br>
+
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="rescisao" ><b>rescisao</b></label><br>
+                <textarea name="rescisao" cols="130" rows="10">{{ $rescisao }}</textarea><br> 
+                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+            </div>
+        </div>
+        <br>
+
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="renovacao" ><b>renovacao</b></label><br>
+                <textarea name="renovacao" cols="130" rows="10">{{ $renovacao }}</textarea><br> 
+                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+            </div>
+        </div>
+        <br>
+
+
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="rodape" ><b>Rodapé</b></label><br>
+                <textarea name="rodape" cols="130" rows="10">{{ $rodape }}</textarea><br> 
+                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-success" type="submit">Salvar</button> 
             </div>
         </div>
         <br>

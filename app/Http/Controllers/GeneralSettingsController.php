@@ -26,7 +26,16 @@ class GeneralSettingsController extends Controller
             'alteracao_pendente_empresa_mail' => $settings->alteracao_pendente_empresa_mail,
             'enviar_justificativa_reprovacao' => $settings->enviar_justificativa_reprovacao,
             'enviar_relatorio_mail' => $settings->enviar_relatorio_mail,
-            'rescisao_empresa_mail' => $settings->rescisao_empresa_mail
+            'rescisao_empresa_mail' => $settings->rescisao_empresa_mail,
+            'rodape' => $settings->rodape,
+            'unidade' => $settings->unidade,
+            'header' => $settings->header,
+            'aditivo' => $settings->aditivo,
+            'parecer' => $settings->parecer,
+            'rescisao' => $settings->rescisao,
+            'renovacao' => $settings->renovacao,
+            'termo' => $settings->termo,
+            'unidade' => $settings->unidade
         ]);
     }
 
@@ -48,7 +57,15 @@ class GeneralSettingsController extends Controller
             'alteracao_pendente_empresa_mail' => 'required',
             'enviar_justificativa_reprovacao' => 'required',
             'enviar_relatorio_mail' => 'required',
-            'rescisao_empresa_mail' => 'required'
+            'rescisao_empresa_mail' => 'required',
+            'rodape' => 'required',
+            'unidade' => 'required',
+            'aditivo' => 'required',
+            'header' => 'required',
+            'parecer' => 'required',
+            'rescisao' => 'required',
+            'renovacao' => 'required',
+            'termo' => 'required'
         ]);
 
         $settings->alteracao_empresa_mail = $request->input('alteracao_empresa_mail');
@@ -67,6 +84,14 @@ class GeneralSettingsController extends Controller
         $settings->enviar_justificativa_reprovacao = $request->input('enviar_justificativa_reprovacao');
         $settings->enviar_relatorio_mail = $request->input('enviar_relatorio_mail');
         $settings->rescisao_empresa_mail = $request->input('rescisao_empresa_mail');
+        $settings->rodape = $request->input('rodape');
+        $settings->unidade = $request->input('unidade');
+        $settings->unidade = $request->input('header');
+        $settings->unidade = $request->input('aditivo');
+        $settings->unidade = $request->input('parecer');
+        $settings->unidade = $request->input('rescisao');
+        $settings->unidade = $request->input('renovacao');
+        $settings->unidade = $request->input('termo');
 
         $settings->save();
         return redirect()->back();
