@@ -22,6 +22,7 @@
         "owen-it/laravel-auditing": "^12.0",
         "rap2hpoutre/fast-excel": "^3.0",
         "rap2hpoutre/laravel-log-viewer": "^1.7",
+        "spatie/laravel-settings": "^2.8",
         "uspdev/laravel-usp-faker": "^1.0",
         "uspdev/laravel-usp-theme": "^2.0",
         "uspdev/laravel-usp-validators": "^1.0",
