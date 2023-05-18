@@ -15,6 +15,7 @@ class ChangeTextareaFieldToTextEstagios extends Migration
     {
         Schema::table('estagios', function (Blueprint $table) {
             $table->text('atividadespertinentes')->nullable()->change();
+            $table->text('pandemiahomeoffice')->nullable()->change();
             $table->text('pandemiamedidas')->nullable()->change();
         });
     }

@@ -66,13 +66,6 @@ class Estagio extends Model implements Auditable
         ];
     }
 
-    public function pandemiahomeofficeOptions(){
-        return [
-            'Sim',
-            'Não'
-        ];
-    }
-
 
     public function tipodeferimentoOptions(){
         return [
