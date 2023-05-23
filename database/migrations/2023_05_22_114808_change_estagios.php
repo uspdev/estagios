@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeTextareaFieldToTextEstagios extends Migration
+class ChangeEstagios extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class ChangeTextareaFieldToTextEstagios extends Migration
     public function up()
     {
         Schema::table('estagios', function (Blueprint $table) {
-            $table->text('atividadespertinentes')->nullable()->change();
-            $table->text('pandemiamedidas')->nullable()->change();
+            //
+            $table->string('pandemiahomeoffice')->nullable();
         });
     }
 
