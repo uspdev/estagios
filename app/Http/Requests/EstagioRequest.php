@@ -49,8 +49,8 @@ class EstagioRequest extends FormRequest
             'email_do_representante_opcional' => 'nullable',            
 
             //pandemia
-            'pandemiahomeoffice' => 'required|max:255',
-            'pandemiamedidas' => 'required_if:pandemiahomeoffice,==,Não',
+            'pandemiahomeoffice' => 'nullable',
+            'pandemiamedidas' => 'nullable',
 
             //empresa
             'cnpj' => 'required|max:255|exists:empresas,cnpj',
