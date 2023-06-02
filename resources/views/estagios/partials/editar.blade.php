@@ -179,32 +179,6 @@ Apenas serão salvos os campos alterados, aqueles que não forem alterados mante
             </div>
         </div>
 
-        <div class="col-sm form-group">
-            <div class="form-group">
-                <label for="pandemiahomeoffice" class="required">Realização do estágio em home-office (COVID-19): </label>               
-                <select name="pandemiahomeoffice" class="form-control" id="pandemiahomeoffice">
-                    <option value="" selected="">- Selecione -</option>
-                        @foreach ($estagio->pandemiahomeofficeOptions() as $option)
-                            @if (old('pandemiahomeoffice') == '' and isset($estagio->pandemiahomeoffice) )
-                                <option value="{{$option}}" {{ ( $estagio->pandemiahomeoffice == $option) ? 'selected' : ''}}>
-                                    {{$option}}
-                                </option>
-                            @else
-                                <option value="{{$option}}" {{ ( old('pandemiahomeoffice') == $option) ? 'selected' : ''}}>
-                                    {{$option}}
-                                </option>
-                            @endif
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-
-            <div class="col-sm form-group" id="medidas">
-                <label for="pandemiamedidas" class="required" required>Descrição das medidas sanitárias em caso de estágio presencial(Campo obrigatório apenas em caso de estágio presencial): </label><br>
-                <textarea name="pandemiamedidas" rows="5" cols="60">{{old('pandemiamedidas',$estagio->pandemiamedidas)}}</textarea>
-            </div>
-
     <br>
 
     <div class="card-header"><b>Informações Sobre a Empresa</b></div>
