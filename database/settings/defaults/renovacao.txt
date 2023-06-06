@@ -148,9 +148,6 @@
     Como se dará a interação do estagiário com o ambiente e com os demais colaboradores da empresa? Haverá
     deslocamento para a empresa? Se sim, quais dias? <b>{{ $estagio->interacao }}</b><br>
     Qual o endereço e em quais dias será realizado o estágio?<b>{{$estagio->enderecoedias}}</b><br>
-    <b>INFORMAÇÕES RELATIVAS A ESTÁGIO NO PERÍODO DE PANDEMIA</b><br>
-    O estágio será realizado em home-office?:</b> <b>{{$estagio->pandemiahomeoffice}}</b><br>
-    Em caso do estágio não ser home-office, quais as medidas sanitárias adotadas pela empresa são:</b> <b>{{$estagio->pandemiamedidas}}</b><br>
 </div>
 
 <br>

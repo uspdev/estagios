@@ -48,8 +48,8 @@ class EdicaoRequest extends FormRequest
             'cargo_do_representante_opcional' => 'nullable',
             'email_do_representante_opcional' => 'nullable',    
 
-            'pandemiahomeoffice' => 'required|max:255',
-            'pandemiamedidas' => 'required_if:pandemiahomeoffice,==,Não',
+            'pandemiahomeoffice' => 'nullable',
+            'pandemiamedidas' => 'nullable',
             'nome_de_contato' => 'required|max:255',
             'email_de_contato' => 'required|email|max:255',
             'telefone_de_contato' => 'required|max:255',
