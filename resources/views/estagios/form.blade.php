@@ -56,15 +56,15 @@ aditivo por até 12 meses.
                                 {{$option}}
                             </option>
                         @endif
-                          
-                    @endforeach    
 
-            </select> 
+                    @endforeach
+
+            </select>
         </div>
 
         <div class="form-group">
-        <label for="atividades" class="required">Descrição detalhada das atividades a serem desenvolvidas pelo 
-        estagiário para que o parecerista analise e constate a relação destas com a formação 
+        <label for="atividades" class="required">Descrição detalhada das atividades a serem desenvolvidas pelo
+        estagiário para que o parecerista analise e constate a relação destas com a formação
         acadêmica do aluno: </label>
             <textarea name="atividades" rows="5" cols="60">{{old('atividades',$estagio->atividades)}}</textarea>
         </div>
@@ -86,7 +86,7 @@ aditivo por até 12 meses.
                     <label for="data_inicial" class="required">Data de início do Estágio: </label>
                     <input type="text" class="form-control datepicker" id="data_inicial" name="data_inicial" value="{{old('data_inicial',$estagio->data_inicial)}}" onblur="calculodata(this);">
                 </div>
-            </div>    
+            </div>
             <div class="col-sm form-group">
                 <div class="form-group">
                     <label for="data_final" class="required">Data de término do Estágio: </label>
@@ -142,12 +142,12 @@ aditivo por até 12 meses.
             <div class="col-sm form-group">
                 <div class="form-group">
                 <label for="auxiliotransporte" class="required">Valor do Auxílio transporte (R$): </label>
-                    <input type="text" class="form-control" id="auxiliotransporte" name="auxiliotransporte" value="{{old('auxiliotransporte',$estagio->auxiliotransporte)}}"> 
+                    <input type="text" class="form-control" id="auxiliotransporte" name="auxiliotransporte" value="{{old('auxiliotransporte',$estagio->auxiliotransporte)}}">
                 </div></div>
 
             <div class="col-sm form-group">
                 <div class="form-group">
-                    <label for="especifiquevt" class="required">Especifique o tipo de vale transporte: </label>               
+                    <label for="especifiquevt" class="required">Especifique o tipo de vale transporte: </label>
                     <select name="especifiquevt" class="form-control" id="especifiquevt">
                         <option value="" selected="">- Selecione -</option>
                             @foreach ($estagio->especifiquevtOptions() as $option)
@@ -187,7 +187,7 @@ aditivo por até 12 meses.
                 <label for="telefone_de_contato" class="required">Telefone de contato da empresa: </label>
                     <input type="text" maxlength="11" class="form-control" id="telefone-com-ddd" name="telefone_de_contato" value="{{old('telefone_de_contato',$estagio->telefone_de_contato)}}">
                 </div></div>
-            </div>     
+            </div>
         <div class="row">
             <div class="col-sm form-group">
                 <div class="form-group">
@@ -198,7 +198,7 @@ aditivo por até 12 meses.
                 <div class="form-group">
                 <label for="cargo_do_supervisor_estagio" class="required">Cargo do supervisor de estágio: </label>
                     <input type="text" class="form-control" id="cargo_do_supervisor_estagio" name="cargo_do_supervisor_estagio" value="{{old('cargo_do_supervisor_estagio',$estagio->cargo_do_supervisor_estagio)}}">
-                </div></div>    
+                </div></div>
             <div class="col-sm form-group">
                 <div class="form-group">
                 <label for="email_do_supervisor_estagio" class="required">E-mail do supervisor de estágio: </label>
@@ -209,28 +209,28 @@ aditivo por até 12 meses.
                 <label for="telefone_do_supervisor_estagio" class="required">Telefone do supervisor de estágio: </label>
                     <input type="text" maxlength="11" class="form-control" id="telefone-com-ddd" name="telefone_do_supervisor_estagio" value="{{old('telefone_do_supervisor_estagio',$estagio->telefone_do_supervisor_estagio)}}">
                 </div></div>
-            </div> 
-            
-            <hr><b>Caso a empresa tenha multiplos representantes legais, rotativos ou esta delegue representantes distintos, favor inserir a informação relativa a este 
-                estágio abaixo. Caso algum campo ou todos sejam deixados em branco, a respectiva informação usada sobre o representante da empresa será a mesma que 
+            </div>
+
+            <hr><b>Caso a empresa tenha multiplos representantes legais, rotativos ou esta delegue representantes distintos, favor inserir a informação relativa a este
+                estágio abaixo. Caso algum campo ou todos sejam deixados em branco, a respectiva informação usada sobre o representante da empresa será a mesma que
                 que se encontra no cadastro da empresa:</b><br><br>
             <div class="row">
                 <div class="col-sm form-group">
                     <div class="form-group">
                     <label for="nome_do_representante_opcional">Nome do Representante da Empresa: </label>
                         <input type="text" class="form-control" id="nome_do_representante_opcional" name="nome_do_representante_opcional" value="{{old('nome_do_representante_opcional',$estagio->nome_do_representante_opcional)}}">
-                </div></div>    
+                </div></div>
                 <div class="col-sm form-group">
                     <div class="form-group">
                     <label for="cargo_do_representante_opcional">Cargo do Representante da Empresa: </label>
                         <input type="text" class="form-control" id="cargo_do_representante_opcional" name="cargo_do_representante_opcional" value="{{old('cargo_do_representante_opcional',$estagio->cargo_do_representante_opcional)}}">
-                </div></div>  
+                </div></div>
                 <div class="col-sm form-group">
                     <div class="form-group">
                     <label for="email_do_representante_opcional">Email do Representante da Empresa: </label>
                         <input type="text" class="form-control" id="email_do_representante_opcional" name="email_do_representante_opcional" value="{{old('email_do_representante_opcional',$estagio->email_do_representante_opcional)}}">
-                </div></div>   
-            </div>   
+                </div></div>
+            </div>
     </div>
 </div>
 
@@ -273,7 +273,7 @@ aditivo por até 12 meses.
 </div>
 
 <div class="form-group">
-<label for="interacao">Como se dará a interação do estagiário com o ambiente e com os demais colaboradores da 
+<label for="interacao">Como se dará a interação do estagiário com o ambiente e com os demais colaboradores da
 empresa? Haverá deslocamento para a empresa? Se sim, quais dias?: <br></label>
     <textarea name="interacao" rows="5" cols="60">{{old('interacao',$estagio->interacao)}}</textarea>
 </div>
@@ -285,4 +285,4 @@ empresa? Haverá deslocamento para a empresa? Se sim, quais dias?: <br></label>
         </div>
     </div>
 </div>
-<hr>
+<br />

@@ -14,7 +14,6 @@ class ChangePandemiahomeofficeToNullableInEstagios extends Migration
     public function up()
     {
         Schema::table('estagios', function (Blueprint $table) {
-            //
             $table->string('pandemiahomeoffice')->nullable()->change();
         });
     }
