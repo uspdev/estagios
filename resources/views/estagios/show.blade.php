@@ -24,11 +24,11 @@
               @if(is_null($estagio->renovacao_parent_id))
                   <a href="/pdfs/termo/{{$estagio->id}}.pdf" type="application/pdf" target="pdf-frame">
                   <i class="fas fa-file-pdf"></i> </a>
-                  Gerar PDF do Termo de Ciência
+                  Gerar PDF da Declaração de Responsabilidade
               @else
                   <a href="/pdfs/renovacao/{{$estagio->id}}" target="_blank" >
                   <i class="fas fa-file-pdf"></i> </a>
-                  Gerar PDF do Termo de Ciência para Renovação
+                  Gerar PDF da Declaração de Responsabilidade para Renovação
               @endif
 
               @if(($estagio->aditivos)->isNotEmpty())
