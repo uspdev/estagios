@@ -6,19 +6,19 @@
     <b>DECLARAÇÃO DE RESPONSABILIDADE</b>
 </div>
 
-<br><br>
+<br><br><br>
+    <br>
+    <br>
+    <br>
 
 <div style="text-align: justify;">
     <p style="text-indent : 1em;"> Declaro sob pena de responsabilidade, para fins de concessão / prorrogação de estágio, que estou ciente da impossibilidade de ser concedido estágio enquanto eu estiver vinculado(a) a outro estágio, e que este não ultrapasse a carga horária máxima permitida de 30h semanais / 6h diárias. </p>
     <br>
-    <p style="text-indent : 1em;">Os documentos, impressos e assinados, devem ser entregues com pelo menos 10 dias úteis
-        antes do início estágio.</p>
     <br>
-    <p style="text-indent : 1em;">É obrigatória a entrega de um relatório pessoal (digitado, datado, assinado e com no
-        mínimo 7 linhas) no término desse estágio, relatando sua experiência no período.</p>
     <br>
-    <p style="text-indent : 1em; font-weight: bold">Uma via desta Declaração de Responsabilidade deve ser entregue com o Termo de
-        Compromisso e Plano de Estágio.</p>
+    <br>
+    <br>
+    <br>
     <br>
     <p>Declaração d{{ $estagio->artigo_definido }}
         alun{{ $estagio->artigo_definido}}
@@ -38,6 +38,10 @@
     <b>{{ $estagio->nome }}</b><br>
     Nº USP: <b>{{ $estagio->numero_usp }}</b><br>
     <b>{{ $estagio->curso }}</b>
+
+    <p style="text-indent : 1em; font-weight: bold">Uma via desta Declaração de Responsabilidade deve ser entregue com o Termo de
+        Compromisso e Plano de Estágio.</p>
+    <br>
 </div>
 
 <p style="page-break-after: always;"></p>
