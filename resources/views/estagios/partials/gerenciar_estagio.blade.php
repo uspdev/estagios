@@ -93,12 +93,12 @@
                         <br>
                         <a href="/pdfs/termo/{{$estagio->id}}"target="_blank" >
                         <i class="fas fa-file-pdf"></i> </a>
-                        Gerar PDF da Declaração de Responsabilidade
+                        Gerar PDF dos Documentos de Estágio
                     @else
                         <br>
                         <a href="/pdfs/renovacao/{{$estagio->id}}" target="_blank" >
                         <i class="fas fa-file-pdf"></i> </a>
-                        Gerar PDF da Declaração de Responsabilidade para Renovação
+                        Gerar PDF dos Documentos de Estágio para Renovação
                     @endif    
 
                     @if(($estagio->aditivos)->isNotEmpty())
