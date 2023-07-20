@@ -8,6 +8,7 @@ use App\Http\Requests\EdicaoRequest;
 
 use Auth;
 use PDF;
+use App\Models\Area;
 use App\Models\Estagio;
 use App\Models\User;
 use App\Models\File;
@@ -138,10 +139,11 @@ class EstagioWorkflowController extends Controller
     #Funções Análise Acadêmica
 
     public function analise_academica(Request $request, Estagio $estagio){
-
+    
         if (Gate::allows('parecerista')) {
 
             $request->validate([
+                'area_estagio' => 'required',
                 'atividadespertinentes' => 'required',
                 'desempenhoacademico' => 'required',
                 'horariocompativel' => 'required|max:255',
@@ -150,6 +152,25 @@ class EstagioWorkflowController extends Controller
                 'tipodeferimento'=> 'required',
                 'condicaodeferimento'=> 'required_if:tipodeferimento,==,Deferido com Restrição'
             ]);
+
+            $area_estagio = $request->area_estagio;
+            if ($request->outra_area){
+                array_push($area_estagio,$request->outra_area);
+            } 
+
+            $area_estagio = array_diff($area_estagio,["Outra"]);
+        
+            // Deletar áreas relacionadas ao ID do estágio.
+            Area::where('estagios_id', $estagio->id)->delete();
+
+            // Mostrar as áreas selecionadas
+            foreach($area_estagio as $area){
+                Area::create([
+                    'area' => $area,
+                    'estagios_id' => $estagio->id,
+                ]);
+            }
+
             $estagio->analise_academica = $request->analise_academica;
             $estagio->horariocompativel = $request->horariocompativel;
             $estagio->desempenhoacademico = $request->desempenhoacademico;
@@ -162,6 +183,7 @@ class EstagioWorkflowController extends Controller
             $estagio->last_status = $estagio->status;
             $estagio->status = 'em_analise_tecnica';
             $estagio->save();
+        
             Mail::queue(new enviar_analise_academica_mail($estagio));
             request()->session()->flash('alert-info','Parecer incluído com sucesso! Estágio enviado para o setor de graduação');
         } else {
@@ -171,7 +193,6 @@ class EstagioWorkflowController extends Controller
     }
 
     public function editar_analise_academica(Request $request, Estagio $estagio){
-
         if (Gate::allows('parecerista')) {
             $estagio->last_status = $estagio->status;
             $estagio->status = 'em_analise_academica';
