@@ -37,6 +37,19 @@
 
     <br> 
 
+    <br>
+    <label for="area_estagio"> Selecione a área de atuação do estágio: <label>
+        @foreach($estagio->area_estagio() as $opcao)
+                <label>
+                <input type="checkbox" name="area_estagio[]" value="{{ $opcao }}" @if(in_array($opcao,$areas)) checked @endif>
+                {{ $opcao }}
+                </label><br>
+        @endforeach
+
+        <input type="text" name="outra_area" placeholder="Especifique a área de atuação">
+        <br>
+        <br>
+
     <label for="atividadespertinentes">As atividades propostas no plano de estágio são pertinentes ao curso do aluno?: </label>               
     <select name="atividadespertinentes" class="form-control" id="atividadespertinentes">
         <option value="" selected="">- Selecione -</option>
@@ -58,7 +71,7 @@
     <label for="atividadesjustificativa">Justifique a pertinencia das atividades: </label><br>
         <textarea name="atividadesjustificativa" rows="5" cols="60" class="form-control" id="atividadesjustificativa" name="atividadesjustificativa" value="{{old('atividadesjustificativa',$estagio->atividadesjustificativa)}}"></textarea>  
 
-    <br>     
+    <br>
 
     <label for="tipodeferimento">Situação de deferimento: </label>               
     <select name="tipodeferimento" class="form-control" id="tipodeferimento" onchange="checagemdeferimento(this);">

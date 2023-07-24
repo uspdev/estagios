@@ -99,6 +99,24 @@ class Estagio extends Model implements Auditable
         ];
     }
 
+    public function area_estagio(){
+        
+        $areas = Area::distinct('area')->pluck('area')->toArray();
+
+        $areas_fixas =  [
+            'Ensino/Educação',
+            'Editoração',
+            'Tradução/ Interpretação',
+            'Revisão, correção e/ou produção de textos',
+            'Tecnologia -  Internet, mídias e ambientes digitais',
+            'Administração (serviços gerais, secretariado, recepção, etc)',
+            'Arte, Comunicação,Cultura e Museus',
+            'Outra'
+        ];
+
+        return array_unique(array_merge($areas,$areas_fixas));
+    }
+
     public function getDataInicialAttribute($value) {
         return implode('/',array_reverse(explode('-',$value)));
     }
@@ -290,6 +308,11 @@ class Estagio extends Model implements Auditable
     public function analise_academica_user()
     {
         return $this->belongsTo('App\Models\User');
+    }
+
+    public function areas()
+    {
+        return $this->belongsTo('App\Models\Area');
     }
 
     public function analise_tecnica_user()

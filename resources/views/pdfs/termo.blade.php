@@ -38,7 +38,13 @@
     <b>{{ $estagio->nome }}</b><br>
     Nº USP: <b>{{ $estagio->numero_usp }}</b><br>
     <b>{{ $estagio->curso }}</b>
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <p style="text-indent : 1em; font-weight: bold">Uma via desta Declaração de Responsabilidade deve ser entregue com o Termo de
         Compromisso e Plano de Estágio.</p>
     <br>
