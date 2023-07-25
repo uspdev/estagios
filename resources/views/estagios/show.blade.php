@@ -6,7 +6,7 @@
 @endsection('javascript_head')
 
 @section('content')
- 
+
   <div class="card">
     <div class="card-header"><b>Status do Estágio</b></div>
       <div class="card-body">
@@ -28,7 +28,7 @@
               @else
                   <a href="/pdfs/renovacao/{{$estagio->id}}" target="_blank" >
                   <i class="fas fa-file-pdf"></i> </a>
-                  Gerar PDF da Declaração de Responsabilidade para Renovação
+                  Gerar PDF dos Documentos de Estágio para Renovação
               @endif
 
               @if(($estagio->aditivos)->isNotEmpty())

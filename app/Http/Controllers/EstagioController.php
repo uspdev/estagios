@@ -16,6 +16,7 @@ use App\Utils\ReplicadoUtils;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use App\Utils\AuditUtils;
+use App\Models\Area;
 
 class EstagioController extends Controller
 {
@@ -76,7 +77,12 @@ class EstagioController extends Controller
     public function show(Estagio $estagio)
     {
         $this->authorize('logado');
-        return view('estagios.show')->with('estagio',$estagio);
+        $areas = Area::where('estagios_id',$estagio->id)->get()->pluck('area')->toArray();
+
+        return view('estagios.show')->with([
+            'estagio' => $estagio,
+            'areas'   => $areas,
+        ]);
     }
 
     public function create(){
@@ -105,7 +111,7 @@ class EstagioController extends Controller
             if($estagio->status == 'concluido'){
                 return back()->with('alert-danger', 'Não é possível deletar um estágio concluído.');
             }
-            
+
             $aditivos = Aditivo::where('estagio_id','=',$estagio->id)->get();
             foreach ($aditivos as $aditivo) {
                 $aditivo->delete();
@@ -161,9 +167,12 @@ class EstagioController extends Controller
 
     public function editar(Estagio $estagio)
     {
+        $areas = Area::where('estagios_id',$estagio->id)->get()->pluck('area')->toArray();
+
         if (Gate::allows('admin')) {
             return view('estagios.edit')->with([
                 'estagio' => $estagio,
+                'areas'   => $areas,
             ]);
         }
         abort(403, 'Access denied');
