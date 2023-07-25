@@ -111,7 +111,7 @@ class EstagioController extends Controller
             if($estagio->status == 'concluido'){
                 return back()->with('alert-danger', 'Não é possível deletar um estágio concluído.');
             }
-            
+
             $aditivos = Aditivo::where('estagio_id','=',$estagio->id)->get();
             foreach ($aditivos as $aditivo) {
                 $aditivo->delete();
@@ -167,10 +167,12 @@ class EstagioController extends Controller
 
     public function editar(Estagio $estagio)
     {
-        dd("oi 2");
+        $areas = Area::where('estagios_id',$estagio->id)->get()->pluck('area')->toArray();
+
         if (Gate::allows('admin')) {
             return view('estagios.edit')->with([
                 'estagio' => $estagio,
+                'areas'   => $areas,
             ]);
         }
         abort(403, 'Access denied');

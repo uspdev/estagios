@@ -6,7 +6,7 @@
 @endsection('javascript_head')
 
 @section('content')
- 
+
   <div class="card">
     <div class="card-header"><b>Status do Estágio</b></div>
       <div class="card-body">

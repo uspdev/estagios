@@ -8,7 +8,7 @@ use App\Http\Requests\EdicaoRequest;
 
 use Auth;
 use PDF;
-use App\Models\Area;
+#use App\Models\Area;
 use App\Models\Estagio;
 use App\Models\User;
 use App\Models\File;
@@ -27,6 +27,8 @@ use App\Mail\justificativa_analise_tecnica;
 use App\Mail\GerarRescisaoMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\AnaliseAcademicaRequest;
+use App\Service\AreaService;
 
 class EstagioWorkflowController extends Controller
 {
@@ -138,38 +140,11 @@ class EstagioWorkflowController extends Controller
 
     #Funções Análise Acadêmica
 
-    public function analise_academica(Request $request, Estagio $estagio){
-    
+    public function analise_academica(AnaliseAcademicaRequest $request, Estagio $estagio, AreaService $areaService){
+
         if (Gate::allows('parecerista')) {
 
-            $request->validate([
-                'area_estagio' => 'required',
-                'atividadespertinentes' => 'required',
-                'desempenhoacademico' => 'required',
-                'horariocompativel' => 'required|max:255',
-                'atividadesjustificativa'=> 'required',
-                'analise_academica'=> 'required',
-                'tipodeferimento'=> 'required',
-                'condicaodeferimento'=> 'required_if:tipodeferimento,==,Deferido com Restrição'
-            ]);
-
-            $area_estagio = $request->area_estagio;
-            if ($request->outra_area){
-                array_push($area_estagio,$request->outra_area);
-            } 
-
-            $area_estagio = array_diff($area_estagio,["Outra"]);
-        
-            // Deletar áreas relacionadas ao ID do estágio.
-            Area::where('estagios_id', $estagio->id)->delete();
-
-            // Mostrar as áreas selecionadas
-            foreach($area_estagio as $area){
-                Area::create([
-                    'area' => $area,
-                    'estagios_id' => $estagio->id,
-                ]);
-            }
+            $areaService->handleArea($request->validated() + ['estagio_id' => $estagio->id]);
 
             $estagio->analise_academica = $request->analise_academica;
             $estagio->horariocompativel = $request->horariocompativel;
@@ -183,7 +158,7 @@ class EstagioWorkflowController extends Controller
             $estagio->last_status = $estagio->status;
             $estagio->status = 'em_analise_tecnica';
             $estagio->save();
-        
+
             Mail::queue(new enviar_analise_academica_mail($estagio));
             request()->session()->flash('alert-info','Parecer incluído com sucesso! Estágio enviado para o setor de graduação');
         } else {
