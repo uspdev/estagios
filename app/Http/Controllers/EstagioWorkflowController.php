@@ -8,7 +8,6 @@ use App\Http\Requests\EdicaoRequest;
 
 use Auth;
 use PDF;
-#use App\Models\Area;
 use App\Models\Estagio;
 use App\Models\User;
 use App\Models\File;
