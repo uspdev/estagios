@@ -9,6 +9,7 @@ class GeneralSettings extends Settings
     public string $alteracao_empresa_mail;
     public string $analise_rescisao_mail;
     public string $enviar_para_analise_tecnica_mail;
+    public string $enviar_para_estudante_mail;
     public string $gerar_rescisao_mail;
     public string $alteracao_indeferida_mail;
     public string $assinatura_mail;

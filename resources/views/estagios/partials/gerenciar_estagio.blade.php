@@ -128,7 +128,13 @@
                         <br>
                         <a onClick="return confirm('Tem certeza que deseja um email para a empresa?')" href="/emails/enviar_para_analise_tecnica/{{$estagio->id}}">
                         <i class="fas fa-envelope-open-text"></i> </a>
-                        Enviar E-mail contendo o Termo de Ciência para a empresa   
+                        Enviar E-mail contendo o Termo de Ciência para a empresa   <br>
+
+                        <a onClick="return confirm('Tem certeza que deseja um email para a empresa?')" href="/emails/enviar_para_estudante/{{$estagio->id}}">
+                        <i class="fas fa-envelope-open-text"></i> </a>
+                        Enviar E-mail contendo o Termo de Ciência para o estudante 
+
+
                     @else
                         <br>
                         <a onClick="return confirm('Tem certeza que deseja um email para a empresa?')" href="/emails/enviar_para_analise_tecnica_renovacao/{{$estagio->id}}">
