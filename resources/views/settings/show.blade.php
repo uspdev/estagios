@@ -64,6 +64,16 @@
         <br>
         <div class="row">
             <div class="col">
+                <label for="enviar_para_estudante_mail" ><b>enviar_para_estudante_mail </b></label><br>
+                <textarea name="enviar_para_estudante_mail" cols="130" rows="10">{{ $enviar_para_estudante_mail }}</textarea><br> 
+                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+            </div>
+        </div>
+        <br>
+
+        <br>
+        <div class="row">
+            <div class="col">
                 <label for="gerar_rescisao_mail" ><b>gerar_rescisao_mail </b></label><br>
                 <textarea name="gerar_rescisao_mail" cols="130" rows="10">{{ $gerar_rescisao_mail }}</textarea><br> 
                 <span class="badge badge-warning">Token de substituição: %a_definir</span> 

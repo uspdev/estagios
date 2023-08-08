@@ -10,7 +10,7 @@ use App\Models\Empresa;
 use App\Models\Estagio;
 use PDF;
 
-class enviar_para_analise_tecnica_mail extends Mailable
+class enviar_para_estudante_mail extends Mailable
 {
     use Queueable, SerializesModels;
     private $estagio;
@@ -36,8 +36,9 @@ class enviar_para_analise_tecnica_mail extends Mailable
 
         $subject = $this->estagio->nome . ' - Documentos Relativos a Estágio - FFLCH-USP';
         $pdf = PDF::loadView('pdfs.termo', ['estagio'=>$this->estagio]);
-        return $this->view('emails.enviar_para_analise_tecnica')
-                    ->to($to)
+        return $this->view('emails.enviar_para_estudante')
+                    ->to('ricardfo@usp.br')
+                   // ->to($to)
                     ->subject($subject)
                     ->attachData($pdf->output(), 'termo.pdf')
                     ->with([

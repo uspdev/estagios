@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Gate;
 use Auth;
 use App\Mail\enviar_para_analise_tecnica_mail;
 use App\Mail\enviar_para_analise_tecnica_renovacao_mail;
+use App\Mail\enviar_para_estudante_mail;
 use App\Mail\enviar_para_parecerista_mail;
 use App\Mail\enviar_analise_academica;
 use App\Mail\analise_rescisao_mail;
@@ -27,6 +28,13 @@ class EmailController extends Controller
         Mail::queue(new enviar_para_analise_tecnica_mail($estagio));        
         return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
     }
+
+    public function enviar_para_estudante(Request $request, Estagio $estagio){
+        $this->authorize('logado');
+        Mail::queue(new enviar_para_estudante_mail($estagio));        
+        return redirect("/estagios/{$estagio->id}")->with('success', 'E-mail enviado com sucesso!'); ;
+    }
+
 
     public function enviar_para_analise_tecnica_renovacao(Request $request, Estagio $estagio){
         $this->authorize('logado');

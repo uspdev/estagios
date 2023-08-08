@@ -45,6 +45,7 @@ Route::get('/pdfs/parecer/{estagio}', [PDFsController::class, 'parecer']);
 
 #E-mails
 Route::get('/emails/enviar_para_analise_tecnica/{estagio}', [EmailController::class, 'enviar_para_analise_tecnica']);
+Route::get('/emails/enviar_para_estudante/{estagio}', [EmailController::class, 'enviar_para_estudante']);
 Route::get('/emails/enviar_para_analise_tecnica_renovacao/{estagio}', [EmailController::class, 'enviar_para_analise_tecnica_renovacao']);
 Route::get('/emails/enviar_para_parecerista/{estagio}', [EmailController::class, 'enviar_para_parecerista']);
 Route::get('/emails/alteracao/{estagio}', [EmailController::class, 'alteracao']);

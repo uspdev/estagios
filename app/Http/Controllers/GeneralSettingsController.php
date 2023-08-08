@@ -14,6 +14,7 @@ class GeneralSettingsController extends Controller
             'alteracao_empresa_mail' => $settings->alteracao_empresa_mail,
             'analise_rescisao_mail' => $settings->analise_rescisao_mail,
             'enviar_para_analise_tecnica_mail' => $settings->enviar_para_analise_tecnica_mail,
+            'enviar_para_estudante_mail' => $settings->enviar_para_estudante_mail,
             'gerar_rescisao_mail' => $settings->gerar_rescisao_mail,
             'alteracao_indeferida_mail' => $settings->alteracao_indeferida_mail,
             'assinatura_mail' => $settings->assinatura_mail,
@@ -45,6 +46,7 @@ class GeneralSettingsController extends Controller
         $request->validate([
             'alteracao_empresa_mail' => 'required',
             'enviar_para_analise_tecnica_mail' => 'required',
+            'enviar_para_estudante_mail' => 'required',
             'gerar_rescisao_mail' => 'required',
             'alteracao_indeferida_mail' => 'required',
             'assinatura_mail' => 'required',
@@ -71,6 +73,7 @@ class GeneralSettingsController extends Controller
         $settings->alteracao_empresa_mail = $request->input('alteracao_empresa_mail');
         $settings->analise_rescisao_mail = $request->input('analise_rescisao_mail');
         $settings->enviar_para_analise_tecnica_mail = $request->input('enviar_para_analise_tecnica_mail');
+        $settings->enviar_para_estudante_mail = $request->input('enviar_para_estudante_mail');
         $settings->gerar_rescisao_mail = $request->input('gerar_rescisao_mail');
         $settings->alteracao_indeferida_mail = $request->input('alteracao_indeferida_mail');
         $settings->assinatura_mail = $request->input('assinatura_mail');
