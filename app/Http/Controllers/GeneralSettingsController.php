@@ -14,7 +14,7 @@ class GeneralSettingsController extends Controller
             'alteracao_empresa_mail' => $settings->alteracao_empresa_mail,
             'analise_rescisao_mail' => $settings->analise_rescisao_mail,
             'enviar_para_analise_tecnica_mail' => $settings->enviar_para_analise_tecnica_mail,
-            'enviar_para_analise_tecnica_mail' => $settings->enviar_para_estudante_mail,
+            'enviar_para_estudante_mail' => $settings->enviar_para_estudante_mail,
             'gerar_rescisao_mail' => $settings->gerar_rescisao_mail,
             'alteracao_indeferida_mail' => $settings->alteracao_indeferida_mail,
             'assinatura_mail' => $settings->assinatura_mail,

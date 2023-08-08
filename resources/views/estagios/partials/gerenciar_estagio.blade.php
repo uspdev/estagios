@@ -8,7 +8,7 @@
     ->where('aprovado_parecerista','=',null) as $aditivo)
 
         <div class="card">
-            <div class="card-header"><b>Aditivo pendente de análise pelo parecerista</b></div> 
+            <div class="card-header"><b>Aditivo pendente de análise pelo parecerista</b></div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12 form-group">
@@ -20,7 +20,7 @@
 
                                 <label for="comentario_parecerista">Favor especificar motivo do deferimento/indeferimento: </label><br>
                                 <textarea name="comentario_parecerista" rows="5" cols="60"></textarea><br>
-                                
+
                                 <button type="submit" class="btn btn-success" name="analise_alteracao_action" value="parecerista_deferir_alteracao"
                                     onClick="return confirm('Tem certeza que deseja deferir o aditivo?')" >
                                     Deferir Aditivo
@@ -34,9 +34,9 @@
                             </form>
                         </div>
                     </div>
-            </div></div> 
-               
-                            
+            </div></div>
+
+
 @endforeach
 @endcan('parecerista')
 
@@ -44,14 +44,14 @@
 
 @can('admin')
 <div class="card">
-    <div class="card-header"><b>Área de Administrador</b></div> 
+    <div class="card-header"><b>Área de Administrador</b></div>
       <div class="card-body">
             <div class="row">
             <div class="col-4 form-group">
                 <b>Gerenciar Parecerista:</b><br><br>
                 <form method="POST" action="/parecer_merito/{{$estagio->id}}">
                 @csrf
-                
+
                 <select name="numparecerista">
                     <option value="" selected=""> - Selecione  -</option>
                     @foreach (\App\Models\Parecerista::all() as $parecerista)
@@ -65,16 +65,16 @@
                                 {{$parecerista->numero_usp}} - {{ $parecerista->nome }}
                             </option>
                         @endif
-                    
+
                     @endforeach
                 </select>
 
                 @if(($estagio->numparecerista)!=null)
                     <br>
                     <b>Nome:</b> {{ $estagio->parecerista_nome }}<br>
-                    <b>Email Cadastrado:</b> {{ $estagio->parecerista_email }}</b><br> 
+                    <b>Email Cadastrado:</b> {{ $estagio->parecerista_email }}</b><br>
                 @endif
-                
+
                 <br>
                 <button type="submit" class="btn btn-success">Alterar Número</button>
                 </form>
@@ -86,7 +86,7 @@
                     @if(($estagio->desempenhoacademico)!=null)
                         <a href="/pdfs/parecer/{{$estagio->id}}"target="_blank" >
                         <i class="fas fa-file-pdf"></i> </a>
-                        Gerar PDF do Parecer de Mérito 
+                        Gerar PDF do Parecer de Mérito
                     @endif
 
                     @if(is_null($estagio->renovacao_parent_id))
@@ -99,7 +99,7 @@
                         <a href="/pdfs/renovacao/{{$estagio->id}}" target="_blank" >
                         <i class="fas fa-file-pdf"></i> </a>
                         Gerar PDF dos Documentos de Estágio para Renovação
-                    @endif    
+                    @endif
 
                     @if(($estagio->aditivos)->isNotEmpty())
                         <br>
@@ -130,17 +130,17 @@
                         <i class="fas fa-envelope-open-text"></i> </a>
                         Enviar E-mail contendo o Termo de Ciência para a empresa   <br>
 
-                        <a onClick="return confirm('Tem certeza que deseja um email para a empresa?')" href="/emails/enviar_para_estudante/{{$estagio->id}}">
+                        <a onClick="return confirm('Tem certeza que deseja um email para o estudante?')" href="/emails/enviar_para_estudante/{{$estagio->id}}">
                         <i class="fas fa-envelope-open-text"></i> </a>
-                        Enviar E-mail contendo o Termo de Ciência para o estudante 
+                        Enviar E-mail contendo o Termo de Ciência para o estudante
 
 
                     @else
                         <br>
                         <a onClick="return confirm('Tem certeza que deseja um email para a empresa?')" href="/emails/enviar_para_analise_tecnica_renovacao/{{$estagio->id}}">
-                        <i class="fas fa-envelope-open-text"></i> </a>  
-                        Enviar E-mail contendo o Termo de Ciência para Renovação para a empresa    
-                    @endif    
+                        <i class="fas fa-envelope-open-text"></i> </a>
+                        Enviar E-mail contendo o Termo de Ciência para Renovação para a empresa
+                    @endif
 
                     @if(($estagio->aditivos)->isNotEmpty())
                         <br>
@@ -167,12 +167,12 @@
                             <b>Comentário do parecerista sobre o aditivo:</b> {{ $aditivo->comentario_graduacao }}<br><br>
                         @endif
 
-                        
 
-                        <label for="comentario_graduacao">Em caso de indeferimento ou solicitação de análise 
+
+                        <label for="comentario_graduacao">Em caso de indeferimento ou solicitação de análise
                         por parte do parecerista, especifique o motivo: </label><br>
                         <textarea name="comentario_graduacao" rows="5" cols="60"></textarea><br>
-                        
+
                         <button type="submit" class="btn btn-success" name="analise_alteracao_action" value="deferir_alteracao"
                             onClick="return confirm('Tem certeza que deseja deferir o aditivo?')" >
                             Deferir Aditivo
@@ -187,7 +187,7 @@
                             onClick="return confirm('Tem certeza que deseja solicitar avaliação do parecerista?')" >
                             Solicitar Avaliação do Parecerista
                         </button>
-                        
+
                     </form>
                 </div>
             </div>
@@ -206,7 +206,7 @@
                         <br>
                         <b>Aditivo de Alteração Pendente:</b> {{ $aditivo->alteracao }}<br><br>
 
-                        <b>Avaliação do parecerista sobre o aditivo:</b> 
+                        <b>Avaliação do parecerista sobre o aditivo:</b>
                         @if(($aditivo->aprovado_parecerista)==0)
                         Aditivo Reprovado
                         @elseif(($aditivo->aprovado_parecerista)==1)
@@ -216,7 +216,7 @@
                         <br><br>
 
                         <b>Comentário do parecerista sobre o aditivo:</b> {{ $aditivo->comentario_parecerista }}<br><br>
-                        
+
                         <button type="submit" class="btn btn-success" name="analise_alteracao_action" value="deferir_alteracao_posparecerista"
                             onClick="return confirm('Tem certeza que deseja deferir o aditivo?')" >
                             Deferir Aditivo
@@ -226,7 +226,7 @@
                             onClick="return confirm('Tem certeza que deseja indeferir o aditivo?')" >
                             Indeferir Aditivo
                         </button>
-                        
+
                     </form>
                 </div>
             </div>

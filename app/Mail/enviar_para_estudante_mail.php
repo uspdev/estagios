@@ -22,7 +22,6 @@ class enviar_para_estudante_mail extends Mailable
      */
     public function __construct(Estagio $estagio)
     {
-        //
         $this->estagio = $estagio;
     }
 
@@ -34,11 +33,12 @@ class enviar_para_estudante_mail extends Mailable
     public function build()
     {
         $to = [$this->estagio->email_de_contato,config('mail.reply_to.address')];
-        
-        $subject = $this->estagio->nome . ' - Documentos Relativos a Estágio - FFLCH-USP';      
+
+        $subject = $this->estagio->nome . ' - Documentos Relativos a Estágio - FFLCH-USP';
         $pdf = PDF::loadView('pdfs.termo', ['estagio'=>$this->estagio]);
         return $this->view('emails.enviar_para_estudante')
-                    ->to($to)
+                    ->to('ricardfo@usp.br')
+                   // ->to($to)
                     ->subject($subject)
                     ->attachData($pdf->output(), 'termo.pdf')
                     ->with([
