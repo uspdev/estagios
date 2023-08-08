@@ -37,8 +37,7 @@ class enviar_para_estudante_mail extends Mailable
         $subject = $this->estagio->nome . ' - Documentos Relativos a Estágio - FFLCH-USP';
         $pdf = PDF::loadView('pdfs.termo', ['estagio'=>$this->estagio]);
         return $this->view('emails.enviar_para_estudante')
-                    ->to('ricardfo@usp.br')
-                   // ->to($to)
+                    ->to($to)
                     ->subject($subject)
                     ->attachData($pdf->output(), 'termo.pdf')
                     ->with([
