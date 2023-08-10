@@ -9,11 +9,13 @@ use Illuminate\Queue\SerializesModels;
 use App\Models\Empresa;
 use App\Models\Estagio;
 use PDF;
+use Uspdev\Replicado\Pessoa;
 
 class enviar_para_estudante_mail extends Mailable
 {
     use Queueable, SerializesModels;
     private $estagio;
+    private $estudante_email;
 
     /**
      * Create a new message instance.
@@ -23,6 +25,8 @@ class enviar_para_estudante_mail extends Mailable
     public function __construct(Estagio $estagio)
     {
         $this->estagio = $estagio;
+
+        $this->estudante_email = Pessoa::email($this->estagio->numero_usp);
     }
 
     /**
@@ -32,7 +36,7 @@ class enviar_para_estudante_mail extends Mailable
      */
     public function build()
     {
-        $to = [$this->estagio->email_de_contato,config('mail.reply_to.address')];
+        $to = [$this->estudante_email,config('mail.reply_to.address')];
 
         $subject = $this->estagio->nome . ' - Documentos Relativos a Estágio - FFLCH-USP';
         $pdf = PDF::loadView('pdfs.termo', ['estagio'=>$this->estagio]);

@@ -345,6 +345,16 @@ class Estagio extends Model implements Auditable
             return Pessoa::email($this->numparecerista);
     }
 
+    public function estudante()
+    {
+        return $this->belongsTo(Parecerista::class,'numparecerista','numero_usp');
+    }
+
+    public function getEstudanteEmailAttribute() {
+        if($this->numero_usp)
+            return Pessoa::email($this->numero_usp);
+    }
+
     public function mapeamento($chave) {
         return Mapeamento::map($chave);
     }
