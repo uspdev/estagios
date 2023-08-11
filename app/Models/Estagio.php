@@ -100,7 +100,7 @@ class Estagio extends Model implements Auditable
     }
 
     public function area_estagio(){
-        
+
         $areas = Area::distinct('area')->pluck('area')->toArray();
 
         $areas_fixas =  [
@@ -343,16 +343,6 @@ class Estagio extends Model implements Auditable
     public function getPareceristaEmailAttribute() {
         if($this->numparecerista)
             return Pessoa::email($this->numparecerista);
-    }
-
-    public function estudante()
-    {
-        return $this->belongsTo(Parecerista::class,'numparecerista','numero_usp');
-    }
-
-    public function getEstudanteEmailAttribute() {
-        if($this->numero_usp)
-            return Pessoa::email($this->numero_usp);
     }
 
     public function mapeamento($chave) {
