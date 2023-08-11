@@ -100,7 +100,7 @@ class Estagio extends Model implements Auditable
     }
 
     public function area_estagio(){
-        
+
         $areas = Area::distinct('area')->pluck('area')->toArray();
 
         $areas_fixas =  [
