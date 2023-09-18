@@ -42,6 +42,8 @@ Route::get('/pdfs/renovacao/{estagio}', [PDFsController::class, 'renovacao']);
 Route::get('/pdfs/aditivo/{estagio}', [PDFsController::class, 'aditivo']);
 Route::get('/pdfs/rescisao/{estagio}', [PDFsController::class, 'rescisao']);
 Route::get('/pdfs/parecer/{estagio}', [PDFsController::class, 'parecer']);
+Route::get('/pdfs/lista_empresas', [PDFsController::class, 'lista_empresas']);
+
 
 #E-mails
 Route::get('/emails/enviar_para_analise_tecnica/{estagio}', [EmailController::class, 'enviar_para_analise_tecnica']);

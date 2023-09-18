@@ -84,4 +84,16 @@ class PDFsController extends Controller
         abort(403, 'Access denied');
     }
 
+    public function lista_empresas(Request $request){
+        $this->authorize('logado');
+        $empresa = Empresa::orderBy('nome', 'asc')->get();
+
+        $pdf = PDF::loadView('pdfs.lista_empresas',[
+            'empresa'  => $empresa,
+        ]
+        );
+
+        return $pdf->download("Empresas_Cadastradas.pdf");
+    }    
+
 }
