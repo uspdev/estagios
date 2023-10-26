@@ -13,6 +13,7 @@ class ReportController extends Controller
 
     public function __construct(Estagio $estagio){
         $this->cursos = $estagio->nomcurOptions();
+
     }
 
     public function index(){
@@ -40,6 +41,12 @@ class ReportController extends Controller
             $estagios = $estagios->where('nomcur',$request->curso);
         }
 
+        if ($request->empresa) {
+            $estagios = $estagios->whereHas('empresa', function ($query) use ($request) {
+                $query->where('nome', 'like', '%' . $request->empresa . '%');
+            });
+        }
+        
         return view('reports.index')->with([
             'cursos' => $this->cursos,
             'estagios' => $estagios->paginate()
