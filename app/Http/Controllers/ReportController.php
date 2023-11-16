@@ -46,7 +46,11 @@ class ReportController extends Controller
                 $query->where('nome', 'like', '%' . $request->empresa . '%');
             });
         }
-        
+
+        if($request->cargahoras) {
+            $estagios = $estagios->where('cargahoras',$request->cargahoras);
+        }
+
         return view('reports.index')->with([
             'cursos' => $this->cursos,
             'estagios' => $estagios->paginate()

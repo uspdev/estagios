@@ -25,6 +25,9 @@
                 Empresa:
                 <input type="text" class="form-control" name="empresa" value="{{ request()->empresa }}" placeholder="Buscar Nome da Empresa">
                 <br>
+                Carga Horária:
+                <input type="text" class="form-control" name="cargahoras" value="{{ request()->cargahoras }}" placeholder="Carga Horária">
+                <br>
                 <span class="input-group-btn">
                     <button type="submit" class="btn btn-success"> Buscar </button>
                 </span>
