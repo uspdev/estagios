@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 use App\Models\Estagio;
+use App\Models\Parecerista;
 use Carbon\Carbon;
 
 class ReportController extends Controller
@@ -47,12 +48,17 @@ class ReportController extends Controller
             });
         }
 
+        if($request->numparecerista) {
+            $estagios = $estagios->where('numparecerista',$request->numparecerista);
+        }
+
         if($request->cargahoras) {
             $estagios = $estagios->where('cargahoras',$request->cargahoras);
         }
 
         return view('reports.index')->with([
             'cursos' => $this->cursos,
+            'pareceristas' => Parecerista::all(),
             'estagios' => $estagios->paginate()
         ]);
     }
