@@ -22,8 +22,19 @@
                     @endforeach
                 </select>
                 <br>
+                Parecerista:
+                <select name="numparecerista" class="form-control" style="width: 60%;">
+                    <option value="0" selected>Selecione o Parecerista</option>
+                    @foreach($pareceristas as $parecerista)
+                        <option value="{{ $parecerista->numero_usp }}"> {{ \Uspdev\Replicado\Pessoa::obterNome($parecerista->numero_usp) }} </option>
+                    @endforeach
+                </select>
+                <br>
                 Empresa:
                 <input type="text" class="form-control" name="empresa" value="{{ request()->empresa }}" placeholder="Buscar Nome da Empresa">
+                <br>
+                Carga Horária:
+                <input type="text" class="form-control" name="cargahoras" value="{{ request()->cargahoras }}" placeholder="Carga Horária">
                 <br>
                 <span class="input-group-btn">
                     <button type="submit" class="btn btn-success"> Buscar </button>
