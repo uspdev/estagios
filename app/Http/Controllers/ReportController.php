@@ -21,7 +21,8 @@ class ReportController extends Controller
         $this->authorize('admin');
 
         return view('reports.index')->with([
-            'cursos' => $this->cursos
+            'cursos' => $this->cursos,
+            'pareceristas' => Parecerista::all(),
         ]);
     }
 
