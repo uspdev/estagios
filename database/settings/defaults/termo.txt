@@ -61,8 +61,7 @@
         <b>{{$estagio->data_inicial}}</b> terminando em
         <b>{{$estagio->data_final}}</b> que poderá
         ser eventualmente prorrogado ou modificado por documento complementar <b>(TERMO ADITIVO)</b>.</p>
-    <p>1.1. Qualquer das partes poderá pedir rescisão, com 05 (cinco) dias de antecedência.</p>
-    <p>1.2. O estagiário não terá vínculo empregatício de qualquer natureza com a CONCEDENTE em razão deste TERMO DE
+    <p>1.1. O estagiário não terá vínculo empregatício de qualquer natureza com a CONCEDENTE em razão deste TERMO DE
         COMPROMISSO</p>
     <p>2. No período de estágio, o estagiário cumprirá <b>{{ $estagio->cargahoras }}h{{ $estagio->cargaminutos }}
             semanais</b>. O horário de estágio será combinado
@@ -142,10 +141,10 @@
     <b>Nº USP:</b> {{ $estagio->numero_usp }}<br>
     <b>Telefone:</b>
         @if(isset($fones))
-            {{  $fones }} <br> 
-        @else 
+            {{  $fones }} <br>
+        @else
             Não possui telefone cadastrado.<br>
-        @endif   
+        @endif
     <b>Curso:</b> {{ $estagio->curso }}<br>
     <b>Período:</b> {{ $estagio->periodo }}<br>
     <b>E-mail:</b> {{ $estagio->email }}<br>
