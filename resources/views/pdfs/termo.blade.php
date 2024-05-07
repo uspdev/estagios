@@ -3,33 +3,51 @@
 @section('content')
 
 <div style="width:100%; border-width: 1px; border-style: solid; border-color: #000; text-align: center; padding: 0px;">
-    <b>TERMO DE CIÊNCIA</b>
+    <b>DECLARAÇÃO DE RESPONSABILIDADE</b>
 </div>
 
-<br><br><br><br><br>
+<br><br><br>
+    <br>
+    <br>
+    <br>
 
 <div style="text-align: justify;">
-    <p style="text-indent : 3em;">Os documentos, impressos e assinados, devem ser entregues com pelo menos 10 dias úteis
-        antes do início estágio.</p>
+    <p style="text-indent : 1em;"> Declaro sob pena de responsabilidade, para fins de concessão / prorrogação de estágio, que estou ciente da impossibilidade de ser concedido estágio enquanto eu estiver vinculado(a) a outro estágio, e que este não ultrapasse a carga horária máxima permitida de 30h semanais / 6h diárias. </p>
     <br>
-    <p style="text-indent : 3em;">É obrigatória a entrega de um relatório pessoal (digitado, datado, assinado e com no
-        mínimo 7 linhas) no término desse estágio, relatando sua experiência no período.</p>
     <br>
-    <p style="text-indent : 3em; font-weight: bold">Uma via deste termo de Ciência deve ser entregue com o Termo de
-        Compromisso e Plano de Estágio.</p>
     <br>
-    <p>Ciência d{{ $estagio->artigo_definido }}
+    <br>
+    <br>
+    <br>
+    <br>
+    <p>Declaração d{{ $estagio->artigo_definido }}
         alun{{ $estagio->artigo_definido}}
         {{ $estagio->nome }}:</p>
 </div>
 
 <br><br>
 
+<div style="text-align: right;">
+    São Paulo, {{ \Carbon\Carbon::now()->locale('pt_BR')->isoFormat('D [de] MMMM [de] YYYY') }}
+</div>
+
 <div>
-    _______________________________________________<br>
+    <br><br><br>
+    _______________________________________________
+    <br>
     <b>{{ $estagio->nome }}</b><br>
     Nº USP: <b>{{ $estagio->numero_usp }}</b><br>
     <b>{{ $estagio->curso }}</b>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p style="text-indent : 1em; font-weight: bold">Uma via desta Declaração de Responsabilidade deve ser entregue com o Termo de
+        Compromisso e Plano de Estágio.</p>
+    <br>
 </div>
 
 <p style="page-break-after: always;"></p>
@@ -65,8 +83,7 @@
         <b>{{$estagio->data_inicial}}</b> terminando em
         <b>{{$estagio->data_final}}</b> que poderá
         ser eventualmente prorrogado ou modificado por documento complementar <b>(TERMO ADITIVO)</b>.</p>
-    <p>1.1. Qualquer das partes poderá pedir rescisão, com 05 (cinco) dias de antecedência.</p>
-    <p>1.2. O estagiário não terá vínculo empregatício de qualquer natureza com a CONCEDENTE em razão deste TERMO DE
+    <p>1.1. O estagiário não terá vínculo empregatício de qualquer natureza com a CONCEDENTE em razão deste TERMO DE
         COMPROMISSO</p>
     <p>2. No período de estágio, o estagiário cumprirá <b>{{ $estagio->cargahoras }}h{{ $estagio->cargaminutos }}
             semanais</b>. O horário de estágio será combinado
@@ -146,10 +163,10 @@
     <b>Nº USP:</b> {{ $estagio->numero_usp }}<br>
     <b>Telefone:</b>
         @if(isset($fones))
-            {{  $fones }} <br> 
-        @else 
+            {{  $fones }} <br>
+        @else
             Não possui telefone cadastrado.<br>
-        @endif   
+        @endif
     <b>Curso:</b> {{ $estagio->curso }}<br>
     <b>Período:</b> {{ $estagio->periodo }}<br>
     <b>E-mail:</b> {{ $estagio->email }}<br>
@@ -179,9 +196,6 @@
     <b>Como se dará a interação do estagiário com o ambiente e com os demais colaboradores da empresa? Haverá
     deslocamento para a empresa? Se sim, quais dias?</b> {{ $estagio->interacao }}<br>
     <b>Qual o endereço e em quais dias será realizado o estágio?</b>{{$estagio->enderecoedias}}<br>
-    <b>INFORMAÇÕES RELATIVAS A ESTÁGIO NO PERÍODO DE PANDEMIA</b><br>
-    <b>O estágio será realizado em home-office?:</b> {{$estagio->pandemiahomeoffice}}<br>
-    <b>Em caso do estágio não ser home-office, quais as medidas sanitárias adotadas pela empresa são:</b> {{$estagio->pandemiamedidas}}<br>
 </div>
 
 <div style="page-break-inside: avoid;">

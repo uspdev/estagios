@@ -74,7 +74,7 @@
           @foreach($avisos as $aviso)
           <tr>
             <td><b>{{$aviso->titulo}}</b><br>
-                {{$aviso->corpo}}
+                {!! $aviso->corpo !!}
             </td>
           </tr>
           @endforeach

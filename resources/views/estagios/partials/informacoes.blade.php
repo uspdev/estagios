@@ -1,7 +1,7 @@
 <div class="card">
       <div class="card-header"><b>Informações Gerais</b></div>
         <div class="card-body">
-            <b>Número USP:</b> {{$estagio->numero_usp}}<br>
+         <b>Número USP:</b> {{$estagio->numero_usp}}<br>
             <b>Nome do(a) aluno(a):</b> {{ $estagio->nome }}<br>
             <b>Curso:</b> {{ $estagio->curso }}<br>
             <b>Média ponderada:</b> {{ $estagio->media_ponderada }}<br>
@@ -14,6 +14,12 @@
             <b>As ativídades são pertinentes ao curso?:</b> {{$estagio->atividadespertinentes}}<br> 
             <b>Justificativa da pertinencia:</b> {{$estagio->atividadesjustificativa}}<br>         
             <b>Desempenho acadêmico:</b> {{$estagio->desempenhoacademico}}<br>
+            <b>Área de Atuação do Estágio:</b>
+                <ul>
+                    @foreach($areas as $area)  
+                    <li>{{$area}}</li>
+                    @endforeach 
+                </ul>
             <b>Análise Acadêmica:</b> {{$estagio->analise_academica}}<br>
             <b>Situação do deferimento do parecer de mérito:</b> {{$estagio->tipodeferimento}}<br>
             @if(($estagio->condicaodeferimento)!=null)
@@ -80,15 +86,4 @@
                 <b>Método de supervisão interna:</b> {{$estagio->supervisao}}<br>
                 <b>Interação com ambiente, colaboradores e dias onde ocorrerá o deslocamento para a empresa:</b> {{$estagio->interacao}}<br>
                 <b>Endereço e dias do estágio:</b> {{$estagio->enderecoedias}}<br>
-        </div>       
-
-    <br>
-
-        <div class="card-header"><b>Informações relativas à pandemia de COVID-19</b></div>
-            <div class="card-body">
-                <b>O estágio será realizado em home-office?:</b> {{$estagio->pandemiahomeoffice}}<br>
-                @if(($estagio->pandemiamedidas)!=null)
-                <b>Em caso do estágio não ser home-office, quais as medidas sanitárias adotadas pela empresa são:</b> {{$estagio->pandemiamedidas}}<br>
-                @endif
-            </div>  
-</div>
+        </div>

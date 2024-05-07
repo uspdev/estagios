@@ -26,6 +26,8 @@ use App\Mail\justificativa_analise_tecnica;
 use App\Mail\GerarRescisaoMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\AnaliseAcademicaRequest;
+use App\Service\AreaService;
 
 class EstagioWorkflowController extends Controller
 {
@@ -137,19 +139,12 @@ class EstagioWorkflowController extends Controller
 
     #Funções Análise Acadêmica
 
-    public function analise_academica(Request $request, Estagio $estagio){
+    public function analise_academica(AnaliseAcademicaRequest $request, Estagio $estagio, AreaService $areaService){
 
         if (Gate::allows('parecerista')) {
 
-            $request->validate([
-                'atividadespertinentes' => 'required',
-                'desempenhoacademico' => 'required',
-                'horariocompativel' => 'required|max:255',
-                'atividadesjustificativa'=> 'required',
-                'analise_academica'=> 'required',
-                'tipodeferimento'=> 'required',
-                'condicaodeferimento'=> 'required_if:tipodeferimento,==,Deferido com Restrição'
-            ]);
+            $areaService->handleArea($request->validated() + ['estagio_id' => $estagio->id]);
+
             $estagio->analise_academica = $request->analise_academica;
             $estagio->horariocompativel = $request->horariocompativel;
             $estagio->desempenhoacademico = $request->desempenhoacademico;
@@ -162,6 +157,7 @@ class EstagioWorkflowController extends Controller
             $estagio->last_status = $estagio->status;
             $estagio->status = 'em_analise_tecnica';
             $estagio->save();
+
             Mail::queue(new enviar_analise_academica_mail($estagio));
             request()->session()->flash('alert-info','Parecer incluído com sucesso! Estágio enviado para o setor de graduação');
         } else {
@@ -171,7 +167,6 @@ class EstagioWorkflowController extends Controller
     }
 
     public function editar_analise_academica(Request $request, Estagio $estagio){
-
         if (Gate::allows('parecerista')) {
             $estagio->last_status = $estagio->status;
             $estagio->status = 'em_analise_academica';

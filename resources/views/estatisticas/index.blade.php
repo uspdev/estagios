@@ -11,7 +11,7 @@
         @csrf
         Estágios que iniciaram entre:            
             <input class="datepicker" name="start_date" value="{{ request()->start_date }}"> 
-                e
+                
             <input class="datepicker" name="end_date" value="{{ request()->end_date }}">
             <br><br>
             <select name="curso" class="form-control" style="width: 60%;">

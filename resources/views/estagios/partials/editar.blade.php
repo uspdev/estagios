@@ -19,7 +19,7 @@ Apenas serão salvos os campos alterados, aqueles que não forem alterados mante
 
             <div class="row">
                 <div class="col-sm form-group">
-                    <label for="nomcur">Curso de Graduação: </label>  
+                    <label for="nomcur">Curso de Graduação: </label>
                     <select name="nomcur" class="form-control" id="nomcur">
                         <option value="" selected="">- Selecione -</option>
                         @foreach ($estagio->nomcurOptions() as $option)
@@ -66,10 +66,10 @@ Apenas serão salvos os campos alterados, aqueles que não forem alterados mante
                                 {{$option}}
                             </option>
                         @endif
-                          
-                    @endforeach    
 
-            </select> 
+                    @endforeach
+
+            </select>
         </div>
 
         <div class="form-group">
@@ -83,7 +83,7 @@ Apenas serão salvos os campos alterados, aqueles que não forem alterados mante
                     <label for="data_inicial" class="required">Data de início do Estágio: </label>
                     <input type="text" class="form-control datepicker" id="data_inicial" name="data_inicial" value="{{old('data_inicial',$estagio->data_inicial)}}" onblur="calculodata(this);">
                 </div>
-            </div>    
+            </div>
             <div class="col-sm form-group">
                 <div class="form-group">
                     <label for="data_final" class="required">Data de término do Estágio: </label>
@@ -99,7 +99,7 @@ Apenas serão salvos os campos alterados, aqueles que não forem alterados mante
 
         <div class="row">
             <div class="col-sm form-group">
-                
+
                 <div class="form-group">
                 <label for="cargahoras" class="required">Horas: </label>
                     <input type="text" class="form-control" id="cargahoras" name="cargahoras" value="{{old('cargahoras',$estagio->cargahoras)}}">
@@ -121,12 +121,12 @@ Apenas serão salvos os campos alterados, aqueles que não forem alterados mante
             <div class="col-sm form-group">
                 <div class="form-group">
                 <label for="auxiliotransporte" class="required">Valor do Auxílio transporte (R$): </label>
-                    <input type="text" class="form-control" id="auxiliotransporte" name="auxiliotransporte" value="{{old('auxiliotransporte',$estagio->auxiliotransporte)}}"> 
+                    <input type="text" class="form-control" id="auxiliotransporte" name="auxiliotransporte" value="{{old('auxiliotransporte',$estagio->auxiliotransporte)}}">
                 </div></div>
 
             <div class="col-sm form-group">
                 <div class="form-group">
-                    <label for="especifiquevt" class="required">Tipo de vale transporte: </label>               
+                    <label for="especifiquevt" class="required">Tipo de vale transporte: </label>
                     <select name="especifiquevt" class="form-control" id="especifiquevt">
                         <option value="" selected="">- Selecione -</option>
                             @foreach ($estagio->especifiquevtOptions() as $option)
@@ -179,32 +179,6 @@ Apenas serão salvos os campos alterados, aqueles que não forem alterados mante
             </div>
         </div>
 
-        <div class="col-sm form-group">
-            <div class="form-group">
-                <label for="pandemiahomeoffice" class="required">Realização do estágio em home-office (COVID-19): </label>               
-                <select name="pandemiahomeoffice" class="form-control" id="pandemiahomeoffice">
-                    <option value="" selected="">- Selecione -</option>
-                        @foreach ($estagio->pandemiahomeofficeOptions() as $option)
-                            @if (old('pandemiahomeoffice') == '' and isset($estagio->pandemiahomeoffice) )
-                                <option value="{{$option}}" {{ ( $estagio->pandemiahomeoffice == $option) ? 'selected' : ''}}>
-                                    {{$option}}
-                                </option>
-                            @else
-                                <option value="{{$option}}" {{ ( old('pandemiahomeoffice') == $option) ? 'selected' : ''}}>
-                                    {{$option}}
-                                </option>
-                            @endif
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-
-            <div class="col-sm form-group" id="medidas">
-                <label for="pandemiamedidas" class="required" required>Descrição das medidas sanitárias em caso de estágio presencial(Campo obrigatório apenas em caso de estágio presencial): </label><br>
-                <textarea name="pandemiamedidas" rows="5" cols="60">{{old('pandemiamedidas',$estagio->pandemiamedidas)}}</textarea>
-            </div>
-
     <br>
 
     <div class="card-header"><b>Informações Sobre a Empresa</b></div>
@@ -225,7 +199,7 @@ Apenas serão salvos os campos alterados, aqueles que não forem alterados mante
                 <label for="telefone_de_contato" class="required">Telefone de contato da empresa: </label>
                     <input type="text" maxlength="11" class="form-control" id="telefone-com-ddd" name="telefone_de_contato" value="{{old('telefone_de_contato',$estagio->telefone_de_contato)}}">
                 </div></div>
-            </div>     
+            </div>
         <div class="row">
             <div class="col-sm form-group">
                 <div class="form-group">
@@ -236,7 +210,7 @@ Apenas serão salvos os campos alterados, aqueles que não forem alterados mante
                 <div class="form-group">
                 <label for="cargo_do_supervisor_estagio" class="required">Cargo do supervisor de estágio: </label>
                     <input type="text" class="form-control" id="cargo_do_supervisor_estagio" name="cargo_do_supervisor_estagio" value="{{old('cargo_do_supervisor_estagio',$estagio->cargo_do_supervisor_estagio)}}">
-                </div></div>    
+                </div></div>
             <div class="col-sm form-group">
                 <div class="form-group">
                 <label for="email_do_supervisor_estagio" class="required">E-mail do supervisor de estágio: </label>
@@ -247,36 +221,36 @@ Apenas serão salvos os campos alterados, aqueles que não forem alterados mante
                 <label for="telefone_do_supervisor_estagio" class="required">Telefone do supervisor de estágio: </label>
                     <input type="text" maxlength="11" class="form-control" id="telefone-com-ddd" name="telefone_do_supervisor_estagio" value="{{old('telefone_do_supervisor_estagio',$estagio->telefone_do_supervisor_estagio)}}">
                 </div></div>
-            </div> 
+            </div>
 
             <div class="row">
                 <div class="col-sm form-group">
                     <div class="form-group">
                     <label for="nome_do_representante_opcional">Nome do Representante da Empresa (Opcional):</label>
                         <input type="text" class="form-control" id="nome_do_representante_opcional" name="nome_do_representante_opcional" value="{{old('nome_do_representante_opcional',$estagio->nome_do_representante_opcional)}}">
-                </div></div>    
+                </div></div>
                 <div class="col-sm form-group">
                     <div class="form-group">
                     <label for="cargo_do_representante_opcional">Cargo do Representante da Empresa (Opcional):</label>
                         <input type="text" class="form-control" id="cargo_do_representante_opcional" name="cargo_do_representante_opcional" value="{{old('cargo_do_representante_opcional',$estagio->cargo_do_representante_opcional)}}">
-                </div></div>  
+                </div></div>
                 <div class="col-sm form-group">
                     <div class="form-group">
                     <label for="email_do_representante_opcional">Email do Representante da Empresa (Opcional):</label>
                         <input type="text" class="form-control" id="email_do_representante_opcional" name="email_do_representante_opcional" value="{{old('email_do_representante_opcional',$estagio->email_do_representante_opcional)}}">
-                </div></div>   
+                </div></div>
             </div>
         </div>
-    <br>     
-    
+    <br>
+
     </div>
 
-    <br> 
+    <br>
     <div class="form-group">
         <button type="submit" class="btn btn-info">
             Salvar alterações
         </button>
-    </div> 
+    </div>
     </div>
 </div>
 

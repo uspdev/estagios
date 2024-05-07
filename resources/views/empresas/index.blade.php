@@ -18,6 +18,7 @@
             <span class="input-group-btn">
                 <button type="submit" class="btn btn-success"> Buscar </button>
             </span>
+            <a href="/pdfs/lista_empresas"><button type="button" class="btn btn-secondary"><i class="fa fa-folder"></i> Imprimir Lista</button></a></td>
         </div>
     </div>
 </form>

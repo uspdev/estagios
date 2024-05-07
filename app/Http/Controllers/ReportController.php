@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 use App\Models\Estagio;
+use App\Models\Parecerista;
 use Carbon\Carbon;
 
 class ReportController extends Controller
@@ -13,13 +14,15 @@ class ReportController extends Controller
 
     public function __construct(Estagio $estagio){
         $this->cursos = $estagio->nomcurOptions();
+
     }
 
     public function index(){
         $this->authorize('admin');
 
         return view('reports.index')->with([
-            'cursos' => $this->cursos
+            'cursos' => $this->cursos,
+            'pareceristas' => Parecerista::all(),
         ]);
     }
 
@@ -40,8 +43,23 @@ class ReportController extends Controller
             $estagios = $estagios->where('nomcur',$request->curso);
         }
 
+        if ($request->empresa) {
+            $estagios = $estagios->whereHas('empresa', function ($query) use ($request) {
+                $query->where('nome', 'like', '%' . $request->empresa . '%');
+            });
+        }
+
+        if($request->numparecerista) {
+            $estagios = $estagios->where('numparecerista',$request->numparecerista);
+        }
+
+        if($request->cargahoras) {
+            $estagios = $estagios->where('cargahoras',$request->cargahoras);
+        }
+
         return view('reports.index')->with([
             'cursos' => $this->cursos,
+            'pareceristas' => Parecerista::all(),
             'estagios' => $estagios->paginate()
         ]);
     }

@@ -26,7 +26,7 @@
 
 <p>Média ponderada com reprovação: <b>{{ $estagio->media_ponderada }}</b></p>
 
-<p>O horário do estágio é compatível com os horários disponíveis na grade horária do aluno?: <b>{{ $estagio->atividadesjustificativa }}</b></p>
+<p>O horário do estágio é compatível com os horários disponíveis na grade horária do aluno?: <b>{{ $estagio->horariocompativel }}</b></p>
 
 <p>Situação do deferimento do parecer de mérito: <b>{{$estagio->tipodeferimento}}</b><p>
 
