@@ -31,7 +31,7 @@ class VagaRequest extends FormRequest
             'salario' => 'required',
             'horario' => 'required',
             'beneficios' => 'required',
-            'divulgar_ate' => 'required|data',
+            'divulgar_ate' => 'required|date_format:d/m/Y',
             'status' => '',
             'justificativa' => 'nullable',
             'email' => 'required|email|max:255'

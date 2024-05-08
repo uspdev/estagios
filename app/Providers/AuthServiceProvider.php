@@ -24,8 +24,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerPolicies();
-
         Gate::define('admin', function ($user) {
             $admins = explode(',', trim(config('estagios.admins')));
             return in_array($user->codpes, $admins);
