@@ -89,12 +89,12 @@ class GeneralSettingsController extends Controller
         $settings->rescisao_empresa_mail = $request->input('rescisao_empresa_mail');
         $settings->rodape = $request->input('rodape');
         $settings->unidade = $request->input('unidade');
-        $settings->unidade = $request->input('header');
-        $settings->unidade = $request->input('aditivo');
-        $settings->unidade = $request->input('parecer');
-        $settings->unidade = $request->input('rescisao');
-        $settings->unidade = $request->input('renovacao');
-        $settings->unidade = $request->input('termo');
+        $settings->header = $request->input('header');
+        $settings->aditivo = $request->input('aditivo');
+        $settings->parecer = $request->input('parecer');
+        $settings->rescisao = $request->input('rescisao');
+        $settings->renovacao = $request->input('renovacao');
+        $settings->termo = $request->input('termo');
 
         $settings->save();
         return redirect()->back();
