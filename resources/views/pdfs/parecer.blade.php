@@ -1,4 +1,4 @@
-@extends('pdfs.fflch')
+@extends('pdfs.header')
 
 @section('content')
 

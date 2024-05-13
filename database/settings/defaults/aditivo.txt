@@ -1,4 +1,4 @@
-@extends('pdfs.fflch')
+@extends('pdfs.header')
 
 @section('content')
 <div style="border: 1px solid #000; text-align: center;">

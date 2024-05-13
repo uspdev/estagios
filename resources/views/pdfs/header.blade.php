@@ -1,0 +1,1 @@
+{!! Blade::render($settings->header, ['settings' => $settings, 'estagio' => $estagio]) !!}
