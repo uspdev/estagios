@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^4.0",
         "laravellegends/pt-br-validator": "^10.0",
+        "livewire/livewire": "^3.4",
         "owen-it/laravel-auditing": "^13.0",
         "rap2hpoutre/fast-excel": "^5.4",
         "rap2hpoutre/laravel-log-viewer": "^2.3",
