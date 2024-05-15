@@ -50,7 +50,7 @@
     <table style='width:100%'>
         <tr>
             <td style='width:20%' style='text-align:left;'>
-                <img src='{{public_path('images/logo-fflch.jpg')}}' width='100px'/>
+                <img src='{{ public_path('storage/images/' . $settings->logo) }}' width='100px'/>
             </td>
             <td style='width:80%'; style='text-align:center;'>
                 <p align='center'><b>{{ $settings->unidade }}</b>

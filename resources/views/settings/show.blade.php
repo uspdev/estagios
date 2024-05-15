@@ -1,5 +1,6 @@
 @extends('main')
 @section('content')
+@livewireStyles
 
 <div class="card">
     <div class="card-header"><h4>Configurações do sistema de estágio</h4></div>
@@ -17,7 +18,7 @@
         </div>
     </div>
 
-<form method="POST" action="/settings">
+<form method="POST" action="/settings"  enctype="multipart/form-data">
     @csrf 
 
         <br>
@@ -232,6 +233,8 @@
         </div>
         <br>
 
+        <livewire:upload-logo settingsLogo="{{ $logo }}">
+
         <br>
         <div class="row">
             <div class="col">
@@ -281,4 +284,5 @@
         <br>
 </form>
     
+@livewireScripts
 @endsection

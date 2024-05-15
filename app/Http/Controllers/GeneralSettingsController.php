@@ -36,14 +36,15 @@ class GeneralSettingsController extends Controller
             'rescisao' => $settings->rescisao,
             'renovacao' => $settings->renovacao,
             'termo' => $settings->termo,
-            'unidade' => $settings->unidade
+            'unidade' => $settings->unidade,
+            'logo' => $settings->logo
         ]);
     }
 
     public function update(Request $request, GeneralSettings $settings){
         $this->authorize('admin');
 
-        $request->validate([
+        $validated = $request->validate([
             'alteracao_empresa_mail' => 'required',
             'enviar_para_analise_tecnica_mail' => 'required',
             'enviar_para_estudante_mail' => 'required',
@@ -67,8 +68,19 @@ class GeneralSettingsController extends Controller
             'parecer' => 'required',
             'rescisao' => 'required',
             'renovacao' => 'required',
-            'termo' => 'required'
+            'termo' => 'required',
+            'logo' => 'image|max:1500'
         ]);
+
+        if(array_key_exists('logo', $validated)){
+            try{
+                $filename = date('d-m-Y-H:i:s').".".$validated['logo']->getClientOriginalExtension();
+                $validated['logo']->storePubliclyAs('public/images/', $filename);
+                $settings->logo = $filename;
+            }catch(\Throwable $th){
+                throw $th;
+            }
+        }
 
         $settings->alteracao_empresa_mail = $request->input('alteracao_empresa_mail');
         $settings->analise_rescisao_mail = $request->input('analise_rescisao_mail');
