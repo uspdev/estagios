@@ -25,8 +25,9 @@
         <div class="row">
             <div class="col">
                 <label for="unidade" ><b>Unidade</b></label><br>
-                <input name="unidade" value="{{ $unidade }}">
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <input name="unidade" value="{{ $unidade }}" class="w-100">
+                <small class="text-muted">Exemplo: Instituto de Matemática e Estatística</small>
+                <br>
             </div>
         </div>
         <br>
