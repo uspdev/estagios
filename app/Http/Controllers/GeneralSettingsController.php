@@ -37,6 +37,7 @@ class GeneralSettingsController extends Controller
             'renovacao' => $settings->renovacao,
             'termo' => $settings->termo,
             'unidade' => $settings->unidade,
+            'sigla_unidade' => $settings->sigla_unidade,
             'logo' => $settings->logo
         ]);
     }
@@ -63,6 +64,7 @@ class GeneralSettingsController extends Controller
             'rescisao_empresa_mail' => 'required',
             'rodape' => 'required',
             'unidade' => 'required',
+            'sigla_unidade' => 'required',
             'aditivo' => 'required',
             'header' => 'required',
             'parecer' => 'required',
@@ -101,6 +103,7 @@ class GeneralSettingsController extends Controller
         $settings->rescisao_empresa_mail = $request->input('rescisao_empresa_mail');
         $settings->rodape = $request->input('rodape');
         $settings->unidade = $request->input('unidade');
+        $settings->sigla_unidade = $request->input('sigla_unidade');
         $settings->header = $request->input('header');
         $settings->aditivo = $request->input('aditivo');
         $settings->parecer = $request->input('parecer');

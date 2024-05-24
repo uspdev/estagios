@@ -24,14 +24,23 @@
         <br>
         <div class="row">
             <div class="col">
-                <label for="unidade" ><b>Unidade</b></label><br>
+                <label for="unidade" ><b>Nome da Unidade</b></label><br>
                 <input name="unidade" value="{{ $unidade }}" class="w-100">
-                <small class="text-muted">Exemplo: Instituto de Matemática e Estatística</small>
+                <small class="text-muted">Exemplo: Instituto de Matemática e Estatística da Universidade de São Paulo</small>
                 <br>
             </div>
         </div>
         <br>
 
+        <div class="row">
+            <div class="col">
+                <label for="sigla_unidade" ><b>Sigla da Unidade</b></label><br>
+                <input name="sigla_unidade" value="{{ $sigla_unidade }}" class="w-100">
+                <small class="text-muted">Exemplo: IME-USP</small>
+                <br>
+            </div>
+        </div>
+        <br>
 
         <br>
         <div class="row">
