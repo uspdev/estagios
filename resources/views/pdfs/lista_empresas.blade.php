@@ -30,6 +30,6 @@
 
 @section('footer')
 <div style="text-align: initial; font-weight: bold; ">
-Serviço de Estágios - {{ $settings->unidade }} da USP.
+Serviço de Estágios - {{ $settings->unidade }}.
 </div>
 @endsection

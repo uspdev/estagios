@@ -53,8 +53,7 @@
                 <img src='{{ public_path('storage/images/' . $settings->logo) }}' width='100px'/>
             </td>
             <td style='width:80%'; style='text-align:center;'>
-                <p align='center'><b>{{ $settings->unidade }}</b>
-                <br>Universidade de São Paulo<br>
+                <p align='center'><b>{{ $settings->unidade }}</b><br>
                 Serviço de Assistência ao Ensino de Graduação</p>
             </td>
         </tr>
