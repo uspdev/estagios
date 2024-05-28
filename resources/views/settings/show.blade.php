@@ -42,6 +42,16 @@
         </div>
         <br>
 
+        <div class="row">
+            <div class="col">
+                <label for="endereco_unidade" ><b>Endereço da Unidade</b></label><br>
+                <input name="endereco_unidade" value="{{ $endereco_unidade }}" class="w-100">
+                <small class="text-muted">Exemplo: Rua do Matão, 1010 - Butantã, São Paulo - SP, CEP: 05508-090</small>
+                <br>
+            </div>
+        </div>
+        <br>
+
         <br>
         <div class="row">
             <div class="col">

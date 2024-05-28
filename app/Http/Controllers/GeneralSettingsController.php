@@ -38,6 +38,7 @@ class GeneralSettingsController extends Controller
             'termo' => $settings->termo,
             'unidade' => $settings->unidade,
             'sigla_unidade' => $settings->sigla_unidade,
+            'endereco_unidade' => $settings->endereco_unidade,
             'logo' => $settings->logo
         ]);
     }
@@ -65,6 +66,7 @@ class GeneralSettingsController extends Controller
             'rodape' => 'required',
             'unidade' => 'required',
             'sigla_unidade' => 'required',
+            'endereco_unidade' => 'required',
             'aditivo' => 'required',
             'header' => 'required',
             'parecer' => 'required',
@@ -104,6 +106,7 @@ class GeneralSettingsController extends Controller
         $settings->rodape = $request->input('rodape');
         $settings->unidade = $request->input('unidade');
         $settings->sigla_unidade = $request->input('sigla_unidade');
+        $settings->endereco_unidade = $request->input('endereco_unidade');
         $settings->header = $request->input('header');
         $settings->aditivo = $request->input('aditivo');
         $settings->parecer = $request->input('parecer');
