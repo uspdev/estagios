@@ -28,6 +28,7 @@ class GeneralSettings extends Settings
     public string $unidade;
     public string $sigla_unidade;
     public string $endereco_unidade;
+    public string $email;
 
     public string $header;
     public string $logo;

@@ -39,6 +39,7 @@ class GeneralSettingsController extends Controller
             'unidade' => $settings->unidade,
             'sigla_unidade' => $settings->sigla_unidade,
             'endereco_unidade' => $settings->endereco_unidade,
+            'email' => $settings->email,
             'logo' => $settings->logo
         ]);
     }
@@ -67,6 +68,7 @@ class GeneralSettingsController extends Controller
             'unidade' => 'required',
             'sigla_unidade' => 'required',
             'endereco_unidade' => 'required',
+            'email' => 'required',
             'aditivo' => 'required',
             'header' => 'required',
             'parecer' => 'required',
@@ -107,6 +109,7 @@ class GeneralSettingsController extends Controller
         $settings->unidade = $request->input('unidade');
         $settings->sigla_unidade = $request->input('sigla_unidade');
         $settings->endereco_unidade = $request->input('endereco_unidade');
+        $settings->email = $request->input('email');
         $settings->header = $request->input('header');
         $settings->aditivo = $request->input('aditivo');
         $settings->parecer = $request->input('parecer');

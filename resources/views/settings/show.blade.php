@@ -52,6 +52,16 @@
         </div>
         <br>
 
+        <div class="row">
+            <div class="col">
+                <label for="email" ><b>E-mail da Seção de Estágios da Unidade</b></label><br>
+                <input name="email" value="{{ $email }}" class="w-100">
+                <small class="text-muted">Exemplo: estagios@ime.usp.br</small>
+                <br>
+            </div>
+        </div>
+        <br>
+
         <br>
         <div class="row">
             <div class="col">
