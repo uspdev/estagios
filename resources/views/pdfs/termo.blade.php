@@ -72,11 +72,11 @@
         regime especial, regida por seu Estatuto, aprovado pela Resolução nº 3.461, de 07 de outubro de 1988, e pelo
         Regimento Geral, aprovado
         pela Resolução nº 3.745, de 19 de outubro de 1990, com sede em São Paulo (Capital), inscrita no CNPJ-MF sob nº
-        63.025.530/0001-04, adiante denominada USP, no interesse da Faculdade de Filosofia, Letras e Ciências Humanas,
-        localizada à Rua do Lago, 717, na Cidade Universitária “Armando de Salles Oliveira, Butantã, São Paulo, neste
+        63.025.530/0001-04, adiante denominada USP, no interesse do(a) {{ $settings->unidade }},
+        localizado(a) à {{ $settings->endereco_unidade }}, neste
         ato representada pel{{ $estagio->artigo_definido }} Presidente da
         Comissão de Graduação, <b>{{ \App\Models\Parecerista::nomePresidente() }}</b>, da mencionada
-        Faculdade, celebram o presente TERMO DE COMPROMISSO DE ESTÁGIO, que se vincula ao convênio para Realização de
+        unidade de ensido, celebram o presente TERMO DE COMPROMISSO DE ESTÁGIO, que se vincula ao convênio para Realização de
         Estágio firmado entre a CONCEDENTE e a INSTITUIÇÃO DE ENSINO nos termos da Lei no 9.394/96 e da Lei nº
         11.788/08, conforme as condições a seguir:</p>
     <p>1. O estágio terá duração de <b>{{ $estagio->duracao }}</b>, a começar em
@@ -146,7 +146,7 @@
     {{ $estagio->nome }}<br><br><br>
     ________________________________________________<br>
     {{ \App\Models\Parecerista::nomePresidente() }}<br>
-    Presidente da Comissão de Graduação da FFLCH-USP
+    Presidente da Comissão de Graduação - {{ $settings->sigla_unidade }}
 </div>
 
 </div>
@@ -214,7 +214,7 @@
     {{ $estagio->nome }}<br><br>
     _______________________________________________<br>
     {{ \App\Models\Parecerista::nomePresidente() }} <br>
-    Presidente da Comissão de Graduação da FFLCH/USP
+    Presidente da Comissão de Graduação - {{ $settings->sigla_unidade }}
 
     <br><br><br>
 
