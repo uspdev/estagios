@@ -4,7 +4,7 @@
  
 
 <div class="card">
-  <div class="card-header"><b>Sistema de Estágios FFLCH</b></a></div>
+  <div class="card-header"><b>{{ config('app.name') }}</b></a></div>
   <div class="card-body">
 
   @auth
