@@ -9,12 +9,14 @@ use Illuminate\Queue\SerializesModels;
 use Uspdev\Replicado\Pessoa;
 use App\Models\Empresa;
 use App\Models\Estagio;
+use App\Service\GeneralSettings;
 use PDF;
 
 class enviar_para_parecerista_mail extends Mailable
 {
     use Queueable, SerializesModels;
     private $estagio;
+    private $settings;
 
     /**
      * Create a new message instance.
@@ -24,6 +26,7 @@ class enviar_para_parecerista_mail extends Mailable
     public function __construct(Estagio $estagio)
     {
         $this->estagio = $estagio;
+        $this->settings = app(GeneralSettings::class);
     }
 
     /**
@@ -36,9 +39,9 @@ class enviar_para_parecerista_mail extends Mailable
 
         $to = [$this->estagio->parecerista->email,config('mail.reply_to.address')];
               
-        $subject = $this->estagio->nome. ' - Parecer de Mérito - FFLCH-USP';
+        $subject = $this->estagio->nome. ' - Parecer de Mérito - ' . $this->settings->sigla_unidade;
 
-        $pdf = PDF::loadView('pdfs.parecer', ['estagio'=>$this->estagio]);      
+        $pdf = PDF::loadView('pdfs.parecer', ['estagio'=>$this->estagio, 'settings' => $this->settings]);      
 
         return $this->view('emails.enviar_para_parecerista')
                     ->to($to)
@@ -46,6 +49,7 @@ class enviar_para_parecerista_mail extends Mailable
                     ->attachData($pdf->output(), 'parecer.pdf')
                     ->with([
                         'estagio' => $this->estagio,
+                        'settings' => $this->settings
                     ]);
     }
 }

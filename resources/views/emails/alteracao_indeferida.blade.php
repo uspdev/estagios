@@ -1,6 +1,6 @@
 
 Aviso de que o pedido de aditivo de alteração no estágio de {{ $estagio->nome }}, Nº USP {{ $estagio->numero_usp }}, foi 
-indeferido pelo setor de estágios da FFLCH - USP
+indeferido pelo setor de estágios do(a) {{ $settings->sigla_unidade }}
 <br><br>
 
 @foreach($estagio->aditivos->where('aprovado_graduacao','=',0)->where('comentario_graduacao','!=',null) as $aditivo)
@@ -18,8 +18,8 @@ Análise do Parecerista sobre o Aditivo: <b>{{ $aditivo->comentario_parecerista 
 @endforeach
 
 <br><br>
-Favor entrar em contato com o setor de estágios da fflch em caso de duvidas sobre a ação.
+Favor entrar em contato com o setor de estágios do(a) {{ $settings->sigla_unidade }} em caso de duvidas sobre a ação.
 <br><br>
-Mensagem automática, não responder - FFLCH-USP 
+Mensagem automática, não responder - {{ $settings->sigla_unidade }}
 
 

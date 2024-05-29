@@ -8,12 +8,14 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Empresa;
 use App\Models\Estagio;
+use App\Service\GeneralSettings;
 use PDF;
 
 class assinatura_mail extends Mailable
 {
     use Queueable, SerializesModels;
     private $estagio;
+    private $settings;
 
     /**
      * Create a new message instance.
@@ -23,6 +25,7 @@ class assinatura_mail extends Mailable
     public function __construct(Estagio $estagio)
     {
         $this->estagio = $estagio;
+        $this->settings = app(GeneralSettings::class);
     }
 
     /**
@@ -33,13 +36,14 @@ class assinatura_mail extends Mailable
     public function build()
     {
         $to = [$this->estagio->email_de_contato,config('mail.reply_to.address')];
-        $subject = $this->estagio->nome. ' - Estágio Aguardando Assinaturas - FFLCH-USP';         
+        $subject = $this->estagio->nome. ' - Estágio Aguardando Assinaturas - ' . $this->settings->sigla_unidade;         
 
         return $this->view('emails.assinatura')
                     ->to($to)
                     ->subject($subject)
                     ->with([
                         'estagio' => $this->estagio,
+                        'settings' => $this->settings
                     ]);
     }
 }

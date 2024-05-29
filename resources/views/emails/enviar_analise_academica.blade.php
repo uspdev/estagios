@@ -18,7 +18,7 @@ Nenhuma medida adicional precisa ser tomada neste momento quanto ao estágio. Em
 @endif    
 
 <br><br>
-Mensagem automática - Sistema de Estágios - FFLCH-USP
+Mensagem automática - Sistema de Estágios - {{ $settings->sigla_unidade }}
 
 
 

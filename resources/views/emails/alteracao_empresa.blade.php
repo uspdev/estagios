@@ -11,8 +11,8 @@ O documento contendo os aditivos aprovados segue em anexo, as alterações reali
 </b>
 
 <br>
-Favor entrar em contato com o setor de estágios da fflch em caso de necessidade ou dúvida.
+Favor entrar em contato com o setor de estágios do(a) {{ $settings->sigla_unidade }} em caso de necessidade ou dúvida.
 <br><br>
-Mensagem automática, não responder - FFLCH-USP 
+Mensagem automática, não responder - {{ $settings->sigla_unidade }} 
 
 

@@ -2,4 +2,4 @@ Aviso de que foi realizado o pedido de rescisão de estágio de {{ $estagio->nom
 <br><br>
 Segue em anexo o termo de rescisão gerado.
 <br><br>
-Mensagem automática - Sistema de Estágios - FFLCH-USP
+Mensagem automática - Sistema de Estágios - {{ $settings->sigla_unidade }}

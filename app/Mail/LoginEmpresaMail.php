@@ -36,7 +36,7 @@ class LoginEmpresaMail extends Mailable
         $unidade = app(GeneralSettings::class)->unidade;
         $rodape = app(GeneralSettings::class)->rodape;
 
-        $subject = 'Dados para login no sistema de estágio FFLCH';
+        $subject = 'Dados para login no sistema de estágio ' . app(GeneralSettings::class)->sigla_unidade;
 
         $text = str_replace('#unidade#',$unidade,app(GeneralSettings::class)->login_empresa_mail);
         $text = str_replace('#url_login#',$this->url_login,$text);

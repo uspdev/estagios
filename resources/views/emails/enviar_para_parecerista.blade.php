@@ -2,7 +2,7 @@ Segue em anexo o parecer de mérito relativo ao estágio de {{ $estagio->nome }}
 <br><br>
 Parecer Realizado por: {{ $estagio->parecerista_nome }}. 
 <br><br>
-Mensagem automática - Sistema de Estágios - FFLCH-USP
+Mensagem automática - Sistema de Estágios - {{ $settings->sigla_unidade }}
 
 
 

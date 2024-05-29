@@ -10,12 +10,14 @@ use Uspdev\Replicado\Pessoa;
 use App\Models\Empresa;
 use App\Models\Estagio;
 use App\Models\File;
+use App\Service\GeneralSettings;
 
 class enviar_relatorio_mail extends Mailable
 {
     use Queueable, SerializesModels;
     private $estagio;
     private $file;
+    private $settings;
 
     /**
      * Create a new message instance.
@@ -26,6 +28,7 @@ class enviar_relatorio_mail extends Mailable
     {
         $this->estagio = $estagio;
         $this->file = $file;
+        $this->settings = app(GeneralSettings::class);
     }
 
     /**
@@ -40,7 +43,7 @@ class enviar_relatorio_mail extends Mailable
             array_push($to,$this->estagio->parecerista->email);
         }
               
-        $subject = $this->estagio->nome. ' - Foi enviado um novo relatório no estágio - FFLCH-USP';
+        $subject = $this->estagio->nome. ' - Foi enviado um novo relatório no estágio - ' . $this->settings->sigla_unidade;
 
         return $this->view('emails.novo_relatorio')
             ->to($to)
@@ -48,6 +51,7 @@ class enviar_relatorio_mail extends Mailable
             ->with([
                 'estagio' => $this->estagio,
                 'file' => $this->file,
+                'settings' => $this->settings
             ]);
     }
 }

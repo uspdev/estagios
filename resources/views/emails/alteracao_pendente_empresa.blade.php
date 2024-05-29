@@ -11,9 +11,9 @@ O seguinte aditivo foi requisitado: <br><br>
 @endforeach
 
 <br>
-Favor entrar em contato com o setor de estágios da fflch em caso de necessidade ou dúvida, o sistema informará a empresa 
+Favor entrar em contato com o setor de estágios da {{ $settings->sigla_unidade }} em caso de necessidade ou dúvida, o sistema informará a empresa 
 via email quando da aprovação ou reprovação do aditivo.
 <br><br>
-Mensagem automática, não responder - FFLCH-USP 
+Mensagem automática, não responder - {{ $settings->sigla_unidade }} 
 
 

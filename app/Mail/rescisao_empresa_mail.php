@@ -8,12 +8,14 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Empresa;
 use App\Models\Estagio;
+use App\Service\GeneralSettings;
 use PDF;
 
 class rescisao_empresa_mail extends Mailable
 {
     use Queueable, SerializesModels;
     private $estagio;
+    private $settings;
 
     /**
      * Create a new message instance.
@@ -23,6 +25,7 @@ class rescisao_empresa_mail extends Mailable
     public function __construct(Estagio $estagio)
     {
         $this->estagio = $estagio;
+        $this->settings = app(GeneralSettings::class);
     }
 
     /**
@@ -35,13 +38,14 @@ class rescisao_empresa_mail extends Mailable
 
         $to = [$this->estagio->email_de_contato,config('mail.reply_to.address')];
 
-        $subject = $this->estagio->nome . ' - Setor de Estágios - Foi realizada a rescisão deste estágio com sucesso';         
+        $subject = $this->estagio->nome . ' - Setor de Estágios ' . $this->settings->sigla_unidade . ' - Foi realizada a rescisão deste estágio com sucesso';         
 
         return $this->view('emails.rescisao_empresa')
                     ->to($to)
                     ->subject($subject)
                     ->with([
                         'estagio' => $this->estagio,
+                        'settings' => $this->settings
                     ]);
     }
 }
