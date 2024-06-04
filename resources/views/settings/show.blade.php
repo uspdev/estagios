@@ -21,6 +21,8 @@
 <form method="POST" action="/settings"  enctype="multipart/form-data">
     @csrf 
 
+        <br><hr>
+        <h4>Informações da Unidade</h4>
         <br>
         <div class="row">
             <div class="col">
@@ -62,6 +64,8 @@
         </div>
         <br>
 
+        <hr>
+        <h4>E-mails</h4>
         <br>
         <div class="row">
             <div class="col">
@@ -232,26 +236,8 @@
         </div>
         <br>
 
-        <br>
-        <div class="row">
-            <div class="col">
-                <label for="aditivo" ><b>Aditivo</b></label><br>
-                <textarea name="aditivo" cols="130" rows="10">{{ $aditivo }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
-            </div>
-        </div>
-        <br>
-
-
-        <br>
-        <div class="row">
-            <div class="col">
-                <label for="termo" ><b>termo</b></label><br>
-                <textarea name="termo" cols="130" rows="10">{{ $termo }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
-            </div>
-        </div>
-        <br>
+        <hr>
+        <h4>Arquivos PDF's</h4>
 
         <br>
         <div class="row">
@@ -264,6 +250,26 @@
         <br>
 
         <livewire:upload-logo settingsLogo="{{ $logo }}">
+
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="aditivo" ><b>Aditivo</b></label><br>
+                <textarea name="aditivo" cols="130" rows="10">{{ $aditivo }}</textarea><br> 
+                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+            </div>
+        </div>
+        <br>
+
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="termo" ><b>termo</b></label><br>
+                <textarea name="termo" cols="130" rows="10">{{ $termo }}</textarea><br> 
+                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+            </div>
+        </div>
+        <br>
 
         <br>
         <div class="row">
@@ -301,7 +307,7 @@
             <div class="col">
                 <label for="rodape" ><b>Rodapé</b></label><br>
                 <textarea name="rodape" cols="130" rows="10">{{ $rodape }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #sigla_unidade#</span> 
             </div>
         </div>
         <br>

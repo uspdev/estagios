@@ -41,6 +41,7 @@ class LoginEmpresaMail extends Mailable
         $text = str_replace('#unidade#',$unidade,app(GeneralSettings::class)->login_empresa_mail);
         $text = str_replace('#url_login#',$this->url_login,$text);
         $text = str_replace('#rodape#',$rodape,$text);
+        $text = str_replace('#sigla_unidade#',app(GeneralSettings::class)->sigla_unidade,$text);
 
         return $this->view('emails.login_empresa')
                     ->to($this->destino)
