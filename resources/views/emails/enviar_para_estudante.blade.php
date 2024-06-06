@@ -1,1 +1,1 @@
-{!! Blade::render($settings->enviar_para_estudante_mail, ['settings' => $settings, 'estagio' => $estagio]); !!}
+{!! $text !!}

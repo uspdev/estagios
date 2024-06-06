@@ -38,12 +38,17 @@ class assinatura_mail extends Mailable
         $to = [$this->estagio->email_de_contato,config('mail.reply_to.address')];
         $subject = $this->estagio->nome. ' - Estágio Aguardando Assinaturas - ' . $this->settings->sigla_unidade;         
 
+        $text = str_replace('#estagiario_nome#', $this->estagio->nome, $this->settings->assinatura_mail);
+        $text = str_replace('#estagiario_numero_usp#', $this->estagio->numero_usp, $text);
+        $text = str_replace('#empresa_nome#', $this->estagio->empresa->nome, $text);
+        $text = str_replace('#email_unidade#', $this->settings->email, $text);
+        $text = str_replace('#sigla_unidade#', $this->settings->sigla_unidade, $text);
+
         return $this->view('emails.assinatura')
                     ->to($to)
                     ->subject($subject)
                     ->with([
-                        'estagio' => $this->estagio,
-                        'settings' => $this->settings
+                        'text' => $text
                     ]);
     }
 }

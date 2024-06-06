@@ -1,1 +1,1 @@
-{!! Blade::render($settings->enviar_relatorio_mail, ['settings' => $settings, 'estagio' => $estagio, 'file' => $file]); !!}
+{!! $text !!}

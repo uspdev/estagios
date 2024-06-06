@@ -1,11 +1,11 @@
 
-Aviso de que a avaliação de estágio de {{ $estagio->nome }}, Nº USP {{ $estagio->numero_usp }}, 
-na empresa {{ $estagio->empresa->nome }} foi enviada para o sistema de estágios para 
+Aviso de que a avaliação de estágio de #estagiario_nome#, Nº USP #estagiario_numero_usp#, 
+na empresa #empresa_nome# foi enviada para o sistema de estágios para 
 avaliação final do parecerista.
 <br><br>
-Favor avaliar o caráter do relatório de estágio no site {{ route('login') }}, 
+Favor avaliar o caráter do relatório de estágio no site #url_site#, 
 sob a opção Meus Pareceres.
 <br><br>
-Mensagem automática - {{ $settings->sigla_unidade }} 
+Mensagem automática - #sigla_unidade#
 
 

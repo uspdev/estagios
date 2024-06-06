@@ -1,1 +1,1 @@
-{!! Blade::render($settings->enviar_para_analise_tecnica_renovacao_mail, ['settings' => $settings, 'estagio' => $estagio]); !!}
+{!! $text !!}

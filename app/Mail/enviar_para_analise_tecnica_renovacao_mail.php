@@ -39,13 +39,18 @@ class enviar_para_analise_tecnica_renovacao_mail extends Mailable
         $subject = $this->estagio->nome. ' - Documentos Relativos a Estágio - ' . $this->settings->sigla_unidade;
         $pdf = PDF::loadView('pdfs.renovacao', ['estagio'=>$this->estagio, 'settings' => $this->settings]);
 
+        $text = str_replace('#estagiario_nome#', $this->estagio->nome, $this->settings->enviar_para_analise_tecnica_renovacao_mail);
+        $text = str_replace('#estagiario_numero_usp#', $this->estagio->numero_usp, $text);
+        $text = str_replace('#empresa_nome#', $this->estagio->empresa->nome, $text);
+        $text = str_replace('#email_unidade#', $this->settings->email, $text);
+        $text = str_replace('#sigla_unidade#', $this->settings->sigla_unidade, $text);
+
         return $this->view('emails.enviar_para_analise_tecnica_renovacao')
                     ->to($to)
                     ->subject($subject)
                     ->attachData($pdf->output(), 'renovacao.pdf')
                     ->with([
-                        'estagio' => $this->estagio,
-                        'settings' => $this->settings
+                        'text' => $text
                     ]);
     }
 }

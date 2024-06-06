@@ -1,1 +1,1 @@
-{!! Blade::render($settings->enviar_justificativa_reprovacao, ['settings' => $settings, 'vaga' => $vaga]); !!}
+{!! $text !!}

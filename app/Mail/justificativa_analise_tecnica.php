@@ -37,12 +37,15 @@ class justificativa_analise_tecnica extends Mailable
 
         $subject = $this->estagio->nome . ' - JUSTIFICATIVA DA ANÁLISE TÉCNICA - Setor de Estágios ' . $this->settings->sigla_unidade;
 
+        $text = str_replace('#estagiario_nome#', $this->estagio->nome, $this->settings->justificativa_analise_tecnica);
+        $text = str_replace('#analise_tecnica#', $this->estagio->analise_tecnica, $text);
+        $text = str_replace('#sigla_unidade#', $this->settings->sigla_unidade, $text);
+
         return $this->view('emails.justificativa_analise_tecnica')
                     ->to($to)
                     ->subject($subject)
                     ->with([
-                        'estagio' => $this->estagio,
-                        'settings' => $this->settings
+                        'text' => $text
                     ]);
     }
 }

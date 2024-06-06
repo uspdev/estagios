@@ -40,13 +40,16 @@ class GerarRescisaoMail extends Mailable
         
         $pdf = PDF::loadView('pdfs.rescisao', ['estagio'=>$this->estagio,'settings'=>$this->settings]);
 
+        $text = str_replace('#sigla_unidade#', $this->settings->sigla_unidade, $this->settings->gerar_rescisao_mail);
+        $text = str_replace('#estagiario_nome#', $this->estagio->nome, $text);
+        $text = str_replace('#estagiario_numero_usp#', $this->estagio->numero_usp, $text);
+
         return $this->view('emails.gerar_rescisao')
                     ->to($to)
                     ->subject($subject)
                     ->attachData($pdf->output(), 'rescisao.pdf')
                     ->with([
-                        'estagio' => $this->estagio,
-                        'settings' => $this->settings
+                        'text' => $text
                     ]);
     }
 }

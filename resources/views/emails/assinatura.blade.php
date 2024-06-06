@@ -1,1 +1,1 @@
-{!! Blade::render($settings->assinatura_mail, ['settings' => $settings, 'estagio' => $estagio]); !!}
+{!! $text !!}

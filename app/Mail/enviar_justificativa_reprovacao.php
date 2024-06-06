@@ -37,12 +37,14 @@ class enviar_justificativa_reprovacao extends Mailable
 
         $subject = $this->vaga->titulo . ' - JUSTIFICATIVA REPROVAÇÃO VAGA DE ESTÁGIO - Setor de Estágios ' . $this->settings->sigla_unidade;
 
+        $text = str_replace('#vaga_justificativa#', $this->vaga->justificativa, $this->settings->enviar_justificativa_reprovacao);
+        $text = str_replace('#sigla_unidade#', $this->settings->sigla_unidade, $text);
+
         return $this->view('emails.enviar_justificativa_reprovacao')
                     ->to($to)
                     ->subject($subject)
                     ->with([
-                        'vaga' => $this->vaga,
-                        'settings' => $this->settings
+                        'text' => $text
                     ]);
     }
 }

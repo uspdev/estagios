@@ -1,1 +1,1 @@
-{!! Blade::render($settings->justificativa_analise_tecnica, ['settings' => $settings, 'estagio' => $estagio]); !!}
+{!! $text !!}

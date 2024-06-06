@@ -45,13 +45,17 @@ class enviar_relatorio_mail extends Mailable
               
         $subject = $this->estagio->nome. ' - Foi enviado um novo relatório no estágio - ' . $this->settings->sigla_unidade;
 
+        $text = str_replace('#estagiario_nome#', $this->estagio->nome, $this->settings->enviar_relatorio_mail);
+        $text = str_replace('#estagiario_numero_usp#', $this->estagio->numero_usp, $text);
+        $text = str_replace('#empresa_nome#', $this->estagio->empresa->nome, $text);
+        $text = str_replace('#arquivo_nome#', $this->file->original_name, $text);
+        $text = str_replace('#sigla_unidade#', $this->settings->sigla_unidade, $text);
+
         return $this->view('emails.novo_relatorio')
             ->to($to)
             ->subject($subject)
             ->with([
-                'estagio' => $this->estagio,
-                'file' => $this->file,
-                'settings' => $this->settings
+                'text' => $text
             ]);
     }
 }

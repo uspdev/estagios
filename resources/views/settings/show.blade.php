@@ -81,7 +81,7 @@
             <div class="col">
                 <label for="analise_rescisao_mail" ><b>analise_rescisao_mail </b></label><br>
                 <textarea name="analise_rescisao_mail" cols="130" rows="10">{{ $analise_rescisao_mail }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #estagiario_nome#, #estagiario_numero_usp#, #empresa_nome#, #url_site#, #sigla_unidade#</span> 
             </div>
         </div>
         <br>
@@ -91,7 +91,7 @@
             <div class="col">
                 <label for="enviar_para_analise_tecnica_mail" ><b>enviar_para_analise_tecnica_mail </b></label><br>
                 <textarea name="enviar_para_analise_tecnica_mail" cols="130" rows="10">{{ $enviar_para_analise_tecnica_mail }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #estagiario_nome#, #estagiario_numero_usp#, #empresa_nome#, #email_unidade#, #sigla_unidade#</span> 
             </div>
         </div>
         <br>
@@ -101,7 +101,7 @@
             <div class="col">
                 <label for="enviar_para_estudante_mail" ><b>enviar_para_estudante_mail </b></label><br>
                 <textarea name="enviar_para_estudante_mail" cols="130" rows="10">{{ $enviar_para_estudante_mail }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #estagiario_nome#, #estagiario_numero_usp#, #empresa_nome#, #sigla_unidade#, #email_unidade#</span> 
             </div>
         </div>
         <br>
@@ -111,7 +111,7 @@
             <div class="col">
                 <label for="gerar_rescisao_mail" ><b>gerar_rescisao_mail </b></label><br>
                 <textarea name="gerar_rescisao_mail" cols="130" rows="10">{{ $gerar_rescisao_mail }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #estagiario_nome#, #estagiario_numero_usp#, #sigla_unidade#</span> 
             </div>
         </div>
         <br>
@@ -141,7 +141,7 @@
             <div class="col">
                 <label for="enviar_para_analise_tecnica_renovacao_mail" ><b> enviar_para_analise_tecnica_renovacao_mail</b></label><br>
                 <textarea name="enviar_para_analise_tecnica_renovacao_mail" cols="130" rows="10">{{ $enviar_para_analise_tecnica_renovacao_mail }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #estagiario_nome#, #estagiario_numero_usp#, #empresa_nome#, #email_unidade#, #sigla_unidade#</span> 
             </div>
         </div>
         <br>
@@ -151,7 +151,7 @@
             <div class="col">
                 <label for="justificativa_analise_tecnica" ><b> justificativa_analise_tecnica</b></label><br>
                 <textarea name="justificativa_analise_tecnica" cols="130" rows="10">{{ $justificativa_analise_tecnica }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #estagiario_nome#, #analise_tecnica#, #sigla_unidade#</span> 
             </div>
         </div>
         <br>
@@ -181,7 +181,7 @@
             <div class="col">
                 <label for="enviar_para_parecerista_mail" ><b>enviar_para_parecerista_mail </b></label><br>
                 <textarea name="enviar_para_parecerista_mail" cols="130" rows="10">{{ $enviar_para_parecerista_mail }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #estagiario_nome#, #estagiario_numero_usp#, #parecerista_nome#, #sigla_unidade#</span> 
             </div>
         </div>
         <br>
@@ -211,7 +211,7 @@
             <div class="col">
                 <label for="enviar_justificativa_reprovacao" ><b>enviar_justificativa_reprovacao </b></label><br>
                 <textarea name="enviar_justificativa_reprovacao" cols="130" rows="10">{{ $enviar_justificativa_reprovacao }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #vaga_justificativa#, #sigla_unidade#</span> 
             </div>
         </div>
         <br>
@@ -221,7 +221,7 @@
             <div class="col">
                 <label for="enviar_relatorio_mail" ><b>enviar_relatorio_mail</b></label><br>
                 <textarea name="enviar_relatorio_mail" cols="130" rows="10">{{ $enviar_relatorio_mail }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #estagiario_nome#, #estagiario_numero_usp#, #arquivo_nome#, #sigla_unidade#</span> 
             </div>
         </div>
         <br>
@@ -231,7 +231,7 @@
             <div class="col">
                 <label for="rescisao_empresa_mail" ><b>rescisao_empresa_mail</b></label><br>
                 <textarea name="rescisao_empresa_mail" cols="130" rows="10">{{ $rescisao_empresa_mail }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #estagiario_nome#, #estagiario_numero_usp#, #empresa_nome#, #sigla_unidade#</span> 
             </div>
         </div>
         <br>

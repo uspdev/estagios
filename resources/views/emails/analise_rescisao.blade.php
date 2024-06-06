@@ -1,1 +1,1 @@
-{!! Blade::render($settings->analise_rescisao_mail, ['settings' => $settings, 'estagio' => $estagio]); !!}
+{!! $text !!}

@@ -1,6 +1,6 @@
-Segue em anexo o Termo de Ciência para Renovação para a empresa {{ $estagio->empresa->nome }}, 
-relativo ao estágio de {{ $estagio->nome }}, Nº USP {{ $estagio->numero_usp }}.
+Segue em anexo o Termo de Ciência para Renovação para a empresa #empresa_nome#, 
+relativo ao estágio de #estagiario_nome#, Nº USP #estagiario_numero_usp#.
 <br><br>
-Favor coletar as assinaturas necessárias (preferencialmente digitais) e enviar o termo para o setor de estágios do(a) {{ $settings->sigla_unidade }} pelo email {{ $settings->email }} em até 10 dias úteis antes do início do estágio.
+Favor coletar as assinaturas necessárias (preferencialmente digitais) e enviar o termo para o setor de estágios do(a) #sigla_unidade# pelo email #email_unidade# em até 10 dias úteis antes do início do estágio.
 <br><br>
-Mensagem automática - Sistema de Estágios - {{ $settings->sigla_unidade }}
+Mensagem automática - Sistema de Estágios - #sigla_unidade#

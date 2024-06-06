@@ -40,12 +40,16 @@ class rescisao_empresa_mail extends Mailable
 
         $subject = $this->estagio->nome . ' - Setor de Estágios ' . $this->settings->sigla_unidade . ' - Foi realizada a rescisão deste estágio com sucesso';         
 
+        $text = str_replace('#estagiario_nome#', $this->estagio->nome, $this->settings->rescisao_empresa_mail);
+        $text = str_replace('#estagiario_numero_usp#', $this->estagio->numero_usp, $text);
+        $text = str_replace('#empresa_nome#', $this->estagio->empresa->nome, $text);
+        $text = str_replace('#sigla_unidade#', $this->settings->sigla_unidade, $text);
+
         return $this->view('emails.rescisao_empresa')
                     ->to($to)
                     ->subject($subject)
                     ->with([
-                        'estagio' => $this->estagio,
-                        'settings' => $this->settings
+                        'text' => $text
                     ]);
     }
 }
