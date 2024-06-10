@@ -6,7 +6,7 @@ return new class extends SettingsMigration
 {
     public function up(): void
     {
-        $this->migrator->add('general.logo', 'logo.png');
+        $this->migrator->add('general.logo', 'logo.jpg');
         $this->migrator->add('general.sigla_unidade', 'SIGLA-USP');
         $this->migrator->add('general.endereco_unidade', 'Endereço da sua unidade');
         $this->migrator->add('general.email', 'Endereço de e-mail da seção de estágios da sua unidade');
