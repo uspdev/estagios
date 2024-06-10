@@ -11,7 +11,7 @@ class UploadLogo extends Component
     use WithFileUploads;
 
     #[Validate('image', message: 'O logo deve ser uma imagem.')]
-    #[Validate('max:1500', message: 'O arquivo do logo deve ser menor que 1.5MB.')]
+    #[Validate('max:1000', message: 'O arquivo do logo deve ser menor que 1MB.')]
     public $logo;
 
     public $settingsLogo;

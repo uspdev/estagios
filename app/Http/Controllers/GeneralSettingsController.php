@@ -75,7 +75,7 @@ class GeneralSettingsController extends Controller
             'rescisao' => 'required',
             'renovacao' => 'required',
             'termo' => 'required',
-            'logo' => 'image|max:1500'
+            'logo' => 'image|max:1000'
         ]);
 
         if(array_key_exists('logo', $validated)){
