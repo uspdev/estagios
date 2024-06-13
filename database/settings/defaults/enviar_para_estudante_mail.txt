@@ -1,1 +1,6 @@
-x
+Segue em anexo o Termo de Ciência para o estudante #estagiario_nome#, Nº USP #estagiario_numero_usp#,
+relativo ao estágio na empresa #empresa_nome#.
+<br><br>
+Favor coletar as assinaturas necessárias (preferencialmente digitais) e enviar o termo para o setor de estágios do(a) #sigla_unidade# pelo email #email_unidade# em até 10 dias úteis antes do início do estágio.
+<br><br>
+Mensagem automática - Sistema de Estágios - #sigla_unidade#

@@ -1,1 +1,5 @@
-x
+<p><b>Justificativa da reprovação:</b> #vaga_justificativa# </p>
+
+<p>Favor entrar em contato com o setor de estágios do(a) #sigla_unidade# em caso de necessidade ou dúvida.</p>
+
+<p>Mensagem automática, não responder - #sigla_unidade# </p>

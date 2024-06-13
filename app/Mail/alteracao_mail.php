@@ -9,12 +9,14 @@ use Illuminate\Queue\SerializesModels;
 use Uspdev\Replicado\Pessoa;
 use App\Models\Empresa;
 use App\Models\Estagio;
+use App\Service\GeneralSettings;
 use PDF;
 
 class alteracao_mail extends Mailable
 {
     use Queueable, SerializesModels;
     private $estagio;
+    private $settings;
 
     /**
      * Create a new message instance.
@@ -24,6 +26,7 @@ class alteracao_mail extends Mailable
     public function __construct(Estagio $estagio)
     {
         $this->estagio = $estagio;
+        $this->settings = app(GeneralSettings::class);
     }
 
     /**
@@ -38,13 +41,14 @@ class alteracao_mail extends Mailable
                config('mail.reply_to.address')
               ];
 
-        $subject = $this->estagio->nome . ' - Setor de Estágios - Existe uma alteração pendente neste estágio que necessita de avaliação';           
+        $subject = $this->estagio->nome . ' - Setor de Estágios ' . $this->settings->sigla_unidade . ' - Existe uma alteração pendente neste estágio que necessita de avaliação';           
 
         return $this->view('emails.alteracao')
                     ->to($to)
                     ->subject($subject)
                     ->with([
                         'estagio' => $this->estagio,
+                        'settings' => $this->settings
                     ]);
     }
 }

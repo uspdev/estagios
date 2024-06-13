@@ -36,14 +36,18 @@ class GeneralSettingsController extends Controller
             'rescisao' => $settings->rescisao,
             'renovacao' => $settings->renovacao,
             'termo' => $settings->termo,
-            'unidade' => $settings->unidade
+            'unidade' => $settings->unidade,
+            'sigla_unidade' => $settings->sigla_unidade,
+            'endereco_unidade' => $settings->endereco_unidade,
+            'email' => $settings->email,
+            'logo' => $settings->logo
         ]);
     }
 
     public function update(Request $request, GeneralSettings $settings){
         $this->authorize('admin');
 
-        $request->validate([
+        $validated = $request->validate([
             'alteracao_empresa_mail' => 'required',
             'enviar_para_analise_tecnica_mail' => 'required',
             'enviar_para_estudante_mail' => 'required',
@@ -62,13 +66,27 @@ class GeneralSettingsController extends Controller
             'rescisao_empresa_mail' => 'required',
             'rodape' => 'required',
             'unidade' => 'required',
+            'sigla_unidade' => 'required',
+            'endereco_unidade' => 'required',
+            'email' => 'required',
             'aditivo' => 'required',
             'header' => 'required',
             'parecer' => 'required',
             'rescisao' => 'required',
             'renovacao' => 'required',
-            'termo' => 'required'
+            'termo' => 'required',
+            'logo' => 'image|max:1000'
         ]);
+
+        if(array_key_exists('logo', $validated)){
+            try{
+                $filename = date('d-m-Y-H:i:s').".".$validated['logo']->getClientOriginalExtension();
+                $validated['logo']->storePubliclyAs('public/images/', $filename);
+                $settings->logo = $filename;
+            }catch(\Throwable $th){
+                throw $th;
+            }
+        }
 
         $settings->alteracao_empresa_mail = $request->input('alteracao_empresa_mail');
         $settings->analise_rescisao_mail = $request->input('analise_rescisao_mail');
@@ -89,12 +107,15 @@ class GeneralSettingsController extends Controller
         $settings->rescisao_empresa_mail = $request->input('rescisao_empresa_mail');
         $settings->rodape = $request->input('rodape');
         $settings->unidade = $request->input('unidade');
-        $settings->unidade = $request->input('header');
-        $settings->unidade = $request->input('aditivo');
-        $settings->unidade = $request->input('parecer');
-        $settings->unidade = $request->input('rescisao');
-        $settings->unidade = $request->input('renovacao');
-        $settings->unidade = $request->input('termo');
+        $settings->sigla_unidade = $request->input('sigla_unidade');
+        $settings->endereco_unidade = $request->input('endereco_unidade');
+        $settings->email = $request->input('email');
+        $settings->header = $request->input('header');
+        $settings->aditivo = $request->input('aditivo');
+        $settings->parecer = $request->input('parecer');
+        $settings->rescisao = $request->input('rescisao');
+        $settings->renovacao = $request->input('renovacao');
+        $settings->termo = $request->input('termo');
 
         $settings->save();
         return redirect()->back();

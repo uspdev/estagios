@@ -16,14 +16,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\LoginEmpresaMail;
 use App\Models\Empresa;
+use App\Service\GeneralSettings;
 use App\Utils\EmpresaUtils;
 use Illuminate\Support\Facades\Hash;
 
 class LoginEmpresaController extends Controller
 {
+    private $settings;
+
     public function __construct()
     {
         $this->middleware('guest');
+        $this->settings = app(GeneralSettings::class);
     }
 
     public function create(Request $request)
@@ -90,7 +94,7 @@ class LoginEmpresaController extends Controller
                     "Foi solicitado login para email <b> {$request->email} </b>e cnpj <b>{$request->cnpj}</b></br> <br>
                     Porém, no sistema consta a relação:<br>
                     email <b>{$email_limpo}</b> e cnpj <b>{$empresa->cnpj}</b> <br><br>
-                    Caso necessite corrigir esses dados, escreva para estagiosfflch@usp.br 
+                    Caso necessite corrigir esses dados, escreva para {$this->settings->email} 
                     informando o cnpj e email correto da empresa
                     ");
                 return redirect('/login/empresa');

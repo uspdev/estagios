@@ -1,1 +1,5 @@
-x
+Segue em anexo o parecer de mérito relativo ao estágio de #estagiario_nome#, Nº USP #estagiario_numero_usp#
+<br><br>
+Parecer Realizado por: #parecerista_nome#. 
+<br><br>
+Mensagem automática - Sistema de Estágios - #sigla_unidade#

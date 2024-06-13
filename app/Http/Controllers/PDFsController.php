@@ -8,6 +8,7 @@ use App\Models\Estagio;
 use App\Models\Empresa;
 use App\Models\Parecerista;
 use App\Models\User;
+use App\Service\GeneralSettings;
 use Uspdev\Replicado\Pessoa;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
@@ -23,6 +24,7 @@ class PDFsController extends Controller
             $pdf = PDF::loadView('pdfs.termo', [
                 'estagio'    => $estagio,
                 'fones' => $fones,
+                'settings' => app(GeneralSettings::class)
             ]);
             return $pdf->download("Termo-{$estagio->nome}.pdf");
         }
@@ -33,6 +35,7 @@ class PDFsController extends Controller
         if (Gate::allows('admin') | Gate::allows('parecerista') | Gate::allows('empresa',$estagio->cnpj)) {
             $pdf = PDF::loadView('pdfs.rescisao', [
                 'estagio'    => $estagio,
+                'settings' => app(GeneralSettings::class)
             ]);
             return $pdf->download("Rescisao-{$estagio->nome}.pdf");
         }
@@ -49,6 +52,7 @@ class PDFsController extends Controller
             $pdf = PDF::loadView('pdfs.aditivo', [
                 'estagio'    => $estagio,
                 'aditivopendente' => $aditivopendente,
+                'settings' => app(GeneralSettings::class)
             ]);
             return $pdf->download("Aditivo-{$estagio->nome}.pdf");
         }
@@ -62,6 +66,7 @@ class PDFsController extends Controller
             $pdf = PDF::loadView('pdfs.renovacao', [
                 'estagio'    => $estagio,
                 'fones' => $fones,
+                'settings' => app(GeneralSettings::class)
             ]);
             return $pdf->download("Renovacao-{$estagio->nome}.pdf");
         }
@@ -73,6 +78,7 @@ class PDFsController extends Controller
             if($estagio->numparecerista){
                 $pdf = PDF::loadView('pdfs.parecer', [
                     'estagio'    => $estagio,
+                    'settings' => app(GeneralSettings::class)
                 ]);
                 return $pdf->download("Parecer-{$estagio->nome}.pdf");
             } else {
@@ -90,6 +96,7 @@ class PDFsController extends Controller
 
         $pdf = PDF::loadView('pdfs.lista_empresas',[
             'empresa'  => $empresa,
+            'settings' => app(GeneralSettings::class)
         ]
         );
 

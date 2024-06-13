@@ -1,1 +1,8 @@
-x
+
+Aviso de que foi enviado um novo relatório para os documentos de estágio de #estagiario_nome#, Nº USP #estagiario_numero_usp#, 
+na empresa #empresa_nome# no sistema de estágios da #sigla_unidade#, com o nome de #arquivo_nome#.
+Registrar no sistema que você está ciente do relatório.
+<br><br>
+Em caso de dúvidas ou problemas, favor entrar em contato com o sistema de estágios.
+<br><br>
+Mensagem automática - #sigla_unidade#

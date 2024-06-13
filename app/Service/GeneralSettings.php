@@ -26,8 +26,12 @@ class GeneralSettings extends Settings
 
     public string $rodape;
     public string $unidade;
+    public string $sigla_unidade;
+    public string $endereco_unidade;
+    public string $email;
 
     public string $header;
+    public string $logo;
     public string $aditivo;
     public string $parecer;
     public string $rescisao;

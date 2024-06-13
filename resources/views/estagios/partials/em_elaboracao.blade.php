@@ -6,7 +6,7 @@
         <br>
     @endif
 
-    <div style="text-align: center;"><b style="color:red">Aviso Importante:</b> O termo deve ser entregue assinado para a instituição no mínimo 10 dias úteis antes do início do período do estágio no email <b>estagiosfflch@usp.br</b></div>
+    <div style="text-align: center;"><b style="color:red">Aviso Importante:</b> O termo deve ser entregue assinado para a instituição no mínimo 10 dias úteis antes do início do período do estágio no email <b>{{ $settings->email }}</b></div>
     <br>
 
     @can('empresa',$estagio->cnpj)

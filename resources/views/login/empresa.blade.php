@@ -17,7 +17,7 @@
   @if($info_acesso)
   <div class="row">
       <div class="col-sm form-group">
-          <b>Para iniciar o processo de criação de conta no sistema de estágios da FFLCH-USP, insira o CNPJ da empresa e o e-mail do representante 
+          <b>Para iniciar o processo de criação de conta no sistema de estágios, insira o CNPJ da empresa e o e-mail do representante 
           da empresa. O e-mail será vinculado a conta e utilizado em caso de perda de senha.</b>
       </div>
   </div>

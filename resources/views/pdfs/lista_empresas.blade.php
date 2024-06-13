@@ -1,4 +1,4 @@
-@extends('pdfs.fflch')
+@extends('pdfs.header')
 
 @section('content')
 
@@ -30,6 +30,6 @@
 
 @section('footer')
 <div style="text-align: initial; font-weight: bold; ">
-Serviço de Estágios da Faculdade de Filosofia, Letras e Ciências Humanas da USP.
+Serviço de Estágios - {{ $settings->unidade }}.
 </div>
 @endsection

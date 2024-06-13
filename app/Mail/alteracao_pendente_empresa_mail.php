@@ -8,12 +8,14 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Empresa;
 use App\Models\Estagio;
+use App\Service\GeneralSettings;
 use PDF;
 
 class alteracao_pendente_empresa_mail extends Mailable
 {
     use Queueable, SerializesModels;
     private $estagio;
+    private $settings;
 
     /**
      * Create a new message instance.
@@ -23,6 +25,7 @@ class alteracao_pendente_empresa_mail extends Mailable
     public function __construct(Estagio $estagio)
     {
         $this->estagio = $estagio; 
+        $this->settings = app(GeneralSettings::class);
     }
 
     /**
@@ -37,11 +40,12 @@ class alteracao_pendente_empresa_mail extends Mailable
 
         $to = [$this->estagio->email_de_contato,config('mail.reply_to.address')];
         
-        $subject = $this->estagio->nome . ' - Setor de Estágios FFLCH-USP - Um novo aditivo foi requisitado'; 
+        $subject = $this->estagio->nome . ' - Setor de Estágios ' . $this->settings->sigla_unidade . ' - Um novo aditivo foi requisitado'; 
 
         $pdf = PDF::loadView('pdfs.aditivo', [
             'estagio'=>$this->estagio, 
             'aditivopendente'=>$aditivopendente,
+            'settings' => $this->settings
         ]);      
 
         return $this->view('emails.alteracao_pendente_empresa')
@@ -50,6 +54,7 @@ class alteracao_pendente_empresa_mail extends Mailable
                     ->attachData($pdf->output(), 'aditivo.pdf')
                     ->with([
                         'estagio' => $this->estagio,
+                        'settings' => $this->settings
                     ]);
     }
 }

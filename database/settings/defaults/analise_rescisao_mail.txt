@@ -1,1 +1,11 @@
-x
+
+Aviso de que a avaliação de estágio de #estagiario_nome#, Nº USP #estagiario_numero_usp#, 
+na empresa #empresa_nome# foi enviada para o sistema de estágios para 
+avaliação final do parecerista.
+<br><br>
+Favor avaliar o caráter do relatório de estágio no site #url_site#, 
+sob a opção Meus Pareceres.
+<br><br>
+Mensagem automática - #sigla_unidade#
+
+

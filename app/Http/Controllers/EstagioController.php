@@ -17,9 +17,16 @@ use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use App\Utils\AuditUtils;
 use App\Models\Area;
+use App\Service\GeneralSettings;
 
 class EstagioController extends Controller
 {
+    private $settings;
+
+    public function __construct() {
+        $this->settings = app(GeneralSettings::class);
+    }
+
     public function index(Request $request,Estagio $estagio){
 
         if (Gate::allows('admin')) {
@@ -82,12 +89,16 @@ class EstagioController extends Controller
         return view('estagios.show')->with([
             'estagio' => $estagio,
             'areas'   => $areas,
+            'settings' => $this->settings
         ]);
     }
 
     public function create(){
         $this->authorize('empresa');
-        return view('estagios.create')->with('estagio',new Estagio);
+        return view('estagios.create')->with([
+            'estagio' => new Estagio,
+            'settings' => $this->settings
+        ]);
     }
 
     public function store(EstagioRequest $request)

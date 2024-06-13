@@ -1,5 +1,6 @@
 @extends('main')
 @section('content')
+@livewireStyles
 
 <div class="card">
     <div class="card-header"><h4>Configurações do sistema de estágio</h4></div>
@@ -17,20 +18,54 @@
         </div>
     </div>
 
-<form method="POST" action="/settings">
+<form method="POST" action="/settings"  enctype="multipart/form-data">
     @csrf 
 
+        <br><hr>
+        <h4>Informações da Unidade</h4>
         <br>
         <div class="row">
             <div class="col">
-                <label for="unidade" ><b>Unidade</b></label><br>
-                <input name="unidade" value="{{ $unidade }}">
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <label for="unidade" ><b>Nome da Unidade</b></label><br>
+                <input name="unidade" value="{{ $unidade }}" class="w-100">
+                <small class="text-muted">Exemplo: Instituto de Matemática e Estatística da Universidade de São Paulo</small>
+                <br>
             </div>
         </div>
         <br>
 
+        <div class="row">
+            <div class="col">
+                <label for="sigla_unidade" ><b>Sigla da Unidade</b></label><br>
+                <input name="sigla_unidade" value="{{ $sigla_unidade }}" class="w-100">
+                <small class="text-muted">Exemplo: IME-USP</small>
+                <br>
+            </div>
+        </div>
+        <br>
 
+        <div class="row">
+            <div class="col">
+                <label for="endereco_unidade" ><b>Endereço da Unidade</b></label><br>
+                <input name="endereco_unidade" value="{{ $endereco_unidade }}" class="w-100">
+                <small class="text-muted">Exemplo: Rua do Matão, 1010 - Butantã, São Paulo - SP, CEP: 05508-090</small>
+                <br>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col">
+                <label for="email" ><b>E-mail da Seção de Estágios da Unidade</b></label><br>
+                <input name="email" value="{{ $email }}" class="w-100">
+                <small class="text-muted">Exemplo: estagios@ime.usp.br</small>
+                <br>
+            </div>
+        </div>
+        <br>
+
+        <hr>
+        <h4>E-mails</h4>
         <br>
         <div class="row">
             <div class="col">
@@ -46,7 +81,7 @@
             <div class="col">
                 <label for="analise_rescisao_mail" ><b>analise_rescisao_mail </b></label><br>
                 <textarea name="analise_rescisao_mail" cols="130" rows="10">{{ $analise_rescisao_mail }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #estagiario_nome#, #estagiario_numero_usp#, #empresa_nome#, #url_site#, #sigla_unidade#</span> 
             </div>
         </div>
         <br>
@@ -56,7 +91,7 @@
             <div class="col">
                 <label for="enviar_para_analise_tecnica_mail" ><b>enviar_para_analise_tecnica_mail </b></label><br>
                 <textarea name="enviar_para_analise_tecnica_mail" cols="130" rows="10">{{ $enviar_para_analise_tecnica_mail }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #estagiario_nome#, #estagiario_numero_usp#, #empresa_nome#, #email_unidade#, #sigla_unidade#</span> 
             </div>
         </div>
         <br>
@@ -66,7 +101,7 @@
             <div class="col">
                 <label for="enviar_para_estudante_mail" ><b>enviar_para_estudante_mail </b></label><br>
                 <textarea name="enviar_para_estudante_mail" cols="130" rows="10">{{ $enviar_para_estudante_mail }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #estagiario_nome#, #estagiario_numero_usp#, #empresa_nome#, #sigla_unidade#, #email_unidade#</span> 
             </div>
         </div>
         <br>
@@ -76,7 +111,7 @@
             <div class="col">
                 <label for="gerar_rescisao_mail" ><b>gerar_rescisao_mail </b></label><br>
                 <textarea name="gerar_rescisao_mail" cols="130" rows="10">{{ $gerar_rescisao_mail }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #estagiario_nome#, #estagiario_numero_usp#, #sigla_unidade#</span> 
             </div>
         </div>
         <br>
@@ -106,7 +141,7 @@
             <div class="col">
                 <label for="enviar_para_analise_tecnica_renovacao_mail" ><b> enviar_para_analise_tecnica_renovacao_mail</b></label><br>
                 <textarea name="enviar_para_analise_tecnica_renovacao_mail" cols="130" rows="10">{{ $enviar_para_analise_tecnica_renovacao_mail }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #estagiario_nome#, #estagiario_numero_usp#, #empresa_nome#, #email_unidade#, #sigla_unidade#</span> 
             </div>
         </div>
         <br>
@@ -116,7 +151,7 @@
             <div class="col">
                 <label for="justificativa_analise_tecnica" ><b> justificativa_analise_tecnica</b></label><br>
                 <textarea name="justificativa_analise_tecnica" cols="130" rows="10">{{ $justificativa_analise_tecnica }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #estagiario_nome#, #analise_tecnica#, #sigla_unidade#</span> 
             </div>
         </div>
         <br>
@@ -146,7 +181,7 @@
             <div class="col">
                 <label for="enviar_para_parecerista_mail" ><b>enviar_para_parecerista_mail </b></label><br>
                 <textarea name="enviar_para_parecerista_mail" cols="130" rows="10">{{ $enviar_para_parecerista_mail }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #estagiario_nome#, #estagiario_numero_usp#, #parecerista_nome#, #sigla_unidade#</span> 
             </div>
         </div>
         <br>
@@ -176,7 +211,7 @@
             <div class="col">
                 <label for="enviar_justificativa_reprovacao" ><b>enviar_justificativa_reprovacao </b></label><br>
                 <textarea name="enviar_justificativa_reprovacao" cols="130" rows="10">{{ $enviar_justificativa_reprovacao }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #vaga_justificativa#, #sigla_unidade#</span> 
             </div>
         </div>
         <br>
@@ -186,7 +221,7 @@
             <div class="col">
                 <label for="enviar_relatorio_mail" ><b>enviar_relatorio_mail</b></label><br>
                 <textarea name="enviar_relatorio_mail" cols="130" rows="10">{{ $enviar_relatorio_mail }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #estagiario_nome#, #estagiario_numero_usp#, #arquivo_nome#, #sigla_unidade#</span> 
             </div>
         </div>
         <br>
@@ -196,10 +231,25 @@
             <div class="col">
                 <label for="rescisao_empresa_mail" ><b>rescisao_empresa_mail</b></label><br>
                 <textarea name="rescisao_empresa_mail" cols="130" rows="10">{{ $rescisao_empresa_mail }}</textarea><br> 
+                <span class="badge badge-warning">Token de substituição: #estagiario_nome#, #estagiario_numero_usp#, #empresa_nome#, #sigla_unidade#</span> 
+            </div>
+        </div>
+        <br>
+
+        <hr>
+        <h4>Arquivos PDF's</h4>
+
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="header" ><b>Cabeçalho dos PDF</b></label><br>
+                <textarea name="header" cols="130" rows="10">{{ $header }}</textarea><br> 
                 <span class="badge badge-warning">Token de substituição: %a_definir</span> 
             </div>
         </div>
         <br>
+
+        <livewire:upload-logo settingsLogo="{{ $logo }}">
 
         <br>
         <div class="row">
@@ -211,22 +261,11 @@
         </div>
         <br>
 
-
         <br>
         <div class="row">
             <div class="col">
                 <label for="termo" ><b>termo</b></label><br>
                 <textarea name="termo" cols="130" rows="10">{{ $termo }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
-            </div>
-        </div>
-        <br>
-
-        <br>
-        <div class="row">
-            <div class="col">
-                <label for="header" ><b>Cabeçalho dos PDF</b></label><br>
-                <textarea name="header" cols="130" rows="10">{{ $header }}</textarea><br> 
                 <span class="badge badge-warning">Token de substituição: %a_definir</span> 
             </div>
         </div>
@@ -268,7 +307,7 @@
             <div class="col">
                 <label for="rodape" ><b>Rodapé</b></label><br>
                 <textarea name="rodape" cols="130" rows="10">{{ $rodape }}</textarea><br> 
-                <span class="badge badge-warning">Token de substituição: %a_definir</span> 
+                <span class="badge badge-warning">Token de substituição: #sigla_unidade#</span> 
             </div>
         </div>
         <br>
@@ -281,4 +320,5 @@
         <br>
 </form>
     
+@livewireScripts
 @endsection

@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^4.0",
         "laravellegends/pt-br-validator": "^10.0",
+        "livewire/livewire": "^3.4",
         "owen-it/laravel-auditing": "^13.0",
         "rap2hpoutre/fast-excel": "^5.4",
         "rap2hpoutre/laravel-log-viewer": "^2.3",
@@ -63,7 +64,8 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
-            "@php artisan vendor:publish --provider='Uspdev\\UspTheme\\ServiceProvider' --tag=assets --force"
+            "@php artisan vendor:publish --provider='Uspdev\\UspTheme\\ServiceProvider' --tag=assets --force",
+            "@php artisan storage:link"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""

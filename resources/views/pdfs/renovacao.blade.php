@@ -1,4 +1,4 @@
-@extends('pdfs.fflch')
+@extends('pdfs.header')
 
 @section('content')
 
@@ -40,8 +40,8 @@
         , @if($estagio->nome_do_representante_opcional) {{ $estagio->nome_do_representante_opcional }} @else {{ $estagio->empresa->nome_do_representante }} @endif</b> adiante designada
         CONCEDENTE e o ESTAGIÁRIO(A) <b>{{ $estagio->nome }}</b>, no USP <b>{{ $estagio->numero_usp }}</b>,
         curso {{ $estagio->curso }} e como
-        INTERVENIENTE a Faculdade de Filosofia, Letras e Ciências Humanas da Universidade de São Paulo, representada
-        pela Presidente da Comissão de Graduação <b> {{ \App\Models\Parecerista::nomePresidente() }} </b>, firmam o presente TERMO DE
+        INTERVENIENTE o(a) {{ $settings->unidade }}, representada
+        pelo(a) Presidente da Comissão de Graduação <b> {{ \App\Models\Parecerista::nomePresidente() }} </b>, firmam o presente TERMO DE
         ADITAMENTO DE COMPROMISSO DE ESTÁGIO, nos termos da Lei 11.788/08 e da Resolução USP no 5.528/09, conforme as
         condições a seguir:
     </p>
@@ -83,7 +83,7 @@
         <b> {{ $estagio->nome }} </b></p>
     <p>________________________________________<br>
         <b>{{ \App\Models\Parecerista::nomePresidente() }}</b><br>
-        <b>Presidente da Comissão de Graduação da FFLCH</b></p>
+        <b>Presidente da Comissão de Graduação - {{ $settings->sigla_unidade }}</b></p>
 </div>
 
 <br><br>
@@ -166,7 +166,7 @@
     <b>{{ $estagio->nome }}</b><br><br>
     _______________________________________________<br>
     <b>{{ \App\Models\Parecerista::nomePresidente() }}</b><br>
-    <b>Presidente da Comissão de Graduação da FFLCH/USP</b><br>
+    <b>Presidente da Comissão de Graduação - {{ $settings->sigla_unidade }}</b><br>
 </div>
 <div>
 

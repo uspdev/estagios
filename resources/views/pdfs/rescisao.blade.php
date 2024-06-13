@@ -1,4 +1,4 @@
-@extends('pdfs.fflch')
+@extends('pdfs.header')
 
 @section('content')
 
@@ -53,7 +53,7 @@ ________________________________________<br>
 <br>
 ________________________________________<br>
 <b>{{ \App\Models\Parecerista::nomePresidente() }}<br>
-Presidente da Comissão de Graduação da FFLCH/USP</b>
+Presidente da Comissão de Graduação - {{ $settings->sigla_unidade }}</b>
 
 
 <p style="page-break-after: never;"></p>
