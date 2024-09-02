@@ -26,7 +26,7 @@ class AvisoRequest extends FormRequest
         return [
             'titulo' => 'required',
             'corpo'  => 'required',
-            'divulgacao_home_ate' => 'required|data'
+            'divulgacao_home_ate' => 'required|date_format:d/m/Y'
         ];
     }
 }

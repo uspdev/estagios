@@ -15,7 +15,7 @@ class ChangeColumnsInEstagiosTable extends Migration
     {
         Schema::table('estagios', function (Blueprint $table) {
             $table->text('duracao')->change();
-            $table->text('horariocompativel')->change();
+            $table->text('horariocompativel')->nullable()->change();
             $table->text('horario')->change();
         });
     }
