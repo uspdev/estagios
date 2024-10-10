@@ -83,14 +83,17 @@
         <b>{{$estagio->data_inicial}}</b> terminando em
         <b>{{$estagio->data_final}}</b> que poderá
         ser eventualmente prorrogado ou modificado por documento complementar <b>(TERMO ADITIVO)</b>.</p>
-    <p>1.1. O estagiário não terá vínculo empregatício de qualquer natureza com a CONCEDENTE em razão deste TERMO DE
-        COMPROMISSO</p>
+    <p>1.1. As atividades de estágio só poderão ter início depois da assinatura deste instrumento pela CONCEDENTE, pelo
+        ESTAGIÁRIO e pela INTERVENIENTE.</p>
+    <p>1.2. O estagiário não terá vínculo empregatício de qualquer natureza com a CONCEDENTE em razão deste TERMO DE
+        COMPROMISSO.</p>
     <p>2. No período de estágio, o estagiário cumprirá <b>{{ $estagio->cargahoras }}h{{ $estagio->cargaminutos }}
             semanais</b>. O horário de estágio será combinado
         de acordo com as conveniências mútuas, ressalvadas as horas de aulas, de provas e de outros trabalhos didáticos
         e as limitações dos meios de transportes.</p>
     <p>2.1. Nos períodos de avaliação do rendimento escolar, conforme informado pelo estágiário, a jornada de atividade
         em estágio será reduzida à metade, sem desconto no valor da bolsa.</p>
+    <p>2.2. A jornada de atividade em estágio não poderá ultrapassar 6 (seis) horas diárias e 30 (trinta) horas semanais.</p>
     <p>3. A CONCEDENTE designa o Sr(a). <b>{{ $estagio->nome_do_supervisor_estagio }}</b>, que ocupa o cargo de
         <b>{{$estagio->cargo_do_supervisor_estagio}}</b>,
         para ser o(a) SUPERVISOR(a) INTERNO(a) do Estágio que será por ele programado.</p>
