@@ -262,7 +262,7 @@ class EstagioWorkflowController extends Controller
 
             $request->validate([
                 'rescisao_motivo' => 'required',
-                'rescisao_data' => 'required|data',
+                'rescisao_data' => 'required|date_format:d/m/Y',
             ]);
             $estagio->rescisao_motivo = $request->rescisao_motivo;
             $estagio->rescisao_data = implode('-',array_reverse(explode('/',$request->rescisao_data)));
