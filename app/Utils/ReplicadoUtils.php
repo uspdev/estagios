@@ -40,11 +40,17 @@ class ReplicadoUtils {
     }
 
     public static function periodo($codpes){
-        $query = "SELECT perhab FROM SITALUNOATIVOGR WHERE codpes = convert(int,:codpes) ORDER BY dtager DESC";
+        $query = "SELECT perhab FROM HABILITACAOGR h 
+        INNER JOIN HABILPROGGR r
+        ON r.codhab = h.codhab
+        WHERE r.codpes = convert(int,:codpes)
+        ORDER BY r.dtaini DESC";
+        
         $param = [
             'codpes' => $codpes,
         ];
         $result = DBreplicado::fetch($query, $param);
+
         if($result) return $result['perhab'];
         else return null;
     } 
