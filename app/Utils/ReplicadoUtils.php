@@ -13,17 +13,13 @@ class ReplicadoUtils {
      * @return int
      */
     public static function semestreAtual($codpes) {
-        $query = "SELECT COUNT(s.anosem) FROM SITALUNOATIVOGR s
-                    WHERE codpes = convert(int,:codpes)";
-        $param = [
-            'codpes' => $codpes,
-        ];
+        $query = "SELECT semidlmtr FROM CLASSIFICACAOPROGRAMA WHERE codpes = convert(int,:codpes) ORDER BY semidlmtr DESC";
+        $param = ['codpes' => $codpes];
         $result = DBreplicado::fetch($query, $param);
-        foreach ($result as $row)
-        {
-            print_r($row);
+        if($result){
+            return $result['semidlmtr'];
         }
-        return false;
+        return null;
     }
 
     public static function grade($codpes){
