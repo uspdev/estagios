@@ -45,8 +45,7 @@
 <b>Periodo de Matrícula</b>: {{ $estagio->periodo }}<br>
 <b>Média ponderada</b>: {{ $estagio->media_ponderada }}<br>
 <div class="alert alert-info" role="alert">
-  <b>Semestre atual: {{ $estagio->semestre_atual }}º</b><br>
-  <b>Situação sobre Estágio USP</b>: 
+   <b>Situação sobre Estágio USP</b>: 
   @if ($estagio->VerificarEstagio != 'true')
     Este estudante NÃO possui nenhum estágio USP ativo no sistema.<br>
   @else
