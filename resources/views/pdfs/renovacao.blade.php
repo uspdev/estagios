@@ -122,7 +122,6 @@
         @endif    
     Curso: <b>{{ $estagio->curso }}</b><br>
     Período: <b>{{ $estagio->periodo }}</b><br>
-    Semestre: <b>{{ $estagio->semestre_atual }}º</b><br>
     E-mail: <b>{{ $estagio->email }}</b><br>
     Nome da Empresa: <b>{{ $estagio->empresa->nome }}</b><br>
     Área de atuação da Empresa: <b>{{ $estagio->empresa->area_de_atuacao }}</b><br>

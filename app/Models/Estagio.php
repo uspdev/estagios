@@ -196,11 +196,6 @@ class Estagio extends Model implements Auditable
             return ReplicadoUtils::periodo($this->numero_usp);
     }
 
-    public function getSemestreAtualAttribute() {
-        if($this->numero_usp)
-            return ReplicadoUtils::semestreAtual($this->numero_usp);
-    }
-
     public function getCursoAttribute() {
         if($this->nomcur){
             return $this->nomcur;

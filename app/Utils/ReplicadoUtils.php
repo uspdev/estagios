@@ -6,22 +6,6 @@ use Uspdev\Replicado\Uteis;
 
 class ReplicadoUtils {
 
-     /**
-     * Retorna o semestre atual que o aluno está cursando
-     * Método transitório, pois ainda não foi criado issue...
-     * @param type $codpes
-     * @return int
-     */
-    public static function semestreAtual($codpes) {
-        $query = "SELECT semidlmtr FROM CLASSIFICACAOPROGRAMA WHERE codpes = convert(int,:codpes) ORDER BY semidlmtr DESC";
-        $param = ['codpes' => $codpes];
-        $result = DBreplicado::fetch($query, $param);
-        if($result){
-            return $result['semidlmtr'];
-        }
-        return null;
-    }
-
     public static function grade($codpes){
         $current = date("Y") . (date("m") > 6? 2:1);
 
