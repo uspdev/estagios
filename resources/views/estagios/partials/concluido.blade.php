@@ -55,8 +55,7 @@
 
     @can('admin_ou_empresa',$estagio->cnpj)
 
-        <b>Aviso:</b> Para realizar o pedido de renovação, é necessário
-        anexar o relatório do aluno, que deverá ser de cunho pessoal e livre.
+        <b>Aviso:</b> Para realizar o pedido de renovação, é necessário anexar o relatório do aluno, que deve elaborar um relatório final contando sobre a sua experiência durante o período estagiado. O conteúdo do relatório é pessoal e livre, deve ter no mínimo 7 linhas, SER DIGITADO (favor não escrever à mão, pois isso dificulta a leitura), datado e assinado pelo(a) estudante.
         <br><br>
 
         Anexar relatório (Apenas arquivos em formato PDF):
