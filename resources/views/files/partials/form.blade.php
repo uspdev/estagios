@@ -107,7 +107,9 @@
                 @if($arquivo->tipo_documento == null)
                     <tr>
                     <td>
-                        <a href="/files/{{$arquivo->id}}.pdf"  type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> {{$arquivo->original_name}} </a>
+                        @if($estagio->esconde_historico_para_empresa($arquivo))
+                        <a href="/files/{{$arquivo->id}}.pdf"  type="application/pdf" target="pdf-frame"><i class="fas fa-file-pdf"></i> {{ $arquivo->original_name }} </a>
+                        @endif
                     </td>
                     </tr>
                 @endif
