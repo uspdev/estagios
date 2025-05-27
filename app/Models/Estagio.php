@@ -343,4 +343,11 @@ class Estagio extends Model implements Auditable
     public function mapeamento($chave) {
         return Mapeamento::map($chave);
     }
+
+    public function esconde_historico_para_empresa($arquivo){
+        $names = ['historico','Histórico','histórico','Historico'];
+        $historico = !in_array($arquivo->original_name, $names);
+        return $historico;
+    }
+
 }
