@@ -251,11 +251,10 @@ class Estagio extends Model implements Auditable
             return ReplicadoUtils::grade($this->numero_usp);
     }
 
-    /* não está sendo utilizado 
     public function getDuracaoAttribute() {
         return Generic::formata_periodo($this->data_inicial, $this->data_final);
     }
-    */
+    
     public function getStatus(){
         $status = [
             'em_elaboracao' => [
