@@ -32,7 +32,7 @@ class ReplicadoUtils {
 
         $result = DBreplicado::fetch($query, $param);
 
-        return $result['perhab'] ?? 'Sem informação disponível';
+        return $result['perhab'] ?? "Sem informação disponível";
     }
 
 }
