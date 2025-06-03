@@ -38,7 +38,7 @@ Ensino.
 
 <br>
 <br>
-<div style="text-align: center">São Paulo, {{ Carbon\Carbon::now()->formatLocalized('%d/%m/%Y') }}</div>
+<div style="text-align: center">São Paulo, {{ Carbon\Carbon::now()->setLocale('de') }}</div>
 <br>
 <br>
 
