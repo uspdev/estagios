@@ -47,7 +47,7 @@ carimbo contendo o CNPJ da empresa, para que produza seus jurídicos efeitos.</p
 
 <div style="page-break-inside: avoid;">
 
-<div style="text-align: center;">São Paulo, {{ Carbon\Carbon::now()->setLocale('de') }}</div>
+<div style="text-align: center;">São Paulo, {{ Carbon\Carbon::now()->format('d/m/Y') }}</div>
 
 <br><br>
 

@@ -22,7 +22,7 @@
 
 
 <br><br>
-<div style="text-align: right">São Paulo, {{ Carbon\Carbon::now()->setLocale('de') }}</div>
+<div style="text-align: right">São Paulo, {{ Carbon\Carbon::now()->format('d/m/Y') }}</div>
 
 <br><br>
 
