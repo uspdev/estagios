@@ -139,6 +139,7 @@ class PareceristaController extends Controller
         $aux =[];
         foreach($estagios->get() as $estagio){
             $aux[] = [
+                'Número USP'      => $estagio->numero_usp,
                 'Nome'            => $estagio->nome,
                 'Habilitaçao'     => $estagio->habilitacao,
                 'Atividades'      => $estagio->atividade,

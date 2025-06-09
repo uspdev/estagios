@@ -137,7 +137,7 @@
 
 <div style="page-break-inside: avoid;">
 
-<div style="text-align: center;">São Paulo, {{ Carbon\Carbon::now()->formatLocalized('%d/%m/%Y') }}</div>
+<div style="text-align: center;">São Paulo, {{ Carbon\Carbon::now()->format('d/m/Y') }}</div>
 
 <br><br>
 
@@ -205,7 +205,7 @@
 
 <br><br>
 
-<div style="text-align: center;">São Paulo, {{ Carbon\Carbon::now()->formatLocalized('%d/%m/%Y') }}</div>
+<div style="text-align: center;">São Paulo, {{ Carbon\Carbon::now()->format('d/m/Y') }}</div>
 
 <br><br>
 

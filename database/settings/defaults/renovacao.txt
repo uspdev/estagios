@@ -72,7 +72,7 @@
 
 <div style="page-break-inside: avoid;">
 
-<div style="text-align: center;">São Paulo, {{ Carbon\Carbon::now()->formatLocalized('%d/%m/%Y') }}</div>
+<div style="text-align: center;">São Paulo, {{ Carbon\Carbon::now()->format('d/m/Y') }}</div>
 
 <br><br>
 
@@ -114,12 +114,12 @@
 <div style="text-align: justify">
     Nome d{{ $estagio->artigo_definido }} Estagiári{{ $estagio->artigo_definido }}: <b>{{ $estagio->nome }}</b><br>
     Nº USP: <b>{{ $estagio->numero_usp }}</b><br>
-    Telefone: 
+    Telefone:
         @if(isset($fones))
             <b>{{ $fones }}</b><br>
-        @else 
+        @else
             <b>Não possui telefone cadastrado.</b><br>
-        @endif    
+        @endif
     Curso: <b>{{ $estagio->curso }}</b><br>
     Período: <b>{{ $estagio->periodo }}</b><br>
     E-mail: <b>{{ $estagio->email }}</b><br>
@@ -152,7 +152,7 @@
 <br>
 <div style="page-break-inside: avoid;">
 
-<div style="text-align: center;">São Paulo, {{ Carbon\Carbon::now()->formatLocalized('%d/%m/%Y') }}</div>
+<div style="text-align: center;">São Paulo, {{ Carbon\Carbon::now()->format('d/m/Y') }}</div>
 
 <br><br>
 
