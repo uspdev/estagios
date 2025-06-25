@@ -188,6 +188,14 @@ aditivo por até 12 meses.
                     <input type="text" maxlength="11" class="form-control" id="telefone-com-ddd" name="telefone_de_contato" value="{{old('telefone_de_contato',$estagio->telefone_de_contato)}}">
                 </div></div>
             </div>
+            <div class="row">
+                <div class="col-sm form-group">
+                    <div class="form-group">
+                        <label for="endereco_estagio" class="required">Endereço do local do estágio</label>
+                        <input type="text" class="form-control" name="endereco_local_estagio" value="{{ old('endereco_local_estagio',$estagio->endereco_local_estagio) }}">
+                    </div>
+                </div>
+            </div>
         <div class="row">
             <div class="col-sm form-group">
                 <div class="form-group">

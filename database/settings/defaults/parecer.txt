@@ -12,6 +12,7 @@
     Curso: <b>{{ $estagio->curso }}</b>, período <b>{{ $estagio->periodo }}</b><br><br>
     Empresa: <b>{{ $estagio->empresa->nome }}</b><br><br>
     Área de atuação da Empresa: <b>S{{ $estagio->empresa->area_de_atuacao }}</b><br><br>
+    Endereço do local do estágio: <b>{{$estagio->endereco_local_estagio}}</b><br><br>
     Período do Estágio<br>
     Início: <b>{{$estagio->data_inicial}}</b><br>
     Término: <b>{{$estagio->data_final}}</b>
@@ -21,10 +22,6 @@
 <p>As Atividades propostas no plano de estágio são pertinentes ao curso de origem do aluno?: <b>{{ $estagio->atividadespertinentes }}</b></p>
 
 <p>Justifique: <b>{{ $estagio->atividadesjustificativa }}</b></p>
-
-<p>Avalie o desempenho acadêmico do aluno: <b>{{ $estagio->desempenhoacademico }}</b></p>
-
-<p>Média ponderada com reprovação: <b>{{ $estagio->media_ponderada }}</b></p>
 
 <p>O horário do estágio é compatível com os horários disponíveis na grade horária do aluno?: <b>{{ $estagio->horariocompativel }}</b></p>
 
