@@ -61,6 +61,7 @@ class EstagioRequest extends FormRequest
             'cargo_do_supervisor_estagio' => 'required|max:255',
             'telefone_do_supervisor_estagio' => 'required|max:255',
             'email_do_supervisor_estagio' => 'required|email|max:255',
+            'endereco_local_estagio' => 'required|max:255',
 
             //
             'horariocompativel' => 'nullable',

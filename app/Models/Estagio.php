@@ -106,7 +106,7 @@ class Estagio extends Model implements Auditable
         $areas_fixas =  [
             'Ensino/Educação',
             'Editoração',
-            'Tradução/ Interpretação',
+            'Tradução, interpretação, legendagem',
             'Revisão, correção e/ou produção de textos',
             'Tecnologia -  Internet, mídias e ambientes digitais',
             'Administração (serviços gerais, secretariado, recepção, etc)',
