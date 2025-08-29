@@ -43,7 +43,6 @@
 </table>
 
 <b>Periodo de Matrícula</b>: {{ $estagio->periodo }}<br>
-<b>Média ponderada</b>: {{ $estagio->media_ponderada }}<br>
 <div class="alert alert-info" role="alert">
    <b>Situação sobre Estágio USP</b>: 
   @if ($estagio->VerificarEstagio != 'true')

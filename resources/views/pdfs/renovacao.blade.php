@@ -124,6 +124,7 @@
     Período: <b>{{ $estagio->periodo }}</b><br>
     E-mail: <b>{{ $estagio->email }}</b><br>
     Nome da Empresa: <b>{{ $estagio->empresa->nome }}</b><br>
+    CNPJ: <b> {{ $estagio->empresa->cnpj }} </b>
     Área de atuação da Empresa: <b>{{ $estagio->empresa->area_de_atuacao }}</b><br>
     Nome do supervisor(a) interno(a) do Estágio na Empresa: <b>{{ $estagio->nome_do_supervisor_estagio }}</b><br>
     Telefone: <b>{{ $estagio->telefone_do_supervisor_estagio }}</b> , E-mail: <b>{{ $estagio->email_do_supervisor_estagio }}</b><br>
