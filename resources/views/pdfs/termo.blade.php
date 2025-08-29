@@ -174,6 +174,7 @@
     <b>Período:</b> {{ $estagio->periodo }}<br>
     <b>E-mail:</b> {{ $estagio->email }}<br>
     <b>Nome da Empresa:</b> {{ $estagio->empresa->nome }}<br>
+    <b>CNPJ:</b> {{ $estagio->empresa->cnpj }}<br>
     <b>Área de atuação da Empresa:</b> {{ $estagio->empresa->area_de_atuacao }}<br>
     <b>Nome do supervisor(a) interno(a) do Estágio na Empresa:</b> {{ $estagio->nome_do_supervisor_estagio }}<br>
     <b>Telefone do Supervisor:</b> {{ $estagio->telefone_do_supervisor_estagio }} / {{ $estagio->telefone_de_contato }},

@@ -31,10 +31,6 @@
     <input type="text" class="form-control" id="horariocompativel" name="horariocompativel" value="{{old('horariocompativel',$estagio->horariocompativel)}}">
     <br>
 
-    <label for="desempenhoacademico">Avalie o desempenho acadêmico do aluno: </label><br>
-    <textarea name="desempenhoacademico" rows="5" cols="60">{{old('desempenhoacademico',$estagio->desempenhoacademico)}}</textarea>
-    <br><br>
-
     <label for="area_estagio"> Selecione a área de atuação do estágio:</label><br>
     @foreach($estagio->area_estagio() as $opcao)
       <input type="checkbox" name="area_estagio[]" value="{{ $opcao }}" @if(in_array($opcao,$areas)) checked @endif> {{ $opcao }}
