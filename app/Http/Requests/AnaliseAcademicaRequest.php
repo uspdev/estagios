@@ -26,7 +26,7 @@ class AnaliseAcademicaRequest extends FormRequest
         $rules = [
             'area_estagio' => 'required',
             'atividadespertinentes' => 'required',
-            'desempenhoacademico' => 'required',
+            'desempenhoacademico' => 'nullable',
             'horariocompativel' => 'required|max:255',
             'atividadesjustificativa'=> 'required',
             'analise_academica'=> 'required',
