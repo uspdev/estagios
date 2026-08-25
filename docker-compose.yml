@@ -1,0 +1,84 @@
+services:
+  estagios:
+    build: .
+    image: estagios:latest
+    container_name: estagios
+    ports:
+      - "8000:80"
+    depends_on:
+      - mariadb
+    networks:
+      - estagios-network
+    volumes:
+      - ./:/var/www/html
+    environment:
+      HOME: /tmp
+    user: "${UID:-1000}:${GID:-1000}"
+
+  mariadb:
+    image: mariadb:11
+    container_name: estagios_mariadb
+    restart: always
+    environment:
+      MYSQL_DATABASE: estagios
+      MYSQL_USER: estagios
+      MYSQL_PASSWORD: estagios
+      MYSQL_ROOT_PASSWORD: estagios
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - estagios-network
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: estagios_phpmyadmin
+    restart: always
+    depends_on:
+      - mariadb
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: estagios
+    networks:
+      - estagios-network
+      
+  selenium:
+    image: selenium/standalone-chrome
+    container_name: estagios_selenium
+    ports:
+      - "7900:7900"
+    networks:
+      - estagios-network
+    shm_size: 2gb
+
+  # No /etc/hosts do seu computador colocar a linha `127.0.0.1 auth.local` 
+  # particularidades do protocolo oAuth1 usado na USP
+  senhaunica-faker:
+    image: uspdev/senhaunica-faker
+    container_name: estagios_senhaunica-faker
+    ports:
+      - "3141:3141"
+    environment:
+          - APP_URL=http://auth.local:3141
+    networks:
+      estagios-network:
+        aliases:
+          - auth.local
+
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: estagios_mailpit
+    ports:
+      - "1025:1025"   # SMTP
+      - "8025:8025"   # Interface Web
+    networks:
+      - estagios-network
+
+networks:
+  estagios-network:
+
+volumes:
+  mariadb_data:
