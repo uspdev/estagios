@@ -18,7 +18,9 @@ class LoginTest extends DuskTestCase
                 ->clickLink('Entrar')
                 ->type('loginUsuario', 111111)
                 ->press('Login')
-                ->waitForText('Sair');
+                #->waitForText('Mural de Vagas')
+                ->assertSee('Sair');
+                
         });
     }
 }
