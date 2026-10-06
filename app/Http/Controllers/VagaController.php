@@ -66,6 +66,7 @@ class VagaController extends Controller
             return redirect('/');
         } else {
             request()->session()->flash('alert-danger', 'Sem permissão para executar ação');
+            return back();
         }
     }
 

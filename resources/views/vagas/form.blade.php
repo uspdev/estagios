@@ -44,7 +44,7 @@
   <div class="row">
     <div class="col-sm form-group">
       <label for="contato" class="required"><strong>Contato para Vaga:</strong></label>
-      <textarea class="form-control" name="contato">{{old('contato',$vaga->contato)}}</textarea>
+      <textarea class="form-control" id="contato" name="contato">{{old('contato',$vaga->contato)}}</textarea>
       <small> Emails, sites ou telefones no qual alunos e alunas devem entrar em contato</small>
     </div>
   </div>

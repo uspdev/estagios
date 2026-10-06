@@ -34,7 +34,7 @@
           <form method="POST" action="/vagas/{{$vaga->id}}">
             @csrf
             @method('delete')
-            <button type="submit" style="background-color: transparent;border: none;" onclick="return confirm('Tem certeza que deseja deletar?');"><i class="far fa-trash-alt" color="#007bff"></i></button>
+            <button class='destroy_btn' type="submit" style="background-color: transparent;border: none;" onclick="return confirm('Tem certeza que deseja deletar?');"><i class="far fa-trash-alt" color="#007bff"></i></button>
           </form>
         </td>
       </tr>
